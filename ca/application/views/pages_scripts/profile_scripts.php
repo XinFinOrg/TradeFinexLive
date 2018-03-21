@@ -708,6 +708,37 @@
 				}				
 			}
 		});
+		
+		$("#form_supplier_request").validate({
+			
+			rules: {
+				reject_msg: {
+					required: true,
+					minlength: 40,
+					startsLetterOnly: true
+				}
+			},	
+			messages: {
+				reject_msg: {
+					required: "Please write something for modification",
+					minlength: "Message should be at least 40 characters long"
+				}
+			},
+			onkeyup: function(elem) {
+				
+				var element_id = $(elem).attr('id');
+				
+				if(element_id == 'reject_msg'){
+					
+					var strv = $('#'+element_id).val();
+		
+					$('#'+element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
+									
+				}
+			}
+			
+		});
+		
 		$("#form_financier_request").validate({
 			
 			rules: {
@@ -1146,10 +1177,23 @@
 			var ruser_id = $(this).attr('ruser_id');
 			var ruser_type_ref = $(this).attr('ruser_type_ref');
 			var request_type = $(this).attr('request_type');
+			var prop_id = $(this).attr('prop_id');
+			
+			$('#rproj_id').val(proj_id);
+			$('#rrproject_ref').val(proj_id);
+			$('#ruser_id_request').val(ruser_id);
+			$('#ruser_type_request').val(ruser_type_ref);
+			$('#rruser_id').val(ruser_id);
+			$('#rruser_type').val(ruser_type_ref);
+			$('#rrequest_type').val(request_type);
+			$('#rprop_id').val(prop_id);
 				
 			if(parseInt(proj_id) > 0 && parseInt(user_id) > 0 && parseInt(user_type_ref) > 0 && parseInt(ruser_id) > 0 && parseInt(ruser_type_ref) > 0){
 			
-				$('<form id="search_form" action="<?=base_url();?>smartcontract/initiate" method="post"><input type="hidden" name="proj_id" value="'+proj_id+'" ><input type="hidden" name="user_id_request" value="'+ruser_id+'" ><input type="hidden" name="user_type_request" value="'+ruser_type_ref+'" ><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+ruser_id+'" ><input type="hidden" name="ruser_type" value="'+ruser_type_ref+'" ><input type="hidden" name="request_type" value="'+request_type+'" ><input type="hidden" name="request_db_type" value="reject" ><input type="hidden" name="raction" value="request_completion" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" /></form>').appendTo('body').submit();
+				/* $('<form id="search_form" action="<?=base_url();?>smartcontract/initiate" method="post"><input type="hidden" name="proj_id" value="'+proj_id+'" ><input type="hidden" name="user_id_request" value="'+ruser_id+'" ><input type="hidden" name="user_type_request" value="'+ruser_type_ref+'" ><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+ruser_id+'" ><input type="hidden" name="ruser_type" value="'+ruser_type_ref+'" ><input type="hidden" name="request_type" value="'+request_type+'" ><input type="hidden" name="request_db_type" value="reject" ><input type="hidden" name="raction" value="request_completion" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" /></form>').appendTo('body').submit(); */
+				
+				$('#btna_reqmsg').trigger('click');
+				
 			}
 			
 		});
@@ -1869,6 +1913,7 @@
 			var ruser_id = $(this).attr('ruser_id');
 			var ruser_type_ref = $(this).attr('ruser_type_ref');
 			var request_type = $(this).attr('request_type');
+			var prop_id = $(this).attr('prop_id');
 			
 			$('#proj_id').val(proj_id);
 			$('#rproject_ref').val(proj_id);
@@ -1877,8 +1922,13 @@
 			$('#ruser_id').val(ruser_id);
 			$('#ruser_type').val(ruser_type_ref);
 			$('#request_type').val(request_type);
+			$('#prop_id').val(prop_id);
 			
-			$('.btna_shipment').trigger('click');
+			if(parseInt(proj_id) > 0 && parseInt(user_id) > 0 && parseInt(ruser_id) > 0 && parseInt(ruser_type_ref) > 0 && $.trim(request_type) != '' && parseInt(prop_id) > 0 ){
+			
+				$('.btna_shipment').trigger('click');
+			
+			}
 			
 		});
 		
@@ -1916,7 +1966,11 @@
 			$('#ruser_type').val(ruser_type_ref);
 			$('#request_type').val(request_type);
 			
-			$('#btna_reqmsg').trigger('click');
+			if(parseInt(proj_id) > 0 && parseInt(user_id) > 0 && parseInt(ruser_id) > 0 && parseInt(ruser_type_ref) > 0 && $.trim(request_type) != ''){
+			
+				$('#btna_reqmsg').trigger('click');
+			
+			}
 			
 		});	
 						

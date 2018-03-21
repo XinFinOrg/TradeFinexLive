@@ -2572,6 +2572,70 @@
 			return true;
 		}
 		
+		public function add_supplier_shipment_rejection_by_project_proposal_and_user_ref($data_add, $type){
+			
+			$id = 0;
+			
+			if($type == 'p'){
+				
+				$id = $this->db->insert('{PRE}supplier_shipment_rejection_reason', $data_add); 
+			}
+
+			if($type == 'f'){
+				
+				
+			}
+								
+			return $id;
+		}
+		
+		public function get_supplier_shipment_rejection_by_project_proposal_and_user_ref($proj_ref, $prop_ref, $user_ref, $type){
+			
+			$datan = array();
+					
+			if($type == 'p'){
+				
+				$this->db->select('*');
+				$this->db->from('{PRE}supplier_shipment_rejection_reason');
+				$where = "tfssrr_proposal_ref = '".$prop_ref."' AND tfssrr_project_ref = '".$proj_ref."' AND tfssrr_user_ref = '".$user_ref."'";
+				$this->db->where($where);
+				$query = $this->db->get();
+				
+				return $result = $query->result();
+			}
+
+			if($type == 'f'){
+				
+				
+			}
+								
+			return true;
+		}
+		
+		public function update_supplier_shipment_rejection_by_project_proposal_and_user_ref($proj_ref, $prop_ref, $user_ref, $data_add, $type){
+			
+			$datan = array();
+					
+			if($type == 'p'){
+				
+				$where = "`tfssrr_proposal_ref` = '".$prop_ref."' AND `tfssrr_project_ref` = '".$proj_ref."' AND `tfssrr_user_ref` = '".$user_ref."'";
+				
+				$this->db->query("UPDATE {PRE}supplier_shipment_rejection_reason SET `tfssrr_rejection_msg` = '".$data_add['tfssrr_rejection_msg']."', `tfssrr_row_deleted` = '".$data_add['tfssrr_row_deleted']."' WHERE ".$where." ORDER BY tfssrr_id DESC LIMIT 1");
+				
+				$where = "`tpp_id` = '".$prop_ref."' AND `tpp_project_ref` = '".$proj_ref."'";
+				
+				$this->db->query("UPDATE {PRE}proposal_provider SET `tpp_rejection_msg` = '".$data_add['tfssrr_rejection_msg']."', `tpp_rejected` = 1 WHERE ".$where);
+				
+			}
+
+			if($type == 'f'){
+				
+				
+			}
+								
+			return true;
+		}
+		
 		public function reject_other_proposal_by_project($project_ref, $user_id, $type)
 		{
 			if($type == 'p'){
@@ -2891,17 +2955,19 @@
 					}
 					
 					if($request_type == 'reject'){
-					
+						
+						// Start Loop between Supplier and Beneficiary
 						$data_add = array();
 						$data_add['provider_completion_request'] = 0;
 						$this->update_project_by_id($project_ref, $data_add);
 						
 						$data_add = array();
 						$data_add['tpp_project_completion_request'] = 0;
-						$data_add['tpp_beneficiary_accept_project_completion_request'] = 2;
+						$data_add['tpp_beneficiary_accept_project_completion_request'] = 0;
 						$where = "tpp_project_ref = '".$project_ref."' AND tpp_user_ref = '".$user_id_request."'";
 						$this->db->where($where);
 						$this->db->update('{PRE}proposal_provider', $data_add);
+						
 					}
 				}
 				else if($user_type_request == 2){

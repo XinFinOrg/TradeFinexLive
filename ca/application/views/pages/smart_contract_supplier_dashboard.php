@@ -616,7 +616,7 @@
 														if(!empty($sub_contract_info)){
 											?>	
 														<div class="btn-more pay_now_button">
-															<button type="button" class="btn rproj_initiate" ruser_id="<?=$project_listed_info[0]->userID;?>" ruser_type_ref="<?=$project_listed_info[0]->userType;?>" user_id="<?=((!empty($sub_contract_info) && sizeof($sub_contract_info) <> 0) ? $sub_contract_info[0]->tpp_user_ref : $user_id);?>" user_type_ref="<?=$user_type_ref;?>" proj_id="<?=$project_listed_info[0]->ID;?>" request_type="<?=(((!empty($sub_contract_info) && sizeof($sub_contract_info) <> 0 && $sub_contract_info[0]->tpp_user_ref <> $user_id)) ? 'confirm_shipment' : '');?>" <?=((!empty($sub_contract_info) && sizeof($sub_contract_info) <> 0 && $sub_contract_info[0]->tpp_user_ref <> $user_id) ? '' : 'disabled');?>> <i class="fa fa-check"></i> Confirm Shipment</button>
+															<button type="button" class="btn rproj_initiate" ruser_id="<?=$project_listed_info[0]->userID;?>" ruser_type_ref="<?=$project_listed_info[0]->userType;?>" user_id="<?=((!empty($sub_contract_info) && sizeof($sub_contract_info) <> 0) ? $sub_contract_info[0]->tpp_user_ref : $user_id);?>" user_type_ref="<?=$user_type_ref;?>" proj_id="<?=$project_listed_info[0]->ID;?>" request_type="<?=(((!empty($sub_contract_info) && sizeof($sub_contract_info) <> 0 && $sub_contract_info[0]->tpp_user_ref <> $user_id)) ? 'confirm_shipment' : '');?>" <?=((!empty($sub_contract_info) && sizeof($sub_contract_info) <> 0 && $sub_contract_info[0]->tpp_user_ref <> $user_id) ? '' : 'disabled');?> prop_id="<?=(isset($sub_contract_info[0]->tfss_proposal_ref) ? $sub_contract_info[0]->tfss_proposal_ref : $beneficiary_provider_accepted[0]->tpp_id);?>"> <i class="fa fa-check"></i> Confirm Shipment</button>
 														</div>
 														<div class="col-md-12">
 															<?=((!empty($sub_contract_info) && sizeof($sub_contract_info) <> 0 && $sub_contract_info[0]->tpp_user_ref <> $user_id) ? '' : '<span style="color:blue;font-size:12px;">Sub-Contractor response awaited</font>');?>
@@ -624,14 +624,14 @@
 														
 											<?php }else{ ?>
 													<div class="btn-more pay_now_button">
-														<button type="button" class="btn rproj_initiate" ruser_id="<?=$project_listed_info[0]->userID;?>" ruser_type_ref="<?=$project_listed_info[0]->userType;?>" user_id="<?=((!empty($sub_contract_info) && sizeof($sub_contract_info) <> 0) ? $sub_contract_info[0]->tpp_user_ref : $user_id);?>" user_type_ref="<?=$user_type_ref;?>" proj_id="<?=$project_listed_info[0]->ID;?>" request_type="confirm_shipment"> <i class="fa fa-check"></i> Confirm Shipment</button>
+														<button type="button" class="btn rproj_initiate" ruser_id="<?=$project_listed_info[0]->userID;?>" ruser_type_ref="<?=$project_listed_info[0]->userType;?>" user_id="<?=((!empty($sub_contract_info) && sizeof($sub_contract_info) <> 0) ? $sub_contract_info[0]->tpp_user_ref : $user_id);?>" user_type_ref="<?=$user_type_ref;?>" proj_id="<?=$project_listed_info[0]->ID;?>" prop_id="<?=((!empty($sub_contract_info) && isset($sub_contract_info[0]->tfss_proposal_ref)) ? $sub_contract_info[0]->tfss_proposal_ref : $beneficiary_provider_accepted[0]->tpp_id);?>" request_type="confirm_shipment"> <i class="fa fa-check"></i> Confirm Shipment</button>
 													</div>
 											<?php			
 												}
 											
 											}
 											
-											if($user_type_ref == 1 && $project_listed_info[0]->awarded_provider == 3 && $project_listed_info[0]->provider_completion_request == 0 && (!empty($beneficiary_provider_accepted) && $beneficiary_provider_accepted[0]->tpp_contract_mode == 0 && trim($pshipment_no) == '')){
+											if($user_type_ref == 1 && $project_listed_info[0]->awarded_provider == 3 && $project_listed_info[0]->provider_completion_request == 0 && (!empty($beneficiary_provider_accepted) && $beneficiary_provider_accepted[0]->tpp_contract_mode == 0)){ // && trim($pshipment_no) == ''
 																						
 											?>	
 												<div class="btn-more pay_now_button">
@@ -646,11 +646,11 @@
 														<button type="button" class="btn pcompletion_accept confirm_click" user_id="<?=$project_listed_info[0]->userID;?>" user_type_ref="<?=$project_listed_info[0]->userType;?>" ruser_id="<?=$puser;?>" ruser_type_ref="1" proj_id="<?=$project_listed_info[0]->ID;?>" request_type="confirm_delivery"><i class="fa fa-check"></i> Confirm Delivery</button>
 													</div>	
 													<div class="btn-more pay_now_button">
-														<button type="button" class="btn pcompletion_reject confirm_click" user_id="<?=$project_listed_info[0]->userID;?>" user_type_ref="<?=$project_listed_info[0]->userType;?>" ruser_id="<?=$puser;?>" ruser_type_ref="1" proj_id="<?=$project_listed_info[0]->ID;?>"><i class="fa fa-times"></i> Decline Delivery</button>
+														<button type="button" class="btn pcompletion_reject confirm_click" user_id="<?=$project_listed_info[0]->userID;?>" user_type_ref="<?=$project_listed_info[0]->userType;?>" ruser_id="<?=$puser;?>" ruser_type_ref="1" proj_id="<?=$project_listed_info[0]->ID;?>" prop_id="<?=((!empty($sub_contract_info) && isset($sub_contract_info[0]->tfss_proposal_ref)) ? $sub_contract_info[0]->tfss_proposal_ref : $beneficiary_provider_accepted[0]->tpp_id);?>"><i class="fa fa-times"></i> Decline Delivery</button>
 													</div>
 												<?php }
 												
-													if($user_type_ref == 1 && (!empty($beneficiary_provider_accepted) && $beneficiary_provider_accepted[0]->tpp_beneficiary_accept_project_completion_request == 1) && $project_listed_info[0]->provider_completion_request <> 2){
+													if($user_type_ref == 1 && (!empty($beneficiary_provider_accepted) && $beneficiary_provider_accepted[0]->tpp_beneficiary_accept_project_completion_request == 1) && $project_listed_info[0]->provider_completion_request > 0){
 														
 														if((!empty($sub_contract_info) && sizeof($sub_contract_info) <> 0 && $sub_contract_info[0]->tpp_user_ref <> $user_id) || empty($sub_contract_info)){
 														
@@ -790,7 +790,7 @@
 													<tr>
 														<td><?=(($user_type_ref == 1) ? '<span class=""> Shipment Details </span' : '<span class=""> Delivery Details </span');?></td>
 														<td>:</td>
-														<td><?=((trim($pshipment_no) <> '') ? 'Shipped - Ref no : '.$pshipment_no.' - Shipment Date : '.date('d M, Y', strtotime($pshipment_date)) : 'Awaited');?></td>
+														<td><?=((trim($pshipment_no) <> '') ? 'Shipped - Ref no : '.$pshipment_no.' - Shipment Date : '.date('d M, Y', strtotime($pshipment_date)) : 'Awaited').((!empty($beneficiary_provider_accepted) && $beneficiary_provider_accepted[0]->tpp_rejected == 1) ? '<br/><strong>Shipment Rejected:</strong> '.$beneficiary_provider_accepted[0]->tpp_rejection_msg : '');?></td>
 													</tr>
 													<tr>
 														<td>Confirmation</td>
@@ -819,6 +819,47 @@
 			</div>
 		</div>
 	</section>
+</div>
+<a id="btna_reqmsg" class="btna_request_supplier" data-toggle="modal" data-target="#myModalPreqM" data-backdrop="static" data-keyboard="false"></a>
+<div class="modal fade" id="myModalPreqM" role="dialog" data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog supplier_area">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<?php $attributes = array('id' => 'form_supplier_request', 'name' => 'form_supplier_request', 'class' => '', 'method' => 'post', 'role' => 'form');
+			echo form_open_multipart(base_url().'smartcontract/initiate', $attributes); ?>
+			<div class="modal-header">
+				<?=($user_type_ref == 3 ? '<button type="button" class="close modal_payment_close" data-dismiss="modal" proj_id="'.$project_listed_info[0]->ID.'" user_id="'.$puser.'" user_type_ref="1" >&times;</button>' : '');?>
+			</div>
+			<div class="modal-body">
+				<h3 class="modal-title text-center">WRITE YOUR MESSAGE BELOW</h3>
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="form-label">
+							<textarea class="form-input description input-focus-notr" name="reject_msg" id="reject_msg" data-validation="required custom"></textarea>
+							<span class="form-name floating-label">REJECTION MESSAGE<sup>*</sup></span>
+                        </label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal-footer">
+				<font color="red" class="msg_error" style="margin-left: 15px; float: left;display: none;"></font>
+				<font color="green" class="msg_success" style="margin-left: 15px; float: left;display: none;"></font>
+				<input type="hidden" name="proj_id" id="rproj_id" value="0" />
+				<input type="hidden" name="prop_id" id="rprop_id" value="0" />
+				<input type="hidden" name="rproject_ref" id="rrproject_ref" value="0" />
+				<input type="hidden" name="user_id_request" id="ruser_id_request" value="0" />
+				<input type="hidden" name="user_type_request" id="ruser_type_request" value="0" />
+				<input type="hidden" name="ruser_id" id="rruser_id" value="0" />
+				<input type="hidden" name="ruser_type" id="rruser_type" value="0" />
+				<input type="hidden" name="request_type" id="rrequest_type" value="" />
+				<input type="hidden" name="request_db_type" value="reject" />
+				<input type="hidden" name="raction" value="request_completion" />
+				<div class="btn-more"><button type="submit" class="btn" style="margin-right: 10px;">Submit Now</button></div>
+            </div>
+			</form>
+		</div>
+	</div>
 </div>
 <a class="btna_shipment" data-toggle="modal" typeval="1" data-target="#myModalP" data-backdrop="static" data-keyboard="false"></a>
 <div class="modal fade" id="myModalP" role="dialog" data-backdrop="static" data-keyboard="false">
@@ -861,6 +902,7 @@
 				<font color="red" class="msg_error" style="margin-left: 15px; float: left;display: none;"></font>
 				<font color="green" class="msg_success" style="margin-left: 15px; float: left;display: none;"></font>
 				<input type="hidden" name="proj_id" id="proj_id" value="0" />
+				<input type="hidden" name="prop_id" id="prop_id" value="0" />
 				<input type="hidden" name="rproject_ref" id="rproject_ref" value="0" />
 				<input type="hidden" name="user_id_request" id="user_id_request" value="0" />
 				<input type="hidden" name="user_type_request" id="user_type_request" value="0" />

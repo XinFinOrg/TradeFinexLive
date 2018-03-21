@@ -451,6 +451,7 @@ class Smartcontract extends CI_Controller {
 	{
 		$data = array();
 		$result = array();
+		$data_add = array();
 		
 		$data['page'] = 'Smart Contract';
 		$data['msg'] = '';
@@ -590,9 +591,9 @@ class Smartcontract extends CI_Controller {
 		if(trim($user_id_request) == ''){
 			$user_id_request = 0;
 		}
-				
+					
 		if($request_action == 'request_completion' && $data['user_id'] <> 0 && $data['user_type_ref'] <> 0){
-			
+		
 			$rproject = $this->plisting->get_project_info_by_id($request_project_id);
 		
 			if($rproject && is_array($rproject) && !empty($rproject)){
@@ -606,7 +607,30 @@ class Smartcontract extends CI_Controller {
 				}
 				
 				if($data['user_type_ref'] == 3 && $request_db_type == 'reject'){
-					get_status_after_terminate_supplier($options);
+					// get_status_after_terminate_supplier($options);
+					$data_add = array();
+									
+					$data_add['tpp_rejected'] = 1;
+					$data_add['tpp_rejection_msg'] = $this->input->post('reject_msg');
+					
+					$data_adds = array();
+					$data_adds['tfssrr_rejection_msg'] = $data_add['tpp_rejection_msg'];
+					$data_adds['tfssrr_row_deleted'] = 1;
+					$proposal_ref = $this->input->post('prop_id');
+								
+					$subcinfo = $this->plisting->get_sc_provider_subcontractor_proposal_by_project($request_project_id);
+							
+					if(!empty($subcinfo) && sizeof($subcinfo) <> 0){
+									
+						$this->plisting->update_proposal_by_project_and_user_ref($proj_id, $subcinfo[0]->tpp_user_ref, $data_add, 'p');
+												
+						$this->plisting->update_supplier_shipment_rejection_by_project_proposal_and_user_ref($request_project_id, $proposal_ref, $subcinfo[0]->tpp_user_ref, $data_adds, 'p');
+					
+					}else{
+						
+						$this->plisting->update_proposal_by_project_and_user_ref($proj_id, $data['user_id'], $data_add, 'p');
+						$this->plisting->update_supplier_shipment_rejection_by_project_proposal_and_user_ref($request_project_id, $proposal_ref, $user_id_request, $data_adds, 'p');
+					}
 				}
 			}	
 						
@@ -779,6 +803,7 @@ class Smartcontract extends CI_Controller {
 		if($request_type == 'confirm_shipment' && $proj_id > 0 && $user_id_request > 0 && $user_type_request == 3){
 			
 			$data_add = array();
+			$data_adds = array();
 			
 			$ship_no = $this->input->post('ship_no');
 			$ship_detail = $this->input->post('ship_detail');
@@ -787,16 +812,31 @@ class Smartcontract extends CI_Controller {
 			$data_add['tpp_shipment_number'] = $ship_no;
 			$data_add['tpp_shipment_details'] = $ship_detail;
 			$data_add['tpp_shipment_date'] = $ship_date;
+			$data_add['tpp_rejected'] = 0;
+			$data_add['tpp_rejection_msg'] = '';
 			
+			$data_adds['tfssrr_shipment_number'] = $ship_no;
+			$data_adds['tfssrr_shipment_details'] = $ship_detail;
+			$data_adds['tfssrr_shipment_date'] = $ship_date;
+			$data_adds['tfssrr_proposal_ref'] = $this->input->post('prop_id');
+			$data_adds['tfssrr_project_ref'] = $proj_id;
+			$data_adds['tfssrr_user_ref'] = $data['user_id'];
+						
 			$subcinfo = $this->plisting->get_sc_provider_subcontractor_proposal_by_project($request_project_id);
 					
 			if(!empty($subcinfo) && sizeof($subcinfo) <> 0){
 							
 				$this->plisting->update_proposal_by_project_and_user_ref($proj_id, $subcinfo[0]->tpp_user_ref, $data_add, 'p');
+				
+				$data_adds['tfssrr_user_ref'] = $subcinfo[0]->tpp_user_ref;
+				$data_adds['tfssrr_contractor_mode'] = 1;
+				
+				$this->plisting->add_supplier_shipment_rejection_by_project_proposal_and_user_ref($data_adds, 'p');
 			
 			}else{
 				
 				$this->plisting->update_proposal_by_project_and_user_ref($proj_id, $data['user_id'], $data_add, 'p');
+				$this->plisting->add_supplier_shipment_rejection_by_project_proposal_and_user_ref($data_adds, 'p');
 			}
 		}
 		
