@@ -1,0 +1,184 @@
+<div class="header">
+	<div class="container">
+		<div class="header-wrap">
+			<div class="btn-menu"> <span></span> </div>
+			<div id="logo" class="logo"> 
+				<a href="<?php if($user_id == 0){ echo base_url(); }else{ echo base_url().'dashboard'; } ?>">
+					<img class="img-responsive" src="<?php echo base_url() ?>assets/images/icon/logo.png" alt="logo" />
+				</a>
+			</div>
+			<?php
+				
+			?>
+			<!-- /.logo -->
+			<?php if($user_id == 0 || $user_type_ref < 0){ ?>
+			<div class="nav-wrap">
+				<nav id="mainnav" class="mainnav">
+					<ul class="menu">
+						<li> <a <?=($user_id == 0 ? 'data-toggle="modal" data-target="#login"' : 'href="'.base_url().'listing/details"');?> title="Browse Project">Browse Project</a> </li>
+						<li class="hidden-xs hidden-sm"> | </li>
+						<li> <a href="javascript:void(0)" data-toggle="modal" data-target="#login" title="Submit Project">Submit Project</a> </li>
+						<li class="hidden-xs hidden-sm"> | </li>
+						<li> <a href="javascript:void(0)" title="">Solutions</a>
+							<ul class="submenu">
+								<li> <a href="<?=base_url();?>publicv/trade_solutions" title="Know about trade">Trade Solutions</a> </li>
+								<li> <a href="<?=base_url();?>publicv/finance_solutions" title="Know about finance">Finance Solutions</a> </li>
+								<li> <a href="<?=base_url();?>publicv/beneficiary" title="Know about beneficiary">Beneficiary</a> </li>
+								<li> <a href="<?=base_url();?>publicv/supplier" title="Know about supplier">Supplier</a> </li>
+								<li> <a href="<?=base_url();?>publicv/financier" title="Know about financier">Financier</a> </li>
+							</ul>
+						</li>
+						<li class="hidden-xs hidden-sm"> | </li>
+						<li> <a href="<?=base_url();?>publicv/contact" title="">Contact us </a> </li>
+						<li class="hidden-xs hidden-sm"> | </li>
+						<li class="hidden-xs hidden-sm large_device_loginp"> <a href="javascript:void(0)" title=""><img src="<?=base_url();?>assets/images/icon/signin_icon.jpg" alt="icon"> </a>
+							<ul class="submenu home_account">
+								<h4> Your Account</h4>
+								<p> Access acount and manage tasks</p>
+								<a href="<?php echo base_url() ?>registration" class="pull-left acount_btn"> Sign Up</a> 
+								<a href="javascript:void(0)" class="pull-right acount_btn btn_logged" data-toggle="modal" data-target="#login"> Log In</a>
+							</ul>
+						</li>
+						<li class="hidden-md hidden-lg"> <a href="javascript:void(0)" title="">Account</a>
+							<ul class="submenu">
+								<li> <a href="<?=base_url();?>registration"> Sign Up</a> </li>
+								<li> <a href="javascript:void(0)" data-toggle="modal" data-target="#login"> Log In</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+				<!-- /.mainnav -->
+ 
+				<div class="show-search hidden-md hidden-lg">
+					<button><span class="ti-search"></span></button>
+					<div class="submenu top-search search-header">
+						<?php 
+							$attributes = array('id' => 'mform_project-search', 'class' => 'form-horizontal', 'method' => 'post', 'role' => 'form');
+							echo ($user_id == 0 ? '' : form_open_multipart(base_url().'listing/search/', $attributes)); 
+						?>
+							<label>
+								<input type="text" class="search-field" placeholder="Search ..." value="" name="search_keyword" />
+							</label>
+							<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+							<button class="search-submit-form" <?=($user_id == 0 ? 'data-toggle="modal" data-target="#login" type="button"' : 'type="submit"');?> title="Search now"><i class="fa fa-search" aria-hidden="true"></i></button>
+							<span class="search-label"><i class="fa fa-search" aria-hidden="true"></i></span>
+						<?=($user_id == 0 ? '' : '</form>');?> 
+					</div>
+				</div>
+				<!-- /.show-search-mobile --> 
+				
+				<!-- //mobile menu button --> 
+			</div>
+			<?php }else if($user_id <> 0 && $user_type_ref <> -1 && $user_type_ref <> 0){ 
+				
+				$uprof_pic = '';
+				if(isset($uprofpic) && $uprofpic && $uprofpic <> ''){
+					
+					$uprofpica = explode('.', $uprofpic);
+					$uprof_pic = $uprofpica[0].'_thumb.'.$uprofpica[1];
+				}
+				
+				if(!file_exists(FCPATH.'assets/user_profile_image/'.$uprof_pic)){
+					$uprof_pic = $uprofpic;
+				}
+			
+			?>
+			<div class="nav-wrap">
+				<nav id="mainnav" class="mainnav">
+					<ul class="menu">
+						<li> <a href="javascript:void(0)" title="">Dashboard</a>
+							<ul class="submenu">
+								<li> <a href="<?=base_url();?>" title=""><i class="fa fa-product-hunt"></i> Project Dashboard</a> </li>
+								<li> <a href="<?=base_url();?>dashboard/smart_contract" title=""><i class="fa fa-dashcube"></i> Contract Dashboard</a> </li>
+							</ul>
+						</li>
+						<li class="hidden-xs hidden-sm"> | </li>
+						<li> <a href="<?=base_url();?>publicv/contact" title="">Contact us </a> </li>
+						<li class="hidden-xs hidden-sm"> | </li>
+						<li class="hidden-xs hidden-sm notify mnotify"> <a href="javascript:void(0)" title="Messages"> <i class="fa fa-envelope" aria-hidden="true"></i><span id="mnotify_c" class="badge up bg-danger notify_c">0</span></a>
+							<ul id="mnotify_list" class="submenu user-list notify-list">
+								<li>
+									<h5>
+										<a onclick="return false;" href="#<?=base_url();?>project/message_board">
+											<span><i class="fa fa-comments" ></i></span> &nbsp; Message Board</a>
+									</h5>
+								</li>
+							</ul>	
+						</li>
+						<li class="hidden-xs hidden-sm"> | </li>
+						<li class="hidden-xs hidden-sm notify nnotify"> <a href="javascript:void(0)" title=""><i class="fa fa-bell" aria-hidden="true"></i><span id="notify_c" class="badge up bg-primary notify_c">0</span></a> 
+							<ul id="notify_list" class="submenu user-list notify-list">
+								<li><h5><span><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span> &nbsp; Your Notifications</h5></li>
+							</ul>
+						</li>
+						<li class="hidden-xs hidden-sm"> | </li>
+						<li class="hidden-xs hidden-sm"> <a href="javascript:void(0)" title="Setting" class="right-bar-toggle right-menu-item"><i class="fa fa-cog" aria-hidden="true"></i></a> </li>
+						<li class="hidden-xs hidden-sm"> | </li>
+						<li class="hidden-md hidden-lg"> <a href="javascript:void(0)" title="Message"> Message</a></li>
+						<li class="hidden-md hidden-lg"> <a href="javascript:void(0)" title="Notification"> Notification</a> </li>
+						<li class="hidden-md hidden-lg"> <a href="javascript:void(0)" title="Setting"> Setting</a> </li>
+						<li>
+							<a href="javascript:void(0)" title="">
+								<img src="<?=((isset($uprofpic) && $uprofpic && $uprofpic != '' && $uprofpic) ? base_url().'assets/user_profile_image/'.$uprof_pic : base_url().'assets/images/img/contact_profile_photo.png');?>" alt="uimg" class="user-img hidden-xs hidden-sm avatar img-circle">
+								<span class="hidden-md hidden-lg">Account</span> <i class="fa fa-caret-down"></i>
+							</a>
+							<ul class="submenu">
+								<li>
+									<h5>Hi, <?=$full_name;?></h5>
+								</li>
+								<li><a href="<?=base_url();?>user/profile"><i class="fa fa-eye"></i> View Profile</a> </li>
+								<li><a href="<?=base_url();?>user/edit"><i class="fa fa-cogs"></i> Edit Profile</a></li>
+								<li><a href="<?=base_url();?>log/out"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+				<!-- /.mainnav -->
+									
+				<div class="show-search hidden-md hidden-lg">
+					<button><span class="ti-search"></span></button>
+					<div class="submenu top-search search-header">
+						<?php 
+							$attributes = array('id' => 'mform_project-search', 'class' => 'form-horizontal', 'method' => 'post', 'role' => 'form');
+							echo ($user_id == 0 ? '' : form_open_multipart(base_url().'listing/search/', $attributes)); 
+						?>
+							<label>
+								<input type="text" class="search-field" placeholder="Search ..." value="" name="search_keyword" />
+							</label>
+							<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+							<button class="search-submit-form" <?=($user_id == 0 ? 'data-toggle="modal" data-target="#login" type="button"' : 'type="submit"');?> title="Search now"><i class="fa fa-search" aria-hidden="true"></i></button>
+							<span class="search-label"><i class="fa fa-search" aria-hidden="true"></i></span>
+						<?=($user_id == 0 ? '' : '</form>');?> 
+					</div>
+				</div>
+				<!-- /.show-search-mobile --> 
+		
+				<!-- //mobile menu button --> 
+			</div>
+			<?php } ?>
+							
+			<div class="home_serch hidden-xs">
+				<div id="imaginary_container">
+					<?php 
+						$attributes = array('id' => 'form_project-search', 'class' => 'form-horizontal', 'method' => 'post', 'role' => 'form');
+						echo ($user_id == 0 ? '' : form_open_multipart(base_url().'listing/search/', $attributes)); 
+					?>
+						<div class="input-group stylish-input-group" id="search">
+							<input type="text" name="search_keyword" class="form-control" placeholder="Search ..." />
+							<span class="input-group-addon">
+								<button class="search_btn form-control-submit" <?=($user_id == 0 ? 'data-toggle="modal" data-target="#login" type="button"' : 'type="submit"');?>> <i class="fa fa-search" aria-hidden="true"></i> </button>
+								<span class="search-label"><i class="fa fa-search" aria-hidden="true"></i></span>
+							</span> 
+							<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+						</div>
+					<?=($user_id == 0 ? '' : '</form>');?> 
+				</div>
+			</div>
+			<!-- /.show-search-desktop --> 
+			<!-- /.nav-wrap --> 
+		</div>
+		<!-- /.header-wrap --> 
+	</div>
+	<!-- /.container-fluid --> 
+</div>
+<!-- /.header --> 

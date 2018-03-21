@@ -1,0 +1,22 @@
+DirectoryIndex index.php
+RewriteEngine on
+
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+RewriteRule ^ https://www.%1%{REQUEST_URI} [L,NE,R=301]
+
+RewriteCond $1 !^(index\.php|(.*)\.swf|assets|system|robots\.txt|favicon\.ico|favicon\.png)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ./index.php?$1 [L,QSA]
+
+# ----------------------------------------------------------------------
+# Allow loading of external fonts
+# ----------------------------------------------------------------------
+<FilesMatch "\.(ttf|otf|eot|woff|woff2)$">
+    <IfModule mod_headers.c>
+        SetEnvIf Origin "http(s)?://(www\.)?(google.com|googletagmanager.com|staging.google.com|maxcdn.bootstrapcdn.com|development.google.com|tradefinex.org)$" AccessControlAllowOrigin=$0
+        Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+    </IfModule>
+</FilesMatch>

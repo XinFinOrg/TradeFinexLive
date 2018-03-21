@@ -1,0 +1,700 @@
+	$(function(){
+		
+		var site_url = $('#site_url').val();
+		var csrf_name = $('#csrf_tokens').attr('name');
+		var csrf_value = $('#csrf_tokens').val();
+		var uemail = $('#uemail').val();
+		
+		jQuery.validator.addMethod("LetterOnly", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		  return this.optional( element ) || /^(?!(\s))([a-zA-Z\s])*$/.test( value );
+		}, 'The text must start with a letter and should not contain special characters.'); 
+		
+		jQuery.validator.addMethod("LettersWithDotHiphen", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		   return this.optional( element ) || /^([a-zA-Z]?)([a-zA-Z-.\s])*$/.test( value );
+		}, 'The text must start with a letter and not only special characters except[.-]');
+		
+		jQuery.validator.addMethod("LettersWithspecialChars", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		   return this.optional( element ) || /^([a-zA-Z])(.*[a-zA-Z0-9.,:;-\s|#*+?^!$@&%{}()\/])*$/.test( value );
+		}, 'The text must start with a letter and not only special characters');
+		
+		jQuery.validator.addMethod("EmailGeneral", function(value, element) {
+			var re = /^([a-zA-Z])(.*[a-z])(.*[a-z0-9_\+-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*\.([a-z]{2,})$/;
+			return re.test(String(value).toLowerCase());
+		}, 'You have entered an Invalid email address');
+		
+		jQuery.validator.addMethod("startsLetterOnly", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		  return this.optional( element ) || /^([a-zA-Z]?)([a-z0-9\-]{2,})*$/.test( value );
+		}, 'The text must start with a letter'); 
+		
+		jQuery.validator.addMethod("messageFormat1", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		  return this.optional( element ) || /^([a-zA-Z]?)([a-zA-Z0-9.,:-\s$%])*$/.test( value );
+		}, 'The text should start with letters and not contain any special characters except[.,:-$%]');
+		
+		jQuery.validator.addMethod("messageFormat2", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		  return this.optional( element ) || /^([a-zA-Z]?)([a-zA-Z0-9.,\s():=>])*$/.test( value );
+		}, 'The text should start with letters and not contain any special characters except[.,():=>]');
+		
+		/* (?!(\d|\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s)) */
+		
+		jQuery.validator.addMethod("alphanumericOnly", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		  return this.optional( element ) || /^([a-zA-Z])(.*[a-z0-9\s])+$/i.test( value );
+		}, 'The text must combination of letter and numbers; Not started with number; should not contain special characters'); 
+		
+		jQuery.validator.addMethod("webUrl", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		  return this.optional( element ) || /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test( value );
+		}, 'The input value is not a correct URL'); 
+		
+		jQuery.validator.addMethod("LinkedinUrl", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		  return this.optional( element ) || /(http|https):\/\/?(?:www\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test( value );
+		}, 'The input value is not a correct Linkedin URL'); 
+		
+		jQuery.validator.addMethod("numberOnly", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		  return this.optional( element ) || /^[0-9+\s]+$/.test( value );
+		}, 'This field allowing number only');
+
+		jQuery.validator.addMethod("mobilenumberOnly", function(value, element) { // International Mobile Number
+		  // allow any non-whitespace characters as the host part
+		  return this.optional( element ) || /^\+\d{1,4}\s\d{6,14}$/.test( value );
+		}, 'Please enter a valid mobile number');
+				
+		// Validate signup form on keyup and submit
+		$("#signupForm").validate({
+			rules: {
+				first_name: {
+					required: true,
+					minlength: 2,
+					maxlength: 20,
+					LetterOnly: true
+				},
+				last_name: {
+					required: true,
+					minlength: 2,
+					maxlength: 20,
+					LetterOnly: true
+				},
+				password: {
+					required: true,
+					minlength: 8,
+					LettersWithspecialChars: true
+				},
+				password_confirmation: {
+					required: true,
+					minlength: 8,
+					equalTo: "#password",
+					LettersWithspecialChars: true
+				},
+				email: {
+					required: true,
+					EmailGeneral: true
+				},
+				register_otp : {
+    				required: true,
+    				minlength: 8
+    			}
+			},
+			messages: {
+				first_name: {
+					required: "Please enter your firstname",
+					minlength: "Your firstname must be at least 2 characters long",
+					maxlength: "Your firstname must be at most 20 characters long"
+				},
+				last_name: {
+					required: "Please enter your lastname",
+					minlength: "Your lastname must be at least 2 characters long",
+					maxlength: "Your lastname must be at most 20 characters long"
+				},
+				password: {
+					required: "Please enter a password",
+					minlength: "Your password must be at least 8 characters long"
+				},
+				password_confirmation: {
+					required: "Please enter a password",
+					minlength: "Please enter the same password as above and should be at least 8 characters long",
+					equalTo: "Please enter the same password as above"
+				},
+				email: "Please enter a valid email address",
+				register_otp : {
+    				required: "Please enter a valid OTP",
+    				minlength: "Your OTP must be 8 characters long"
+    			}
+			},
+			onkeyup: function(elem) {
+			    
+			    
+			}
+		});
+		
+		$('#register_otp').unbind('keyup change').bind('keyup change', function (){
+			
+			var otpval = $(this).val();
+			
+			$('.reg_otp').find('.loader').show();
+			
+			var recheck = new RegExp("^([a-zA-Z0-9!@#$%~]+)$");
+			
+			var otpstat = '';
+			
+			if (recheck.test(otpval)) {
+				// console.log("Valid");
+				otpstat = 'valid';
+			} else {
+				// console.log("Invalid");
+				otpstat = 'invalid';
+			}
+			
+			if(parseInt(otpval.length) == 8 && otpstat == 'valid'){
+			
+				$.ajax({
+					url: site_url+"registration/get_regotp",
+					type: "POST",
+					data: {'action' : 'match_otp', 'otpval' : otpval, csrf_name : csrf_value},
+					success: function (data) {
+						
+						var jsona = $.parseJSON(data);
+						$('.reg_otp').find('.loader').hide();
+						
+						if(jsona['oerror'] == 0 && jsona['oused'] == 0){
+							
+							$('#signupSubmit').attr('type', 'submit');
+							$('#signupSubmit').removeAttr('disabled');
+							$('.reg_otp').find('.otp_sucess').show();
+							$('.otp_error').text('');
+													
+						}else{
+						    
+						    if(jsona['oerror'] == 1 && jsona['oused'] == 0){
+						        
+						        $('.otp_error').html("Don't have Access code? Please <a href='"+site_url+"publicv/contact'>click here</a> to contact us.");
+    							setTimeout(function() {$('.otp_error').text('');}, 18000);
+    							$('.reg_otp').find('.otp_sucess').hide();
+    							$('#signupSubmit').attr('type', 'button');
+    							$('#signupSubmit').attr('disabled', true);
+						    }
+						    
+						    if(jsona['oerror'] == 1 && jsona['oused'] == 1){
+						        
+						        $('.otp_error').html("Code was already used! Try another one or <a href='"+site_url+"publicv/contact'>click here</a> to contact us.");
+    							setTimeout(function() {$('.otp_error').text('');}, 18000);
+    							$('.reg_otp').find('.otp_sucess').hide();
+    							$('#signupSubmit').attr('type', 'button');
+    							$('#signupSubmit').attr('disabled', true);
+						    }
+						}
+					}
+				});	
+			}else{
+				$('.otp_error').html("Don't have Access code? Please <a href='"+site_url+"publicv/contact'>click here</a> to contact us.");
+				$('.reg_otp').find('.otp_sucess').hide();
+				setTimeout(function() {$('.otp_error').text('');}, 23000);
+				$('#signupSubmit').attr('type', 'button');
+				$('#signupSubmit').attr('disabled', true);
+			}
+		});
+		
+		$("#loginForm").validate({
+			rules: {
+				user_name: {
+					required: true,
+					EmailGeneral: true
+				},
+				user_password: {
+					required: true,
+					minlength: 8
+				}
+			},
+			messages: {
+				user_password: {
+					required: "Please enter a valid password",
+					minlength: "Your password must be at least 8 characters long"
+				},
+				user_name: {
+					required: "Please enter a valid username",
+					EmailGeneral: "Please enter a valid email address"
+				}
+			}
+		});
+		
+		$('.login_click').unbind('click').bind('click', function(){
+			
+			$('#sign_up').hide();
+			$('#log_in').slideDown();
+			$('#log_in').addClass('in');
+			$('#sign_up').removeClass('in');
+			// $('#log_in').fadeIn();
+			
+		});
+		
+		$('.panel-heading').click(function(){
+				
+			if($(this).find('.panel-title').hasClass('accord_active')){
+				
+				$('.accord_active').removeClass('accord_active');
+				$('.collapsed_child_block').removeClass('collapsed_child_block');
+						
+			}else{
+				$('.accord_active').removeClass('accord_active');
+				$('.collapsed_child_block').removeClass('collapsed_child_block');
+				$(this).find('.panel-title').addClass('accord_active');
+				$(this).parent().find('.collapse').addClass('collapsed_child_block');
+			}
+			
+		});
+		
+		$('.show-hide').bind('click', function(){
+					
+			if($(this).parent().hasClass('attrshow')){
+				$(this).parent().removeClass('attrshow');
+				$(this).parent().addClass('attrhide');
+				$(this).parent().find('input[type="text"]').attr('type', 'password');
+				$(this).find('a').text('SHOW');
+			}else{
+				$(this).parent().addClass('attrshow');
+				$(this).parent().removeClass('attrhide');
+				$(this).parent().find('input[type="password"]').attr('type', 'text');
+				$(this).find('a').text('HIDE');
+			}
+		});
+		
+		$('.appearance_back').each(function(e){
+			
+			var selv = $(this).val();
+			
+			if(selv){
+				
+				$(this).parent().find('.floating-label').addClass('select-focus');
+				
+			}else{
+			
+				$(this).parent().find('.floating-label').removeClass('select-focus');
+			}
+			
+		});
+		
+		$('.appearance_back').change(function(){
+			
+			var selv = $(this).val();
+			
+			if(selv){
+				
+				$(this).parent().find('.floating-label').addClass('select-focus');
+				
+			}else{
+			
+				$(this).parent().find('.floating-label').removeClass('select-focus');
+			}
+			
+		});
+		
+		$('#easyPaginate').paginate({
+			perPage: 6
+		});
+		
+		$('.read_more_click').unbind('click').bind('click', function(){
+			
+			if($(this).hasClass('collapsed_child')){
+				
+				$(this).removeClass('collapsed_child');
+				$(this).find('span').text('Read More');
+				$(this).find('.fa').removeClass('fa-arrow-circle-up');
+				$(this).find('.fa').addClass('fa-arrow-circle-down');
+				
+			}else{
+				$(this).addClass('collapsed_child');
+				$(this).find('span').text('Read Less');
+				$(this).find('.fa').removeClass('fa-arrow-circle-down');
+				$(this).find('.fa').addClass('fa-arrow-circle-up');
+			}
+			
+		});
+			
+		$('.signup_click').unbind('click').bind('click', function(){
+			
+			$('#log_in').hide();
+			$('#sign_up').slideDown();
+			$('#sign_up').addClass('in');
+			$('#log_in').removeClass('in');
+			// $('#sign_up').fadeIn();
+			
+		});
+				
+		$('.close_modal').unbind('click').bind('click', function(){
+			$('.modal').removeClass('in');
+			$('.modal').hide();
+			$('.modal-backdrop').removeClass('in');
+			$('.modal-backdrop').hide();
+		});
+		
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 4){  
+				$('header').addClass("sticky_header"); 
+			}
+			else{
+				$('header').removeClass("sticky_header");
+			}
+		});
+		
+		$('#defaultReal').realperson();
+		
+	    var captchav = $('#defaultReal').attr('captchav');
+		
+		if (typeof captchav === "undefined") {
+            // ...
+        }else{
+		
+		    var decryptval = CryptoJS.AES.decrypt($('#defaultReal').attr('captchav'), "/"+5381).toString(CryptoJS.enc.Utf8);
+		    $('#captcha_val').val(decryptval);
+        }
+									
+	    $('#mmob').intlTelInput();
+	    
+		$("#contact-form").validate({
+			rules: {
+				mname: {
+					required: true,
+					minlength: 2,
+					maxlength: 20,
+					LetterOnly: true
+				},
+				memail: {
+					EmailGeneral: true,
+					required: true
+				},
+				mmob: {
+				    required: true,
+				    numberOnly : true,
+					mobilenumberOnly: true,
+					
+				},
+				mcomp: {
+					required: true,
+					minlength: 3,
+					maxlength: 15,
+					alphanumericOnly : true
+				},
+				musertype: "required",
+				menquiry: "required",
+				mmsg: {
+					required: true,
+					minlength: 50,
+					maxlength: 300,
+					messageFormat1: true
+				},
+				defaultReal: {
+				    equalTo: '#captcha_val'
+				}
+			},
+			messages: {
+				mname: {
+					required: "Please enter Your full name",
+					minlength: "Characters length should be atleast 2",
+					maxlength: "Characters length should not exceeded than 20"
+				},
+				memail: "Please enter a valid email",
+				mcomp: {
+				    required: "Please enter company name ",
+			        minlength: "Company name should be atleast 3 characters long",
+					maxlength: "Characters length should not exceeded than 15"
+				},
+				musertype: "Please choose a user type",
+				menquiry: "Please choose Your enquiry type",
+				mmob: {
+				    required: "Please enter a valid mobile number"
+				},
+				mmsg: {
+					required: "Please type your message",
+					minlength: "Characters length should be atleast 50.",
+					maxlength: "Characters length should not exceeded than 300"
+				},
+				defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+			},
+			onkeyup: function(elem) {
+				
+				var element_id = $(elem).attr('id');
+				
+				if(element_id == 'mname' || element_id == 'mmsg' || element_id == 'mcomp'){
+					
+					var strv = $('#'+element_id).val();
+		
+					$('#'+element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
+									
+				}
+				
+				if(element_id == 'mmob'){
+					
+					var tval = $('#'+element_id).val();
+					tvala = tval.split(' ');
+				}
+			},
+			success: function(elem) {
+				
+				
+			},
+			error: function(elem) {
+				
+			}
+		});
+
+		$("#advertise-form").validate({
+			rules: {
+				mname: {
+					required: true,
+					minlength: 2,
+					maxlength: 20,
+					LetterOnly: true
+				},
+				memail: {
+					EmailGeneral: true,
+					required: true
+				},
+				mmob: {
+					required: true,    
+				    numberOnly : true,
+				    mobilenumberOnly: true
+				},
+				mcomp: {
+					required: true,
+					minlength: 3,
+					maxlength: 15,
+					alphanumericOnly: true
+				},
+				musertype: "required",
+				mmsg: {
+					required: true,
+					minlength: 15,
+					messageFormat1: true
+				},
+				defaultReal: {
+				    equalTo: '#captcha_val'
+				}
+			},
+			messages: {
+				mname: {
+					required: "Please enter Your full name",
+					minlength: "Characters length should be atleast 2",
+					maxlength: "Characters length should not exceeded than 20"
+				},
+				memail: "Please enter a valid email",
+				mcomp: {
+					required: "Please enter company name",
+					minlength: "Characters length should be atleast 3",
+					maxlength: "Characters length should not exceeded than 15"
+				},
+				musertype: "Please choose a user type",
+				mmsg: {
+				    required: "Please type your message",
+				    minlength: "Text length should be atleast 15"
+				},   
+				mmob: {
+				    required: "Please enter a valid mobile number"
+				},
+				defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+			},
+			onkeyup: function(elem) {
+				
+				var element_id = $(elem).attr('id');
+				
+				if(element_id == 'mname' || element_id == 'mmsg' || element_id == 'mcomp'){
+					
+					var strv = $('#'+element_id).val();
+		
+					$('#'+element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
+				}
+			}
+		});
+		
+		$("#partnership-form").validate({
+			rules: {
+				mname: {
+					required: true,
+					minlength: 2,
+					maxlength: 20,
+					LetterOnly: true
+				},
+				memail: {
+					required: true,
+					EmailGeneral: true
+				},
+				mcomp: {
+					required: true,
+					minlength: 3,
+					maxlength: 30,
+					alphanumericOnly: true
+				},
+				mmob: {
+				    required: true,
+				    numberOnly: true,
+				    mobilenumberOnly: true
+				},
+				musertype: "required",
+				murl: {
+					required: true,
+					webUrl: true
+				},
+				mmsg: {
+					required: true,
+					minlength: 15,
+					messageFormat1: true
+				},
+				defaultReal: {
+				    equalTo: '#captcha_val'
+				}
+			},
+			messages: {
+				mname: {
+					required: "Please enter Your full name",
+					minlength: "Characters length should be atleast 2",
+					maxlength: "Characters length should not exceeded than 20"
+				},
+				memail: "Please enter a valid email",
+				mcomp: {
+					required: "Please enter company name",
+					minlength: "Characters length should be atleast 3",
+					maxlength: "Characters length exceeded not exceeded than 30"
+				},
+				musertype: "Please choose a user type",
+				murl: "Please enter a valid URL",
+			    mmsg: {
+			        required: "Please type your message",
+				    minlength: "Text length should be atleast 15"
+			    },
+			    mmob: {
+				    required: "Please enter a valid mobile number"
+				},
+				defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+			},
+			onkeyup: function(elem) {
+				
+				var element_id = $(elem).attr('id');
+				
+				if(element_id == 'mname' || element_id == 'mmsg' || element_id == 'mcomp'){
+					
+					var strv = $('#'+element_id).val();
+		
+					$('#'+element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
+									
+				}
+			}
+		});
+			
+		$("#careers-form").validate({
+			rules: {
+				mfname: {
+					required: true,
+					minlength: 2,
+					maxlength: 20,
+					LetterOnly: true
+				},
+				memail: {
+					required: true,
+					EmailGeneral: true
+				},
+				mmob: {
+				    required: true,
+				    numberOnly : true,
+				    mobilenumberOnly: true
+				},
+				mlinkurl: {
+					required: true,
+					LinkedinUrl : true
+				},
+				mcoverl: {
+					required: true,
+					minlength: 15,
+					maxlength: 150,
+					messageFormat2: true
+				},
+				mfile: "required",
+				defaultReal: {
+				    equalTo: '#captcha_val'
+				}
+			},
+			messages: {
+				mfname: {
+					required: "Please enter Your full name",
+					minlength: "Characters length should be atleast 2",
+					maxlength: "Characters length should not exceeded than 20"
+				},
+				memail: "Please enter a valid email",
+				mlinkurl: "Please enter a valid Linkedin URL",
+				mcoverl: {
+					required: "Please write few words about Yourself",
+					minlength: "Characters length should be atleast 15",
+					maxlength: "Characters length should not exceeded than 150"
+				},
+				mfile: "Please upload Your resume(.pdf only)",
+				mmob: {
+				    required: "Please enter a valid mobile number"
+				},
+				defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+			},
+			onkeyup: function(elem) {
+				
+				var element_id = $(elem).attr('id');
+				
+				if(element_id == 'mfname' || element_id == 'mcoverl'){
+					
+					var strv = $('#'+element_id).val();
+		
+					$('#'+element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
+									
+				}
+			}
+		});
+		
+		$('#mfile').change(function(){
+			/* here we take the file extension and set an array of valid extensions */
+			var res = $('#mfile').val();
+			var arr = res.split("\\");
+			var filename=arr.slice(-1)[0];
+			filextension=filename.split(".");
+			filext="."+filextension.slice(-1)[0];
+			valid=[".pdf"]; // ".doc",".txt",".rtf",".docx",".ppt",".pptx",".pps",".xls",".xlsx",
+			/* if file is not valid we show the error icon, the red alert, and hide the submit button */
+			if (valid.indexOf(filext.toLowerCase())==-1){
+				$( ".imgupload" ).hide("slow");
+				$( ".imgupload.ok" ).hide("slow");
+				$( ".imgupload.stop" ).show("slow");
+			  
+				$('#namefile').css({"color":"red"});
+				$('#namefile').html(filename+" is Invalid format!"(.pdf only));
+				
+			}else{
+				/* if file is valid we show the green alert and show the valid submit */
+				$( ".imgupload" ).hide("slow");
+				$( ".imgupload.stop" ).hide("slow");
+				$( ".imgupload.ok" ).show("slow");
+			  
+				$('#namefile').css({"color":"green"});
+				$('#namefile').html(filename);
+			  
+			}
+		});
+		
+		$('.cat_select').bind('click', function(){
+			
+			var colname = $(this).attr('colname'); 
+			var catid = $(this).attr('catid'); 
+			
+			if(catid !== ''){
+				$('<form id="search_form" action="'+site_url+'listing/search" method="post"><input type="hidden" name="col_name" value="'+colname+'" ><input type="hidden" name="col_val" value="'+catid+'" ><input type="hidden" name="action" value="search" /><input type="hidden" name="'+csrf_name+'" value="'+csrf_value+'" /></form>').appendTo('body').submit();
+			}
+		});
+		
+		$('.reactivate_account').bind('click', function(){
+			
+			var uemail = $(this).attr('uemail');
+			
+			$('<form id="search_form" action="'+site_url+'login/reactivate_account" method="post"><input type="hidden" name="user_name" value="'+uemail+'" /><input type="hidden" name="action" value="reset_password" /><input type="hidden" name="'+csrf_name+'" value="'+csrf_value+'" /></form>').appendTo('body').submit();
+			
+		});	
+	});
