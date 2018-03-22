@@ -64,3 +64,4 @@
 <?php
 	$this->load->view('includes/login_modal');
 ?>
+<div id="credi_front_loader"><img src="<?=base_url()?>assets/images/icon/ajax-loader.gif" alt="CREDI FRONT LOADER" /></div>

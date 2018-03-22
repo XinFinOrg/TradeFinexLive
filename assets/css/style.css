@@ -3023,6 +3023,13 @@ to {
 	min-height: 272px;
 	background: #fff;
 }
+.listing_search_result .under_tab_user_result_sec{
+	float: left;
+	width: 100%;
+	border: 0px;
+	min-height: 205px;
+	background: #fff;
+}
 .listing_info .li-name {
 	font-size: 16px;
 	margin-bottom: 5px;
@@ -3043,6 +3050,14 @@ to {
 	border-right: 1px solid #f5f5f5;
 	border-radius: 0;
 	min-height: 305px;
+	background: #fff;
+}
+.under_tab_result_sec .listing_info_user{
+	float: left;
+	width: 100%;
+	border-right: 0px;
+	border-radius: 0;
+	min-height: 205px;
 	background: #fff;
 }
 .under_tab_result_sec .list-ratings-wrap {
@@ -3512,7 +3527,7 @@ to {
 }
 .case_right .btn-more:last-child {
 	margin-bottom: 0px;
-	margin-top: 0px;
+	/* margin-top: 0px; */
 }
 #accepted_listing_projects {
 	font-size: 13px;
@@ -6049,7 +6064,7 @@ padding:.65rem .9rem;
 	font-family: 'open_sansregular';
 	float: none;
 	margin: 0 auto;
-	padding: 15px 15px 0px 15px;
+	padding: 0px 15px 0px 15px;
 	color: #000;
 }
 .awarding_com {
