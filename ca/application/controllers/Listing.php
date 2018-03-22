@@ -141,20 +141,28 @@ class Listing extends CI_Controller {
 		$data['sval'] = '';
 		$data['sort_order'] = '';
 		
-		if($this->uri->segment(3)){
-			$page = ($this->uri->segment(3)) ;
+		/* if($this->uri->segment(3)){
+			$page = $this->uri->segment(3);
+		}
+		else{
+			$page = 1;
+		} */
+		
+		if(isset($_GET['per_page']) && $_GET['per_page']){
+			$page = $_GET['per_page'];
 		}
 		else{
 			$page = 1;
 		}
 		
 		$config = array();
-		$config["base_url"] = base_url() . "listing/details";
+		$config["base_url"] = base_url() . "listing/details/";
 		$total_row = sizeof($data['projects_listed']);
 		$config["total_rows"] = $total_row;
 		$config['use_page_numbers'] = TRUE;
 		$config["per_page"] = 5;
-		$config['num_links'] = 2;
+		$config['num_links'] = $total_row;
+		$config['uri_segment'] = 3;
 		$config['cur_tag_open'] = '&nbsp;<a class="current page-link">';
 		$config['cur_tag_close'] = '</a>';
 		$config['page_query_string'] = TRUE;
@@ -187,12 +195,16 @@ class Listing extends CI_Controller {
 		$data['action'] = $action = $this->input->post('action');
 		$data['suser_type'] = $suser_type = $this->input->post('suser_type');
 		$sort_type = $this->input->post('sort_type');
-		/* 
+		
+		if(trim($action) == ''){
+			$data['action'] = $action = 'search';
+		}
+				
 		if($action){
 			$this->session->set_userdata('action', $action);
 		}else{
 			$data['action'] = $this->session->userdata('action');
-		} */
+		}
 				
 		if($action == 'publish_job'){
 			
@@ -540,17 +552,51 @@ class Listing extends CI_Controller {
 		$sort_order = $this->input->post('sort_order');
 		$search_keyword = $this->input->post('search_keyword');
 		$row_id = $this->input->post('row_id');
-		$data['suser_type'] = $suser_type = $this->input->post('suser_type');
+		
 		$sort_type = $this->input->post('sort_type');
 		
 		$sess_action = $this->session->userdata('action');
 		$action = $this->input->post('action');
 		
-		if($sess_action && ($action == $sess_action)){
-			$data['action'] = $action = $this->session->userdata('action');
+		$sess_rutype = $this->session->userdata('suser_type');
+		$rutype = $this->input->post('suser_type');
+			
+		if($sess_action){
+			$data['action'] = $this->session->userdata('action');
 		}else{
-			$data['action'] = $action = $this->input->post('action');
+			$data['action'] = $this->input->post('action');
 		}
+		
+		if($sess_rutype){
+			$data['suser_type'] = $suser_type = $this->session->userdata('suser_type');
+		}else{
+			$data['suser_type'] = $suser_type = $this->input->post('suser_type');
+		}
+					
+		if($action){
+			$this->session->set_userdata('action', $action);
+			$data['action'] = $action = $this->session->userdata('action');
+		}
+		
+		if($rutype){
+			$this->session->set_userdata('suser_type', $rutype);
+			$data['suser_type'] = $suser_type = $this->session->userdata('suser_type');
+		}
+		
+		if($action <> $sess_action){
+			
+			$this->session->unset_userdata('col_name');
+			$this->session->unset_userdata('col_val');
+			$this->session->unset_userdata('search_keyword');
+			$this->session->unset_userdata('col_cat_vals');
+			$this->session->unset_userdata('col_con_vals');
+			$this->session->unset_userdata('col_coun_vals');
+			$this->session->unset_userdata('col_post_vals');
+			$this->session->unset_userdata('col_sec_vals');
+			$this->session->unset_userdata('col_names');
+		
+		}
+		
 		$data['curr_page'] = 0;
 		$data['pages_count'] = 0;
 		
@@ -562,11 +608,7 @@ class Listing extends CI_Controller {
 				$search_keyword = $this->session->userdata('search_keyword');
 			}
 		}
-		
-		if($action){
-			$this->session->set_userdata('action', $action);
-		}
-					
+						
 		if($action == 'publish_job'){
 			
 			$data_add = array();
@@ -651,7 +693,7 @@ class Listing extends CI_Controller {
 			$data['pcountries'] = $ccountries;			
 		}
 		
-		if($action == 'search_user'){
+		if($action == 'search_user' || $sess_action == 'search_user'){
 				
 			if($type <> '' || $val <> ''){
 				
@@ -868,7 +910,7 @@ class Listing extends CI_Controller {
 			$data['sval'] = $val;
 			$data['sort_order'] = $sort_order;
 			$data['search_keyword'] = $search_keyword;
-			
+						
 			if($sort_order <> ''){
 				
 				$this->session->set_userdata('sort_order', $sort_order);
@@ -879,47 +921,47 @@ class Listing extends CI_Controller {
 			}
 						
 			$all_users = $this->plisting->get_user_public_by_skey_type($data, $type, $val, $search_keyword, $data['user_type_ref'], $data['user_id'], $suser_type);
-			
+						 		
 			$data['suser_listed'] = array();
 			
 			if($all_users && !empty($all_users) && is_array($all_users) && sizeof($all_users) <> 0){
 				$data['suser_listed'] = $all_users;			
 			}
-			
+					
 			$config = array();
 			$config["base_url"] = base_url() . "listing/search";
 			$total_row = sizeof($data['suser_listed']);
 			$config["total_rows"] = $total_row;
 			$config['use_page_numbers'] = TRUE;
 			$config["per_page"] = 5;
-			$config['num_links'] = 2;
+			$config['num_links'] = $total_row;
 			$config['cur_tag_open'] = '&nbsp;<a class="current page-link">';
 			$config['cur_tag_close'] = '</a>';
-			$config['page_query_string'] = TRUE;
+			$config['page_query_string'] = FALSE;
 			$config['next_link'] = 'Next';
 			$config['prev_link'] = 'Previous';
 			$data['total_rows'] = $total_row;
+			
+			if(isset($_GET['per_page']) && $_GET['per_page']){
+				$page = $_GET['per_page'];
+			}
+			else{
+				$page = 1;
+			}
 					
 			$divisionR = $total_row / $config["per_page"];
 			$wholeI = floor($divisionR);
 			$fractiond = fmod($divisionR, strlen($wholeI));
 			$fractiond = $fractiond * 10;
 			
-			if($fractiond > 0){
+			if($fractiond > 1){
 				$data['pages_count'] = $wholeI + 1;
 			}else{
 				$data['pages_count'] = $wholeI;
 			}
 						
 			$this->pagination->initialize($config);
-			
-			if($this->uri->segment(3)){
-				$page = ($this->uri->segment(3)) ;
-			}
-			else{
-				$page = 1;
-			}
-				
+						
 			$data['curr_page'] = $page;
 			
 			if($wholeI == 0 && $fractiond == 0){
@@ -1299,19 +1341,18 @@ class Listing extends CI_Controller {
 			$config["total_rows"] = $total_row;
 			$config['use_page_numbers'] = TRUE;
 			$config["per_page"] = 5;
-			$config['num_links'] = 2;
+			$config['num_links'] = $total_row;
 			$config['cur_tag_open'] = '&nbsp;<a class="current page-link">';
 			$config['cur_tag_close'] = '</a>';
-			$config['page_query_string'] = TRUE;
+			$config['page_query_string'] = FALSE;
 			$config['next_link'] = 'Next';
 			$config['prev_link'] = 'Previous';
-			$data['total_rows'] = $total_row;
 					
 			$divisionR = $total_row / $config["per_page"];
 			$wholeI = floor($divisionR);
 			$fractiond = fmod($divisionR, strlen($wholeI));
 			$fractiond = $fractiond * 10;
-			
+						
 			if($fractiond > 0){
 				$data['pages_count'] = $wholeI + 1;
 			}else{
@@ -1320,8 +1361,15 @@ class Listing extends CI_Controller {
 						
 			$this->pagination->initialize($config);
 			
-			if($this->uri->segment(3)){
-				$page = ($this->uri->segment(3)) ;
+			/* if($this->uri->segment(3)){
+				$page = $this->uri->segment(3);
+			}
+			else{
+				$page = 1;
+			} */
+			
+			if(isset($_GET['per_page']) && $_GET['per_page']){
+				$page = $_GET['per_page'];
 			}
 			else{
 				$page = 1;

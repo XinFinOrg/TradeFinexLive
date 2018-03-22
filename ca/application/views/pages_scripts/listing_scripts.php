@@ -614,7 +614,7 @@
 		
 		<?php }
 
-		if(!empty($_POST) && isset($_POST['action']) && $_POST['action'] != 'request_message_to_modify' && $_POST['action'] != 'create_proposal' && $_POST['action'] != 'update_proposal' && $_POST['action'] != 'edit' && $_POST['action'] != 'search' && $_POST['action'] != 'project_info' && $_POST['action'] != 'publish_job' && $_POST['action'] != 'cancel_job' && $_POST['action'] != 'send_message' && $_POST['action'] != 'proposal_view' && $_POST['action'] != 'proposal_reject' && $_POST['action'] != 'request_completion' && $_POST['action'] != 'user_info'){  
+		if(!empty($_POST) && isset($_POST['action']) && $_POST['action'] != 'request_message_to_modify' && $_POST['action'] != 'create_proposal' && $_POST['action'] != 'update_proposal' && $_POST['action'] != 'edit' && $_POST['action'] != 'search_user' && $_POST['action'] != 'search' && $_POST['action'] != 'project_info' && $_POST['action'] != 'publish_job' && $_POST['action'] != 'cancel_job' && $_POST['action'] != 'send_message' && $_POST['action'] != 'proposal_view' && $_POST['action'] != 'proposal_reject' && $_POST['action'] != 'request_completion' && $_POST['action'] != 'user_info'){  
 		
 			if($_POST['action'] == 'create' || $_POST['action'] == 'update'){
 		?>
@@ -726,8 +726,9 @@
 		$('.search_project_post').unbind('click').bind('click', function(){
 			
 			var colname = $(this).parent().attr('colname');
+			var taction = $(this).parent().attr('action');
 			var strc = '';
-					
+										
 			if($(this).hasClass('categorys')){
 				
 				var count = 0;	
@@ -833,7 +834,7 @@
 				var strc = $(this).attr('sval');
 			}
 						
-			$('<form id="search_formn" action="<?=base_url();?>listing/search" method="post"><input type="hidden" name="col_name" value="'+colname+'" ><input type="hidden" name="col_val" value="'+strc+'" ><input type="hidden" name="action" value="search" /><input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" /></form>').appendTo('body').submit();
+			$('<form id="search_formn" action="<?=base_url();?>listing/search" method="post"><input type="hidden" name="col_name" value="'+colname+'" ><input type="hidden" name="col_val" value="'+strc+'" ><input type="hidden" name="action" value="'+taction+'" /><input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" /></form>').appendTo('body').submit();
 		});
 				
 		$('.group_head').unbind('click').bind('click', function(){
