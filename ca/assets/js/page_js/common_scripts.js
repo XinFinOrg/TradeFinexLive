@@ -91,11 +91,13 @@
 				password: {
 					required: true,
 					minlength: 8,
+					maxlength: 25,
 					LettersWithspecialChars: true
 				},
 				password_confirmation: {
 					required: true,
 					minlength: 8,
+					maxlength: 25,
 					equalTo: "#password",
 					LettersWithspecialChars: true
 				},
@@ -111,21 +113,23 @@
 			messages: {
 				first_name: {
 					required: "Please enter your firstname",
-					minlength: "Your firstname must be at least 2 characters long",
-					maxlength: "Your firstname must be at most 20 characters long"
+					minlength: "Your firstname must be atleast 2 characters long",
+					maxlength: "Your firstname must be atmost 20 characters long"
 				},
 				last_name: {
 					required: "Please enter your lastname",
-					minlength: "Your lastname must be at least 2 characters long",
-					maxlength: "Your lastname must be at most 20 characters long"
+					minlength: "Your lastname must be atleast 2 characters long",
+					maxlength: "Your lastname must be atmost 20 characters long"
 				},
 				password: {
 					required: "Please enter a password",
-					minlength: "Your password must be at least 8 characters long"
+					minlength: "Your password must be atleast 8 characters long",
+					maxlength: "Your password must be atmost 25 characters long"
 				},
 				password_confirmation: {
 					required: "Please enter a password",
-					minlength: "Please enter the same password as above and should be at least 8 characters long",
+					minlength: "Please enter the same password as above and should be atleast 8 characters long",
+					maxlength: "Please enter the same password as above and must be atmost 25 characters long",
 					equalTo: "Please enter the same password as above"
 				},
 				email: "Please enter a valid email address",
@@ -215,13 +219,15 @@
 				},
 				user_password: {
 					required: true,
-					minlength: 8
+					minlength: 8,
+					maxlength: 25
 				}
 			},
 			messages: {
 				user_password: {
 					required: "Please enter a valid password",
-					minlength: "Your password must be at least 8 characters long"
+					minlength: "Your password must be atleast 8 characters long",
+					maxlength: "Your password must be atmost 25 characters long"
 				},
 				user_name: {
 					required: "Please enter a valid username",
