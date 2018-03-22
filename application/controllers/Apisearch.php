@@ -197,8 +197,8 @@ class Apisearch extends CI_Controller {
 	
 		$subscriber_id = "4xOWvxwxE5l4Fxf3";
 		$subscriber_token = "F45rpfpaHxeln0Dsg8NnNmioIC8fq";
-		$search_type = "autocomplete";
-		$search_string = "INFOS"; // "INFOS";
+		$search_type = "basic-search-exact";
+		$search_string = "INFO SERVICES PRIVATE LIMITED"; // "INFOS";
 		
 		$options = array('subscriber_id' => $subscriber_id, 'subscriber_token' => $subscriber_token, 'm' => $search_type, 's' => $search_string);
 			
@@ -273,7 +273,8 @@ class Apisearch extends CI_Controller {
 				
 		$subscriber_id = "4xOWvxwxE5l4Fxf3";
 		$subscriber_token = "F45rpfpaHxeln0Dsg8NnNmioIC8fq";
-		$search_type = "basic-search";
+		// $search_type = "basic-search";
+		$search_type = "basic-search-exact";
 		$search_string = strtoupper($term); // "INFOS";
 		
 		$options = array('subscriber_id' => $subscriber_id, 'subscriber_token' => $subscriber_token, 'm' => $search_type, 's' => $search_string);
