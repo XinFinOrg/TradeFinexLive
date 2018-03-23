@@ -128,12 +128,12 @@
 							<?php } if($action == '' || $action == 'search'){ ?>
 							<div class="panel panel-default">
 								<div class="panel-heading" style="padding-top: 1px;padding-bottom: 1px;">
-									<div class="form-group"><div class="checkbox checkbox-danger col_check" colname="featured"><input type="checkbox" name="featured_col" class="search_project_post" colname="featured" sval="1" <?=((isset($type) && $type == 'featured') ? 'checked' : '');?>><label for="featured_col"> Featured  </label></div></div>
+									<div class="form-group"><div class="checkbox checkbox-danger col_check" colname="featured" action="<?=$action;?>"><input type="checkbox" name="featured_col" class="search_project_post" colname="featured" sval="1" <?=((isset($type) && $type == 'featured') ? 'checked' : '');?>><label for="featured_col"> Featured  </label></div></div>
 								</div>
 							</div>	
 							<div class="panel panel-default">	
 								<div class="panel-heading" style="padding-top: 1px;padding-bottom: 1px;">
-									<div class="form-group"><div class="checkbox checkbox-danger col_check" colname="awardStatus"><input type="checkbox" name="closed_col" class="search_project_post" sval="2" <?=((isset($type) && $type == 'awardStatus') ? 'checked' : '');?> style="cursor:pointer;"><label for="closed_col"> Closed  </label></div></div>
+									<div class="form-group"><div class="checkbox checkbox-danger col_check" colname="awardStatus" action="<?=$action;?>"><input type="checkbox" name="closed_col" class="search_project_post" sval="2" <?=((isset($type) && $type == 'awardStatus') ? 'checked' : '');?> style="cursor:pointer;"><label for="closed_col"> Closed  </label></div></div>
 								</div>
 							</div>	
 							
@@ -356,7 +356,7 @@
 											
 											if($user_type_ref == 3 && $plrow->isDraft == 1){ 
 												
-												echo '<div class="pdraft label">DRAFT</div>';
+												echo '<div class="pexpired pdraft label">DRAFT</div>';
 											 
 											}else if($user_type_ref == 3 && $plrow->admin_approval == 0){ 
 												
@@ -766,11 +766,11 @@
 										
 										if($prow_count == 0){
 									
-											echo '<div class="no_result_sections"><h1></h1><h2 class="text-center">No Result Found.</h2></div>';
+											echo '<div class="no_result_sections"><h1><img src="'.base_url().'assets/images/icon/empty_list.png" alt="Empty-Lists" /></h1><h2 class="text-center">No Result Found.</h2></div>';
 											
 										}
 									}else{
-										echo '<div class="no_result_sections"><h1></h1><h2 class="text-center">No Result Found.</h2></div>';
+										echo '<div class="no_result_sections"><h1><img src="'.base_url().'assets/images/icon/empty_list.png" alt="Empty-Lists" /></h1><h2 class="text-center">No Result Found.</h2></div>';
 									}
 									
 								}

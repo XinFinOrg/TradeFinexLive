@@ -590,15 +590,16 @@
 			return $result = $query->result();
 		}
 		
-		public function get_project_all_count($user_id){
+		public function get_project_all_count($data, $user_id){
 			
 			$this->db->select('*, count(*) as pcount');
-			$this->db->from('{PRE}project_posts');
+			$this->db->from('{PRE}project_posts tpp');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			
 			if($user_id > 0){
-				$where = "row_deleted = '0' AND userID = '$user_id'";
+				$where = "row_deleted = '0' AND userID = '$user_id' AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}else{
-				$where = "admin_approval = 1 AND row_deleted = '0' AND isDraft = '0'";
+				$where = "admin_approval = 1 AND row_deleted = '0' AND isDraft = '0' AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}
 			
 			$this->db->where($where);
@@ -609,15 +610,16 @@
 			return $result = $query->result();
 		}
 
-		public function get_featured_project_all_count($user_id){
+		public function get_featured_project_all_count($data, $user_id){
 			
 			$this->db->select('*, count(*) as pcount');
-			$this->db->from('{PRE}project_posts');
+			$this->db->from('{PRE}project_posts tpp');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			
 			if($user_id > 0){
-				$where = "row_deleted = '0' AND featured = 1 AND userID = '$user_id'";
+				$where = "row_deleted = '0' AND featured = 1 AND userID = '$user_id' AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}else{
-				$where = "admin_approval = 1 AND featured = 1 AND row_deleted = '0' AND isDraft = '0'";
+				$where = "admin_approval = 1 AND featured = 1 AND row_deleted = '0' AND isDraft = '0' AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}
 			
 			$this->db->where($where);
@@ -628,15 +630,16 @@
 			return $result = $query->result();
 		}
 		
-		public function get_closed_project_all_count($user_id){
+		public function get_closed_project_all_count($data, $user_id){
 			
 			$this->db->select('*, count(*) as pcount');
-			$this->db->from('{PRE}project_posts');
+			$this->db->from('{PRE}project_posts tpp');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			
 			if($user_id > 0){
-				$where = "row_deleted = '0' AND awardStatus = 2 AND userID = '$user_id'";
+				$where = "row_deleted = '0' AND awardStatus = 2 AND userID = '$user_id' AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}else{
-				$where = "admin_approval = 1 AND awardStatus = 2 AND row_deleted = '0' AND isDraft = '0'";
+				$where = "admin_approval = 1 AND awardStatus = 2 AND row_deleted = '0' AND isDraft = '0' AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}
 			
 			$this->db->where($where);
@@ -763,13 +766,12 @@
 			return $proposal;
 		}
 		
-		public function get_all_projects_public($user_type){
-			
-			$data = array();
+		public function get_all_projects_public($data, $user_type){
 						
 			$this->db->select('tpp.*, tcom.*, tfb.*, tc.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
 			$this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');
@@ -778,9 +780,9 @@
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
 			
 			if($user_type == 0){
-				$where = "tpp.row_deleted = '0' AND tpp.admin_approval = 1 AND tpp.isDraft = '0'";
+				$where = "tpp.row_deleted = '0' AND tpp.admin_approval = 1 AND tpp.isDraft = '0' AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}else{
-				$where = "tpp.row_deleted = '0' AND tpp.admin_approval = 1 AND tpp.isDraft = '0' AND (tpp.visibility = '".$user_type."' OR tpp.visibility = '0')";
+				$where = "tpp.row_deleted = '0' AND tpp.admin_approval = 1 AND tpp.isDraft = '0' AND (tpp.visibility = '".$user_type."' OR tpp.visibility = '0') AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}
 					
 			$this->db->where($where);
@@ -791,13 +793,12 @@
 			return $result = $query->result();
 		}
 		
-		public function get_all_projects($user_id){
-			
-			$data = array();
+		public function get_all_projects($data, $user_id){
 						
 			$this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
 			$this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');
@@ -806,9 +807,9 @@
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
 						
 			if($user_id > 0){
-				$where = "tpp.row_deleted = '0' AND tpp.userID = '$user_id'";
+				$where = "tpp.row_deleted = '0' AND tpp.userID = '$user_id' AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}else{
-				$where = "tpp.row_deleted = '0' AND tpp.admin_approval = 1 AND tpp.isDraft = '0'";
+				$where = "tpp.row_deleted = '0' AND tpp.admin_approval = 1 AND tpp.isDraft = '0' AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}
 			
 			$this->db->where($where);
@@ -1032,15 +1033,14 @@
 			}
 		}
 						
-		public function get_all_projects_pagi($limit, $start, $sort_order, $user_id){
+		public function get_all_projects_pagi($data, $limit, $start, $sort_order, $user_id){
 			
 			$offset = ($start - 1)* $limit;
-			
-			$data = array();
 						
 			$this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
 			$this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');
@@ -1049,9 +1049,9 @@
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
 			
 			if($user_id > 0){
-				$where = "tpp.row_deleted = '0' AND tpp.userID = '$user_id'";
+				$where = "tpp.row_deleted = '0' AND tpp.userID = '$user_id' AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}else{
-				$where = "tpp.row_deleted = '0' AND tpp.admin_approval = 1 AND tpp.isDraft = '0'";
+				$where = "tpp.row_deleted = '0' AND tpp.admin_approval = 1 AND tpp.isDraft = '0' AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}
 						
 			$this->db->where($where);
@@ -1070,15 +1070,14 @@
 			return $result = $query->result();
 		}
 		
-		public function get_all_projects_public_pagi($limit, $start, $sort_order, $user_type){
+		public function get_all_projects_public_pagi($data, $limit, $start, $sort_order, $user_type){
 			
 			$offset = ($start - 1)* $limit;
-			
-			$data = array();
 						
 			$this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
 			$this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');
@@ -1087,9 +1086,9 @@
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
 			
 			if($user_type == 0){
-				$where = "tpp.row_deleted = '0' AND tpp.isDraft = '0' AND tpp.admin_approval = 1";
+				$where = "tpp.row_deleted = '0' AND tpp.isDraft = '0' AND tpp.admin_approval = 1 AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}else{
-				$where = "tpp.row_deleted = '0' AND tpp.isDraft = '0' AND tpp.admin_approval = 1 AND (tpp.visibility = '".$user_type."' OR tpp.visibility = '0')";
+				$where = "tpp.row_deleted = '0' AND tpp.isDraft = '0' AND tpp.admin_approval = 1 AND (tpp.visibility = '".$user_type."' OR tpp.visibility = '0') AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
 			}
 									
 			$this->db->where($where);
@@ -1104,7 +1103,7 @@
 			$this->db->limit($limit, $offset);
 						
 			$query = $this->db->get();
-		
+			
 			return $result = $query->result();
 		}
 		
@@ -1223,6 +1222,7 @@
 			$this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
 			$this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');
@@ -1297,6 +1297,8 @@
 				}
 			}
 			
+			$where .= " AND tfu.tfu_domain_type = '".$dataarr['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$dataarr['user_access_domain_name']."'";
+			
 			$this->db->where($where);
 			$this->db->order_by("tpp.ID", 'desc');
 			
@@ -1312,6 +1314,7 @@
 			$this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
 			$this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
@@ -1386,6 +1389,8 @@
 				}
 			}
 			
+			$where .= " AND tfu.tfu_domain_type = '".$dataarr['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$dataarr['user_access_domain_name']."'";
+			
 			$this->db->where($where);
 			$this->db->order_by("tpp.ID", 'desc');
 			
@@ -1401,6 +1406,7 @@
 			$this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
 			$this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
@@ -1482,6 +1488,8 @@
 				$where .= ' AND (tpp.title LIKE "%'.$skeyw.'%" OR tpp.description LIKE "%'.$skeyw.'%")';
 			}
 			
+			$where .= " AND tfu.tfu_domain_type = '".$dataarr['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$dataarr['user_access_domain_name']."'";
+			
 			$this->db->where($where);
 			$this->db->order_by("tpp.ID", 'desc');
 			$this->db->distinct(); 			
@@ -1512,40 +1520,23 @@
 			$this->db->join('{PRE}country tc', 'tc.tfc_id = tcom.tfcom_country_ref', 'left');
 						
 			if($type && $val){
-				
-				if(is_array($dataarr['scolumn']) && !empty($dataarr['scolumn']) && sizeof($dataarr['scolumn']) <> 0){ 
+							
+				if((is_array($dataarr['scatval']) && !empty($dataarr['scatval']) && sizeof($dataarr['scatval']) <> 0) || (is_array($dataarr['scountry']) && !empty($dataarr['scountry']) && sizeof($dataarr['scountry']) <> 0) || (is_array($dataarr['sectors']) && !empty($dataarr['sectors']) && sizeof($dataarr['sectors']) <> 0)){ 
 										
 					$concatq = '';
 					
-					for($cc=0; $cc < sizeof($dataarr['scolumn']); $cc++){
-						
-						$coulumn = $dataarr['scolumn'][$cc];
-						
-						if($coulumn == 'mainCategoryId'){
-							
-							if(sizeof($dataarr['scatval']) <> 0){
-								
-								$concatq .= $this->make_company_query_string($dataarr['scatval'], 'tfcom_cat_ref');
-							}	
-						}
-						
-						if($coulumn == 'countryID'){
-							
-							if(sizeof($dataarr['scountry']) <> 0){
-								
-								$concatq .= $this->make_company_query_string($dataarr['scountry'], 'tfcom_country_ref');
-							}	
-						}
-						
-						if($coulumn == 'sectors'){
-							
-							if(sizeof($dataarr['sectors']) <> 0){
-								
-								$concatq .= $this->make_company_pattern_query_string($dataarr['sectors'], 'tfcom_sectors');
-							}	
-						}
+					if(sizeof($dataarr['scatval']) <> 0){
+						$concatq .= $this->make_company_query_string($dataarr['scatval'], 'tfcom_cat_ref');
 					}
 					
+					if(sizeof($dataarr['scountry']) <> 0){
+						$concatq .= $this->make_company_query_string($dataarr['scountry'], 'tfcom_country_ref');
+					}
+					
+					if(sizeof($dataarr['sectors']) <> 0){
+						$concatq .= $this->make_company_pattern_query_string($dataarr['sectors'], 'tfcom_sectors');
+					}
+										
 					if($suser_type <> 0 && ($user_id == 0 || $user_type == 3)){
 						$where = "tfu.tfu_active = '1' AND tfu.tfu_utype = '$suser_type' AND tfu.tfu_admin_blocked = '0'".$concatq;
 					}else{
@@ -1581,10 +1572,12 @@
 				}
 			}
 			
+			$where .= " AND tfu.tfu_domain_type = '".$dataarr['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$dataarr['user_access_domain_name']."'";
+			
 			$this->db->where($where);
 			$this->db->order_by("tfu.tfu_id", 'desc');
 			$this->db->distinct();
-				
+						
 			$query = $this->db->get();
 						
 			return $result = $query->result();
@@ -1597,6 +1590,7 @@
 			$this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
 			$this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
@@ -1675,6 +1669,8 @@
 				$where .= ' AND (tpp.title LIKE "%'.$skeyw.'%" OR tpp.description LIKE "%'.$skeyw.'%" OR tpp.sectors LIKE "%'.$skeyw.'%")';				
 			}
 			
+			$where .= " AND tfu.tfu_domain_type = '".$dataarr['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$dataarr['user_access_domain_name']."'";
+			
 			$this->db->where($where);
 			$this->db->order_by("tpp.ID", 'desc');
 			$this->db->distinct();
@@ -1692,6 +1688,7 @@
 			$this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
 			$this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
@@ -1766,6 +1763,7 @@
 				}
 			}
 			
+			$where .= " AND tfu.tfu_domain_type = '".$dataarr['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$dataarr['user_access_domain_name']."'";
 			$this->db->where($where);
 			
 			if($sort_order && trim($sort_order) <> ''){
@@ -1778,7 +1776,7 @@
 			$this->db->limit($limit, $offset);
 						
 			$query = $this->db->get();
-			
+					
 			return $result = $query->result();
 		}
 		
@@ -1790,6 +1788,7 @@
 			$this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
 			$this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
@@ -1864,6 +1863,8 @@
 				}	
 			}
 			
+			$where .= " AND tfu.tfu_domain_type = '".$dataarr['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$dataarr['user_access_domain_name']."'";
+			
 			$this->db->where($where);
 			
 			if($sort_order && trim($sort_order) <> ''){
@@ -1888,6 +1889,7 @@
 			$this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
 			$this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
@@ -1967,6 +1969,8 @@
 				$where .= ' AND (tpp.title LIKE "%'.$skeyw.'%" OR tpp.description LIKE "%'.$skeyw.'%")';	
 			}
 			
+			$where .= " AND tfu.tfu_domain_type = '".$dataarr['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$dataarr['user_access_domain_name']."'";
+			
 			$this->db->where($where);
 			
 			if($sort_order && trim($sort_order) <> ''){
@@ -1986,7 +1990,7 @@
 		public function get_user_public_by_skey_type_pagi($dataarr, $type, $val, $skeyw, $limit, $start, $user_type, $user_id, $suser_type){
 			
 			$data = array();
-			$offset = ($start - 1)* $limit;
+			$offset = ($start - 1) * $limit;
 					
 			$this->db->select('*, tca.ID as cat_id, tca.cName as cat_name');
 			$this->db->from('{PRE}user tfu');
@@ -2003,42 +2007,25 @@
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tcom.tfcom_cat_ref', 'left');
 					
 			$this->db->join('{PRE}country tc', 'tc.tfc_id = tcom.tfcom_country_ref', 'left');
-						
+			
 			if($type && $val){
 				
-				if(is_array($dataarr['scolumn']) && !empty($dataarr['scolumn']) && sizeof($dataarr['scolumn']) <> 0){ 
+				if((is_array($dataarr['scatval']) && !empty($dataarr['scatval']) && sizeof($dataarr['scatval']) <> 0) || (is_array($dataarr['scountry']) && !empty($dataarr['scountry']) && sizeof($dataarr['scountry']) <> 0) || (is_array($dataarr['sectors']) && !empty($dataarr['sectors']) && sizeof($dataarr['sectors']) <> 0)){ 
 										
 					$concatq = '';
 					
-					for($cc=0; $cc < sizeof($dataarr['scolumn']); $cc++){
-						
-						$coulumn = $dataarr['scolumn'][$cc];
-						
-						if($coulumn == 'mainCategoryId'){
-							
-							if(sizeof($dataarr['scatval']) <> 0){
-								
-								$concatq .= $this->make_company_query_string($dataarr['scatval'], 'tfcom_cat_ref');
-							}	
-						}
-						
-						if($coulumn == 'countryID'){
-							
-							if(sizeof($dataarr['scountry']) <> 0){
-								
-								$concatq .= $this->make_company_query_string($dataarr['scountry'], 'tfcom_country_ref');
-							}	
-						}
-						
-						if($coulumn == 'sectors'){
-							
-							if(sizeof($dataarr['sectors']) <> 0){
-								
-								$concatq .= $this->make_company_pattern_query_string($dataarr['sectors'], 'tfcom_sectors');
-							}	
-						}
+					if(sizeof($dataarr['scatval']) <> 0){
+						$concatq .= $this->make_company_query_string($dataarr['scatval'], 'tfcom_cat_ref');
 					}
 					
+					if(sizeof($dataarr['scountry']) <> 0){
+						$concatq .= $this->make_company_query_string($dataarr['scountry'], 'tfcom_country_ref');
+					}
+					
+					if(sizeof($dataarr['sectors']) <> 0){
+						$concatq .= $this->make_company_pattern_query_string($dataarr['sectors'], 'tfcom_sectors');
+					}
+										
 					if($suser_type <> 0 && ($user_id == 0 || $user_type == 3)){
 						$where = "tfu.tfu_active = '1' AND tfu.tfu_utype = '$suser_type' AND tfu.tfu_admin_blocked = '0'".$concatq;
 					}else{
@@ -2074,13 +2061,14 @@
 				}
 			}
 			
+			$where .= " AND tfu.tfu_domain_type = '".$dataarr['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$dataarr['user_access_domain_name']."'";
+			
 			$this->db->where($where);
 			$this->db->order_by("tfu.tfu_id", 'desc');
 			$this->db->distinct();
 			$this->db->limit($limit, $offset);
-				
 			$query = $this->db->get();
-						
+											
 			return $result = $query->result();
 		}
 		
@@ -2092,6 +2080,7 @@
 			$this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
 			$this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
@@ -2170,6 +2159,8 @@
 				$where .= ' AND (tpp.title LIKE "%'.$skeyw.'%" OR tpp.description LIKE "%'.$skeyw.'%" OR tpp.sectors LIKE "%'.$skeyw.'%")';				
 			}
 			
+			$where .= " AND tfu.tfu_domain_type = '".$dataarr['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$dataarr['user_access_domain_name']."'";
+			
 			$this->db->where($where);
 			
 			if($sort_order && trim($sort_order) <> ''){
@@ -2193,6 +2184,7 @@
 			$this->db->select('tpp.*, tcom.*, tfb.*, tc.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tca.imagePath as cat_image, tct.ID as cont_id, tct.cName as cont_name, tct.imagePath as cont_image');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
+			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
 			$this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
 			$this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');

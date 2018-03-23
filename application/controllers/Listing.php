@@ -91,6 +91,25 @@ class Listing extends CI_Controller {
 			// redirect(base_url().'log/out');
 		}
 		
+		$domain = $this->siteURL();
+		
+		$domain_arr = explode('.', $domain);
+		
+		$domain_type = $domain_arr[0];
+		$domain_name = '';
+		
+		if(!empty($domain_arr) && sizeof($domain_arr) <> 0){
+					
+			for($i  = 1; $i < sizeof($domain_arr); $i++){
+				
+				if($i > 1){
+					$domain_name .= '.'.$domain_arr[$i];
+				}else{
+					$domain_name .= $domain_arr[$i];
+				}
+			}
+		}
+				
 		$data['notifications'] = array();
 		$data['notifications'] = get_initial_notification_status();
 		
@@ -126,11 +145,14 @@ class Listing extends CI_Controller {
 		if($ccountries && !empty($ccountries) && is_array($ccountries) && sizeof($ccountries) <> 0){
 			$data['pcountries'] = $ccountries;			
 		}
-		
+				
+		$data['user_access_domain_type'] = $domain_type;
+		$data['user_access_domain_name'] = $domain_name;
+				
 		if($data['user_type_ref'] <> 3){
-			$all_projects = $this->plisting->get_all_projects_public($data['user_type_ref']);
+			$all_projects = $this->plisting->get_all_projects_public($data, $data['user_type_ref']);
 		}else{	
-			$all_projects = $this->plisting->get_all_projects($data['user_id']);
+			$all_projects = $this->plisting->get_all_projects($data, $data['user_id']);
 		}
 		
 		if($all_projects && !empty($all_projects) && is_array($all_projects) && sizeof($all_projects) <> 0){
@@ -141,31 +163,31 @@ class Listing extends CI_Controller {
 		$data['sval'] = '';
 		$data['sort_order'] = '';
 		
-		/* if($this->uri->segment(3)){
+		if($this->uri->segment(3)){
 			$page = $this->uri->segment(3);
+		}
+		else{
+			$page = 1;
+		}
+		
+		/* if(isset($_GET['per_page']) && $_GET['per_page']){
+			$page = $_GET['per_page'];
 		}
 		else{
 			$page = 1;
 		} */
 		
-		if(isset($_GET['per_page']) && $_GET['per_page']){
-			$page = $_GET['per_page'];
-		}
-		else{
-			$page = 1;
-		}
-		
 		$config = array();
-		$config["base_url"] = base_url() . "listing/details/";
+		$config["base_url"] = base_url() . "listing/details";
 		$total_row = sizeof($data['projects_listed']);
 		$config["total_rows"] = $total_row;
 		$config['use_page_numbers'] = TRUE;
 		$config["per_page"] = 5;
-		$config['num_links'] = $total_row;
+		$config['num_links'] = 5; // $total_row;
 		$config['uri_segment'] = 3;
 		$config['cur_tag_open'] = '&nbsp;<a class="current page-link">';
 		$config['cur_tag_close'] = '</a>';
-		$config['page_query_string'] = TRUE;
+		$config['page_query_string'] = FALSE;
 		$config['next_link'] = 'Next';
 		$config['prev_link'] = 'Previous';
 						
@@ -293,9 +315,9 @@ class Listing extends CI_Controller {
 		}
 			
 		if($data['user_type_ref'] <> 3){
-			$data["projects_listed"] = $this->plisting->get_all_projects_public_pagi($config["per_page"], $page, $sort_order, $data['user_type_ref']);
+			$data["projects_listed"] = $this->plisting->get_all_projects_public_pagi($data, $config["per_page"], $page, $sort_order, $data['user_type_ref']);
 		}else{
-			$data["projects_listed"] = $this->plisting->get_all_projects_pagi($config["per_page"], $page, $sort_order, $data['user_id']);
+			$data["projects_listed"] = $this->plisting->get_all_projects_pagi($data, $config["per_page"], $page, $sort_order, $data['user_id']);
 		}	
 		
 		$data['proposal_details_financier'] = array();
@@ -453,9 +475,9 @@ class Listing extends CI_Controller {
 			}	
 		}
 		
-		$data['all_projects_count'] = $this->plisting->get_project_all_count($data['user_id']);
-		$data['all_featured_projects_count'] = $this->plisting->get_featured_project_all_count($data['user_id']);
-		$data['all_closed_projects_count'] = $this->plisting->get_closed_project_all_count($data['user_id']);
+		$data['all_projects_count'] = $this->plisting->get_project_all_count($data, $data['user_id']);
+		$data['all_featured_projects_count'] = $this->plisting->get_featured_project_all_count($data, $data['user_id']);
+		$data['all_closed_projects_count'] = $this->plisting->get_closed_project_all_count($data, $data['user_id']);
 								
 		$this->load->view('includes/headern', $data);
 		$this->load->view('includes/header_publicn', $data);
@@ -546,6 +568,30 @@ class Listing extends CI_Controller {
 			
 			$data['notifications'] = get_notification_status($options);
 		}
+		
+		$domain = $this->siteURL();
+		
+		$domain_arr = explode('.', $domain);
+		
+		$domain_type = $domain_arr[0];
+		
+		$data['user_access_domain_type'] = $domain_type;
+				
+		if(!empty($domain_arr) && sizeof($domain_arr) <> 0){
+			
+			$domain_name = '';
+			
+			for($i  = 1; $i < sizeof($domain_arr); $i++){
+				
+				if($i > 1){
+					$domain_name .= '.'.$domain_arr[$i];
+				}else{
+					$domain_name .= $domain_arr[$i];
+				}
+			}
+		}
+		
+		$data['user_access_domain_name'] = $domain_name;
 		
 		$type = $this->input->post('col_name');
 		$val = $this->input->post('col_val');
@@ -934,7 +980,7 @@ class Listing extends CI_Controller {
 			$config["total_rows"] = $total_row;
 			$config['use_page_numbers'] = TRUE;
 			$config["per_page"] = 5;
-			$config['num_links'] = $total_row;
+			$config['num_links'] = 5; // $total_row;
 			$config['cur_tag_open'] = '&nbsp;<a class="current page-link">';
 			$config['cur_tag_close'] = '</a>';
 			$config['page_query_string'] = FALSE;
@@ -942,8 +988,15 @@ class Listing extends CI_Controller {
 			$config['prev_link'] = 'Previous';
 			$data['total_rows'] = $total_row;
 			
-			if(isset($_GET['per_page']) && $_GET['per_page']){
+			/* if(isset($_GET['per_page']) && $_GET['per_page']){
 				$page = $_GET['per_page'];
+			}
+			else{
+				$page = 1;
+			} */
+			
+			if($this->uri->segment(3)){
+				$page = $this->uri->segment(3);
 			}
 			else{
 				$page = 1;
@@ -1361,19 +1414,19 @@ class Listing extends CI_Controller {
 						
 			$this->pagination->initialize($config);
 			
-			/* if($this->uri->segment(3)){
+			if($this->uri->segment(3)){
 				$page = $this->uri->segment(3);
 			}
 			else{
 				$page = 1;
-			} */
+			}
 			
-			if(isset($_GET['per_page']) && $_GET['per_page']){
+			/* if(isset($_GET['per_page']) && $_GET['per_page']){
 				$page = $_GET['per_page'];
 			}
 			else{
 				$page = 1;
-			}
+			} */
 				
 			$data['curr_page'] = $page;
 			
@@ -1553,9 +1606,9 @@ class Listing extends CI_Controller {
 			}	
 		}
 		
-		$data['all_projects_count'] = $this->plisting->get_project_all_count($data['user_id']);
-		$data['all_featured_projects_count'] = $this->plisting->get_featured_project_all_count($data['user_id']);
-		$data['all_closed_projects_count'] = $this->plisting->get_closed_project_all_count($data['user_id']);
+		$data['all_projects_count'] = $this->plisting->get_project_all_count($data, $data['user_id']);
+		$data['all_featured_projects_count'] = $this->plisting->get_featured_project_all_count($data, $data['user_id']);
+		$data['all_closed_projects_count'] = $this->plisting->get_closed_project_all_count($data, $data['user_id']);
 						
 		$this->load->view('includes/headern', $data);
 		$this->load->view('includes/header_publicn', $data);
@@ -2666,6 +2719,14 @@ class Listing extends CI_Controller {
 		$this->load->view('pages_scripts/listing_scripts', $data);
 		$this->load->view('includes/footern');
 	}	
+	
+	public function siteURL() {
+		$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+		// $domainName = $_SERVER['HTTP_HOST'] . '/';
+		$domainName = $_SERVER['HTTP_HOST'];
+		// return $protocol . $domainName;
+		return $domainName;
+	}
 	
 	public function remove_project_file(){
 	
