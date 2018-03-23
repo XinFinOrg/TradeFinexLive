@@ -8,7 +8,7 @@ class User extends CI_Controller {
         $this->load->helper(array('form', 'url', 'date', 'xdcapi', 'file', 'rating', 'notification'));
 		$this->load->library('session');
 		$this->load->model(array('manage', 'plisting'));
-		$this->is_logged_in();
+		// $this->is_logged_in();
 		$this->output->delete_cache();
 		
 		$data = array();
@@ -472,7 +472,7 @@ class User extends CI_Controller {
 					$data['uaddress'] = $uresult[0]->tfb_address;
 					$data['uprofpic'] = $uresult[0]->tfb_pic_file;
 				}
-				
+					
 				$data['uname'] = $uresult[0]->tfu_usern;
 				$data['upass'] = openssl_decrypt($uresult[0]->tfu_passwd,"AES-128-ECB",$encryption_key);
 				$data['uxwallet'] = $uresult[0]->tfu_xdc_walletID;
@@ -738,7 +738,10 @@ class User extends CI_Controller {
 		$data['request_user_id'] = 0;
 		
 		if($request_user_id && $request_user_type && $request_user_id <> 0 && $request_user_type <> 0){ 
-		
+			
+			$data['user_id'] = 0;
+			$data['user_type_ref'] = 0;
+			
 			$ucresult = $this->manage->get_company_info_by_uid($request_user_id);
 			
 			if(!empty($ucresult) && is_array($ucresult) && sizeof($ucresult) <> 0){
@@ -764,7 +767,7 @@ class User extends CI_Controller {
 				$data['comname'] = $ucresult[0]->tfcom_name;
 				$data['cregno'] = $ucresult[0]->tfcom_regno;
 				
-				$adda = explode('*', $ucresult[0]->tfcom_address);
+				/* $adda = explode('*', $ucresult[0]->tfcom_address);
 				
 				if(sizeof($adda) > 2){
 					$data['cbhn'] = $adda[0];
@@ -772,8 +775,8 @@ class User extends CI_Controller {
 					$data['ccity'] = $adda[2];
 					$data['cpinc'] = $adda[3];
 					$data['cstate'] = $adda[4];
-				}
-				
+				} */
+				$data['caddress'] = str_replace('*', ',', $ucresult[0]->tfcom_address);
 				$data['com_legal_form'] = $ucresult[0]->tfcom_legal_form;
 				$data['com_business_overv'] = $ucresult[0]->tfcom_business_overview;
 				$data['com_linkedin'] = $ucresult[0]->tfcom_linkedin;

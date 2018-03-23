@@ -29,7 +29,7 @@
 				<div class="corporate_office" id="mobile_dis_none">
 					<h4><img src="<?php echo base_url().'assets/images/page/map_profile.png' ?>" class="avatar" alt="avatar" /> Corporate Office</h4>
 					<h3><?=$comname;?></h3>
-					<p><?=(trim($cbhn) <> '' ? $cbhn.', ' : '').(trim($caddress) <> '' ? $caddress.', ' : '').(trim($ccity) <> '' ? $ccity.', ' : '').(trim($cpinc) <> '' ? $cpinc.', ' : '').(trim($cstate) <> '' ? $cstate.', ' : '').$ccountryn;?> </p>
+					<p><?=($caddress ? ucfirst($caddress).',' : '').($ccountryn ? ucfirst($ccountryn) : '');?></p>
 				</div>
 			</div>
 			<div class="col-md-9 col-sm-9 col-xs-12">
@@ -63,9 +63,9 @@
 				</div>
 				<div class="profile_view_tab">
 					<ul>
-						<li class="active"><a data-toggle="tab" href="#personal_info">Personal Info</a></li> <!--  || $user_type_ref == 2 || $request_user_type == 2 -->
+						<li class="active"><a data-toggle="tab" href="#personal_info">Personal Info</a></li>
 						<li><a data-toggle="tab" href="#company_profile">Company Profile</a></li>
-						<?php if($user_type_ref == 1 || $request_user_type == 1){ ?><li><a data-toggle="tab" href="#product_service">Product &amp; Services</a></li><?php } ?>
+						<?php if($user_type_ref == 1 || $request_user_type == 1 || $user_type_ref == 2 || $request_user_type == 2){ ?><li><a data-toggle="tab" href="#product_service">Product &amp; Services</a></li><?php } ?>
 						<li><a data-toggle="tab" href="#financial_info">Financial information</a></li>
 					</ul>
 					<div class="tab-content">
@@ -156,10 +156,10 @@
 							</div>
 						</div>
 						<div id="company_profile" class="tab-pane fade">
-							    <div class="company_profile">
-							        <font color="#999"><span>Business Overview</span> <span>:</span></font>
-								    <p><?=$com_business_overv;?></p>
-							    </div>
+							<div class="company_profile">
+							    <h4>Business Overview</h4>
+								<p><?=$com_business_overv;?></p>
+							</div>
 							<div class="row">
 								<div class="col-md-8 col-sm-8 col-xs-12">
 									<div class="website_url">
@@ -269,7 +269,7 @@
 				<div class="corporate_office" id="mobile_dis_block">
 					<h4><img src="<?=base_url().'assets/images/page/iconbox-02.png' ?>" class="avatar" alt="avatar" /> Corporate Office</h4>
 					<h3><?php echo $comname ?></h3>
-					<p><?php echo (trim($cbhn) <> '' ? $cbhn.', ' : '').(trim($caddress) <> '' ? $caddress.', ' : '').(trim($ccity) <> '' ? $ccity.', ' : '').(trim($cpinc) <> '' ? $cpinc.', ' : '').(trim($cstate) <> '' ? $cstate.', ' : '').$ccountryn ?> </p>
+					<p><?=($caddress ? ucfirst($caddress).',' : '').($ccountryn ? ucfirst($ccountryn) : '');?></p>
 				</div>
 			</div>
 		</div>

@@ -405,29 +405,9 @@
 								</div>
 								<h5>Company Logo</h5>
 							</div> -->
-						</div> <!--  || $user_type_ref == 2 -->
-						<?php if($user_type_ref == 1){ ?>
+						</div>
+						<?php if($user_type_ref == 1 || $user_type_ref == 2){ ?>
 						<div class="col-md-12 col-sm-12 col-xs-12 input_fields">
-							<!--
-							<div class="row">
-								<div class="col-xs-12 col-sm-6 col-md-12">
-									<div class="form-group">
-										<div class="col-md-12">
-											<label class="col-md-2 col-sm-2 col-xs-12 control-label">Choose add option</label>
-											<div class="col-md-2 col-sm-2 col-xs-12 radio radio-danger" style="margin: 0px;">
-												<input name="userps_type" class="user_radio userps_type" value="0" checked="checked" type="radio">
-												<label for="checkbox4">Product</label>
-											</div>
-											<div class="col-md-2 col-sm-2 col-xs-12 radio radio-danger" style="margin:0px;">
-												<input name="userps_type" class="user_radio userps_type" value="1" type="radio">
-												<label for="checkbox4">Service</label>
-											</div>
-										</div>	
-									</div>
-									<input type="hidden" name="add_type_selected" id="add_type_selected" value="0" />
-								</div>
-							</div> 
-							<div class="clearfix">&nbsp;</div> -->
 							<div class="row">
 								
 								<?php

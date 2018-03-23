@@ -206,9 +206,34 @@ class Project extends CI_Controller {
 			$data['notifications'] = get_notification_status($options);
 		}
 		
+		$domain = $this->siteURL();
+		
+		$domain_arr = explode('.', $domain);
+		
+		$domain_type = $domain_arr[0];
+		$domain_name = '';
+		
+		$data['user_access_domain_type'] = $domain_type;
+				
+		if(!empty($domain_arr) && sizeof($domain_arr) <> 0){
+			
+			
+			
+			for($i  = 1; $i < sizeof($domain_arr); $i++){
+				
+				if($i > 1){
+					$domain_name .= '.'.$domain_arr[$i];
+				}else{
+					$domain_name .= $domain_arr[$i];
+				}
+			}
+		}
+		
+		$data['user_access_domain_name'] = $domain_name;
+		
 		if($data['user_id'] <> 0){
 						
-			$data["projects_listed"] = $this->plisting->get_all_projects($data['user_id']);
+			$data["projects_listed"] = $this->plisting->get_all_projects($data, $data['user_id']);
 			$uresult = $this->manage->get_user_info_by_id_and_type($data['user_id'], $data['user_type_ref']);
 			
 			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
@@ -2569,6 +2594,14 @@ class Project extends CI_Controller {
 		$this->notification->update_notification($proj_id, $user_id, $u_type, $data_add);
 		
 		echo json_encode($data);
+	}
+	
+	public function siteURL() {
+		$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+		// $domainName = $_SERVER['HTTP_HOST'] . '/';
+		$domainName = $_SERVER['HTTP_HOST'];
+		// return $protocol . $domainName;
+		return $domainName;
 	}
 }
 	

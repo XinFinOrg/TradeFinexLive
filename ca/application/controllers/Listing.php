@@ -574,12 +574,13 @@ class Listing extends CI_Controller {
 		$domain_arr = explode('.', $domain);
 		
 		$domain_type = $domain_arr[0];
+		$domain_name = '';
 		
 		$data['user_access_domain_type'] = $domain_type;
 				
 		if(!empty($domain_arr) && sizeof($domain_arr) <> 0){
 			
-			$domain_name = '';
+			
 			
 			for($i  = 1; $i < sizeof($domain_arr); $i++){
 				

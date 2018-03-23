@@ -192,7 +192,7 @@
 											<div class="under_tab_result_sec under_tab_user_result_sec">
 												<div class="listing_info listing_info_user">
 													<div class="header_tile_part">
-														<h4 class="li-name"><a href="javascript:void(0)" class="puser_info" uid="<?=$surow->tfu_id;?>"><?=($surow->tfu_utype == 1 ? ucwords($surow->tfsp_fname.' '.$surow->tfsp_lname) : '').($surow->tfu_utype == 2 ? ucwords($surow->tff_fname.' '.$surow->tff_lname) : '');?></a> <span class="pull-right"><i class="fa fa-map-marker"></i> <?=$surow->tfc_name;?></span></h4>
+														<h4 class="li-name"><a href="javascript:void(0)" class="puser_info user_info" nurow_id="<?=$surow->tfu_id;?>" nurow_type="<?=$surow->tfu_utype;?>" uid="<?=$surow->tfu_id;?>"><?=($surow->tfu_utype == 1 ? ucwords($surow->tfsp_fname.' '.$surow->tfsp_lname) : '').($surow->tfu_utype == 2 ? ucwords($surow->tff_fname.' '.$surow->tff_lname) : '');?></a> <span class="pull-right"><i class="fa fa-map-marker"></i> <?=$surow->tfc_name;?></span></h4>
 														<h6><?=($surow->tfu_utype == 1 ? ucwords('Supplier') : '').($surow->tfu_utype == 2 ? ucwords('Financier') : '');?></h6>
 													</div>
 													<div class="main_body_project_part">
