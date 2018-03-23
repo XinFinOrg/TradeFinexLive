@@ -5,7 +5,7 @@ $config['$econfig'] = array(
 			'smtp_host' => 'ssl://tradefinex.org',
     		'smtp_port' => 465,
     		'smtp_user' => 'contact@tradefinex.org', 
-    		'smtp_pass' => 'live@tf2018!',
+    		'smtp_pass' => 'contact@2018!',
 			'wordwrap' => TRUE,
 			'charset' => 'utf-8'
 		 ); 
