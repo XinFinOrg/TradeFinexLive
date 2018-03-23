@@ -374,14 +374,14 @@
 					</div>
 					<div class="button_group_sec">
 						<div class="col-md-3 col-sm-3 col-xs-12">
-							<div class="btn-more psave">
+							<div class="btn-more">
 								<button type="submit" class="btn publish_job"><i class="fa fa-save" aria-hidden="true"></i>
 									<?php echo ($prrow == 0 ? 'Publish Project' : 'Publish Project' ) ?>
 								</button>
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-12">
-							<div class="btn-more pdraft"> 
+							<div class="btn-more"> 
 								<button type="submit" class="btn draft_job"><i class="fa fa-tasks" aria-hidden="true"></i>
 									<?php echo ($prrow == 0 ? 'Save as Draft' : 'Update Draft' ) ?>
 								</button>
