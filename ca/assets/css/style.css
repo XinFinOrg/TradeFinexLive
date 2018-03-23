@@ -3471,18 +3471,57 @@ to {
 	background-color: #70c336;
 	color: #fff;
 }
+
+.popen {
+	background-color: #3f2c2c;
+	color: #fff;
+}
+
 .pclose {
 	background-color: #ec484b;
 	color: #fff;
 }
-.popen {
-	color: #fff;
-	background: #3f2c2c;
-}
+
 .pawaited {
 	background-color: #70c336;
 	color: #fff;
 }
+
+.pexpiry{
+	background-color: #FF0202;
+	color: #fff;
+}
+
+/* .pawarded{
+	background-color: #089556;
+	color: #fff;
+} */
+
+.pinprogress{
+	background-color: #86DE6A;
+	color: #fff;
+}
+
+.psfawarded{
+	background-color: #76B3D6;
+	color: #fff;
+}
+
+.pcompleted{
+	background-color: #2BB256;
+	color: #fff;
+}
+
+.popen{
+	background-color: #060606;
+	color: #fff;
+}
+
+.pdraft{
+	background-color: #F1742D;
+	color: #fff;
+}
+
 .case_tab_sec .overview .pawaited, .popen {
 	text-transform: uppercase;
 	font-size: 12px;
@@ -6556,6 +6595,10 @@ left:16px;
 	width: 100%;
 	float: left;
 }
+.case_study_video_wrap .row{
+	margin-bottom: 20px;
+}
+
 .case_study_video {
 	border: 1px solid #e4e5e6;
 	background-color: #ffffff;

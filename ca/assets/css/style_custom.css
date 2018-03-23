@@ -203,7 +203,7 @@
 	/* padding: 15px 30px; */
 	border: 0px;
 	background-color: white;
-	z-index: 1002;
+	z-index: 100002;
 	border-radius: 8px;
 }
 .mwhite_content .gpopup_head {
@@ -227,7 +227,7 @@
 	/* padding: 15px 30px; */
 	border: 0px;
 	background-color: white;
-	z-index: 1002;
+	z-index: 100002;
 	border-radius: 8px;
 }
 .bwhite_content .gpopup_head {
@@ -254,7 +254,7 @@
 	/* padding: 15px 30px; */
 	border: 0px;
 	background-color: white;
-	z-index: 1002;
+	z-index: 100002;
 	border-radius: 8px;
 	padding-top: 30px;
 }
@@ -268,7 +268,7 @@
 	/* padding: 15px 30px; */
 	border: 0px;
 	background-color: white;
-	z-index: 1002;
+	z-index: 100002;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	border-radius: 8px;

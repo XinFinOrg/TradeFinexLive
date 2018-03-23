@@ -368,36 +368,36 @@
 												
 											}else if($plrow->awardStatus == 2 && $plrow->row_deleted == 0){
 												
-												echo '<div class="header_awrd_exp_part"><div class="pawarded label">COMPLETED</div></div>';
+												echo '<div class="header_awrd_exp_part"><div class="pawarded pcompleted label">COMPLETED</div></div>';
 											
 											}else if(($user_type_ref == 1 || $user_type_ref == 3) && $plrow->provider_completion_request == 2 && $plrow->row_deleted == 0){ 
 												
-												echo '<div class="header_awrd_exp_part"><div class="pawarded label">TRADE COMPLETED</div></div>';
+												echo '<div class="header_awrd_exp_part"><div class="pawarded pcompleted label">TRADE COMPLETED</div></div>';
 												
 												
 											}else if(($user_type_ref == 2 || $user_type_ref == 3) && ($plrow->financier_completion_request == 2 || $tpfawardStatus == 3) && $plrow->row_deleted == 0){
 												
-												echo '<div class="header_awrd_exp_part"><div class="pawarded label">FINANCE COMPLETED</div></div>';
+												echo '<div class="header_awrd_exp_part"><div class="pawarded pcompleted label">FINANCE COMPLETED</div></div>';
 											
 											}else if((($user_type_ref == 1 || $user_type_ref == 3) && ($plrow->awarded_provider == 2 || $plrow->awarded_provider == 3)) ||  (($user_type_ref == 1 || $user_type_ref == 2) && ($tpfawardStatus == 1 || $plrow->awarded_financier == 1)) && $plrow->row_deleted == 0){ 
 												
-												echo '<div class="header_awrd_exp_part"><div class="finwarded label">IN-PROGRESS</div></div>';
+												echo '<div class="header_awrd_exp_part"><div class="finwarded pinprogress label">IN-PROGRESS</div></div>';
 												
 											}else if((($user_type_ref == 1 && $plrow->provider_completion_request == 0 && ($plrow->awarded_provider == 1 || $plrow->awarded_provider == 2)) || ($user_type_ref == 2 && $plrow->financier_completion_request == 0 && $tpfacceptStatus == 1 && $plrow->awarded_financier == 1) || $plrow->awardStatus == 1) && $plrow->row_deleted == 0){ 
 												
-												echo '<div class="header_awrd_exp_part"><div class="pawarded label">AWARDED</div></div>';
+												echo '<div class="header_awrd_exp_part"><div class="pawarded psfawarded label">AWARDED</div></div>';
 											
 											}else if($user_type_ref == 3 && ($plrow->awarded_provider == 1 || $plrow->awarded_provider == 2 || $plrow->awarded_provider == 3) && $plrow->row_deleted == 0){ 
 											
-												echo '<div class="header_awrd_exp_part"><div class="pawarded label">SUPPLIER AWARDED</div></div>';
+												echo '<div class="header_awrd_exp_part"><div class="pawarded psfawarded label">SUPPLIER AWARDED</div></div>';
 											
 											}else if($user_type_ref == 3 && $plrow->awarded_financier == 1 && $plrow->row_deleted == 0){ 
 											
-												echo '<div class="header_awrd_exp_part"><div class="pawarded label">FINANCIER AWARDED</div></div>';
+												echo '<div class="header_awrd_exp_part"><div class="pawarded psfawarded label">FINANCIER AWARDED</div></div>';
 											
 											}else if($curr_date > $close_date){
 										
-												echo '<div class="header_awrd_exp_part"><div class="pexpired label">EXPIRED</div></div>';
+												echo '<div class="header_awrd_exp_part"><div class="pexpired pexpiry label">EXPIRED</div></div>';
 											
 											}else if($plrow->awardStatus == 0 && $plrow->row_deleted == 0){ 
 											

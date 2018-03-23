@@ -5,7 +5,7 @@
 			redirect(base_url().'user/edit');
 	
 		}else{
-	
+		
 		if($user_type_ref == 1 || $user_type_ref == 2){ ?>
 	
 		<div class="sub_page_wraper">
@@ -108,23 +108,23 @@
 											<?php 
 												
 												if((($user_type_ref == 1 && $plrow->provider_completion_request == 2) || ($user_type_ref == 2 && $tpfawardStatus == 3) || $plrow->awardStatus == 2) && $plrow->row_deleted == 0){ 
-													echo '<span class="label pcompleted positionauto">COMPLETED</span>';
+													echo '<span class="label pclose pcompleted positionauto">COMPLETED</span>';
 												}else if(($user_type_ref == 2 && $tpfawardStatus == 2) && $plrow->row_deleted == 0){
 													echo '<span class="label pclose positionauto">NOT INITIATED</span>';
 												}else if((($user_type_ref == 1 || $user_type_ref == 3) && ($plrow->awarded_provider == 2 || $plrow->awarded_provider == 3)) || ($user_type_ref == 2 && $tpfawardStatus == 1) && $plrow->row_deleted == 0){ 
-													echo '<div class="label pinprogress positionauto">IN-PROGRESS</div>';
+													echo '<div class="label pawarded pinprogress positionauto">IN-PROGRESS</div>';
 												}
 												else if(($user_type_ref == 1 || $user_type_ref == 2) && (trim($edit_request) <> '' || trim($special_request) <> '') && ($edit_mode == 1 || $tpfeditMode == 1)){
-													echo '<div class="label pawarded positionauto">Special Request <a href="javascript:void(0)" class="more_info"><i class="fa fa-info-circle" aria-hidden="true"></i><div class="descrip descripr">'.ucfirst($special_request).'</div></a></div>';
+													echo '<div class="label pawarded pinprogress positionauto">Special Request <a href="javascript:void(0)" class="more_info"><i class="fa fa-info-circle" aria-hidden="true"></i><div class="descrip descripr">'.ucfirst($special_request).'</div></a></div>';
 												}else if((($user_type_ref == 1 && ($plrow->awarded_provider == 1 || $plrow->awarded_provider == 2 || $plrow->awarded_provider == 3)) || ($user_type_ref == 2 && in_array($plrow->ID, $proposal_accepted)) || $plrow->awardStatus == 1) && $plrow->row_deleted == 0){ 
 													echo '<span class="label psfawarded positionauto">AWARDED</span>';
 												}
 												else if(in_array($plrow->ID, $proposal_submitted) && !in_array($plrow->ID, $proposal_accepted)){
-													echo '<span class="label popen positionauto">PROPOSAL SUBMITTED</span>';
+													echo '<span class="label pawarded positionauto">PROPOSAL SUBMITTED</span>';
 												}else if($plrow->awardStatus == 0 && $plrow->row_deleted == 0){ 
 													echo '<span class="label popen positionauto">OPEN</span>';
 												}else{ 
-													echo '<span class="label pclose positionauto" style="background: #FF0202">EXPIRED</span>';
+													echo '<span class="label pclose pexpiry positionauto">EXPIRED</span>';
 												} 
 											
 											?>
@@ -234,23 +234,23 @@
 											<?php 
 												
 												if((($user_type_ref == 1 && $ai_row->provider_completion_request == 2) || ($user_type_ref == 2 && $tpfawardStatus == 3) || $ai_row->awardStatus == 2) && $ai_row->row_deleted == 0){ 
-													echo '<span class="label pcompleted positionauto">COMPLETED</span>';
+													echo '<span class="label pclose pcompleted positionauto">COMPLETED</span>';
 												}else if(($user_type_ref == 2 && $tpfawardStatus == 2) && $ai_row->row_deleted == 0){
 													echo '<span class="label pclose positionauto">NOT INITIATED</span>';
 												}else if((($user_type_ref == 1 || $user_type_ref == 3) && ($ai_row->awarded_provider == 2 || $ai_row->awarded_provider == 3)) || ($user_type_ref == 2 && $tpfawardStatus == 1) && $ai_row->row_deleted == 0){ 
-													echo '<div class="label pinprogress positionauto">IN-PROGRESS</div>';
+													echo '<div class="label pawarded pinprogress positionauto">IN-PROGRESS</div>';
 												}
 												else if($user_type_ref == 2 && trim($special_request) <> '' && $tpfeditMode == 1){
 													echo '<div class="label pawarded positionauto">Special Request <a href="javascript:void(0)" class="more_info"><i class="fa fa-info-circle" aria-hidden="true"></i><div class="descrip descripr">'.ucfirst($special_request).'</div></a></div>';
 												}else if((($user_type_ref == 1 && ($ai_row->awarded_provider == 1 || $ai_row->awarded_provider == 2 || $ai_row->awarded_provider == 3)) || ($user_type_ref == 2 && in_array($ai_row->ID, $proposal_accepted)) || $ai_row->awardStatus == 1) && $ai_row->row_deleted == 0){ 
-													echo '<span class="label psfawarded positionauto">AWARDED</span>';
+													echo '<span class="label pawarded psfawarded positionauto">AWARDED</span>';
 												}
 												else if(in_array($ai_row->ID, $proposal_submitted) && !in_array($ai_row->ID, $proposal_accepted)){
-													echo '<span class="label popen positionauto">PROPOSAL SUBMITTED</span>';
+													echo '<span class="label pawarded positionauto">PROPOSAL SUBMITTED</span>';
 												}else if($ai_row->awardStatus == 0 && $ai_row->row_deleted == 0){ 
 													echo '<span class="label popen positionauto">OPEN</span>';
 												}else{ 
-													echo '<span class="label pclose positionauto"style="background: #FF0202">EXPIRED</span>';
+													echo '<span class="label pclose pexpiry positionauto">EXPIRED</span>';
 												} 
 											
 											?>
@@ -349,23 +349,23 @@
 											<?php 
 												
 												if((($user_type_ref == 1 && $plrow->provider_completion_request == 2) || ($user_type_ref == 2 && $tpfawardStatus == 3) || $plrow->awardStatus == 2) && $plrow->row_deleted == 0){ 
-													echo '<span class="label pclose positionauto">COMPLETED</span>';
+													echo '<span class="label pclose pcompleted positionauto">COMPLETED</span>';
 												}else if(($user_type_ref == 2 && $tpfawardStatus == 2) && $plrow->row_deleted == 0){
 													echo '<span class="label pclose positionauto">NOT INITIATED</span>';
 												}else if((($user_type_ref == 1 || $user_type_ref == 3) && ($plrow->awarded_provider == 2 || $plrow->awarded_provider == 3)) || ($user_type_ref == 2 && $tpfawardStatus == 1) && $plrow->row_deleted == 0){ 
 													echo '<div class="label pinprogress positionauto">IN-PROGRESS</div>';
 												}
 												else if($user_type_ref == 2 && trim($special_request) <> '' && $tpfeditMode == 1){
-													echo '<div class="label pawarded positionauto">Special Request <a href="javascript:void(0)" class="more_info"><i class="fa fa-info-circle" aria-hidden="true"></i><div class="descrip descripr">'.ucfirst($special_request).'</div></a></div>';
+													echo '<div class="label pinprogress positionauto">Special Request <a href="javascript:void(0)" class="more_info"><i class="fa fa-info-circle" aria-hidden="true"></i><div class="descrip descripr">'.ucfirst($special_request).'</div></a></div>';
 												}else if((($user_type_ref == 1 && ($plrow->awarded_provider == 1 || $plrow->awarded_provider == 2 || $plrow->awarded_provider == 3)) || ($user_type_ref == 2 && in_array($plrow->ID, $proposal_accepted)) || $plrow->awardStatus == 1) && $plrow->row_deleted == 0){ 
 													echo '<span class="label psfawarded positionauto">AWARDED</span>';
 												}
 												else if(in_array($plrow->ID, $proposal_submitted) && !in_array($plrow->ID, $proposal_accepted)){
-													echo '<span class="label popen positionauto">PROPOSAL SUBMITTED</span>';
+													echo '<span class="label pawarded positionauto">PROPOSAL SUBMITTED</span>';
 												}else if($plrow->awardStatus == 0 && $plrow->row_deleted == 0){ 
 													echo '<span class="label popen positionauto">OPEN</span>';
 												}else{ 
-													echo '<span class="label pclose positionauto" style="background: #FF0202">EXPIRED</span>';
+													echo '<span class="label pclose pexpiry positionauto">EXPIRED</span>';
 												} 
 											
 											?>
@@ -500,7 +500,7 @@
 											
 											if($plrow->isDraft == 1){ 
 												
-												echo '<div class="statusd label pclose positionauto" style="background: #F1742D !important;">DRAFT</div>';
+												echo '<div class="statusd label pclose pdraft positionauto">DRAFT</div>';
 											 
 											}else if($plrow->admin_approval == 0){ 
 												
@@ -512,20 +512,20 @@
 												
 											}else if($plrow->awardStatus == 2 && $plrow->row_deleted == 0){
 												
-												echo '<div class="statusd pcompleted label positionauto">COMPLETED</div>';
+												echo '<div class="statusd pcomplete pcompleted label positionauto">COMPLETED</div>';
 											
 											}else if(($user_type_ref == 1 || $user_type_ref == 3) && $plrow->provider_completion_request == 2 && $plrow->row_deleted == 0){ 
 												
-												echo '<div class="statusd pcompleted label positionauto">TRADE COMPLETED</div>';
+												echo '<div class="statusd pcomplete pcompleted label positionauto">TRADE COMPLETED</div>';
 												
 												
 											}else if(($user_type_ref == 2 || $user_type_ref == 3) && ($plrow->financier_completion_request == 2 || $tpfawardStatus == 3) && $plrow->row_deleted == 0){
 												
-												echo '<div class="statusd pcompleted label positionauto">FINANCE COMPLETED</div>';
+												echo '<div class="statusd pcomplete pcompleted label positionauto">FINANCE COMPLETED</div>';
 											
 											}else if((($user_type_ref == 1 || $user_type_ref == 3) && ($plrow->awarded_provider == 2 || $plrow->awarded_provider == 3)) ||  (($user_type_ref == 1 || $user_type_ref == 2) && ($tpfawardStatus == 1 || $plrow->awarded_financier == 1)) && $plrow->row_deleted == 0){ 
 												
-												echo '<div class="statusd pinprogress label positionauto">IN-PROGRESS</div>';
+												echo '<div class="statusd pawarded label positionauto">IN-PROGRESS</div>';
 											
 											}else if((($user_type_ref == 1 && $plrow->provider_completion_request == 0 && ($plrow->awarded_provider == 1 || $plrow->awarded_provider == 2)) || ($user_type_ref == 2 && $plrow->financier_completion_request == 0 && $tpfacceptStatus == 1 && $plrow->awarded_financier == 1) || $plrow->awardStatus == 1) && $plrow->row_deleted == 0){ 
 												
@@ -541,7 +541,7 @@
 											
 											}else if($curr_date > $close_date){
 												
-												echo '<div class="statusd pclose label positionauto" style="background: #FF0202">EXPIRED</div>';
+												echo '<div class="statusd pclose pexpiry label positionauto">EXPIRED</div>';
 											
 											}else if($plrow->awardStatus == 0 && $plrow->row_deleted == 0){ 
 											

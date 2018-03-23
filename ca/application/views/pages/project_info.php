@@ -78,47 +78,47 @@
 									
 									if($user_type_ref == 3 && $plrow->isDraft == 1){ 
 										
-										echo '<div class="pdraft pclose label">DRAFT</div>';
+										echo '<div class="pclose pdraft label">DRAFT</div>';
 									 
 									}else if($user_type_ref == 3 && $plrow->admin_approval == 0){ 
 										
-										echo '<div class="pawaited label">ADMIN APPROVAL AWAITED</div>';
+										echo '<div class="padmin_awaited label">ADMIN APPROVAL AWAITED</div>';
 									 
 									}else if($user_type_ref == 3 && $plrow->admin_approval == 2){
 										
-										echo '<div class="pclose label rejected_by_admin">ADMIN REJECTED</div>';
+										echo '<div class="pclose pexpired label rejected_by_admin">ADMIN REJECTED</div>';
 										
 									}else if($plrow->awardStatus == 2 && $plrow->row_deleted == 0){
 										
-										echo '<div class="pcomplete label">COMPLETED</div>';
+										echo '<div class="pcomplete pcompleted label">COMPLETED</div>';
 									
 									}else if(($user_type_ref == 1 || $user_type_ref == 3) && $plrow->provider_completion_request == 2 && $plrow->row_deleted == 0){ 
 										
-										echo '<div class="pcomplete label">TRADE COMPLETED</div>';
+										echo '<div class="pcomplete pcompleted label">TRADE COMPLETED</div>';
 										
 									}else if(($user_type_ref == 2 || $user_type_ref == 3) && ($plrow->financier_completion_request == 2 || $tpfawardStatus == 3) && $plrow->row_deleted == 0){
 										
-										echo '<div class="pcomplete label">FINANCE COMPLETED</div>';
+										echo '<div class="pcomplete pcompleted label">FINANCE COMPLETED</div>';
 									
 									}else if((($user_type_ref == 1 || $user_type_ref == 3) && ($plrow->awarded_provider == 2 || $plrow->awarded_provider == 3)) ||  (($user_type_ref == 1 || $user_type_ref == 2) && ($tpfawardStatus == 1 || $plrow->awarded_financier == 1)) && $plrow->row_deleted == 0){ 
 										
-										echo '<div class="pawarded label">IN-PROGRESS</div>';
+										echo '<div class="pawarded pinprogress label">IN-PROGRESS</div>';
 									
 									}else if((($user_type_ref == 1 && $plrow->provider_completion_request == 0 && ($plrow->awarded_provider == 1 || $plrow->awarded_provider == 2)) || ($user_type_ref == 2 && $plrow->financier_completion_request == 0 && $tpfacceptStatus == 1 && $plrow->awarded_financier == 1) || $plrow->awardStatus == 1) && $plrow->row_deleted == 0){ 
 										
-										echo '<div class="pawarded label">AWARDED</div>';
+										echo '<div class="pawarded psfawarded label">AWARDED</div>';
 									
 									}else if($user_type_ref == 3 && ($plrow->awarded_provider == 1 || $plrow->awarded_provider == 2 || $plrow->awarded_provider == 3) && $plrow->row_deleted == 0){ 
 									
-										echo '<div class="pawarded label">SUPPLIER AWARDED</div>';
+										echo '<div class="pawarded psfawarded label">SUPPLIER AWARDED</div>';
 									
 									}else if($user_type_ref == 3 && $plrow->awarded_financier == 1 && $plrow->row_deleted == 0){ 
 									
-										echo '<div class="pawarded label">FINANCIER AWARDED</div>';
+										echo '<div class="pawarded psfawarded label">FINANCIER AWARDED</div>';
 									
 									}else if($curr_date > $close_date){
 										
-										echo '<div class="pclose label">EXPIRED</div>';
+										echo '<div class="pclose pexpiry label">EXPIRED</div>';
 									
 									}else if($plrow->awardStatus == 0 && $plrow->row_deleted == 0){ 
 									
