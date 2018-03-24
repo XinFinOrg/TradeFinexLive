@@ -207,12 +207,14 @@
 		<script src="<?=base_url('assets/js/jquery-core/jquery.ui.touch-punch.min.js');?>"></script> 
 		<script src="<?=base_url('assets/js/bootstrap/bootstrap.min.js');?>"></script> 
 		
-		<!-- Jquery Paginate -->
-		<script src="<?=base_url('assets/js/jquery.easyPaginate.js');?>"></script>
-		
 		<!-- Lazy Loading -->
 		<script src="<?=base_url('assets/js/slick.js');?>"></script>
 		
+		<?php if(uri_string()){ ?>
+		
+		<!-- Jquery Paginate -->
+		<script src="<?=base_url('assets/js/jquery.easyPaginate.js');?>"></script>
+				
 		<!-- Text Editor -->
 		<script src="<?=base_url('assets/js/text-editor/jquery-te-1.0.5.min.js');?>"></script> 
 		
@@ -222,7 +224,13 @@
 		<script src="<?=base_url('assets/js/form-validator/jquery.form-validator.min.js');?>"></script>
 		<script src="<?=base_url('assets/js/form-validator/jquery.validate.min.js');?>"></script>
 		
-		<?php if($user_id > 0){ ?>
+		<!-- captha -->
+		<script src="<?=base_url('assets/js/captcha/jquery.plugin.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/captcha/jquery.realperson.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/captcha/md5.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/captcha/aes.min.js');?>"></script>
+		
+		<?php } if($user_id > 0){ ?>
 				
 		<script src="<?=base_url('assets/js/bootstrap/bootstrap-switch.min.js');?>"></script>	
 		<script src="<?=base_url('assets/js/bootstrap/bootstrap-confirmation.min.js');?>"></script>
@@ -253,13 +261,7 @@
         <script src="<?=base_url('assets/js/datatables/buttons.print.min.js');?>"></script>
 		
 		<?php } ?>
-		
-		<!-- captha -->
-		<script src="<?=base_url('assets/js/captcha/jquery.plugin.min.js');?>"></script>
-		<script src="<?=base_url('assets/js/captcha/jquery.realperson.min.js');?>"></script>
-		<script src="<?=base_url('assets/js/captcha/md5.min.js');?>"></script>
-		<script src="<?=base_url('assets/js/captcha/aes.min.js');?>"></script>
-				
+					
         <!-- JAVASCRIPT OWL =============================--> 
         	
 		<script type="text/javascript">
