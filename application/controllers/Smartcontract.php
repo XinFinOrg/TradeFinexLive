@@ -548,6 +548,7 @@ class Smartcontract extends CI_Controller {
 		
 		$data['check_company']  = '';
 		$data['notifications'] = array();
+		$nofifya = array();
 		$data['notifications'] = get_initial_notification_status();
 								
 		$user = $this->session->userdata('logged_in');
@@ -591,6 +592,17 @@ class Smartcontract extends CI_Controller {
 		if(trim($user_id_request) == ''){
 			$user_id_request = 0;
 		}
+		
+		if($data['user_id'] <> 0){
+		
+			$options = array();
+			$options['user_id'] = $data['user_id'];
+			$options['user_type'] = $data['user_type_ref'];
+		
+			$data['notifications'] = get_notification_status($options);
+		}
+		
+		$count = 0;
 					
 		if($request_action == 'request_completion' && $data['user_id'] <> 0 && $data['user_type_ref'] <> 0){
 		
@@ -633,6 +645,100 @@ class Smartcontract extends CI_Controller {
 					}
 				}
 			}	
+			
+			if($request_db_type == 'initiate' && $data['user_type_ref'] == 3 && $user_id_request > 0 && $user_type_request == 1){
+				
+				$user_request_detail_info = $this->manage->get_user_base_info_by_id_and_type($user_id_request, $user_type_request);
+				$udata = array();
+				$udata['b_notification'] = $user_request_detail_info[0]->tfsp_benif_notification;
+				
+				if(!empty($user_request_detail_info) && (isset($udata['b_notification']) && $udata['b_notification'] == 1)){
+													
+					$nofifya[$count]['notify_type'] = 'supplier_initiate';
+					$nofifya[$count]['notify_id'] = time();
+					
+					$project_info = $this->plisting->get_project_info_by_id($proj_id);
+					$proposal_info = $this->plisting->get_proposal_by_ref($proj_id, $user_id_request, 'p');
+							
+					$nofifya[$count]['notify_for_user'] = $data['user_id'];
+					$nofifya[$count]['notify_for_user_type'] = $data['user_type_ref'];	
+					$nofifya[$count]['notify_for_project'] = $proj_id;
+					$nofifya[$count]['notify_for_proposal'] = $proposal_info[0]->tpp_id;
+					
+					// $user_info = $this->manage->get_user_info_by_id($data['user_id']);
+					
+					$nofifya[$count]['notify_user_ref'] = $user_id_request;
+					$nofifya[$count]['notify_user_type_ref'] = $user_type_request;
+					$nofifya[$count]['notify_text'] = 'Project Initiated for '.ucwords($project_info[0]->title);
+					$nofifya[$count++]['notify_time'] = date('Y-m-d H:i:s');
+				}
+			}
+			
+			if($request_db_type == 'initiate' && $user_id_request > 0 && $user_type_request == 3){
+				
+				$user_request_detail_info = $this->manage->get_user_base_info_by_id_and_type($user_id_request, $user_type_request);
+				$udata = array();
+				$udata['f_notification'] = $user_request_detail_info[0]->tfb_financier_notification;
+				$udata['p_notification'] = $user_request_detail_info[0]->tfb_provider_notification;
+								
+				if(!empty($user_request_detail_info) && ((isset($udata['f_notification']) && $udata['f_notification'] == 1 && $data['user_type_ref'] == 2) || (isset($udata['p_notification']) && $udata['p_notification'] == 1 && $data['user_type_ref'] == 1))){
+													
+					$nofifya[$count]['notify_type'] = 'beneficiary_initiate';
+					$nofifya[$count]['notify_id'] = time();
+					
+					$project_info = $this->plisting->get_project_info_by_id($proj_id);
+											
+					$nofifya[$count]['notify_for_user'] = $data['user_id'];
+					$nofifya[$count]['notify_for_user_type'] = $data['user_type_ref'];	
+					$nofifya[$count]['notify_for_project'] = $proj_id;
+					
+					if($data['user_type_ref'] == 1){
+						$proposal_info = $this->plisting->get_proposal_by_ref($proj_id, $data['user_id'], 'p');
+						$nofifya[$count]['notify_for_proposal'] = $proposal_info[0]->tpp_id;
+					}
+					
+					if($data['user_type_ref'] == 2){
+						$proposal_info = $this->plisting->get_proposal_by_ref($proj_id, $data['user_id'], 'f');
+						$nofifya[$count]['notify_for_proposal'] = $proposal_info[0]->tpf_id;
+					}
+					
+					// $user_info = $this->manage->get_user_info_by_id($data['user_id']);
+					
+					$nofifya[$count]['notify_user_ref'] = $user_id_request;
+					$nofifya[$count]['notify_user_type_ref'] = $user_type_request;
+					$nofifya[$count]['notify_text'] = 'Project Initiated for '.ucwords($project_info[0]->title);
+					$nofifya[$count++]['notify_time'] = date('Y-m-d H:i:s');
+				}
+			}
+			
+			if($request_db_type == 'reject' && $user_id_request > 0 && $user_type_request == 1){
+			
+				$user_request_detail_info = $this->manage->get_user_base_info_by_id_and_type($user_id_request, $user_type_request);
+				$udata = array();
+				$udata['b_notification'] = $user_request_detail_info[0]->tfsp_benif_notification;
+				
+				if(!empty($user_request_detail_info) && (isset($udata['b_notification']) && $udata['b_notification'] == 1)){
+													
+					$nofifya[$count]['notify_type'] = 'supplier_initiate';
+					$nofifya[$count]['notify_id'] = time();
+					
+					$project_info = $this->plisting->get_project_info_by_id($proj_id);
+					$proposal_info = $this->plisting->get_proposal_by_ref($proj_id, $user_id_request, 'p');
+							
+					$nofifya[$count]['notify_for_user'] = $data['user_id'];
+					$nofifya[$count]['notify_for_user_type'] = $data['user_type_ref'];	
+					$nofifya[$count]['notify_for_project'] = $proj_id;
+					$nofifya[$count]['notify_for_proposal'] = $proposal_info[0]->tpp_id;
+					
+					// $user_info = $this->manage->get_user_info_by_id($data['user_id']);
+					
+					$nofifya[$count]['notify_user_ref'] = $user_id_request;
+					$nofifya[$count]['notify_user_type_ref'] = $user_type_request;
+					$nofifya[$count]['notify_text'] = 'Delivery rejected for '.ucwords($project_info[0]->title).' of Delivery No #'.$proposal_info[0]->tpp_shipment_number;
+					$nofifya[$count++]['notify_time'] = date('Y-m-d H:i:s');
+				}
+				
+			}
 						
 			$this->plisting->request_complete_project($proj_id, $data['user_id'], $data['user_type_ref'], $user_id_request, $user_type_request, $request_db_type);
 		}
@@ -682,6 +788,31 @@ class Smartcontract extends CI_Controller {
 								$data_add['tpf_beneficiary_accept_project_completion_request'] = 1;
 							}
 						}
+						
+						$user_request_detail_info = $this->manage->get_user_base_info_by_id_and_type($rfusersa[$i], 2);
+						$udata = array();
+						$udata['b_notification'] = $user_request_detail_info[0]->tff_benif_notification;
+				
+						if(!empty($user_request_detail_info) && (isset($udata['b_notification']) && $udata['b_notification'] == 1)){
+															
+							$nofifya[$count]['notify_type'] = 'financier_initiate';
+							$nofifya[$count]['notify_id'] = time();
+							
+							$project_info = $this->plisting->get_project_info_by_id($request_project_id);
+							$proposal_info = $this->plisting->get_proposal_by_ref($request_project_id, $rfusersa[$i], 'f');
+									
+							$nofifya[$count]['notify_for_user'] = $data['user_id'];
+							$nofifya[$count]['notify_for_user_type'] = $data['user_type_ref'];	
+							$nofifya[$count]['notify_for_project'] = $request_project_id;
+							$nofifya[$count]['notify_for_proposal'] = $proposal_info[0]->tpp_id;
+							
+							// $user_info = $this->manage->get_user_info_by_id($data['user_id']);
+							
+							$nofifya[$count]['notify_user_ref'] = $rfusersa[$i];
+							$nofifya[$count]['notify_user_type_ref'] = 2;
+							$nofifya[$count]['notify_text'] = 'Project Initiated for '.ucwords($project_info[0]->title);
+							$nofifya[$count++]['notify_time'] = date('Y-m-d H:i:s');
+						}
 											
 						$this->plisting->update_financer_proposal_by_project_and_user($request_project_id, $rfusersa[$i], 2, $data_add);
 					}
@@ -722,6 +853,10 @@ class Smartcontract extends CI_Controller {
 				$data_add['tpf_beneficiary_accept_project_completion_request'] = 2;
 				$this->plisting->update_financer_proposal_by_project_and_user($request_project_id, 0, 2, $data_add);
 			}	
+		}
+		
+		if(!empty($nofifya) && sizeof($nofifya) <> 0){
+			$this->notification->save_notification($nofifya);
 		}
 				
 		if($request_action == 'request_message_financier' && $request_project_id > 0 && $data['user_id'] <> 0 && $request_user_id > 0 && $request_user_type == 2){
@@ -856,12 +991,6 @@ class Smartcontract extends CI_Controller {
 				
 		if($data['user_id'] <> 0){ 
 				
-			$options = array();
-			$options['user_id'] = $data['user_id'];
-			$options['user_type'] = $data['user_type_ref'];
-			
-			$data['notifications'] = get_notification_status($options);
-			
 			$data['check_company']  = $this->manage->get_company_info_by_uid($data['user_id']);
 			
 			$ucresult = $this->manage->get_company_info_by_uid($data['user_id']);
@@ -1355,12 +1484,14 @@ class Smartcontract extends CI_Controller {
 					
 					foreach($data["beneficiary_financier_accepted"] as $bfa){
 						
-						$ratinga = $this->plisting->get_user_rating_by_uid_type($bfa->tff_user_ref, 2);
-						
-						if(!empty($ratinga) && is_array($ratinga) && sizeof($ratinga) <> 0){
-							$data["beneficiary_financier_accepted"]["urating"][$bfa->tff_user_ref] = $ratinga[0]->tfur_rating_value;
-						}else{	
-							$data["beneficiary_financier_accepted"]["urating"][$bfa->tff_user_ref] = 0;
+						if(!empty($bfa)){
+							$ratinga = $this->plisting->get_user_rating_by_uid_type($bfa->tpf_user_ref, 2);
+							
+							if(!empty($ratinga) && is_array($ratinga) && sizeof($ratinga) <> 0){
+								$data["beneficiary_financier_accepted"]["urating"][$bfa->tpf_user_ref] = $ratinga[0]->tfur_rating_value;
+							}else{	
+								$data["beneficiary_financier_accepted"]["urating"][$bfa->tpf_user_ref] = 0;
+							}
 						}
 					}
 				}
