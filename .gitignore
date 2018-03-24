@@ -1,6 +1,8 @@
-*/assets/*
-*/application/config/*
-*/application/log/*
-*/ca/assets/*
-*/ca/application/config/*
-*/ca/application/log/*
+assets/*
+application/cache/*
+application/config/*
+application/log/*
+ca/assets/*
+ca/application/cache/*
+ca/application/config/*
+ca/application/log/*
