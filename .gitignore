@@ -1,8 +1,10 @@
 assets/*
 application/cache/*
+application/views/includes/*
 application/config/*
 application/log/*
 ca/assets/*
 ca/application/cache/*
+ca/application/views/includes/*
 ca/application/config/*
 ca/application/log/*
