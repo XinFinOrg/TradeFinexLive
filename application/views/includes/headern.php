@@ -5,7 +5,7 @@
 <!--<![endif]-->
 <head>
     <meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, Mozilla/5.0, AppleWebKit/536.8, Chrome/19.0.1084.36, Safari/536.8" />
 	<meta name="Souvik Saha" content="sahasouvik9@gmail.com" />
 	<meta name="Arpan Saha" content="iksen" />
 	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
