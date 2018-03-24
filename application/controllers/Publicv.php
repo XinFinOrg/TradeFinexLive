@@ -488,11 +488,11 @@ class Publicv extends CI_Controller {
 				$this->manage->add_subscription($data_add);
 				
 			   	$this->session->set_flashdata("sub_email_action", $this->input->post('action_area'));
-				$this->session->set_flashdata("sub_email_sent", "<font class='sub_msg alert' color='orange' style='float:left;margin-top:5px;padding:0px;font-size:12px;'>Thank you for Your subscription to us.</font>"); 
+				$this->session->set_flashdata("sub_email_sent", "<font class='sub_msg alert' color='orange' style='float:left;margin-top:5px;padding:0px;font-size:12px;margin-bottom: 0px;'>Thank you for Your subscription to us.</font>"); 
 			}	
 			else{ 
 			    $this->session->set_flashdata("sub_email_action", $this->input->post('action_area'));
-				$this->session->set_flashdata("sub_email_sent", "<font class='sub_msg alert' color='red' style='float:left;margin-top:5px;padding:0px;font-size:12px;'>Error in sending Email. Please try again.</font>"); 
+				$this->session->set_flashdata("sub_email_sent", "<font class='sub_msg alert' color='red' style='float:left;margin-top:5px;padding:0px;font-size:12px;margin-bottom: 0px;'>Error in sending Email. Please try again.</font>"); 
 			}
 		}
 		
