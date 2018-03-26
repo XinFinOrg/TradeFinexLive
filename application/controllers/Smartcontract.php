@@ -7,7 +7,7 @@ class Smartcontract extends CI_Controller {
 		parent::__construct();
         $this->load->helper(array('form', 'url', 'date', 'xdcapi', 'rating', 'notification'));
 		$this->load->library(array('session', 'curl'));
-		$this->load->model(array('manage', 'plisting'));
+		$this->load->model(array('manage', 'plisting', 'notification'));
 		$this->is_logged_in();
 		
 		$data = array();
@@ -804,7 +804,7 @@ class Smartcontract extends CI_Controller {
 							$nofifya[$count]['notify_for_user'] = $data['user_id'];
 							$nofifya[$count]['notify_for_user_type'] = $data['user_type_ref'];	
 							$nofifya[$count]['notify_for_project'] = $request_project_id;
-							$nofifya[$count]['notify_for_proposal'] = $proposal_info[0]->tpp_id;
+							$nofifya[$count]['notify_for_proposal'] = $proposal_info[0]->tpf_id;
 							
 							// $user_info = $this->manage->get_user_info_by_id($data['user_id']);
 							

@@ -142,9 +142,17 @@
 									$fcount = 0;
 									
 									foreach($beneficiary_financier_accepted as $bfa_row){
-									
-										$uoprofpic = $bfa_row->tff_pic_file;
-										 
+										// echo '<pre>';
+										// print_r($bfa_row);
+										
+										if(isset($bfa_row) && !empty($bfa_row) && sizeof($bfa_row) <> 0){
+										
+										$uoprofpic ='';
+										
+										if(isset($bfa_row->tff_pic_file)){
+											$uoprofpic = $bfa_row->tff_pic_file;
+										}
+										
 										if($uoprofpic && $uoprofpic <> ''){
 										
 											$uoprofpica = explode('.', $uoprofpic);
@@ -155,7 +163,7 @@
 											$uoprof_pic = $uoprofpic;
 										}
 									
-									if($bfa_row->tpf_total_amount > 0 && $bfa_row->tpf_total_amount <> ''){
+									if(isset($bfa_row->tpf_total_amount) && $bfa_row->tpf_total_amount > 0 && $bfa_row->tpf_total_amount <> ''){
 							?>
 								
 								<div class="similar_area">
@@ -261,7 +269,9 @@
 										</div>
 									</div>
 								</div>
-							<?php 		}
+							<?php 			}
+							
+										}
 									}
 									
 								}else{ 
