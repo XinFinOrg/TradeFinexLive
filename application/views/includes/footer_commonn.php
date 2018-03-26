@@ -280,14 +280,16 @@
 			?>
 			
 				$('#easyPaginate').paginate({
-				perPage: 6
+					perPage: 6
+				});
+				
+				$('#mmob').intlTelInput();
+				
+				$('#defaultReal').realperson();
 				
 			<?php } ?>	
-		});
-							
+									
 		</script>
-		
-		
-		
+			
 		<script src="<?=base_url('assets/js/page_js/footer_common.js');?>"></script>
 	

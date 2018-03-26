@@ -352,9 +352,7 @@
 				$('header').removeClass("sticky_header");
 			}
 		});
-		
-		$('#defaultReal').realperson();
-		
+				
 	    var captchav = $('#defaultReal').attr('captchav');
 		
 		if (typeof captchav === "undefined") {
@@ -364,9 +362,7 @@
 		    var decryptval = CryptoJS.AES.decrypt($('#defaultReal').attr('captchav'), "/"+5381).toString(CryptoJS.enc.Utf8);
 		    $('#captcha_val').val(decryptval);
         }
-									
-	    $('#mmob').intlTelInput();
-	    
+			    
 		$("#contact-form").validate({
 			rules: {
 				mname: {
