@@ -209,6 +209,8 @@
 		
 		<!-- Lazy Loading -->
 		<script src="<?=base_url('assets/js/slick.js');?>"></script>
+		<script src="<?=base_url('assets/js/form-validator/jquery.form-validator.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/form-validator/jquery.validate.min.js');?>"></script>
 		
 		<?php if(uri_string()){ ?>
 		
@@ -221,9 +223,7 @@
 		<!-- Form Validations -->
 		
 		<script src="<?=base_url('assets/js/intlTelInput.min.js');?>"></script> 
-		<script src="<?=base_url('assets/js/form-validator/jquery.form-validator.min.js');?>"></script>
-		<script src="<?=base_url('assets/js/form-validator/jquery.validate.min.js');?>"></script>
-		
+				
 		<!-- captha -->
 		<script src="<?=base_url('assets/js/captcha/jquery.plugin.min.js');?>"></script>
 		<script src="<?=base_url('assets/js/captcha/jquery.realperson.min.js');?>"></script>
