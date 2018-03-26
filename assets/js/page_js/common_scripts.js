@@ -72,7 +72,6 @@
 		  return this.optional( element ) || /^\+\d{1,4}\s\d{6,14}$/.test( value );
 		}, 'Please enter a valid mobile number');
 		
-		
 		// Validate signup form on keyup and submit
 		$("#signupForm").validate({
 			rules: {
@@ -261,8 +260,10 @@
 			}
 			
 		});
-		
+				
 		$('.show-hide').bind('click', function(){
+		
+			
 					
 			if($(this).parent().hasClass('attrshow')){
 				$(this).parent().removeClass('attrshow');
@@ -307,9 +308,6 @@
 			
 		});
 		
-		$('#easyPaginate').paginate({
-			perPage: 6
-		});
 		
 		$('.read_more_click').unbind('click').bind('click', function(){
 			
