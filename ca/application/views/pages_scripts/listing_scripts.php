@@ -667,8 +667,8 @@
 				$(this).parent().find( ".imgupload.ok" ).hide("slow");
 				$(this).parent().find( ".imgupload.stop" ).show("slow");
 			  
-				$(this).find('.namefile').css({"color":"red"});
-				$(this).find('.namefile').html("File "+filename+" is not valid !");
+				$(this).parent().find('.namefile').css({"color":"red"});
+				$(this).parent().find('.namefile').html("File "+filename+" is not valid !");
 				
 			}else{
 				/* if file is valid we show the green alert and show the valid submit */
