@@ -47,6 +47,11 @@
 		  return this.optional( element ) || /^([a-zA-Z]?)([a-zA-Z0-9\-]{2,})*$/.test( value );
 		}, 'The text must start with a letter'); 
 		
+		jQuery.validator.addMethod("startsLetterWithDot", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		  return this.optional( element ) || /^([a-zA-Z]?)([a-zA-Z0-9\-\.\s])*$/.test( value );
+		}, 'The text must start with a letter Accepts letter and numbers. Not accepts any special characters except[.-]'); 
+		
 		jQuery.validator.addMethod("numberOnly", function(value, element) {
 		  // allow any non-whitespace characters as the host part
 		  return this.optional( element ) || /^[0-9\s]+$/.test( value );
@@ -1176,8 +1181,8 @@
 			rules: {
 				rmsg_detail: {
 					required: true,
-					startsLetterOnly: true,
-					minlength: 40,
+					startsLetterWithDot: true,
+					minlength: 40
 				}
 			},	
 			messages: {
