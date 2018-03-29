@@ -239,13 +239,16 @@
 												
 												if(!empty($project_files) && sizeof($project_files) <> 0){ 
 													for($i=0; $i < sizeof($project_files); $i++){
+													
+														if($project_files[$i]->tppf_row_deleted == 0){
 											?>
 													<tr>
 														<td><?=$count;?></td>
 														<td><?='Project Document '.$count++;?></td>
 														<td class="text-center"><a  target="_blank" href="<?=base_url('assets/project_post_files/'.$project_files[$i]->tppf_filename);?>"><i class="fa fa-download" aria-hidden="true"></i></a></td>
 													</tr>	
-											<?php } 
+											<?php 		}
+													} 
 												}else{
 													echo '<tr><td colspan="3" class="text-center">No Project Documents Found</td></tr>';
 												}

@@ -1880,6 +1880,7 @@ class Listing extends CI_Controller {
 				$pfilesCount = count($this->input->post('pdocname'));
 				$pfilesA = $this->input->post('pdocname');
 				$pdoc_id = $this->input->post('pdoc_id');
+				$row_id = $result[0]->ID;
 				
 				if($pfilesCount > 0){
 				
@@ -1908,9 +1909,24 @@ class Listing extends CI_Controller {
 						if($uploadData[$i]['file_name'] != ''){
 						
 							$file_namea = explode('.', $uploadData[$i]['file_name']);
-												
-							$file_row = $this->plisting->update_project_file_by_id($pdoc_id[$i], $data_add_file);
 							
+							if(trim($pdoc_id[$i]) == '' || $pdoc_id[$i] == 0){
+								$data_add_file['tppf_project_ref'] = $result[0]->ID;
+								$data_add_file['tppf_file_index'] = ($i+1);
+								
+								$presult = $this->plisting->get_project_file_by_ref_and_index($row_id, $data_add_file['tppf_file_index']);
+								
+								if(!empty($presult) && is_array($presult) && sizeof($presult) <> 0){
+									$this->plisting->update_project_file_by_id($presult[0]->tppf_id, $data_add_file);
+									$pdoc_id[$i] = $presult[0]->tppf_id;
+								}else{
+									$pdoc_id[$i] = $file_row = $this->plisting->add_project_file_by_id($row_id, $data_add_file);
+								}
+							}else{
+
+								$file_row = $this->plisting->update_project_file_by_id($pdoc_id[$i], $data_add_file);
+							}
+														
 							$data_add_file = array();
 							$data_add_file['tppf_filename'] = $pdoc_id[$i].'_'.$row_id.'_project_'.($i+1).'.'.end($file_namea);
 							

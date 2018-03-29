@@ -179,29 +179,73 @@
 									</div>
 								</div>
 								<div class="row sec_row">
-									<div class="col-md-3 col-sm-3 col-xs-12">
-										<div class="form-group">
-											<h5 class="project_attachment">Attachments (Optional)</h5>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-4 col-xs-12">
-										<div class="form-group">
-											<div class="browse_file custom_fileup">
-												<label for="file-upload" class="custom-file-upload">Browse File </label>
-												<label class="imgupload ok"><i class="fa fa-check"></i></label>
-												<label class="imgupload stop"><i class="fa fa-times"></i></label>
-												<label id="namefile"><!--[jpg,jpeg,png,doc,docx,xls,xlsx,pdf,txt]-->
-												<?php 
-													if($pattachf !== ''){
-														echo '<a href="'.base_url().'assets/project_proposals/'.$pattachf.'" target="_blank" title="Download file" style="margin: 5px;font-size: 11px;"><i class="fa fa-download"></i>&nbsp;Proposal Attachment</a>';
-													}
-												?>
-												</label>
-												<input id="pdoc" name="pattach" type="file" />
-												<input type="hidden" name="pattachf" value="<?=$pattachf ?>" />
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<div class="form-group">
+												<h5 class="project_attachment">Attachments (Optional)</h5>
+												<span class="file_remove_msg" style="display:none;color:red;font-size: 12px;">File Deleted Successfully !</span>
 											</div>
 										</div>
 									</div>
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<div class="form-group">
+												<div class="browse_file custom_fileup">
+													<label for="file-upload" class="custom-file-upload">Browse File </label>
+													<label class="imgupload ok"><i class="fa fa-check"></i></label>
+													<label class="imgupload stop"><i class="fa fa-times"></i></label>
+													<label id="namefile_1" class="namefile"><!--[jpg,jpeg,png,doc,docx,xls,xlsx,pdf,txt]-->
+													<?php 
+														if(!empty($proposal_files) && isset($proposal_files[0]) && sizeof($proposal_files[0]) <> 0 && isset($proposal_files[0]->tpssf_row_deleted) && $proposal_files[0]->tpssf_row_deleted == 0){
+															echo '<div> <a href="'.base_url().'assets/project_proposals/'.$proposal_files[0]->tpssf_filename.'" target="_blank" title="Download file" ><i class="fa fa-download"></i>&nbsp;Proposal Document 1</a> <span style="cursor:pointer;font-size: 17px;" class="remove_proposal_file" fileid="'.$proposal_files[0]->tpssf_id.'"> <i class="fa fa-times"></i></span></div>';
+														} 
+													?>
+													</label>
+													<input id="pdoc_1" name="pdoc[]" class="pdoc" type="file" />
+													<input type="hidden" name="pdocname[]" value="<?=((!empty($proposal_files) && isset($proposal_files[0]) && sizeof($proposal_files[0]) <> 0 && isset($proposal_files[1]->tpssf_filename)) ? $proposal_files[0]->tpssf_filename : '');?>" />
+													<input type="hidden" name="pdoc_id[]" value="<?=((!empty($proposal_files) && isset($proposal_files[0]) && sizeof($proposal_files[0]) <> 0 && isset($proposal_files[0]->tpssf_id)) ? $proposal_files[0]->tpssf_id : '');?>" />
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<div class="form-group">
+												<div class="browse_file custom_fileup">
+													<label for="file-upload" class="custom-file-upload">Browse File </label>
+													<label class="imgupload ok"><i class="fa fa-check"></i></label>
+													<label class="imgupload stop"><i class="fa fa-times"></i></label>
+													<label id="namefile_2" class="namefile"><!--[jpg,jpeg,png,doc,docx,xls,xlsx,pdf,txt]-->
+													<?php 
+														if(!empty($proposal_files) && isset($proposal_files[1]) && sizeof($proposal_files[1]) <> 0 && isset($proposal_files[1]->tpssf_row_deleted) && $proposal_files[1]->tpssf_row_deleted == 0){
+															echo '<div> <a href="'.base_url().'assets/project_proposals/'.$proposal_files[1]->tpssf_filename.'" target="_blank" title="Download file" ><i class="fa fa-download"></i>&nbsp;Proposal Document 2</a> <span style="cursor:pointer;font-size: 17px;" class="remove_proposal_file" fileid="'.$proposal_files[1]->tpssf_id.'"> <i class="fa fa-times"></i></span></div>';
+														} 
+													?>
+													</label>
+													<input id="pdoc_2" name="pdoc[]" class="pdoc" type="file" />
+													<input type="hidden" name="pdocname[]" value="<?=((!empty($proposal_files) && isset($proposal_files[1]) && sizeof($proposal_files[1]) <> 0 && isset($proposal_files[1]->tpssf_filename)) ? $proposal_files[1]->tpssf_filename : '');?>" />
+													<input type="hidden" name="pdoc_id[]" value="<?=((!empty($proposal_files) && isset($proposal_files[1]) && sizeof($proposal_files[1]) <> 0 && isset($proposal_files[1]->tpssf_id)) ? $proposal_files[1]->tpssf_id : '');?>" />
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<div class="form-group">
+												<div class="browse_file custom_fileup">
+													<label for="file-upload" class="custom-file-upload">Browse File </label>
+													<label class="imgupload ok"><i class="fa fa-check"></i></label>
+													<label class="imgupload stop"><i class="fa fa-times"></i></label>
+													<label id="namefile_3" class="namefile"><!--[jpg,jpeg,png,doc,docx,xls,xlsx,pdf,txt]-->
+													<?php 
+														if(!empty($proposal_files) && isset($proposal_files[2]) && sizeof($proposal_files[2]) <> 0 && isset($proposal_files[2]->tpssf_row_deleted) && $proposal_files[2]->tpssf_row_deleted == 0){
+															echo '<div> <a href="'.base_url().'assets/project_proposals/'.$proposal_files[2]->tpssf_filename.'" target="_blank" title="Download file" ><i class="fa fa-download"></i>&nbsp;Proposal Document 3</a> <span style="cursor:pointer;font-size: 17px;" class="remove_proposal_file" fileid="'.$proposal_files[2]->tpssf_id.'"> <i class="fa fa-times"></i></span></div>';
+														} 
+													?>
+													</label>
+													<input id="pdoc_3" name="pdoc[]" class="pdoc" type="file" />
+													<input type="hidden" name="pdocname[]" value="<?=((!empty($proposal_files) && isset($proposal_files[2]) && sizeof($proposal_files[2]) <> 0 && isset($proposal_files[2]->tpssf_filename)) ? $proposal_files[2]->tpssf_filename : '');?>" />
+													<input type="hidden" name="pdoc_id[]" value="<?=((!empty($proposal_files) && isset($proposal_files[2]) && sizeof($proposal_files[2]) <> 0 && isset($proposal_files[2]->tpssf_id)) ? $proposal_files[2]->tpssf_id : '');?>" />
+												</div>
+											</div>
+										</div>
+									</div>	
 								</div>
 							</div>
 							<div class="button_group_sec">

@@ -710,6 +710,34 @@
 		
 		});
 		
+		$('.remove_proposal_file').unbind('click').bind('click', function(){
+			
+			var file_row_id = $(this).attr('fileid');
+			var obj = $(this);
+			
+			$.ajax({
+				url : '<?=base_url();?>project/remove_proposal_file',
+				method: 'POST',
+				data: {
+				   frow_id: file_row_id,
+				   action: 'remove_file_supplier',
+				  '<?=$csrf['name'];?>': '<?=$csrf['hash'];?>'
+				},
+				success: function( data ) {
+					var arr = $.parseJSON(data);	
+					
+					if(arr['status'] == 1){
+						$(obj).parent().remove();
+						$('.file_remove_msg').show();
+						setTimeout(function(){ $('.file_remove_msg').hide(); }, 7000);
+					}
+					
+					click_handler();
+				}
+			});	
+		
+		});
+		
 		$('.poverview').unbind('click').bind('click', function(){
 		
 			$('.overview_content').show();

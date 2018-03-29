@@ -241,7 +241,20 @@
 												<tr>
 													<td class="bold">Proposal document</td>
 													<td>:</td>
-													<td><?=(($pattachf) ? '<a target="_blank" href="'.base_url().'assets/project_proposals/'.$pattachf.'"> <span><i class="fa fa-cloud-download"></i></span> Downnload File</a>' : '' );?></td>
+													<td>
+													<?php
+														
+														if(!empty($proposal_files) && sizeof($proposal_files) <> 0){ 
+														
+															for($i=0; $i < sizeof($proposal_files); $i++){
+																$count = 1;
+																if($proposal_files[$i]->tpssf_row_deleted == 0){
+																																		
+																	echo (($proposal_files[$i]->tpssf_filename) ? '<a target="_blank" href="'.base_url().'assets/project_proposals/'.$proposal_files[$i]->tpssf_filename.'"> <span><i class="fa fa-cloud-download"></i></span> Download File '.$count++.'</a><br/>' : '' );
+																}
+															}
+														}	
+													?>
 												</tr>
 											</tbody>
 										</table>

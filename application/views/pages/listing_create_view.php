@@ -188,14 +188,14 @@
 											
 											<label id="namefile_1" class="namefile"><!--[jpg,jpeg,png,doc,docx,xls,xlsx,pdf,txt]-->
 											<?php 
-												if(!empty($project_files) && isset($project_files[0]) && sizeof($project_files[0]) <> 0){
+												if(!empty($project_files) && isset($project_files[0]) && sizeof($project_files[0]) <> 0 && isset($project_files[0]->tppf_row_deleted) && $project_files[0]->tppf_row_deleted == 0){
 													echo '<div> <a href="'.base_url().'assets/project_post_files/'.$project_files[0]->tppf_filename.'" target="_blank" title="Download file" ><i class="fa fa-download"></i>&nbsp;Project Document 1</a> <span style="cursor:pointer;font-size: 17px;" class="remove_project_file" fileid="'.$project_files[0]->tppf_id.'"> <i class="fa fa-times"></i></span></div>';
 												} 
 											?>
 											</label>
 											<input id="pdoc_1" name="pdoc[]" class="pdoc" type="file" />
-											<input type="hidden" name="pdocname[]" value="<?=((!empty($project_files) && isset($project_files[0]) && sizeof($project_files[0]) <> 0) ? $project_files[0]->tppf_filename : '');?>" />
-											<input type="hidden" name="pdoc_id[]" value="<?=((!empty($project_files) && isset($project_files[0]) && sizeof($project_files[0]) <> 0) ? $project_files[0]->tppf_id : '');?>" />
+											<input type="hidden" name="pdocname[]" value="<?=((!empty($project_files) && isset($project_files[0]) && sizeof($project_files[0]) <> 0 && isset($project_files[0]->tppf_filename)) ? $project_files[0]->tppf_filename : '');?>" />
+											<input type="hidden" name="pdoc_id[]" value="<?=((!empty($project_files) && isset($project_files[0]) && sizeof($project_files[0]) <> 0 && isset($project_files[0]->tppf_id)) ? $project_files[0]->tppf_id : '');?>" />
 										</div>
 									</div>
 								</div>
@@ -208,14 +208,14 @@
 											
 											<label id="namefile_2" class="namefile"><!--[jpg,jpeg,png,doc,docx,xls,xlsx,pdf,txt]-->
 											<?php 
-												if(!empty($project_files) && isset($project_files[1]) && sizeof($project_files[1]) <> 0){
+												if(!empty($project_files) && isset($project_files[1]) && sizeof($project_files[1]) <> 0 && isset($project_files[1]->tppf_row_deleted) && $project_files[1]->tppf_row_deleted == 0){
 													echo '<div> <a href="'.base_url().'assets/project_post_files/'.$project_files[1]->tppf_filename.'" target="_blank" title="Download file" ><i class="fa fa-download"></i>&nbsp;Project Document 2 </a> <span style="cursor:pointer;font-size: 17px;" class="remove_project_file" fileid="'.$project_files[1]->tppf_id.'"> <i class="fa fa-times"></i></span></div>';
 												} 
 											?>
 											</label>
 											<input id="pdoc_2" name="pdoc[]" class="pdoc" type="file" />
-											<input type="hidden" name="pdocname[]" value="<?=((!empty($project_files) && isset($project_files[1]) && sizeof($project_files[1]) <> 0) ? $project_files[1]->tppf_filename : '');?>" />
-											<input type="hidden" name="pdoc_id[]" value="<?=((!empty($project_files) && isset($project_files[1]) && sizeof($project_files[1]) <> 0) ? $project_files[1]->tppf_id : '');?>" />
+											<input type="hidden" name="pdocname[]" value="<?=((!empty($project_files) && isset($project_files[1]) && sizeof($project_files[1]) <> 0 && isset($project_files[1]->tppf_filename)) ? $project_files[1]->tppf_filename : '');?>" />
+											<input type="hidden" name="pdoc_id[]" value="<?=((!empty($project_files) && isset($project_files[1]) && sizeof($project_files[1]) <> 0 && isset($project_files[1]->tppf_id)) ? $project_files[1]->tppf_id : '');?>" />
 										</div>
 									</div>
 								</div>
@@ -228,14 +228,14 @@
 											
 											<label id="namefile_3" class="namefile"><!--[jpg,jpeg,png,doc,docx,xls,xlsx,pdf,txt]-->
 											<?php 
-												if(!empty($project_files) && isset($project_files[2]) && sizeof($project_files[2]) <> 0){
+												if(!empty($project_files) && isset($project_files[2]) && sizeof($project_files[2]) <> 0 && isset($project_files[2]->tppf_row_deleted) && $project_files[2]->tppf_row_deleted == 0){
 													echo '<div> <a href="'.base_url().'assets/project_post_files/'.$project_files[2]->tppf_filename.'" target="_blank" title="Download file" ><i class="fa fa-download"></i>&nbsp;Project Document 3 </a> <span style="cursor:pointer;font-size: 17px;" class="remove_project_file" fileid="'.$project_files[2]->tppf_id.'"> <i class="fa fa-times"></i></span></div>';
 												} 
 											?>
 											</label>
 											<input id="pdoc_3" name="pdoc[]" class="pdoc" type="file" />
-											<input type="hidden" name="pdocname[]" value="<?=((!empty($project_files) && isset($project_files[2]) && sizeof($project_files[2]) <> 0) ? $project_files[2]->tppf_filename : '');?>" />
-											<input type="hidden" name="pdoc_id[]" value="<?=((!empty($project_files) && isset($project_files[2]) && sizeof($project_files[2]) <> 0) ? $project_files[2]->tppf_id : '');?>" />
+											<input type="hidden" name="pdocname[]" value="<?=((!empty($project_files) && isset($project_files[2]) && sizeof($project_files[2]) <> 0 && isset($project_files[2]->tppf_filename)) ? $project_files[2]->tppf_filename : '');?>" />
+											<input type="hidden" name="pdoc_id[]" value="<?=((!empty($project_files) && isset($project_files[2]) && sizeof($project_files[2]) <> 0 && isset($project_files[2]->tppf_id)) ? $project_files[2]->tppf_id : '');?>" />
 										</div>
 									</div>
 								</div>

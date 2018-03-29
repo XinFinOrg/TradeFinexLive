@@ -656,7 +656,7 @@
 						
 			$this->db->select('*');
 			$this->db->from('{PRE}projects_post_files');
-			$where = "tppf_project_ref = '$id' AND tppf_row_deleted = 0";
+			$where = "tppf_project_ref = '$id'"; // AND tppf_row_deleted = 0
 			$this->db->where($where);
 			
 			$query = $this->db->get();
@@ -2452,6 +2452,21 @@
 			return $result = $query->result();
 		}
 		
+		public function get_project_file_by_ref_and_index($pref, $rowindx){
+			
+			$datan = array();
+			
+			$this->db->select('*');
+			
+			$this->db->from('{PRE}projects_post_files');
+			$where = "tppf_project_ref = '".$pref."' AND tppf_file_index = '".$rowindx."'";
+			
+			$this->db->where($where);
+			$query = $this->db->get();
+			
+			return $result = $query->result();
+		}
+		
 		public function add_project_file_by_id($proj_id, $data_add){
 			
 			$data = array();
@@ -2520,6 +2535,92 @@
 			}
 			
 			return $id;
+		}
+		
+		public function get_proposal_files_by_id($id, $type){
+		
+			$data = array();
+						
+			$this->db->select('*');
+			
+			if($type == 'p'){
+			
+				$this->db->from('{PRE}proposal_supplier_submitted_files');
+				$where = "tpssf_proposal_ref = '$id'"; // AND tpssf_row_deleted = 0
+				
+			}
+			
+			$this->db->where($where);
+			$query = $this->db->get();
+			
+			return $result = $query->result();
+		}
+		
+		public function get_proposal_file_by_ref_and_index($pref, $rowindx, $type){
+			
+			$datan = array();
+			
+			$this->db->select('*');
+			
+			if($type == 'p'){
+			
+				$this->db->from('{PRE}proposal_supplier_submitted_files');
+				$where = "tpssf_proposal_ref = '".$pref."' AND tpssf_file_index = '".$rowindx."'";
+			}
+			
+			$this->db->where($where);
+			
+			$query = $this->db->get();
+			
+			return $result = $query->result();
+		}
+		
+		public function get_proposal_file_by_id($id, $type){
+			
+			$datan = array();
+			
+			$this->db->select('*');
+			
+			if($type == 'p'){
+			
+				$this->db->from('{PRE}proposal_supplier_submitted_files');
+				$where = "tpssf_id = ".$id;
+			}
+			
+			$this->db->where($where);
+			
+			$query = $this->db->get();
+			
+			return $result = $query->result();
+		}
+		
+		public function add_proposal_file_by_id($prop_id, $data_add, $type){
+			
+			$data = array();
+			
+			if($type == 'p'){
+				
+				$this->db->insert('{PRE}proposal_supplier_submitted_files', $data_add); 
+			}
+			
+			$id = $this->db->insert_id();
+					
+			return $id;
+		
+		}
+		
+		public function update_proposal_file_by_id($id, $data_add, $type){
+			
+			$datan = array();
+			
+			if($type == 'p'){		
+			
+				$where = "tpssf_id = ".$id;
+				$this->db->where($where);
+				$this->db->update('{PRE}proposal_supplier_submitted_files', $data_add); 
+			}
+			
+			return $result = $this->get_proposal_file_by_id($id, $type);
 		}
 			
 		public function update_proposal_by_id($id, $data_add, $type){

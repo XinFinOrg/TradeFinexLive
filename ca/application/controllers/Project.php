@@ -498,6 +498,8 @@ class Project extends CI_Controller {
 			$ruser_type = 0;
 		}
 		
+		$data['proposal_files'] = array();
+		
 		$data['ruser_type'] = $ruser_type;
 		$data['units'] = $this->plisting->get_units();
 		$data['currency'] = $this->plisting->get_currency();
@@ -535,247 +537,306 @@ class Project extends CI_Controller {
 				$data['psleadtimeu'] = $presult[0]->tpp_delivery_lead_time_ref;
 				$data['pcommission'] = $presult[0]->tpp_completion_time_value;
 				$data['pcommissionu'] = $presult[0]->tpp_completion_time_ref;
-				$data['pattachf'] = $presult[0]->tpp_file;				
+				$data['pattachf'] = $presult[0]->tpp_file;		
+
+				$data['proposal_files'] = $this->plisting->get_proposal_files_by_id($presult[0]->tpp_id, 'p');
 			}	
 		}
 		
 		if($action == 'create_proposal' && $prow_id == 0 && $project_info && !empty($project_info) && is_array($project_info) && sizeof($project_info) <> 0){
-					
-			$file_name = time().str_replace(" ", "-", $_FILES["pattach"]['name']);
-			$config['file_name'] = $file_name;
-			$file_namea = explode('.', $file_name);
-            $this->load->library('upload', $config);
+		
+			$filesCount = count($_FILES['pdoc']['name']);
+			$uploadData = array();
+            
+			for($i = 0; $i < $filesCount; $i++){
 			
-			if(isset($_FILES["pattach"]['name']) && trim($_FILES["pattach"]['name']) <> ''){
+                $_FILES['pdocs']['name'] = $_FILES['pdoc']['name'][$i];
+                $_FILES['pdocs']['type'] = $_FILES['pdoc']['type'][$i];
+                $_FILES['pdocs']['tmp_name'] = $_FILES['pdoc']['tmp_name'][$i];
+                $_FILES['pdocs']['error'] = $_FILES['pdoc']['error'][$i];
+                $_FILES['pdocs']['size'] = $_FILES['pdoc']['size'][$i];
+
+				$file_name = time().str_replace(" ", "-", $_FILES["pdocs"]['name']);
+				$config['file_name'] = $file_name;
 				
-				if(!$this->upload->do_upload('pattach'))
-				{
-				   $data['msg'] = 'error';
-				   // $data['msg_extra'] = 'Error occurred during submission. <br/>'.$this->upload->display_errors();
-				   
-				   $data['msg_extra'] = "<h3>Proposal Submission Error</h3> <p>Oops! Error occurred during proposal submission. Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
+				$config['upload_path']          = FCPATH.'assets/project_proposals/';
+				$config['allowed_types']        = 'gif|jpg|jpeg|png|doc|docx|ppt|pptx|pps|xls|xlsx|pdf|txt|rtf';
+				// $config['max_size']             = 1048576;
+				// $config['max_width']           = 1024;
+				// $config['max_height']           = 1024;
+				
+				$this->load->library('upload', $config);
+                $this->upload->initialize($config);
+               
+				if(isset($_FILES["pdocs"]['name']) && trim($_FILES["pdocs"]['name']) <> ''){
+					
+					if($this->upload->do_upload('pdocs')){
+						$fileData = $this->upload->data();
+						$uploadData[$i]['file_name'] = $fileData['file_name'];
+						$uploadData[$i]['created'] = date("Y-m-d H:i:s");
+						$uploadData[$i]['modified'] = date("Y-m-d H:i:s");
+					}
 				}
-				else
-				{
-					$data_add = array();
+			}
+			
+			$data_add = array();
 							
-					$data_add['tpp_user_ref'] = $user['user_id'];
-					$data_add['tpp_project_ref'] = $this->input->post('row_id');
-					$data_add['tpp_price'] = $this->input->post('ppriceval');
-					$data_add['tpp_price_currency_ref'] = $this->input->post('pcurr');
-					$data_add['tpp_tax_percent'] = $this->input->post('ppricetax');
-					$data_add['tpp_total_amount'] = $this->input->post('ppricetot');
-					$data_add['tpp_validity_value'] = $this->input->post('pvalid');
-					$data_add['tpp_validity_ref'] = $this->input->post('pvalidu');
-					$data_add['tpp_validity_end_on'] = date('Y-m-d H:i:s', strtotime("+".intval($data_add['tpp_validity_value'])." days"));
-					// $data_add[''] = date('Y-m-d H:i:s', strtotime($this->input->post('')));
-					$data_add['tpp_delivery_type'] = $this->input->post('pdeliveryt');
-					$data_add['tpp_delivery_lead_time_value'] = $this->input->post('psleadtime');
-					$data_add['tpp_delivery_lead_time_ref'] = $this->input->post('psleadtimeu');
-					$data_add['tpp_remarks'] = $this->input->post('premarks');
-					$data_add['tpp_completion_time_value'] = $this->input->post('pcommission');
-					$data_add['tpp_completion_time_ref'] = $this->input->post('pcommissionu');
-					$data_add['tpp_project_user_ref'] = $project_info[0]->userID;
+			$data_add['tpp_user_ref'] = $user['user_id'];
+			$data_add['tpp_project_ref'] = $this->input->post('row_id');
+			$data_add['tpp_price'] = $this->input->post('ppriceval');
+			$data_add['tpp_price_currency_ref'] = $this->input->post('pcurr');
+			$data_add['tpp_tax_percent'] = $this->input->post('ppricetax');
+			$data_add['tpp_total_amount'] = $this->input->post('ppricetot');
+			$data_add['tpp_validity_value'] = $this->input->post('pvalid');
+			$data_add['tpp_validity_ref'] = $this->input->post('pvalidu');
+			$data_add['tpp_validity_end_on'] = date('Y-m-d H:i:s', strtotime("+".intval($data_add['tpp_validity_value'])." days"));
+			// $data_add[''] = date('Y-m-d H:i:s', strtotime($this->input->post('')));
+			$data_add['tpp_delivery_type'] = $this->input->post('pdeliveryt');
+			$data_add['tpp_delivery_lead_time_value'] = $this->input->post('psleadtime');
+			$data_add['tpp_delivery_lead_time_ref'] = $this->input->post('psleadtimeu');
+			$data_add['tpp_remarks'] = $this->input->post('premarks');
+			$data_add['tpp_completion_time_value'] = $this->input->post('pcommission');
+			$data_add['tpp_completion_time_ref'] = $this->input->post('pcommissionu');
+			$data_add['tpp_project_user_ref'] = $project_info[0]->userID;
+			
+			$result = $this->plisting->add_proposal($data_add, 'p');
+			
+			if($result && !empty($result) && $result > 0){
+								
+				for($i = 0; $i < $filesCount; $i++){
+							
+					if(is_array($uploadData) && !empty($uploadData) && !empty($uploadData[$i])){
 					
-					$result = $this->plisting->add_proposal($data_add, 'p');
+						$data_add_file = array();
+						$data_add_file['tpssf_proposal_ref'] = $result;
+						$data_add_file['tpssf_row_deleted'] = 0;
+						$data_add_file['tpssf_file_index'] = ($i+1);
+						$file_namea = explode('.', $uploadData[$i]['file_name']);
+						
+						$file_row = $this->plisting->add_proposal_file_by_id($result, $data_add_file, 'p');
+						
+						$data_add_file = array();
+						$data_add_file['tpssf_filename'] = $file_row.'_'.$result.'_proposal_supplier_'.($i+1).'.'.end($file_namea);
+						
+						$this->plisting->update_proposal_file_by_id($file_row, $data_add_file, 'p');
+						
+						rename(FCPATH.'assets/project_proposals/'.$uploadData[$i]['file_name'], FCPATH.'assets/project_proposals/'.$file_row.'_'.$result.'_proposal_supplier_'.($i+1).'.'.end($file_namea));
+					}
+			   	}
+				
+				$success_data = $this->upload->data();
+				$data['msg'] = 'success';
+				// $data['msg_extra'] = 'Proposal has been successfully submitted !';
+				
+				$data['msg_extra'] = "<h3>Proposal Submitted</h3> <p>Thank You! Proposal has been successfully submitted. Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
+				
+				$count = 0;
+				$prow_id = $this->input->post('row_id');
+				$proposal_id = $result;
+						
+				$user_project_info = $this->plisting->get_project_info_by_id($prow_id);
+				
+				if($user_project_info && !empty($user_project_info) && sizeof($user_project_info) <> 0){
 					
-					if($result && !empty($result) && $result > 0){
+					$data['f_notification'] = $user_project_info[0]->tfb_financier_notification;
+					$data['p_notification'] = $user_project_info[0]->tfb_provider_notification;
+					$data['pp_notification'] = $user_project_info[0]->tfb_project_post_visibility;
+					$data['ppex_notification'] = $user_project_info[0]->tfb_project_expiration_visibility;
+				
+					if($data['p_notification'] == 1){
+							
+						$nresult = $this->notification->get_proposal_provider_notification();
+													
+						$nofifya[$count]['notify_type'] = 'provider_proposal';
+						$nofifya[$count]['notify_id'] = time();
 						
-						$data_add = array();
-						$data_add['tpp_file'] = $result.'_proposal_provider.'.end($file_namea);
-						$this->plisting->update_proposal_by_id($result, $data_add, 'p');
+						$project_info = $this->plisting->get_project_info_by_id($prow_id);
 						
-						rename(FCPATH.'assets/project_proposals/'.$file_name, FCPATH.'assets/project_proposals/'.$result.'_proposal_provider.'.end($file_namea));
-						$success_data = $this->upload->data();
+						$nofifya[$count]['notify_for_user'] = $data['user_id'];
+						$nofifya[$count]['notify_for_user_type'] = $data['user_type_ref'];	
+						$nofifya[$count]['notify_for_project'] = $prow_id;
+						$nofifya[$count]['notify_for_proposal'] = $proposal_id;
 						
-						$data['msg'] = 'success';
-						// $data['msg_extra'] = 'Proposal has been successfully submitted !';
+						$user_info = $this->manage->get_user_info_by_id($data['user_id']);
 						
-						$data['msg_extra'] = "<h3>Proposal Submitted</h3> <p>Thank You! Proposal has been successfully submitted. Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
-						
-				   }else{
-					   
-					   unlink(FCPATH.'assets/project_proposals/'.$file_name);
-					   $data['msg'] = 'error';
-					   // $data['msg_extra'] = 'Error occurred during submission. Try again!';
-					   
-					   $data['msg_extra'] = "<h3>Proposal Submission Error</h3> <p>Oops! Error occurred during proposal submission. Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
-				   }
+						$nofifya[$count]['notify_user_ref'] = $user_project_info[0]->userID;
+						$nofifya[$count]['notify_user_type_ref'] = $user_project_info[0]->userType;
+						$nofifya[$count]['notify_text'] = 'Proposal from '.ucwords($user_info[0]->tfsp_fname.' '.$user_info[0]->tfsp_lname).'(Supplier)';
+						$nofifya[$count++]['notify_time'] = date('Y-m-d H:i:s');
+					}
 				}
-			}else{
 				
-				$data_add = array();
-							
-				$data_add['tpp_user_ref'] = $user['user_id'];
-				$data_add['tpp_project_ref'] = $this->input->post('row_id');
-				$data_add['tpp_price'] = $this->input->post('ppriceval');
-				$data_add['tpp_price_currency_ref'] = $this->input->post('pcurr');
-				$data_add['tpp_tax_percent'] = $this->input->post('ppricetax');
-				$data_add['tpp_total_amount'] = $this->input->post('ppricetot');
-				$data_add['tpp_validity_value'] = $this->input->post('pvalid');
-				$data_add['tpp_validity_ref'] = $this->input->post('pvalidu');
-				$data_add['tpp_validity_end_on'] = date('Y-m-d H:i:s', strtotime("+".intval($data_add['tpp_validity_value'])." days"));
-				// $data_add[''] = date('Y-m-d H:i:s', strtotime($this->input->post('')));
-				$data_add['tpp_delivery_type'] = $this->input->post('pdeliveryt');
-				$data_add['tpp_delivery_lead_time_value'] = $this->input->post('psleadtime');
-				$data_add['tpp_delivery_lead_time_ref'] = $this->input->post('psleadtimeu');
-				$data_add['tpp_remarks'] = $this->input->post('premarks');
-				$data_add['tpp_completion_time_value'] = $this->input->post('pcommission');
-				$data_add['tpp_completion_time_ref'] = $this->input->post('pcommissionu');
-				$data_add['tpp_project_user_ref'] = $project_info[0]->userID;
-				
-				$result = $this->plisting->add_proposal($data_add, 'p');
-								
-				if($result && !empty($result) && $result > 0){
+		   }else{
+		   
+				if($filesCount > 0){
+					for($i = 0; $i < $filesCount; $i++){
 					
-					$data['msg'] = 'success';
-					// $data['msg_extra'] = 'Proposal has been successfully submitted !';
-					
-					$data['msg_extra'] = "<h3>Proposal Submitted</h3> <p>Thank You! Proposal has been successfully submitted. Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
-					
-					$count = 0;
-					$prow_id = $this->input->post('row_id');
-					$proposal_id = $result;
-							
-					$user_project_info = $this->plisting->get_project_info_by_id($prow_id);
-					
-					if($user_project_info && !empty($user_project_info) && sizeof($user_project_info) <> 0){
-						
-						$data['f_notification'] = $user_project_info[0]->tfb_financier_notification;
-						$data['p_notification'] = $user_project_info[0]->tfb_provider_notification;
-						$data['pp_notification'] = $user_project_info[0]->tfb_project_post_visibility;
-						$data['ppex_notification'] = $user_project_info[0]->tfb_project_expiration_visibility;
-					
-						if($data['p_notification'] == 1){
-								
-							$nresult = $this->notification->get_proposal_provider_notification();
-														
-							$nofifya[$count]['notify_type'] = 'provider_proposal';
-							$nofifya[$count]['notify_id'] = time();
-							
-							$project_info = $this->plisting->get_project_info_by_id($prow_id);
-							
-							$nofifya[$count]['notify_for_user'] = $data['user_id'];
-							$nofifya[$count]['notify_for_user_type'] = $data['user_type_ref'];	
-							$nofifya[$count]['notify_for_project'] = $prow_id;
-							$nofifya[$count]['notify_for_proposal'] = $proposal_id;
-							
-							$user_info = $this->manage->get_user_info_by_id($data['user_id']);
-							
-							$nofifya[$count]['notify_user_ref'] = $user_project_info[0]->userID;
-							$nofifya[$count]['notify_user_type_ref'] = $user_project_info[0]->userType;
-							$nofifya[$count]['notify_text'] = 'Proposal from '.ucwords($user_info[0]->tfsp_fname.' '.$user_info[0]->tfsp_lname).'(Supplier)';
-							$nofifya[$count++]['notify_time'] = date('Y-m-d H:i:s');
+						if(is_array($uploadData) && !empty($uploadData) && !empty($uploadData[$i])){
+							unlink(FCPATH.'assets/project_proposals/'.$uploadData[$i]['file_name']);
 						}
 					}
+				}
+				
+				// unlink(FCPATH.'assets/project_proposals/'.$file_name);
+				$data['msg'] = 'error';
+				// $data['msg_extra'] = 'Error occurred during submission. Try again!';
+			   
+				$data['msg_extra'] = "<h3>Proposal Submission Error</h3> <p>Oops! Error occurred during proposal submission. Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
+			}
 					
-				}else{
-					$data['msg'] = 'error';
-					// $data['msg_extra'] = 'Error occurred during submission. Try again!';
-					
-					$data['msg_extra'] = "<h3>Proposal Submission Error</h3> <p>Oops! Error occurred during proposal submission. Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
-				}		
-			}	
-			
 			if(!empty($nofifya) && sizeof($nofifya) <> 0){
 				$this->notification->save_notification($nofifya);
 			}
 		}
 		
 		if($action == 'update_proposal' && $prow_id <> 0){
-					
-			$file_name = time().str_replace(" ", "-", $_FILES["pattach"]['name']);
-			$config['file_name'] = $file_name;
-			$file_namea = explode('.', $file_name);
-            $this->load->library('upload', $config);
+		
+			$filesCount = count($_FILES['pdoc']['name']);
+            $uploadData = array();
 			
-			if(isset($_FILES["pattach"]['name']) && trim($_FILES["pattach"]['name']) <> ''){
+			for($i = 0; $i < $filesCount; $i++){
+								
+                $_FILES['updoc']['name'] = $_FILES['pdoc']['name'][$i];
+                $_FILES['updoc']['type'] = $_FILES['pdoc']['type'][$i];
+                $_FILES['updoc']['tmp_name'] = $_FILES['pdoc']['tmp_name'][$i];
+                $_FILES['updoc']['error'] = $_FILES['pdoc']['error'][$i];
+                $_FILES['updoc']['size'] = $_FILES['pdoc']['size'][$i];
+
+				$file_name = time().str_replace(" ", "-", $_FILES["updoc"]['name']);
+				$config['file_name'] = $file_name;
 				
-				if(!$this->upload->do_upload('pattach'))
-				{
-				   $data['msg'] = 'error';
-				   // $data['msg_extra'] = 'Error occurred during submission. <br/>'.$this->upload->display_errors();
-				   
-				   $data['msg_extra'] = "<h3>Proposal Submission Error</h3> <p>Oops! Error occurred during proposal submission. Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
+				$config['upload_path']          = FCPATH.'assets/project_proposals/';
+				$config['allowed_types']        = 'gif|jpg|jpeg|png|doc|docx|ppt|pptx|pps|xls|xlsx|pdf|txt|rtf';
+				// $config['max_size']             = 1048576;
+				// $config['max_width']           = 1024;
+				// $config['max_height']           = 1024;
+				
+				$this->load->library('upload', $config);
+                $this->upload->initialize($config);
+               
+				if(isset($_FILES["updoc"]['name']) && trim($_FILES["updoc"]['name']) <> ''){
+					
+					if($this->upload->do_upload('updoc')){
+						$fileData = $this->upload->data();
+						$uploadData[$i]['file_name'] = $fileData['file_name'];
+						$uploadData[$i]['created'] = date("Y-m-d H:i:s");
+						$uploadData[$i]['modified'] = date("Y-m-d H:i:s");
+					}
+				}else{
+					$uploadData[$i]['file_name'] = '';
+					$uploadData[$i]['created'] = '';
+					$uploadData[$i]['modified'] = '';
 				}
-				else
-				{
-					$data_add = array();
+			}
+			
+			$data_add = array();
 							
-					$data_add['tpp_price'] = $this->input->post('ppriceval');
-					$data_add['tpp_price_currency_ref'] = $this->input->post('pcurr');
-					$data_add['tpp_tax_percent'] = $this->input->post('ppricetax');
-					$data_add['tpp_total_amount'] = $this->input->post('ppricetot');
-					$data_add['tpp_validity_value'] = $this->input->post('pvalid');
-					$data_add['tpp_validity_ref'] = $this->input->post('pvalidu');
-					$data_add['tpp_validity_end_on'] = date('Y-m-d H:i:s', strtotime("+".intval($data_add['tpp_validity_value'])." days"));
-					// $data_add[''] = date('Y-m-d H:i:s', strtotime($this->input->post('')));
-					$data_add['tpp_delivery_type'] = $this->input->post('pdeliveryt');
-					$data_add['tpp_delivery_lead_time_value'] = $this->input->post('psleadtime');
-					$data_add['tpp_delivery_lead_time_ref'] = $this->input->post('psleadtimeu');
-					$data_add['tpp_remarks'] = $this->input->post('premarks');
-					$data_add['tpp_completion_time_value'] = $this->input->post('pcommission');
-					$data_add['tpp_completion_time_ref'] = $this->input->post('pcommissionu');
-					
-					$result = $this->plisting->update_proposal_by_id($prow_id, $data_add, 'p');
-					
-					if(!empty($result) && is_array($result) && sizeof($result) <> 0){
-						
-						$data_add = array();
-						$data_add['tpp_file'] = $prow_id.'_proposal_provider.'.end($file_namea);
-						$this->plisting->update_proposal_by_id($prow_id, $data_add, 'p');
-						
-						rename(FCPATH.'assets/project_proposals/'.$file_name, FCPATH.'assets/project_proposals/'.$prow_id.'_proposal_provider.'.end($file_namea));
-						$success_data = $this->upload->data();
-						
-						$data['msg'] = 'success';
-						// $data['msg_extra'] = 'Proposal has been successfully posted !';
-						
-						 $data['msg_extra'] = "<h3>Proposal Updated</h3> <p>Thank You! Proposal has been successfully updated. Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
-						
-				   }else{
-					   
-						unlink(FCPATH.'assets/project_proposals/'.$file_name);
-						$data['msg'] = 'error';
-						// $data['msg_extra'] = 'Error occurred during submission. Try again!';
-					   
-						$data['msg_extra'] = "<h3>Proposal Update Error</h3> <p>Oops! Error occurred during update. Try again! Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
-				   }
-				}
-			}else{
+			$data_add['tpp_price'] = $this->input->post('ppriceval');
+			$data_add['tpp_price_currency_ref'] = $this->input->post('pcurr');
+			$data_add['tpp_tax_percent'] = $this->input->post('ppricetax');
+			$data_add['tpp_total_amount'] = $this->input->post('ppricetot');
+			$data_add['tpp_validity_value'] = $this->input->post('pvalid');
+			$data_add['tpp_validity_ref'] = $this->input->post('pvalidu');
+			$data_add['tpp_validity_end_on'] = date('Y-m-d H:i:s', strtotime("+".intval($data_add['tpp_validity_value'])." days"));
+			// $data_add[''] = date('Y-m-d H:i:s', strtotime($this->input->post('')));
+			$data_add['tpp_delivery_type'] = $this->input->post('pdeliveryt');
+			$data_add['tpp_delivery_lead_time_value'] = $this->input->post('psleadtime');
+			$data_add['tpp_delivery_lead_time_ref'] = $this->input->post('psleadtimeu');
+			$data_add['tpp_remarks'] = $this->input->post('premarks');
+			$data_add['tpp_completion_time_value'] = $this->input->post('pcommission');
+			$data_add['tpp_completion_time_ref'] = $this->input->post('pcommissionu');
+			
+			$result = $this->plisting->update_proposal_by_id($prow_id, $data_add, 'p');
+			
+			if(!empty($result) && is_array($result) && sizeof($result) <> 0 && $filesCount > 0){
 				
 				$data_add = array();
-							
-				$data_add['tpp_price'] = $this->input->post('ppriceval');
-				$data_add['tpp_price_currency_ref'] = $this->input->post('pcurr');
-				$data_add['tpp_tax_percent'] = $this->input->post('ppricetax');
-				$data_add['tpp_total_amount'] = $this->input->post('ppricetot');
-				$data_add['tpp_validity_value'] = $this->input->post('pvalid');
-				$data_add['tpp_validity_ref'] = $this->input->post('pvalidu');
-				$data_add['tpp_validity_end_on'] = date('Y-m-d H:i:s', strtotime("+".intval($data_add['tpp_validity_value'])." days"));
-				// $data_add[''] = date('Y-m-d H:i:s', strtotime($this->input->post('')));
-				$data_add['tpp_delivery_type'] = $this->input->post('pdeliveryt');
-				$data_add['tpp_delivery_lead_time_value'] = $this->input->post('psleadtime');
-				$data_add['tpp_delivery_lead_time_ref'] = $this->input->post('psleadtimeu');
-				$data_add['tpp_remarks'] = $this->input->post('premarks');
-				$data_add['tpp_completion_time_value'] = $this->input->post('pcommission');
-				$data_add['tpp_completion_time_ref'] = $this->input->post('pcommissionu');
+					
+				$pfilesCount = count($this->input->post('pdocname'));
+				$pfilesA = $this->input->post('pdocname');
+				$pdoc_id = $this->input->post('pdoc_id');
 				
-				$result = $this->plisting->update_proposal_by_id($prow_id, $data_add, 'p');
+				if($pfilesCount > 0){
+				
+					for($i = 0; $i < $pfilesCount; $i++){
 					
-				if(!empty($result) && is_array($result) && sizeof($result) <> 0){
+						$prfile = $pfilesA[$i];
+						
+						if(is_array($uploadData) && !empty($uploadData) && !empty($uploadData[$i]) && $uploadData[$i]['file_name'] != ''){
+						
+							if($prfile !== '' && file_exists(FCPATH.'assets/project_proposals/'.$prfile)){
+								unlink(FCPATH.'assets/project_proposals/'.$prfile);
+							}
+						
+						}
+					}
+				}
+								
+				for($i = 0; $i < $filesCount; $i++){
+							
+					if(is_array($uploadData) && !empty($uploadData) && !empty($uploadData[$i])){
 					
-					$data['msg'] = 'success';
-					// $data['msg_extra'] = 'Proposal has been successfully updated !';
+						$data_add_file = array();
+						$data_add_file['tpssf_row_deleted'] = 0;
+						$row_id = $result[0]->tpp_id;
+						
+						if($uploadData[$i]['file_name'] != ''){
+						
+							$file_namea = explode('.', $uploadData[$i]['file_name']);
+							
+							if(trim($pdoc_id[$i]) == '' || $pdoc_id[$i] == 0){
+								$data_add_file['tpssf_proposal_ref'] = $result[0]->tpp_id;
+								$data_add_file['tpssf_file_index'] = ($i+1);
+								
+								$presult = $this->plisting->get_proposal_file_by_ref_and_index($row_id, $data_add_file['tpssf_file_index'], 'p');
+								
+								if(!empty($presult) && is_array($presult) && sizeof($presult) <> 0){
+									$this->plisting->update_proposal_file_by_id($presult[0]->tpssf_id, $data_add_file, 'p');
+									$pdoc_id[$i] = $presult[0]->tpssf_id;
+								}else{
+									$pdoc_id[$i] = $file_row = $this->plisting->add_proposal_file_by_id($row_id, $data_add_file, 'p');
+								}
+								
+							}else{
+								$file_row = $this->plisting->update_proposal_file_by_id($pdoc_id[$i], $data_add_file, 'p');
+							}
+													
+							$data_add_file = array();
+							$data_add_file['tpssf_filename'] = $pdoc_id[$i].'_'.$row_id.'_proposal_supplier_'.($i+1).'.'.end($file_namea);
+							
+							$this->plisting->update_proposal_file_by_id($pdoc_id[$i], $data_add_file, 'p');
+							
+							rename(FCPATH.'assets/project_proposals/'.$uploadData[$i]['file_name'], FCPATH.'assets/project_proposals/'.$pdoc_id[$i].'_'.$row_id.'_proposal_supplier_'.($i+1).'.'.end($file_namea));
+							
+						}	
+					}
+			   	}
+				
+				$success_data = $this->upload->data();
+				
+				$data['msg'] = 'success';
+				// $data['msg_extra'] = 'Proposal has been successfully posted !';
+				
+				 $data['msg_extra'] = "<h3>Proposal Updated</h3> <p>Thank You! Proposal has been successfully updated. Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
+				
+		   }else{
+			   
+				// unlink(FCPATH.'assets/project_proposals/'.$file_name);
+				if($filesCount > 0){
+					for($i = 0; $i < $filesCount; $i++){
 					
-					$data['msg_extra'] = "<h3>Proposal Updated</h3> <p>Thank You! Proposal has been successfully updated. Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
-				}else{
-					$data['msg'] = 'error';
-					// $data['msg_extra'] = 'Error occurred during update. Try again!';
-					
-					$data['msg_extra'] = "<h3>Proposal Update Error</h3> <p>Oops! Error occurred during update. Try again! Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
-				}		
-			}	
+						if(is_array($uploadData) && !empty($uploadData) && !empty($uploadData[$i])){
+							unlink(FCPATH.'assets/project_proposals/'.$uploadData[$i]['file_name']);
+						}
+					}
+				}
+				
+				$data['msg'] = 'error';
+				// $data['msg_extra'] = 'Error occurred during submission. Try again!';
+			   
+				$data['msg_extra'] = "<h3>Proposal Update Error</h3> <p>Oops! Error occurred during update. Try again! Click <a href='".base_url()."dashboard'>here</a> to go project dashboard.</p>";
+		   }
+				
 		}
 		
 		if($data['user_id'] <> 0){
@@ -1311,6 +1372,29 @@ class Project extends CI_Controller {
 		$this->load->view('includes/footern');
 	}
 	
+	public function remove_proposal_file(){
+	
+		$pfile_row = $this->input->post('frow_id');
+		$action = $this->input->post('action');
+		
+		$data = array();
+		$data['status'] = 0;
+		
+		if($action == 'remove_file_supplier' && $pfile_row > 0){
+			
+			$data_add = array();
+			$data_add['tpssf_row_deleted'] = 1;
+			
+			$result = $this->plisting->update_proposal_file_by_id($pfile_row, $data_add, 'p');
+			
+			if(!empty($result) && sizeof($result) <> 0 && $result[0]->tpssf_row_deleted == 1){
+				$data['status'] = 1;
+			}			
+		}
+		
+		echo json_encode($data);
+	}
+	
 	public function proposalv()
 	{
 		$data = array();
@@ -1393,6 +1477,7 @@ class Project extends CI_Controller {
 		$data['prowdeleted'] = 0;
 		$data['putype_ref'] = 0;
 		$data['psresult'] = array();
+		$data['proposal_files'] = array();
 		
 		$action = $this->input->post('action');
 		$data['row_id'] = $row_id = $this->input->post('row_id');
@@ -1713,6 +1798,8 @@ class Project extends CI_Controller {
 				}
 								
 				if($ruser_type == 1){
+				
+					$data['proposal_files'] = $this->plisting->get_proposal_files_by_id($prow_id, 'p');
 					
 					if($data['bb_notification'] == 1){
 						
