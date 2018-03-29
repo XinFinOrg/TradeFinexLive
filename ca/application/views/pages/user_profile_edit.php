@@ -660,7 +660,7 @@
 										<label class="form-label">
 											<input id="xuser_password" class="form-input input-focus-notr" name="xuser_password" maxlength="25" type="password" data-validation="required" autocomplete="" data-required-error="" />
 											<span class="form-name floating-label">Password<sup>*</sup></span>
-											<span class="show-hide" style="margin-right: 10px;"><a href="javascript:void(0)">Show</a></span>
+											<span class="show-hide append_icon_text" style="margin-right: 10px;"><a href="javascript:void(0)">Show</a></span>
 										</label>
 										<span class="forgot_passwd"><a href="https://ewallet.xinfin.org/forgot" target="_blank"><small>Forgot your password?</small></a></span>
 									</div>
