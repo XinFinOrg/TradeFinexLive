@@ -442,6 +442,7 @@ class Publicv extends CI_Controller {
 		
 		$action = $this->input->post('action');
 		$request_page = $this->input->post('request_page');
+		$encryption_key = $this->config->item('encryption_key');
 		
 		if($action == 'send_mail'){
 				
@@ -467,10 +468,13 @@ class Publicv extends CI_Controller {
 			
 			$from_email = 'social@tradefinex.org'; // $config['smtp_user'];  
 			$to_email = $this->input->post('semail'); 
+			
+			$request_string = 'email='.$to_email.'&action=unsubscribe';
+			$encode_request_string = $this->encrypt->encode($request_string, $encryption_key);
 					
 			$message = '';
 			$message .= '<strong>Email : </strong>'.$this->input->post('semail').'<br/>';
-			$message .= 'Thanks for Your subscription <br/>';
+			$message .= 'Thanks for Your subscription <br/>. If you will want to unsubscribe from us in future please click <a href="'.base_url('unsubscribe/?'.$encode_request_string).'">here</a>.';
 			
 			$this->email->from($from_email, 'Support Tradefinex'); 
 			$this->email->to($to_email);
