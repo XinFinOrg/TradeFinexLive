@@ -1,3 +1,6 @@
+<?php
+	if($project_listed_info && !empty($project_listed_info) && is_array($project_listed_info) && sizeof($project_listed_info) <> 0){ 
+?>
 <div class="sub_page_wraper">
 	<section class="proposal_view">
 		<div class="container">
@@ -370,3 +373,52 @@
 		</div>
 	</div>
 </div>
+
+<?php }else{ ?>
+
+	<div class="container">
+		<div class="row">
+			<a id="esubmitp_btn" data-toggle="modal" data-target="#esubmit_popup"></a>
+			<div id="esubmit_popup" class="modal fade" role="dialog">
+				<div class="modal-dialog"> 
+				
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" row_id="<?=((isset($proj_row) && $proj_row <> 0) ? $proj_row : 0)?>" data-dismiss="modal" onclick="goToHome()"> <span class="hidden-xs">×</span> <span class="hidden-md hidden-lg"> <img src="<?=base_url()?>assets/images/icon/log_arrow.png" alt="icon"></span> </button>
+						</div>
+			
+						<div class="modal-body text-center">
+							<span>
+								<?php 
+									echo '<div class="text-center"><img src="'.base_url().'assets/images/icon/error.png" /></div>'; 
+								?>
+							</span>
+							<div class="text-center">
+								<h3>Error Occured</h3>
+								<p>Oops! Something Wrong. Click <a href="<?=base_url();?>">here</a> to go home.</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="fade" class="black_overlay"></div>
+	<script src="<?=base_url('assets/js/jquery-core/jquery.min.js');?>"></script>
+	<script src="<?=base_url('assets/js/bootstrap/bootstrap.min.js');?>"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			document.getElementById('fade').style.display = 'block';
+			$('#esubmitp_btn').trigger('click');
+		});
+		
+		function goToHome(){
+			window.location.href = '<?=base_url()?>';
+		}
+			
+	</script>
+	
+<?php } ?>

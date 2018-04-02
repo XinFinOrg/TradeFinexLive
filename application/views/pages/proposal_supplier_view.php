@@ -291,25 +291,49 @@
 
 <?php }else{ ?>
 	
-	<div class="container" >
+	<div class="container">
 		<div class="row">
-			<div class="jumbotron thank_sec" >
-			   <div id="page_blank_msg" class="bwhite_content">
-					<div class="gpopup_head"><a href="javascript:void(0)" onclick="window.location='<?=base_url();?>';document.getElementById('page_blank_msg').style.display='none';"><i class="fa fa-times-circle" aria-hidden="true"></i></a></div>
-					<?php 
-						echo '<div class="text-center"><img src="'.base_url().'assets/images/icon/error.png" style="width:70px;border:0px;" /></div>'; 
-					?>
-					<div class="text-center">
-						<h3 class='text-center' style="font-size:15px;line-height:20px;color:#000;padding-left:10px;padding-right:10px;">Oops ! Something Wrong. Click <a href="<?=base_url();?>">here</a> to go dashboard.</h3>
+			<a id="esubmitp_btn" data-toggle="modal" data-target="#esubmit_popup"></a>
+			<div id="esubmit_popup" class="modal fade" role="dialog">
+				<div class="modal-dialog"> 
+				
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" row_id="<?=((isset($proj_row) && $proj_row <> 0) ? $proj_row : 0)?>" data-dismiss="modal" onclick="goToHome()"> <span class="hidden-xs">×</span> <span class="hidden-md hidden-lg"> <img src="<?=base_url()?>assets/images/icon/log_arrow.png" alt="icon"></span> </button>
+						</div>
+			
+						<div class="modal-body text-center">
+							<span>
+								<?php 
+									echo '<div class="text-center"><img src="'.base_url().'assets/images/icon/error.png" /></div>'; 
+								?>
+							</span>
+							<div class="text-center">
+								<h3>Error Occured</h3>
+								<p>Oops! Something Wrong. Click <a href="<?=base_url();?>">here</a> to go home.</h3>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	<div id="fade" class="black_overlay"></div>
+	<script src="<?=base_url('assets/js/jquery-core/jquery.min.js');?>"></script>
+	<script src="<?=base_url('assets/js/bootstrap/bootstrap.min.js');?>"></script>
 	<script type="text/javascript">
-		document.getElementById('fade').style.display = 'block';
-		document.getElementById('page_blank_msg').style.display = 'block';
+		
+		$(document).ready(function(){
+			document.getElementById('fade').style.display = 'block';
+			$('#esubmitp_btn').trigger('click');
+		});
+		
+		function goToHome(){
+			window.location.href = '<?=base_url()?>';
+		}
+			
 	</script>
 	
 <?php } ?>
