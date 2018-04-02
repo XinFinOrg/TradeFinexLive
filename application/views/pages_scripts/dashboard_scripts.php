@@ -1,5 +1,8 @@
 <script type="text/javascript">
 	
+	var today = new Date(); var dd = today.getDate(); var mm = today.getMonth(); var yyyy = today.getFullYear();
+	var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+		
 	$(function(){
 				
 		$("#projects_table").DataTable({
@@ -16,26 +19,31 @@
 				extend: 'copy',
 				text:   '<i class="fa fa-files-o"></i>',
 				titleAttr: 'Copy',
+				title: 'Posted_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: 'csv',
 				text:   '<i class="fa fa-file-text-o"></i>',
 				titleAttr: 'CSV',
+				title: 'Posted_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "excel",
 				text:   '<i class="fa fa-file-excel-o"></i>',
 				titleAttr: 'Excel',
+				title: 'Posted_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "pdf",
 				text:   '<i class="fa fa-file-pdf-o"></i>',
 				titleAttr: 'Pdf',
+				title: 'Posted_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "print",
 				text:   '<i class="fa fa-print"></i>',
 				titleAttr: 'Print',
+				title: 'Posted_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}]
 		});  
@@ -54,26 +62,31 @@
 				extend: 'copy',
 				text:   '<i class="fa fa-files-o"></i>',
 				titleAttr: 'Copy',
+				title: 'Accepted_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: 'csv',
 				text:   '<i class="fa fa-file-text-o"></i>',
 				titleAttr: 'CSV',
+				title: 'Accepted_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "excel",
 				text:   '<i class="fa fa-file-excel-o"></i>',
 				titleAttr: 'Excel',
+				title: 'Accepted_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "pdf",
 				text:   '<i class="fa fa-file-pdf-o"></i>',
 				titleAttr: 'Pdf',
+				title: 'Accepted_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "print",
 				text:   '<i class="fa fa-print"></i>',
 				titleAttr: 'Print',
+				title: 'Accepted_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}]
 		});
@@ -92,26 +105,31 @@
 				extend: 'copy',
 				text:   '<i class="fa fa-files-o"></i>',
 				titleAttr: 'Copy',
+				title: 'Invited_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: 'csv',
 				text:   '<i class="fa fa-file-text-o"></i>',
 				titleAttr: 'CSV',
+				title: 'Invited_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "excel",
 				text:   '<i class="fa fa-file-excel-o"></i>',
 				titleAttr: 'Excel',
+				title: 'Invited_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "pdf",
 				text:   '<i class="fa fa-file-pdf-o"></i>',
 				titleAttr: 'Pdf',
+				title: 'Invited_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "print",
 				text:   '<i class="fa fa-print"></i>',
 				titleAttr: 'Print',
+				title: 'Invited_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}]
 		});
@@ -130,26 +148,31 @@
 				extend: 'copy',
 				text:   '<i class="fa fa-files-o"></i>',
 				titleAttr: 'Copy',
+				title: 'Saved_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: 'csv',
 				text:   '<i class="fa fa-file-text-o"></i>',
 				titleAttr: 'CSV',
+				title: 'Saved_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "excel",
 				text:   '<i class="fa fa-file-excel-o"></i>',
 				titleAttr: 'Excel',
+				title: 'Saved_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "pdf",
 				text:   '<i class="fa fa-file-pdf-o"></i>',
 				titleAttr: 'Pdf',
+				title: 'Saved_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "print",
 				text:   '<i class="fa fa-print"></i>',
 				titleAttr: 'Print',
+				title: 'Saved_Listing_Projects_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}]
 		});
@@ -168,29 +191,35 @@
 				extend: 'copy',
 				text:   '<i class="fa fa-files-o"></i>',
 				titleAttr: 'Copy',
+				title: 'Trade_Smart_Contracts_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: 'csv',
 				text:   '<i class="fa fa-file-text-o"></i>',
 				titleAttr: 'CSV',
+				title: 'Trade_Smart_Contracts_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "excel",
 				text:   '<i class="fa fa-file-excel-o"></i>',
 				titleAttr: 'Excel',
+				title: 'Trade_Smart_Contracts_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "pdf",
 				text:   '<i class="fa fa-file-pdf-o"></i>',
 				titleAttr: 'Pdf',
+				title: 'Trade_Smart_Contracts_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "print",
 				text:   '<i class="fa fa-print"></i>',
 				titleAttr: 'Print',
+				title: 'Trade_Smart_Contracts_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}]
 		});
+		
 		
 		var table = $("#projects_table_fsc").DataTable({
 			"dom": "Bfrtip",
@@ -206,26 +235,31 @@
 				extend: 'copy',
 				text:   '<i class="fa fa-files-o"></i>',
 				titleAttr: 'Copy',
+				title: 'Finance_Smart_Contracts_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: 'csv',
 				text:   '<i class="fa fa-file-text-o"></i>',
 				titleAttr: 'CSV',
+				title: 'Finance_Smart_Contracts_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "excel",
 				text:   '<i class="fa fa-file-excel-o"></i>',
 				titleAttr: 'Excel',
+				title: 'Finance_Smart_Contracts_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "pdf",
 				text:   '<i class="fa fa-file-pdf-o"></i>',
 				titleAttr: 'Pdf',
+				title: 'Finance_Smart_Contracts_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}, {
 				extend: "print",
 				text:   '<i class="fa fa-print"></i>',
 				titleAttr: 'Print',
+				title: 'Finance_Smart_Contracts_'+dd+'-'+mm+'-'+yyyy+'-'+time,
 				className: 'btn-tool'
 			}]
 		});
