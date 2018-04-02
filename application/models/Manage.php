@@ -409,19 +409,43 @@
 			return $result = $this->get_user_info_by_id_and_type($id, $type_id);
 		}
 		
+		public function check_subscription($email){
+		
+			$this->db->select('*');
+			$this->db->from('{PRE}subscription');
+			$where = "tfs_email = '$email'";
+			$this->db->where($where);
+			$query = $this->db->get();
+				
+			return $result = $query->result();
+		}
+		
 		public function add_subscription($data_add){
 			
-			$data = array();
+			$data = array(); $result = array();
 			$data['tfs_email'] = $data_add['semail'];
+			
+			$result = $this->check_subscription($data_add['semail']);
+			
+			if(is_array($result) && !empty($result)){
+			
+				$data = array();
+				$data['tfs_email'] = $data_add['semail'];
+				$data['tfs_active'] = 1;
 				
-			$this->db->insert('{PRE}subscription', $data); 
+				$this->update_subscription($data);
+				
+			}else{
+				
+				$this->db->insert('{PRE}subscription', $data); 
+			}
 		}	
 		
 		public function update_subscription($data_add){
 			
 			$data = array();
 						
-			$where = "tfs_email = '".$data_add['semail']."'";
+			$where = "tfs_email = '".$data_add['tfs_email']."'";
 			$this->db->where($where);			
 			 
 			$this->db->update('{PRE}subscription', $data_add); 
