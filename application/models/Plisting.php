@@ -277,10 +277,11 @@
 			$where = "row_deleted = '0'";
 			$this->db->where($where);
 			
-			/* if($term){
+			if($term){
 				$this->db->like('sectorName', $term);
-			} */
-						
+			}
+			
+			$this->db->order_by("sectorName", "asc"); 
 			$query = $this->db->get();
 			
 			return $result = $query->result();
