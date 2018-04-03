@@ -277,9 +277,9 @@
 			$where = "row_deleted = '0'";
 			$this->db->where($where);
 			
-			if($term){
+			/* if($term){
 				$this->db->like('sectorName', $term);
-			}
+			} */
 						
 			$query = $this->db->get();
 			
