@@ -10,9 +10,56 @@
 			$this->session->set_flashdata("error_finance_info", "<font class='alert-danger' style='color:red;font-size: 14px;float: left;margin-top: 5px;'>Please input Finance information properly.</font>");
 		}
 				
-		redirect(base_url().'user/edit');
+		// redirect(base_url().'user/edit');
+?>
 
-	} 
+	<div class="container">
+		<div class="row">
+			<a id="esubmitp_btn" data-toggle="modal" data-target="#esubmit_popup"></a>
+			<div id="esubmit_popup" class="modal fade" role="dialog">
+				<div class="modal-dialog"> 
+				
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" row_id="<?=((isset($proj_row) && $proj_row <> 0) ? $proj_row : 0)?>" data-dismiss="modal" onclick="goToHome()"> <span class="hidden-xs">×</span> <span class="hidden-md hidden-lg"> <img src="<?=base_url()?>assets/images/icon/log_arrow.png" alt="icon"></span> </button>
+						</div>
+			
+						<div class="modal-body text-center">
+							<span>
+								<?php 
+									echo '<div class="text-center"><img src="'.base_url().'assets/images/icon/error.png" /></div>'; 
+								?>
+							</span>
+							<div class="text-center">
+								<h3>Please fill up Your company and wallet information properly!</h3>
+								<p>Click <a href="<?=base_url('user/edit');?>">here</a> to update Company and Wallet info.</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="fade" class="black_overlay"></div>
+	<script src="<?=base_url('assets/js/jquery-core/jquery.min.js');?>"></script>
+	<script src="<?=base_url('assets/js/bootstrap/bootstrap.min.js');?>"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			document.getElementById('fade').style.display = 'block';
+			$('#esubmitp_btn').trigger('click');
+		});
+		
+		function goToHome(){
+			window.location.href = '<?=base_url()?>';
+		}
+			
+	</script>
+
+<?		
+	}else{
 
 	if($project_listed_info && !empty($project_listed_info) && is_array($project_listed_info) && sizeof($project_listed_info) <> 0){ 
 
@@ -276,7 +323,10 @@
 			
 	</script>
 	
-<?php } ?>
+<?php } 
+
+}
+?>
 
 <a id="submitp_btn" data-toggle="modal" data-target="#submit_popup"></a>
 <div id="submit_popup" class="modal fade" role="dialog">

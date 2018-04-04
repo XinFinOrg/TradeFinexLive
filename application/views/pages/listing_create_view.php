@@ -1,23 +1,56 @@
-<section class="submit_sec post_page">
-	<?php
-		if((empty($check_company) && is_array($check_company) && sizeof($check_company) == 0) || $check_company[0]->tfcom_cat_ref == 0 || $check_company[0]->tfcom_country_ref == 0 || $uwalleta == '' || trim($uwalletbal) == '' || intval($uwalletbal) == 0){
-	?>		
-		<div class="container">
-			<div class="row">
-				<div class="just_msg">
-					<div class="col-md-6 col-sm-6 col-xs-12" style="padding:40px">
-						<span><i class="fa fa-times" aria-hidden="true"></i></span> Please fill up Your company and wallet information first! 
-						<span style="float:right"><i class="fa fa-pencil" aria-hidden="true" style="color:#23527c;"></i>&nbsp;<a href="<?=base_url();?>user/edit">Update Company and Wallet info</a></span>
+<?php
+	if((empty($check_company) && is_array($check_company) && sizeof($check_company) == 0) || $check_company[0]->tfcom_cat_ref == 0 || $check_company[0]->tfcom_country_ref == 0 || $uwalleta == '' || trim($uwalletbal) == '' || intval($uwalletbal) == 0){
+?>	
+	<div class="container">
+		<div class="row">
+			<a id="esubmitp_btn" data-toggle="modal" data-target="#esubmit_popup"></a>
+			<div id="esubmit_popup" class="modal fade" role="dialog">
+				<div class="modal-dialog"> 
+				
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" row_id="<?=((isset($proj_row) && $proj_row <> 0) ? $proj_row : 0)?>" data-dismiss="modal" onclick="goToHome()"> <span class="hidden-xs">×</span> <span class="hidden-md hidden-lg"> <img src="<?=base_url()?>assets/images/icon/log_arrow.png" alt="icon"></span> </button>
+						</div>
+			
+						<div class="modal-body text-center">
+							<span>
+								<?php 
+									echo '<div class="text-center"><img src="'.base_url().'assets/images/icon/error.png" /></div>'; 
+								?>
+							</span>
+							<div class="text-center">
+								<h3>Please fill up Your company and wallet information first!</h3>
+								<p>Click <a href="<?=base_url('user/edit');?>">here</a> to update Company and Wallet info.</h3>
+							</div>
+						</div>
 					</div>
 				</div>
-				
-			</div>		
+			</div>
 		</div>
-			</div>		
-		</div>
-	<?php
-		}else{
-	?>	
+	</div>
+	
+	<div id="fade" class="black_overlay"></div>
+	<script src="<?=base_url('assets/js/jquery-core/jquery.min.js');?>"></script>
+	<script src="<?=base_url('assets/js/bootstrap/bootstrap.min.js');?>"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			document.getElementById('fade').style.display = 'block';
+			$('#esubmitp_btn').trigger('click');
+		});
+		
+		function goToHome(){
+			window.location.href = '<?=base_url()?>';
+		}
+			
+	</script>
+
+<?php
+	}else{
+?>	
+<section class="submit_sec post_page">
+			
 		<div class="sub_page_wraper">
 			<section class="submit_pro">
 				<div class="container">
@@ -395,10 +428,9 @@
 			</div>
 		</section>
 	</div>	
-		
-	<?php } ?> 
-</section>	
 
+</section>	
+<?php } ?> 
 <a id="submitp_btn" data-toggle="modal" data-target="#submit_popup"></a>
 <div id="submit_popup" class="modal fade" role="dialog">
 	<div class="modal-dialog"> 
