@@ -131,9 +131,9 @@
 										</td>
 										<td class="text-center">
 										<?php  
-										
+																						
 											if(($user_type_ref == 1 && $plrow->provider_completion_request == 2) || ($user_type_ref == 2 && ($plrow->financier_completion_request == 2 || $tpfawardStatus == 3))){
-												echo '<span class="rating_b">RATE BENEFICIARY</span><div id="benifr-'.$plrow->ID.'" class="star beneficiary_rating" data-rating="'.(isset($project_user_rating[$plrow->ID]) ? $project_user_rating[$plrow->ID] : 0).'" from_user_id="'.$user_id.'" from_user_type="'.$user_type_ref.'" to_user_id="'.$plrow->userID.'" to_user_type="'.$plrow->userType.'" prow_id="'.$plrow->ID.'" data-toggle="confirmation" data-title="Are You want to do this?"></div>';
+												echo '<span class="rating_b">RATE BENEFICIARY</span>'.((isset($project_user_rating[$plrow->ID]) && $project_user_rating[$plrow->ID] > 0) ? set_rating_user($project_user_rating[$plrow->ID]) : '<div id="benifr-'.$plrow->ID.'" class="star beneficiary_rating" data-rating="'.(isset($project_user_rating[$plrow->ID]) ? $project_user_rating[$plrow->ID] : 0).'" from_user_id="'.$user_id.'" from_user_type="'.$user_type_ref.'" to_user_id="'.$plrow->userID.'" to_user_type="'.$plrow->userType.'" prow_id="'.$plrow->ID.'" data-toggle="confirmation" data-title="Are You want to do this?"></div>');
 											}else{	
 											
 											if(in_array($plrow->ID, $proposal_submitted) && !in_array($plrow->ID, $proposal_accepted)){
@@ -390,32 +390,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="dashboard_pagination">
-				<div class="container">
-					<div class="row">
-						<div class="listing_pagination">
-							<div class="col-md-4 col-sm-4 hidden-xs">
-								<p>Page 1 of 12</p>
-							</div>
-							<div class="col-md-4 col-sm-4 col-xs-10">
-								<nav aria-label="...">
-									<ul class="pagination">
-										<li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
-										<li class="page-item active"> <span class="page-link"> 2 <span class="sr-only">(current)</span> </span> </li>
-										<li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-										<li class="page-item"> <a class="page-link" href="javascript:void(0)">4</a> </li>
-										<li class="page-item"><a class="page-link" href="javascript:void(0)">5</a></li>
-										<li class="page-item"> <a class="page-link" href="javascript:void(0)">6</a> </li>
-										<li class="page-item"> <a class="page-link" href="javascript:void(0)">7</a> </li>
-										<li class="page-item"> <a class="page-link" href="javascript:void(0)">8</a> </li>
-									</ul>
-								</nav>
-							</div>
-							<div class="col-md-4 col-sm-4 col-xs-2"> <a class="page_next" href="javascript:void(0)"> NEXT </a> </div>
-						</div>
-					</div>
-				</div>
-			</section>
+		
 		</div>
 	
 	<?php }  if($user_type_ref == 3){ ?>

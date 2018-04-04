@@ -1137,7 +1137,7 @@
 					
 					var attrid = $(this).attr('id');	
 					var score = $('#'+attrid+'-score').val();
-					
+					var obj = $(this);
 					var prow_id = $(this).attr('prow_id');
 					var to_user_id = $(this).attr('to_user_id');
 					var to_user_type = $(this).attr('to_user_type');
@@ -1150,18 +1150,22 @@
 							url : '<?=base_url();?>project/add_rating_project_user',
 							data : {'project_ref': prow_id, 'rating_val': score, 'tuser_ref': to_user_id, 'tuser_type': to_user_type, '<?=$csrf['name'];?>': '<?=$csrf['hash'];?>', 'action': 'add_rating'},
 							success : function(data){
+								$(obj).unbind();
+								$(obj).find('img').unbind();
 								click_handler();
 							}		
 						}); 
-					}	
+					}
+
+				    $(this).unbind();
+					$(this).find('img').unbind();
 				}
 			},
 			onCancel: function() {
 				
 				if($(this).hasClass('star')){
 					
-					alert('cancel');
-				
+					$(this).raty('reload');
 				}
 				
 			}
@@ -1176,13 +1180,12 @@
 			},
 			click: function(score, evt) {
 				
-				$(this).find('img').unbind();
-				$(this).unbind();
-				// $(this).find('img').unbind(); <-- this removes all listeners
+				// $(this).find('img').unbind();
+				// $(this).unbind();
+				/* this removes all listeners */
 			}
 		});	
-		
-		
+				
 		$('.pimg').unbind('click').bind('click', function(){
 			
 			var iname = $(this).attr('iname');

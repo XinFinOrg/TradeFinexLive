@@ -375,10 +375,23 @@
 .star_img {
 	border: 0px !important;
 	width: 16px !important;
+	margin-right: 2px;
+    margin-left: 2px;
 }
 /* POP UP Section */
 
-#login .password_show, .show-hide, .append_icon_text {
+#login .password_show, .show-hide {
+	float: right;
+	font-size: 12px;
+	color: #1da1f2 !important;
+	position: absolute;
+	/* top: -42px; */
+	text-transform: uppercase;
+	/* z-index: 9; */
+	z-index: 100002;
+}
+
+.append_icon_text {
 	float: right;
 	font-size: 12px;
 	color: #1da1f2 !important;
@@ -387,6 +400,7 @@
 	text-transform: uppercase;
 	z-index: 9;
 }
+
 .append_icon_image {
 	position: absolute;
 	top: 17px;

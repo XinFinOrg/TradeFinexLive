@@ -3102,7 +3102,7 @@ to {
 	float: left;
 	text-align: center;
 	width: 100%;
-	margin-bottom: 10px;
+	/* margin-bottom: 10px; */
 }
 .main_body_date_part p strong {
 	font-weight: 300 !important;

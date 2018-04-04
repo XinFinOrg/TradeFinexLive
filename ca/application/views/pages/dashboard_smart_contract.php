@@ -104,7 +104,7 @@
 									<td class="text-center">
 										<?php
 											if($plrow->provider_completion_request == 2 && $plrow->row_deleted == 0){ 
-												echo 'RATE SUPPLIER <br/><span class="rating_b"></span><div id="providr-'.$plrow->ID.'" class="star provider_rating" data-rating="'.$provider_interested_user[$plrow->ID][0]['benif_rating'].'" from_user_id="'.$user_id.'" from_user_type="'.$user_type_ref.'" to_user_id="'.$provider_interested_user[$plrow->ID][0]['uid'].'" to_user_type="1" prow_id="'.$plrow->ID.'" data-toggle="confirmation" data-title="Are You want to do this?"></div>';
+												echo 'RATE SUPPLIER <br/>'.(($provider_interested_user[$plrow->ID][0]['benif_rating'] > 0) ? set_rating_user($provider_interested_user[$plrow->ID][0]['benif_rating']) : '<span class="rating_b"></span><div id="providr-'.$plrow->ID.'" class="star provider_rating" data-rating="'.$provider_interested_user[$plrow->ID][0]['benif_rating'].'" from_user_id="'.$user_id.'" from_user_type="'.$user_type_ref.'" to_user_id="'.$provider_interested_user[$plrow->ID][0]['uid'].'" to_user_type="1" prow_id="'.$plrow->ID.'" data-toggle="confirmation" data-title="Are You want to do this?"></div>');
 											}else{
 												
 												echo ((isset($provider_interested_user[$plrow->ID][0]['benif_accept']) && $provider_interested_user[$plrow->ID][0]['benif_accept'] == 2) ? '<span class="btn"><i class="fa fa-times"></i>Rejected</span>' : '<a class="btn view_propose view_propose_btn tooltipa" user_type_ref="1" user_id="'.$provider_interested_user[$plrow->ID][0]['uid'].'" row_id="'.$plrow->ID.'" prow_id="'.$provider_interested_user[$plrow->ID][0]['proposal_id'].'"><i class="fa fa-eye"></i> <span class="tooltipatext">View Proposal</span></a>&nbsp;<a class="btn send_message send_message_btn tooltipa" proj_id="'.$plrow->ID.'" user_id="'.$plrow->userID.'" send_user="'.$provider_interested_user[$plrow->ID][0]['uid'].'" send_user_type="1"><i class="fa fa-comments"></i> <span class="tooltipatext">Send Message</span></a>');
@@ -211,7 +211,8 @@
 									</td>
 									<td class="text-center in_fin">
 										RATE FINANCIER <br/>
-										<?=(isset($financier_initiated[$plrow->ID]) ? '<a class="btn btn-info" data-toggle="modal" data-target="#myModalF'.$plrow->ID.'">'.sizeof($financier_initiated[$plrow->ID]).'</a>' : '--');?></a>
+										<?=((isset($financier_initiated[$plrow->ID]) && sizeof($financier_initiated[$plrow->ID]) > 1) ? '<a class="btn btn-info" data-toggle="modal" data-target="#myModalF'.$plrow->ID.'">Click Here</a>' : ((isset($financier_initiated_user[$plrow->ID][0]['benif_accept']) && $financier_initiated_user[$plrow->ID][0]['benif_accept'] == 1 && $plrow->awarded_financier == 2 && $financier_initiated_user[$plrow->ID][0]['benif_rating'] == 0) ? '<div id="financr-'.$plrow->ID.'" class="star financier_rating" data-rating="'.$financier_initiated_user[$plrow->ID][0]['benif_rating'].'" from_user_id="'.$user_id.'" from_user_type="'.$user_type_ref.'" to_user_id="'.$financier_initiated_user[$plrow->ID][0]['uid'].'" to_user_type="2" prow_id="'.$plrow->ID.'" data-toggle="confirmation" data-title="Are You want to do this?"></div>' : set_rating_user($financier_initiated_user[$plrow->ID][0]['benif_rating'])));?>
+									
 									</td>
 								</tr>	
 								<?php 
@@ -308,8 +309,9 @@
 									</td>
 									<td class="text-center status_bar">
 										<?php  
+											
 											if(($user_type_ref == 1 && $plrow->provider_completion_request == 2)){
-												echo '<span class="rating_b">RATE BENEFICIARY</span><div id="benifr-'.$plrow->ID.'" class="star beneficiary_rating" data-rating="'.(isset($project_user_rating[$plrow->ID]) ? $project_user_rating[$plrow->ID] : 0).'" from_user_id="'.$user_id.'" from_user_type="'.$user_type_ref.'" to_user_id="'.$plrow->userID.'" to_user_type="'.$plrow->userType.'" prow_id="'.$plrow->ID.'" data-toggle="confirmation" data-title="Are You want to do this?"></div>';
+												echo '<span class="rating_b">RATE BENEFICIARY</span>'.((isset($project_user_rating[$plrow->ID]) && $project_user_rating[$plrow->ID] > 0) ? set_rating_user($project_user_rating[$plrow->ID]) : '<div id="benifr-'.$plrow->ID.'" class="star beneficiary_rating" data-rating="'.(isset($project_user_rating[$plrow->ID]) ? $project_user_rating[$plrow->ID] : 0).'" from_user_id="'.$user_id.'" from_user_type="'.$user_type_ref.'" to_user_id="'.$plrow->userID.'" to_user_type="'.$plrow->userType.'" prow_id="'.$plrow->ID.'" data-toggle="confirmation" data-title="Are You want to do this?"></div>');
 											}else{	
 											
 												if(in_array($plrow->ID, $proposal_submitted) && !in_array($plrow->ID, $proposal_accepted)){
@@ -429,7 +431,7 @@
 									<td class="text-center status_bar">
 										<?php  
 											if($user_type_ref == 2 && $plrow->tpf_awardStatus == 3){
-												echo '<span class="rating_b">RATE BENEFICIARY</span><div id="benifr-'.$plrow->ID.'" class="star beneficiary_rating" data-rating="'.(isset($project_user_rating[$plrow->ID]) ? $project_user_rating[$plrow->ID] : 0).'" from_user_id="'.$user_id.'" from_user_type="'.$user_type_ref.'" to_user_id="'.$plrow->userID.'" to_user_type="'.$plrow->userType.'" prow_id="'.$plrow->ID.'" data-toggle="confirmation" data-title="Are You want to do this?"></div>';
+												echo '<span class="rating_b">RATE BENEFICIARY</span>'.((isset($project_user_rating[$plrow->ID]) && $project_user_rating[$plrow->ID] > 0) ? set_rating_user($project_user_rating[$plrow->ID]) : '<div id="benifr-'.$plrow->ID.'" class="star beneficiary_rating" data-rating="'.(isset($project_user_rating[$plrow->ID]) ? $project_user_rating[$plrow->ID] : 0).'" from_user_id="'.$user_id.'" from_user_type="'.$user_type_ref.'" to_user_id="'.$plrow->userID.'" to_user_type="'.$plrow->userType.'" prow_id="'.$plrow->ID.'" data-toggle="confirmation" data-title="Are You want to do this?"></div>');
 											}else{	
 											
 												if(in_array($plrow->ID, $proposal_submitted) && !in_array($plrow->ID, $proposal_accepted)){
@@ -508,7 +510,7 @@
 											echo '<td>'.$firow['company'].'</td>';
 											echo '<td class="text-center">'.((trim($firow['rating']) <> '' && $firow['rating'] > 0) ? number_format($firow['rating'], 2, '.', '') : 0).'</td>';
 											echo '<td>'.$firow['country'].'</td>';
-											echo '<td class="text-center" style="width:95px;">'.((isset($firow['benif_accept']) && $firow['benif_accept'] == 1 && $plrow->awarded_financier == 2) ? '<div id="financr-'.$plrow->ID.'" class="star financier_rating" data-rating="'.$firow['benif_rating'].'" from_user_id="'.$user_id.'" from_user_type="'.$user_type_ref.'" to_user_id="'.$firow['uid'].'" to_user_type="2" prow_id="'.$plrow->ID.'" data-toggle="confirmation" data-title="Are You want to do this?"></div>' : '' ).'</td></tr>';
+											echo '<td class="text-center" style="width:100px;">'.((isset($firow['benif_accept']) && $firow['benif_accept'] == 1 && $plrow->awarded_financier == 2 && $firow['benif_rating'] == 0) ? '<div id="financr-'.$plrow->ID.'" class="star financier_rating" data-rating="'.$firow['benif_rating'].'" from_user_id="'.$user_id.'" from_user_type="'.$user_type_ref.'" to_user_id="'.$firow['uid'].'" to_user_type="2" prow_id="'.$plrow->ID.'" data-toggle="confirmation" data-title="Are You want to do this?"></div>' : set_rating_user($firow['benif_rating'])).'</td></tr>';
 										}	
 									}else{
 										echo '<tr><td colspan="5"><center>No User found</center></td></tr>';

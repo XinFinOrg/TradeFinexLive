@@ -5,7 +5,7 @@ class Dashboard extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
-        $this->load->helper(array('form', 'url', 'date', 'notification'));
+        $this->load->helper(array('form', 'url', 'date', 'notification', 'rating'));
 		$this->load->library('session');
 		$this->load->model(array('plisting', 'manage'));
 		$this->is_logged_in();
@@ -418,7 +418,7 @@ class Dashboard extends CI_Controller {
 						}	
 					}
 				}
-				
+								
 				if(!empty($data["projects_listed"]) && is_array($data["projects_listed"]) && sizeof($data["projects_listed"]) <> 0){
 					
 					foreach($data["projects_listed"] as $plrow){
@@ -881,6 +881,17 @@ class Dashboard extends CI_Controller {
 							}else{	
 								$data['provider_interested_user'][$prow->ID][$count++]['rating'] = 0;
 							}
+						}	
+					}
+															
+					if(!empty($data['proposal_accepted']) && sizeof($data['proposal_accepted']) <> 0 && in_array($prow->ID, $data['proposal_accepted'])) {
+						
+						$rresult = $this->plisting->get_rating_info_by_project($prow->ID, $data['user_id'], $data['user_type_ref'], $prow->userID, $prow->userType);
+						
+						if(!empty($rresult) && is_array($rresult) && sizeof($rresult) <> 0){
+							$data['project_user_rating'][$prow->ID] = $rresult[0]->tfur_rating_value;
+						}else{
+							$data['project_user_rating'][$prow->ID] = 0;
 						}	
 					}
 				}

@@ -288,7 +288,7 @@
 											<tr>
 												<th>Sr</th>
 												<th>Company</th>
-												<th>Rating</th>
+												<th class="text-center">Rating</th>
 												<th>Country</th>
 												<th>Action</th>
 											</tr>
@@ -303,7 +303,7 @@
 														
 														echo '<tr><td>'.$count++.'</td>';
 														echo '<td>'.$purow['company'].'</td>';
-														echo '<td>'.set_rating_user($purow['rating']).'</td>';
+														echo '<td class="text-center">'.set_rating_user($purow['rating']).'</td>';
 														echo '<td>'.$purow['country'].'</td>';
 														echo '<td>'.((isset($purow['benif_accept']) && $purow['benif_accept'] == 2) ? '<span class="label-rejected"><i class="fa fa-times"></i>Rejected</span>' : '<a class="btn view_propose view_propose_btn" user_type_ref="1" user_id="'.$purow['uid'].'" row_id="'.$project_listed_info[0]->ID.'" prow_id="'.$purow['proposal_id'].'" title="View Proposal"><i class="fa fa-eye"></i></a>&nbsp;<a class="btn send_message send_message_btn" proj_id="'.$project_listed_info[0]->ID.'" user_id="'.$purow['uid'].'" send_user="'.$purow['uid'].'" send_user_type="1" title="Send Message"><span><i class="fa fa-comments"></i></span></a>').'</td></tr>';
 													}	
@@ -347,7 +347,7 @@
 										<tr>
 											<th>Sr</th>
 											<th>Company</th>
-											<th>Rating</th>
+											<th class="text-center">Rating</th>
 											<th>Country</th>
 											<th>Action</th>
 										</tr>
@@ -357,12 +357,12 @@
 											
 											if(isset($financier_interested_user[$project_listed_info[0]->ID]) && !empty($financier_interested_user[$project_listed_info[0]->ID]) && sizeof($financier_interested_user[$project_listed_info[0]->ID]) <> 0){
 												$count = 1;
-												
+													
 												foreach($financier_interested_user[$project_listed_info[0]->ID] as $furow){
 														
 													echo '<tr><td>'.$count++.'</td>';
 													echo '<td>'.$furow['company'].'</td>';
-													echo '<td>'.set_rating_user($furow['rating']).'</td>';
+													echo '<td class="text-center">'.set_rating_user($furow['rating']).'</td>';
 													echo '<td>'.$furow['country'].'</td>';
 													echo '<td>'.((isset($furow['benif_accept']) && $furow['benif_accept'] == 2) ? '<span class="btn"><i class="fa fa-times"></i>Rejected</span>' : '<a class="btn view_propose view_propose_btn" user_type_ref="2" user_id="'.$furow['uid'].'" row_id="'.$project_listed_info[0]->ID.'" prow_id="'.$furow['proposal_id'].'" title="View Proposal"><i class="fa fa-eye"></i></a>&nbsp;<a class="btn send_message send_message_btn" proj_id="'.$project_listed_info[0]->ID.'" user_id="'.$furow['uid'].'" send_user="'.$furow['uid'].'" send_user_type="2" title="Send Message"><span><i class="fa fa-comments"></i></span></a>').'</td></tr>';
 												}	
