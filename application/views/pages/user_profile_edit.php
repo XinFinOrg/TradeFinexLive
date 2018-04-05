@@ -7,9 +7,9 @@
 		</div>
 		<div class="tab_group">
 			<ul>
-				<li class="user_pinfo active" id="upersonal"><a data-toggle="tab" href="#personal">Personal</a></li> <!--  || $user_type_ref == 2 -->
+				<li class="user_pinfo active" id="upersonal"><a data-toggle="tab" href="#personal">Personal</a></li>
 				<li class="user_pinfo" id="ucompany"><a data-toggle="tab" href="#com_profile">Company Profile</a></li>
-				<?php if($user_type_ref == 1){ ?><li class="user_pinfo" id="uprodserv"><a data-toggle="tab" href="#prod_and_serv">Product & Services</a></li><?php } ?>
+				<?php if($user_type_ref == 1 || $user_type_ref == 2){ ?><li class="user_pinfo" id="uprodserv"><a data-toggle="tab" href="#prod_and_serv">Product & Services</a></li><?php } ?>
 				<li class="user_pinfo" id="ufinance"><a data-toggle="tab" href="#fin_info">Financial information</a></li>
 			</ul>
 			<div class="tab-content">
