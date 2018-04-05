@@ -237,16 +237,14 @@
 		
 		<?php 
 			if(uri_string() === 'user/edit'){
-				echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>';
+				echo '<link rel="stylesheet" type="text/css" href="'.base_url('assets/css/bootstrap-datepicker.1.5.0.css').'" />';
+				echo '<script src="'.base_url('assets/js/bootstrap/bootstrap-datepicker.1.5.0.js').'"></script>';
 			}
 		?>
 		
 		<script src="<?=base_url('assets/js/bootstrap/bootstrap-multiselect.min.js');?>"></script>
 		<script src="<?=base_url('assets/js/rating/jquery.ratyn.min.js');?>"></script>
-		
-		<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtRmXKclfDp20TvfQnpgXSDPjut14x5wk&region=GB"></script>
-		<script src="<?=base_url('assets/js/gmap3.min.js');?>"></script>  -->
-				
+						
 		<!-- Datatables -->
 		<script src="<?=base_url('assets/js/datatables/jquery.dataTables.min.js');?>"></script>
 		<script src="<?=base_url('assets/js/datatables/dataTables.responsive.2.1.1.min.js');?>"></script>

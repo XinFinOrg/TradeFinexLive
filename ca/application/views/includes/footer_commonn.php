@@ -228,9 +228,11 @@
 		
 		<?php 
 			if(uri_string() === 'user/edit'){
-				echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>';
+				echo '<link rel="stylesheet" type="text/css" href="'.base_url('assets/css/bootstrap-datepicker.1.5.0.css').'" />';
+				echo '<script src="'.base_url('assets/js/bootstrap/bootstrap-datepicker.1.5.0.js').'"></script>';
 			}
 		?>
+		
 		<script src="<?=base_url();?>assets/js/bootstrap/bootstrap-multiselect.min.js"></script>
 		<script src="<?=base_url();?>assets/js/text-editor/jquery-te-1.0.5.min.js"></script> 
 		<script src="<?=base_url();?>assets/js/rating/jquery.ratyn.min.js"></script>

@@ -1,5 +1,4 @@
-<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet"> -->
-        
+     
 <section class="profile">
 	<div class="container profile_tab_sec">
 		<div class="tab_sec_header">
@@ -244,7 +243,7 @@
 															<option value="Public-Limited" <?=(($com_legal_form == 'Public-Limited') ? 'selected' : '')?>>Public Limited</option>
 															<option value="Partnership" <?=(($com_legal_form == 'Partnership') ? 'selected' : '')?>>Partnership</option>
 															<option value="Limited-liability-Partnership" <?=(($com_legal_form == 'Limited-liability-Partnership') ? 'selected' : '')?>>Limited liability Partnership</option>
-															<option value="Proprietorship" <?=(($com_legal_form == 'Private-Limited') ? 'selected' : '')?>>Proprietorship</option>
+															<option value="Proprietorship" <?=(($com_legal_form == 'Proprietorship') ? 'selected' : '')?>>Proprietorship</option>
 															<option value="Sole-Proprietorship" <?=(($com_legal_form == 'Sole-Proprietorship') ? 'selected' : '')?>>Sole Proprietorship</option>
 														</select>
 														<span class="form-name floating-label">Legal form<sup>*</sup></span>
