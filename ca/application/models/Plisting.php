@@ -1162,6 +1162,81 @@
 			}	
 		}
 		
+		public function make_postdate_query_string($valuea, $col){
+			
+			$concatq = '';
+			$count = 0;
+				
+			if(sizeof($valuea) <> 0 && trim($col) !== ''){
+										
+				for($i=0; $i <= sizeof($valuea); $i++){
+									
+					if($count > 0 && array_key_exists($i, $valuea) && trim($valuea[$i])){
+						$concatq .= " OR";
+					}
+					
+					$posttime0 = strtotime(date('Ymd'));
+					$posttime1 = strtotime(date('Ymd',strtotime("-1 days")));
+					$posttime2 = strtotime(date('Ymd',strtotime("-2 days")));
+					$posttime3 = strtotime(date('Ymd',strtotime("-3 days")));
+					$posttime5 = strtotime(date('Ymd',strtotime("-5 days")));
+					$posttime7 = strtotime(date('Ymd',strtotime("-7 days")));
+					$posttime15 = strtotime(date('Ymd',strtotime("-15 days")));
+					$posttime30 = strtotime(date('Ymd',strtotime("-30 days")));
+					$posttime60 = strtotime(date('Ymd',strtotime("-60 days")));
+					$posttime90 = strtotime(date('Ymd',strtotime("-90 days")));
+					
+					if(array_key_exists($i, $valuea) && trim($valuea[$i])){
+												
+						if((strtotime($valuea[$i]) == $posttime0) || (strtotime($valuea[$i]) == $posttime1)){
+							$concatq .= " tpp.$col = ".intval(strtotime($valuea[$i]));
+						}
+						
+						if(strtotime($valuea[$i]) == $posttime2){
+							$concatq .= " (tpp.$col <= '".intval(strtotime($valuea[$i]))."' AND tpp.$col > '".intval($posttime3)."')";
+						}
+						
+						if(strtotime($valuea[$i]) == $posttime3){
+							$concatq .= " (tpp.$col <= '".intval(strtotime($valuea[$i]))."' AND tpp.$col > '".intval($posttime5)."')";
+						}
+						
+						if(strtotime($valuea[$i]) == $posttime5){
+							$concatq .= " (tpp.$col <= '".intval(strtotime($valuea[$i]))."' AND tpp.$col > '".intval($posttime7)."')";
+						}
+						
+						if(strtotime($valuea[$i]) == $posttime7){
+							$concatq .= " (tpp.$col <= '".intval(strtotime($valuea[$i]))."' AND tpp.$col > '".intval($posttime15)."')";
+						}
+						
+						if(strtotime($valuea[$i]) == $posttime15){
+							$concatq .= " (tpp.$col <= '".intval(strtotime($valuea[$i]))."' AND tpp.$col > '".intval($posttime30)."')";
+						}
+						
+						if(strtotime($valuea[$i]) == $posttime30){
+							$concatq .= " (tpp.$col <= '".intval(strtotime($valuea[$i]))."' AND tpp.$col > '".intval($posttime60)."')";
+						}
+						
+						if(strtotime($valuea[$i]) == $posttime60){
+							$concatq .= " (tpp.$col <= '".intval(strtotime($valuea[$i]))."' AND tpp.$col > '".intval($posttime90)."')";
+						}
+						
+						if(strtotime($valuea[$i]) == $posttime90){
+							$concatq .= " tpp.$col <= ".intval(strtotime($valuea[$i]));
+						}
+						
+						// $concatq .= " tpp.$col <= ".intval(strtotime($valuea[$i]));
+						$count++;
+					}
+				}
+			}
+			
+			if($concatq){
+				return ' AND ( '.$concatq.' )';
+			}else{
+				return $concatq;
+			}	
+		}
+		
 		public function make_pattern_query_string($valuea, $col){
 			
 			$concatq = '';
@@ -1231,7 +1306,7 @@
 			$this->db->join('{PRE}country tc', 'tc.tfc_id = tpp.countryID', 'left');
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
 			
-			if($type && $val){
+			if($type && isset($val) && $val <> ''){
 				
 				if(is_array($dataarr['scolumn']) && !empty($dataarr['scolumn']) && sizeof($dataarr['scolumn']) <> 0){ 
 										
@@ -1270,6 +1345,14 @@
 							if(sizeof($dataarr['sectors']) <> 0){
 								
 								$concatq .= $this->make_pattern_query_string($dataarr['sectors'], $coulumn);
+							}	
+						}
+						
+						if($coulumn == 'postDate'){
+							
+							if(sizeof($dataarr['pposted']) <> 0){
+								
+								$concatq .= $this->make_postdate_query_string($dataarr['pposted'], 'postdate_timestr');
 							}	
 						}
 					}
@@ -1323,7 +1406,7 @@
 			$this->db->join('{PRE}country tc', 'tc.tfc_id = tpp.countryID', 'left');
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
 			
-			if($type && $val){
+			if($type && isset($val) && $val <> ''){
 				
 				if(is_array($dataarr['scolumn']) && !empty($dataarr['scolumn']) && sizeof($dataarr['scolumn']) <> 0){ 
 										
@@ -1362,6 +1445,14 @@
 							if(sizeof($dataarr['sectors']) <> 0){
 								
 								$concatq .= $this->make_pattern_query_string($dataarr['sectors'], $coulumn);
+							}	
+						}
+						
+						if($coulumn == 'postDate'){
+							
+							if(sizeof($dataarr['pposted']) <> 0){
+								
+								$concatq .= $this->make_postdate_query_string($dataarr['pposted'], 'postdate_timestr');
 							}	
 						}
 					}
@@ -1396,7 +1487,7 @@
 			$this->db->order_by("tpp.ID", 'desc');
 			
 			$query = $this->db->get();
-						
+				
 			return $result = $query->result();
 		}
 		
@@ -1415,7 +1506,7 @@
 			$this->db->join('{PRE}country tc', 'tc.tfc_id = tpp.countryID', 'left');
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
 				
-			if($type && $val){
+			if($type && isset($val) && $val <> ''){
 				
 				if(is_array($dataarr['scolumn']) && !empty($dataarr['scolumn']) && sizeof($dataarr['scolumn']) <> 0){ 
 										
@@ -1456,6 +1547,14 @@
 								$concatq .= $this->make_pattern_query_string($dataarr['sectors'], $coulumn);
 							}	
 						}
+						
+						if($coulumn == 'postDate'){
+							
+							if(sizeof($dataarr['pposted']) <> 0){
+								
+								$concatq .= $this->make_postdate_query_string($dataarr['pposted'], 'postdate_timestr');
+							}	
+						}
 					}
 									
 					if($user_id > 0){
@@ -1481,9 +1580,7 @@
 					$where = "tpp.row_deleted = '0' AND tpp.admin_approval = 1 AND tpp.isDraft = '0'";
 				}
 			}
-			
-			
-			
+					
 			if(trim($skeyw) != ''){
 				/* $where .= ' AND (tpp.title LIKE "%'.$skeyw.'%" OR tpp.description LIKE "%'.$skeyw.'%" OR tpp.sectors LIKE "%'.$skeyw.'%")';	*/
 				$where .= ' AND (tpp.title LIKE "%'.$skeyw.'%" OR tpp.description LIKE "%'.$skeyw.'%")';
@@ -1599,7 +1696,7 @@
 			$this->db->join('{PRE}country tc', 'tc.tfc_id = tpp.countryID', 'left');
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
 						
-			if($type && $val){
+			if($type && isset($val) && $val <> ''){
 				
 				if(is_array($dataarr['scolumn']) && !empty($dataarr['scolumn']) && sizeof($dataarr['scolumn']) <> 0){ 
 										
@@ -1638,6 +1735,14 @@
 							if(sizeof($dataarr['sectors']) <> 0){
 								
 								$concatq .= $this->make_pattern_query_string($dataarr['sectors'], $coulumn);
+							}	
+						}
+						
+						if($coulumn == 'postDate'){
+							
+							if(sizeof($dataarr['pposted']) <> 0){
+								
+								$concatq .= $this->make_postdate_query_string($dataarr['pposted'], 'postdate_timestr');
 							}	
 						}
 					}
@@ -1697,7 +1802,7 @@
 			$this->db->join('{PRE}country tc', 'tc.tfc_id = tpp.countryID', 'left');
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
 			
-			if($type && $val){
+			if($type && isset($val) && $val <> ''){
 				
 				if(is_array($dataarr['scolumn']) && !empty($dataarr['scolumn']) && sizeof($dataarr['scolumn']) <> 0){ 
 										
@@ -1736,6 +1841,14 @@
 							if(sizeof($dataarr['sectors']) <> 0){
 								
 								$concatq .= $this->make_pattern_query_string($dataarr['sectors'], $coulumn);
+							}	
+						}
+						
+						if($coulumn == 'postDate'){
+							
+							if(sizeof($dataarr['pposted']) <> 0){
+								
+								$concatq .= $this->make_postdate_query_string($dataarr['pposted'], 'postdate_timestr');
 							}	
 						}
 					}
@@ -1797,7 +1910,7 @@
 			$this->db->join('{PRE}country tc', 'tc.tfc_id = tpp.countryID', 'left');
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
 			
-			if($type && $val){
+			if($type && isset($val) && $val <> ''){
 				
 				if(is_array($dataarr['scolumn']) && !empty($dataarr['scolumn']) && sizeof($dataarr['scolumn']) <> 0){ 
 										
@@ -1836,6 +1949,14 @@
 							if(sizeof($dataarr['sectors']) <> 0){
 								
 								$concatq .= $this->make_pattern_query_string($dataarr['sectors'], $coulumn);
+							}	
+						}
+						
+						if($coulumn == 'postDate'){
+							
+							if(sizeof($dataarr['pposted']) <> 0){
+								
+								$concatq .= $this->make_postdate_query_string($dataarr['pposted'], 'postdate_timestr');
 							}	
 						}
 					}
@@ -1898,7 +2019,7 @@
 			$this->db->join('{PRE}country tc', 'tc.tfc_id = tpp.countryID', 'left');
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
 			
-			if($type && $val){
+			if($type && isset($val) && $val <> ''){
 				
 				if(is_array($dataarr['scolumn']) && !empty($dataarr['scolumn']) && sizeof($dataarr['scolumn']) <> 0){ 
 					
@@ -1937,6 +2058,14 @@
 							if(sizeof($dataarr['sectors']) <> 0){
 								
 								$concatq .= $this->make_pattern_query_string($dataarr['sectors'], $coulumn);
+							}	
+						}
+						
+						if($coulumn == 'postDate'){
+							
+							if(sizeof($dataarr['pposted']) <> 0){
+								
+								$concatq .= $this->make_postdate_query_string($dataarr['pposted'], 'postdate_timestr');
 							}	
 						}
 					}
@@ -2089,7 +2218,7 @@
 			$this->db->join('{PRE}country tc', 'tc.tfc_id = tpp.countryID', 'left');
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
 			
-			if($type && $val){
+			if($type && isset($val) && $val <> ''){
 				
 				if(is_array($dataarr['scolumn']) && !empty($dataarr['scolumn']) && sizeof($dataarr['scolumn']) <> 0){ 
 										
@@ -2128,6 +2257,14 @@
 							if(sizeof($dataarr['sectors']) <> 0){
 								
 								$concatq .= $this->make_pattern_query_string($dataarr['sectors'], $coulumn);
+							}	
+						}
+						
+						if($coulumn == 'postDate'){
+							
+							if(sizeof($dataarr['pposted']) <> 0){
+								
+								$concatq .= $this->make_postdate_query_string($dataarr['pposted'], 'postdate_timestr');
 							}	
 						}
 					}

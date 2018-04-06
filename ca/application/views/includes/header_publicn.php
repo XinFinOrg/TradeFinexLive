@@ -1,28 +1,26 @@
 	<!-- Boostrap -->
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/bootstrap.min.css');?>" />
 	<!-- Latest compiled and minified CSS -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	-->
-	
+   
     <!-- Datatables -->
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/datatables/dataTables.bootstrap.1.10.15.min.css" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/datatables/fixedHeader.bootstrap.3.1.2.min.css" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/datatables/responsive.bootstrap.2.1.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/datatables/dataTables.bootstrap.1.10.15.min.css');?>" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/datatables/fixedHeader.bootstrap.3.1.2.min.css');?>" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/datatables/responsive.bootstrap.2.1.1.min.css');?>" />
     <!-- Juery UI -->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/jquery-ui.1.12.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/jquery-ui.1.12.1.min.css');?>" />
 	<!-- Theme style -->
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/jquery-te-Style.css" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/intlTelInput.css" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/style_custom.css" /> 
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/jquery-te-Style.css');?>" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/intlTelInput.css');?>" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/style.css');?>" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/style_custom.css');?>" /> 
 	<!-- Reponsive -->
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/responsive.css" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/responsive.css');?>" />
 	<!-- Captcha -->
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/captcha/jquery.realperson.min.css" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/captcha/jquery.realperson.min.css');?>" />
 	
 	<!-- Lazy Loading Slider CSS -->
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/slick.css">
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/slick-theme.css">
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/slick.css');?>" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/slick-theme.css');?>" />
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

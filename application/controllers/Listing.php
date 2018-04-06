@@ -629,8 +629,8 @@ class Listing extends CI_Controller {
 			$this->session->set_userdata('suser_type', $rutype);
 			$data['suser_type'] = $suser_type = $this->session->userdata('suser_type');
 		}
-		
-		if($action <> $sess_action){
+				
+		if(($action == 'search_user' && ($sess_action == '' || $sess_action == 'search')) || (($action == 'search' || $action == '') && $sess_action == 'search_user')){
 			
 			$this->session->unset_userdata('col_name');
 			$this->session->unset_userdata('col_val');
@@ -640,7 +640,7 @@ class Listing extends CI_Controller {
 			$this->session->unset_userdata('col_coun_vals');
 			$this->session->unset_userdata('col_post_vals');
 			$this->session->unset_userdata('col_sec_vals');
-			$this->session->unset_userdata('col_names');
+			$this->session->unset_userdata('col_names'); 
 		
 		}
 		
@@ -741,14 +741,14 @@ class Listing extends CI_Controller {
 		}
 		
 		if($action == 'search_user' || $sess_action == 'search_user'){
-				
+					
 			if($type <> '' || $val <> ''){
 				
 				$this->session->set_userdata('col_name', $type);
 				$this->session->set_userdata('col_val', $val);
 				$this->session->set_userdata('search_keyword', $search_keyword);
 				
-				if(($sort_order == 'asc' || $sort_order == 'desc') && $val){
+				if(($sort_order == 'asc' || $sort_order == 'desc') && isset($val)){
 					$this->session->unset_userdata('col_name');
 					$this->session->unset_userdata('col_val');
 					$this->session->unset_userdata('search_keyword');
@@ -1026,14 +1026,14 @@ class Listing extends CI_Controller {
 				
 		}
 		else{
-						
+								
 			if($type <> '' || $val <> ''){
 				
 				$this->session->set_userdata('col_name', $type);
 				$this->session->set_userdata('col_val', $val);
 				$this->session->set_userdata('search_keyword', $search_keyword);
 				
-				if(($sort_order == 'asc' || $sort_order == 'desc') && $val){
+				if(($sort_order == 'asc' || $sort_order == 'desc') && isset($val)){
 					$this->session->unset_userdata('col_name');
 					$this->session->unset_userdata('col_val');
 					$this->session->unset_userdata('search_keyword');
@@ -1216,11 +1216,12 @@ class Listing extends CI_Controller {
 						$data['scountry'] = $this->session->userdata('col_coun_vals');
 					}
 				}
-				
+								
 				if($type == 'postDate'){
-					
-					if($this->session->userdata('col_post_vals') && !empty($this->session->userdata('col_post_vals')))
-					$data['pposted'] = $this->session->userdata('col_post_vals');
+										
+					if($this->session->userdata('col_post_vals') && !empty($this->session->userdata('col_post_vals'))){
+						$data['pposted'] = $this->session->userdata('col_post_vals');
+					}
 					
 					$vala = explode(',', $val);
 					
@@ -1231,21 +1232,27 @@ class Listing extends CI_Controller {
 					$data['pposted'] = array();
 					
 					for($c=0; $c < sizeof($vala); $c++){
-					
-						if($vala[$c])	
-							$posttime = date('Ymd',strtotime("-".$vala[$c]." days"));
 						
-						if($vala[$c] && in_array($posttime, $data['pposted'])){
-							
-						}else{
-							
-							if($vala[$c])
-								array_push($data['pposted'], $posttime);
-						}
+						if($vala[$c] <> '' && $vala[$c] >= 0){	
+						
+							if($vala[$c] == 0){
+								$posttime = date('Ymd');
+							}else{
+								$posttime = date('Ymd', strtotime("-".$vala[$c]." days"));
+							}
+						
+							if($vala[$c] && in_array($posttime, $data['pposted'])){
+								
+							}else{
+								
+								if($vala[$c] <> '' && $vala[$c] >= 0)
+									array_push($data['pposted'], $posttime);
+							}
+						}	
 					}
-					
+										
 					foreach($data['scolumn'] as $key => $value){
-						
+												
 						if($value == 'postDate' && sizeof($data['pposted']) == 0){
 							unset($data['scolumn'][$key]);
 						}
@@ -1854,6 +1861,7 @@ class Listing extends CI_Controller {
 			$data_add['refnum'] = $this->input->post('refnum');
 			$data_add['closingDate'] = date('Y-m-d H:i:s', strtotime(str_replace('/','-', $this->input->post('closing_date'))));
 			$data_add['updatingDate'] = date('Y-m-d H:i:s');
+			$data_add['postdate_timestr'] = strtotime(date('Ymd'));
 			$data_add['sectors'] = $sectors;
 			$data_add['fixedBudget'] = $this->input->post('pbudget');
 			$data_add['requestStartDate'] = $start_within;
@@ -2034,9 +2042,9 @@ class Listing extends CI_Controller {
 			$data_add['currency_ref'] = $this->input->post('pcurr');
 			$data_add['countryID'] = $this->input->post('pcountry');
 			$data_add['refnum'] = $this->input->post('refnum');
-			$data_add['postdate_timestr'] = strtotime(date('Y-m-d H:i:s'));
 			$data_add['closingDate'] = date('Y-m-d H:i:s', strtotime(str_replace('/','-', $this->input->post('closing_date'))));
 			$data_add['updatingDate'] = date('Y-m-d H:i:s');
+			$data_add['postdate_timestr'] = strtotime(date('Ymd'));
 			$data_add['sectors'] = $sectors;
 			$data_add['fixedBudget'] = $this->input->post('pbudget');
 			$data_add['requestStartDate'] = $start_within;

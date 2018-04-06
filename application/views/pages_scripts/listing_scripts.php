@@ -866,7 +866,7 @@
 			else{
 				var strc = $(this).attr('sval');
 			}
-						
+									
 			$('<form id="search_formn" action="<?=base_url();?>listing/search" method="post"><input type="hidden" name="col_name" value="'+colname+'" ><input type="hidden" name="col_val" value="'+strc+'" ><input type="hidden" name="action" value="'+taction+'" /><input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" /></form>').appendTo('body').submit();
 		});
 				

@@ -198,33 +198,17 @@
 			</div>
 			<!-- /.footer-bottom --> 
 		</section>
-			
-		<div class="modal fade" id="open_video" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<div class="modal-body">
-						<div class="video_part">
-						<!-- <iframe src="https://www.youtube.com/embed/jLaqms1IHWE?feature=oembed" allowfullscreen="" width="100%" height="400" frameborder="0"></iframe> -->
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
+				
 		<!-- JAVASCRIPT =============================--> 
-		<script src="<?=base_url();?>assets/js/jquery-core/jquery.min.js"></script> 
-        <script src="<?=base_url();?>assets/js/jquery-core/jquery-ui.1.12.1.min.js"></script> 
-		<script src="<?=base_url();?>assets/js/jquery-core/jquery.ui.touch-punch.min.js"></script> 
-		<script src="<?=base_url();?>assets/js/intlTelInput.min.js"></script> 
-		<script src="<?=base_url();?>assets/js/form-validator/jquery.form-validator.min.js"></script>
-		<script src="<?=base_url();?>assets/js/form-validator/jquery.validate.min.js"></script>
-		<script src="<?=base_url();?>assets/js/bootstrap/bootstrap.min.js"></script> 
-		<script src="<?=base_url();?>assets/js/bootstrap/bootstrap-switch.min.js"></script>	
-		<script src="<?=base_url();?>assets/js/bootstrap/bootstrap-confirmation.min.js"></script>
+		<script src="<?=base_url('assets/js/jquery-core/jquery.min.js');?>"></script> 
+        <script src="<?=base_url('assets/js/jquery-core/jquery-ui.1.12.1.min.js');?>"></script> 
+		<script src="<?=base_url('assets/js/jquery-core/jquery.ui.touch-punch.min.js');?>"></script> 
+		<script src="<?=base_url('assets/js/intlTelInput.min.js');?>"></script> 
+		<script src="<?=base_url('assets/js/form-validator/jquery.form-validator.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/form-validator/jquery.validate.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/bootstrap/bootstrap.min.js');?>"></script> 
+		<script src="<?=base_url('assets/js/bootstrap/bootstrap-switch.min.js');?>"></script>	
+		<script src="<?=base_url('assets/js/bootstrap/bootstrap-confirmation.min.js');?>"></script>
 		
 		<?php 
 			if(uri_string() === 'user/edit'){
@@ -233,37 +217,34 @@
 			}
 		?>
 		
-		<script src="<?=base_url();?>assets/js/bootstrap/bootstrap-multiselect.min.js"></script>
-		<script src="<?=base_url();?>assets/js/text-editor/jquery-te-1.0.5.min.js"></script> 
-		<script src="<?=base_url();?>assets/js/rating/jquery.ratyn.min.js"></script>
-		
-		<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtRmXKclfDp20TvfQnpgXSDPjut14x5wk&region=GB"></script>
-		<script src="<?=base_url();?>assets/js/gmap3.min.js"></script>  -->
+		<script src="<?=base_url('assets/js/bootstrap/bootstrap-multiselect.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/text-editor/jquery-te-1.0.5.min.js');?>"></script> 
+		<script src="<?=base_url('assets/js/rating/jquery.ratyn.min.js');?>"></script>
 		
 		<!-- Jquery Paginate -->
-		<script src="<?=base_url();?>assets/js/jquery.easyPaginate.js"></script>
+		<script src="<?=base_url('assets/js/jquery.easyPaginate.js');?>"></script>
 		
 		<!-- Lazy Loading -->
-		<script src="<?=base_url();?>assets/js/slick.js"></script>
+		<script src="<?=base_url('assets/js/slick.js');?>"></script>
 		
 		<!-- Datatables -->
-		<script src="<?=base_url();?>assets/js/datatables/jquery.dataTables.min.js"></script>
-		<script src="<?=base_url();?>assets/js/datatables/dataTables.responsive.2.1.1.min.js"></script>
-		<script src="<?=base_url();?>assets/js/datatables/responsive.bootstrap.2.1.1.min.js"></script>
-		<script src="<?=base_url();?>assets/js/datatables/dataTables.bootstrap.min.js"></script>
-        <script src="<?=base_url();?>assets/js/datatables/dataTables.buttons.min.js"></script>
-        <script src="<?=base_url();?>assets/js/datatables/buttons.bootstrap.min.js"></script>
-        <script src="<?=base_url();?>assets/js/datatables/jszip.min.js"></script>
-        <script src="<?=base_url();?>assets/js/datatables/pdfmake.min.js"></script>
-		<script src="<?=base_url();?>assets/js/datatables/vfs_fonts.js"></script>
-        <script src="<?=base_url();?>assets/js/datatables/buttons.html5.min.js"></script>
-        <script src="<?=base_url();?>assets/js/datatables/buttons.print.min.js"></script>
+		<script src="<?=base_url('assets/js/datatables/jquery.dataTables.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/datatables/dataTables.responsive.2.1.1.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/datatables/responsive.bootstrap.2.1.1.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/datatables/dataTables.bootstrap.min.js');?>"></script>
+        <script src="<?=base_url('assets/js/datatables/dataTables.buttons.min.js');?>"></script>
+        <script src="<?=base_url('assets/js/datatables/buttons.bootstrap.min.js');?>"></script>
+        <script src="<?=base_url('assets/js/datatables/jszip.min.js');?>"></script>
+        <script src="<?=base_url('assets/js/datatables/pdfmake.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/datatables/vfs_fonts.js');?>"></script>
+        <script src="<?=base_url('assets/js/datatables/buttons.html5.min.js');?>"></script>
+        <script src="<?=base_url('assets/js/datatables/buttons.print.min.js');?>"></script>
 		
 		<!-- captha -->
-		<script src="<?=base_url();?>assets/js/captcha/jquery.plugin.min.js"></script>
-		<script src="<?=base_url();?>assets/js/captcha/jquery.realperson.min.js"></script>
-		<script src="<?=base_url();?>assets/js/captcha/md5.min.js"></script>
-		<script src="<?=base_url();?>assets/js/captcha/aes.min.js"></script>
+		<script src="<?=base_url('assets/js/captcha/jquery.plugin.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/captcha/jquery.realperson.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/captcha/md5.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/captcha/aes.min.js');?>"></script>
 		                
         <!-- JAVASCRIPT OWL =============================--> 
         	
@@ -283,5 +264,5 @@
 							
 		</script>
 		
-		<script src="<?=base_url();?>assets/js/page_js/footer_common.js"></script>
+		<script src="<?=base_url('assets/js/page_js/footer_common.js');?>"></script>
 	

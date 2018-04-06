@@ -113,7 +113,11 @@
 										
 										for($i=0; $i < sizeof($posteda); $i++){
 											
-											$posttime = date('Ymd',strtotime("-".$posteda[$i]." days"));
+											if($i == 0){
+												$posttime = date('Ymd');
+											}else{
+												$posttime = date('Ymd',strtotime("-".$posteda[$i]." days"));
+											}
 											
 											if(isset($pposted) && !empty($pposted) && in_array($posttime, $pposted) && !in_array($posteda[$i], $postdarrn)){
 												$postdarrn[$posttime] = $posteda[$i];

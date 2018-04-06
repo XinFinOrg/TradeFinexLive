@@ -3160,6 +3160,11 @@ to {
 	font-family: 'open_sansregular';
 	padding-bottom: 5px;
 }
+
+.listing_info_user .main_body_project_part .table > tbody > tr > td:first-child{
+	width: 200px;
+}
+
 .main_body_project_part .table > tbody > tr > td:last-child {
 	color: #282c3f;
 	font-weight: 500;

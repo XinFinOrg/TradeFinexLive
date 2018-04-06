@@ -230,10 +230,13 @@
 		<script src="<?=base_url('assets/js/captcha/md5.min.js');?>"></script>
 		<script src="<?=base_url('assets/js/captcha/aes.min.js');?>"></script>
 		
+		<script src="<?=base_url('assets/js/bootstrap/bootstrap-confirmation.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/bootstrap/bootstrap-multiselect.min.js');?>"></script>
+		<script src="<?=base_url('assets/js/rating/jquery.ratyn.min.js');?>"></script>
+		
 		<?php } if($user_id > 0){ ?>
 				
 		<script src="<?=base_url('assets/js/bootstrap/bootstrap-switch.min.js');?>"></script>	
-		<script src="<?=base_url('assets/js/bootstrap/bootstrap-confirmation.min.js');?>"></script>
 		
 		<?php 
 			if(uri_string() === 'user/edit'){
@@ -242,9 +245,6 @@
 			}
 		?>
 		
-		<script src="<?=base_url('assets/js/bootstrap/bootstrap-multiselect.min.js');?>"></script>
-		<script src="<?=base_url('assets/js/rating/jquery.ratyn.min.js');?>"></script>
-						
 		<!-- Datatables -->
 		<script src="<?=base_url('assets/js/datatables/jquery.dataTables.min.js');?>"></script>
 		<script src="<?=base_url('assets/js/datatables/dataTables.responsive.2.1.1.min.js');?>"></script>
