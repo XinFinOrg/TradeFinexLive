@@ -692,18 +692,18 @@
 					</div>
 					<div class="awarding_com overview_content">
 						<h5>Awarding company</h5>
-						<p><?php echo ucwords($project_listed_info[0]->tfcom_name) ?></p>
+						<p><?=(isset($project_listed_info[0]->tfcom_name) ? ucwords($project_listed_info[0]->tfcom_name) : '');?></p>
 						<div class="sub_box_left"><span><img src="<?=base_url()?>assets/images/icon/location.png"> </span>
-							<span><?=str_replace('*', ', ', $project_listed_info[0]->tfcom_address).', '.ucwords($user_info[0]->tfc_name);?></span> 
+							<span><?=(isset($project_listed_info[0]->tfcom_address) ? str_replace('*', ', ', $project_listed_info[0]->tfcom_address) : '').', '.(isset($user_info[0]->tfc_name) ? ucwords($user_info[0]->tfc_name) : '');?></span> 
 						</div>
 					</div>
 					<div class="awarding_com overview_content">
 						<h5>Contact Information</h5>
-						<p><?php echo ucwords($project_listed_info[0]->tfcom_contact1_fname).' '.ucwords($project_listed_info[0]->tfcom_contact1_lname) ?></</p>
-						<div class="sub_box_left"><span><img src="<?=base_url()?>assets/images/icon/contact_mail.png"></span> <span><?php echo $project_listed_info[0]->tfcom_contact1_email ?></span> </div>
-						<div class="sub_box_left"><span><img src="<?=base_url()?>assets/images/icon/contact_phone.png"></span> <span><?php echo $project_listed_info[0]->tfcom_contact1_number ?></span> </div>
+						<p><?=(isset($project_listed_info[0]->tfcom_contact1_fname) ? ucwords($project_listed_info[0]->tfcom_contact1_fname) : '').' '.(isset($project_listed_info[0]->tfcom_contact1_lname) ? ucwords($project_listed_info[0]->tfcom_contact1_lname) : ''); ?></p>
+						<div class="sub_box_left"><span><img src="<?=base_url()?>assets/images/icon/contact_mail.png"></span> <span><?=(isset($project_listed_info[0]->tfcom_contact1_email) ? $project_listed_info[0]->tfcom_contact1_email : '');?></span> </div>
+						<div class="sub_box_left"><span><img src="<?=base_url()?>assets/images/icon/contact_phone.png"></span> <span><?=(isset($project_listed_info[0]->tfcom_contact1_number) ? $project_listed_info[0]->tfcom_contact1_number : '');?></span> </div>
 						<?php
-							if(trim($project_listed_info[0]->tfcom_contact2_fname) != '' || trim($project_listed_info[0]->tfcom_contact2_lname != '')){
+							if((isset($project_listed_info[0]->tfcom_contact2_fname) && trim($project_listed_info[0]->tfcom_contact2_fname) != '') || (isset($project_listed_info[0]->tfcom_contact2_lname) && trim($project_listed_info[0]->tfcom_contact2_lname != ''))){
 						?>
 						<hr />
 						<p><?php echo ucwords($project_listed_info[0]->tfcom_contact2_fname).' '.ucwords($project_listed_info[0]->tfcom_contact2_lname) ?> (Alternate)</p>

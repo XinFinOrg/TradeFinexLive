@@ -19,6 +19,15 @@ class Listingv extends CI_Controller {
 		$data = array();
 		$result = array();
 		
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		); 
+		
+		$data['csrf'] = $csrf;
+		
 		$data['page'] = 'listing';
 		$data['msg'] = '';
 		$data['msg'] = '';
@@ -38,6 +47,7 @@ class Listingv extends CI_Controller {
 		$data['saved_project'] = array();
 		$data['project_proposal'] = array();
 		$data['project_user_rating'] = array();
+		$data['user_info'] = array();
 						
 		$action = $this->input->post('action');
 		$row_id = $this->input->post('row_id');
@@ -57,11 +67,15 @@ class Listingv extends CI_Controller {
 		if($project_proposals && !empty($project_proposals) && is_array($project_proposals) && sizeof($project_proposals) <> 0){
 			 $tproject_proposals += sizeof($project_proposals);			
 		}
+		
+		
 				
 		$data['proposals'] = $tproject_proposals;
 		
 		if($project_info && !empty($project_info) && is_array($project_info) && sizeof($project_info) <> 0){
-			$data['project_listed_info'] = $project_info;			
+			$data['project_listed_info'] = $project_info;		
+
+			$data['user_info'] = $uresult = $this->manage->get_user_info_by_id_and_type($project_info[0]->userID, $project_info[0]->userType);
 		}
 		
 		$data["provider_interested"] = array();
@@ -77,12 +91,12 @@ class Listingv extends CI_Controller {
 		$data["beneficiary_provider_accepted"] = $this->plisting->fetch_beneficiary_accepted_invitaion($row_id, 1);
 		$data["beneficiary_financier_accepted"] = $this->plisting->fetch_beneficiary_accepted_invitaion($row_id, 2);
 				
-		$this->load->view('includes/header', $data);
-		$this->load->view('includes/header_public', $data);
+		$this->load->view('includes/headern', $data);
+		$this->load->view('includes/header_publicn', $data);
 		$this->load->view('pages/project_info', $data);
-		$this->load->view('includes/footer_common', $data);
+		$this->load->view('includes/footer_commonn', $data);
 		$this->load->view('pages_scripts/listing_scripts', $data);
-		$this->load->view('includes/footer');
+		$this->load->view('includes/footern');
 	}	
 }
 	
