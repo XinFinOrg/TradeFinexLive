@@ -750,6 +750,21 @@
 			
 		});
 		
+		$('.show-hide').bind('click', function(){
+					
+			if($(this).parent().hasClass('attrshow')){
+				$(this).parent().removeClass('attrshow');
+				$(this).parent().addClass('attrhide');
+				$(this).parent().find('input[type="text"]').attr('type', 'password');
+				$(this).find('a').text('SHOW');
+			}else{
+				$(this).parent().addClass('attrshow');
+				$(this).parent().removeClass('attrhide');
+				$(this).parent().find('input[type="password"]').attr('type', 'text');
+				$(this).find('a').text('HIDE');
+			}
+		});
+		
 		setTimeout( function(){ $('.alert-success').slideUp(); }, 3000 );
 		
 		/* window.applyValidation(true, '#form_post_project', 'top');
