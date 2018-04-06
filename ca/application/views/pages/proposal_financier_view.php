@@ -58,7 +58,8 @@
 			
 	</script>
 
-<?		
+<?php	
+	
 	}else{
 
 	if($project_listed_info && !empty($project_listed_info) && is_array($project_listed_info) && sizeof($project_listed_info) <> 0){ 
