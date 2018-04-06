@@ -121,16 +121,20 @@
 													echo '<span class="btn popen pro-subm"><i class="fa fa-upload"></i> PROPOSAL SUBMITTED</span>';	
 												}
 												
-											}else{	
-										
-												if(($afu_row['utype_ref'] == 1 && ($project_listed_info[0]->awarded_provider == 1 || $project_listed_info[0]->awarded_provider == 2)) || ($afu_row['utype_ref'] == 2 && ($project_listed_info[0]->awarded_financier == 1 || $project_listed_info[0]->awarded_financier == 2))){
-											
-													echo '<span class="btn pcomplete"><i class="fa fa-times"></i>AWARDED/REJECTED</span>';
+											}else{
 
-												}else{ 
-										
+												if(($afu_row['utype_ref'] == 1 && $project_listed_info[0]->awarded_provider == 0) || ($afu_row['utype_ref'] == 2 && $project_listed_info[0]->awarded_financier == 0)){
+												
 													echo '<a class="btn binvite proj_invite '.( !$afu_row['invited'] ? '' : 'hide').'" user_id="'.$afu_row['uid'].'" user_typei="'.$afu_row['utype_ref'].'" proj_id="'.$project_listed_info[0]->ID.'"><i class="fa fa-reply"></i> INVITE</a>&nbsp;<a class="btn binvite proj_invite_cancel '.( !$afu_row['invited'] ? 'hide' : '').'" user_id="'.$afu_row['uid'].'" user_typei="'.$afu_row['utype_ref'].'" proj_id="'.$project_listed_info[0]->ID.'"><i class="fa fa-check"></i> INVITED</a>&nbsp;<img class="loader hide" width="20" src="'.base_url().'assets/images/icon/loading_icon.gif" />';
-										
+												
+												}else if(($afu_row['utype_ref'] == 1 && $project_listed_info[0]->awarded_provider == 1) || ($afu_row['utype_ref'] == 2 && $project_listed_info[0]->awarded_financier == 1)){
+											
+													echo '<span class="btn pcomplete"><i class="fa fa-check"></i> AWARDED</span>';
+
+												}else{
+												
+													echo '<span class="btn pclose"><i class="fa fa-times"></i> REJECTED</span>';
+													
 												}
 											}
 										} 
