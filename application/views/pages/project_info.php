@@ -521,11 +521,11 @@
 								
 								if($project_listed_info[0]->awarded_financier > 0 && ($project_listed_info[0]->visibility == 0 || $project_listed_info[0]->visibility == 1)){
 									
-									echo '<div class="col-md-12 col-xs-12 btn-more"><button type="button" user_view="'.$project_listed_info[0]->visibility.'" row_id="'. $project_listed_info[0]->ID.'" user_id="'.$user_id.'" class="invite_for_project"><i class="fa fa-handshake-o"></i> Invite Supplier</button></div>';
+									echo '<div class="col-md-12 col-xs-12 btn-more"><button type="button" user_view="1" row_id="'. $project_listed_info[0]->ID.'" user_id="'.$user_id.'" class="invite_for_project"><i class="fa fa-handshake-o"></i> Invite Supplier</button></div>';
 								
 								}else if($project_listed_info[0]->awarded_provider > 0 && ($project_listed_info[0]->visibility == 0 || $project_listed_info[0]->visibility == 2)){
 									
-									echo '<div class="col-md-12 col-xs-12 btn-more"><button type="button" user_view="'.$project_listed_info[0]->visibility.'" row_id="'. $project_listed_info[0]->ID.'" user_id="'.$user_id.'" class="invite_for_project"><i class="fa fa-handshake-o"></i> Invite Financier</button></div>';
+									echo '<div class="col-md-12 col-xs-12 btn-more"><button type="button" user_view="2" row_id="'. $project_listed_info[0]->ID.'" user_id="'.$user_id.'" class="invite_for_project"><i class="fa fa-handshake-o"></i> Invite Financier</button></div>';
 								
 								}else{
 									
