@@ -60,4 +60,11 @@ if (!function_exists('get_notification_status'))
 		
 		return $data;
     }
+	
+	function create_notification($ntype, $nid, $from_user_id, $from_user_type, $projecct_ref, $proposal_ref, $to_user_id, $to_user_type, $message)
+    {
+		
+		
+	
+	}
 } 

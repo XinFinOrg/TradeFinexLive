@@ -135,7 +135,7 @@
 					echo '<input type="hidden" name="media_count" id="media_count" value="'.($i-1).'" />';
 					echo '<input type="hidden" name="previous_media_count" id="previous_media_count" value="'.($i-1).'" />';
 				?>
-				<input type="hidden" name="action" id="action" value="update_media" />
+				<input type="hidden" name="action" id="action" value="add_media" />
 				<button type="submit" class="btn btn-primary pull-right"> Submit</button>
 				<a href="javascript:void(0)" class="add_media_more pull-right" style="margin-right:10px;"><i class="fa fa-plus"></i> Add More</a>
 			</div>

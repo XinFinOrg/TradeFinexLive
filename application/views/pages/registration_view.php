@@ -20,7 +20,7 @@
 						</div>
 						<div class="form-group focus-group">
 							<label class="form-label">
-								<input class="form-input input-focus" name="email" id="email" maxlength="50" type="text" tabindex="3" /><span class="form-name floating-label">EMAIL ID<sup>*</sup></span>
+								<input class="form-input input-focus" name="email" id="email" type="text" tabindex="3" /><span class="form-name floating-label">EMAIL ID<sup>*</sup></span>
 							</label>
 						</div>
 						<div class="form-group focus-group">
@@ -40,7 +40,7 @@
 							</label>
 							<img class="loader" src="<?=base_url()?>assets/images/icon/loader.gif" alt="Loading ..." />
 							<img class="otp_sucess" src="<?=base_url()?>assets/images/icon/right.png" alt="OTP Success" />
-						</div> -->
+						</div>-->
 						<div class="form-group register_as_group">
 							<div class="col-md-12 register_as">
 								<label class="control-label" for="signupName">Register as</label>
@@ -86,7 +86,7 @@
 						<div class="btn-more"> <button id="signupSubmit" type="submit" class="btn btn-info"> Sign Up </button> </div>
 						<div class="row bottom_most">
 							<p class="policy">By clicking Sign Up, you agree to TradeFinex's <br/><a href="<?php echo base_url() ?>publicv/terms_condition" target="_blank">Terms of Use </a> and <a href="<?php echo base_url() ?>publicv/privacy_policy" target="_blank">Privacy Policy. </a></p>
-						</div>
+						</div>					
 					</form>
 				</div>
 			</div>

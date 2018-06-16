@@ -35,7 +35,7 @@
 																
 							if($count%2 == 0){ 
 						?>
-							<li class="contact send_message inv_sec even <?=($send_user == $urow['uid'] ? 'active' : '');?>" send_user="<?=$urow['uid'];?>" send_user_type="<?=$urow['utype'];?>">
+							<li class="contact send_message inv_sec even <?=(isset($send_user) && $send_user == $urow['uid'] ? 'active' : '');?>" send_user="<?=$urow['uid'];?>" send_user_type="<?=$urow['utype'];?>">
 								<div class="wrap"> <?=($urow['activelog'] == 1 ? '<span class="contact-status online"></span>' : '');?> <img src="<?=(($urow['uprofpic'] && $urow['uprofpic'] != '') ? base_url().'assets/user_profile_image/'.$urow['uprofpic'] : base_url().'assets/images/img/contact_profile_photo.png');?>" alt="<?=ucwords($urow['ufname'].' '.$urow['ulname']);?>" />
 									<div class="meta">
 										<p class="name cont_list_name"><?=ucwords($urow['ufname'].' '.$urow['ulname']);?></p>
@@ -46,7 +46,7 @@
 							
 							<?php }else{ ?>
 							
-							<li class="contact send_message inv_sec odd <?=($send_user == $urow['uid'] ? 'active' : '');?>" send_user="<?=$urow['uid'];?>" send_user_type="<?=$urow['utype'];?>">
+							<li class="contact send_message inv_sec odd <?=(isset($send_user) && $send_user == $urow['uid'] ? 'active' : '');?>" send_user="<?=$urow['uid'];?>" send_user_type="<?=$urow['utype'];?>">
 								<div class="wrap"> <?=($urow['activelog'] == 1 ? '<span class="contact-status online"></span>' : '');?> <img src="<?=(($urow['uprofpic'] && $urow['uprofpic'] != '') ? base_url().'assets/user_profile_image/'.$urow['uprofpic'] : base_url().'assets/images/img/contact_profile_photo.png');?>" alt="<?=ucwords($urow['ufname'].' '.$urow['ulname']);?>" />
 									<div class="meta">
 										<p class="name cont_list_name"><?=ucwords($urow['ufname'].' '.$urow['ulname']);?></p>

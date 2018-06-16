@@ -75,19 +75,19 @@
 										
 										if(($plrow->provider_completion_request == 2 || $plrow->awardStatus == 2) && $plrow->row_deleted == 0){
 											
-											echo '<div class="statusd label pclose positionauto">COMPLETED</div>';
+											echo '<div class="statusd label pclose pcompleted positionauto">COMPLETED</div>';
 										
 										}else if((($user_type_ref == 1 || $user_type_ref == 3) && ($plrow->awarded_provider == 2 || $plrow->awarded_provider == 3)) && $plrow->row_deleted == 0){ 
 											
-											echo '<div class="statusd pawarded label positionauto">IN-PROGRESS</div>';
+											echo '<div class="statusd pawarded pinprogress label positionauto">IN-PROGRESS</div>';
 										
 										}else if((($user_type_ref == 1 && $plrow->provider_completion_request == 0 && ($plrow->awarded_provider == 1 || $plrow->awarded_provider == 2)) || $plrow->awardStatus == 1) && $plrow->row_deleted == 0){ 
 											
-											echo '<div class="statusd pawarded label positionauto">AWARDED</div>';
+											echo '<div class="statusd psfawarded label positionauto">AWARDED</div>';
 										
 										}else if($user_type_ref == 3 && ($plrow->awarded_provider == 1 || $plrow->awarded_provider == 2 || $plrow->awarded_provider == 3) && $plrow->row_deleted == 0){ 
 										
-											echo '<div class="statusd pawarded label positionauto">AWARDED</div>';
+											echo '<div class="statusd psfawarded label positionauto">AWARDED</div>';
 										
 										}else if($plrow->awardStatus == 0 && $plrow->row_deleted == 0){ 
 										
@@ -103,12 +103,9 @@
 									</td>
 									<td class="text-center">
 										<?php
-											if($plrow->provider_completion_request == 2 && $plrow->row_deleted == 0){ 
+											 
 												echo 'RATE SUPPLIER <br/>'.(($provider_interested_user[$plrow->ID][0]['benif_rating'] > 0) ? set_rating_user($provider_interested_user[$plrow->ID][0]['benif_rating']) : '<span class="rating_b"></span><div id="providr-'.$plrow->ID.'" class="star provider_rating" data-rating="'.$provider_interested_user[$plrow->ID][0]['benif_rating'].'" from_user_id="'.$user_id.'" from_user_type="'.$user_type_ref.'" to_user_id="'.$provider_interested_user[$plrow->ID][0]['uid'].'" to_user_type="1" prow_id="'.$plrow->ID.'" data-toggle="confirmation" data-title="Are You want to do this?"></div>');
-											}else{
-												
-												echo ((isset($provider_interested_user[$plrow->ID][0]['benif_accept']) && $provider_interested_user[$plrow->ID][0]['benif_accept'] == 2) ? '<span class="btn"><i class="fa fa-times"></i>Rejected</span>' : '<a class="btn view_propose view_propose_btn tooltipa" user_type_ref="1" user_id="'.$provider_interested_user[$plrow->ID][0]['uid'].'" row_id="'.$plrow->ID.'" prow_id="'.$provider_interested_user[$plrow->ID][0]['proposal_id'].'"><i class="fa fa-eye"></i> <span class="tooltipatext">View Proposal</span></a>&nbsp;<a class="btn send_message send_message_btn tooltipa" proj_id="'.$plrow->ID.'" user_id="'.$plrow->userID.'" send_user="'.$provider_interested_user[$plrow->ID][0]['uid'].'" send_user_type="1"><i class="fa fa-comments"></i> <span class="tooltipatext">Send Message</span></a>');
-											}
+											
 										?>
 									</td>
 								</tr>	
@@ -189,15 +186,15 @@
 										
 										if(($plrow->awardStatus == 2 || $plrow->financier_completion_request == 2) && $plrow->row_deleted == 0){
 											
-											echo '<div class="label pclose positionauto">COMPLETED</div>';
+											echo '<div class="label pclose pcompleted positionauto">COMPLETED</div>';
 										
 										}else if((($user_type_ref == 3 || $user_type_ref == 2) && ($plrow->awarded_financier == 1 || $plrow->awarded_financier == 2 || $plrow->awarded_financier == 3 || $plrow->tpf_awardStatus == 1)) && $plrow->row_deleted == 0){ 
 											
-											echo '<div class="label pawarded positionauto">IN-PROGRESS</div>';
+											echo '<div class="label pawarded pinprogress positionauto">IN-PROGRESS</div>';
 										
 										}else if((($user_type_ref == 3 && $plrow->financier_completion_request == 0 && ($plrow->awarded_financier == 1 || $plrow->tpf_beneficiary_accept == 1)) || $plrow->awardStatus == 1) && $plrow->row_deleted == 0){ 
 										
-											echo '<div class="label pawarded positionauto">AWARDED</div>';
+											echo '<div class="label psfawarded positionauto">AWARDED</div>';
 										
 										}else if($plrow->awardStatus == 0 && $plrow->row_deleted == 0){ 
 											
@@ -251,6 +248,8 @@
 							<tbody>
 								<?php
 									$count = 0;
+
+									// if(count($proposal_accepted) != 0){
 									
 									if($projects_listed && !empty($projects_listed) && is_array($projects_listed) && sizeof($projects_listed) <> 0 && (!empty($proposal_accepted) || !empty($proposal_submitted) || !empty($proposals_subcontractor))){
 										
@@ -292,11 +291,11 @@
 									<?php 
 										
 										if((($user_type_ref == 1 && $plrow->provider_completion_request == 2) || $plrow->awardStatus == 2) && $plrow->row_deleted == 0){ 
-											echo '<span class="label pclose positionauto">COMPLETED</span>';
+											echo '<span class="label pclose pcompleted positionauto">COMPLETED</span>';
 										}else if((($user_type_ref == 1 || $user_type_ref == 3) && ($plrow->awarded_provider == 2 || $plrow->awarded_provider == 3)) && $plrow->row_deleted == 0){ 
-											echo '<div class="pawarded label positionauto">IN-PROGRESS</div>';
+											echo '<div class="pawarded pinprogress label positionauto">IN-PROGRESS</div>';
 										}else if((($user_type_ref == 1 && ($plrow->awarded_provider == 1 || $plrow->awarded_provider == 2 || $plrow->awarded_provider == 3)) || ($user_type_ref == 2 && $plrow->awarded_financier == 1) || $plrow->awardStatus == 1) && $plrow->row_deleted == 0){ 
-											echo '<span class="label pawarded positionauto">AWARDED</span>';
+											echo '<span class="label psfawarded positionauto">AWARDED</span>';
 										}
 										else if(in_array($plrow->ID, $proposal_submitted) && !in_array($plrow->ID, $proposal_accepted)){
 											echo '<span class="label popen positionauto">PROPOSAL SUBMITTED</span>';
@@ -334,6 +333,7 @@
 								<?php 
 											
 											}
+										// }
 											
 											$count++;
 										}
@@ -373,10 +373,13 @@
 							<tbody>
 								<?php
 									$count = 1;
+
+									
 									
 									if($projects_listedf && !empty($projects_listedf) && is_array($projects_listedf) && sizeof($projects_listedf) <> 0 && (!empty($proposal_accepted) || !empty($proposal_submitted))){
 										$fcount = 0;											
 										foreach($projects_listedf as $plrow){
+											if($plrow->tpf_awardStatus == 1){
 											
 											if((!empty($proposal_accepted) && sizeof($proposal_accepted) <> 0 && in_array($plrow->ID, $proposal_accepted)) || (!empty($proposal_submitted) && sizeof($proposal_submitted) <> 0 && in_array($plrow->ID, $proposal_submitted))) {
 																	
@@ -413,11 +416,11 @@
 									<td class="text-center status_bar">
 									<?php 
 										if(($user_type_ref == 2 && $plrow->tpf_awardStatus == 3) && $plrow->row_deleted == 0){ 
-											echo '<span class="label pclose positionauto">COMPLETED</span>';
+											echo '<span class="label pclose pcompleted positionauto">COMPLETED</span>';
 										}else if(($user_type_ref == 2 && $plrow->tpf_awardStatus == 1 && $plrow->tpf_beneficiary_accept == 1) && $plrow->row_deleted == 0){ 
-											echo '<div class="pawarded label positionauto">IN-PROGRESS</div>';
+											echo '<div class="pawarded label pinprogress positionauto">IN-PROGRESS</div>';
 										}else if(($user_type_ref == 2 && $plrow->tpf_beneficiary_accept == 1) && $plrow->row_deleted == 0){ 
-											echo '<span class="label pawarded positionauto">AWARDED</span>';
+											echo '<span class="label psfawarded positionauto">AWARDED</span>';
 										}
 										else if(in_array($plrow->ID, $proposal_submitted) && !in_array($plrow->ID, $proposal_accepted)){
 											echo '<span class="label popen positionauto">PROPOSAL SUBMITTED</span>';
@@ -451,6 +454,7 @@
 									</td>
 								</tr>	
 								<?php		}
+										}
 								
 								            $fcount++;
 								

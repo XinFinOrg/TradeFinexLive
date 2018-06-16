@@ -101,8 +101,6 @@
 				next_media_index = parseInt(media_count) + 1;
 				$('#media_count').val(next_media_index);
 				
-				$('#action').val('add_media');
-				
 			var media_row = '<div id="media_bottom_grid_'+next_media_index+'" class="col-md-4 media_bottom_grid"><div class="col-md-12 form-group"><h5><strong>Media Logo</strong></h5><input type="file" id="media_logo_'+next_media_index+'" name="media_logo_'+next_media_index+'" /><input type="hidden" id="mediaf_logo_'+next_media_index+'" name="mediaf_logo_'+next_media_index+'" /></div><div class="col-md-12 form-group"><h5><strong>Title</strong></h5><textarea rows="3" id="media_heading_'+next_media_index+'" name="media_heading_'+next_media_index+'" maxlength="120"></textarea></div><div class="col-md-12 form-group"><h5><strong>Description</strong></h5><textarea rows="4" id="media_short_descripttion_'+next_media_index+'" name="media_short_descripttion_'+next_media_index+'" maxlength="200"></textarea></div><div class="col-md-12 form-group"><h5><strong>Published Date</strong></h5><input type="date" class="datepicker" id="media_published_date_'+next_media_index+'" name="media_published_date_'+next_media_index+'" /></div><div class="col-md-12 form-group"><h5><strong>Puplished URL</strong></h5><input type="url" id="media_published_url_'+next_media_index+'" name="media_published_url_'+next_media_index+'" /></div></div>';
 			
 			// $('.media_add_more_area').append(media_row);

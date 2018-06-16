@@ -53,10 +53,8 @@
 				<div class="col-md-5 col-sm-5 col-xs-12 contact_position">
 					<div class="right_side">
 						<h3 class="title"> CONTACT US</h3>
-						<?php 
-							$attributes = array('id' => 'contact-form', 'class' => 'contact-form contactus_form form-commom', 'method' => 'post', 'role' => 'form');
-							echo form_open_multipart(base_url().'publicv/contact/', $attributes); 
-						?>
+						
+						<form id="contact-form" class="contact-form contactus_form form-commom" enctype="multipart/form-data" method="post">
 							<div class="form-group">
 								<?php echo $this->session->flashdata('email_sent'); ?>
 							</div>
@@ -93,7 +91,7 @@
 										<option value="Buyer">Buyer</option>
 										<option value="Other">Other</option>
 									</select>
-									<span class="form-name floating-label">USER TYPE<sup>*</sup></span> 
+									<span class="form-name floating-label">USER TYPE<sup>*</sup></span>  
 								</div>
 							</div>
 							<div class="form-group focus-group">
@@ -122,10 +120,12 @@
 								</div>
 								<div class="captcha-error has-error" style="display:none"><div class="help-block col-xs-12 col-sm-reset inline"><font color="red" style="margin-left: -10px;">Enter Letters Shown Above.</font></div></div><!-- Invalid Captcha ! -->
 							</div>
-							<div class="form-group"><input type="hidden" name="action" value="send_mail" /><input type="hidden" id="captcha_val" /></div>
+							<div class="form-group"><input type="hidden" name="action" value="send_mail" /><input type="hidden" id="captcha_val" />
+								<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+							</div>
 							<div class="form-group">
 								<div class="btn-more">
-									<button type="submit" class="btn btn-info"> Submit</button>
+									<button type="submit" class="btn btn-info" onclick="return subcontact()"> Submit</button>
 								</div>
 							</div>
 						</form>
@@ -192,6 +192,29 @@
 		</div>
 	</section>
 </div>
+	<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script>
+
+function subcontact() {
+
+    var myurl = '<?php echo base_url()?>publicv/contact';// the script where you handle the form input.
+
+    // alert(myurl);
+
+    $.ajax({
+           type: "POST",
+           url: myurl,
+           data: $("form").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+               // alert(data); // show response from the php script.
+           }
+         });
+
+    // e.preventDefault(); // avoid to execute the actual submit of the form.
+}
+
+</script>
 
 <?php 
 	$this->load->view('includes/block_features');

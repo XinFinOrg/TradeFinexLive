@@ -649,7 +649,7 @@
 											
 															}else if(!empty($project_proposal) && is_array($project_proposal) && sizeof($project_proposal) <> 0 && $project_proposal[$plrow->ID][0]->tpf_beneficiary_accept == 0 && $project_proposal[$plrow->ID][0]->prow_deleted == 0){
 								
-																echo '<button type="button" class="btnedit_propose view" user_type="'.$user_type_ref.'" user_id="'. $user_id.'" row_id="'.$plrow->ID.'"><i class="fa fa-pencil"></i> Modify Proposal</button>';
+																echo '<button type="button" class="btn edit_propose view" user_type="'.$user_type_ref.'" user_id="'. $user_id.'" row_id="'.$plrow->ID.'"><i class="fa fa-pencil"></i> Modify Proposal</button>';
 												
 															}
 															

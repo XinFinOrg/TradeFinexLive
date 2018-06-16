@@ -76,7 +76,7 @@ class Registration extends CI_Controller {
 			$result = $this->manage->add_user($data, $user_type);
 		}
 		
-		$data['page'] = 'signup';
+		$data['page'] = 'registration';
 		$data['user_id'] = 0;
 		$data['full_name'] = '';
 		$notifya = array();
@@ -114,9 +114,9 @@ class Registration extends CI_Controller {
 			// Send mail 
 			if($this->email->send()){ 
 				$data['msg'] = 'success';
-				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Confirmation Mail</h4>"); 
-				$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'> A verification mail already sent to <a href='mailto:$to_email' style='color:#33c088;' target='_top'>$to_email</a>, to confirm the validity of your email address. After receiving the email follow the link provided to complete you registration. Click <a href='".base_url()."' style=''>here</a> to go to home.</h3>"); 
-			}	
+				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-family: 'open_sansregular';font-size:30px;color:#282c3f;font-weight:700;'>Confirmation Mail</h4>"); 
+				$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#c5c5c5;padding-left:8px;padding-right:8px;'> A verification mail already sent to <a href='mailto:$to_email' style='font-family: 'open_sansregular';color:#33c088;' target='_top'>$to_email</a>, to confirm the validity of your email address. After receiving the email follow the link provided to complete you registration. Click <a href='".base_url()."' style=''>here</a> to go to home.</h3>"); 
+			}		
 			else{ 
 				$data['msg'] = 'email_error';
 				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Registration Acknowledgement</h4>");

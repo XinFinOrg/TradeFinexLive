@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://www.tradefinex.org/';
+$config['base_url'] = 'https://www.tradefinex.org';
 
 /*
 |--------------------------------------------------------------------------
@@ -223,7 +223,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 1;
+$config['log_threshold'] = 0;
 
 /*
 |--------------------------------------------------------------------------
@@ -453,7 +453,7 @@ $config['csrf_token_name'] = 'csrf_iksen_tslick50';
 $config['csrf_cookie_name'] = 'csrf_iksen_cslick50';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = FALSE;
-$config['csrf_exclude_uris'] = array('user/update_log', 'user/update_visibility', 'user/update_notification', 'notify/listing_count', 'notify/listing_ui', 'notify/mlisting_ui', 'notify/mlisting_count', 'listing/details', 'listing/search' , 'notify/update_notifyc', 'project/cancel_invite', 'listingv/project_info');
+$config['csrf_exclude_uris'] = array('user/update_log', 'user/update_visibility', 'user/update_notification', 'notify/listing_count', 'notify/listing_ui', 'notify/mlisting_ui', 'notify/mlisting_count', 'listing/details', 'listing/search' , 'notify/update_notifyc', 'project/cancel_invite', 'registration/get_regotp');
 
 /*
 |--------------------------------------------------------------------------

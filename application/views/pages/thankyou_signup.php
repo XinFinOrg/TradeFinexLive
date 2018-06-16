@@ -38,11 +38,9 @@
 							<button type="button" class="close" row_id="<?=((isset($proj_row) && $proj_row <> 0) ? $proj_row : 0)?>" data-dismiss="modal"> <span class="hidden-xs">×</span> <span class="hidden-md hidden-lg"> <img src="<?=base_url()?>assets/images/icon/log_arrow.png" alt="icon"></span> </button>
 						</div>
 			
-						<?php 
+						
 							
-							$msg = $this->session->flashdata('msg_type');
-							
-							if($msg && ($msg == 'success' || $msg == 'error' || $msg == 'email_error')){ ?>
+						<?php if(isset($msg) && ($msg == 'success' || $msg == 'error' || $msg == 'email_error')){ ?>
 						
 						<div class="modal-body text-center">
 							<span>
@@ -68,16 +66,18 @@
 						<div class="modal-body text-center">
 							<span>
 								<?php 
+								console.log("Show");
 									echo '<div class="text-center"><img src="'.base_url().'assets/images/icon/error.png" /></div>'; 
 								?>
 							</span>
 							<div class="text-center">
-								<h3>Error Occured</h3>
+								<h3>No Occured</h3>
 								<p>Oops! Something Wrong. Click <a href="<?=base_url();?>">here</a> to go home.</h3>
 							</div>
 						</div>
 	
 						<?php } ?>
+						
 					</div>
 				</div>
 			</div>

@@ -8,7 +8,7 @@ author: Jack O'Connor (http://jackocnr.com)
 */
 (function($, window, document, undefined) {
     var pluginName = "intlTelInput", defaults = {
-        preferredCountries: [ "in", "us", "gb" ],
+        preferredCountries: [ "us", "gb" ],
         // united states and united kingdom
         initialDialCode: true,
         americaMode: false,
@@ -56,10 +56,10 @@ author: Jack O'Connor (http://jackocnr.com)
             this.defaultCountry = preferredCountries.length ? preferredCountries[0] : intlTelInput.countries[0];
             // telephone input
             this.telInput = $(this.element);
-			var floating_html = $(this.telInput).parent().find('span.floating-label').html();
+            // if initialDialCode is enabled, insert the default dial code
+			var floating_html=$(this.telInput).parent().find('span.floating-label').html();
 			$(this.telInput).next().remove();
 			
-            // if initialDialCode is enabled, insert the default dial code
             if (this.options.initialDialCode && this.telInput.val() === "") {
                 this.telInput.val("+" + this.defaultCountry["calling-code"] + " ");
             }
@@ -67,12 +67,14 @@ author: Jack O'Connor (http://jackocnr.com)
             this.telInput.wrap($("<div>", {
                 "class": "intl-tel-input"
             }));
+			
             var flagsContainer = $("<div>", {
                 "class": "flag-dropdown f16"
             }).insertBefore(this.telInput);
-			$('<span class="form-name floating-label">'+floating_html+'</span>').insertAfter(this.telInput);
 			
+			$('<span class="form-name floating-label">'+floating_html+'</span>').insertAfter(this.telInput);
             // currently selected flag (displayed to left of input)
+			
             var selectedFlag = $("<div>", {
                 "class": "selected-flag"
             }).appendTo(flagsContainer);
@@ -115,8 +117,7 @@ author: Jack O'Connor (http://jackocnr.com)
                     });
                     countryCode = countryCodes[0];
                 } else {
-                    // countryCode = that.defaultCountry.cca2;
-					countryCode = "in";
+                    countryCode = that.defaultCountry.cca2;
                 }
                 if (!alreadySelected) {
                     that._selectFlag(countryCode);
@@ -125,12 +126,12 @@ author: Jack O'Connor (http://jackocnr.com)
             // trigger it now in case there is already a number in the input
             this.telInput.keyup();
             // toggle country dropdown on click
-            selectedFlag.unbind('click').bind("click", function(e) {
-				// prevent the click-off-to-close listener from firing
-				//  e.stopPropagation();
+            selectedFlag.unbind('click').bind('click', function(e) {
+                // prevent the click-off-to-close listener from firing
+                e.stopPropagation();
                 // toggle dropdown
                 if (that.countryList.hasClass("hide")) {
-					 // update highlighting and scroll to active list item
+                    // update highlighting and scroll to active list item
                     that.countryListItems.removeClass("highlight");
                     var activeListItem = that.countryList.children(".active").addClass("highlight");
                     // show it
@@ -183,10 +184,8 @@ author: Jack O'Connor (http://jackocnr.com)
                     });
                 } else {
                     // close it
-					$(this).parent().find('.country-list').addClass('hide');
-                    that._closeDropdown();
+					that._closeDropdown();
                 }
-				
             });
             // when mouse over a list item, remove any highlighting from any other items
             this.countryListItems.mouseover(function() {
@@ -194,15 +193,15 @@ author: Jack O'Connor (http://jackocnr.com)
                 $(this).addClass("highlight");
             });
             // listen for country selection
-            this.countryListItems.unbind('click').bind("click", function(e) {
+            this.countryListItems.click(function(e) {
                 var listItem = $(e.currentTarget);
                 that._selectListItem(listItem);
             });
             // click off to close
-            $("html").unbind('click').bind("click", function(e) {
-				 if (!$(e.target).closest(".country-list").length) {
+            $("html").click(function(e) {
+                if (!$(e.target).closest(".intl-tel-input").length) { // country-list
                     // close it
-					that._closeDropdown();
+                    that._closeDropdown();
                 }
             });
         },
@@ -250,7 +249,7 @@ author: Jack O'Connor (http://jackocnr.com)
         },
         // close the dropdown and unbind any listeners
         _closeDropdown: function() {
-            // this.countryList.addClass("hide");
+            this.countryList.addClass("hide"); // hide
             $(document).unbind("keydown.intlTelInput");
         },
         // check if an element is visible within it's container, else scroll until it is
@@ -567,7 +566,7 @@ var intlTelInput = {
         cca2: "cr",
         "calling-code": "506"
     }, {
-        name: "Côte d'Ivoire",
+        name: "CÃ´te d'Ivoire",
         cca2: "ci",
         "calling-code": "225"
     }, {
@@ -1023,7 +1022,7 @@ var intlTelInput = {
         cca2: "qa",
         "calling-code": "974"
     }, {
-        name: "Réunion",
+        name: "RÃ©union",
         cca2: "re",
         "calling-code": "262"
     }, {
@@ -1059,7 +1058,7 @@ var intlTelInput = {
         cca2: "sm",
         "calling-code": "378"
     }, {
-        name: "São Tomé and Príncipe",
+        name: "SÃ£o TomÃ© and PrÃ­ncipe",
         cca2: "st",
         "calling-code": "239"
     }, {

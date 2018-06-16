@@ -5,7 +5,7 @@
 		var csrf_name = $('#csrf_tokens').attr('name');
 		var csrf_value = $('#csrf_tokens').val();
 		var uemail = $('#uemail').val();
-		
+				
 		jQuery.validator.addMethod("addressFormat", function(value, element) {
 		  // allow any non-whitespace characters as the host part
 		  return this.optional( element ) || /^(?!(\d|\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:|\s))([a-zA-Z0-9#()\/\-.+,\s])*$/.test( value );
@@ -20,6 +20,11 @@
 			var re = /^([a-zA-Z])(.*[a-z])(.*[a-z0-9_\+-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*\.([a-z]{2,})$/;
 			return re.test(String(value).toLowerCase());
 		}, 'You have entered an Invalid email address');
+
+		jQuery.validator.addMethod("LettersWithspecialChars", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		   return this.optional( element ) || /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$#!&*%])[0-9a-zA-Z@$#!&*%]{8,}$/.test( value );
+		}, 'The text must start with a letter and should contain 1 uppercase,1 number and 1 special character');
 		
 		jQuery.validator.addMethod("startsLetterOnly", function(value, element) {
 		  // allow any non-whitespace characters as the host part
@@ -109,13 +114,14 @@
 				udesignation: {
 					required: true,
 					minlength: 2,
-					maxlength: 25,
+					maxlength: 15,
 					LetterOnly: true
 				},
 				password: {
 					required: true,
 					minlength: 8,
-					maxlength: 15
+					maxlength: 25,
+					LettersWithspecialChars: true
 				},
 				email: {
 					required: true,
@@ -138,7 +144,7 @@
 				},
 				c2_desgination: {
 					minlength: 2,
-					maxlength: 25,
+					maxlength: 15,
 					LetterOnly: true
 				},
 				c2_linkedin: {
@@ -170,12 +176,12 @@
 				udesignation: {
 					required: "Please enter your designation",
 					minlength: "Your designation must be at least 2 characters long",
-					maxlength: "Your designation must be at most 25 characters long"
+					maxlength: "Your designation must be at most 15 characters long"
 				},
 				password: {
 					required: "Please provide a password",
 					minlength: "Your password should be at least 8 characters long",
-					maxlength: "Your password should be at most 15 characters long"
+					maxlength: "Your password should be at most 25 characters long"
 				},
 				email: {
 					required: "Please enter a valid email address"
@@ -184,16 +190,16 @@
 					required: "Enter a valid mobile number",
 				},
 				c2_fname: {
-					minlength: "Firstname must be at least 2 characters long",
-					maxlength: "Firstname must be at most 15 characters long"
+					minlength: "Your firstname must be at least 2 characters long",
+					maxlength: "Your firstname must be at most 15 characters long"
 				},
 				c2_lname: {
-					minlength: "Lastname must be at least 2 characters long",
-					maxlength: "Lastname must be at most 15 characters long"
+					minlength: "Your lastname must be at least 2 characters long",
+					maxlength: "Your lastname must be at most 15 characters long"
 				},
 				c2_desgination: {
-					minlength: "Designation must be at least 2 characters long",
-					maxlength: "Designation must be at most 25 characters long"
+					minlength: "Your designation must be at least 2 characters long",
+					maxlength: "Your designation must be at most 15 characters long"
 				},
 				c2_linkedin: {
 					linkedinCompURL: "Please enter your linkedin URL"
@@ -217,19 +223,21 @@
 			rules: {
 				c_name: {
 					required: true,
-					minlength: 2,
+					minlength: 3,
 					maxlength: 40,
 					alphanumericOnly: true
 				},
 				com_business_overv: {
 					required: true,
-					minlength: 140,
+					minlength: 25,
 					maxlength: 450,
 					messageFormat3: true
 				},
 				caddress: {
 					required: true,
-					addressFormat: true
+					minlength: 10,
+					maxlength: 140,
+					messageFormat3: true
 				},
 				com_linkedin: {
 					linkedinCompURL: true
@@ -251,16 +259,18 @@
 			messages: {
 				c_name: {
 					required: "Please enter company name",
-					minlength: "Characters length should be atleast 2",
+					minlength: "Characters length should be atleast 3",
 					maxlength: "Characters length should not exceeded than 40"
 				},
 				com_business_overv: {
 					required: "Please describe your company overview",
-					minlength: "Characters length should be atleast 140",
+					minlength: "Characters length should be atleast 25",
 					maxlength: "Characters length should not exceeded than 450"
 				},
 				caddress: {
-					required: "Please enter valid company address"
+					required: "Please enter valid company address",
+					minlength: "Characters length should be atleast 10",
+					maxlength: "Characters length should not exceeded than 140"
 				},
 				com_linkedin: {
 					linkedinCompURL: "Please enter valid company linkedin prrofile"
@@ -482,7 +492,7 @@
 			$.ajax({
 				url: site_url+"user/delete_service",
 				type: "POST",
-				data: {'serv_id' : serv_id, 'action' : 'delete_service', '"+csrf_name+"' : '"+csrf_value+"'},
+				data: {'serv_id' : serv_id, 'action' : 'delete_service',  csrf_name : csrf_value},
 				success: function (data) {
 					
 					// var status_msg = $.parseJSON(data);
@@ -507,7 +517,7 @@
 			$.ajax({
 				url: site_url+"user/delete_product",
 				type: "POST",
-				data: {'prod_id' : prod_id, 'action' : 'delete_product', '"+csrf_name+"' : '"+csrf_value+"'},
+				data: {'prod_id' : prod_id, 'action' : 'delete_product',  csrf_name : csrf_value},
 				success: function (data) {
 					
 					// var status_msg = $.parseJSON(data);
@@ -520,7 +530,6 @@
 					$('.add_product_action_loader').hide();	
 				}
 			});
-		
 		}); 
 						
 		$('.add_uproduct').unbind('click').bind('click', function(){
@@ -581,7 +590,7 @@
 				$.ajax({
 					url: site_url+"user/check_product",
 					type: "POST",
-					data: {'product_input' : product_input_val, '"+csrf_name+"' : '"+csrf_value+"'},
+					data: {'product_input' : product_input_val, csrf_name : csrf_value},
 					success: function (data) {
 						
 						var status_msg = $.parseJSON(data);
@@ -671,7 +680,7 @@
 				$.ajax({
 					url: site_url+"user/check_service",
 					type: "POST",
-					data: {'service_input' : service_input_val, '"+csrf_name+"' : '"+csrf_value+"'},
+					data: {'service_input' : service_input_val, csrf_name : csrf_value},
 					success: function (data) {
 						
 						var status_msg = $.parseJSON(data);
@@ -726,7 +735,7 @@
 				},
 				ship_detail: {
 					required: true,
-					minlength: 25,
+					minlength: 15,
 					startsLetterOnly: true
 				},
 				ship_date: {
@@ -739,7 +748,7 @@
 				},
 				ship_detail: {
 					required: "Please enter a Shipment details",
-					minlength: "Shipment details should be at least 25 characters long"
+					minlength: "Shipment details should be at least 15 characters long"
 				},
 				ship_date: {
 					required: "Please enter a valid Shipment date"
@@ -763,14 +772,14 @@
 			rules: {
 				rmsg_detail: {
 					required: true,
-					minlength: 40,
+					minlength: 10,
 					startsLetterOnly: true
 				}
 			},	
 			messages: {
 				rmsg_detail: {
 					required: "Please write something for modification",
-					minlength: "Message should be at least 40 characters long"
+					minlength: "Message should be at least 10 characters long"
 				}
 			},
 			onkeyup: function(elem) {
@@ -893,7 +902,7 @@
 			var user_id = $(this).find('.modal_payment_close').attr('user_id');
 			var user_type_ref = $(this).find('.modal_payment_close').attr('user_type_ref');
 			
-			$('<form action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+user_id+'" ><input type="hidden" name="ruser_type" value="'+user_type_ref+'" ><input type="hidden" name="request_type" value="" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name=""+csrf_name+"" value=""+csrf_value+"" /></form>').appendTo('body').submit();
+			$('<form action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+user_id+'" ><input type="hidden" name="ruser_type" value="'+user_type_ref+'" ><input type="hidden" name="request_type" value="" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name="'+csrf_name+'" value="'+csrf_value+'" /></form>').appendTo('body').submit();
 		});	
 		
 		$('#xinfin_usign_in').on('hidden.bs.modal', function (e) {
@@ -946,7 +955,7 @@
 				
 			if(parseInt(proj_id) > 0 && parseInt(user_id) > 0 && parseInt(user_type_ref) > 0 && parseInt(ruser_id) > 0 && parseInt(ruser_type_ref) > 0){
 			
-				$('<form id="search_form" action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="proj_id" value="'+proj_id+'" ><input type="hidden" name="user_id_request" value="'+ruser_id+'" ><input type="hidden" name="user_type_request" value="'+ruser_type_ref+'" ><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+ruser_id+'" ><input type="hidden" name="ruser_type" value="'+ruser_type_ref+'" ><input type="hidden" name="request_type" value="'+request_type+'" ><input type="hidden" name="request_db_type" value="accept" ><input type="hidden" name="raction" value="request_completion" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name=""+csrf_name+"" value=""+csrf_value+"" /></form>').appendTo('body').submit();
+				$('<form id="search_form" action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="proj_id" value="'+proj_id+'" ><input type="hidden" name="user_id_request" value="'+ruser_id+'" ><input type="hidden" name="user_type_request" value="'+ruser_type_ref+'" ><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+ruser_id+'" ><input type="hidden" name="ruser_type" value="'+ruser_type_ref+'" ><input type="hidden" name="request_type" value="'+request_type+'" ><input type="hidden" name="request_db_type" value="accept" ><input type="hidden" name="raction" value="request_completion" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name="'+csrf_name+'" value="'+csrf_value+'" /></form>').appendTo('body').submit();
 			}
 			
 		});
@@ -962,7 +971,7 @@
 				
 			if(parseInt(proj_id) > 0 && parseInt(user_id) > 0 && parseInt(user_type_ref) > 0 && parseInt(ruser_id) > 0 && parseInt(ruser_type_ref) > 0){
 			
-				$('<form id="search_form" action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="proj_id" value="'+proj_id+'" ><input type="hidden" name="user_id_request" value="'+ruser_id+'" ><input type="hidden" name="user_type_request" value="'+ruser_type_ref+'" ><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+ruser_id+'" ><input type="hidden" name="ruser_type" value="'+ruser_type_ref+'" ><input type="hidden" name="request_type" value="'+request_type+'" ><input type="hidden" name="request_db_type" value="reject" ><input type="hidden" name="raction" value="request_completion" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name=""+csrf_name+"" value=""+csrf_value+"" /></form>').appendTo('body').submit();
+				$('<form id="search_form" action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="proj_id" value="'+proj_id+'" ><input type="hidden" name="user_id_request" value="'+ruser_id+'" ><input type="hidden" name="user_type_request" value="'+ruser_type_ref+'" ><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+ruser_id+'" ><input type="hidden" name="ruser_type" value="'+ruser_type_ref+'" ><input type="hidden" name="request_type" value="'+request_type+'" ><input type="hidden" name="request_db_type" value="reject" ><input type="hidden" name="raction" value="request_completion" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name="'+csrf_name+'" value="'+csrf_value+'" /></form>').appendTo('body').submit();
 			}
 			
 		});
@@ -978,7 +987,7 @@
 				
 			if(parseInt(proj_id) > 0 && parseInt(user_id) > 0 && parseInt(user_type_ref) > 0 && parseInt(ruser_id) > 0 && parseInt(ruser_type_ref) > 0){
 			
-				$('<form id="search_form" action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="proj_id" value="'+proj_id+'" ><input type="hidden" name="user_id_request" value="'+ruser_id+'" ><input type="hidden" name="user_type_request" value="'+ruser_type_ref+'" ><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+ruser_id+'" ><input type="hidden" name="ruser_type" value="'+ruser_type_ref+'" ><input type="hidden" name="request_type" value="'+request_type+'" ><input type="hidden" name="request_db_type" value="initiate" ><input type="hidden" name="raction" value="request_completion" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name=""+csrf_name+"" value=""+csrf_value+"" /></form>').appendTo('body').submit();
+				$('<form id="search_form" action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="proj_id" value="'+proj_id+'" ><input type="hidden" name="user_id_request" value="'+ruser_id+'" ><input type="hidden" name="user_type_request" value="'+ruser_type_ref+'" ><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+ruser_id+'" ><input type="hidden" name="ruser_type" value="'+ruser_type_ref+'" ><input type="hidden" name="request_type" value="'+request_type+'" ><input type="hidden" name="request_db_type" value="initiate" ><input type="hidden" name="raction" value="request_completion" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name="'+csrf_name+'" value="'+csrf_value+'" /></form>').appendTo('body').submit();
 			}
 			
 		});	
@@ -994,7 +1003,7 @@
 				
 			if(parseInt(proj_id) > 0 && parseInt(user_id) > 0 && parseInt(user_type_ref) > 0 && parseInt(ruser_id) > 0 && parseInt(ruser_type_ref) > 0){
 			
-				$('<form id="search_form" action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="proj_id" value="'+proj_id+'" ><input type="hidden" name="user_id_request" value="'+ruser_id+'" ><input type="hidden" name="user_type_request" value="'+ruser_type_ref+'" ><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+ruser_id+'" ><input type="hidden" name="ruser_type" value="'+ruser_type_ref+'" ><input type="hidden" name="request_type" value="'+request_type+'" ><input type="hidden" name="request_db_type" value="accept" ><input type="hidden" name="raction" value="request_completion" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name=""+csrf_name+"" value=""+csrf_value+"" /></form>').appendTo('body').submit();
+				$('<form id="search_form" action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="proj_id" value="'+proj_id+'" ><input type="hidden" name="user_id_request" value="'+ruser_id+'" ><input type="hidden" name="user_type_request" value="'+ruser_type_ref+'" ><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+ruser_id+'" ><input type="hidden" name="ruser_type" value="'+ruser_type_ref+'" ><input type="hidden" name="request_type" value="'+request_type+'" ><input type="hidden" name="request_db_type" value="accept" ><input type="hidden" name="raction" value="request_completion" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name="'+csrf_name+'" value="'+csrf_value+'" /></form>').appendTo('body').submit();
 			} 
 			
 		});		
@@ -1079,7 +1088,7 @@
 			var fusers = $('#fusers').val();
 			var fproj_ref = $('#fproject').val();
 			
-			$('<form id="search_form" action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+fproj_ref+'" ><input type="hidden" name="rfusers" value="'+fusers+'" ><input type="hidden" name="ruser_id" value="0" ><input type="hidden" name="ruser_type" value="2" ><input type="hidden" name="request_type" value="" ><input type="hidden" name="raction" value="initiate_finance" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name=""+csrf_name+"" value=""+csrf_value+"" /></form>').appendTo('body').submit();
+			$('<form id="search_form" action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+fproj_ref+'" ><input type="hidden" name="rfusers" value="'+fusers+'" ><input type="hidden" name="ruser_id" value="0" ><input type="hidden" name="ruser_type" value="2" ><input type="hidden" name="request_type" value="" ><input type="hidden" name="raction" value="initiate_finance" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name="'+csrf_name+'" value="'+csrf_value+'" /></form>').appendTo('body').submit();
 			
 		});	
 		
@@ -1103,7 +1112,7 @@
 			$.ajax({
 				url: site_url+"smartcontract/get_beneficiary_info",
 				type: "POST",
-				data: {'user_id' : puser_id, 'user_type' : puser_type, '"+csrf_name+"' : '"+csrf_value+"'},
+				data: {'user_id' : puser_id, 'user_type' : puser_type, csrf_name : csrf_value},
 				success: function (data) {
 				
 					var jsona = $.parseJSON(data);
@@ -1124,7 +1133,7 @@
 				$.ajax({
 					url: site_url+"smartcontract/get_fproposal_info",
 					type: "POST",
-					data: {'user_id' : user_id, 'proj_id' : p_id, 'user_type' : user_type, '"+csrf_name+"' : '"+csrf_value+"'},
+					data: {'user_id' : user_id, 'proj_id' : p_id, 'user_type' : user_type, csrf_name : csrf_value},
 					success: function (data) {
 					
 						var jsona = $.parseJSON(data);
@@ -1154,7 +1163,7 @@
 			$.ajax({
 				url: site_url+"user/update_balance",
 				type: "POST",
-				data: {'action' : 'update_balance', '"+csrf_name+"' : '"+csrf_value+"'},
+				data: {'action' : 'update_balance', csrf_name : csrf_value},
 				success: function (data) {
 					
 					var jsona = $.parseJSON(data);
@@ -1186,7 +1195,7 @@
 			$.ajax({
 				url: site_url+"smartcontract/confirm_beneficiary_payment",
 				type: "POST",
-				data: {'proj_id' : p_id, 'puser_id' : puser_id, 'puser_type' : puser_type, 'user_id' : user_id, 'user_type' : user_type, 'pro_row_id' : pro_row_id, 'pay_cycle_no' : pay_cycle_no, '"+csrf_name+"' : '"+csrf_value+"'},
+				data: {'proj_id' : p_id, 'puser_id' : puser_id, 'puser_type' : puser_type, 'user_id' : user_id, 'user_type' : user_type, 'pro_row_id' : pro_row_id, 'pay_cycle_no' : pay_cycle_no, csrf_name : csrf_value},
 				success: function (data) {
 					
 					console.log(data);
@@ -1202,7 +1211,7 @@
 						
 						setTimeout(function(){ 
 
-							$('<form action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+p_id+'" ><input type="hidden" name="ruser_id" value="'+puser_id+'" ><input type="hidden" name="ruser_type" value="'+puser_type+'" ><input type="hidden" name="request_type" value="" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name=""+csrf_name+"" value=""+csrf_value+"" /></form>').appendTo('body').submit();
+							$('<form action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+p_id+'" ><input type="hidden" name="ruser_id" value="'+puser_id+'" ><input type="hidden" name="ruser_type" value="'+puser_type+'" ><input type="hidden" name="request_type" value="" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name="'+csrf_name+'" value="'+csrf_value+'" /></form>').appendTo('body').submit();
 						
 						}, 3000); 
 					}	
@@ -1218,7 +1227,7 @@
 			$.ajax({
 				url: site_url+"smartcontract/xinfin_login",
 				type: "POST",
-				data: {'xuser_name' : xuser_name, 'xuser_passwd' : xuser_password, 'action' : 'get_otp', '"+csrf_name+"' : '"+csrf_value+"'},
+				data: {'xuser_name' : xuser_name, 'xuser_passwd' : xuser_password, 'action' : 'get_otp', csrf_name : csrf_value},
 				success: function (data) {
 				
 					console.log(data);
@@ -1265,7 +1274,7 @@
 			$.ajax({
 				url: site_url+"smartcontract/xinfin_login",
 				type: "POST",
-				data: {'xuser_otp' : xotp_val, 'action' : 'xinfin_login_add_wallet', '"+csrf_name+"' : '"+csrf_value+"'},
+				data: {'xuser_otp' : xotp_val, 'action' : 'xinfin_login_add_wallet', csrf_name : csrf_value},
 				success: function (data) {
 					
 					console.log(data);
@@ -1337,7 +1346,7 @@
 			$.ajax({
 				url: site_url+"smartcontract/xinfin_login",
 				type: "POST",
-				data: {'xuser_otp' : xotp_val, 'ftokens' : ftokens, 'action' : 'xinfin_login', '"+csrf_name+"' : '"+csrf_value+"'},
+				data: {'xuser_otp' : xotp_val, 'ftokens' : ftokens, 'action' : 'xinfin_login', csrf_name : csrf_value},
 				success: function (data) {
 					
 					console.log(data);
@@ -1414,7 +1423,7 @@
 			$.ajax({
 				url: site_url+"smartcontract/pay_financier",
 				type: "POST",
-				data: {'rproject_ref' : proj_id, 'ruser_type' : 2, 'pay_cycle' : pay_cycle, 'request_type' : '', 'raction' : 'pay_financier', 'action' : 'smart_contract', '"+csrf_name+"' : '"+csrf_value+"'},
+				data: {'rproject_ref' : proj_id, 'ruser_type' : 2, 'pay_cycle' : pay_cycle, 'request_type' : '', 'raction' : 'pay_financier', 'action' : 'smart_contract', csrf_name : csrf_value},
 				success: function (data) {
 				
 					console.log(data);
@@ -1431,7 +1440,7 @@
 							setTimeout(function(){ 
 							
 								$('.modal_payment_close').trigger('click'); 
-								$('<form action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="0" ><input type="hidden" name="ruser_type" value="2" ><input type="hidden" name="request_type" value="" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name=""+csrf_name+"" value=""+csrf_value+"" /></form>').appendTo('body').submit();
+								$('<form action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="0" ><input type="hidden" name="ruser_type" value="2" ><input type="hidden" name="request_type" value="" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name="'+csrf_name+'" value="'+csrf_value+'" /></form>').appendTo('body').submit();
 							
 							}, 3000);
 						}
@@ -1484,7 +1493,7 @@
 				$.ajax({
 					url: site_url+"smartcontract/pay_supplier",
 					type: "POST",
-					data: {'proj_id' : proj_id, 'rproject_ref' : proj_id, 'user_id_request' : ruser_id, 'user_type_request' : ruser_type_ref, 'ruser_id' : ruser_id, 'ruser_type' : ruser_type_ref, 'request_type' : request_type, 'request_db_type' : 'payment', 'raction' : 'request_completion', 'trade_amtval' : trade_amtval, 'action' : 'smart_contract', '"+csrf_name+"' : '"+csrf_value+"'},
+					data: {'proj_id' : proj_id, 'rproject_ref' : proj_id, 'user_id_request' : ruser_id, 'user_type_request' : ruser_type_ref, 'ruser_id' : ruser_id, 'ruser_type' : ruser_type_ref, 'request_type' : request_type, 'request_db_type' : 'payment', 'raction' : 'request_completion', 'trade_amtval' : trade_amtval, 'action' : 'smart_contract', csrf_name : csrf_value},
 					success: function (data) {
 					
 						var jsona = $.parseJSON(data);
@@ -1501,7 +1510,7 @@
 								setTimeout(function(){ 
 								
 									$('.modal_payment_close').trigger('click'); 
-									$('<form action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+ruser_id+'" ><input type="hidden" name="ruser_type" value="1" ><input type="hidden" name="request_type" value="" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name=""+csrf_name+"" value=""+csrf_value+"" /></form>').appendTo('body').submit();
+									$('<form action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+ruser_id+'" ><input type="hidden" name="ruser_type" value="1" ><input type="hidden" name="request_type" value="" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name="'+csrf_name+'" value="'+csrf_value+'" /></form>').appendTo('body').submit();
 								
 								}, 3000);
 							}
@@ -1547,7 +1556,7 @@
 			$.ajax({
 				url: site_url+"smartcontract/pay_beneficiary",
 				type: "POST",
-				data: {'rproject_ref' : proj_id, 'ruser_id' : user_id, 'ruser_type' : user_type_ref, 'request_type' : '', 'raction' : 'pay_beneficiary', 'action' : 'smart_contract', '"+csrf_name+"' : '"+csrf_value+"'},
+				data: {'rproject_ref' : proj_id, 'ruser_id' : user_id, 'ruser_type' : user_type_ref, 'request_type' : '', 'raction' : 'pay_beneficiary', 'action' : 'smart_contract', csrf_name : csrf_value},
 				success: function (data) {
 				
 					console.log(data);
@@ -1566,7 +1575,7 @@
 							
 								$('.modal_payment_close').trigger('click'); 
 								
-								$('<form action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+user_id+'" ><input type="hidden" name="ruser_type" value="'+user_type_ref+'" ><input type="hidden" name="request_type" value="" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name=""+csrf_name+"" value=""+csrf_value+"" /></form>').appendTo('body').submit();
+								$('<form action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+user_id+'" ><input type="hidden" name="ruser_type" value="'+user_type_ref+'" ><input type="hidden" name="request_type" value="" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name="'+csrf_name+'" value="'+csrf_value+'" /></form>').appendTo('body').submit();
 							
 							}, 3000);
 						}
@@ -1605,7 +1614,7 @@
 			var user_type_ref = $(this).attr('user_type_ref');
 			var request_type = $(this).attr('request_type');
 			
-			$('<form id="search_form" action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+user_id+'" ><input type="hidden" name="ruser_type" value="'+user_type_ref+'" ><input type="hidden" name="request_type" value="'+request_type+'" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name=""+csrf_name+"" value=""+csrf_value+"" /></form>').appendTo('body').submit();
+			$('<form id="search_form" action="'+site_url+'smartcontract/initiate" method="post"><input type="hidden" name="rproject_ref" value="'+proj_id+'" ><input type="hidden" name="ruser_id" value="'+user_id+'" ><input type="hidden" name="ruser_type" value="'+user_type_ref+'" ><input type="hidden" name="request_type" value="'+request_type+'" ><input type="hidden" name="action" value="smart_contract" /><input type="hidden" name="'+csrf_name+'" value="'+csrf_value+'" /></form>').appendTo('body').submit();
 			
 		});	
 		
@@ -1742,7 +1751,7 @@
 												
 							type : 'POST',
 							url : site_url+'project/add_rating_project_user',
-							data : {'project_ref': prow_id, 'rating_val': score, 'tuser_ref': to_user_id, 'tuser_type': to_user_type, 'action': 'add_rating', '"+csrf_name+"' : '"+csrf_value+"'},
+							data : {'project_ref': prow_id, 'rating_val': score, 'tuser_ref': to_user_id, 'tuser_type': to_user_type, 'action': 'add_rating', csrf_name : csrf_value},
 							success : function(data){
 								console.log(data);
 								click_handler();

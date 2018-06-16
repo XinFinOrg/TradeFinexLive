@@ -86,4 +86,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 // CUSTOM CONSTANTS
 
-define('BASE_FRONT_URL', 'https://www.tradefinex.org/');
+define('BASE_FRONT_URL', 'https://demo.tradefinex.org/');

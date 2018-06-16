@@ -156,9 +156,7 @@ class Pages extends CI_Controller {
 							
 							$mediaf_logo = $this->input->post('mediaf_logo_'.$i);
 							
-							$mediafn = 'media_'.$i.'.'.end($file_namea);
-							
-							$media_logo_file = (($mediafn && trim($mediafn) <> '') ? $mediafn : (($mediaf_logo && trim($mediaf_logo) <> '') ? $mediaf_logo : ''));
+							$media_logo_file = (($mediaf_logo && trim($mediaf_logo) <> '') ? $mediaf_logo : 'media_'.$i.'.'.end($file_namea));
 						}
 						
 						if(file_exists(dirname(FCPATH).'/assets/images/page/media/'.$file_name)){

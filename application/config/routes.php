@@ -51,5 +51,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home/in';
 $route['404_override'] = 'error/p404';
-$route['contact_us'] = 'publicv/contact';
 $route['translate_uri_dashes'] = FALSE;

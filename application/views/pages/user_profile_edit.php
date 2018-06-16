@@ -55,6 +55,7 @@
 									<input id="file-upload" name="user_pic" type="file" />
 								</div>
 								<h5>Profile Photo<br/>(Max Size : 3MB)</h5>
+                                                                <span id="namefile" style="padding-left:0;"></span>
 							</div>
 						</div>
 						<div class="col-md-8 col-sm-8 col-xs-12 input_fields">
@@ -161,7 +162,7 @@
 										<div class="form-group">
 											<label class="form-label">
 												<input class="form-input <?=(trim($c2linkedin) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="c2_linkedin" name="c2_linkedin" value="<?=trim($c2linkedin);?>" type="text" />
-												<span class="form-name floating-label">Contact Person LinkedIn profile</span>
+												<span class="form-name floating-label">Contact Person LinkedIn profile<sup>*</sup></span>
 												<span class="append_icon_text"><a href="javascript:void(0)"><img src="<?=base_url();?>assets/images/icon/linkedin.png"/></a></span>
 											</label>
 										</div>
@@ -214,7 +215,8 @@
 												</label>
 												<input id="file-upload-comp" type="file" name="comp_pic" />
 											</div>
-											<h5>Company Logo</h5>
+											<h5>Company Logo<br/>(Max Size : 3MB)</h5>
+                                                                                        <span id="namefile1" style="padding-left:0; font-size: 10px; line-height: 17px; width: 100%; height: auto;"></span>
 										</div>
 									</div>
 									<div class="col-md-9 col-sm-9 col-xs-12">

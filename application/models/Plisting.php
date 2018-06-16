@@ -462,7 +462,7 @@
 			}
 			
 			if($user_id > 0){
-				$where = "tfpi.tfpi_user_ref = '$user_id' AND tfpi.tfpi_accept = 1";
+				$where = "tfpi.tfpi_user_ref = '$user_id' AND tfpi.tfpi_accept = 1 ";
 			}else{
 				$where = "tfpi.tfpi_accept = 1";
 			}
@@ -554,12 +554,12 @@
 						
 			if($type == 'p'){
 				$this->db->from('{PRE}proposal_provider tppr');
-				$where = "tppr.tpp_beneficiary_accept = 1 AND tppr.tpp_user_ref = '$user_id'";
+				$where = "tppr.tpp_beneficiary_accept = 1 AND tppr.tpp_rejected = 0 AND tppr.tpp_user_ref = '$user_id'";
 			}
 			
 			if($type == 'f'){
 				$this->db->from('{PRE}proposal_financier tppr');
-				$where = "tppr.tpf_beneficiary_accept = 1 AND tppr.tpf_user_ref = '$user_id'";
+				$where = "tppr.tpf_beneficiary_accept = 1 AND tppr.tpf_awardStatus = 2 AND tppr.tpf_user_ref = '$user_id'";
 			}
 					
 			$this->db->where($where);
@@ -825,7 +825,7 @@
 			
 			$data = array();
 						
-			$this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
+			$this->db->select('tpprf.*,tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
 			$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
@@ -834,21 +834,28 @@
 			// $this->db->join('{PRE}states ts', 'ts.tfs_id = tpp.stateID', 'left');
 			$this->db->join('{PRE}country tc', 'tc.tfc_id = tpp.countryID', 'left');
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
+			$this->db->join('{PRE}proposal_provider tpprf', 'tpprf.tpp_project_ref = tpp.ID', 'left');
 						
 			if($user_id > 0){
-				$where = "tpp.row_deleted = '0' AND (tpp.awarded_provider = 2 OR tpp.awarded_provider = 3 OR tpp.awarded_financier = 2 OR tpp.awarded_financier = 3) AND tpp.userID = '$user_id'";
+				$where = "tpp.row_deleted = '0' AND (tpp.awarded_provider = 2 OR tpp.awarded_provider = 3 OR tpp.awarded_financier = 2 OR tpp.awarded_financier = 3) AND tpp.userID = '$user_id'OR ( tpprf.tpp_beneficiary_accept = 1 AND tpprf.tpp_user_ref = '".$user_id."')";
 			}else{
-				$where = "tpp.row_deleted = '0' AND (tpp.awarded_provider = 2 OR tpp.awarded_provider = 3 OR tpp.awarded_financier = 2 OR tpp.awarded_financier = 3) AND tpp.admin_approval = 1 AND tpp.isDraft = '0'";
+				$where = "tpprf.tpp_user_ref = '".$user_id."' AND tpprf.tpp_beneficiary_accept = 1";
+			
 			}
 			
+			$this->db->distinct();
 			$this->db->where($where);
+			$this->db->group_by('tpp.ID');
 			$this->db->order_by("tpp.ID", 'desc');
 			
 			$query = $this->db->get();
 			
+			$result = $query->result();
+			
 			return $result = $query->result();
 		}
-		
+
+
 		public function get_sc_provider_subcontractor_proposal_by_project($proj_ref){
 			
 			$this->db->select('tss.*, tppr.*, tpp.*, tfu.*, tfsp.*, tfcom.*, tc.*, tcu.*');
@@ -2687,6 +2694,12 @@
 				$where = "tpssf_proposal_ref = '$id'"; // AND tpssf_row_deleted = 0
 				
 			}
+                        else if($type == 'f'){
+			
+				$this->db->from('{PRE}proposal_financier_submitted_files');
+				$where = "tpfsf_proposal_ref = '$id'"; // AND tpssf_row_deleted = 0
+				
+			}
 			
 			$this->db->where($where);
 			$query = $this->db->get();
@@ -2704,6 +2717,11 @@
 			
 				$this->db->from('{PRE}proposal_supplier_submitted_files');
 				$where = "tpssf_proposal_ref = '".$pref."' AND tpssf_file_index = '".$rowindx."'";
+			}
+                        if($type == 'f'){
+			
+				$this->db->from('{PRE}proposal_financier_submitted_files');
+				$where = "tpfsf_proposal_ref = '".$pref."' AND tpfsf_file_index = '".$rowindx."'";
 			}
 			
 			$this->db->where($where);
@@ -2724,6 +2742,11 @@
 				$this->db->from('{PRE}proposal_supplier_submitted_files');
 				$where = "tpssf_id = ".$id;
 			}
+                        if($type == 'f'){
+			
+				$this->db->from('{PRE}proposal_financier_submitted_files');
+				$where = "tpfsf_id = ".$id;
+			}
 			
 			$this->db->where($where);
 			
@@ -2739,6 +2762,10 @@
 			if($type == 'p'){
 				
 				$this->db->insert('{PRE}proposal_supplier_submitted_files', $data_add); 
+			}
+			else if($type == 'f'){
+				
+				$this->db->insert('{PRE}proposal_financier_submitted_files', $data_add); 
 			}
 			
 			$id = $this->db->insert_id();
@@ -2757,6 +2784,13 @@
 				$this->db->where($where);
 				$this->db->update('{PRE}proposal_supplier_submitted_files', $data_add); 
 			}
+                        else if($type == 'f'){
+				
+				$where = "tpfsf_id = ".$id;
+				$this->db->where($where);
+				$this->db->update('{PRE}proposal_financier_submitted_files', $data_add); 
+			}
+			
 			
 			return $result = $this->get_proposal_file_by_id($id, $type);
 		}
@@ -2874,23 +2908,21 @@
 				$this->db->select('*');
 				$this->db->from('{PRE}proposal_provider');
 			
-				$where = "tpp_project_ref = '".$project_ref."' AND tpp_user_ref = '".$user_id."' AND tpp_beneficiary_accept = 0";
+				$where = "tpp_project_ref = '".$project_ref."' AND tpp_user_ref != '".$user_id."' AND tpp_beneficiary_accept = 0";
 				$this->db->where($where);
 				
 				$query = $this->db->get();
 				$result = $query->result();
 				
-				if(!empty($result) && is_array($result) && sizeof($result) <> 0){
-					
-					$data_add = array();
+				if($result){
+
+					// $data_add = array();
 					
 					foreach($result as $row){
-					
+						
 						$id = $row->tpp_id;
-						$data_add['row_deleted'] = 1;
-						$where = "tpp_id = ".$id;
-						$this->db->where($where);
-						$this->db->update('{PRE}proposal_provider', $data_add); 
+
+						$this->db->query("update {PRE}proposal_provider set tpp_beneficiary_accept = 2, tpp_rejected = 1, prow_deleted = 1 where tpp_id = '".$id."'");
 					}
 				}
 				
@@ -2977,6 +3009,8 @@
 				}else{
 					
 				}
+
+				// return $result;
 			}	
 			
 			if($type == 'f'){
@@ -2998,9 +3032,10 @@
 					
 						$id = $row->tpp_id;
 						$data_add['row_deleted'] = 1;
+						$data_add['tpf_beneficiary_accept'] = 2;
 						$where = "tpf_id = ".$id;
 						// $this->db->where($where);
-						// $this->db->update('{PRE}proposal_financier', $data_add); 
+						$this->db->update('{PRE}proposal_financier', $data_add); 
 					}
 				}
 				
@@ -3341,7 +3376,7 @@
 				$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tppr.tpp_user_ref', 'left');
 				$this->db->join('{PRE}country tc', 'tc.tfc_id = tcom.tfcom_country_ref', 'left');
 				$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tppr.tpp_price_currency_ref', 'left');
-				$where = "tppr.tpp_project_ref = '$pid' AND tppr.tpp_beneficiary_accept = 1";
+				$where = "tppr.tpp_project_ref = '$pid' AND tppr.tpp_beneficiary_accept = 1 AND tpp_rejected = 0";
 				$this->db->where($where);
 			}
 			

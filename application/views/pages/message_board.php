@@ -85,7 +85,7 @@
 				<div class="content">
 					<div class="contact-profile"> <img src="<?=((!empty($msg_suser) && $msg_suser['uprofpic'] && $msg_suser['uprofpic'] != '') ? base_url().'assets/user_profile_image/'.$msg_suser['uprofpic'] : base_url().'assets/images/img/contact_profile_photo.png');?>" alt="" />
 						<p class="msgbox_title"> <?=((!empty($msg_suser) && sizeof($msg_suser) <> 0) ? ucwords($msg_suser['ufname'].' '.$msg_suser['ulname'].' <span>'.$msg_suser['utype'].'</span>') : '');?> </p>
-						<div class="social-media hidden-xs"> 
+						<div class="social-media hidden-xs hide"> 
 							<a href="javascript:void(0)"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><g class="large-icon" style="fill: currentColor"><path d="M2,10H6v4H2V10Zm8,4h4V10H10v4Zm8-4v4h4V10H18Z"></path></g></svg></a>
 						</div>
 					</div>
@@ -430,7 +430,8 @@
 							</div>
 							<div class="message_extra">
 								<div class="browse_file">
-									<label for="mdoc" class="custom-file-upload"> <i class="fa fa-paperclip attachment" aria-hidden="true"></i></label>
+									<label for="mdoc" class="custom-file-upload col-md-2"> <i class="fa fa-paperclip attachment" aria-hidden="true"></i></label>
+									<span class="col-md-6" id="file_name"></span>
 									<input id="mdoc" name="mdoc" type="file">
 								</div>
 								<button id="send_message" type="button" send_user="<?=$send_user;?>" send_user_type="<?=$send_user_type;?>" class="submit"><i class="fa fa-paper-plane-o"></i> Send</button>
@@ -485,4 +486,16 @@
 	
 	}, 50000); 
 	
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$("#mdoc").change(function() {
+  filename = this.files[0].name;
+
+  // alert(filename);
+  // document.getElementById("mdesc").innerHTML = "Paragraph changed!";
+
+  $('#file_name').html(filename);
+
+});
 </script>

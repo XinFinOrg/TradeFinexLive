@@ -58,7 +58,7 @@ body {
 /* :focus {border:0px !important;outline: 0 !important;outline-style:none !important;}
 ::-moz-focus-inner,button::-moz-focus-inner, a::-moz-focus-inner {border:0;outline: 0;} */
 
-a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, caption, canvas, center, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, form, footer, header, hgroup, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, tt, table, tbody, textarea, tfoot, thead, time, tr, th, td, u, ul, var, video {
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, caption, canvas, center, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, form, footer, header, hgroup, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label,legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, tt, table, tbody, textarea, tfoot, thead, time, tr, th, td, u, ul, var, video {
 	font-family: 'open_sansregular';
 	font-size: 100%;
 	font-weight: inherit;
@@ -69,6 +69,10 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
 	border: 0;
 	outline: 0;
 	background: transparent;
+}
+.browse_file_name{
+	font-size: 11px;
+	text-align: center;
 }
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -466,6 +470,7 @@ footer {
 	-ms-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
+	transition-delay: 2s;
 	border: 1px solid #f3f3f3;
 }
 #mainnav .menu > li > .submenu > li {
@@ -2410,6 +2415,7 @@ to {
 .contactus_form .form-group select {
 	margin: 0px;
 	width: 100%;
+
 }
 .contactus_form input[type="text"]#defaultReal {
 	border-bottom: 1px solid #e9e9e9;
@@ -2430,7 +2436,7 @@ to {
 	top: 25px;
 	right: 18px;
 	color: #999999; /* font-size: 13px; */
-	z-index: 99999;
+	z-index: 1;
 	cursor: pointer;
 }
 .select_drop option {
@@ -3568,6 +3574,7 @@ to {
 .case_right .btn-more {
 	margin-top: 12px;
 	margin-bottom: 15px;
+
 }
 .case_right .btn-more:last-child {
 	margin-bottom: 0px;
@@ -3595,11 +3602,12 @@ to {
 	font-size: 16px;
 	clear: both;
 	margin-bottom: 30px;
-	margin-top: 15px;
+	margin-top: 30px;
 }
 .no_result_sections h1 {
-	margin-top: 20px;
+	margin-top: 70px;
 	text-align: center;
+	clear:both;
 }
 .supplier_financier_dashboard .view_propose_btn {
 	background: #2aa3ef;
@@ -4520,8 +4528,8 @@ to {
 /* Added by Subhasis */
 
 .contact_person_photo_back {
-	width: 180px;
-	height: 180px;
+	width: 200px;
+	height: 200px;
 	background: #f7f7f7;
 	border-radius: 8px;
 	text-align: center;
@@ -4553,6 +4561,9 @@ to {
 }
 .contact_person_photo input[type="file"] {
 	display: none;
+}
+.pdoc{
+	width:20% !important;
 }
 .contact_person_photo .custom-file-upload {
 	cursor: pointer;
@@ -5663,6 +5674,7 @@ padding:.65rem .9rem;
 	width: 100%;
 	height: 104px;
 	object-fit: contain;
+        margin-top: 15px;
 }
 .back_white_news_bottom {
 	width: 100%;
@@ -6025,6 +6037,7 @@ padding:.65rem .9rem;
 .case_right {
 	width: 100%;
 	float: left;
+	margin-top: 52px;
 }
 .proposal_timeline {
 	width: 100%;
@@ -6866,15 +6879,15 @@ left:16px;
 	float: left;
 	margin-bottom: 15px;
 }
-.accept_proposal .accept_proposal_btn {
+.accept_proposal_btn {
 	width: 100%;
 	border-radius: 30px;
-	font-family: 'open_sanssemibold';
+	font-family: 'open_sansregular';
 	text-transform: capitalize;
 	font-size: 18px;
 	height: 58px;
 	background: #2aa3ef;
-	color: #fff;
+	float: left;
 }
 .decline_edit, .decline_edit_modify {
 	width: 100%;
@@ -6886,8 +6899,8 @@ left:16px;
 	border-radius: 30px;
 	font-family: 'open_sansregular';
 	text-transform: capitalize;
-	font-size: 16px;
-	height: 55px;
+	font-size: 18px;
+	height: 58px;
 	background: #fff;
 	border: 1px solid #2aa3ef;
 	color: #2aa3ef;
@@ -6900,6 +6913,14 @@ left:16px;
 	background: #2aa3ef;
 	color: #fff;
 }
+.accept_proposal_btn:hover{
+	background: #fff;
+	color: #2aa3ef;
+	border: 1px solid #2aa3ef;
+}
+
+
+
 .back_to_dashboard {
 	float: left;
 	width: 100%;
@@ -7022,7 +7043,6 @@ div.dataTables_wrapper div.dataTables_info {
 	background: #fff;
 	border: 1px solid #2aa3ef;
 	color: #2aa3ef;
-	width: 48%;
 	float: left;
 	overflow: hidden;
 }
@@ -7704,7 +7724,7 @@ div.dataTables_wrapper div.dataTables_info {
 	min-height: calc(100% - 96px);
 	max-height: calc(100% - 96px);
 	overflow-y: scroll;
-	overflow-x: hidden;
+	overflow-x: scroll;
 	background: #ffffff;
 }
 @media screen and (max-width: 735px) {

@@ -30,7 +30,6 @@ class Log extends CI_Controller {
 			$result = $this->manage->fetch_user($data);
 		}
 		
-		
 		if(!empty($result) && is_array($result) && sizeof($result) <> 0){
 						
 			if($result['error'] == 0){

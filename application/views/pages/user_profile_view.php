@@ -157,7 +157,7 @@
 						</div>
 						<div id="company_profile" class="tab-pane fade">
 							<div class="company_profile">
-							    <h4>Business Overview</h4>
+                                                            <h4 style="    color: #999999;">Business Overview :</h4>
 								<p><?=$com_business_overv;?></p>
 							</div>
 							<div class="row">

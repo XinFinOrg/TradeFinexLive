@@ -237,7 +237,7 @@
 		<?php } if($user_id > 0){ ?>
 				
 		<script src="<?=base_url('assets/js/bootstrap/bootstrap-switch.min.js');?>"></script>	
-		
+	
 		<?php 
 			if(uri_string() === 'user/edit'){
 				echo '<link rel="stylesheet" type="text/css" href="'.base_url('assets/css/bootstrap-datepicker.1.5.0.css').'" />';
@@ -245,6 +245,9 @@
 			}
 		?>
 		
+		<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtRmXKclfDp20TvfQnpgXSDPjut14x5wk&region=GB"></script>
+		<script src="<?=base_url('assets/js/gmap3.min.js');?>"></script>  -->
+				
 		<!-- Datatables -->
 		<script src="<?=base_url('assets/js/datatables/jquery.dataTables.min.js');?>"></script>
 		<script src="<?=base_url('assets/js/datatables/dataTables.responsive.2.1.1.min.js');?>"></script>

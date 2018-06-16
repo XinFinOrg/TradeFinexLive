@@ -706,7 +706,13 @@ class Smartcontract extends CI_Controller {
 					
 					$nofifya[$count]['notify_user_ref'] = $user_id_request;
 					$nofifya[$count]['notify_user_type_ref'] = $user_type_request;
-					$nofifya[$count]['notify_text'] = 'Project Initiated for '.ucwords($project_info[0]->title);
+					// $nofifya[$count]['notify_text'] = 'Project Initiated for '.ucwords($project_info[0]->title);
+					if($data['user_type_ref'] == 1){
+						$nofifya[$count]['notify_text'] = 'Shipment made by supplier for '.ucwords($project_info[0]->title);
+					}
+					if($data['user_type_ref'] == 2){
+						$nofifya[$count]['notify_text'] = 'Financing made by financier for '.ucwords($project_info[0]->title);
+					}
 					$nofifya[$count++]['notify_time'] = date('Y-m-d H:i:s');
 				}
 			}
@@ -850,15 +856,12 @@ class Smartcontract extends CI_Controller {
 				
 				$data_add = array();
 				$data_add['tpf_awardStatus'] = 2;
+				$data_add['tpf_beneficiary_accept'] = 2;
 				$data_add['tpf_beneficiary_accept_project_completion_request'] = 2;
 				$this->plisting->update_financer_proposal_by_project_and_user($request_project_id, 0, 2, $data_add);
 			}	
 		}
-		
-		if(!empty($nofifya) && sizeof($nofifya) <> 0){
-			$this->notification->save_notification($nofifya);
-		}
-				
+						
 		if($request_action == 'request_message_financier' && $request_project_id > 0 && $data['user_id'] <> 0 && $request_user_id > 0 && $request_user_type == 2){
 			
 			$data_add = array();
@@ -869,6 +872,29 @@ class Smartcontract extends CI_Controller {
 			$data_add['tpf_beneficiary_request_message'] = $rmsg_detail;
 			
 			$this->plisting->update_proposal_by_project_and_user_ref($request_project_id, $request_user_id, $data_add, 'f');
+			
+			$user_request_detail_info = $this->manage->get_user_base_info_by_id_and_type($request_user_id, 2);
+			$udata = array();
+			$udata['b_notification'] = $user_request_detail_info[0]->tff_benif_notification;
+			
+			if(!empty($user_request_detail_info) && (isset($udata['b_notification']) && $udata['b_notification'] == 1)){
+			
+				$nofifya[$count]['notify_type'] = 'special_request_beneficiary';
+				$nofifya[$count]['notify_id'] = time();
+				
+				$project_info = $this->plisting->get_project_info_by_id($request_project_id);
+				$proposal_info = $this->plisting->get_proposal_by_ref($request_project_id, $request_user_id, 'f');
+						
+				$nofifya[$count]['notify_for_user'] = $data['user_id'];
+				$nofifya[$count]['notify_for_user_type'] = $data['user_type_ref'];	
+				$nofifya[$count]['notify_for_project'] = $request_project_id;
+				$nofifya[$count]['notify_for_proposal'] = $proposal_info[0]->tpf_id;
+				
+				$nofifya[$count]['notify_user_ref'] = $request_user_id;
+				$nofifya[$count]['notify_user_type_ref'] = 2;
+				$nofifya[$count]['notify_text'] = 'Special request by beneficiary against project '.ucwords($project_info[0]->title);
+				$nofifya[$count++]['notify_time'] = date('Y-m-d H:i:s');
+			}
 		}
 		
 		if($request_type == 'required_subcontractor' && $proj_id > 0 && $user_id_request > 0 && $user_type_request == 3){
@@ -933,6 +959,30 @@ class Smartcontract extends CI_Controller {
 			$data_add['tpp_contract_amount'] = $contract_amount;
 			
 			$this->plisting->update_proposal_by_project_and_user_ref($proj_id, $data['user_id'], $data_add, 'p');
+			
+			$user_request_detail_info = $this->manage->get_user_base_info_by_id_and_type($user_profile[0]->tfu_id, 1);
+			$udata = array();
+			$udata['b_notification'] = $user_request_detail_info[0]->tfsp_benif_notification;
+			
+			if(!empty($user_request_detail_info) && (isset($udata['b_notification']) && $udata['b_notification'] == 1)){
+												
+				$nofifya[$count]['notify_type'] = 'subcontractor_added';
+				$nofifya[$count]['notify_id'] = time();
+				
+				$project_info = $this->plisting->get_project_info_by_id($proj_id);
+				$proposal_info = $this->plisting->get_proposal_by_ref($proj_id, $data['user_id'], 'p');
+						
+				$nofifya[$count]['notify_for_user'] = $data['user_id'];
+				$nofifya[$count]['notify_for_user_type'] = $data['user_type_ref'];	
+				$nofifya[$count]['notify_for_project'] = $proj_id;
+				$nofifya[$count]['notify_for_proposal'] = $proposal_info[0]->tpp_id;
+				
+				$nofifya[$count]['notify_user_ref'] = $user_profile[0]->tfu_id;
+				$nofifya[$count]['notify_user_type_ref'] = 1;
+				$nofifya[$count]['notify_text'] = 'You were invited for shipment of project '.ucwords($project_info[0]->title);
+				$nofifya[$count++]['notify_time'] = date('Y-m-d H:i:s');
+			}
+			
 		}
 		
 		if($request_type == 'confirm_shipment' && $proj_id > 0 && $user_id_request > 0 && $user_type_request == 3){
@@ -973,6 +1023,10 @@ class Smartcontract extends CI_Controller {
 				$this->plisting->update_proposal_by_project_and_user_ref($proj_id, $data['user_id'], $data_add, 'p');
 				$this->plisting->add_supplier_shipment_rejection_by_project_proposal_and_user_ref($data_adds, 'p');
 			}
+		}
+		
+		if(!empty($nofifya) && sizeof($nofifya) <> 0){
+			$this->notification->save_notification($nofifya);
 		}
 		
 		$ccategories = $this->plisting->get_categories();

@@ -509,7 +509,7 @@
 	display: block;
 	float: left;
 	height: 100%;
-	position: fixed;
+	position: absolute;
 	transition: all 200ms ease-out;
 	width: 325px;
 }
@@ -658,10 +658,10 @@ input.error, textarea.error, select.error {
 
 .ui-widget.ui-widget-content {
     border: 1px solid #c5c5c5;
-    height: 200px;
-	width: 400px;
+    height: 270px;
+	width: 350px;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
 
 .disabled{

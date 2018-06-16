@@ -25,6 +25,11 @@
 			    return re.test(String(value).toLowerCase());
 			 }
 		}, 'You have entered an Invalid email address');
+
+		jQuery.validator.addMethod("LettersWithspecialChars", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		   return this.optional( element ) || /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$#!&*%])[0-9a-zA-Z@$#!&*%]{8,}$/.test( value );
+		}, 'The text must start with a letter and should contain 1 uppercase,1 number and 1 special character');
 		
 		jQuery.validator.addMethod("startsLetterOnly", function(value, element) {
 		  // allow any non-whitespace characters as the host part
@@ -60,7 +65,7 @@
 		
 		jQuery.validator.addMethod("NmobilenumberOnly", function(value, element) { // International Mobile Number
 		  // allow any non-whitespace characters as the host part
-		  return this.optional( element ) || /^(\+|\s)\d{0,4}\s\d{0,14}$/.test( value );
+		  return this.optional( element ) || /^(\+|\s)\d{1,4}\s\d{6,14}$/.test( value );
 		}, 'Please enter a valid mobile number');
 		
 		jQuery.validator.addMethod("CalphanumericOnly", function(value, element) {
@@ -135,7 +140,8 @@
 				password: {
 					required: true,
 					minlength: 8,
-					maxlength: 15
+					maxlength: 25,
+					LettersWithspecialChars:true
 				},
 				email: {
 					required: true,
@@ -195,7 +201,7 @@
 				password: {
 					required: "Please provide a password",
 					minlength: "Your password should be at least 8 characters long",
-					maxlength: "Your password should be at most 15 characters long"
+					maxlength: "Your password should be at most 25 characters long"
 				},
 				email: {
 					required: "Please enter a valid email address"
@@ -204,21 +210,21 @@
 					required: "Enter a valid mobile number",
 				},
 				c2_fname: {
-					minlength: "Firstname must be at least 2 characters long",
-					maxlength: "Firstname must be at most 15 characters long"
+					minlength: "Your firstname must be at least 2 characters long",
+					maxlength: "Your firstname must be at most 15 characters long"
 				},
 				c2_lname: {
-					minlength: "Lastname must be at least 2 characters long",
-					maxlength: "Lastname must be at most 15 characters long"
+					minlength: "Your lastname must be at least 2 characters long",
+					maxlength: "Your lastname must be at most 15 characters long"
 				},
 				c2_desgination: {
-					minlength: "Designation must be at least 2 characters long",
-					maxlength: "Designation must be at most 25 characters long"
+					minlength: "Your designation must be at least 2 characters long",
+					maxlength: "Your designation must be at most 25 characters long"
 				},
 				c2_linkedin: {
 					linkedinCompURL: "Please enter your linkedin URL"
 				},
-				c2_contactn: "Enter a valid contact number",
+				c2_contactn: "Enter a valid mobile number",
 				c2_email: "Please enter a valid email address"
 			},
 			onkeyup: function(element) {
@@ -238,18 +244,20 @@
 			rules: {
 				c_name: {
 					required: true,
-					minlength: 2,
+					minlength: 3,
 					maxlength: 40,
 					CalphanumericOnly: true
 				},
 				com_business_overv: {
 					required: true,
-					minlength: 140,
+					minlength: 25,
 					maxlength: 450,
 					messageFormat3: true
 				},
 				caddress: {
 					required: true,
+                    minlength: 10,
+					maxlength: 140,
 					addressFormat: true
 				},
 				com_linkedin: {
@@ -272,16 +280,18 @@
 			messages: {
 				c_name: {
 					required: "Please enter company name",
-					minlength: "Characters length should be atleast 2",
+					minlength: "Characters length should be atleast 3",
 					maxlength: "Characters length should not exceeded than 40"
 				},
 				com_business_overv: {
 					required: "Please describe your company overview",
-					minlength: "Characters length should be atleast 140",
+					minlength: "Characters length should be atleast 25",
 					maxlength: "Characters length should not exceeded than 450"
 				},
 				caddress: {
-					required: "Please enter valid company address"
+					required: "Please enter valid company address",
+                                        minlength: "Characters length should be atleast 10",
+					maxlength: "Characters length should not exceeded than 140"
 				},
 				com_linkedin: {
 					linkedinCompURL: "Please enter valid company linkedin prrofile"
@@ -389,13 +399,14 @@
 		$('.all_state').hide();
 		$(sclass).show();
 		
-		$('#user_pic').change(function(){
+		$('#file-upload').change(function(){
 			/* here we take the file extension and set an array of valid extensions */
-			var res = $('#user_pic').val();
+			var res = $(this).val();
 			var arr = res.split("\\");
 			var filename=arr.slice(-1)[0];
 			filextension=filename.split(".");
 			filext="."+filextension.slice(-1)[0];
+                        filesize = this.files[0].size;
 			valid=[".jpg",".jpeg",".png",".gif"]; // ".pdf",".doc",".txt",".rtf",".docx",".ppt",".pptx",".pps",".xls",".xlsx",
 			/* if file is not valid we show the error icon, the red alert, and hide the submit button */
 			if (valid.indexOf(filext.toLowerCase())==-1){
@@ -404,9 +415,77 @@
 				$( ".imgupload.stop" ).show("slow");
 			  
 				$('#namefile').css({"color":"red"});
-				$('#namefile').html(filename+" is Invalid format!");
 				
-			}else{
+                                
+                                 if(parseFloat(filesize) > 3145728){
+					
+					$('#namefile').html("File Size must be less than 3MB!");
+					
+				}else{
+				
+					$('#namefile').html("Invalid format!");
+				}
+				
+			}
+                        else if(parseFloat(filesize) > 3145728){
+                                $( ".imgupload" ).hide("slow");
+				$( ".imgupload.ok" ).hide("slow");
+				$( ".imgupload.stop" ).show("slow");
+			  
+				$('#namefile').css({"color":"red"});
+                                
+                                $('#namefile').html("File Size must be less than 3MB!");
+                        }
+                        else{
+				/* if file is valid we show the green alert and show the valid submit */
+				$( ".imgupload" ).hide("slow");
+				$( ".imgupload.stop" ).hide("slow");
+				$( ".imgupload.ok" ).show("slow");
+			  
+				$('#namefile').css({"color":"green"});
+				$('#namefile').html(filename);
+			  
+			}
+		});
+                
+                $('#file-upload-comp').change(function(){
+			/* here we take the file extension and set an array of valid extensions */
+			var res = $(this).val();
+			var arr = res.split("\\");
+			var filename=arr.slice(-1)[0];
+			filextension=filename.split(".");
+			filext="."+filextension.slice(-1)[0];
+                        filesize = this.files[0].size;
+			valid=[".jpg",".jpeg",".png",".gif"]; // ".pdf",".doc",".txt",".rtf",".docx",".ppt",".pptx",".pps",".xls",".xlsx",
+			/* if file is not valid we show the error icon, the red alert, and hide the submit button */
+			if (valid.indexOf(filext.toLowerCase())==-1){
+				$( ".imgupload" ).hide("slow");
+				$( ".imgupload.ok" ).hide("slow");
+				$( ".imgupload.stop" ).show("slow");
+			  
+				$('#namefile1').css({"color":"red"});
+				
+                                
+                                 if(parseFloat(filesize) > 3145728){
+					
+					$('#namefile1').html("File Size must be less than 3MB!");
+					
+				}else{
+				
+					$('#namefile1').html("Invalid format!");
+				}
+				
+			}
+                        else if(parseFloat(filesize) > 3145728){
+                                $( ".imgupload" ).hide("slow");
+				$( ".imgupload.ok" ).hide("slow");
+				$( ".imgupload.stop" ).show("slow");
+			  
+				$('#namefile1').css({"color":"red"});
+                                
+                                $('#namefile1').html("File Size must be less than 3MB!");
+                        }
+                        else{
 				/* if file is valid we show the green alert and show the valid submit */
 				$( ".imgupload" ).hide("slow");
 				$( ".imgupload.stop" ).hide("slow");
@@ -672,11 +751,13 @@
 			rules: {
 				ship_no:{
 					required: true,
+					minlength:2,
+					maxlength:20,
 					alphanumericOnly: true
 				},
 				ship_detail: {
 					required: true,
-					minlength: 25,
+					minlength: 15,
 					startsLetterWithDot: true
 				},
 				ship_date: {
@@ -686,10 +767,12 @@
 			messages: {
 				ship_no:{
 					required: "Please enter a valid Shipment number",
+					minlength:"Shipment number should be atleast 2 characters long",
+				    maxlength:"Shipment number should be atmost 20"
 				},
 				ship_detail: {
 					required: "Please enter a Shipment details",
-					minlength: "Shipment details should be at least 25 characters long"
+					minlength: "Shipment details should be at least 15 characters long"
 				},
 				ship_date: {
 					required: "Please enter a valid Shipment date"
@@ -714,14 +797,14 @@
 			rules: {
 				reject_msg: {
 					required: true,
-					minlength: 40,
+					minlength: 10,
 					startsLetterOnly: true
 				}
 			},	
 			messages: {
 				reject_msg: {
 					required: "Please write something for modification",
-					minlength: "Message should be at least 40 characters long"
+					minlength: "Message should be at least 10 characters long"
 				}
 			},
 			onkeyup: function(elem) {
@@ -744,14 +827,14 @@
 			rules: {
 				rmsg_detail: {
 					required: true,
-					minlength: 40,
+					minlength: 10,
 					startsLetterOnly: true
 				}
 			},	
 			messages: {
 				rmsg_detail: {
 					required: "Please write something for modification",
-					minlength: "Message should be at least 40 characters long"
+					minlength: "Message should be at least 10 characters long"
 				}
 			},
 			onkeyup: function(elem) {
@@ -775,13 +858,13 @@
 					required: true,
 					minlength: 3,
 					maxlength: 30,
-					alphanumericOnly: true
+					LetterOnly: true
 				},
 				ubank_num: {
 					required: true,
 					minlength: 6,
 					maxlength: 15,
-					numberOnly: true
+					alphanumericOnly: true
 				}
 			},	
 			messages: {
@@ -1463,6 +1546,54 @@
 							$('.signin_xinfin_otp').show();
 							$('#xuser_name').val('');
 							$('#xuser_password').val('');
+						}
+						
+						if(jsona['status'].toLowerCase() == 'failed'){
+							$('#xuser_name').val('');
+							$('#xuser_password').val('');
+							$('.xinfin_signin_error').show();
+							setTimeout(function(){ $('.xinfin_signin_error').hide(); }, 5000);
+						} 
+					
+					}else{
+						
+						$('#xuser_name').val('');
+						$('#xuser_password').val('');
+						$('.xinfin_error').show();
+						setTimeout(function(){ $('.xinfin_error').hide(); }, 5000);
+					}
+					
+					click_handler();
+				}
+			});	
+		});
+		
+		$('#resend_otp').unbind('click').bind('click', function(){
+			
+			var xuser_name = $('#xuser_name').val();
+			var xuser_password = $('#xuser_password').val();
+			    
+// 			console.log(xuser_name);    
+			
+// 			break;
+			    
+			$.ajax({
+				url: "<?=base_url();?>smartcontract/xinfin_login",
+				type: "POST",
+				data: {'xuser_name' : xuser_name, 'xuser_passwd' : xuser_password, 'action' : 'get_otp', '<?=$csrf['name'];?>' : '<?=$csrf['hash'];?>'},
+				success: function (data) {
+				
+					console.log(data);
+					var jsona = $.parseJSON(data);
+										
+					if(!$.isEmptyObject(jsona)){
+						
+						if(jsona['status'].toLowerCase() == 'success'){
+							$('.xinfin_login').hide();
+							$('.xinfin_otp').show();
+							$('.signin_xinfin_otp').show();
+				// 			$('#xuser_name').val('');
+				// 			$('#xuser_password').val('');
 						}
 						
 						if(jsona['status'].toLowerCase() == 'failed'){
