@@ -672,7 +672,7 @@ class Dashboard extends CI_Controller {
 				if(!empty($proposal_accepted) && is_array($proposal_accepted) && sizeof($proposal_accepted) <> 0){
 					
 					foreach($proposal_accepted as $parow){
-						array_push($data['proposal_accepted'], $parow->tpp_project_ref);
+						array_push($data['proposal_accepted'], $parow->tpp_rejected);
 						$data['proposal_info'][$parow->tpp_project_ref] = array();
 						array_push($data['proposal_info'][$parow->tpp_project_ref], $parow->tpp_id);
 					}	
@@ -723,15 +723,16 @@ class Dashboard extends CI_Controller {
 					
 			$data["projects_listed"] = $this->plisting->get_all_sc_projects($data['user_id']);
 			$data["projects_listedf"] = $this->plisting->get_all_sc_financier_projects($data['user_id']);
+			// $data["projects_listedp"] = $this->plisting->get_all_sc_supplier_projects($data['user_id']);
 			$uresult = $this->manage->get_user_info_by_id_and_type($data['user_id'], $data['user_type_ref']);
 			$data['check_company'] = $this->manage->get_company_info_by_uid($data['user_id']);
 			$data['all_invitation'] = $this->plisting->get_project_invitation_by_uid($data['user_id']);
 			
 			if($user['user_type_ref'] == 1){
 				$data['invitation_accept'] = $this->plisting->get_project_invitation_by_uid_type($data['user_id'], 'p');
-				$data["projects_listed"] = $this->plisting->get_all_sc_projects(0);
+				$data["projects_listed"] = $this->plisting->get_all_sc_projects($data['user_id']);
 			}
-			
+		
 			if($user['user_type_ref'] == 2){
 				$data['invitation_accept'] = $this->plisting->get_project_invitation_by_uid_type($data['user_id'], 'f');
 				$data["projects_listedf"] = $this->plisting->get_all_sc_financier_projects_self($data['user_id']);

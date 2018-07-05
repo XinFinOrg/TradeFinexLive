@@ -104,11 +104,11 @@
 							<div class="col-md-3">
 								<input type="hidden" id="pcurr" name="pcurr" value="2" />
 								<label for="ppriceval" class="required">Price [Dollar(USD)]</label>
-								<input class="form-control" id="ppriceval" name="ppriceval" placeholder="0.00" type="text" required="required" data-validation="number" data-validation-ignore="$€" data-validation-allowing="range[0;10], float" data-validation-decimal-separator="." value="<?php echo ($ppriceval > 0 ? $ppriceval : '') ?>" min="1" />
+								<input class="form-control" id="ppriceval" name="ppriceval" placeholder="0.00" type="text" required="required" data-validation="number" data-validation-ignore="$â‚¬" data-validation-allowing="range[0;10], float" data-validation-decimal-separator="." value="<?php echo ($ppriceval > 0 ? $ppriceval : '') ?>" min="1" />
 							</div>
 							<div class="col-md-3">
 								<label for="ppricetax" class="required">Tax Percentage ( % )</label>
-								<input class="form-control" id="ppricetax" name="ppricetax" placeholder="0.00" type="text" required="required" data-validation="number" data-validation-ignore="$€" data-validation-allowing="range[0;10], float" data-validation-decimal-separator="." value="<?php echo ($ppricetax > 0 ? $ppricetax : '') ?>" min="0" />
+								<input class="form-control" id="ppricetax" name="ppricetax" placeholder="0.00" type="text" required="required" data-validation="number" data-validation-ignore="$â‚¬" data-validation-allowing="range[0;10], float" data-validation-decimal-separator="." value="<?php echo ($ppricetax > 0 ? $ppricetax : '') ?>" min="0" />
 							</div>
 							<div class="col-md-3">
 								<label for="ppricetot" class="required">Total Amount</label>

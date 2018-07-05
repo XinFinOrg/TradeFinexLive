@@ -61,6 +61,8 @@
 					<div class="tab-content">
 						<div id="overview" class="tab-pane fade in active">
 							<div class="overview">
+								<div>Project Status</div>
+								<br>
 								<?php	
 														
 									$plrow = $project_listed_info[0];
@@ -82,7 +84,7 @@
 									 
 									}else if($user_type_ref == 3 && $plrow->admin_approval == 0){ 
 										
-										echo '<div class="padmin_awaited label">ADMIN APPROVAL AWAITED</div>';
+										echo '<div class="statusd pawaited pclose label">ADMIN APPROVAL AWAITED</div>';
 									 
 									}else if($user_type_ref == 3 && $plrow->admin_approval == 2){
 										
@@ -185,7 +187,7 @@
 												<td><?=ucwords($project_listed_info[0]->tfc_name);?></td>
 											</tr>
 											<tr>
-												<td>Contract Type</td>
+												<td>Project Type</td>
 												<td>:</td>
 												<td><?=ucfirst($project_listed_info[0]->cont_name);?></td>
 											</tr>
@@ -364,7 +366,7 @@
 													echo '<td>'.$furow['company'].'</td>';
 													echo '<td class="text-center">'.set_rating_user($furow['rating']).'</td>';
 													echo '<td>'.$furow['country'].'</td>';
-													echo '<td>'.((isset($furow['benif_accept']) && $furow['benif_accept'] == 2) ? '<span class="btn"><i class="fa fa-times"></i>Rejected</span>' : '<a class="btn view_propose view_propose_btn" user_type_ref="2" user_id="'.$furow['uid'].'" row_id="'.$project_listed_info[0]->ID.'" prow_id="'.$furow['proposal_id'].'" title="View Proposal"><i class="fa fa-eye"></i></a>&nbsp;<a class="btn send_message send_message_btn" proj_id="'.$project_listed_info[0]->ID.'" user_id="'.$furow['uid'].'" send_user="'.$furow['uid'].'" send_user_type="2" title="Send Message"><span><i class="fa fa-comments"></i></span></a>').'</td></tr>';
+													echo '<td>'.((isset($furow['benif_accept_status']) && $furow['benif_accept_status'] == 2) ? '<span class="btn"><i class="fa fa-times"></i>Rejected</span>' : '<a class="btn view_propose view_propose_btn" user_type_ref="2" user_id="'.$furow['uid'].'" row_id="'.$project_listed_info[0]->ID.'" prow_id="'.$furow['proposal_id'].'" title="View Proposal"><i class="fa fa-eye"></i></a>&nbsp;<a class="btn send_message send_message_btn" proj_id="'.$project_listed_info[0]->ID.'" user_id="'.$furow['uid'].'" send_user="'.$furow['uid'].'" send_user_type="2" title="Send Message"><span><i class="fa fa-comments"></i></span></a>').'</td></tr>';
 												}	
 											}else{
 												echo '<tr><td colspan="5"><center>No User found</center></td></tr>';

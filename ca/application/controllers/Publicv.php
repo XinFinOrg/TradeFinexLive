@@ -399,7 +399,7 @@ class Publicv extends CI_Controller {
 			
 			$suser = $this->manage->get_superadmin();
 			
-			$from_email = $config['smtp_user']; 
+			$from_email = 'contact@tradefinex.org'; 
 			$to_email = $this->input->post('memail'); 
 					
 			$message = '<strong>Name : </strong>'.ucwords($this->input->post('mname')).'<br/>';
@@ -412,7 +412,7 @@ class Publicv extends CI_Controller {
 			
 			$this->email->from($from_email, 'Support Tradefinex'); 
 			$this->email->to($to_email);
-			$this->email->cc($suser[0]->tfa_email);
+			$this->email->bcc($from_email);
 			$this->email->set_mailtype('html');
 			$this->email->subject('Tradefinex Enquiry'); 
 			$this->email->message($message);

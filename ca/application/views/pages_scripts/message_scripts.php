@@ -498,6 +498,8 @@
 				
 				if($.trim(mdesc) !== '' || document.getElementById("mdoc").files.length !== 0){
 					$('#send_message').trigger('click');
+
+					
 				}
 			}
 		});

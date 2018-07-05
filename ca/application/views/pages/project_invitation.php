@@ -118,7 +118,7 @@
 											else if(($afu_row['utype_ref'] == 2 && !empty($proposal_submitted_financier) && isset($proposal_submitted_financier[$afu_row['uid']]) && is_array($proposal_submitted_financier[$afu_row['uid']]) && !empty($proposal_submitted_financier[$afu_row['uid']]) && sizeof($proposal_submitted_financier[$afu_row['uid']]) <> 0 && in_array($project_listed_info[0]->ID, $proposal_submitted_financier[$afu_row['uid']]))){
 												
 												if(in_array($project_listed_info[0]->ID, $proposal_submitted_financier[$afu_row['uid']])){
-													echo '<span class="btn popen pro-subm"><i class="fa fa-upload"></i> PROPOSAL SUBMITTED</span>';	
+													echo '<div class="statusd popen label pro-subm positionauto"><i class="fa fa-upload"></i> PROPOSAL SUBMITTED</div>';	
 												}
 												
 											}else{
@@ -129,11 +129,11 @@
 												
 												}else if(($afu_row['utype_ref'] == 1 && $project_listed_info[0]->awarded_provider == 1) || ($afu_row['utype_ref'] == 2 && $project_listed_info[0]->awarded_financier == 1)){
 											
-													echo '<span class="btn pcomplete"><i class="fa fa-check"></i> AWARDED</span>';
+													echo '<div class="statusd pcomplete label positionauto"><i class="fa fa-check"></i> AWARDED</div>';
 
 												}else{
 												
-													echo '<span class="btn pclose"><i class="fa fa-times"></i> REJECTED</span>';
+													echo '<div class="statusd pclose label positionauto"><i class="fa fa-times"></i> REJECTED</div>';
 													
 												}
 											}

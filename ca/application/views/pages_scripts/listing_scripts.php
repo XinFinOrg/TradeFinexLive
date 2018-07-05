@@ -59,7 +59,7 @@
 		
 		jQuery.validator.addMethod("signedDecNumberOnly", function(value, element) {
 		  // allow any non-whitespace characters as the host part
-		  return this.optional( element ) || /^(\-){0,1}([0-9]+\.?[0-9]+)*$/.test( value );
+		  return this.optional( element ) || /^[+]?[0-15]+\.[0-9]+$/.test( value );
 		}, 'This field allows decimal number only'); 
 		
 		jQuery.validator.addMethod("DaysNumberOnly", function(value, element) {
@@ -86,6 +86,11 @@
 		  // allow any non-whitespace characters as the host part
 		  return this.optional( element ) || /^([a-z0-9\s])+$/i.test( value );
 		}, 'This field allows only alphanumeric characters; special characters are not allowed.'); 
+                
+                jQuery.validator.addMethod("messageFormat1", function(value, element) {
+		  // allow any non-whitespace characters as the host part
+		  return this.optional( element ) || /^([a-zA-Z]{1,})([a-zA-Z0-9.,:-\s$%])*$/.test( value );
+		}, 'The text should start with letters and not contain any special characters except[.,:-$%]');
 		
 		$("#form_post_project").validate({
 			rules: {
@@ -111,18 +116,18 @@
 					required: true,
 					numberOnly: true,
 					min: 1,
-					maxlength: 3,
-					max: 300
+					maxlength: 2,
+					max: 72
 				},
 				pdesc: {
 					required: true,
-					minlength: 90,
+					minlength: 25,
 					maxlength: 300,
 					LettersWithspecialChars: true
 				},
 				psremarks: {
 					required: true,
-					minlength: 10,
+					minlength: 5,
 					maxlength: 100,
 					LettersWithspecialChars: true
 				},
@@ -133,7 +138,8 @@
 				refnum: {
 					required: true,
 					alphanumericOnly: true,
-					minlength: 4
+					minlength: 4,
+					maxlength:10
 				}
 			},
 			messages: {
@@ -145,19 +151,19 @@
 				pbudget: "Please enter a valid amount between 1 to 25000000",
 				pfamount: "Please enter a valid amount between 1 to 25000000",
 				pftenure: {
-					required: "Please enter a valid tenure (up to 3 digits)",
-					maxlength: "Please enter a valid tenure (up to 3 digits)",
-					min: "Please enter a valid tenure between 1 to 300",
-					max: "Please enter a valid tenure between 1 to 300"
+					required: "Please enter a valid tenure (up to 2 digits)",
+					maxlength: "Please enter a valid tenure (up to 2 digits)",
+					min: "Please enter a valid tenure between 1 to 72",
+					max: "Please enter a valid tenure between 1 to 72"
 				},
 				pdesc: {
 					required: "Please enter Project description",
-					minlength: "Description should be atleast 90 characters long",
+					minlength: "Description should be atleast 25 characters long",
 					maxlength: "Description should be atmost 300 characters long" 
 				},
 				psremarks: {
 					required: "Please enter your remarks about this project",
-					minlength: "Remarks should be atleast 10 characters long",
+					minlength: "Remarks should be atleast 5 characters long",
 					maxlength: "Remarks should be atmost 100 characters long" 
 				},
 				sectors_tag: "Please enter valid sectors",
@@ -166,7 +172,8 @@
 				industry_category: "Please choose industry type",
 				refnum: {
 					required: "Please choose a reference number",
-					minlength: "Reference number should be at least 4 characters long"
+					minlength: "Reference number should be at least 4 characters long",
+					maxlength: "Remarks should be atmost 10 characters long" 
 				}
 			},
 			onkeyup: function(elem) {
@@ -201,8 +208,9 @@
 				},
 				ppricetax: {
 					required: true,
-					signedDecNumberOnly: true,
-					min: 0.01
+					signedDecNumberOnly:true,
+					min:0.01
+					//range:[0.01,15.00]
 				},
 				pvalid: {
 					required: true,
@@ -212,7 +220,11 @@
 
 				},
 				premarks: {
-					alphanumericOnly: true
+				    required: false,
+					alphanumericOnly: false,
+					minlength: 10,
+					maxlength: 150,
+					messageFormat1: true
 				},
 				pleadtime: {
 					required: true,
@@ -240,6 +252,12 @@
 					min: "Days should be greater than 0",
 					max: "Days should be less or equal to 180"
 				},
+				premarks:{
+				    required: "This field is mandatory",
+					minlength:"Characters length should be atleast 10",
+					maxlength:"Characters length should be atleast 150"
+				},
+				
 				pleadtime: "Please enter positive number greater than 0",
 				pcompletion: "Please enter positive number greater than 0"
 			},
@@ -340,10 +358,17 @@
 				},
 				pdeliveryt: {
 					required: true,
-					alphanumericOnly: true
+					minlength: 10,
+					maxlength: 150,
+					messageFormat1: true,
+					alphanumericOnly: false
 				},
 				premarks:{
-					alphanumericOnly: true
+					required: false,
+					minlength: 10,
+					maxlength: 150,
+					messageFormat1: true,
+					alphanumericOnly: false
 				},
 				psleadtime: {
 					required: true,
@@ -368,14 +393,23 @@
 					max: "Days should be less or equal to 180"
 				},
 				pdeliveryt: {
-					required: "This field is mandatory"
+					required: "This field is mandatory",
+					minlength:"Characters length should be atleast 10",
+					maxlength:"Characters length should be atleast 150"
+				},
+				premarks:{
+				    required: "This field is mandatory",
+					minlength:"Characters length should be atleast 10",
+					maxlength:"Characters length should be atleast 150"
 				},
 				psleadtime: {
 					required: "This field is mandatory",
 					min: "Days should be greater than 0",
-					maxlength: "Days length should be 3 cha",
+					maxlength: "Days length should be 3 digits",
 					max: "Days should be less or equal to 180"
 				}
+				
+				    
 			},
 			onkeyup: function(elem) {
 				
@@ -655,31 +689,75 @@
 		
 		$('.pdoc').change(function(){
 			/* here we take the file extension and set an array of valid extensions */
-			var res = $(this).val();
-			var arr = res.split("\\");
-			var filename=arr.slice(-1)[0];
-			filextension=filename.split(".");
-			filext="."+filextension.slice(-1)[0];
-			valid=[".gif",".jpg",".png",".jpeg",".doc",".docx",".ppt",".pptx",".pps",".xls",".xlsx",".pdf",".txt",".rtf"];
+			var files = document.getElementById("pdoc_1").files;
+
+			var count = files.length;
+			// var file = files.name;
+			if(count<=3){
+
+
+			// console.log(file);
+			// console.log(res);
+				for(var i = 0;  i<=count; i++)
+				{
+					var filename = files[i].name;
+				var res = $(this).val();
+				var arr = res.split("\\");
+				var filename=arr.slice(-1)[0];
+				filextension=filename.split(".");
+				filext="."+filextension.slice(-1)[0];
+                filesize = files[i].size;
+				valid=[".gif",".jpg",".png",".jpeg",".doc",".docx",".ppt",".pptx",".pps",".xls",".xlsx",".pdf",".txt",".rtf"];
 			/* if file is not valid we show the error icon, the red alert, and hide the submit button */
-			if (valid.indexOf(filext.toLowerCase())==-1){
-				$(this).parent().find( ".imgupload" ).hide("slow");
+				if (valid.indexOf(filext.toLowerCase())==-1){
+					$(this).parent().find( ".imgupload" ).hide("slow");
+					$(this).parent().find( ".imgupload.ok" ).hide("slow");
+					$(this).parent().find( ".imgupload.stop" ).show("slow");
+			  
+					$(this).parent().find('.namefile').css({"color":"red"});
+                                
+                    if(parseFloat(filesize) > 5097152){
+						$(this).parent().find('.namefile_1').css({"color":"red"});
+						$(this).parent().find('.namefile_!').html("File Size must be less than 5MB!");
+					
+					}else{
+						$(this).parent().find('.namefile_1').css({"color":"red"});
+						$(this).parent().find('.namefile_1').html("File "+filename+" is not valid !");
+					}
+                }
+                else if(parseFloat(filesize) > 5097152){
+                       	$(this).parent().find( ".imgupload" ).hide("slow");
+						$(this).parent().find( ".imgupload.ok" ).hide("slow");
+						$(this).parent().find( ".imgupload.stop" ).show("slow");
+			  			$(this).parent().find('.namefile_1').css({"color":"red"});
+                        
+                        $(this).parent().find('.namefile').html("File Size must be less than 5MB!");
+                        }
+               else{
+				/* if file is valid we show the green alert and show the valid submit */
+					$(this).parent().find( ".imgupload" ).hide("slow");
+					$(this).parent().find( ".imgupload.stop" ).hide("slow");
+					$(this).parent().find( ".imgupload.ok" ).show("slow");
+			  
+					$(this).parent().find('.namefile_1').css({"color":"green"});
+					$(this).parent().find('.namefile_2').css({"color":"green"});
+					$(this).parent().find('.namefile_3').css({"color":"green"});
+
+					$(this).parent().find('.namefile_1').html(files[0].name);
+					$(this).parent().find('.namefile_2').html(files[1].name);
+					$(this).parent().find('.namefile_3').html(files[2].name);
+			 		}
+			}
+		}
+		else{
+			$(this).parent().find( ".imgupload" ).hide("slow");
 				$(this).parent().find( ".imgupload.ok" ).hide("slow");
 				$(this).parent().find( ".imgupload.stop" ).show("slow");
-			  
-				$(this).parent().find('.namefile').css({"color":"red"});
-				$(this).parent().find('.namefile').html("File "+filename+" is not valid !");
-				
-			}else{
-				/* if file is valid we show the green alert and show the valid submit */
-				$(this).parent().find( ".imgupload" ).hide("slow");
-				$(this).parent().find( ".imgupload.stop" ).hide("slow");
-				$(this).parent().find( ".imgupload.ok" ).show("slow");
-			  
-				$(this).parent().find('.namefile').css({"color":"green"});
-				$(this).parent().find('.namefile').html(filename);
-			  
-			}
+				$(this).parent().find('.namefile_1').css({"color":"red"});
+				$(this).parent().find('.namefile_1').html("More than 3 files can not be uploaded");
+				$(this).parent().find( ".namefile_2" ).hide("slow");
+				$(this).parent().find( ".namefile_3" ).hide("slow");
+		}
 		});
 		
 		$('.remove_project_file').unbind('click').bind('click', function(){
@@ -1228,13 +1306,13 @@
 				rmsg_detail: {
 					required: true,
 					startsLetterWithDot: true,
-					minlength: 40
+					minlength: 10
 				}
 			},	
 			messages: {
 				rmsg_detail: {
 					required: "Please write something for modification",
-					minlength: "Message should be at least 40 characters long"
+					minlength: "Message should be at least 10 characters long"
 				}
 			},
 			onkeyup: function(elem) {

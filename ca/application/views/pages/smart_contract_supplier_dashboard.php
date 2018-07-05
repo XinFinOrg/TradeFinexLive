@@ -1026,7 +1026,8 @@
 										<label class="form-label">
 											<input id="xotp_val" class="form-input input-focus-notr" name="xotp_val" maxlength="10" tabindex="3" type="text" data-validation="required" autocomplete="" data-required-error="" />
 											<label class="form-name floating-label" for="otp">OTP<sup>*</sup></label>
-										</label>	
+										</label>
+										<span class="forgot_passwd"><a href="#" id="resend_otp" ><small>Resend OTP</small></a></span>	
 									</div>
 									<div class="form-group btn-more">
 										<button id="signin_xinfin" type="button" class="submit_contact xinfin_login">Sign in</button>

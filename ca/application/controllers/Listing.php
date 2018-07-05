@@ -660,6 +660,7 @@ class Listing extends CI_Controller {
 			
 			$data_add = array();
 			$data_add['isDraft'] = 0;
+                        $data_add['admin_approval'] = 0;
 					
 			$result = $this->plisting->update_project_by_id($row_id, $data_add);
 								
@@ -2386,6 +2387,7 @@ class Listing extends CI_Controller {
 			
 			$data_add = array();
 			$data_add['isDraft'] = 0;
+                        $data_add['admin_approval'] = 0;
 					
 			$result = $this->plisting->update_project_by_id($row_id, $data_add);
 								
@@ -2561,6 +2563,8 @@ class Listing extends CI_Controller {
 					$data['financier_interested_user'][$row_id][$count]['benif_rating'] = 0;
 				}
 				$data['financier_interested_user'][$row_id][$count]['benif_accept'] = $fuser->tpf_beneficiary_accept;
+
+				$data['financier_interested_user'][$row_id][$count]['benif_accept_status'] = $fuser->tpf_awardStatus;
 				
 				$ratinga = $this->plisting->get_user_rating_by_uid_type($fuser->tff_user_ref, 2);
 				
