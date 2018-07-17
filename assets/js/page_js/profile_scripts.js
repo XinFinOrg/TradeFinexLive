@@ -20,11 +20,6 @@
 			var re = /^([a-zA-Z])(.*[a-z])(.*[a-z0-9_\+-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*\.([a-z]{2,})$/;
 			return re.test(String(value).toLowerCase());
 		}, 'You have entered an Invalid email address');
-
-		jQuery.validator.addMethod("LettersWithspecialChars", function(value, element) {
-		  // allow any non-whitespace characters as the host part
-		   return this.optional( element ) || /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$#!&*%])[0-9a-zA-Z@$#!&*%]{8,}$/.test( value );
-		}, 'The text must start with a letter and should contain 1 uppercase,1 number and 1 special character');
 		
 		jQuery.validator.addMethod("startsLetterOnly", function(value, element) {
 		  // allow any non-whitespace characters as the host part
@@ -120,8 +115,7 @@
 				password: {
 					required: true,
 					minlength: 8,
-					maxlength: 25,
-					LettersWithspecialChars: true
+					maxlength: 15
 				},
 				email: {
 					required: true,
@@ -181,7 +175,7 @@
 				password: {
 					required: "Please provide a password",
 					minlength: "Your password should be at least 8 characters long",
-					maxlength: "Your password should be at most 25 characters long"
+					maxlength: "Your password should be at most 15 characters long"
 				},
 				email: {
 					required: "Please enter a valid email address"

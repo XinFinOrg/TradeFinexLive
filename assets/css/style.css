@@ -3574,7 +3574,6 @@ to {
 .case_right .btn-more {
 	margin-top: 12px;
 	margin-bottom: 15px;
-
 }
 .case_right .btn-more:last-child {
 	margin-bottom: 0px;
@@ -6037,7 +6036,6 @@ padding:.65rem .9rem;
 .case_right {
 	width: 100%;
 	float: left;
-	margin-top: 52px;
 }
 .proposal_timeline {
 	width: 100%;
