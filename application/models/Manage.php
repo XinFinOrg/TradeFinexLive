@@ -551,6 +551,8 @@
 		}
 		
 		public function update_user_info_by_id_and_type($id, $type_id, $data_add){
+
+			// return "hello";
 			
 			$datan = array();
 			$datan['tfu_usern'] = $data_add['uname'];
@@ -575,6 +577,7 @@
 				$data['tfsp_contact'] = $data_add['ucontact'];
 				
 				$where = "tfsp_user_ref = '$id'";
+//				echo $where;
 				$this->db->where($where);
 				$this->db->update('{PRE}service_provider', $data); 
 			}
@@ -652,7 +655,7 @@
 				$datan = array();
 				
 				$datan['tfu_current_logged'] = 1;
-				$this->db->set('tfu_logged', 'NOW()', FALSE);
+				$this->db->set('tfu_logged', 'GETDATE()', FALSE);
 				
 				$where = "tfu_usern = '".$data['user_name']."' AND tfu_passwd = '".$data['user_password']."' AND tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu_domain_name = '".$data['user_access_domain_name']."' AND tfu_active = 1";
 				$this->db->where($where);
@@ -670,7 +673,7 @@
 			$datan = array();
 				
 			$datan['tfu_current_logged'] = 1;
-			$this->db->set('tfu_logged', 'NOW()', FALSE);
+			$this->db->set('tfu_logged', 'GETDATE()', FALSE);
 				
 			$where = "tfu_id = '".$uid."' AND tfu_utype = '".$uref."' AND tfu_active = 1";
 			$this->db->where($where);
@@ -682,7 +685,7 @@
 			$datan = array();
 				
 			$datan['tfu_current_logged'] = 0;
-			$this->db->set('tfu_logged', 'NOW()', FALSE);
+			$this->db->set('tfu_logged', 'GETDATE()', FALSE);
 			$where = "tfu_current_logged = 1";
 			$this->db->where($where);
 			$this->db->update('{PRE}user', $datan); 
@@ -695,7 +698,7 @@
 			$datan = array();
 				
 			$datan['tfu_current_logged'] = 0;
-			$this->db->set('tfu_logged', 'NOW()', FALSE);
+			$this->db->set('tfu_logged', 'GETDATE()', FALSE);
 			$where = "tfu_id = '".$uid."' AND tfu_utype = '".$utype."'";
 			$this->db->where($where);
 			$this->db->update('{PRE}user', $datan); 
@@ -766,7 +769,7 @@
 		
 		public function add_company_info($data_add){
 			
-			$this->db->query('SET FOREIGN_KEY_CHECKS = 0');
+//			$this->db->query('SET FOREIGN_KEY_CHECKS = 0');
 			$this->db->insert('{PRE}company', $data_add); 
 			$id = $this->db->insert_id();
 						
@@ -777,7 +780,7 @@
 			
 			$where = "tfcom_user_ref = '$uid'";
 			$this->db->where($where);
-			$this->db->query('SET FOREIGN_KEY_CHECKS = 0');
+//			$this->db->query('SET FOREIGN_KEY_CHECKS = 0');
 			$this->db->update('{PRE}company', $data_add);
 			
 			return $result = $this->get_company_info_by_uid($uid);
