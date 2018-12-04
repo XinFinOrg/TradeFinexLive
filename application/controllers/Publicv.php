@@ -608,28 +608,32 @@ class Publicv extends CI_Controller {
 			$config = $this->config->item('$econfig');
 						
 			$this->email->initialize($config);
-			// $this->email->cc('another@another-example.com');
+			//$this->email->cc('');
 			// $this->email->bcc('them@their-example.com');
 			
 			$suser = $this->manage->get_superadmin();
 			
 			$from_email = 'info@tradefinex.org'; // $config['smtp_user']; 
 			$to_email = $this->input->post('memail'); 
-						
+			//$cc_mail = 'mansi.vora@tradefinex.org';			
 			$message = '<strong>Name : </strong>'.ucwords($this->input->post('mname')).'<br/>';
 			$message .= '<strong>Email : </strong>'.$this->input->post('memail').'<br/>';
 			$message .= '<strong>Contact : </strong>'.$this->input->post('mmob').'<br/>';
 			$message .= '<strong>Company : </strong>'.$this->input->post('mcomp').'<br/>';
-			$message .= '<strong>Nature of Business : </strong>'.$this->input->post('musertype').'<br/>';
-			$message .= '<strong>Website : </strong>'.$this->input->post('murl').'<br/>';
-			$message .= '<strong>Message : </strong>'.$this->input->post('mmsg').'<br/>';
+			//$message .= '<strong>Nature of Business : </strong>'.$this->input->post('musertype').'<br/>';
+			//$message .= '<strong>Website : </strong>'.$this->input->post('murl').'<br/>';
+			//$message .= '<strong>Message : </strong>'.$this->input->post('mmsg').'<br/>';
 			
 			$this->email->from($from_email, 'Support Tradefinex'); 
 			$this->email->to($to_email);
-			$this->email->cc($suser[0]->tfa_email);
+			//$this->email->cc($cc_mail);
+			$this->email->bcc('mansi.vora@tradefinex.org');
 			$this->email->set_mailtype('html');
 			$this->email->subject('Tradefinex Partnership Enquiry'); 
 			$this->email->message($message); 
+			
+			console.log("$from_email");
+			
 			
 			// Send mail 
 			if($this->email->send()){ 
@@ -774,7 +778,7 @@ class Publicv extends CI_Controller {
 			
 			$this->email->from($from_email, 'Support Tradefinex'); 
 			$this->email->to($to_email);
-			$this->email->cc($suser[0]->tfa_email);
+			$this->email->cc($from_email);
 			$this->email->set_mailtype('html');
 			$this->email->subject('Tradefinex Advertise Enquiry'); 
 			$this->email->message($message); 
@@ -1180,6 +1184,7 @@ class Publicv extends CI_Controller {
 		$this->load->view('pages_scripts/common_scripts', $data);
 		$this->load->view('includes/footern');
 	}
+	
 	
 	public function finance_solutions(){
 		

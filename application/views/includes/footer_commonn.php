@@ -113,53 +113,35 @@
 						<!-- /.col-md-3 -->
 						<div class="col-md-2 col-xs-6 col-sm-3 footer_sec_oppo">
 							<div class="widget widget-categories">
-								<h3 class="widget-title">Opportunities</h3>
+								<h3 class="widget-title">Explore</h3>
 								<ul class="one-half">
-									<li> <a href="<?=base_url();?>publicv/partnership" title="">Partnership </a> </li>
-									<li> <a href="<?=base_url();?>publicv/advertise" title="">Advertise With Us </a> </li>
-									<li> <a href="<?=base_url();?>publicv/careers" title="">Careers </a> </li>
+									<li> <a href="<?=base_url();?>publicv/partnership" title="">Consortium </a> </li>
+									<li> <a href="<?=base_url();?>publicv/media_center" title="">Media Center </a> </li>
+									<li> <a href="<?=base_url();?>publicv/case_study" title="">Case Study </a> </li>
+									<li> <a href="https://xinfinorg.github.io/TradeFinex_API/" title="">API</a> </li>
 								</ul>
 							</div>
 							<!-- /.widget-categories --> 
 						</div>
 						<!-- /.col-md-3 -->
-						<div class="col-md-2 col-xs-12 col-sm-2 footer_sec_res">
-							<div class="widget widget-categories">
-								<h3 class="widget-title">Resources</h3>
-								<ul class="one-half">
-									<li> <a href="<?=base_url();?>publicv/media_center" title="">Media Center </a> </li>
-									<li> <a href="<?=base_url();?>publicv/case_study" title="">Case Study </a> </li>
-									<li> <a href="javascript:void(0)" title="">Mobile Apps (<span style="font-size: 10px;">Coming Soon</span>)</a> </li>
-								</ul>
-							</div>
+						<!--<div class="col-md-2 col-xs-12 col-sm-2 footer_sec_res">-->
+						<!--	<div class="widget widget-categories">-->
+						<!--		<h3 class="widget-title">Resources</h3>-->
+						<!--		<ul class="one-half">-->
+						<!--			<li> <a href="<?=base_url();?>publicv/media_center" title="">Media Center </a> </li>-->
+						<!--			<li> <a href="<?=base_url();?>publicv/case_study" title="">Case Study </a> </li>-->
+						<!--			<li> <a href="javascript:void(0)" title="">Mobile Apps (<span style="font-size: 10px;">Coming Soon</span>)</a> </li>-->
+						<!--		</ul>-->
+						<!--	</div>-->
 							<!-- /.widget-categories --> 
-						</div>
+						<!--</div>-->
 						<!-- /.col-md-3 -->
 						<a class="jump_to" href="#footer_subscrip"></a>
 						<div class="col-md-3 col-sm-4 footer_sec_stay">
 							<div class="widget widget-contact">
-								<h3 class="widget-title">Stay Connected</h3>
+								<!--<h3 class="widget-title">Stay Connected</h3>-->
 								<div id="footer_subscrip" class="col-md-12 col-xs-12 sub_box">
-									<?php
-										$request_uri = $_SERVER['REQUEST_URI'];
-										$page = str_replace (base_url(), '', $request_uri);
-										$page = ltrim($page, '/');
-									?>
-									<form id="subscription" method="post" action="<?=base_url();?>publicv/subscribe">
-										<div class="col-md-8 col-sm-8 col-xs-8 sub_box_left">
-											<div class="input-group">
-												<input class="email_sub" name="semail" id="semail" type="email" placeholder="Enter Email ID" required />
-												<input type="hidden" name="action" value="send_mail" />
-												<input type="hidden" name="action_area" value="footer" />
-												<input type="hidden" name="request_page" value="<?=$page;?>" />
-												<input type="hidden" id="csrf_tokens" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
-											</div>	
-										</div>
-										<div class="col-md-3 col-sm-4 col-xs-3 sub_box_right">
-											<button class="btn" type="submit">Submit</button>
-										</div>
-									</form>
-									<?=$this->session->flashdata('sub_email_sent');?>
+									
 								</div>
 								<input type="hidden" id="log_user_id" value="<?=(isset($user_id) ? $user_id : 0);?>" />
 								<input type="hidden" id="log_user_type" value="<?=(isset($user_type_ref) ? $user_type_ref : 0);?>" />

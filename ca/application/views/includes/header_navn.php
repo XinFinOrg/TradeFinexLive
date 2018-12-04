@@ -71,7 +71,7 @@
 						<li class="hidden-xs hidden-sm large_device_loginp"> <a href="javascript:void(0)" title=""><img src="<?=base_url();?>assets/images/icon/signin_icon.jpg" alt="icon"> </a>
 							<ul class="submenu home_account">
 								<h4> Your Account</h4>
-								<p> Access acount and manage tasks</p>
+								<p> Access account and manage tasks</p>
 								<a href="<?php echo base_url() ?>registration" class="pull-left acount_btn"> Sign Up</a> 
 								<a href="javascript:void(0)" class="pull-right acount_btn btn_logged" data-toggle="modal" data-target="#login"> Log In</a>
 							</ul>

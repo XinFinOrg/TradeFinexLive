@@ -1,8 +1,8 @@
 <div class="sub_page_wraper">
 	<section class="trade_career">
 		<div class="container">
-			<h3>Partnership With TradeFinex</h3>
-			<p>TradeFinex: Peer to Peer trade and financing using Blockchain Technology</p>
+			<h3>Consortium Membership for Tradefinex</h3>
+			<p>Consortium-Led Asset Tokenisation Platform Using Blockchain Technology</p>
 			<div class="btn-more">
 				<a href="<?=base_url('publicv/case_study/#case_video_section');?>">
 					<span> <i class="fa fa-play-circle"></i> </span> <span>Watch Video</span> 
@@ -16,11 +16,17 @@
 				<div class="col-md-7 col-sm-7 col-xs-12 hidden-xs">
 					<div class="left_side">
 						<div class="con_block">
-							<h2 class="title"> Partnership With TradeFinex</h2>
-							<p class="content">We welcome business partners to join our network and leverage benefit from our integrated Blockchain platform for trade and financing. Unlike others that end up becoming an end to end player in Banking and Financial services industry, TradeFinex provides community driven tools to the existing or authorized entities to solve real problems. We are looking to partner with individuals, businesses and non-profit organizations that contribute to platform development and build engagement around TradeFinex community and render support in the form of donations.</p>
-							<p class="content">TradeFinex aims to bridge the $5 trillion global infrastructure deficit by letting institutions and/or governments connect blockchain based digital assets to IoT enabled equipment in order to raise foreign direct investments and enable peer-to- peer financing. Ours is a growing community committed to evolve its blockchain into a military grade enterprise ready solution along with establishing an application layer to enable global trade and financing.</p>
-							<p class="content">So, if you are an individual, business or non-profit institution, looking to collaborate in our attempt to bridge the global infrastructure deficit or derive more out of your cross border trade, then, please write to us at info@tradefinex.org</p>
-							<p class="content">You can alternatively, fill the given form and submit.</p>
+						    <div class="col-md-4 col-xs-12 col-sm-4"> 
+									<img class="img-rounded img-responsive" src="<?=base_url();?>assets/images/page/consortium.jpg" alt="cimage 1" /> 
+								</div>
+								<div class="col-md-8 col-xs-12 col-sm-8">
+							<h2 class="title"> Consortium Member</h2>
+							<p class="content">Tradefinex invites global public investors to be consortium members and participate in the development strategy of this blockchain powered platform. You can participate in this opportunity by being founding member or extended member of consortium. As a member you will be part of the ecosystem and will contribute to evolution of TradeFinex platform. Your contribution in terms of best practices, driving the standardization, working with regulators will help you to influence future of your business requirement. TradeFinex is promoting consortium lead governance as it makes platform truly decentralized which in sync with core philosophy of blockchain.</p><br><p class="content" style="color:#000;"><strong>Just by paying a nominal contribution of $5000 to $25000 towards consortium membership you can be part of this global campaign.
+							
+							 For more information, fill in your details and we will help you understand the vision of TradeFinex and why you should be part of this consortium.
+</strong></p>
+                            </div>
+							
 						</div>
 						<div class="con_block last_sec_con_block hide">
 							
@@ -29,9 +35,9 @@
 				</div>
 				<div class="col-md-5 col-sm-5 col-xs-12 career_position">
 					<div class="right_side">
-						<h3 class="title"> Contact for Partnership </h3>
+						<h3 class="title"> Be a part of Consortium </h3>
 						<?php $attributes = array('id' => 'partnership-form', 'class' => 'partnership_form form-commom', 'method' => 'post', 'role' => 'form');
-						echo form_open_multipart(base_url().'publicv/advertise/', $attributes); ?>
+						echo form_open_multipart(base_url().'publicv/partnership/', $attributes); ?>
 						<div class="form-group focus-group">
 							<label class="form-label">
 								<input class="input-focus input-focus-notr" id="mname" name="mname" type="text" autocomplete="" data-required-error="" tabindex="1" aria-required="true" />
@@ -56,7 +62,7 @@
 								<span class="form-name floating-label">COMPANY<sup>*</sup></span> 
 							</label>
 						</div>
-						<div class="form-group focus-group">
+						<!--<div class="form-group focus-group">
 							<label class="form-label">
 								<input class="input-focus input-focus-notr" id="murl" name="murl" type="text" autocomplete="" data-required-error="" tabindex="4" aria-required="true" />
 								<span class="form-name floating-label">WEBSITE<sup>*</sup></span> 
@@ -77,7 +83,7 @@
 						<div class="form-group focus-group">
 							<textarea class="input-focus input-focus-notr" rows="5" id="mmsg" name="mmsg"></textarea>
 							<span class="form-name floating-label">YOUR QUERY<sup>*</sup></span> 
-						</div>
+						</div>-->
 						<div class="form-group">
 							<div class="form-label">
 								<input class="input-focus input-focus-notr" id="defaultReal" name="defaultReal" captchav="" autocomplete="" maxlength="50" required data-required-error="" tabindex="5" aria-required="true" type="text">
@@ -97,11 +103,9 @@
 				<div class="col-md-7 col-sm-7 col-xs-12 hidden-md hidden-lg">
 					<div class="left_side">
 						<div class="con_block">
-							<h2 class="title"> Partnership With TradeFinex</h2>
-							<p class="content">We welcome business partners to join our network and leverage benefit from our integrated Blockchain platform for trade and financing. Unlike others that end up becoming an end to end player in Banking and Financial services industry, TradeFinex provides community driven tools to the existing or authorized entities to solve real problems. We are looking to partner with individuals, businesses and non-profit organizations that contribute to platform development and build engagement around TradeFinex community and render support in the form of donations.</p>
-							<p class="content">TradeFinex aims to bridge the $5 trillion global infrastructure deficit by letting institutions and/or governments connect blockchain based digital assets to IoT enabled equipment in order to raise foreign direct investments and enable peer-to- peer financing. Ours is a growing community committed to evolve its blockchain into a military grade enterprise ready solution along with establishing an application layer to enable global trade and financing.</p>
-							<p class="content">So, if you are an individual, business or non-profit institution, looking to collaborate in our attempt to bridge the global infrastructure deficit or derive more out of your cross border trade, then, please write to us at info@tradefinex.org</p>
-							<p class="content">You can alternatively, fill the given form and submit.</p>
+								<h2 class="title"> Consortium Member</h2>
+							<p class="content">Tradefinex invites global public investors to be consortium members and participate in the development strategy of this blockchain powered platform. You can participate in this opportunity by being founding member or extended member of consortium. As a member you will be part of the ecosystem and will contribute to evolution of TradeFinex platform. Your contribution in terms of best practices, driving the standardization, working with regulators will help you to influence future of your business requirement. TradeFinex is promoting consortium lead governance as it makes platform truly decentralized which in sync with core philosophy of blockchain.</p><br><p class="content" style="color:#000;"><strong>Just by paying a nominal contribution of $5000 to $25000 towards consortium membership you can be part of this global campaign. For more information, fill in your details and we will help you understand the vision of TradeFinex and why you should be part of this consortium.
+</strong></p>
 						</div>
 						<div class="con_block last_sec_con_block hide">
 							

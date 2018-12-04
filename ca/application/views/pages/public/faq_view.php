@@ -28,7 +28,7 @@
                               <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#maccordion" href="#collapseTwo"> How to post projects on TradeFinex? </a> </h4>
                             </div>
                             <div id="collapseTwo" class="panel-collapse collapse">
-                              <div class="panel-body">The interested participant is required to register as Beneficiary on www.tradefinex.org. Upon registration, the Beneficiary can initiate project creation by clicking on the "Create Project" button on Dashboard page. The beneficiary is required to fill in all the details of their project and post the project. The project will be sent to the TradeFinex Admin for verification. Upon approval by the TradeFinex Admin, the projects will be visible on the website. The Beneficiary also has the option to save information and submit later using "Save as Draft" button. </div>
+                              <div class="panel-body">The interested participant is required to register as Beneficiary on <a href="https://ca.tradefinex.org">ca.tradefinex.org</a>. Upon registration, the Beneficiary can initiate project creation by clicking on the "Create Project" button on Dashboard page. The beneficiary is required to fill in all the details of their project and post the project. The project will be sent to the TradeFinex Admin for verification. Upon approval by the TradeFinex Admin, the projects will be visible on the website. The Beneficiary also has the option to save information and submit later using "Save as Draft" button. </div>
                             </div>
                           </div>
                           <div class="panel panel-default">
@@ -36,7 +36,7 @@
                               <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#maccordion" href="#collapseThree"> How to view projects on TradeFinex? </a> </h4>
                             </div>
                             <div id="collapseThree" class="panel-collapse collapse">
-                              <div class="panel-body"> The interested participants can log on to www.tradefinex.org and search for the projects or suppliers using the search bar features. A list of projects matching the search criteria will be displayed and the participant can view projects. However, the participant needs to be logged in as Beneficiary or Supplier or Financier to view detailed project information. The participants can shortlist the projects they want and submit the proposals accordingly. </div>
+                              <div class="panel-body"> The interested participants can log on to <a href="https://ca.tradefinex.org">ca.tradefinex.org</a> and search for the projects or suppliers using the search bar features. A list of projects matching the search criteria will be displayed and the participant can view projects. However, the participant needs to be logged in as Beneficiary or Supplier or Financier to view detailed project information. The participants can shortlist the projects they want and submit the proposals accordingly. </div>
                             </div>
                           </div>
                           <div class="panel panel-default">
@@ -44,7 +44,7 @@
                               <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#maccordion" href="#collapsefour"> How to edit projects on TradeFinex? </a> </h4>
                             </div>
                             <div id="collapsefour" class="panel-collapse collapse">
-                              <div class="panel-body"> The beneficiary is required to log on to www.tradefinex.org and select the project he wants to edit. The beneficiary can edit the project by clicking on the "Edit" button. The beneficiary can even withdraw the project by clicking on "Withdraw" button. Similarly, the supplier and the financier can modify their proposal by clicking on "Modify Proposal" button. However, the participant needs to be logged in as Beneficiary or Supplier or Financier to edit the project or proposal. </div>
+                              <div class="panel-body"> The beneficiary is required to log on to <a href="https://ca.tradefinex.org">ca.tradefinex.org</a> and select the project he wants to edit. The beneficiary can edit the project by clicking on the "Edit" button. The beneficiary can even withdraw the project by clicking on "Withdraw" button. Similarly, the supplier and the financier can modify their proposal by clicking on "Modify Proposal" button. However, the participant needs to be logged in as Beneficiary or Supplier or Financier to edit the project or proposal. </div>
                             </div>
                           </div>
                           <div class="panel panel-default">
@@ -248,7 +248,7 @@
                               <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#qaccordion5" href="#collapseThree5"> How to get XDC tokens into your wallet? </a> </h4>
                             </div>
                             <div id="collapseThree5" class="panel-collapse collapse">
-                              <div class="panel-body"> Interested users can sign-up for XDC Wallet from Google Play Store, Apple Store or from Web. The users, using the compatible exchanges, can buy XDC tokens against compatible token pairs (Ethereum, Bitcoin, XRP etc.) supported by the exchange. The institutional investors and bulk buyers are advised to reach out to the respective exchanges for bulk trade. Here's the XDC ewallet link: https://ewallet.xinfin.org/ </div>
+                              <div class="panel-body"> Interested users can sign-up for XDC Wallet from Google Play Store, Apple Store or from Web. The users, using the compatible exchanges, can buy XDC tokens against compatible token pairs (Ethereum, Bitcoin, XRP etc.) supported by the exchange. The institutional investors and bulk buyers are advised to reach out to the respective exchanges for bulk trade. Here's the XDC ewallet link: <a href="https://ewallet.xinfin.org/">ewallet.xinfin.org</a> </div>
                             </div>
                           </div>
                         </div>
@@ -357,7 +357,7 @@
                                           <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"> How to post projects on TradeFinex? </a> </h4>
                                         </div>
                             			<div id="collapseTwo" class="panel-collapse collapse">
-                                              <div class="panel-body">The interested participant is required to register as Beneficiary on www.tradefinex.org. Upon registration, the Beneficiary can initiate project creation by clicking on the "Create Project" button on Dashboard page. The beneficiary is required to fill in all the details of their project and post the project. The project will be sent to the TradeFinex Admin for verification. Upon approval by the TradeFinex Admin, the projects will be visible on the website. The Beneficiary also has the option to save information and submit later using "Save as Draft" button. 
+                                              <div class="panel-body">The interested participant is required to register as Beneficiary on <a href="https://ca.tradefinex.org">ca.tradefinex.org</a>. Upon registration, the Beneficiary can initiate project creation by clicking on the "Create Project" button on Dashboard page. The beneficiary is required to fill in all the details of their project and post the project. The project will be sent to the TradeFinex Admin for verification. Upon approval by the TradeFinex Admin, the projects will be visible on the website. The Beneficiary also has the option to save information and submit later using "Save as Draft" button. 
                                               </div>
                             			</div>
                           			</div>
@@ -366,7 +366,7 @@
 											<h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> How to view projects on TradeFinex? </a> </h4>
 										</div>
 										<div id="collapseThree" class="panel-collapse collapse">
-											<div class="panel-body"> The interested participants can log on to www.tradefinex.org and search for the projects or suppliers using the search bar features. A list of projects matching the search criteria will be displayed and the participant can view projects. However, the participant needs to be logged in as Beneficiary or Supplier or Financier to view detailed project information. The participants can shortlist the projects they want and submit the proposals accordingly. </div>
+											<div class="panel-body"> The interested participants can log on to <a href="https://ca.tradefinex.org">ca.tradefinex.org</a> and search for the projects or suppliers using the search bar features. A list of projects matching the search criteria will be displayed and the participant can view projects. However, the participant needs to be logged in as Beneficiary or Supplier or Financier to view detailed project information. The participants can shortlist the projects they want and submit the proposals accordingly. </div>
 										</div>
 									</div>
                                   	<div class="panel panel-default">
@@ -374,7 +374,7 @@
 											<h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapsefour"> How to edit projects on TradeFinex? </a> </h4>
 										</div>
 										<div id="collapsefour" class="panel-collapse collapse">
-											<div class="panel-body"> The beneficiary is required to log on to www.tradefinex.org and select the project he wants to edit. The beneficiary can edit the project by clicking on the "Edit" button. The beneficiary can even withdraw the project by clicking on "Withdraw" button. Similarly, the supplier and the financier can modify their proposal by clicking on "Modify Proposal" button. However, the participant needs to be logged in as Beneficiary or Supplier or Financier to edit the project or proposal. </div>
+											<div class="panel-body"> The beneficiary is required to log on to <a href="https://ca.tradefinex.org">ca.tradefinex.org</a> and select the project he wants to edit. The beneficiary can edit the project by clicking on the "Edit" button. The beneficiary can even withdraw the project by clicking on "Withdraw" button. Similarly, the supplier and the financier can modify their proposal by clicking on "Modify Proposal" button. However, the participant needs to be logged in as Beneficiary or Supplier or Financier to edit the project or proposal. </div>
 										</div>
 									</div>
                                   	<div class="panel panel-default">
@@ -567,7 +567,7 @@
                                           <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion5" href="#collapseThree5"> How to get XDC tokens into your wallet? </a> </h4>
                                         </div>
                                         <div id="collapseThree5" class="panel-collapse collapse">
-                                            <div class="panel-body"> Interested users can sign-up for XDC Wallet from Google Play Store, Apple Store or from Web. The users, using the compatible exchanges, can buy XDC tokens against compatible token pairs (Ethereum, Bitcoin, XRP etc.) supported by the exchange. The institutional investors and bulk buyers are advised to reach out to the respective exchanges for bulk trade. Here's the XDC ewallet link: https://ewallet.xinfin.org/ 
+                                            <div class="panel-body"> Interested users can sign-up for XDC Wallet from Google Play Store, Apple Store or from Web. The users, using the compatible exchanges, can buy XDC tokens against compatible token pairs (Ethereum, Bitcoin, XRP etc.) supported by the exchange. The institutional investors and bulk buyers are advised to reach out to the respective exchanges for bulk trade. Here's the XDC ewallet link: <a href="https://ewallet.xinfin.org/">ewallet.xinfin.org</a> 
                                             </div>
                                         </div>
                               		</div>

@@ -58,11 +58,11 @@
 						<li class="hidden-xs hidden-sm"> | </li>
 						<li> <a href="javascript:void(0)" title="">Solutions</a>
 							<ul class="submenu">
+							    <li> <a href="<?=base_url();?>publicv/finance_solutions" title="Know about finance">Finance Solutions</a> </li>
 								<li> <a href="<?=base_url();?>publicv/trade_solutions" title="Know about trade">Trade Solutions</a> </li>
-								<li> <a href="<?=base_url();?>publicv/finance_solutions" title="Know about finance">Finance Solutions</a> </li>
+								<li> <a href="<?=base_url();?>publicv/financier" title="Know about financier">Financier</a> </li>
 								<li> <a href="<?=base_url();?>publicv/beneficiary" title="Know about beneficiary">Beneficiary</a> </li>
 								<li> <a href="<?=base_url();?>publicv/supplier" title="Know about supplier">Supplier</a> </li>
-								<li> <a href="<?=base_url();?>publicv/financier" title="Know about financier">Financier</a> </li>
 							</ul>
 						</li>
 						<li class="hidden-xs hidden-sm"> | </li>
@@ -71,7 +71,7 @@
 						<li class="hidden-xs hidden-sm large_device_loginp"> <a href="javascript:void(0)" title=""><img src="<?=base_url();?>assets/images/icon/signin_icon.jpg" alt="icon"> </a>
 							<ul class="submenu home_account">
 								<h4> Your Account</h4>
-								<p> Access acount and manage tasks</p>
+								<p> Access account and manage tasks</p>
 								<a href="<?php echo base_url() ?>registration" class="pull-left acount_btn"> Sign Up</a> 
 								<a href="javascript:void(0)" class="pull-right acount_btn btn_logged" data-toggle="modal" data-target="#login"> Log In</a>
 							</ul>

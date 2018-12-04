@@ -17,8 +17,9 @@
 		
 		jQuery.validator.addMethod("LettersWithspecialChars", function(value, element) {
 		  // allow any non-whitespace characters as the host part
-		   return this.optional( element ) || /^([a-zA-Z])([a-zA-Z0-9.,:;-\s|#*+?^!$@&%{}()\/])*$/.test( value );
-		}, 'The text must start with a letter and not only special characters');
+		   return this.optional( element ) || /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$#!&*%])[0-9a-zA-Z@$#!&*%]{8,}$/.test( value );
+		}, 'The text must start with a letter and should contain 1 uppercase,1 number and 1 special character');
+
 		
 		jQuery.validator.addMethod("EmailGeneral", function(value, element) {
 			var re = /^([a-zA-Z])(.*[a-z])(.*[a-z0-9_\+-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*\.([a-z]{2,})$/;
@@ -72,20 +73,19 @@
 		  return this.optional( element ) || /^\+\d{1,4}\s\d{6,14}$/.test( value );
 		}, 'Please enter a valid mobile number');
 		
-		
 		// Validate signup form on keyup and submit
 		$("#signupForm").validate({
 			rules: {
 				first_name: {
 					required: true,
 					minlength: 2,
-					maxlength: 20,
+					maxlength: 15,
 					LetterOnly: true
 				},
 				last_name: {
 					required: true,
 					minlength: 2,
-					maxlength: 20,
+					maxlength: 15,
 					LetterOnly: true
 				},
 				password: {
@@ -114,17 +114,18 @@
 				first_name: {
 					required: "Please enter your firstname",
 					minlength: "Your firstname must be atleast 2 characters long",
-					maxlength: "Your firstname must be atmost 20 characters long"
+					maxlength: "Your firstname must be atmost 15 characters long"
 				},
 				last_name: {
 					required: "Please enter your lastname",
 					minlength: "Your lastname must be atleast 2 characters long",
-					maxlength: "Your lastname must be atmost 20 characters long"
+					maxlength: "Your lastname must be atmost 15 characters long"
 				},
 				password: {
 					required: "Please enter a password",
 					minlength: "Your password must be atleast 8 characters long",
-					maxlength: "Your password must be atmost 25 characters long"
+					maxlength: "Your password must be atmost 25 characters long",
+					//LettersWithspecialChars:"The text must start with a letter and should contain 1 uppercase,1 number and 1 special character"
 				},
 				password_confirmation: {
 					required: "Please enter a password",
@@ -143,6 +144,7 @@
 			    
 			}
 		});
+
 		
 		$('#register_otp').unbind('keyup change').bind('keyup change', function (){
 			
@@ -261,8 +263,10 @@
 			}
 			
 		});
-		
+				
 		$('.show-hide').bind('click', function(){
+		
+			
 					
 			if($(this).parent().hasClass('attrshow')){
 				$(this).parent().removeClass('attrshow');
@@ -307,9 +311,6 @@
 			
 		});
 		
-		$('#easyPaginate').paginate({
-			perPage: 6
-		});
 		
 		$('.read_more_click').unbind('click').bind('click', function(){
 			
@@ -354,9 +355,7 @@
 				$('header').removeClass("sticky_header");
 			}
 		});
-		
-		$('#defaultReal').realperson();
-		
+				
 	    var captchav = $('#defaultReal').attr('captchav');
 		
 		if (typeof captchav === "undefined") {
@@ -366,9 +365,7 @@
 		    var decryptval = CryptoJS.AES.decrypt($('#defaultReal').attr('captchav'), "/"+5381).toString(CryptoJS.enc.Utf8);
 		    $('#captcha_val').val(decryptval);
         }
-									
-	    $('#mmob').intlTelInput();
-	    
+			    
 		$("#contact-form").validate({
 			rules: {
 				mname: {
@@ -390,14 +387,14 @@
 				mcomp: {
 					required: true,
 					minlength: 3,
-					maxlength: 20,
+					maxlength: 40,
 					CalphanumericOnly : true
 				},
 				musertype: "required",
 				menquiry: "required",
 				mmsg: {
 					required: true,
-					minlength: 50,
+					minlength: 15,
 					maxlength: 300,
 					messageFormat1: true
 				},
@@ -409,13 +406,13 @@
 				mname: {
 					required: "Please enter Your full name",
 					minlength: "Characters length should be atleast 2",
-					maxlength: "Characters length should not exceeded than 20"
+					maxlength: "Characters length should not exceeded than 30"
 				},
 				memail: "Please enter a valid email",
 				mcomp: {
 				    required: "Please enter company name ",
 			        minlength: "Company name should be atleast 3 charcters long",
-					maxlength: "Characters length should not exceeded than 30"
+					maxlength: "Characters length should not exceeded than 40"
 				},
 				musertype: "Please choose a user type",
 				menquiry: "Please choose Your enquiry type",
@@ -424,7 +421,7 @@
 				},
 				mmsg: {
 					required: "Please type your message",
-					minlength: "Characters length should be atleast 50.",
+					minlength: "Characters length should be atleast 15.",
 					maxlength: "Characters length should not exceeded than 300"
 				},
 				defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
@@ -461,7 +458,7 @@
 				mname: {
 					required: true,
 					minlength: 2,
-					maxlength: 20,
+					maxlength: 30,
 					LetterOnly: true
 				},
 				memail: {
@@ -476,13 +473,14 @@
 				mcomp: {
 					required: true,
 					minlength: 3,
-					maxlength: 30,
+					maxlength: 40,
 					CalphanumericOnly: true
 				},
 				musertype: "required",
 				mmsg: {
 					required: true,
-					minlength: 15,
+					minlength: 5,
+					maxlength: 5,
 					messageFormat1: true
 				},
 				defaultReal: {
@@ -493,18 +491,19 @@
 				mname: {
 					required: "Please enter Your full name",
 					minlength: "Characters length should be atleast 2",
-					maxlength: "Characters length should not exceeded than 20"
+					maxlength: "Characters length should not exceeded than 30"
 				},
 				memail: "Please enter a valid email",
 				mcomp: {
 					required: "Please enter company name",
 					minlength: "Characters length should be atleast 3",
-					maxlength: "Characters length should not exceeded than 30"
+					maxlength: "Characters length should not exceeded than 40"
 				},
 				musertype: "Please choose a user type",
 				mmsg: {
 				    required: "Please type your message",
-				    minlength: "Text length should be atleast 15"
+				    minlength: "Text length should be atleast 5",
+				    maxlength: "Characters length should not exceeded than 140"
 				},   
 				mmob: {
 				    required: "Please enter a valid mobile number"
@@ -529,7 +528,7 @@
 				mname: {
 					required: true,
 					minlength: 2,
-					maxlength: 20,
+					maxlength: 30,
 					LetterOnly: true
 				},
 				memail: {
@@ -539,7 +538,7 @@
 				mcomp: {
 					required: true,
 					minlength: 3,
-					maxlength: 30,
+					maxlength: 40,
 					CalphanumericOnly: true
 				},
 				mmob: {
@@ -554,7 +553,8 @@
 				},
 				mmsg: {
 					required: true,
-					minlength: 15,
+					minlength: 5,
+					maxlength:140,
 					messageFormat1: true
 				},
 				defaultReal: {
@@ -565,19 +565,20 @@
 				mname: {
 					required: "Please enter Your full name",
 					minlength: "Characters length should be atleast 2",
-					maxlength: "Characters length should not exceeded than 20"
+					maxlength: "Characters length should not exceeded than 30"
 				},
 				memail: "Please enter a valid email",
 				mcomp: {
 					required: "Please enter company name",
 					minlength: "Characters length should be atleast 3",
-					maxlength: "Characters length exceeded not exceeded than 30"
+					maxlength: "Characters length exceeded not exceeded than 40"
 				},
 				musertype: "Please choose a user type",
 				murl: "Please enter a valid URL",
 			    mmsg: {
 			        required: "Please type your message",
-				    minlength: "Text length should be atleast 15"
+				    minlength: "Text length should be atleast 5",
+				    maxlength: "Characters length exceeded not exceeded than 140"
 			    },
 			    mmob: {
 				    required: "Please enter a valid mobile number"
@@ -603,7 +604,7 @@
 				mfname: {
 					required: true,
 					minlength: 2,
-					maxlength: 20,
+					maxlength: 30,
 					LetterOnly: true
 				},
 				memail: {
@@ -621,7 +622,7 @@
 				},
 				mcoverl: {
 					required: true,
-					minlength: 15,
+					minlength: 5,
 					maxlength: 150,
 					messageFormat2: true
 				},
@@ -634,13 +635,13 @@
 				mfname: {
 					required: "Please enter Your full name",
 					minlength: "Characters length should be atleast 2",
-					maxlength: "Characters length should not exceeded than 20"
+					maxlength: "Characters length should not exceeded than 30"
 				},
 				memail: "Please enter a valid email",
 				mlinkurl: "Please enter a valid Linkedin URL",
 				mcoverl: {
 					required: "Please write few words about Yourself",
-					minlength: "Characters length should be atleast 15",
+					minlength: "Characters length should be atleast 5",
 					maxlength: "Characters length should not exceeded than 150"
 				},
 				mfile: "Please upload Your resume(.pdf only)",

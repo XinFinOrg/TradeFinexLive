@@ -38,6 +38,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+<!--<marquee>The website is under Maintenence. Please report to us if you face any technical issues.</marquee>-->
 <body class="header_sticky">
 	<!-- Preloader -->
 	<div class="preloader">

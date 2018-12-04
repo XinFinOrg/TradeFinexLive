@@ -49,7 +49,7 @@
 			return $result = $query->result();
 		}
 		
-		public function verify_user($email, $hash, $data_add){
+		public function verify_user($email, $hash){
 			
 			$this->db->select('*');
 			$this->db->from('{PRE}user');
@@ -59,33 +59,47 @@
 			
 			$result = $query->result();
 			
+			foreach($result as $temp)
+			    {
+			        $domaintype = $temp->tfu_domain_type;
+			        $domainname = $temp->tfu_domain_name;
+			    }
+		
+			
 			if(!empty($result) && is_array($result) && sizeof($result) <> 0){
 				
 				$type_id = $result[0]->tfu_utype;
 				$this->db->select('*');
 				$this->db->from('{PRE}user tfu');
 			
-				if($type_id == 1){
-					$this->db->join('{PRE}service_provider tfsp', 'tfsp.tfsp_user_ref = tfu.tfu_id');
-					// $where = "tfsp.tfsp_email = '$email'";
-				}
+				// if($type_id == 1){
+				// 	$this->db->join('{PRE}service_provider tfsp', 'tfsp.tfsp_user_ref = tfu.tfu_id');
+				// 	// $where = "tfsp.tfsp_email = '$email'";
+				// }
 				
-				if($type_id == 2){
-					$this->db->join('{PRE}financier tff', 'tff.tff_user_ref = tfu.tfu_id');
-					// $where = "tff.tff_email = '$email'";
-				}
+				// if($type_id == 2){
+				// 	$this->db->join('{PRE}financier tff', 'tff.tff_user_ref = tfu.tfu_id');
+				// 	// $where = "tff.tff_email = '$email'";
+				// }
 							
-				if($type_id == 3){
-					$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tfu.tfu_id');
-					// $where = "tfb.tfb_email = '$email'";
-				}
-				
-				$where = "tfu.tfu_usern = '$email' AND tfu_domain_type = '".$data_add['user_access_domain_type']."' AND tfu_domain_name = '".$data_add['user_access_domain_name']."'";
+				// if($type_id == 3){
+				// 	$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tfu.tfu_id');
+				// 	// $where = "tfb.tfb_email = '$email'";
+				// }
+			
+			    
+					
+			$where = "tfu.tfu_usern = '$email' AND tfu.tfu_domain_type = '".$domaintype."' AND tfu.tfu_domain_name = '".$domainname."'";
 				
 				$this->db->where($where);
 				$query = $this->db->get();
 				
-				return $result = $query->result();
+				 $result = $query->result();
+				 
+				//  echo '<pre>';
+				//  print_r($result);
+				//  echo '</pre>';
+				 return $result;
 				
 			}else{
 				
@@ -120,9 +134,16 @@
 		
 		public function update_base_user_info_by_id($id, $data){
 			
-			$where = "tfu_id = '$id'";
+		    $where = "tfu_id = '$id'";
 			$this->db->where($where);
-			$this->db->update('{PRE}user', $data); 
+			$test = $this->db->update('{PRE}user', $data); 
+			
+			
+// 			print_r($test);
+			
+// 			echo $this->db->insert_id();
+
+//             print_r($data);
 		}
 
 		public function update_user_info_by_id_type($uid, $type, $data){

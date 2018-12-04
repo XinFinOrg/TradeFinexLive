@@ -54,27 +54,39 @@ class Reset extends CI_Controller {
 		$action = $this->input->post('action');
 		$req_passwd = $this->input->post('password');
 		$data_add['tfu_passwd'] = openssl_encrypt($this->input->post('password'),"AES-128-ECB",$encryption_key);
+		
+// 		$data_add['tfu_passwd'] = $this->input->post('password');
 				
 		$result = $this->manage->verify_user($email, $hash);
 				
-		if(!empty($result) && is_array($result) && sizeof($result) <> 0 && $action == 'reset_password' && $req_passwd != ''){
-								
+// 		print_r($result);
+				
+		if($action == 'reset_password' && $req_passwd != ''){
+		    
+		  //  echo "Test";
+		  //  echo '<pre>';
+		  //  print_r($result);
+				// 			echo '</pre>';	
 			$time_now = strtotime(date('Y-m-d H:i:s'));
 			
 			if($time_now > $expired){
+			    
 				$this->session->set_flashdata('msg_type', 'error'); // error_userlink
 				$this->session->set_flashdata("email_sent_common", "<h3>Verification Failure</h3>");
 				$this->session->set_flashdata("popup_desc", "<p>Your verification link was expired. Please contact customer support for your resolution.</p>");
 			}else{
 				// $datan = array();
 				// $datan['tfu_active'] = 1;
+				// echo $expired;
 				$this->manage->update_base_user_info_by_id($result[0]->tfu_id, $data_add);
+				
 				$this->session->set_flashdata('msg_type', 'success'); // reset_password
 				$this->session->set_flashdata("email_sent_common", "<h3>Password Changed</h3>");
 				$this->session->set_flashdata("popup_desc", "<p>Password has been successfully changed. Please <a href='".base_url()."'>click here</a> to go home.</p>");
+			
 			}
 			
-			redirect(base_url().'thankyouc');
+		    redirect(base_url().'thankyouc');
 				
 		}else{
 			if($action == 'reset_password'){

@@ -119,7 +119,7 @@ class Smartcontract extends CI_Controller {
 								
 			$projectID = 'TF-'.strtotime($rproject[0]->postDate);
 						
-			$options = array('_projectId' => $projectID, '_financerAddress' => $xpublic, '_financerEmail' => $xemail, '_tokenInvestment' => $ftokens, '_interestRate' => $data_json['finance_rate'], '_tenure' => $data_json['finance_tenure']);
+			$options = array('_projectId' => $projectID, '_financerAddress' => $xpublic, '_financerEmail' => $xemail, '_tokenInvestment' => intval($ftokens), '_interestRate' => intval($data_json['finance_rate']), '_tenure' => intval($data_json['finance_tenure']));
 			
 			$rculrfp = get_status_after_financier_payment_to_beneficiary($options);
 						
@@ -835,7 +835,7 @@ class Smartcontract extends CI_Controller {
 									
 					$projectID = 'TF-'.strtotime($rproject[0]->postDate);
 					
-					$options = array('_projectId' => $projectID, '_tokenTarget' => $ftokens, '_projectOwner' => $tfb_xwallet_id, '_metaData' => '');
+					$options = array('_projectId' => $projectID, '_tokenTarget' => intval($ftokens), '_projectOwner' => $tfb_xwallet_id, '_metaData' => '');
 					
 					$rcurladdp = get_add_project_block_chain_status($options);
 					
@@ -1940,11 +1940,15 @@ class Smartcontract extends CI_Controller {
 			
 			$options = array('username' => $request_user_name, 'password' => $request_user_passwd, 'MerchantCode' => $merchant_code, 'MerchantName' => $merchant_name, 'APIKey' => $register_api, 'otpNo' => "");
 			
+			
+			
 			$rcurl = get_signin_status_with_otp($options);
+			
+// 			print_r($rcurl);
 			
 			if($rcurl){
 				$rcurla = json_decode(stripslashes($rcurl));
-			}
+			
 			
 			if($rcurla){
 							
@@ -1959,6 +1963,7 @@ class Smartcontract extends CI_Controller {
 				);
 				
 				$this->session->set_userdata('xinfin_logged_in', $session_data);
+			}
 			}
 		}
 				

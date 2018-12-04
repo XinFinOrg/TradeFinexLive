@@ -78,6 +78,21 @@
 								</div>
 							</div>
 						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12 case_study_video_wraper">
+							<div class="case_study_video">
+								<iframe src="https://www.youtube.com/embed/bYIJETgOY_g?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>
+								<div class="case_study_video_content">
+									<p>TradeFinex Overview</p>
+									<p>TradeFinex on XinFin Hybrid Blockchain enables Unbanked Population with P2P Trade Finance</p>
+									<div id="video_5" class="collapse">
+										<p>Today, a sizeable percentage of people don’t have access to existing banking and financial systems which leads to a huge economic disparity. Apparently, the absence of support infrastructure makes existing banking and financial systems incapable of reaching remote locations resulting in people resorting to informal systems of banking. </p>
+										<p>Blockchain technology solving the situation</p>
+										<p>Traditional trade finance that comprises of middlemen and selective financial institutions makes it inefficient and time-consuming. Blockchain technology helps people get easier access to funds eliminating the need to have middlemen.</p>
+									</div>
+									<p class="read_more"><a href="javascript:void(0)" data-toggle="collapse" class="read_more_click" data-target="#video_5"><span> Read More </span> <i class="fa fa-arrow-circle-down"></i> </a> </p>
+								</div>
+							</div>
+						</div>
 					</div>	
 				</div>
 			</div>

@@ -15,7 +15,7 @@
 				<div class="mail_template_banner"> <img src="<?=base_url()?>assets/images/img/welcome_mail.jpg" alt="img"> </div>
 				<div class="mail_template_body">
 					<p>Hi <?=ucwords($ufname.' '.$ulname);?>,</p>
-					<p>Thank you for registering at TradeFinex. Your account was created and must be activated before you can use it. This activation link will only valid for the next 3 hours.</p>
+					<p>Thank you for registering and accepting CONFIDENTIALITY & NON-DISCLOSURE TERMS at TradeFinex. Your account was created and must be activated before you can use it. This activation link will only valid for the next 3 hours.</p>
 					<p>To activate the account click on the following link or copy-paste it in your browser:</p>
 					<p><a href="<?=base_url('verify/account/?').$encoded_uri;?>"><?=base_url('verify/account/?').$encoded_uri;?></a></p>
 					<p>After activation you may login to <?=base_url();?> using the following username:</p>

@@ -122,7 +122,7 @@
 				pdesc: {
 					required: true,
 					minlength: 25,
-					maxlength: 300,
+					maxlength: 500,
 					LettersWithspecialChars: true
 				},
 				psremarks: {
@@ -159,7 +159,7 @@
 				pdesc: {
 					required: "Please enter Project description",
 					minlength: "Description should be atleast 25 characters long",
-					maxlength: "Description should be atmost 300 characters long" 
+					maxlength: "Description should be atmost 500 characters long" 
 				},
 				psremarks: {
 					required: "Please enter your remarks about this project",

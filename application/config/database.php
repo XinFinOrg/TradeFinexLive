@@ -73,41 +73,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-// $db['default'] = array(
-// 	'dsn'	=> '',
-// 	'hostname' => 'localhost',
-// 	'username' => 'root',
-// 	'password' => '',
-// 	'database' => 'tradefin_betatrad',
-// 	'dbdriver' => 'mysqli',
-// 	'dbprefix' => 'tf_',
-// 	'pconnect' => FALSE,
-// 	'db_debug' => (ENVIRONMENT !== 'production'),
-// 	'cache_on' => FALSE,
-// 	'cachedir' => '',
-// 	'char_set' => 'utf8',
-// 	'dbcollat' => 'utf8_general_ci',
-// 	'swap_pre' => '{PRE}',
-// 	'encrypt' => FALSE,
-// 	'compress' => FALSE,
-// 	'stricton' => FALSE,
-// 	'failover' => array(),
-// 	'save_queries' => TRUE
-// );
-
-$db['default']['hostname'] = "TRADEXIN\SQLEXPRESS"; // or put the IP of your SQL Server Instance
-$db['default']['port'] = 1433; // or the port you configured on step 6
-$db['default']['username'] = 'TradeFinex';
-$db['default']['password'] = 'tradefinex';
-$db['default']['database'] = 'tradefinex';
-$db['default']['dbdriver'] = 'sqlsrv';
-$db['default']['dbprefix'] = 'tf_';
-$db['default']['pconnect'] = FALSE; // Pay attention to this, codeigniter makes true for default
-$db['default']['db_debug'] = TRUE;
-$db['default']['cache_on'] = FALSE;
-$db['default']['cachedir'] = '';
-$db['default']['char_set'] = 'utf8';
-$db['default']['dbcollat'] = 'utf8_general_ci';
-$db['default']['swap_pre'] = '{PRE}';
-$db['default']['autoinit'] = TRUE;
-$db['default']['stricton'] = FALSE;
+$db['default'] = array(
+	'dsn'	=> '',
+	'hostname' => 'localhost',
+	'username' => 'tradefin_betatra',
+	'password' => 'trade@2017!',
+	'database' => 'tradefin_betatrad',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => 'tf_',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '{PRE}',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);

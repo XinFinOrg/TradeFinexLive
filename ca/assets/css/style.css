@@ -470,7 +470,7 @@ footer {
 	-ms-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
-	transition-delay: 2s;
+	transition-delay: 0.75s;
 	border: 1px solid #f3f3f3;
 }
 #mainnav .menu > li > .submenu > li {

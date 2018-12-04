@@ -365,7 +365,7 @@
 			$where = "tpp.row_deleted = '0' AND tpp.isDraft = '0' AND tpp.admin_approval = '1'";
 			
 			$this->db->where($where);
-			// $this->db->group_by('tpp.ID');
+			$this->db->group_by('tpp.ID');
 						
 			$query = $this->db->get();
 			$result = $query->result();
@@ -387,7 +387,7 @@
 			$where = "tpp.row_deleted = '0' AND tpp.isDraft = '0' AND tpp.admin_approval = '1' AND tpp.mainCategoryId = '".$cat_id."'";
 			
 			$this->db->where($where);
-			// daivik $this->db->group_by('tpp.ID');
+			$this->db->group_by('tpp.ID');
 						
 			$query = $this->db->get();
 			$result = $query->result();
@@ -409,7 +409,7 @@
 			$where = "tpp.row_deleted = '0' AND tpp.isDraft = '0' AND tcom.tfcom_user_ref = '$uid'";
 			
 			$this->db->where($where);
-			// jayesh $this->db->group_by('tpp.ID');
+			$this->db->group_by('tpp.ID');
 						
 			$query = $this->db->get();
 			$result = $query->result();
@@ -467,8 +467,8 @@
 				$where = "tfpi.tfpi_accept = 1";
 			}
 			
-			//$this->db->group_by('tfpi.tfpi_user_ref');
-			//$this->db->group_by('tfpi.tfpi_id');
+			$this->db->group_by('tfpi.tfpi_user_ref');
+			$this->db->group_by('tfpi.tfpi_id');
 		
 			$this->db->where($where);
 			
@@ -845,7 +845,7 @@
 			
 			$this->db->distinct();
 			$this->db->where($where);
-			//$this->db->group_by('tpp.ID');
+			$this->db->group_by('tpp.ID');
 			$this->db->order_by("tpp.ID", 'desc');
 			
 			$query = $this->db->get();
@@ -1055,8 +1055,6 @@
 			// $this->db->join('{PRE}states ts', 'ts.tfs_id = tpp.stateID', 'left');
 			$this->db->join('{PRE}country tc', 'tc.tfc_id = tpp.countryID', 'left');
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
-		
-			
 			
 			if($user_id > 0){
 				$where = "tpp.row_deleted = '0' AND tpp.userID = '$user_id' AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
@@ -1084,19 +1082,7 @@
 			
 			$offset = ($start - 1)* $limit;
 						
-			// $this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
-			// $this->db->from('{PRE}project_posts tpp');
-			// $this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
-			// $this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
-			// $this->db->join('{PRE}industry_categories tca', 'tca.ID = tpp.mainCategoryId', 'left');
-			// $this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tpp.userID', 'left');
-			// $this->db->join('{PRE}contracts tct', 'tct.ID = tpp.contractID', 'left');
-			// // $this->db->join('{PRE}states ts', 'ts.tfs_id = tpp.stateID', 'left');
-			// $this->db->join('{PRE}country tc', 'tc.tfc_id = tpp.countryID', 'left');
-			// $this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
-
-
-			$this->db->select('tpp.ID, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
+			$this->db->select('tpp.*, tcom.*, tc.*, tfb.*, tcu.*, tca.ID as cat_id, tca.cName as cat_name, tct.ID as cont_id, tct.cName as cont_name');
 			$this->db->from('{PRE}project_posts tpp');
 			$this->db->join('{PRE}company tcom', 'tcom.tfcom_user_ref = tpp.userID', 'left');
 			$this->db->join('{PRE}user tfu', 'tfu.tfu_id = tpp.userID', 'left');
@@ -1106,8 +1092,6 @@
 			// $this->db->join('{PRE}states ts', 'ts.tfs_id = tpp.stateID', 'left');
 			$this->db->join('{PRE}country tc', 'tc.tfc_id = tpp.countryID', 'left');
 			$this->db->join('{PRE}currency tcu', 'tcu.tfcu_id = tpp.currency_ref', 'left');
-			
-
 			
 			if($user_type == 0){
 				$where = "tpp.row_deleted = '0' AND tpp.isDraft = '0' AND tpp.admin_approval = 1 AND tfu.tfu_domain_type = '".$data['user_access_domain_type']."' AND tfu.tfu_domain_name = '".$data['user_access_domain_name']."'";
@@ -1123,7 +1107,7 @@
 				$this->db->order_by("tpp.ID", 'desc');
 			}
 			
-			 $this->db->distinct();
+			$this->db->distinct();
 			$this->db->limit($limit, $offset);
 						
 			$query = $this->db->get();

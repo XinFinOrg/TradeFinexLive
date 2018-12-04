@@ -11,7 +11,7 @@
 			<div class="content_global">
 				<p>According to the World Trade Organization (WTO), world merchandise exports have increased in value by about 32% since 2006, reaching &#36;16 trillion in 2016. At the same time, world exports of commercial services have accelerated by about 64 %, reaching a total of &#36;4.7 trillion in 2016.  
 				Per WTO, 80% of the trade volume is enabled by some form of trade financing, including traditional trade finance and supply chain finance. The Asian Development Bank points to a gap in global trade finance in the range of &#36;1.6 trillion annually - much of it in developing markets, particularly Asia. This gap represents huge loss of opportunity for global trade and in turn, economic development.</p>
-				<h4>XinFin Trade Solution</h4>
+				<h4>Efficient Trade Solution</h4>
 				<p>Buyers and Suppliers can drive bottom line benefits using XinFin Hybrid Blockchain smart contracts and peer to peer decentralized TradeFinex platform. Beneficiaries can post projects and connect with global suppliers. Suppliers can reach out to potential buyers and submit techno-commercial proposals on this platform. They can execute escrow based smart contracts with global beneficiaries over secure Blockchain network. The payments terms can be linked to customized smart contract milestones, triggered upon delivery of goods or services.
 				Not sure, but we should mention inefficiencies due to Bank guarantees and earnest money in bidding for such supplies for infra projects. </p>
 			</div>

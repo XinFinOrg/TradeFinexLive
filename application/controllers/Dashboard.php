@@ -128,7 +128,7 @@ class Dashboard extends CI_Controller {
 			
 			if($data['user_id'] <> 0){
 							
-				 $data["projects_listed"] = $this->plisting->get_all_projects($data, $data['user_id']);
+				$data["projects_listed"] = $this->plisting->get_all_projects($data, $data['user_id']);
 				$uresult = $this->manage->get_user_info_by_id_and_type($data['user_id'], $data['user_type_ref']);
 				$data['check_company'] = $this->manage->get_company_info_by_uid($data['user_id']);
 				
