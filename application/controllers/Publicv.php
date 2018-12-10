@@ -630,7 +630,9 @@ class Publicv extends CI_Controller {
 			$this->email->bcc('mansi.vora@tradefinex.org');
 			$this->email->set_mailtype('html');
 			$this->email->subject('Tradefinex Partnership Enquiry'); 
-			$this->email->message($message); 
+			//$this->email->message($message); 
+			$mail_body = $this->load->view('templates/mails/partnership_mail_body', $mail_data, TRUE);
+			$this->email->message($mail_body); 
 			
 			console.log("$from_email");
 			
