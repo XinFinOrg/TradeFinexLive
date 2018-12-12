@@ -230,20 +230,53 @@
 	</div>
 </section>
 
-<section class="about_us padding_50">
+<section id="consortium" class="about_us padding_50">
 	<div class="container text-center">
 		<div class="row">
 			<p><img src="<?php echo base_url() ?>assets/images/icon/line.png" alt="icon"></p>
 			<h2 class="black_sec_title">Consortium Led Asset Tokenization</h2>
 			<div class="common_sec">
                 <p>
-                    TradeFinex is an enterprise grade blockchain platform for the development of the Infrastructure as Asset Class (IAC), which enables crowdfunding through asset tokenisation.
-                    Tradefinex aims to minimize global infrastructure deficit by enabling retail investor participation and increasing efficiency through work stream automation. 
-                    Consortium led governance makes it truly decentralized which is in sync with core philosophy of blockchain. We aim to bring together Financier, Beneficiary, Supplier, Regulators, Government and Institutions in a seamless ecosystem.
+                    Our vision of TradeFinex as an ideal global trade and finance platform is one with open standards, seamless connectivity amongst various stakeholders of the ecosystem, a frictionless access to secure big data and a free flow of value - efficient management and financing of trade assets and working capital.</p>
+                    <p>We at XinFin recognize that this can not be achieved singularly through any silo entity, irrespective of its resources. Hence, we have proposed the creation of a consortium of key stakeholders – global public investors and others - with a shared vision and ambition to participate in the development strategy of this decentralized hybrid blockchain powered global trade and finance platform, TradeFinex. We are convinced that the complementing technological, legal,  global finance and trading expertise brought in by our consortium members will accelerate development of this standards-based platform and eventual market adoption.
                 </p>
                 <p>
-                    TradeFinex helps buyers secure capital at globally competitive rates, gives suppliers visibility on global tenders & customer base and provides financiers real time visibility on their investments. Buyers and Sellers can enter in to an escrow smart contract over Blockchain thereby minimizing role of intermediaries. Governments, Institutions and communities can raise finance, specifically for critical public infrastructure projects that the government needs to undertake for economic well-being of the citizens.
+                    The consortium will be initiated out of the Global Financial Innovation Network (GFIN) regulatory member - Abu Dhabi Global Markets in the regulated Sandbox RegLab environment. As an official participant of the ADGM Sandbox, XinFin can live-test TradeFinex across the MENA region with the support and regulatory assistance – thus accelerating towards its scalability and robustness.
                 </p>
+                <p>We invite infrastructure project practitioners and investors involved in essential public infrastructure projects to be consortium members.</p>
+                <p>Here below are a few brief videos which you may find helpful: </p>
+                <div class="case_study_video_wrap" >
+					<div class="row">
+		    			<div class="col-md-4 col-sm-4 col-xs-12 case_study_video_wraper">
+							<div class="home_consortium_video">
+								<iframe src="https://www.youtube.com/embed/QHvmkEsAiX0?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>
+								<div class="case_study_video_content">
+									<p>TradeFinex Concept Introduction Video</p>
+									<br><br><br>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12 case_study_video_wraper">
+							<div class="home_consortium_video">
+								<iframe src="https://www.youtube.com/embed/jLaqms1IHWE?feature=oembed" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>
+								<div class="case_study_video_content">
+									<p>Leveraging XinFin Blockchain to address global infrastructure deficit</p>
+									<br><br>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12 case_study_video_wraper">
+							<div class="home_consortium_video">
+								<iframe src="https://www.youtube.com/embed/3INyDwUFQgs?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>
+								<div class="case_study_video_content">
+									<p>Banking for the Unbanked - Leveraging XinFin Blockchain towards addressing economic disparity</p>
+									<br>
+								</div>
+							</div>
+						</div>
+					</div>	
+					<p class="read_more"><a href="<?=base_url('publicv/case_study');?>"  ><span> More Videos </span> <i class="fa fa-arrow-circle-down"></i> </a> </p>
+				</div>
             </div>
 		</div>
 	</div>
@@ -280,7 +313,7 @@
 			<div class="col-md-12">
 				<div class="flat-row-title center">
 					<p><img src="<?php echo base_url() ?>assets/images/icon/line.png" alt="icon"></p>
-					<h2 class="black_sec_title">Partneships And Alliances</h2>
+					<h2 class="black_sec_title">Partnerships And Alliances</h2>
 				</div>
 			</div>
 		</div>

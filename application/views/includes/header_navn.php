@@ -52,6 +52,8 @@
 			<div class="nav-wrap">
 				<nav id="mainnav" class="mainnav">
 					<ul class="menu">
+					    <li> <a  <?='href="'.base_url().'#consortium"'?> title="Consortium">Consortium</a> </li>
+					    <li class="hidden-xs hidden-sm"> | </li>
 						<li> <a <?=($user_ids == 0 ? 'data-toggle="modal" data-target="#login"' : 'href="'.base_url().'listing/details"');?> title="Browse Project">Browse Project</a> </li>
 						<li class="hidden-xs hidden-sm"> | </li>
 						<li> <a href="javascript:void(0)" data-toggle="modal" data-target="#login" title="Submit Project">Submit Project</a> </li>

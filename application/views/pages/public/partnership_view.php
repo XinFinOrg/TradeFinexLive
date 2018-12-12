@@ -20,13 +20,13 @@
 									<img class="img-rounded img-responsive" src="<?=base_url();?>assets/images/page/consortium.jpg" alt="cimage 1" /> 
 								</div>
 								<div class="col-md-8 col-xs-12 col-sm-8">
-							<h2 class="title"> Consortium Member</h2>
-							<p class="content">Tradefinex invites global public investors to be consortium members and participate in the development strategy of this blockchain powered platform. You can participate in this opportunity by being founding member or extended member of consortium. As a member you will be part of the ecosystem and will contribute to evolution of TradeFinex platform. Your contribution in terms of best practices, driving the standardization, working with regulators will help you to influence future of your business requirement. TradeFinex is promoting consortium lead governance as it makes platform truly decentralized which in sync with core philosophy of blockchain.</p><br><p class="content" style="color:#000;"><strong>Just by paying a nominal contribution of $5000 to $25000 towards consortium membership you can be part of this global campaign.
-							
-							 For more information, fill in your details and we will help you understand the vision of TradeFinex and why you should be part of this consortium.
-</strong></p>
+							<h2 class="title"> Want to join the Consortium?</h2>
+							<p class="content">You can participate in this consortium by joining as either a founding member or extended member of consortium. As a member you will be part of the ecosystem and will contribute to evolution of TradeFinex platform. Your contribution in terms of best practices, driving the standardization and working with regulators will help you to influence the future of your industry. A consortium-led governance makes the platform truly decentralized which is in sync with core philosophy of blockchain.
+                            </p>
+                            
+                            <p class="content">To join the consortium or request more information, please complete the Contact For Membership form </p>
                             </div>
-							
+						
 						</div>
 						<div class="con_block last_sec_con_block hide">
 							
@@ -103,9 +103,11 @@
 				<div class="col-md-7 col-sm-7 col-xs-12 hidden-md hidden-lg">
 					<div class="left_side">
 						<div class="con_block">
-								<h2 class="title"> Consortium Member</h2>
-							<p class="content">Tradefinex invites global public investors to be consortium members and participate in the development strategy of this blockchain powered platform. You can participate in this opportunity by being founding member or extended member of consortium. As a member you will be part of the ecosystem and will contribute to evolution of TradeFinex platform. Your contribution in terms of best practices, driving the standardization, working with regulators will help you to influence future of your business requirement. TradeFinex is promoting consortium lead governance as it makes platform truly decentralized which in sync with core philosophy of blockchain.</p><br><p class="content" style="color:#000;"><strong>Just by paying a nominal contribution of $5000 to $25000 towards consortium membership you can be part of this global campaign. For more information, fill in your details and we will help you understand the vision of TradeFinex and why you should be part of this consortium.
-</strong></p>
+								<h2 class="title">Want to join the Consortium?</h2>
+							<p class="content">You can participate in this consortium by joining as either a founding member or extended member of consortium. As a member you will be part of the ecosystem and will contribute to evolution of TradeFinex platform. Your contribution in terms of best practices, driving the standardization and working with regulators will help you to influence the future of your industry. A consortium-led governance makes the platform truly decentralized which is in sync with core philosophy of blockchain.
+                            </p>
+                            
+                            <p class="content">To join the consortium or request more information, please complete the Contact For Membership form </p>
 						</div>
 						<div class="con_block last_sec_con_block hide">
 							

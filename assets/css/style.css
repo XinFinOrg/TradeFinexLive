@@ -6627,6 +6627,11 @@ left:16px;
 	background-color: #ffffff;
 	min-height: 485px;
 }
+.home_consortium_video {
+	border: 1px solid #e4e5e6;
+	background-color: #ffffff;
+	min-height: 200;
+}
 .case_study_video_content {
 	padding: 10px 20px 0px 20px;
 }
