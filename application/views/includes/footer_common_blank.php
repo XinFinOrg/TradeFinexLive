@@ -25,7 +25,7 @@
 							<div class="widget widget-categories">
 								<h3 class="widget-title">Opportunities</h3>
 								<ul class="one-half">
-									<li> <a onclick="return false;" href="#<?=base_url();?>publicv/partnership" title="">Partnership </a> </li>
+									<li> <a onclick="return false;" href="#<?=base_url();?>publicv/consortium" title="">Consortium </a> </li>
 									<li> <a onclick="return false;" href="#<?=base_url();?>publicv/advertise" title="">Advertise With Us </a> </li>
 									<li> <a onclick="return false;" href="<?=base_url();?>publicv/careers" title="">Careers </a> </li>
 								</ul>
@@ -75,7 +75,7 @@
 									<li> <a href="https://www.linkedin.com/in/tradefinex/"> <img src="<?=base_url();?>assets/images/icon/lkdn.png" alt="icon"></a> </li>
 									<li> <a href="https://twitter.com/TradeFinex"> <img src="<?=base_url();?>assets/images/icon/twr.png" alt="icon"></a> </li>
 									<li> <a href="https://www.youtube.com/channel/UCKzL0MI7gS_vlEKsUfiWuvA?view_as=subscriber"> <img src="<?=base_url();?>assets/images/icon/youtube.png" alt="icon"></a> </li>
-									<li> <a href="https://www.instagram.com/tradefinex/"> <img src="<?=base_url();?>assets/images/icon/ins.png" alt="icon"></a> </li>
+									<!--<li> <a href="https://www.instagram.com/tradefinex/"> <img src="<?=base_url();?>assets/images/icon/ins.png" alt="icon"></a> </li>-->
 									<li> <a href="https://t.me/tradefinex"> <img src="<?=base_url();?>assets/images/icon/tel.png" alt="icon"></a> </li>
 								</ul>
 							</div>

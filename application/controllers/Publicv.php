@@ -503,17 +503,19 @@ class Publicv extends CI_Controller {
 		redirect(base_url().$request_page);
 	}
 		
-	public function partnership(){
+	public function consortium(){
 		
 		$data = array();
 		
-		$data['page'] = 'partnership';
+		$data['page'] = 'consortium';
 		$data['msg'] = '';
+		$mail_data['mmsg'] = $this->input->post('mmsg');
 		$data['user_id'] = 0;
 		$data['user_type'] = '';
 		$data['full_name'] = '';
 		$data['ufname'] = '';
 		$data['ulname'] = '';
+		$mail_data['full_name'] = $this->input->post('mname');
 		$data['uemail'] = '';
 		$data['ucontact'] = '';
 		$data['uaddress'] = '';
@@ -608,14 +610,14 @@ class Publicv extends CI_Controller {
 			$config = $this->config->item('$econfig');
 						
 			$this->email->initialize($config);
-			//$this->email->cc('');
-			// $this->email->bcc('them@their-example.com');
+			//$this->email->cc('mansi.vora@tradefinex.org');
+			// $this->email->bcc('mansi.vora@tradefinex.org');
 			
 			$suser = $this->manage->get_superadmin();
 			
 			$from_email = 'info@tradefinex.org'; // $config['smtp_user']; 
 			$to_email = $this->input->post('memail'); 
-			//$cc_mail = 'mansi.vora@tradefinex.org';			
+						
 			$message = '<strong>Name : </strong>'.ucwords($this->input->post('mname')).'<br/>';
 			$message .= '<strong>Email : </strong>'.$this->input->post('memail').'<br/>';
 			$message .= '<strong>Contact : </strong>'.$this->input->post('mmob').'<br/>';
@@ -626,13 +628,12 @@ class Publicv extends CI_Controller {
 			
 			$this->email->from($from_email, 'Support Tradefinex'); 
 			$this->email->to($to_email);
-			//$this->email->cc($cc_mail);
-			$this->email->bcc('mansi.vora@tradefinex.org');
+			$this->email->bcc($from_email);
 			$this->email->set_mailtype('html');
-			$this->email->subject('Tradefinex Partnership Enquiry'); 
-			//$this->email->message($message); 
-			$mail_body = $this->load->view('templates/mails/partnership_mail_body', $mail_data, TRUE);
-			$this->email->message($mail_body); 
+			$this->email->subject('Tradefinex Consortium Enquiry'); 
+		//$this->email->message($message); 
+			$mail_body = $this->load->view('templates/mails/consortium_mail_body', $mail_data, TRUE);
+			$this->email->message($mail_body);
 			
 			console.log("$from_email");
 			
@@ -652,7 +653,7 @@ class Publicv extends CI_Controller {
 			redirect(base_url().'thankyouc');
 		}
 		
-		$this->load->view('pages/public/partnership_view', $data);
+		$this->load->view('pages/public/consortium_view', $data);
 		$this->load->view('includes/footer_commonn', $data);
 		$this->load->view('pages_scripts/common_scripts', $data);
 		$this->load->view('includes/footern');
@@ -1599,11 +1600,11 @@ class Publicv extends CI_Controller {
 		$this->load->view('includes/footern');
 	}
 	
-	public function case_study(){
+	public function videos(){
 		
 		$data = array();
 		
-		$data['page'] = 'case_study';
+		$data['page'] = 'videos';
 		$data['msg'] = '';
 		$data['user_id'] = 0;
 		$data['user_type'] = '';
@@ -1697,7 +1698,7 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$this->load->view('pages/public/case_study_view', $data);
+		$this->load->view('pages/public/videos_view', $data);
 		$this->load->view('includes/footer_commonn', $data);
 		$this->load->view('pages_scripts/common_scripts', $data);
 		$this->load->view('includes/footern');

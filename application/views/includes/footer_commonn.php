@@ -1,4 +1,4 @@
-		<?php if($user_id > 0){ ?>
+<?php if($user_id > 0){ ?>
 		
 		<!-- Right Sidebar -->
 		<div class="side-bar right-bar" style="display:none"> 
@@ -115,9 +115,9 @@
 							<div class="widget widget-categories">
 								<h3 class="widget-title">Explore</h3>
 								<ul class="one-half">
-									<li> <a href="<?=base_url();?>publicv/partnership" title="">Consortium </a> </li>
+									<li> <a href="<?=base_url();?>publicv/consortium" title="">Consortium </a> </li>
 									<li> <a href="<?=base_url();?>publicv/media_center" title="">Media Center </a> </li>
-									<li> <a href="<?=base_url();?>publicv/case_study" title="">Case Study </a> </li>
+									<li> <a href="<?=base_url();?>publicv/videos" title="">Videos </a> </li>
 									<li> <a href="https://xinfinorg.github.io/TradeFinex_API/" title="">API</a> </li>
 								</ul>
 							</div>
@@ -150,7 +150,7 @@
 									<li> <a href="https://www.linkedin.com/in/tradefinex/"> <img src="<?=base_url('assets/images/icon/lkdn.png');?>" alt="icon"></a> </li>
 									<li> <a href="https://twitter.com/TradeFinex"> <img src="<?=base_url('assets/images/icon/twr.png');?>" alt="icon"></a> </li>
 									<li> <a href="https://www.youtube.com/channel/UCKzL0MI7gS_vlEKsUfiWuvA?view_as=subscriber"> <img src="<?=base_url('assets/images/icon/youtube.png');?>" alt="icon"></a> </li>
-									<li> <a href="https://www.instagram.com/tradefinex/"> <img src="<?=base_url('assets/images/icon/ins.png');?>" alt="icon"></a> </li>
+									<!--<li> <a href="https://www.instagram.com/tradefinex/"> <img src="<?=base_url('assets/images/icon/ins.png');?>" alt="icon"></a> </li>-->
 									<li> <a href="https://t.me/tradefinex"> <img src="<?=base_url('assets/images/icon/tel.png');?>" alt="icon"></a> </li>
 								</ul>
 							</div>

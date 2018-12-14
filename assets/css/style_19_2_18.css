@@ -4086,7 +4086,7 @@ to {
 	color: #282c3f;
 	font-family: 'open_sanssemibold';
 }
-/*partnership*/
+/*consortium*/
 
 
 .trade_partnership {
@@ -4107,12 +4107,12 @@ to {
 	font-size: 15px;
 	margin-top: 20px;
 }
-.partnership_form {
+.consortium_form {
 	width: 350px;
 	margin: 30px auto;
 	margin-bottom: 0px;
 }
-.partnership_form_block .right_side .title {
+.consortium_form_block .right_side .title {
 	font-size: 22px;
 	color: #282c3f;
 	font-family: 'open_sansregular';
@@ -4123,7 +4123,7 @@ to {
 	margin-top: 30px;
 	float: left;
 }
-.partnership_form .btn-more {
+.consortium_form .btn-more {
 	margin-top: 20px;
 }
 .trade_partnership .btn-more button {
@@ -4137,13 +4137,13 @@ to {
 	z-index: 99;
 	font-family: 'open_sanssemibold';
 }
-.partnership_form_block {
+.consortium_form_block {
 	background: #fafafa;
 	width: 100%;
 	padding: 30px 0px;
 	background-size: 100%;
 }
-.partnership_form_block .left_side .con_block {
+.consortium_form_block .left_side .con_block {
 	width: 100%;
 	background: #fff;
 	padding: 30px;
@@ -4151,34 +4151,34 @@ to {
 	margin-bottom: 0px;
 	float: left;
 }
-.partnership_form_block .left_side .con_block .title {
+.consortium_form_block .left_side .con_block .title {
 	color: #282c3f;
 	font-family: 'open_sanssemibold';
 	font-size: 16px;
 	text-transform: uppercase;
 }
-.partnership_form_block .left_side .con_block .content {
+.consortium_form_block .left_side .con_block .content {
 	color: #787b85;
 	line-height: 24px;
 	font-size: 14px;
 	font-family: 'open_sansregular';
 	margin-top: 22px;
 }
-.partnership_form_block .left_side .con_block img {
+.consortium_form_block .left_side .con_block img {
 	margin-top: 5px;
 }
-.partnership_position {
+.consortium_position {
 	position: relative;
 	margin-top: -156px;
 }
-.partnership_form_block .right_side {
+.consortium_form_block .right_side {
 	background: #fff;
 	padding-top: 30px;
 	padding-bottom: 30px;
 	width: 100%;
 	box-shadow: 1px 1px 6px #dadada;
 }
-.partnership_form .form-group {
+.consortium_form .form-group {
 	margin: 0px;
 }
 /*advertise*/
@@ -6383,38 +6383,38 @@ left:16px;
 	text-transform: uppercase;
 	font-size: 15px;
 }
-.case_study {
+.videos {
 	width: 100%;
 	float: left;
-	background: url(../images/background/case_study.jpg) no-repeat center;
+	background: url(../images/background/videos.jpg) no-repeat center;
 	padding: 126px 0px;
 	background-size: cover;
 	text-align: center;
 }
-.case_study h3 {
+.videos h3 {
 	color: #fff;
 	text-transform: uppercase;
 	font-family: 'open_sansregular';
 	font-size: 36px;
 }
-.case_study_part {
+.videos_part {
 	background: #fafafa url(../images/background/why_pay_background.png) no-repeat center top scroll;
 	width: 100%;
 	padding-bottom: 70px;
 	float: left;
 	padding-top: 60px;
 }
-.case_study_part .red_icon {
+.videos_part .red_icon {
 	text-align: center;
 	clear: both;
 }
-.case_study_part .black_sec_title {
+.videos_part .black_sec_title {
 	text-align: center;
 	line-height: 32px;
 	font-size: 24px;
 	font-family: 'open_sansregular';
 }
-.case_study_part .case_study_content {
+.videos_part .videos_content {
 	width: 100%;
 	float: left;
 	background: #fff;
@@ -6422,7 +6422,7 @@ left:16px;
 	padding: 30px 30px 15px 30px;
 	margin-bottom: 30px;
 }
-.case_study_part .case_study_content p {
+.videos_part .videos_content p {
 	width: 100%;
 	float: left;
 	font-size: 14px;
@@ -6432,7 +6432,7 @@ left:16px;
 	line-height: 22px;
 	text-align: justify;
 }
-.case_study_part .case_study_content h4 {
+.videos_part .videos_content h4 {
 	width: 100%;
 	float: left;
 	font-size: 16px;
@@ -6440,22 +6440,22 @@ left:16px;
 	margin-bottom: 15px;
 	font-family: 'open_sanssemibold';
 }
-.case_study_video_wrap {
+.videos_video_wrap {
 	width: 100%;
 	float: left;
 }
-.case_study_video {
+.videos_video {
 	border: 1px solid #e4e5e6;
 	background-color: #ffffff;
 	min-height: 485px;
 }
-.case_study_video_content {
+.videos_video_content {
 	padding: 10px 20px 0px 20px;
 }
-.case_study_video_content p:first-child {
+.videos_video_content p:first-child {
 	margin: 0px;
 }
-.case_study_video_content p {
+.videos_video_content p {
 	font-size: 15px;
 	line-height: 1.55;
 	font-family: 'Open Sans', sans-serif;
@@ -6463,7 +6463,7 @@ left:16px;
 	margin: 10px 0px;
 	text-align: justify;
 }
-.case_study_video_content p {
+.videos_video_content p {
 	font-size: 15px;
 	line-height: 1.55;
 	font-family: 'Open Sans', sans-serif;

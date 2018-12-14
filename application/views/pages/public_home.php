@@ -234,7 +234,7 @@
 	<div class="container text-center">
 		<div class="row">
 			<p><img src="<?php echo base_url() ?>assets/images/icon/line.png" alt="icon"></p>
-			<h2 class="black_sec_title">Consortium Led Asset Tokenization</h2>
+			<h2 class="black_sec_title">TradeFinex Consortium</h2>
 			<div class="common_sec">
                 <p>
                     Our vision of TradeFinex as an ideal global trade and finance platform is one with open standards, seamless connectivity amongst various stakeholders of the ecosystem, a frictionless access to secure big data and a free flow of value - efficient management and financing of trade assets and working capital.</p>
@@ -244,38 +244,44 @@
                     The consortium will be initiated out of the Global Financial Innovation Network (GFIN) regulatory member - Abu Dhabi Global Markets in the regulated Sandbox RegLab environment. As an official participant of the ADGM Sandbox, XinFin can live-test TradeFinex across the MENA region with the support and regulatory assistance – thus accelerating towards its scalability and robustness.
                 </p>
                 <p>We invite infrastructure project practitioners and investors involved in essential public infrastructure projects to be consortium members.</p>
+                
+			
+				<div class="btn-more"> <a href="<?php echo base_url() ?>publicv/consortium" title="">Apply Now<span class="icon_right_margin"> <img src="<?php echo base_url() ?>assets/images/icon/arrow.png" alt="icon"></span></a> </div>
+		
+	                <br><br>
                 <p>Here below are a few brief videos which you may find helpful: </p>
-                <div class="case_study_video_wrap" >
+                <div class="videos_video_wrap" >
 					<div class="row">
-		    			<div class="col-md-4 col-sm-4 col-xs-12 case_study_video_wraper">
+		    			<div class="col-md-4 col-sm-4 col-xs-12 videos_video_wraper">
 							<div class="home_consortium_video">
-								<iframe src="https://www.youtube.com/embed/QHvmkEsAiX0?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>
-								<div class="case_study_video_content">
-									<p>TradeFinex Concept Introduction Video</p>
-									<br><br><br>
+								<iframe src="https://www.youtube.com/embed/mjrhTnZ16f8?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>
+								<div class="videos_video_content">
+									<p>Presenting TradeFInex and Consortium introduction at "Blockchain for Finance Conference 2018" Boston</p>
+									<br>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-4 col-xs-12 case_study_video_wraper">
+						<div class="col-md-4 col-sm-4 col-xs-12 videos_video_wraper">
 							<div class="home_consortium_video">
 								<iframe src="https://www.youtube.com/embed/jLaqms1IHWE?feature=oembed" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>
-								<div class="case_study_video_content">
+								<div class="videos_video_content">
 									<p>Leveraging XinFin Blockchain to address global infrastructure deficit</p>
 									<br><br>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-4 col-xs-12 case_study_video_wraper">
+						<div class="col-md-4 col-sm-4 col-xs-12 videos_video_wraper">
 							<div class="home_consortium_video">
 								<iframe src="https://www.youtube.com/embed/3INyDwUFQgs?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>
-								<div class="case_study_video_content">
-									<p>Banking for the Unbanked - Leveraging XinFin Blockchain towards addressing economic disparity</p>
+								<div class="videos_video_content">
+									<p>IAC Consortium /
+									Project Sandbox introduction at Official Monetary and Financial Institutions Forum (OMFIF)</p>
 									<br>
 								</div>
 							</div>
 						</div>
 					</div>	
-					<p class="read_more"><a href="<?=base_url('publicv/case_study');?>"  ><span> More Videos </span> <i class="fa fa-arrow-circle-down"></i> </a> </p>
+					<p class="read_more"><a href="<?=base_url('publicv/videos');?>"  ><span> More Videos </span> <i class="fa fa-arrow-circle-down"></i> </a> </p>
 				</div>
             </div>
 		</div>
@@ -297,7 +303,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<div class="btn-more"> <a href="<?php echo base_url() ?>publicv/partnership" title="">Apply Now<span class="icon_right_margin"> <img src="<?php echo base_url() ?>assets/images/icon/arrow.png" alt="icon"></span></a> </div>
+				<div class="btn-more"> <a href="<?php echo base_url() ?>publicv/consortium" title="">Apply Now<span class="icon_right_margin"> <img src="<?php echo base_url() ?>assets/images/icon/arrow.png" alt="icon"></span></a> </div>
 			</div>
 		</div>
 		<!-- /.row --> 

@@ -15,7 +15,7 @@
 							<h3>Lightning fast settlement using Blockchain based smart contracts </h3>
 							<p>TradeFinex: Peer to Peer trade and financing using Blockchain Technology</p>
 							<div id="video" class="btn-more">
-								<a href="<?=base_url('publicv/case_study');?>">
+								<a href="<?=base_url('publicv/videos');?>">
 								    <span> <i class="fa fa-play-circle"></i> </span> <span>Watch Video</span> 
 							    </a>
 							</div>
@@ -30,7 +30,7 @@
 							<h3>Reach global customers using TradeFinex platform</h3>
 							<p>TradeFinex: Peer to Peer trade and financing using Blockchain Technology</p>
 							<div id="video" class="btn-more">
-								<a href="<?=base_url('publicv/case_study');?>">
+								<a href="<?=base_url('publicv/videos');?>">
 								    <span> <i class="fa fa-play-circle"></i> </span> <span>Watch Video</span> 
 							    </a>
 							</div>
@@ -45,7 +45,7 @@
 							<h3>Global peer to peer commerce without intermediaries </h3>
 							<p>TradeFinex: Peer to Peer trade and financing using Blockchain Technology</p>
 							<div id="video" class="btn-more">
-								<a href="<?=base_url('publicv/case_study');?>">
+								<a href="<?=base_url('publicv/videos');?>">
 								    <span> <i class="fa fa-play-circle"></i> </span> <span>Watch Video</span> 
 							    </a>
 							</div>
@@ -103,7 +103,7 @@
 <?php
 	
 	$this->load->view('includes/block_create_account');
-	$this->load->view('includes/block_features');	
+	//$this->load->view('includes/block_features');	
 	$this->load->view('includes/login_modal');
 	
 ?>	

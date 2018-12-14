@@ -9,7 +9,7 @@
             <h2>About TradeFinex</h2>
             <p>TradeFinex: Peer to Peer trade and financing using Blockchain Technology</p>
           </div>
-          <div class="col-md-4 pro_btn pull-left"> <a href="<?php echo base_url() ?>publicv/case_study#case_last_sec" class="btn btn btn-primary call_to_action pull-left"> 			<i class="fa fa-play-circle"></i> Watch Video </a> </div>
+          <div class="col-md-4 pro_btn pull-left"> <a href="<?php echo base_url() ?>publicv/videos#case_last_sec" class="btn btn btn-primary call_to_action pull-left"> 			<i class="fa fa-play-circle"></i> Watch Video </a> </div>
         </div>
       </div>
     </div>

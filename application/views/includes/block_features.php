@@ -1,7 +1,7 @@
 <section class="our_features padding_70">
 	<div class="container text-center">
 		<p><img src="<?php echo base_url() ?>assets/images/icon/line.png" alt="icon"></p>
-		<h2 class="black_sec_title">Our Features </h2>
+		<h2 class="black_sec_title">Key Features </h2>
 		<div class="row">
 			<div class="common_icons_sec padding_40">
 				<div class="col-md-4 col-sm-4 col-xs-12">

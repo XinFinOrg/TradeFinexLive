@@ -15,7 +15,7 @@
 							<h3>Execute infrastructure projects without burdening government treasury</h3>
 							<p>TradeFinex: Peer to Peer trade and financing using Blockchain Technology</p>
 							<div id="video" class="btn-more">
-								<a href="<?=base_url('publicv/case_study/#case_video_section');?>">
+								<a href="<?=base_url('publicv/videos/#case_video_section');?>">
 								    <span> <i class="fa fa-play-circle"></i> </span> <span>Watch Video</span> 
 							    </a>
 							</div>
@@ -30,7 +30,7 @@
 							<h3>Secure access to capital at globally competitive rates</h3>
 							<p>TradeFinex: Peer to Peer trade and financing using Blockchain Technology</p>
 							<div id="video" class="btn-more">
-								<a href="<?=base_url('publicv/case_study');?>">
+								<a href="<?=base_url('publicv/videos');?>">
 								    <span> <i class="fa fa-play-circle"></i> </span> <span>Watch Video</span> 
 							    </a>
 							</div>
@@ -45,7 +45,7 @@
 							<h3>Execute global procurement at fractional cost</h3>
 							<p>TradeFinex: Peer to Peer trade and financing using Blockchain Technology</p>
 							<div id="video" class="btn-more">
-								<a href="<?=base_url('publicv/case_study');?>">
+								<a href="<?=base_url('publicv/videos');?>">
 								    <span> <i class="fa fa-play-circle"></i> </span> <span>Watch Video</span> 
 							    </a>
 							</div>
@@ -104,7 +104,7 @@
 <?php
 	
 	$this->load->view('includes/block_create_account');
-	$this->load->view('includes/block_features');	
+	//$this->load->view('includes/block_features');	
 	$this->load->view('includes/login_modal');
 	
 ?>	

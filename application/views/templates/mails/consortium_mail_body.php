@@ -7,17 +7,19 @@
 		<?php $this->load->view('templates/mails/common_inline_css');?>
 	</head>
 	<body>
-		<div class="mail_template partnership_mail">
+		<div class="mail_template consortium_mail">
 			<div class="main_content">
 				<div class="mail_template_header">
 					<div class="mail_template_header_logo"> <img src="<?=base_url()?>assets/images/icon/logo.png" alt="logo"> </div>
 				</div>
 				<div class="mail_template_banner"> <img src="<?=base_url()?>assets/images/img/welcome_mail.jpg" alt="img"> </div>
 				<div class="mail_template_body">
-					<p>Hi <?=ucwords($ufname.' '.$ulname);?>,</p>
+					<p>Hi <?=$full_name?>,</p>
 					<p>Thank you for joining Consortium at TradeFinex.</p>
 					<p> As a member you will be part of the ecosystem and will contribute to evolution of TradeFinex platform. </p>
-					
+					<? if($mmsg!="") { 
+					echo"Your Comments: $mmsg";
+					 } ?>
 				</div>
 				<div class="mail_template_footer">
 					<div class="mail_template_footer_content">

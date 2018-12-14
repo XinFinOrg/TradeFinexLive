@@ -39,6 +39,6 @@
 </section>
 
 <?php 
-	$this->load->view('includes/block_features');
+	//$this->load->view('includes/block_features');
 	$this->load->view('includes/login_modal');
 ?>

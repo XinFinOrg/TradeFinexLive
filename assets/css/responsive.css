@@ -1180,26 +1180,26 @@ table.dataTable > tbody > tr.child ul.dtr-details li {
 	margin: 0 auto;
 	padding: 15px 0px;
 }
-/*case_study*/
+/*videos*/
 
-.case_study {
+.videos {
 	padding: 50px 0px;
 }
-.case_study h3 {
+.videos h3 {
 	font-size: 26px;
 }
-.case_study_part {
+.videos_part {
 	padding-bottom: 0px;
 	padding-top: 30px;
 	background: #fff;
 }
-.case_study_part .case_study_content {
+.videos_part .videos_content {
 	border: none;
 	box-shadow: none;
 	padding: 0px;
 	margin-bottom: 0px;
 }
-.case_study_video {
+.videos_video {
 	min-height: auto;
 	margin-bottom: 25px;
 }
@@ -1286,9 +1286,9 @@ table.dataTable > tbody > tr.child ul.dtr-details li {
 .smart_dashboard_tabs_part > ul > li {
 	width: 100%;
 }
-/*partnership*/
+/*consortium*/
 
-.partnership_position {
+.consortium_position {
 	float: left;
 	top: 0px;
 	position: relative;
@@ -1296,51 +1296,51 @@ table.dataTable > tbody > tr.child ul.dtr-details li {
 	width: 100%;
 	margin: 0px;
 }
-.partnership_form {
+.consortium_form {
 	width: 100%;
 }
-.partnership_form_block {
+.consortium_form_block {
 	background: #fff;
 }
-.partnership_form_block .right_side {
+.consortium_form_block .right_side {
 	background: #fff;
 	box-shadow: none;
 	padding: 0px;
 }
-.partnership_form_block .left_side .con_block {
+.consortium_form_block .left_side .con_block {
 	box-shadow: none;
 	padding: 0px;
 	margin-bottom: 0px;
 }
-.trade_partnership {
+.trade_consortium {
 	background-size: 100%;
 	padding: 30px 0px;
 }
-.partnership_form {
+.consortium_form {
 	width: 100%;
 	margin: 30px auto;
 }
-.trade_partnership h3 {
+.trade_consortium h3 {
 	text-align: center;
 	font-size: 20px;
 }
-.trade_partnership p {
+.trade_consortium p {
 	text-align: center;
 	line-height: 22px;
 }
-.trade_partnership .btn-more {
+.trade_consortium .btn-more {
 	float: none;
 }
-.partnership_form_block .right_side .title {
+.consortium_form_block .right_side .title {
 	font-size: 20px;
 }
-.partnership_form_block .left_side .con_block .title {
+.consortium_form_block .left_side .con_block .title {
 	text-align: center;
 }
-.partnership_form_block .left_side .con_block .content {
+.consortium_form_block .left_side .con_block .content {
 	text-align: justify;
 }
-/*partnership*/
+/*consortium*/
 
 .advertise_position {
 	float: left;
