@@ -1,9 +1,8 @@
 Replicating Site
 ------------------
-** Prerequisite **
-Xampp
-
-Clone this Repo directly into xampp/htdocs path.
+**Prerequisite**<br/>
+1. Xampp
+2. Clone this Repo directly into xampp/htdocs path.
 
 * Front End
 1. Go to - application/config.php
