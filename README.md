@@ -87,7 +87,7 @@ $config['$econfig'] = array(<br />
 3. Go to - application/adminpanel/constants.php
 4. Set to - define('BASE_FRONT_URL', 'http://example.com/' or 'https://example.com/');
 5. Go to - application/adminpanel/database.php
-6. Set to - <br />'hostname' => 'localhost', (change required if needed)
+6. Set to - <br />'hostname' => 'localhost', (change required if needed)<br/>
 'username' => '',<br/>
 'password' => '',<br/>
 'database' => '',<br/>
