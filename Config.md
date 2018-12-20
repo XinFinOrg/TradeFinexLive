@@ -1,6 +1,10 @@
 Replicating Site
 ------------------
-Clone this Repo into xampp/htdocs path.
+** Prerequisite **
+Xampp
+
+Clone this Repo directly into xampp/htdocs path.
+
 * Front End
 1. Go to - application/config.php
 2. Set - $config['base_url'] = 'http://example.com/' or 'https://example.com/'

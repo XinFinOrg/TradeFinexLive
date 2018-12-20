@@ -54,4 +54,4 @@ application/config folder.
 * All API calls at application/helpers/xdcapi_helper.php . If any change in API , need to
 modify here accordingly.
 
-To Configure TradeFinex Click here [a relative link](Config.md)
+To Configure TradeFinex [ Click here ](Config.md)
