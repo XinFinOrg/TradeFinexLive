@@ -173,7 +173,7 @@
 				refnum: {
 					required: "Please choose a reference number",
 					minlength: "Reference number should be at least 4 characters long",
-					maxlength: "Remarks should be atmost 10 characters long" 
+					maxlength: "Reference number should be atmost 10 characters long" 
 				}
 			},
 			onkeyup: function(elem) {
