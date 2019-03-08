@@ -9,7 +9,7 @@ class Publicv extends CI_Controller {
 		$this->load->library(array('session', 'encrypt', 'email'));
 		$this->load->model(array('plisting', 'manage'));
 		// $this->output->cache(0.5);
-		$this->config->load('emailc');
+		$this->config->load('emailc-org');
 		$data = array();
 		$data_add = array();
 	}

@@ -68,6 +68,10 @@
 							</ul>
 						</li>
 						<li class="hidden-xs hidden-sm"> | </li>
+						<li> <a href="https://docs.tradefinex.org/faq/general/" title="Submit Project">FAQ</a> </li>
+						<li class="hidden-xs hidden-sm"> | </li>
+						<li> <a href="https://docs.tradefinex.org/Media/Articles" title="Submit Project">Media</a> </li>
+						<li class="hidden-xs hidden-sm"> | </li>
 						<li> <a href="<?=base_url();?>publicv/contact" title="">Contact us </a> </li>
 						<li class="hidden-xs hidden-sm"> | </li>
 						<li class="hidden-xs hidden-sm large_device_loginp"> <a href="javascript:void(0)" title=""><img src="<?=base_url();?>assets/images/icon/signin_icon.jpg" alt="icon"> </a>

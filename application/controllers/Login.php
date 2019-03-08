@@ -308,7 +308,7 @@ class Login extends CI_Controller {
 		
 		$action = $this->input->post('action');
 		$user_email = $this->input->post('user_name');
-		// $data['upasswd'] = openssl_encrypt($this->input->post('password'),"AES-128-ECB",$encryption_key);
+		 //$data_add['upasswd'] = openssl_encrypt($this->input->post('password'),"AES-128-ECB",$encryption_key);
 		
 		$random_hash = substr(md5(uniqid(rand(), true)), 16, 16);
 		$data_add['tfu_hash'] = $random_hash;

@@ -157,5 +157,5 @@
 </section>
 
 
-<?php //$this->load->view('includes/block_features') ?>
+<?php//$this->load->view('includes/block_features') ?>
 <?php $this->load->view('includes/login_modal') ?>

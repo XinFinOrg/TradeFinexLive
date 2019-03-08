@@ -27,7 +27,7 @@
                                      <p class="content">* lower transaction costs</p>
                                      <p class="content">* standardise contracts & instruments</p>
                                      <p class="content">* incubate and accelerate infrastructure project pipeline</p>
-                                     <p class="content">* rack infrastructure asset performance data</p>
+                                     <p class="content">* track infrastructure asset performance data</p>
                                      <p class="content">* securitize and trade tokenized infrastructure assets</p>
                                     
                             <p class="content">To join the consortium or request more information, please complete the Contact For Membership form.</p>

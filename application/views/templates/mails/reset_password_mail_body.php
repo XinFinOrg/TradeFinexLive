@@ -27,7 +27,7 @@
 				</div>
 				<div class="mail_template_footer">
 					<div class="mail_template_footer_content">
-						<h5>&copy;2018 TradeFinex.org All rights reserved. </h5>
+						<h5>&copy;2019 TradeFinex.org All rights reserved. </h5>
 						<p>TradeFinex </br> Enter Address Below</p>
 					</div>
 				</div>

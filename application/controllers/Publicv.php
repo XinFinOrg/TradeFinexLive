@@ -608,7 +608,7 @@ class Publicv extends CI_Controller {
 		if($action == 'send_mail'){
 				
 			$config = $this->config->item('$econfig');
-						
+					
 			$this->email->initialize($config);
 			//$this->email->cc('mansi.vora@tradefinex.org');
 			// $this->email->bcc('mansi.vora@tradefinex.org');
@@ -639,12 +639,14 @@ class Publicv extends CI_Controller {
 			
 			
 			// Send mail 
+			// Send mail 
 			if($this->email->send()){ 
 				$this->session->set_flashdata('msg_type', 'success');
 				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Sent</h4>"); 
-				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Thank you for your query. Your query has been received. Our customer support team will respond to your query as soon as possible.</h3>"); 
-			}	
+				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Congratulations!!Now, you are part of TradeFinex Consortium. </h3>"); 
+			}
 			else{ 
+			    show_error($this->email->print_debugger());
 				$this->session->set_flashdata('msg_type', 'error');
 				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't Sent</h4>"); 
 				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Error in sending Email. Please try again.</h3>");
