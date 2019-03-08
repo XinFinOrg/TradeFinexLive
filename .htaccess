@@ -20,3 +20,16 @@ RewriteRule ^(.*)$ ./index.php?$1 [L,QSA]
         Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
     </IfModule>
 </FilesMatch>
+ExpiresActive On
+
+ExpiresDefault A0
+
+# Set up caching on media files for 1 week
+
+<FilesMatch "\.(gif|jpg|jpeg|png|swf|svg)$">
+
+ExpiresDefault A604800
+
+Header append Cache-Control "public"
+
+</FilesMatch>
