@@ -11,7 +11,8 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/jquery-te-Style.css" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/intlTelInput.css" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/style_custom.css" /> 
+	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/style_custom.css" />
+	 
 	<!-- Reponsive -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/responsive.css" />
 	<!-- Captcha -->

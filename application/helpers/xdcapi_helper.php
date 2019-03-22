@@ -1,5 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/* Written by Souvik Saha */
+/* Email : sahasouvik9@gmail.com */
+/* Dated : 30-11-2017 */
 
 if (!function_exists('get_xdc_token_rate'))
 {

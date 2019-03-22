@@ -14,11 +14,11 @@ class Publicv extends CI_Controller {
 		$data_add = array();
 	}
 	
-	public function aboutus(){
+	public function cred(){
 		
 		$data = array();
 		
-		$data['page'] = 'aboutus';
+		$data['page'] = 'Infactor';
 		$data['msg'] = '';
 		$data['user_id'] = 0;
 		$data['user_type'] = '';
@@ -31,6 +31,15 @@ class Publicv extends CI_Controller {
 		$data['uname'] = '';
 		$data['upass'] = '';
 		$data['uprofpic'] = '';
+		
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
 				
 		$user = $this->session->userdata('logged_in');
 		
@@ -41,9 +50,8 @@ class Publicv extends CI_Controller {
 			// redirect(base_url().'dashboard');
 		}else{
 			// redirect(base_url().'log/out');
-			$this->load->view('includes/header', $data);
-			$this->load->view('includes/header_no_nav', $data);
-			$this->load->view('includes/header_nav', $data);
+			$this->load->view('includes/headern', $data);
+			$this->load->view('includes/header_publicn', $data);
 		}
 		
 		$data['notifications'] = array();
@@ -58,20 +66,8 @@ class Publicv extends CI_Controller {
 			$data['notifications'] = get_notification_status($options);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
-		
 		if($data['user_id'] <> 0){
-			
-			$options = array();
-			$options['user_id'] = $data['user_id'];
-			$options['user_type'] = $data['user_type_ref'];
-			
-			$data['notifications'] = get_notification_status($options);
-		}
-		
-		if($data['user_id'] <> 0){
-								
+					
 			$uresult = $this->manage->get_user_info_by_id_and_type($data['user_id'], $data['user_type_ref']);
 						
 			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
@@ -110,18 +106,140 @@ class Publicv extends CI_Controller {
 					$data['uname'] = $uresult[0]->tfu_usern;
 					$data['upass'] = $uresult[0]->tfu_passwd;
 				}
-			}
-
-			$this->load->view('includes/header', $data);
-			$this->load->view('includes/header_public', $data);
+			}	
+			
+			$this->load->view('includes/headern', $data);
+			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$this->load->view('pages/public/aboutus_view', $data);
-		$this->load->view('includes/footer_common', $data);
+		$this->load->view('pages/cred_view', $data);
+		$this->load->view('includes/footer_commonn', $data);
 		$this->load->view('pages_scripts/common_scripts', $data);
-		$this->load->view('includes/footer');
-	
+		$this->load->view('includes/footern');
 	}
+
+	public function bond_create(){
+		
+		$data = array();
+		
+		$data['page'] = 'bond_create';
+		$data['msg'] = '';
+		$data['user_id'] = 0;
+		$data['user_type'] = '';
+		$data['full_name'] = '';
+		$data['ufname'] = '';
+		$data['ulname'] = '';
+		$data['uemail'] = '';
+		$data['ucontact'] = '';
+		$data['uaddress'] = '';
+		$data['uname'] = '';
+		$data['upass'] = '';
+		$data['uprofpic'] = '';
+		
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
+		
+		
+		
+		
+		
+		$this->load->view('includes/headern', $data);
+		$this->load->view('includes/header_publicn', $data);
+		$this->load->view('pages/public/bond_create_view', $data);
+		$this->load->view('includes/footer_commonn', $data);
+		$this->load->view('pages_scripts/common_scripts', $data);
+		$this->load->view('includes/footern');
+	}
+	
+	
+	public function digital_bond(){
+        
+        $data = array();
+        
+        $data['page'] = 'bond';
+        $data['msg'] = '';
+        $data['user_id'] = 0;
+        $data['user_type'] = '';
+        $data['full_name'] = '';
+        $data['ufname'] = '';
+        $data['ulname'] = '';
+        $data['uemail'] = '';
+        $data['ucontact'] = '';
+        $data['uaddress'] = '';
+        $data['uname'] = '';
+        $data['upass'] = '';
+        $data['uprofpic'] = '';
+        
+        $data['csrf'] = array();
+        
+        $csrf = array(
+            'name' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash()
+        );
+        
+        $data['csrf'] = $csrf;
+        
+        
+        
+        
+        
+        $this->load->view('includes/headern', $data);
+        $this->load->view('includes/header_publicn', $data);
+        $this->load->view('pages/public/bond_view', $data);
+        $this->load->view('includes/footer_commonn', $data);
+        $this->load->view('pages_scripts/common_scripts', $data);
+        $this->load->view('includes/footern');
+    }
+	
+	
+	
+	
+	public function corda_bridge(){
+        
+        $data = array();
+        
+        $data['page'] = 'corda_bridge';
+        $data['msg'] = '';
+        $data['user_id'] = 0;
+        $data['user_type'] = '';
+        $data['full_name'] = '';
+        $data['ufname'] = '';
+        $data['ulname'] = '';
+        $data['uemail'] = '';
+        $data['ucontact'] = '';
+        $data['uaddress'] = '';
+        $data['uname'] = '';
+        $data['upass'] = '';
+        $data['uprofpic'] = '';
+        
+        $data['csrf'] = array();
+        
+        $csrf = array(
+            'name' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash()
+        );
+        
+        $data['csrf'] = $csrf;
+        
+        
+        
+        
+        
+        $this->load->view('includes/headern', $data);
+        $this->load->view('includes/header_publicn', $data);
+        $this->load->view('pages/public/corda_view', $data);
+        $this->load->view('includes/footer_commonn', $data);
+        $this->load->view('pages_scripts/common_scripts', $data);
+        $this->load->view('includes/footern');
+    }
+	
+	
 	
 	public function beneficiary(){
 		
@@ -425,7 +543,7 @@ class Publicv extends CI_Controller {
 			}	
 			else{ 
 				$this->session->set_flashdata('msg_type', 'error');
-				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't Sent</h4>"); 
+				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't be Sent</h4>"); 
 				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Error in sending Email. Please try again.</h3>");
 			}
 			
@@ -608,7 +726,7 @@ class Publicv extends CI_Controller {
 		if($action == 'send_mail'){
 				
 			$config = $this->config->item('$econfig');
-					
+						
 			$this->email->initialize($config);
 			//$this->email->cc('mansi.vora@tradefinex.org');
 			// $this->email->bcc('mansi.vora@tradefinex.org');
@@ -639,16 +757,14 @@ class Publicv extends CI_Controller {
 			
 			
 			// Send mail 
-			// Send mail 
 			if($this->email->send()){ 
 				$this->session->set_flashdata('msg_type', 'success');
 				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Sent</h4>"); 
-				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Congratulations!!Now, you are part of TradeFinex Consortium. </h3>"); 
-			}
+				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Congratulations!!<br>Now, you are part of TradeFinex Consortium. </h3>"); 
+			}	
 			else{ 
-			    show_error($this->email->print_debugger());
 				$this->session->set_flashdata('msg_type', 'error');
-				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't Sent</h4>"); 
+				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't be Sent</h4>"); 
 				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Error in sending Email. Please try again.</h3>");
 			}
 			
@@ -796,7 +912,7 @@ class Publicv extends CI_Controller {
 			}	
 			else{ 
 				$this->session->set_flashdata('msg_type', 'error');
-				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't Sent</h4>"); 
+				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't be Sent</h4>"); 
 				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Error in sending Email. Please try again.</h3>");
 			}
 			
@@ -977,7 +1093,7 @@ class Publicv extends CI_Controller {
 			}	
 			else{ 
 				$this->session->set_flashdata('msg_type', 'error');
-				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't Sent</h4>"); 
+				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't be Sent</h4>"); 
 				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Error in sending Email. Please try again.</h3>"); 
 			}
 					
@@ -1394,6 +1510,109 @@ class Publicv extends CI_Controller {
 		}
 		
 		$this->load->view('pages/public/trade_solutions_view', $data);
+		$this->load->view('includes/footer_commonn', $data);
+		$this->load->view('pages_scripts/common_scripts', $data);
+		$this->load->view('includes/footern');
+	}
+	public function infactor(){
+		
+		$data = array();
+		
+		$data['page'] = 'Infactor';
+		$data['msg'] = '';
+		$data['user_id'] = 0;
+		$data['user_type'] = '';
+		$data['full_name'] = '';
+		$data['ufname'] = '';
+		$data['ulname'] = '';
+		$data['uemail'] = '';
+		$data['ucontact'] = '';
+		$data['uaddress'] = '';
+		$data['uname'] = '';
+		$data['upass'] = '';
+		$data['uprofpic'] = '';
+		
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
+				
+		$user = $this->session->userdata('logged_in');
+		
+		if($user && !empty($user) && sizeof($user) <> 0){
+			$data['full_name'] = $user['user_full_name'];
+			$data['user_id'] = $user['user_id'];
+			$data['user_type_ref'] = $user['user_type_ref'];
+			// redirect(base_url().'dashboard');
+		}else{
+			// redirect(base_url().'log/out');
+			$this->load->view('includes/headern', $data);
+			$this->load->view('includes/header_publicn', $data);
+		}
+		
+		$data['notifications'] = array();
+		$data['notifications'] = get_initial_notification_status();
+		
+		if($data['user_id'] <> 0){
+			
+			$options = array();
+			$options['user_id'] = $data['user_id'];
+			$options['user_type'] = $data['user_type_ref'];
+			
+			$data['notifications'] = get_notification_status($options);
+		}
+		
+		if($data['user_id'] <> 0){
+					
+			$uresult = $this->manage->get_user_info_by_id_and_type($data['user_id'], $data['user_type_ref']);
+						
+			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
+				
+				if($data['user_type_ref'] == 1){
+					$data['ufname'] = $uresult[0]->tfsp_fname;
+					$data['ulname'] = $uresult[0]->tfsp_lname;
+					$data['uemail'] = $uresult[0]->tfsp_email;
+					$data['ucontact'] = $uresult[0]->tfsp_contact;
+					$data['uaddress'] = $uresult[0]->tfsp_address;
+					$data['uprofpic'] = $uresult[0]->tfsp_pic_file;
+					$data['uname'] = $uresult[0]->tfu_usern;
+					$data['upass'] = $uresult[0]->tfu_passwd;
+					$data['uvisibility'] = $uresult[0]->tfsp_public_visibility;
+				}
+				
+				if($data['user_type_ref'] == 2){
+					$data['ufname'] = $uresult[0]->tff_fname;
+					$data['ulname'] = $uresult[0]->tff_lname;
+					$data['uemail'] = $uresult[0]->tff_email;
+					$data['ucontact'] = $uresult[0]->tff_contact;
+					$data['uaddress'] = $uresult[0]->tff_address;
+					$data['uprofpic'] = $uresult[0]->tff_pic_file;
+					$data['uname'] = $uresult[0]->tfu_usern;
+					$data['upass'] = $uresult[0]->tfu_passwd;
+					$data['uvisibility'] = $uresult[0]->tff_public_visibility;
+				}
+				
+				if($data['user_type_ref'] == 3){
+					$data['ufname'] = $uresult[0]->tfb_fname;
+					$data['ulname'] = $uresult[0]->tfb_lname;
+					$data['uemail'] = $uresult[0]->tfb_email;
+					$data['ucontact'] = $uresult[0]->tfb_contact;
+					$data['uaddress'] = $uresult[0]->tfb_address;
+					$data['uprofpic'] = $uresult[0]->tfb_pic_file;
+					$data['uname'] = $uresult[0]->tfu_usern;
+					$data['upass'] = $uresult[0]->tfu_passwd;
+				}
+			}
+			
+			$this->load->view('includes/headern', $data);
+			$this->load->view('includes/header_publicn', $data);
+		}
+		
+		$this->load->view('pages/public/infactor_view', $data);
 		$this->load->view('includes/footer_commonn', $data);
 		$this->load->view('pages_scripts/common_scripts', $data);
 		$this->load->view('includes/footern');

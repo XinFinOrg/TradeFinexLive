@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?=base_url();?>assets/bond-assets/js/datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/page_js/common_scripts.js"></script>
 <script type="text/javascript">
 	$(function(){

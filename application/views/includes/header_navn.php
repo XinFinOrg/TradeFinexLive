@@ -52,25 +52,27 @@
 			<div class="nav-wrap">
 				<nav id="mainnav" class="mainnav">
 					<ul class="menu">
-					    <li> <a  <?='href="'.base_url().'#consortium"'?> title="Consortium">Consortium</a> </li>
+					    <li> <a  <?='href="https://demo.tradefinex.org/publicv/consortium"'?> title="Consortium">Consortium</a> </li>
 					    <li class="hidden-xs hidden-sm"> | </li>
-						<li> <a <?=($user_ids == 0 ? 'data-toggle="modal" data-target="#login"' : 'href="'.base_url().'listing/details"');?> title="Browse Project">Browse Project</a> </li>
-						<li class="hidden-xs hidden-sm"> | </li>
-						<li> <a href="javascript:void(0)" data-toggle="modal" data-target="#login" title="Submit Project">Submit Project</a> </li>
-						<li class="hidden-xs hidden-sm"> | </li>
-						<li> <a href="javascript:void(0)" title="">Solutions</a>
+				
+						<li class="hassubs"> <a href="javascript:void(0)" title="">Financial Instruments Supported</a>
 							<ul class="submenu">
-							    <li> <a href="<?=base_url();?>publicv/finance_solutions" title="Know about finance">Finance Solutions</a> </li>
-								<li> <a href="<?=base_url();?>publicv/trade_solutions" title="Know about trade">Trade Solutions</a> </li>
-								<li> <a href="<?=base_url();?>publicv/financier" title="Know about financier">Financier</a> </li>
-								<li> <a href="<?=base_url();?>publicv/beneficiary" title="Know about beneficiary">Beneficiary</a> </li>
-								<li> <a href="<?=base_url();?>publicv/supplier" title="Know about supplier">Supplier</a> </li>
+								<li class=""><a href="<?=base_url();?>publicv/digital_bond" title="Know About Digital Bond">Digital Bond</a></li>
+                                <li class=""><a href="<?=base_url();?>publicv/infactor" title="Know about infactor">Invoice</a></li>
+								<li class=""><a href="<?=base_url();?>publicv/corda_bridge" title="Know about infactor">Corda Bridge (Coming Soon)</a></li>
+
+                                				
+								<!--<ul class="dropdown">
+									<li class="subs"><a href="<?=base_url();?>publicv/infactor" title="Know about infactor">InFactor</a></li>
+									<li><a href="<?=base_url();?>publicv/financier" title="Know about financier">Financier</a></li>
+									<li><a href="<?=base_url();?>publicv/beneficiary" title="Know about beneficiary">Beneficiary</a></li>
+									<li><a href="<?=base_url();?>publicv/supplier" title="Know about supplier">Supplier</a></li>
+								</ul>-->
 							</ul>
 						</li>
 						<li class="hidden-xs hidden-sm"> | </li>
-						<li> <a href="https://docs.tradefinex.org/faq/general/" title="Submit Project">FAQ</a> </li>
-						<li class="hidden-xs hidden-sm"> | </li>
-						<li> <a href="https://docs.tradefinex.org/Media/Articles" title="Submit Project">Media</a> </li>
+						<li> <a href="https://docs.tradefinex.org/faq/general/" title="FAQ">FAQ</a> </li>
+				
 						<li class="hidden-xs hidden-sm"> | </li>
 						<li> <a href="<?=base_url();?>publicv/contact" title="">Contact us </a> </li>
 						<li class="hidden-xs hidden-sm"> | </li>
@@ -78,6 +80,7 @@
 							<ul class="submenu home_account">
 								<h4> Your Account</h4>
 								<p> Access account and manage tasks</p>
+								<p>To access the platform, use dummy <a href="<?=base_url();?>publicv/cred" >Credentials</a></p>
 								<a href="<?php echo base_url() ?>registration" class="pull-left acount_btn"> Sign Up</a> 
 								<a href="javascript:void(0)" class="pull-right acount_btn btn_logged" data-toggle="modal" data-target="#login"> Log In</a>
 							</ul>

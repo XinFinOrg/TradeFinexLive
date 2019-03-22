@@ -1,5 +1,11 @@
 	<!-- Boostrap -->
+	<!-- <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/bond-assets/css/bootstrap.css" /> -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/bootstrap.min.css');?>" />
+	<!-- <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/main.bundle.css" /> -->
+	
+	<!-- <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/main.css" />
+	<link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/auto-hide.css" /> -->
+	<!-- <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/js/menu.css" /> -->
 	
 	<?php if(uri_string()){ ?>
 	
@@ -9,6 +15,10 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/jquery-te-Style.css');?>" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/intlTelInput.css');?>" />
 	
+	
+	<!-- ICONS STYLES -->
+    <link rel="stylesheet" href="<?=base_url('assets/css/icons/dripicons.min.css');?>" />
+
 	<!-- Captcha -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/captcha/jquery.realperson.min.css');?>" />
 	
@@ -24,12 +34,19 @@
 	<!-- Lazy Loading Slider CSS -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/slick.css');?>">
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/slick-theme.css');?>">
+
+	<!--Custom bond style  -->
+	
 	
 	<!-- Theme style -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/style.css');?>" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/style_custom.css');?>" /> 
 	<!-- Reponsive -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/responsive.css');?>" />
+    
+    <!-- bxslider Banner CSS -->
+    <link rel="stylesheet" type="text/css" href="<?=base_url('assets/banner-assets/css/bxslider.css');?>" />
+    <link rel="stylesheet" type="text/css" href="<?=base_url('assets/banner-assets/css/magnific-popup.css');?>" />
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
