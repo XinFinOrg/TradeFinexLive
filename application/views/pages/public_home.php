@@ -1,39 +1,184 @@
-<section id="home_slider_banner" class="top_banner parallax parallax_block"> 
+	<!--<section id="home_slider_banner" class="top_banner parallax parallax_block"> 
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			
 			<div class="item active"> <img src="<?=base_url();?>assets/images/slider/tradefinex_slider_1.jpg"/>
 				<div class="carousel-caption">
-					<div class="page-title-heading"> Open Protocol for Bank,  </div>
-					<div class="text-heading"> Institution & User </div>
-					<p class="slider_lower_content">Enhancing the global efficiency for secure and transparent commerce</p>
-					<a class="trade_home_call_to-action" href="https://xinfinorg.github.io/TradeFinex_API/">CONNECT</a>
-					<a class="trade_home_call_to-action" href="<?=base_url('publicv/contact');?>">MORE INFO</a>
+					<div class="page-title-heading">Open Standards Protocol for global Trade & Finance </div>
+					<div class="text-heading"> </div>
+					<p class="slider_lower_content">Mitigate Counter-Party Risk by making your Financial Instruments Interoperable & Liquid</p>
+					<a class="trade_home_call_to-action" href="<?=base_url('publicv/infactor');?>">Invoice</a>
+					<a class="trade_home_call_to-action" href="<?=base_url('publicv/bond_create');?>">Digital Bond</a>
 				</div>
+				
 			</div>
-			<!-- <div class="item"> <img src="<?=base_url();?>assets/images/slider/tradefinex_slider_2.jpg"/>
+			<div class="item"> <img src="<?=base_url();?>assets/images/slider/tradefinex_slider_2.jpg"/>
 				<div class="carousel-caption">
-					<div class="page-title-heading">Blockchain Powered Peer to Peer Platform </div>
-					<div class="text-heading">  for Trade & Finance </div>
-					<p class="slider_lower_content">Consortium led governance makes it truly Decentralised.</p>
-					<a class="trade_home_call_to-action" href="#trade_home_get_started">GET STARTED</a>
+					<div class="page-title-heading">Easy to Create, Deploy, Manage and Exchange </div>
+					<div class="text-heading">Start Trial under regulatory sandbox environment.</div>
+					<p class="slider_lower_content">.</p>
+					<a class="trade_home_call_to-action" href="/publicv/bond_create">Start a PoC</a>
 					<a class="trade_home_call_to-action" href="<?=base_url('publicv/contact');?>">CONTACT US</a>
 				</div>
-			</div> -->
+			</div> 
 			<div class="item"> <img src="<?=base_url();?>assets/images/slider/tradefinex_slider_3.jpg"/>
 				<div class="carousel-caption">
-					<div class="page-title-heading"> Peer to Peer Platform  </div>
-					<div class="text-heading">Connecting global opportunities</div>
-					<p class="slider_lower_content">Consortium led governance makes it truly Decentralised.
-</p>
-					<a class="trade_home_call_to-action" href="https://xinfinorg.github.io/TradeFinex_API/">CONNECT</a>
-					<a class="trade_home_call_to-action" href="<?=base_url('publicv/contact');?>">MORE INFO</a>
+					<div class="page-title-heading">Create Bridge & Gain access to global Financial ecosystem.</div>
+					<div class="text-heading"> </div>
+					<p class="slider_lower_content">Start trial under regulatory sandbox environment.</p>
+					<a class="trade_home_call_to-action" href="<?=base_url('publicv/bond_create');?>">Start POC</a>
+					<a class="trade_home_call_to-action" href="https://docs.tradefinex.org/faq/general">Explore</a>
 				</div>
 			</div> 
 		</div>
 		<a class="left carousel-control" href="#myCarousel" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#myCarousel" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> <span class="sr-only">Next</span> </a>
 	</div>
-</section>
+</section>-->
+        
+        
+        
+        
+        
+        
+        <section class="banner-outer">
+            <div class="banner-slider">
+                <div class="banner banner2 slide1">
+                    <div class="container">
+                        <div class="row cnt-block mt-30">
+                            <div class="col-md-12 text-center">
+                                <div class="bannerHeader">
+                                    <h1 class="mb-15 animated fadeInDown delay-02s">Open Standards Protocol for global Trade & Finance</h1>
+                                    <p class="animated fadeInDown delay-03s">Mitigate Counter-Party Risk by making your Financial Instruments Interoperable & Liquid</p>
+									<p class="animated fadeInDown delay-04s">Start trial under regulatory sandbox environment</p>
+                                    <div class="button-box mt-30">
+                                		<a href="<?=base_url('publicv/infactor');?>" class="get-started animated fadeInDown delay-04s">Invoice</a>
+                                		<a href="<?=base_url('publicv/digital_bond');?>" class="get-started animated fadeInDown delay-05s">Digital Bond</a>
+                                	</div>
+                            </div>
+                        </div>
+                        <!--<div class="row">
+                            <div class="col-md-12">
+                                <figure class="animated fadeInUp delay-06s"><img src="assets/banner-assets/images/banner-slide1.png" class="img-responsive" alt=""></figure>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+                </div>
+                <!--<div class="banner slide2">
+                    <div class="container">
+                        <div class="row cnt-block">
+                            <div class="col-md-12 text-center">
+                                <div class="bannerHeader">
+                                    <h1 class="animated fadeInDown delay-02s">Create Bridge & Gain access to global Financial ecosystem</h1>
+                                    <p class="animated fadeInDown delay-03s">Start trial under regulatory sandbox environment</p>
+                                    </div>
+                                    <div class="button-box">
+                                	<a href="<?=base_url('publicv/bond_create');?>" class="get-started animated fadeInDown delay-04s">Start POC</a>
+                                	<a href="https://docs.tradefinex.org/faq/general" class="get-started animated fadeInDown delay-05s">Explore</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <figure class="animated fadeInUp delay-06s"><img src="assets/banner-assets/images/banner-slide2.gif" class="img-responsive" alt=""></figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </section>
+        
+        
+        
+		<section class="digital-bond white-bg padding-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-push-6">
+                        <div class="cnt-block padd-left">
+                            <h2>Digital Bond</h2>
+                            <p>Create, Manage and Liquidate Bond Instruments Online. A Fully Digital Blockchain Solution Eliminates Counterparty Delays Provides Instant Settlement.</p>
+                            <div class="button-box">
+                            	<a href="<?=base_url('publicv/bond_create');?>" class="get-started">Start POC</a>
+                            	<a href="<?=base_url('publicv/digital_bond');?>" class="get-started">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-md-pull-6">
+                        <figure class="img"><img src="assets/banner-assets/images/digital-bond-screen-1.png" class="img-responsive" alt=""></figure>
+                    </div>
+                </div>
+            </div>
+		</section>
+
+
+
+		<section class="invoice-factoring grey-bg padding-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 cnt-block">
+                        <h2>Invoice Factoring</h2>
+                        <p>The TradeFinex Invoice Factoring Platform Equips Participants With An Alternative Financial Marketplace That Operates In A Fully Transparent Environment.</p>
+                        <div class="button-box">
+                        	<a href="https://docs.xinfin.org/docs/dapp/infactor.io/conduct-a-poc" class="get-started">Start POC</a>
+                        	<a href="<?=base_url('publicv/infactor');?>" class="get-started">Explore</a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 right">
+                        <a class="play-btn video" href="https://www.youtube.com/watch?v=GIp_h7U9aRQ"><span class="fa fa-play-circle"></span></a>
+                        <figure class="img"><img src="assets/banner-assets/images/infactor.png" class="img-responsive" alt=""></figure>
+                    </div>
+                </div>
+            </div>
+		</section>
+
+
+
+		<section class="digital-bond white-bg padding-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-push-6">
+                        <div class="cnt-block padd-left">
+                            <h2>R3 Corda Bridge</h2>
+                            <p>Connect To The R3-Corda Public Blockchain. Mitigate Counterparty Risk By Making Your Financial Instruments Interoperable and Liquid. (Coming Soon)</p>
+                            <div class="button-box">
+                            	<a href="#" class="get-started">Start POC</a>
+                            	<a href="<?=base_url('publicv/corda_bridge');?>" class="get-started">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-md-pull-6">
+                        <figure class="img"><img src="assets/banner-assets/images/r3-corda-bridge.gif" class="img-responsive" alt=""></figure>
+                    </div>
+                </div>
+            </div>
+		</section>
+
+
+
+		<section class="create-bridge grey-bg padding-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 cnt-block">
+                        <h2>TradeFinex Round table series Consortium Event</h2>
+                        <p>This Roundtable Event Places The Trade And Finance Stakeholder And Infrastructure Financier On One Stage To Address The Increasing Global Trade Gap As Well As Infrastructure Deficit While Discussing The Promises Of Blockchain.</p>
+                        <div class="button-box">
+                        	<a href="http://events.tradefinex.org/#contact" target="_blank" class="get-started">Register</a>
+                            <a href="http://events.tradefinex.org/" target="_blank" class="get-started">Explore</a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 right">
+                        <figure class="img"><img src="assets/banner-assets/images/tradefinex-roundtable-event.png" class="img-responsive" alt=""></figure>
+                    </div>
+                </div>
+            </div>
+		</section>
+
+
+
+
+                
+
+
 
 <!-- Home_Slider -->
 <!-- <section class="why_pay padding_70">
@@ -182,73 +327,61 @@
 	</div>
 </section>-->
 
-<?php 
+<!-- <?php 
 	
 // 	$this->load->view('includes/block_create_account');
 	
-	$this->load->view('includes/block_features');	
+	//$this->load->view('includes/block_features');	
 
-?>
-
-
-<section id="trade_home_get_started" class="get_started">
+?> -->
+<!--<section id="tradefinex" class="about_us padding_50">
 	<div class="container text-center">
-		<div class="row">
-			<p><img src="<?php echo base_url() ?>assets/images/icon/line.png" alt="icon"></p>
-			<h2>Get Started</h2>
-		</div>
+		
+			<!-- <p><img src="<?php echo base_url() ?>assets/images/icon/line.png" alt="icon"></p>
+			
+			<div class="common_sec">
+				<h2>TradeFinex </h2><br>	
+				<h3 class="home-page">What TradeFinex can do for you?	</h3>
+				<p> Access to a decentralized P2P global trade and P2P global financing solutions framework in a law of land compliant platform</p>
+				<h3 class="home-page">What is TradeFinex?	</h3>
+				<p>TradeFinex is a decentralized peer to peer global Trade & Infrastructure Finance platform built on open standards and it provides seamless connectivity between global public investors, contract authority, project company, regulators and other key project finance stakeholders</p>
+				<p>It brings together financiers & investors, buyers, suppliers as well as government and regulatory bodies. TradeFinex aims to minimize global trade finance gap as well as infrastructure deficit by minimizing inefficiencies and increasing liquidity by leveraging Blockchain technology. Its key features include decentralized platform, smart contracting, asset tokenization, integrated wallets, real time global and cross border payments and settlements and regulatory sandbox environment – powered by XinFin's enterprise ready hybrid blockchain protocol. TradeFinex's Application Programming Interfaces (APIs) also provide further interoperability with other systems and platforms – thus enriching the whole trade finance ecosystem.</p>
+				<h3 class="home-page">Benefits of using TradeFinex</h3>
+				<div class ="home-page"><ul style="list-style-type:disc;" ><li> Secure and transparent commerce amongst trusted participants</li>
+				<li>Enhanced access to finance and global biz opportunities</li>
+				<li>Reduced costs via process efficiencies and disintermediation</li>
+				<li>Process efficiencies - Automated work-flows via cryptographically encrypted smart contract</li>
+				<li>Minimized credit risk via immutable rating system, trust, transparency and visibility</li>
+				<li>Immutable records and document trail</li>
+				<li>Reduced transaction overheads via process efficiencies and disintermediation</li>
+				<li>Asset tokenization and Liquidity</li>
+				<li>Interoperability with other platforms and systems via a library of TradeFinex APIs</li>
+				<li>Digitization and Auditability</li>
+				<li>Contractual and Regulatory compliance</li>
+			</ul>
+				</div>
+			</div>
 	</div>
-</section>
-<section class="get_started_bottom">
-	<div class="container text-center">
-		<div class="ben_sup_fin-sec">
-		    <div class="common margin_right_35">
-				<div class="icon col-xs-4 col-md-12 col-sm-4"> <img src="<?php echo base_url() ?>assets/images/icon/financier_icon.svg" alt="icon"> </div>
-				<div class="col-xs-8 col-md-12 col-sm-8">
-					<h3>For Financiers</h3>
-					<p>Governments, Funds, Private Equity, Venture Capitalists, Financial Institutions</p>
-					<a href="<?=base_url('publicv/financier');?>">Explore now <span><img src="<?php echo base_url() ?>assets/images/icon/arrow_icon.jpg" alt="icon"> </span></a> 
-				</div>	
-			</div>
-			<div class="common margin_right_35">
-				<div class="icon col-xs-4 col-md-12 col-sm-4"> <img src="<?php echo base_url() ?>assets/images/icon/beneficiary_icon.svg" alt="icon"> </div>
-				<div class="col-xs-8 col-md-12 col-sm-8">
-					<h3>For Beneficiaries</h3>
-					<p>Governments, Local Bodies, Communities, Corporates, Financial Institutions</p>
-					<a href="<?=base_url('publicv/beneficiary');?>">Explore now <span><img src="<?php echo base_url() ?>assets/images/icon/arrow_icon.jpg" alt="icon"> </span></a> 
-				</div>	
-			</div>
-			<div class="common">
-				<div class="icon col-xs-4 col-md-12 col-sm-4"> <img src="<?php echo base_url() ?>assets/images/icon/suppliers_icon.svg" alt="icon"> </div>
-				<div class="col-xs-8 col-md-12 col-sm-8">
-					<h3>For Suppliers</h3>
-					<p>Product and services suppliers across the globe</p>
-					<a href="<?=base_url('publicv/supplier');?>">Explore now <span><img src="<?php echo base_url() ?>assets/images/icon/arrow_icon.jpg" alt="icon"> </span></a> 
-				</div>	
-			</div>
-		</div>
-	</div>
-</section>
+</section>-->
+
+
+
+
 
 <section id="consortium" class="about_us padding_50">
 	<div class="container text-center">
 		<div class="row">
-			<p><img src="<?php echo base_url() ?>assets/images/icon/line.png" alt="icon"></p>
-			<h2 class="black_sec_title">TradeFinex Consortium</h2>
+			<!--<p><img src="<?php echo base_url() ?>assets/images/icon/line.png" alt="icon"></p>
+			<h2 class="black_sec_title">TradeFinex Consortium</h2>-->
 			<div class="common_sec">
-                <p>
-                    Our vision of TradeFinex as an ideal global trade and finance platform is one with open standards, seamless connectivity amongst various stakeholders of the ecosystem, a frictionless access to secure big data and a free flow of value - efficient management and financing of trade assets and working capital.</p>
-                    <p>We at XinFin recognize that this can not be achieved singularly through any silo entity, irrespective of its resources. Hence, we have proposed the creation of a consortium of key stakeholders – global public investors and others - with a shared vision and ambition to participate in the development strategy of this decentralized hybrid blockchain powered global trade and finance platform, TradeFinex. We are convinced that the complementing technological, legal,  global finance and trading expertise brought in by our consortium members will accelerate development of this standards-based platform and eventual market adoption.
-                </p>
-                <p>
-                    The consortium will be initiated out of the Global Financial Innovation Network (GFIN) regulatory member - Abu Dhabi Global Markets in the regulated Sandbox RegLab environment. As an official participant of the ADGM Sandbox, XinFin can live-test TradeFinex across the MENA region with the support and regulatory assistance – thus accelerating towards its scalability and robustness.
-                </p>
+            <h2 class="black_sec_title">Videos</h2>
+                <!--<p>Our vision of TradeFinex as an ideal global trade and finance platform is one with open standards, seamless connectivity amongst various stakeholders of the ecosystem, a frictionless access to secure big data and a free flow of value - efficient management and financing of trade assets and working capital.</p>
+                <p>We at XinFin recognize that this can not be achieved singularly through any silo entity, irrespective of its resources. Hence, we have proposed the creation of a consortium of key stakeholders – global public investors and others - with a shared vision and ambition to participate in the development strategy of this decentralized hybrid blockchain powered global trade and finance platform, TradeFinex. We are convinced that the complementing technological, legal,  global finance and trading expertise brought in by our consortium members will accelerate development of this standards-based platform and eventual market adoption.</p>
+                <p>The consortium will be initiated out of the Global Financial Innovation Network (GFIN) regulatory member - Abu Dhabi Global Markets in the regulated Sandbox RegLab environment. As an official participant of the ADGM Sandbox, XinFin can live-test TradeFinex across the MENA region with the support and regulatory assistance – thus accelerating towards its scalability and robustness.</p>
                 <p>We invite infrastructure project practitioners and investors involved in essential public infrastructure projects to be consortium members.</p>
-                
 			
-				<div class="btn-more"> <a href="<?php echo base_url() ?>publicv/consortium" title="">Apply Now<span class="icon_right_margin"> <img src="<?php echo base_url() ?>assets/images/icon/arrow.png" alt="icon"></span></a> </div>
-		
-	                <br><br>
+				<div class="btn-more"> <a href="<?php echo base_url() ?>publicv/consortium" title="">Apply Now<span class="icon_right_margin"> <img src="<?php echo base_url() ?>assets/images/icon/arrow.png" alt="icon"></span></a> </div>-->
+                
                 <p>Here below are a few brief videos which you may find helpful: </p>
                 <div class="videos_video_wrap" >
 					<div class="row">
@@ -294,8 +427,8 @@
 			<div class="col-md-12">
 				<div class="flat-row-title center">
 					<p><img src="<?php echo base_url() ?>assets/images/icon/line.png" alt="icon"></p>
-					<h2>Want To Be A Consortium Member?</h2>
-					<p>Be the part of change by becoming a consortium founding member</p>
+					<h2>INTERESTED IN CONSORTIUM MEMBERSHIP?</h2>
+					<p>Be a part of the change as a Consortium Founding Member.</p>
 				</div>
 				<!-- /.flat-row-title --> 
 			</div>
@@ -328,6 +461,27 @@
 				<div class="owl-carousel owl-bottom-banner lazy slider">
 					
 					<div class="owl-item">
+						<div class="team-member" style="background-color: #fff;">
+							<div class="member-image image"><img class="img-responsive" data-lazy="../assets/images/page/circle-logo.jpg" alt="Circle" /></div>
+							
+						</div>
+					</div>
+                    
+                    <div class="owl-item">
+						<div class="team-member" style="background-color: #fff;">
+							<div class="member-image image"><img class="img-responsive" data-lazy="../assets/images/page/r3-logo.jpg" alt="R3" /></div>
+							
+						</div>
+					</div>
+                    
+                    <div class="owl-item">
+						<div class="team-member" style="background-color: #fff;">
+							<div class="member-image image"><img class="img-responsive" data-lazy="../assets/images/page/adgm-logo.jpg" alt="ADGM" /></div>
+							
+						</div>
+					</div>            
+                    
+                    <div class="owl-item">
 						<div class="team-member" style="background-color: #fff;">
 							<div class="member-image image"><img class="img-responsive" data-lazy="../assets/images/page/assocham-logo.jpg" alt="Assocham" /></div>
 							

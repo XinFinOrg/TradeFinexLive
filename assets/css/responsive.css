@@ -8,7 +8,7 @@
 /* Smaller than standard 1200 */
 @media only screen and (max-width: 1199px) {
 #logo {
-	margin-left: 15px;
+	/*margin-left: 15px;*/
 }
 .nav-wrap {
 	margin-right: 0px;
@@ -92,6 +92,8 @@ footer {
 	float: none;
 	text-align: center;
 }
+.footer-bottom .copyright{margin-bottom:20px;}
+.pull-right{float:none!important;}
 .imagebox.style3 {
 	float: none;
 	width: 100%;
@@ -140,10 +142,10 @@ width: 100%;
 .top-search label {
 	width: 100%;
 }
-#logo {
-	margin-left: 20px;
+#logo {	
 	width: 69%;
-	margin-top: 26px;
+	/*margin-left: 20px;
+	margin-top: 26px;*/
 	float: left;
 }
 .parallax1 {
@@ -361,7 +363,7 @@ body {
 }
 #mainnav-mobi {
 	position: fixed;
-	top: 80px;
+	/*top: 80px;*/
 }
 .log_in_form {
 	width: 100%;
@@ -582,7 +584,7 @@ body {
 }
 .social-ft {
 	clear: both;
-	text-align: center;
+	/*text-align: center;*/
 }
 .listing_search_sec {
 	/*background: #fff;*/
@@ -1659,9 +1661,9 @@ textarea {
 .sub_box_right .btn {
 	font-size: 10px;
 }
-.social-ft li {
+/*.social-ft li {
 	margin-left: 8px;
-}
+}*/
 .ben_sup_fin-sec {
 	width: 100%;
 }
@@ -1723,9 +1725,9 @@ textarea {
 .sub_box_right .btn {
 	font-size: 10px;
 }
-.social-ft li {
-	margin-left: 6px;
-}
+/*.social-ft li {
+	margin-left: 8px;
+}*/
 .laptop_sec {
 	top: 75px;
 }

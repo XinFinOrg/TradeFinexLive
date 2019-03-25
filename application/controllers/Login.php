@@ -308,7 +308,7 @@ class Login extends CI_Controller {
 		
 		$action = $this->input->post('action');
 		$user_email = $this->input->post('user_name');
-		 //$data_add['upasswd'] = openssl_encrypt($this->input->post('password'),"AES-128-ECB",$encryption_key);
+		// $data['upasswd'] = openssl_encrypt($this->input->post('password'),"AES-128-ECB",$encryption_key);
 		
 		$random_hash = substr(md5(uniqid(rand(), true)), 16, 16);
 		$data_add['tfu_hash'] = $random_hash;
@@ -379,7 +379,7 @@ class Login extends CI_Controller {
 					$data['msg'] = 'error';
 					
 					$this->session->set_flashdata('msg_type', 'email_error');
-					$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't Sent</h4>"); 
+					$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't be Sent</h4>"); 
 					$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Error in sending Email. Contact customer support for your resolution.</h3>"); 
 				}
 			}

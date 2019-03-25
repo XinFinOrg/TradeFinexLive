@@ -638,7 +638,7 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="congratulations_text">
-								<p><b>Congratulations.</b> !! You have successfully filled all mandatory registration fields. You may fill remaining information now or start exploring TradeFinex after paying the memberhsip fees. Remaining information will become mandatory when you initiate Blockchain based smart contracts. Completing and personalizing your TradeFinex profile can go a long way toward increasing your visibility and marketing power. </p>
+								<p><b>Congratulations</b> !!  You have successfully filled all mandatory registration fields. You may fill remaining information now or start exploring TradeFinex after paying the memberhsip fees. Remaining information will become mandatory when you initiate Blockchain based smart contracts. Completing and personalizing your TradeFinex profile can go a long way toward increasing your visibility and marketing power. </p>
 							</div>
 						</div>
 					</div>

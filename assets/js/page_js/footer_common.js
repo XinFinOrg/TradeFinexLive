@@ -223,7 +223,21 @@
 	var removePreloader=function(){$(window).load(function(){setTimeout(function(){$('.preloader').hide();},500);});};
 		
 	$(document).ready(function(){
-			
+		$('#bondCompleteHeader').click(function() {
+			$('#createBondHeader').removeClass('active');
+			$('#bondCompleteHeader').addClass('active')
+			$('#createBondTab').hide();
+			$('#deployTab').hide();
+			$('#bondCompleteTab').show();
+		});	
+
+		$('#createBondHeader').click(function() {
+			$('#createBondHeader').addClass('active');
+			$('#bondCompleteHeader').removeClass('active')
+			$('#createBondTab').show();
+			$('#deployTab').hide();
+			$('#bondCompleteTab').hide()
+		});	
 		searchButton();goTop();removePreloader();responsiveMenu();/* slideTeam(); */
 		
 		$('.lazy').slick({
@@ -484,13 +498,13 @@
 			e.stopPropagation();
 		});
 		
-		$(document).on("click", function(e) {
-			if ($(e.target).is("#search") === false && $(".form-control").val().length == 0) {
-				$("#search").removeClass("sb-search-open");
-				$("#search").find('input[type="text"]').removeClass('toggle_search');
-				/* $(".form-group").removeClass("sb-search-open"); */
-			}
-		});
+		// $(document).on("click", function(e) {
+		// 	if ($(e.target).is("#search") === false && $(".form-control").val().length == 0) {
+		// 		$("#search").removeClass("sb-search-open");
+		// 		$("#search").find('input[type="text"]').removeClass('toggle_search');
+		// 		/* $(".form-group").removeClass("sb-search-open"); */
+		// 	}
+		// });
 		
 		$(".form-control-submit").click(function(e){
 			$(".form-control").each(function(){
@@ -721,5 +735,38 @@
 				}
 			}); 	
 		}); 
+
+		   // Auto Hide Menu Option for Horizontal Menu
+			// ------------------------------------------------
+			if ($("body.layout-horizontal.menu-auto-hide").length > 0) {
+				// scroll is still position
+				var scroll = $(document).scrollTop();
+				var headerHeight = $('.header-bottom').outerHeight();
+				//console.log(headerHeight);
+
+				$(window).scroll(function() {
+				// scrolled is new position just obtained
+				var scrolled = $(document).scrollTop();
+
+				// optionally emulate non-fixed positioning behaviour
+
+				if (scrolled > headerHeight) {
+					$('.header-bottom').addClass('off-canvas');
+				} else {
+					$('.header-bottom').removeClass('off-canvas');
+				}
+
+				if (scrolled > scroll) {
+					// scrolling down
+					$('.header-bottom').removeClass('fixed');
+				} else {
+					//scrolling up
+					$('.header-bottom').addClass('fixed');
+				}
+
+				scroll = $(document).scrollTop();
+				});
+			}
+
 	}
 	

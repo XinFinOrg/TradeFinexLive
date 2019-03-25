@@ -27,12 +27,13 @@
                                      <p class="content">* lower transaction costs</p>
                                      <p class="content">* standardise contracts & instruments</p>
                                      <p class="content">* incubate and accelerate infrastructure project pipeline</p>
-                                     <p class="content">* track infrastructure asset performance data</p>
+                                     <p class="content">* rack infrastructure asset performance data</p>
                                      <p class="content">* securitize and trade tokenized infrastructure assets</p>
                                     
-                            <p class="content">To join the consortium or request more information, please complete the Contact For Membership form.</p>
+                            <p class="content">To join the consortium fill up the Membership form or get more information on consortium Event at: http://Events.tradefinex.org </p>
                             </div>
-						
+			    
+				
 						</div>
 						<div class="con_block last_sec_con_block hide">
 							
@@ -87,7 +88,7 @@
 							</div>
 						</div>-->
 						<div class="form-group focus-group">
-							<textarea class="input-focus input-focus-notr" rows="5" id="mmsg" name="mmsg"></textarea>
+							<textarea class="input-focus input-focus-notr" rows="5" id="mmsg" name="mmsg" data-required-error="" tabindex="5"></textarea>
 							<span class="form-name floating-label">Comments</span> 
 						</div>
 						<div class="form-group">

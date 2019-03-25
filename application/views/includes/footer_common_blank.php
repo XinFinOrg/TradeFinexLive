@@ -94,7 +94,7 @@
 					<div class="row">
 						<div class="col-md-12"> 
 							<!-- /.social-ft -->
-							<div class="copyright"> Copyright &copy; 2018 TradeFinex.org, All rights reserved. </div>
+							<div class="copyright"> Copyright &copy; 2019 TradeFinex.org, All rights reserved. </div>
 							<!-- /.copyright --> 
 						</div>
 						<!-- /.col-md-12 --> 
