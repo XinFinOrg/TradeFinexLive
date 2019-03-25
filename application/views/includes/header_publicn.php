@@ -1,5 +1,11 @@
 	<!-- Boostrap -->
+	<!-- <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/bond-assets/css/bootstrap.css" /> -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/bootstrap.min.css');?>" />
+	<!-- <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/main.bundle.css" /> -->
+	
+	<!-- <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/main.css" />
+	<link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/auto-hide.css" /> -->
+	<!-- <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/js/menu.css" /> -->
 	
 	
 	<?php if(uri_string()){ ?>

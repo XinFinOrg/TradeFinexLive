@@ -1156,7 +1156,9 @@ $(function () {
 
 	$('#createBondHeader').click(function() {
 		//console.log('alert')
-		$('#bond_create-form').find("input[type=text], textarea").val(location.reload);
+
+		$('#bond_create-form').find("input[type=text], textarea").val("");
+
 	});
 	
 	$('#sorry').click(function() {

@@ -59,8 +59,9 @@
 							<ul class="submenu">
 								<li class=""><a href="<?=base_url();?>publicv/digital_bond" title="Know About Digital Bond">Digital Bond</a></li>
                                 <li class=""><a href="<?=base_url();?>publicv/infactor" title="Know about infactor">Invoice</a></li>
-								<li class=""><a href="<?=base_url();?>publicv/corda_bridge" title="Know about Corda Bridge">Corda Bridge (Coming Soon)</a></li>
 
+								<li class=""><a href="<?=base_url();?>publicv/corda_bridge" title="Know about Corda Bridge">Corda Bridge (Coming Soon)</a></li>
+								
                                 				
 								<!--<ul class="dropdown">
 									<li class="subs"><a href="<?=base_url();?>publicv/infactor" title="Know about infactor">InFactor</a></li>
