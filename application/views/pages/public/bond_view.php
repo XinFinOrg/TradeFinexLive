@@ -3,7 +3,7 @@
         <div class="container">
             <h3>Digital Bond</h3>
             <br>
-            <h4 class="infactor">Create, Manage & Liquidate Bonds Instrument On Blockchain.</h4>
+            <h4 class="infactor">Create, Manage, and Liquidate Bond Instruments On Blockchain.</h4>
         </div>
     </section>
     
@@ -25,7 +25,7 @@
                         <div class="equal-hight clearfix">
                             <div class="ico-block"><img src="../assets/banner-assets/images/avoid-failure-risk-ico.png" class="rounded-circle img-responsive" alt=""></div>
                             <div class="cnt-block">
-                                <h3>Avoid single point  failure risk </h3>
+                                <h3>Avoid risk of single point failure</h3>
                                 <p>Blockchains don't have a single point of failure.</p>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                         <div class="equal-hight clearfix">
                             <div class="ico-block"><img src="../assets/banner-assets/images/easy-fast-integration-ico.png" class="rounded-circle img-responsive" alt=""></div>
                             <div class="cnt-block">
-                                <h3>Faster and more transparent</h3>
+                                <h3>Faster and more Transparent</h3>
                                 <p>Transparent and secure using blockchain technology.</p>
                             </div>
                         </div>
@@ -43,8 +43,8 @@
                         <div class="equal-hight clearfix">
                             <div class="ico-block"><img src="../assets/banner-assets/images/process-automation-ico.png" class="rounded-circle img-responsive" alt=""></div>
                             <div class="cnt-block">
-                                <h3>Efficient Process and automation</h3>
-                                <p>Enabling Automatic and efficient bond settlement.</p>
+                                <h3>Efficient Process and Automation</h3>
+                                <p>Enabling automatic and efficient bond settlement.</p>
                             </div>
                         </div>
                     </li>
@@ -53,7 +53,7 @@
                             <div class="ico-block"><img src="../assets/banner-assets/images/power-smart-contract-ico.png" class="rounded-circle img-responsive" alt=""></div>
                             <div class="cnt-block">
                                 <h3>Leverage the Power of Smart Contract</h3>
-                                <p>Automate Transfer and settlement cycle using power of blockchain.</p>
+                                <p>Automate transfer and settlement cycle using the power of blockchain.</p>
                             </div>
                         </div>
                     </li>
@@ -69,8 +69,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
-                        <h2>Create, Manage & Liquidate Bonds Instrument Online</h2>
-                        <p>A Fully Digital Solution On Blockchain Eliminate Counterparty Delays, And Allow Instant Settlement.</p>
+                        <h2>Create, Manage and Liquidate Bonds Instrument Online</h2>
+                        <p>A Fully Digital Solution On Blockchain Eliminates Counterparty Delays, and allow Instant Settlement.</p>
                         <ul class="more-features-list">
                             <li>Digital Bond platform for Broker-dealer and license entity</li>
                             <li>Digital platforms enhance secondary market liquidity</li>

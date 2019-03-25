@@ -24,7 +24,7 @@
                         <div class="equal-hight clearfix">
                             <div class="ico-block"><img src="../assets/banner-assets/images/avoid-failure-risk-ico.png" class="rounded-circle img-responsive" alt=""></div>
                             <div class="cnt-block">
-                                <h3>Avoid single point failure risk </h3>
+                                <h3>Avoid risk of single point failure</h3>
                                 <p>Blockchains don't have a single point of failure.</p>
                             </div>
                         </div>
@@ -33,8 +33,8 @@
                         <div class="equal-hight clearfix">
                             <div class="ico-block"><img src="../assets/banner-assets/images/easy-fast-integration-ico.png" class="rounded-circle img-responsive" alt=""></div>
                             <div class="cnt-block">
-                                <h3>Easy and fast integration using API</h3>
-                                <p>Easy Integration with in a Click. Easy plugin available for R3 Corda user.</p>
+                                <h3>Easy and fast Integration using API</h3>
+                                <p>Easy Integration with a Click. Easy plugin available for R3 Corda user.</p>
                             </div>
                         </div>
                     </li>
@@ -42,8 +42,8 @@
                         <div class="equal-hight clearfix">
                             <div class="ico-block"><img src="../assets/banner-assets/images/process-automation-ico.png" class="rounded-circle img-responsive" alt=""></div>
                             <div class="cnt-block">
-                                <h3>Efficient Process and automation</h3>
-                                <p>Enabling Automatic and efficient settlement using smart contracts.</p>
+                                <h3>Efficient Process and Automation</h3>
+                                <p>Enabling automatic and efficient settlement using smart contracts.</p>
                             </div>
                         </div>
                     </li>
@@ -52,7 +52,7 @@
                             <div class="ico-block"><img src="../assets/banner-assets/images/power-smart-contract-ico.png" class="rounded-circle img-responsive" alt=""></div>
                             <div class="cnt-block">
                                 <h3>Leverage the Power of Smart Contract</h3>
-                                <p>Automate Transfer and settlement cycle using power of blockchain.</p>
+                                <p>Automate transfer and settlement cycle using power of blockchain.</p>
                             </div>
                         </div>
                     </li>
@@ -72,7 +72,7 @@
                         <p>The Relayer Bridge deploys Corda Smart ContractState OntoXinFin Network Smart Contract State (ContractInstance)</p>
                         <ul class="more-features-list">
                             <li>Atomic Swap (Include Hash of the transaction)</li>
-                            <li>Built in XDC Wallet and smart contracts makes transaction easier, transparent and secure.</li>
+                            <li>Built-in XDC Wallet and smart contracts make the transaction easier, transparent, and secure.</li>
                         </ul>
                         <div class="more-features-btn-holder"><a href="<?=base_url('#');?>" class="get-started">Start POC</a></div>
                     </div>

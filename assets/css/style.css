@@ -2300,7 +2300,7 @@ to {
 	font-size: 13px;
 	padding: 0px 5px;
 }
-.sub_box_right .btn {
+/*.sub_box_right .btn {
 	background: #1da1f2;
 	color: #fff;
 	border-radius: 4px;
@@ -2311,6 +2311,18 @@ to {
 	padding: 5px;
 	width: 100%;
 	letter-spacing: 1px;
+}*/
+.sub_box_right .btn {
+    background: #1da1f2;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 13px!important;
+    font-family: 'open_sanssemibold';
+    height: 29px!important;
+    text-align: center;
+    padding: 5px!important;
+    width: 100%;
+    letter-spacing: 1px;
 }
 .ben_sup_fin-sec .common:hover {
 	z-index: 2;
@@ -6976,7 +6988,8 @@ left:16px;
 .videos_video {
 	border: 1px solid #e4e5e6;
 	background-color: #ffffff;
-	min-height: 485px;
+	/*min-height: 485px;*/
+	min-height: 300px;
 }
 .home_consortium_video {
 	border: 1px solid #e4e5e6;
@@ -6984,7 +6997,8 @@ left:16px;
 	min-height: 200;
 }
 .videos_video_content {
-	padding: 10px 20px 0px 20px;
+	/*padding: 10px 20px 0px 20px;*/
+	padding: 10px 15px 0px 15px;
 }
 .videos_video_content p:first-child {
 	margin: 0px;
@@ -7001,7 +7015,7 @@ left:16px;
 	font-family: 'Open Sans', sans-serif;
 	color: #777;
 	margin: 10px 0px;
-	text-align: justify;
+	/*text-align: justify;*/
 }
 .videos_video_content p {
 	font-size: 15px;

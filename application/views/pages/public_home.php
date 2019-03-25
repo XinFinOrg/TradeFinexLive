@@ -96,7 +96,7 @@
                     <div class="col-md-6 col-md-push-6">
                         <div class="cnt-block padd-left">
                             <h2>Digital Bond</h2>
-                            <p>Create, Manage and Liquidate Bond Instruments Online. A Fully Digital Blockchain Solution Eliminates Counterparty Delays Provides Instant Settlement.</p>
+                            <p>Create, manage, and liquidate bond instruments online. A fully digital blockchain solution eliminates counterparty delays and provides instant settlement.</p>
                             <div class="button-box">
                             	<a href="<?=base_url('publicv/bond_create');?>" class="get-started">Start POC</a>
                             	<a href="<?=base_url('publicv/digital_bond');?>" class="get-started">Explore</a>
@@ -117,7 +117,7 @@
                 <div class="row">
                     <div class="col-md-5 cnt-block">
                         <h2>Invoice Factoring</h2>
-                        <p>The TradeFinex Invoice Factoring Platform Equips Participants With An Alternative Financial Marketplace That Operates In A Fully Transparent Environment.</p>
+                        <p>The TradeFinex Invoice Factoring Platform equips participants with an alternative financial marketplace that operates in a fully transparent environment.</p>
                         <div class="button-box">
                         	<a href="https://docs.xinfin.org/docs/dapp/infactor.io/conduct-a-poc" class="get-started">Start POC</a>
                         	<a href="<?=base_url('publicv/infactor');?>" class="get-started">Explore</a>
@@ -139,7 +139,7 @@
                     <div class="col-md-6 col-md-push-6">
                         <div class="cnt-block padd-left">
                             <h2>R3 Corda Bridge</h2>
-                            <p>Connect To The R3-Corda Public Blockchain. Mitigate Counterparty Risk By Making Your Financial Instruments Interoperable and Liquid. (Coming Soon)</p>
+                            <p>Connect to the R3-Corda Private State to Blockchain. Mitigate counterparty risk by making your financial instruments interoperable and liquid. (Coming Soon)</p>
                             <div class="button-box">
                             	<a href="#" class="get-started">Start POC</a>
                             	<a href="<?=base_url('publicv/corda_bridge');?>" class="get-started">Explore</a>
@@ -159,8 +159,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 cnt-block">
-                        <h2>TradeFinex Round table series Consortium Event</h2>
-                        <p>This Roundtable Event Places The Trade And Finance Stakeholder And Infrastructure Financier On One Stage To Address The Increasing Global Trade Gap As Well As Infrastructure Deficit While Discussing The Promises Of Blockchain.</p>
+                        <h2>TradeFinex Round Table Series Consortium Event</h2>
+                        <p>This Roundtable Event places the Trade and Finance Stakeholder and Infrastructure Financier on one stage to address the increasing global trade gap as well as Infrastructure deficit while discussing the promises of blockchain.</p>
                         <div class="button-box">
                         	<a href="http://events.tradefinex.org/#contact" target="_blank" class="get-started">Register</a>
                             <a href="http://events.tradefinex.org/" target="_blank" class="get-started">Explore</a>
@@ -382,12 +382,14 @@
 			
 				<div class="btn-more"> <a href="<?php echo base_url() ?>publicv/consortium" title="">Apply Now<span class="icon_right_margin"> <img src="<?php echo base_url() ?>assets/images/icon/arrow.png" alt="icon"></span></a> </div>-->
                 
-                <p>Here below are a few brief videos which you may find helpful: </p>
+                <p>Below here are a few brief videos which you may find helpful:</p>
                 <div class="videos_video_wrap" >
 					<div class="row">
 		    			<div class="col-md-4 col-sm-4 col-xs-12 videos_video_wraper">
 							<div class="home_consortium_video">
-								<iframe src="https://www.youtube.com/embed/mjrhTnZ16f8?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>
+								<!--<iframe src="https://www.youtube.com/embed/mjrhTnZ16f8?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>-->
+                                <div class="embed-responsive embed-responsive-16by9 embed-div">
+<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/mjrhTnZ16f8?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe></div>
 								<div class="videos_video_content">
 									<p>Presenting TradeFInex and Consortium introduction at "Blockchain for Finance Conference 2018" Boston</p>
 									<br>
@@ -396,7 +398,9 @@
 						</div>
 						<div class="col-md-4 col-sm-4 col-xs-12 videos_video_wraper">
 							<div class="home_consortium_video">
-								<iframe src="https://www.youtube.com/embed/jLaqms1IHWE?feature=oembed" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>
+								<!--<iframe src="https://www.youtube.com/embed/jLaqms1IHWE?feature=oembed" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>-->
+                                <div class="embed-responsive embed-responsive-16by9 embed-div">
+<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/jLaqms1IHWE?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe></div>
 								<div class="videos_video_content">
 									<p>Leveraging XinFin Blockchain to address global infrastructure deficit</p>
 									<br><br>
@@ -405,7 +409,9 @@
 						</div>
 						<div class="col-md-4 col-sm-4 col-xs-12 videos_video_wraper">
 							<div class="home_consortium_video">
-								<iframe src="https://www.youtube.com/embed/3INyDwUFQgs?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>
+								<!--<iframe src="https://www.youtube.com/embed/3INyDwUFQgs?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>-->
+                                <div class="embed-responsive embed-responsive-16by9 embed-div">
+<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3INyDwUFQgs?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe></div>
 								<div class="videos_video_content">
 									<p>IAC Consortium /
 									Project Sandbox introduction at Official Monetary and Financial Institutions Forum (OMFIF)</p>

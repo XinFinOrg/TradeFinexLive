@@ -108,8 +108,8 @@
                 <div class="row justify-content-center">
                     <div class="col-md-10 col-md-offset-1">
                         <div class="head-block">
-                            <h2>Get more Financing option to your unpaid invoice</h2>
-                            <p>Leverage Power of the Blockchain and make your financial instruments Liquid and Interoperable.</p>
+                            <h2>Get more financing options to your unpaid invoice!!</h2>
+                            <p>Leverage power of the blockchain and make your financial instruments liquid and interoperable.</p>
                         </div>
                     </div>
                 </div>
@@ -118,8 +118,8 @@
                         <div class="equal-hight clearfix">
                             <div class="ico-block"><img src="../assets/banner-assets/images/iso20022-standard-ico.png" class="rounded-circle img-responsive" alt=""></div>
                             <div class="cnt-block">
-                                <h3>Build on ISO20022 standard </h3>
-                                <p>Invoice Factoring Build on ISO 20022 Standard.</p>
+                                <h3>Built on ISO20022 standard</h3>
+                                <p>Invoice Factoring is built on ISO 20022 Standard, the interoperable messaging standard for private and hybrid state.</p>
                             </div>
                         </div>
                     </li>
@@ -128,7 +128,7 @@
                             <div class="ico-block"><img src="../assets/banner-assets/images/easy-fast-integration-ico.png" class="rounded-circle img-responsive" alt=""></div>
                             <div class="cnt-block">
                                 <h3>Easy and fast integration using API</h3>
-                                <p>Easy Integration with in a Click. Easy plugin available for Quickbooks user.</p>
+                                <p>Easy integration with a click. Easy plugin available for QuickBooks users.</p>
                             </div>
                         </div>
                     </li>
@@ -136,8 +136,8 @@
                         <div class="equal-hight clearfix">
                             <div class="ico-block"><img src="../assets/banner-assets/images/leverage-annual-market-ico.png" class="rounded-circle img-responsive" alt=""></div>
                             <div class="cnt-block">
-                                <h3>Leverage USD 5 Trillion annual Market</h3>
-                                <p>Connect to your financer in a whole new way. Get access to more financing options.</p>
+                                <h3>Leverage USD 5 Trillion annual market</h3>
+                                <p>Connect to your financier in a whole new way. Get access to more financing options.</p>
                             </div>
                         </div>
                     </li>
@@ -145,8 +145,8 @@
                         <div class="equal-hight clearfix">
                             <div class="ico-block"><img src="../assets/banner-assets/images/power-smart-contract-ico.png" class="rounded-circle img-responsive" alt=""></div>
                             <div class="cnt-block">
-                                <h3>Leverage the Power of Smart Contract</h3>
-                                <p>Automate repayment and settlement cycle using power of blockchain.</p>
+                                <h3>Leverage the power of smart contract</h3>
+                                <p>Automate repayment and settlement cycle using the power of blockchain.</p>
                             </div>
                         </div>
                     </li>
@@ -162,11 +162,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
-                        <h2>How it work ?</h2>
+                        <h2>How it works?</h2>
                         <p>Invoice Factoring is an accepted form of working capital management solution. It does so by converting your unpaid invoices to cash. Invoice Factoring allows companies to receive cash instantly, customers to live by friendly payment terms and investors (the factor) to earn some profits in terms of fee.</p>
                         <ul class="more-features-list">
                             <li>InFactor is a platform for factoring Trade Instruments, mainly invoices.</li>
-                            <li>Built in XDC Wallet and smart contracts make invoice factoring easier, transparent and secure.</li>
+                            <li>Built in XDC Wallet and smart contracts make invoice factoring easier, transparent, and secure.</li>
                         </ul>
                         <div class="more-features-btn-holder"><a href="https://docs.xinfin.org/docs/dapp/infactor.io/conduct-a-poc" class="get-started">Start POC</a></div>
                     </div>
@@ -192,7 +192,7 @@
                     <div class="col-md-10 col-md-offset-1">
                         <div class="head-block">
                             <h2>Get an overview</h2>
-                            <p>Connect to more financier in a whole new way.</p>
+                            <p>Connect to more financiers in a whole new way.</p>
                         </div>
                     </div>
                 </div>
@@ -216,14 +216,14 @@
         
         <section class="still-hav-qtns-outer grey-bg padding-lg">
             <div class="container">
-                <h2>Still have questions?</h2>
+                <h2>Still, have questions?</h2>
                 <ul class="row features-listing">
                     <li class="col-md-4 equal-hight">
                         <a href="http://docs.infactor.io">
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/help-icon.png" alt=""></span>
                             <h3>Help Center</h3>
-                            <p>Your questions or feedback</p>
+                            <p>Let us know your questions or feedback</p>
                       		<!--<a href="http://docs.infactor.io" class="know-more">Know more</a>-->
                         </div>
                         </a>
@@ -232,8 +232,8 @@
                         <a href="http://docs.infactor.io/faq/General/">
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/faqs-icon.png" alt=""></span>
-                            <h3>Faqs</h3>
-                            <p>General and Technical Frequently asked questions Resource Link</p>
+                            <h3>FAQs</h3>
+                            <p>General or Technical-Ask your questions here!</p>
                             <!--<a href="http://docs.infactor.io/faq/General/" class="know-more">Know more</a>-->
                         </div>
                         </a>
@@ -243,7 +243,7 @@
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/techdoc-icon.png" alt=""></span>
                             <h3>Technical Documents</h3>
-                            <p>Technical Resource, API link, Example code and Release note </p>
+                            <p>Find Technical Resource, API link, Example code, and Release note here.</p>
                             <!--<a href="http://docs.infactor.io/Guide/API/" class="know-more">Know more</a>-->
                         </div>
                         </a>
