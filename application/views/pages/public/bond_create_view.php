@@ -185,7 +185,7 @@
                                         <div class="row">
                                             <div class="col-md-12 footerBtns">
                                                 <p>It may take few seconds to deploy on public blockchain network.</p>
-                                                <button type="submit" id="deploy_contract" class="btn btn-primary btn-rounded"  > Your Smart Contract is Ready To Deploy</button><br>
+                                                <button type="submit" id="deploy_contract" class="btn btn-primary btn-rounded"  > Your Bond is Ready To Deploy</button><br>
                                                 <!-- <button class="btn btn-light btn-rounded btn-outline" id="bondCreateCancel">Cancel</button> -->
                                             </div>
                                             <br>
