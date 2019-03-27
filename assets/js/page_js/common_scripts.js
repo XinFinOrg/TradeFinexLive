@@ -694,6 +694,7 @@ $(function () {
 				minlength: "Digits length should be atleast 2",
 				maxlength: "Digits length should not exceeded than 15"
 			},
+			defaultReal:"Please enter correct captcha (Letters are Case sensitive)."
 		},
 		onkeyup: function (elem) {
 
