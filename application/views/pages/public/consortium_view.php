@@ -1,132 +1,165 @@
 <div class="sub_page_wraper">
-<section class="trade_career">
-	<div class="container">
-		<h3>Consortium Membership for Tradefinex</h3>
-		<!--<p>Consortium-Led Asset Tokenisation Platform Using Blockchain Technology</p>-->
-		<div class="btn-more">
-			<a href="https://youtu.be/mjrhTnZ16f8">
-				<span> <i class="fa fa-play-circle"></i> </span> <span>Watch Video</span> 
-			</a>
-		</div>
-	</div>
-</section>
-<section class="career_form_block">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-7 col-sm-7 col-xs-12 hidden-xs">
-				<div class="left_side">
-					<div class="con_block">
-						
-							<div class="col-md-12 col-xs-12 col-sm-12">
-						<h2 class="title"> Want to join the Consortium?</h2>
-						<p class="content">You can participate in this consortium by joining as either a founding member or extended member of the consortium. As a member, you will be part of the ecosystem and will contribute to the evolution of TradeFinex platform. Your contribution in terms of best practices, driving the standardization and working with regulators will help you to influence the future of your industry. A consortium-led governance makes the platform truly decentralized which is in sync with the core philosophy of blockchain.
-						</p>
-						
-						<p class="content">Participate, co-develop and share in the following benefits of the TradeFinex blockchain powered platform:</p>
-						<p class="content">* de-risk new infrastructure project finance</p>
-								 <p class="content">* lower transaction costs</p>
-								 <p class="content">* standardise contracts & instruments</p>
-								 <p class="content">* incubate and accelerate infrastructure project pipeline</p>
-								 <p class="content">* rack infrastructure asset performance data</p>
-								 <p class="content">* securitize and trade tokenized infrastructure assets</p>
-								
-						<p class="content">To join the consortium fill up the Membership form or get more information on consortium Event at: http://Events.tradefinex.org </p>
-						</div>
-			
-			
-					</div>
-					<div class="con_block last_sec_con_block hide">
-						
-					</div>
-				</div>
-			</div>
-			<div class="col-md-5 col-sm-5 col-xs-12 career_position">
-				<div class="right_side">
-					<h3 class="title"> Be a part of Consortium </h3>
-					<?php $attributes = array('id' => 'consortium-form', 'class' => 'consortium_form form-commom', 'method' => 'post', 'role' => 'form');
-					echo form_open_multipart(base_url().'publicv/consortium/', $attributes); ?>
-					<div class="form-group focus-group">
-						<label class="form-label">
-							<input class="input-focus input-focus-notr" id="mname" name="mname" type="text" autocomplete="" data-required-error="" tabindex="1" aria-required="true" />
-							<span class="form-name floating-label">FULL NAME<sup>*</sup></span> 
-						</label>
-					</div>
-					<div class="form-group focus-group">
-						<label class="form-label">
-							<input class="input-focus input-focus-notr" id="memail" name="memail" type="text" autocomplete="" data-required-error="" tabindex="2" aria-required="true" />
-							<span class="form-name floating-label">EMAIL ID<sup>*</sup></span> 
-						</label>
-					</div>
-					<div class="form-group focus-group">
-						<label class="form-label">
-							<input class="input-focus input-focus-notr" id="mmob" name="mmob" type="text" autocomplete="" data-required-error="" tabindex="3" aria-required="true" />
-							<span class="form-name floating-label">MOBILE NO<sup>*</sup></span> 
-						</label>
-					</div>
-					<div class="form-group focus-group">
-						<label class="form-label">
-							<input class="input-focus input-focus-notr" id="mcomp" name="mcomp" type="text" autocomplete="" data-required-error="" tabindex="4" aria-required="true" />
-							<span class="form-name floating-label">COMPANY<sup>*</sup></span> 
-						</label>
-					</div>
-					<!--<div class="form-group focus-group">
-						<label class="form-label">
-							<input class="input-focus input-focus-notr" id="murl" name="murl" type="text" autocomplete="" data-required-error="" tabindex="4" aria-required="true" />
-							<span class="form-name floating-label">WEBSITE<sup>*</sup></span> 
-						</label>
-					</div>
-					<div class="form-group focus-group">
-						<div class="select_drop"> <span class="ti-angle-down"></span>
-							<select class="form-control appearance_back" id="musertype" name="musertype">
-								<option value=""></option>
-								<option value="Supplier">Supplier</option>
-								<option value="Financier">Financier</option>
-								<option value="Buyer">Buyer</option>
-								<option value="Other">Other</option>
-							</select>
-							<span class="form-name floating-label">NATURE OF BUSINESS<sup>*</sup></span> 
-						</div>
-					</div>-->
-					<div class="form-group focus-group">
-						<textarea class="input-focus input-focus-notr" rows="5" id="mmsg" name="mmsg" data-required-error="" tabindex="5"></textarea>
-						<span class="form-name floating-label">Comments</span> 
-					</div>
-					<div class="form-group">
-						<div class="form-label">
-							<input class="input-focus input-focus-notr" id="defaultReal" name="defaultReal" captchav="" autocomplete="" maxlength="50" required data-required-error="" tabindex="5" aria-required="true" type="text">
-							<span class="form-name floating-label">ENTER CAPTCHA<sup>*</sup></span> 
-						</div>
-						<div class="captcha-error has-error" style="display:none"><div class="help-block col-xs-12 col-sm-reset inline"><font color="red" style="margin-left: -10px;">Enter Letters Shown Above.</font></div></div><!-- Invalid Captcha ! -->
-					</div>
-					<div class="form-group"><input type="hidden" name="action" value="send_mail" /><input type="hidden" id="captcha_val" /></div>
-					<div class="form-group">
-						<div class="btn-more">
-							<button type="submit" class="btn btn-info"> Submit</button>
-						</div>
-					</div>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-7 col-sm-7 col-xs-12 hidden-md hidden-lg">
-				<div class="left_side">
-					<div class="con_block">
-							<h2 class="title">Want to join the Consortium?</h2>
-						<p class="content">You can participate in this consortium by joining as either a founding member or extended member of consortium. As a member you will be part of the ecosystem and will contribute to evolution of TradeFinex platform. Your contribution in terms of best practices, driving the standardization and working with regulators will help you to influence the future of your industry. A consortium-led governance makes the platform truly decentralized which is in sync with core philosophy of blockchain.
-						</p>
-						
-						<p class="content">To join the consortium or request more information, please complete the Contact For Membership form </p>
-					</div>
-					<div class="con_block last_sec_con_block hide">
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+    <section class="trade_career">
+        <div class="container  text-center">
+            <h3>Consortium Membership</h3>
+            <!--<p>Consortium-Led Asset Tokenisation Platform Using Blockchain Technology</p>-->
+            <div class="btn-more">
+                <a class="play-btn video" href="https://www.youtube.com/watch?v=mjrhTnZ16f8"><span class="fa fa-play-circle"></span> Watch Video</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="white-bg padding-lg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cnt-block padd-left">
+                        <h2 class="mb-15">Let's start the journey together.</h2>
+                        <p class="mb-15">You can participate in this consortium by joining as either a founding member or extended member of the consortium. As a member, you will be part of the ecosystem and will contribute to the evolution of TradeFinex platform. Your contribution in terms of best practices, driving the standardization and working with regulators will help you to influence the future of your industry. A consortium-led governance makes the platform truly decentralized which is in sync with the core philosophy of blockchain.</p>
+                        <p>Participate, co-develop and share in the following benefits of the TradeFinex blockchain powered platform membership:</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="wrapper grey-bg">
+        <div class="image-block-wrapper">
+            <div class="image-block col-md-6">
+                <div class="image-block-bg bg1"></div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-6 mt-70 mb-70">
+                        <div class="padd-left">
+                            <h2>What your Membership includes</h2>
+                            <ul class="more-features-list">
+                                <li>Get support and interaction (Slack) with Consortium Colleagues.</li>
+                                <li>Conduct Unlimited online Proof of Concepts with TradeFinex Platform.</li>
+                                <li>Get Regular newsletters on activity in Trade and Finance.</li>
+                                <li>Get Free virtual Pass (Sky Business Meeting) access to yearly Roundtable of TradeFinex. (Normal cost USD 200/per event access)</li>
+                                <li>Get to interact with Trade Finance Ecosystem participants around the world for growing your business.</li>
+                                <li>Your company logo and link in TradeFinex ecosystem partners.</li>
+                                <li>A PoC completion press release to create awareness for your company.</li>
+                                <li>Become Member in just USD 199. offer for a limited time only.</li>
+                            </ul>
+                            <!--<div class="more-features-btn-holder mt-20"><a href="#" class="get-started">Subscribe </a></div>-->
+                            <div class="more-features-btn-holder mt-20">
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input name="cmd" type="hidden" value="_s-xclick" />
+                                    <input name="hosted_button_id" type="hidden" value="XPXLS3L3KDGBJ" />
+                                    <input alt="PayPal &ndash; The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/en_GB/SG/i/btn/btn_subscribeCC_LG.gif" type="image" /> <img src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" alt="" width="1" height="1" border="0" /></form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="consortium-sec padding-lg">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="head-block">
+                        <h2>FAQs</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-group" id="maccordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#maccordion" href="#collapseOne">What is TradeFinex Consortium?</a> </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body">A forum made up of individuals, companies, organizations and governments to contribute towards the evolution of cross border trade and finance practise (using innovative technology) under Regulatory Framework.</div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#maccordion" href="#collapseTwo">Who can join the Consortium?</a> </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">Our community includes Custodians, Banks, Broker/dealers, Corporates, Exchanges, Clearing houses, Remittance Company, government body, securities Board and global infrastructure fund.</div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#maccordion" href="#collapseThree">How does this consortium operate?</a> </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">Consortium Manage and Govern by the Members only, However the entire programme will be Administered, monitored and maintained by TradeFinex Tech Pvt Ltd.</div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#maccordion" href="#collapseFour">Whom do I contact for more information on TradeFinex Consortium?</a> </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">Most of the information available on tradefinex website but if you still have question then feel free to <a href="<?=base_url('publicv/contact');?>">Contact us</a>.</div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#maccordion" href="#collapseFive">What payment methods are accepted?</a> </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse">
+                        <div class="panel-body">The TradeFinex Consortium can accept payment via PayPal only.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--<section class="consortium-sec grey-bg padding-lg">
+        <div class="container">
+            <div class="row text-center">
+            	<div class="col-md-10 col-md-offset-1">
+                	<div class="head-block">
+                    	<h2>FAQs</h2>
+                	</div>
+            	</div>
+            </div>
+            <ul class="row consortium opt2">
+                <li class="col-md-6">
+                    <div class="text-area">
+                        <h6>What is TradeFinex Consortium?</h6>
+                        <p>A forum made up of individuals, companies, organizations and governments to contribute towards the evolution of cross border trade and finance practise (using innovative technology) under Regulatory Framework.</p>
+                    </div>
+                </li>
+                <li class="col-md-6">
+                    <div class="text-area">
+                        <h6>Who can join the Consortium?</h6>
+                        <p>Our community includes Custodians, Banks, Broker/dealers, Corporates, Exchanges, Clearing houses, Remittance Company, securities and treasury market infrastructures etc.</p>
+                    </div>
+                </li>
+                <li class="col-md-6">
+                    <div class="text-area">
+                        <h6>How does this consortium operate?</h6>
+                        <p>consortium Manage and Govern by the Members only, However the entire programme will be Administered, monitored and maintained by TradeFinex Tech Pvt Ltd.</p>
+                    </div>
+                </li>
+                <li class="col-md-6">
+                    <div class="text-area">
+                        <h6>Whom do I contact for more information on TradeFinex Consortium?</h6>
+                        <p>Most of the information available on tradefinex website but if you still have question then feel free to <a href="<?=base_url('publicv/contact');?>">Contact us</a>.</p>
+                    </div>
+                </li>
+		<li class="col-md-6">
+                    <div class="text-area">
+                        <h6>What payment methods are accepted?</h6>
+                        <p>The TradeFinex Consortium can accept payment via PayPal only.</p>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </section>-->
+
 </div>
 <?php
-//$this->load->view('includes/block_features');
-$this->load->view('includes/login_modal');
+	//$this->load->view('includes/block_features');
+	$this->load->view('includes/login_modal');
 ?>
-

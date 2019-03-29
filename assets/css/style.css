@@ -4769,9 +4769,10 @@ to {
 
 
 .trade_career {
-	background: #154162 url(../images/background/trade-contract.png) no-repeat center;
+	background: #154162 url(../images/background/trade-contract.png) no-repeat center top;
 	width: 100%;
-	padding: 60px 0px;
+	/*padding: 60px 0px;*/
+	padding: 100px 0px;
 	background-size: cover;
 }
 .trade_career h3 {
@@ -4803,7 +4804,7 @@ to {
 }
 .trade_career .btn-more {
 	margin-top: 30px;
-	float: left;
+	/*float: left;*/
 }
 .career_form .btn-more {
 	margin-top: 20px;
@@ -8656,7 +8657,7 @@ div.dataTables_wrapper div.dataTables_info {
     color: rgba(255,255,255,.9);
 }
 .btn, a:link.btn {
-    display: inline-block !important;
+    /* display: inline-block !important; */
     text-align: center !important;
     white-space: nowrap !important;
     user-select: none;
