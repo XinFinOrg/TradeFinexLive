@@ -638,7 +638,7 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="congratulations_text">
-								<p><b>Congratulations</b> !!  You have successfully filled all mandatory registration fields. You may fill remaining information now or start exploring TradeFinex after paying the memberhsip fees. Remaining information will become mandatory when you initiate Blockchain based smart contracts. Completing and personalizing your TradeFinex profile can go a long way toward increasing your visibility and marketing power. </p>
+								<p><b>Congratulations.</b> !! You have successfully filled all mandatory registration fields. You may fill remaining information now or start exploring TradeFinex after paying the memberhsip fees. Remaining information will become mandatory when you initiate Blockchain based smart contracts. Completing and personalizing your TradeFinex profile can go a long way toward increasing your visibility and marketing power. </p>
 							</div>
 						</div>
 					</div>
@@ -850,14 +850,10 @@
 				<br>
 				<div class="row">
 					<div class="col-md-4 col-sm-4 col-xs-12"><a href="https://alphaex.net" target="_blank">
-				<img class="img-responsive xinfin_logo_sign_up" width="100px"   src="<?=base_url();?>assets/images/img/alphaex_logo.jpg" alt="logo" />
+						<img class="img-responsive xinfin_logo_sign_up" width="100px"   src="<?=base_url();?>assets/images/img/alphaex_logo.jpg" alt="logo" />
 
-				<span class="forgot_passwd"><a href="https://alphaex.net" target="_blank">AlphaEx.net</a></span></div>
-				<div class="col-md-4 col-sm-4 col-xs-12 "> <a href="https://quoinex.com/" target="_blank"><img class="img-responsive xinfin_logo_sign_up" width="100px" src="<?=base_url();?>assets/images/img/quoinex_logo.jpg" alt="logo" />
-				<span class="forgot_passwd"><a href="https://quoinex.com/" target="_blank">Quoinex</a></span></div>
-
-					<div class="col-md-4 col-sm-4 col-xs-12"> <a href="https://coss.io/" target="_blank"><img class="img-responsive xinfin_logo_sign_up" width="100px" src="<?=base_url();?>assets/images/img/coss_logo.jpg" alt="logo" />
-					<span class="forgot_passwd"><a href="https://coss.io/" target="_blank">COSS.io</a></span></div></div>
+					</div>
+				</div>
 
 		</div>
 	</div>

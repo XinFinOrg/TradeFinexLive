@@ -8651,60 +8651,60 @@ div.dataTables_wrapper div.dataTables_info {
     border: 1px solid rgba(0,0,0,.125);
     border-radius: 0.5em;
 }
-.btn-primary, a.btn-primary, a:visited.btn-primary a:link.btn-primary {
+.btnn-primary, a.btnn-primary, a:visited.btnn-primary a:link.btnn-primary {
     background-color: #2aa3ef !important;
     border: 1px solid #2aa3ef !important;
     color: rgba(255,255,255,.9);
 }
-.btn, a:link.btn {
-    /* display: inline-block !important; */
+.btnn, a:link.btnn {
+    display: inline-block !important;
     text-align: center !important;
     white-space: nowrap !important;
     user-select: none;
     border: 1px solid transparent !important;
-    padding: 8px 20px !important;
+    padding: 0px 17px !important;
     font-size: 1rem !important;
     border-radius: .25rem ;
     transition: all .2s ease;
-    height: 38px !important;
+    height: 49px !important;
     vertical-align: middle;
     font-weight: 300 !important;
     cursor: pointer;
 }
-.btn, .noUi-target, .noUi-target *, a:link.btn {
+.btnn, .noUi-target, .noUi-target *, a:link.btnn {
     -webkit-user-select: none;
     -ms-user-select: none;
     -moz-user-select: none;
 }
-.btn-primary {
+.btnn-primary {
     color: #fff;
     background-color: #007bff;
     border-color: #007bff;
 }
-.btn-primary:hover, a.btn-primary:hover, a:visited.btn-primary a:link.btn-primary:hover {
+.btnn-primary:hover, a.btnn-primary:hover, a:visited.btnn-primary a:link.btnn-primary:hover {
     background-color: #2f74ba!important;
     border: 1px solid #2f74ba!important;
     box-shadow: 0 5px 10px rgba(99,94,190,.4)!important;
     color: #fff;
 }
-.btn-light:hover, a:link.btn-light:hover {
+.btnn-light:hover, a:link.btnn-light:hover {
     background-color: #f0f6ff!important;
     border-color: rgba(141,166,195,.2);
 }
-.btn-light.btn-floating, .btn-light:hover, a:link.btn-light.btn-floating, a:link.btn-light:hover {
+.btnn-light.btnn-floating, .btnn-light:hover, a:link.btnn-light.btnn-floating, a:link.btnn-light:hover {
     box-shadow: 0 5px 10px rgba(120,141,180,.2)!important;
 }
-.btn.btn-rounded, a:link.btn.btn-rounded {
+.btnn.btnn-rounded, a:link.btnn.btnn-rounded {
     border-radius: 50px;
     padding: 6px 25px;
 }
-.btn-light {
+.btnn-light {
     background-color: #fff;
     border-color: rgba(141,166,195,.5) !important;
     color: #839bb3!important;
 }
 
-.btn-light:hover {
+.btnn-light:hover {
     color: #212529;
     background: #e2e6ea;
     border-color: #dae0e5;
@@ -8813,9 +8813,7 @@ body .header-wrapper .header-bottom .main-menu ul.nav.metismenu li a:hover, body
 	line-height: 30px;
 }
 
-input { 
-    text-transform: capitalize;
-}
+
 ::-webkit-input-placeholder { /* WebKit browsers */
     text-transform: none;
 }
