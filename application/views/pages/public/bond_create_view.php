@@ -106,12 +106,13 @@
                                                 <label for="Discounted Value">Discounted Value</label><sup>*</sup>
                                                 <input type="text" class="form-control  form-controlCustom form-control-lg" id="dvalue" name="dvalue" placeholder = "Discounted Value">
                                             </div>
-											</div> 
+											 
                                             <div class="form-group col-lg-4 col-md-6">
                                                 <label for="captcha">Enter Captcha</label><sup>*</sup>
                                                 <input class="form-control form-controlCustom form-control-lg" id="defaultReal" name="defaultReal" captchav="" autocomplete="" maxlength="50" required data-required-error="" tabindex="5" aria-required="true" type="text">                                            
                                                 <input type="hidden" id="captcha_val" />
                                                 <div class="captcha-error has-error" style="display:none"><div class="help-block col-xs-12 col-sm-reset inline"><font color="red" style="margin-left: -10px;">Enter Letters Shown Above.</font></div></div><!-- Invalid Captcha ! -->
+                                            </div>
                                             </div>
 
                                             <div class="card-footer border-0 text-center">
