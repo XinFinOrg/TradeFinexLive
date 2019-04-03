@@ -98,7 +98,7 @@
                             <h2>Digital Bond</h2>
                             <p>Create, manage, and liquidate bond instruments online. A fully digital blockchain solution eliminates counterparty delays and provides instant settlement.</p>
                             <div class="button-box">
-                            	<a href="<?=base_url('signin');?>" class="get-started">Start POC</a>
+                            	<a href="<?=base_url('publicv/bond_create');?>" class="get-started">Start POC</a>
                             	<a href="<?=base_url('publicv/digital_bond');?>" class="get-started">Explore</a>
                             </div>
                         </div>
