@@ -1423,7 +1423,8 @@ table.dataTable > tbody > tr.child ul.dtr-details li {
 }
 .trade_career {
 	background-size: 100%;
-	padding: 30px 0px;
+	/*padding: 30px 0px;*/
+	padding: 80px 0px;
 }
 .career_form {
 	width: 100%;

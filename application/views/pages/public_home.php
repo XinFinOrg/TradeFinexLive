@@ -26,7 +26,7 @@
 					<div class="page-title-heading">Create Bridge & Gain access to global Financial ecosystem.</div>
 					<div class="text-heading"> </div>
 					<p class="slider_lower_content">Start trial under regulatory sandbox environment.</p>
-					<a class="trade_home_call_to-action" href="<?=base_url('publicv/bond_create');?>">Start POC</a>
+					<a class="trade_home_call_to-action" href="<?=base_url('signin');?>">Start POC</a>
 					<a class="trade_home_call_to-action" href="https://docs.tradefinex.org/faq/general">Explore</a>
 				</div>
 			</div> 
@@ -40,7 +40,7 @@
         
         
         
-<section class="banner-outer">
+        <section class="banner-outer">
             <!--<div class="banner-slider">-->
                 <div class="banner banner2 slide1">
                     <div class="container">
@@ -73,7 +73,7 @@
                                     <p class="animated fadeInDown delay-03s">Start trial under regulatory sandbox environment</p>
                                     </div>
                                     <div class="button-box">
-                                	<a href="<?=base_url('publicv/bond_create');?>" class="get-started animated fadeInDown delay-04s">Start POC</a>
+                                	<a href="<?=base_url('signin');?>" class="get-started animated fadeInDown delay-04s">Start POC</a>
                                 	<a href="https://docs.tradefinex.org/faq/general" class="get-started animated fadeInDown delay-05s">Explore</a>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                             <h2>Digital Bond</h2>
                             <p>Create, manage, and liquidate bond instruments online. A fully digital blockchain solution eliminates counterparty delays and provides instant settlement.</p>
                             <div class="button-box">
-                            	<a href="<?=base_url('publicv/bond_create');?>" class="get-started">Start POC</a>
+                            	<a href="<?=base_url('signin');?>" class="get-started">Start POC</a>
                             	<a href="<?=base_url('publicv/digital_bond');?>" class="get-started">Explore</a>
                             </div>
                         </div>

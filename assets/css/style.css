@@ -6191,6 +6191,30 @@ padding:.65rem .9rem;
 	margin-bottom: 15px;
 	font-family: 'open_sanssemibold';
 }
+
+
+
+.projects_banner {
+	width: 100%;
+	background: url(../images/img/projects_banner.jpg) no-repeat center;
+	padding: 126px 0px;
+	background-size: cover;
+	text-align: center;
+}
+.projects_banner h3 {
+	color: #fff;
+	font-family: 'open_sansregular';
+	font-size: 36px;
+	line-height: 36px;
+	margin-bottom: 15px;
+}
+.projects_banner p {
+	font-size: 16px;
+    line-height: 26px;
+    color: #fff;
+}
+
+
 .steps_vertical {
 	width: 100%;
 	float: left;

@@ -52,16 +52,15 @@
 			<div class="nav-wrap">
 				<nav id="mainnav" class="mainnav">
 					<ul class="menu">
-					    <li> <a  href="<?=base_url();?>publicv/consortium" title="Consortium">Consortium</a> </li>
+					    <li><a href="<?=base_url();?>publicv/consortium" title="Consortium">Consortium</a></li>
 					    <li class="hidden-xs hidden-sm"> | </li>
 				
 						<li class="hassubs"> <a href="javascript:void(0)" title="">Financial Instruments Supported</a>
 							<ul class="submenu">
 								<li class=""><a href="<?=base_url();?>publicv/digital_bond" title="Know About Digital Bond">Digital Bond</a></li>
-                                <li class=""><a href="<?=base_url();?>publicv/infactor" title="Know about infactor">Invoice</a></li>
+                                <li class=""><a href="<?=base_url();?>publicv/infactor" title="Know about infactor">Invoice Factoring</a></li>
+								<li class=""><a href="<?=base_url();?>publicv/corda_bridge" title="Know about infactor">Corda Bridge (Coming Soon)</a></li>
 
-								<li class=""><a href="<?=base_url();?>publicv/corda_bridge" title="Know about Corda Bridge">Corda Bridge (Coming Soon)</a></li>
-								
                                 				
 								<!--<ul class="dropdown">
 									<li class="subs"><a href="<?=base_url();?>publicv/infactor" title="Know about infactor">InFactor</a></li>
@@ -72,7 +71,10 @@
 							</ul>
 						</li>
 						<li class="hidden-xs hidden-sm"> | </li>
-						<li> <a href="https://docs.tradefinex.org/faq/general/" title="FAQ">FAQ</a> </li>
+						<li> <a href="<?=base_url();?>publicv/projects" title="Projects">Projects</a> </li>
+                        
+                        <li class="hidden-xs hidden-sm"> | </li>
+						<li> <a href="https://docs.tradefinex.org/faq/general/" title="FAQ">FAQs</a> </li>
 				
 						<li class="hidden-xs hidden-sm"> | </li>
 						<li> <a href="<?=base_url();?>publicv/contact" title="">Contact us </a> </li>

@@ -103,8 +103,8 @@
 								<h3 class="widget-title">Explore</h3>
 								<ul class="one-half">
 									<li> <a href="<?=base_url();?>publicv/digital_bond" title="">Digital Bond</a></li>
-									<li> <a href="<?=base_url();?>publicv/infactor" title="">Invoice</a></li>	
-									<li> <a href="<?=base_url();?>publicv/consortium" title="">Consortium</a></li>
+									<li> <a href="<?=base_url();?>publicv/infactor" title="">Invoice Factoring</a></li>	
+									<li> <a href="<?=base_url();?>publicv/consortium" title="">Consortium Membership</a></li>
 									<li> <a href="http://events.tradefinex.org/" title="">Consortium Event</a></li>
                                     <!--<li> <a href="<?=base_url();?>" title="">Start POC</a></li>-->
 								</ul>
@@ -118,7 +118,7 @@
 								<ul class="one-half">
 									<li> <a href="https://xinfinorg.github.io/TradeFinex_API/" title="">API</a></li>
                                 	<li> <a href="<?=base_url();?>publicv/media_center" title="">Media Center</a></li>
-									<li> <a href="<?=base_url();?>publicv/faq" title="">FAQ's</a></li>
+									<li> <a href="<?=base_url();?>publicv/faq" title="">FAQs</a></li>
 									<li> <a href="<?=base_url();?>publicv/contact" title="">Contact Us</a></li>
 									<!--<li> <a href="<?=base_url();?>publicv/videos" title="">Videos</a></li>-->									
 								</ul>

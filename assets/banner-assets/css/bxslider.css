@@ -572,7 +572,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3edc93', end
 	padding-bottom: 90px;
 }
 .content-marketing .head-block h2 {
-	padding-bottom: 30px;
+	padding-bottom: 15px;
 }
 .content-marketing .head-block h2 span {
 	display: block;
@@ -676,7 +676,7 @@ ul.marketing-list2 li p {
 	 Content Marketing opt3
 ----------------------------------*/
 .content-marketing3 .head-block {
-	padding-bottom: 60px;
+	padding-bottom: 50px;
 }
 ul.marketing-list3 {
 	text-align: left;
@@ -779,7 +779,7 @@ ul.marketing-list3 li a:hover {
 	padding-bottom: 0px;
 }
 .generate-forms h2 {
-	padding-bottom: 30px;
+	padding-bottom: 15px;
 }
 .generate-forms p {
 	padding-bottom: 45px;
@@ -1222,6 +1222,9 @@ ul.team-listing li ul.follow-us li a:hover {
 -----------------------*/
 .more-features {
 	display: block;
+}
+.more-features .padd-right {
+	padding-right: 100px;
 }
 .more-features h2 {
 	padding-bottom: 20px;
@@ -1769,9 +1772,10 @@ ul.consortium li {
 	padding: 0 10px 45px 10px;
 }
 .our-perks {
+	background-color: #fafafa;
 	border: 1px solid #d0dbe1;
 	border-radius: 10px;
-	padding: 40px 22px;
+	padding: 10px 20px 20px 20px;
 	box-shadow: 2px -3px 10px -3px rgba(0, 0, 0, 0.1);
 }
 .consortium-sec .our-perks h3 {
@@ -1783,7 +1787,7 @@ ul.consortium li {
 }
 .icon-tik-list li {
 	list-style: none;
-	padding: 20px 0 20px 40px;
+	padding: 10px 0 10px 25px;
 	border-bottom: 1px #d6d7d7 solid;
 	position: relative;
 }
@@ -1791,22 +1795,39 @@ ul.consortium li {
 	width: 30px;
 	height: 100%;
 	position: absolute;
-	top: 20px;
+	top: 8px;
 	left: 0;
-	content: "\e927";
-	font-family: 'icomoon';
-	font-size: 24px;
-	color: #42d79e;
+	content: "\f058";
+	font-family: 'FontAwesome';
+	font-size: 18px;
+	color: #f29a32;
 }
 .icon-tik-list li:last-child {
 	border-bottom: none;
 	padding-bottom: 0px;
 }
 .icon-tik-list li h6 {
-	font-size: 16px;
+	font-size: 18px;
 	color: #22333a;
 	font-weight: 600;
 	padding: 0 0 5px;
+}
+.icon-tik-list li h6 a {
+	background-color: #57bce2;
+	color: #FFFFFF;
+	padding: 5px 10px!important;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 400;
+}
+.icon-tik-list li h6 a:Hover {
+	background-color: #f29a32;
+	color: #FFFFFF;
+}
+.icon-tik-list li span {
+    line-height: 24px;
+    font-weight: 400;
+	font-size: 14px;
 }
 .icon-tik-list li p {
 	line-height: 24px;
@@ -1879,6 +1900,271 @@ ul.consortium li .text-area p {
 
 .image-block-wrapper .padd-left {
 	padding-left: 30px;
+}
+
+
+
+
+
+
+/*--------------------------------
+	 Project Listing
+----------------------------------*/
+.project_listing {
+	display: block;
+	/*text-align: center;*/
+}
+.project_listing .head-block {
+	padding-bottom: 50px;
+}
+ul.project_listing {
+	text-align: left;
+}
+ul.project_listing li {
+	list-style: none;
+	margin-bottom: 30px;
+}
+ul.project_listing li .equal-hight {
+	background: #fff;
+	border: 1px #f0f3f5 solid;
+	box-shadow: 0px 0px 20px rgba(100, 100, 100, 0.1);
+	border-radius: 5px;
+	position: relative;	
+	min-height: 180px;
+}
+ul.project_listing li .project-img-block {
+	position: relative;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #f8f8f8;
+}
+ul.project_listing li .project-img-block img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.project-img-block .pro-description {
+    width: 100%;
+	padding: 20px 20px 12px;
+	position: absolute;
+	bottom: 0px;
+    z-index: 1;
+}
+.project-img-block:before {
+    opacity: .8;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    content: "";
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0 );
+}
+.pro-description h3 {
+    font-size: 16px!important;
+	color: #FFFFFF!important;
+	padding-bottom: 10px!important;
+}
+.pro-description h4 {
+    color: #FFFFFF;
+	font-size: 14px;
+}
+.pro-description h4.location:before {
+    color: #FFFFFF;
+	font-family: 'fontawesome';
+    content: "\f041";
+    position: relative;
+    font-size: 1rem;
+    opacity: .6;
+    margin-right: .5rem;
+}
+
+ul.project_listing li .cnt-block {
+	padding: 20px;
+}
+
+ul.project_listing li .cnt-block .content-flex {
+	display: flex;
+    justify-content:space-between;
+}
+ul.project_listing li .cnt-block .divider-line {
+	background-color: #eeeeee;
+	height: 2px;
+	margin-top: -5px;
+	margin-bottom: 15px;
+}
+
+ul.project_listing li h3 {
+	display: block;
+	padding-bottom: 10px;
+	color: #007c8f;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 16px;
+}
+ul.project_listing li p {
+	padding-bottom: 20px;
+	line-height: 16px;
+}
+ul.project_listing li .equal-hight a {
+	top: 50px;
+	color: #e2e2e2;
+}
+ul.project_listing li .equal-hight a:hover {
+	color: #f29a32;
+}
+#transp {
+    position:absolute;
+    left:0;
+    top:0;
+    background: rgba(255,255,255,.9);
+    width:100%;
+    height:100%;
+	z-index: 9999;
+}
+
+#transp .under-discussion {
+	text-align: center;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 25px;
+    line-height: 30px;
+	font-weight: 600;
+	color: #f29a32;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+	background: #fff;
+    border: 1px #f0f3f5 solid;
+    box-shadow: 0px 0px 20px rgba(100, 100, 100, 0.1);
+    border-radius: 5px;
+	padding: 20px;
+}
+
+#transp a {
+	text-align: center;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+	border: 1px solid #57bce2;
+    color: #fff;
+    background: #57bce2;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+	padding: 10px 20px!important;
+}
+#transp a:hover {
+	border: 1px solid #f29a32;
+    color: #fff;
+    background: #f29a32;
+}
+
+
+/*--------------------------------
+	 Project Listing Details
+----------------------------------*/
+.project_listing_details {
+	display: block;
+}
+.project_listing_details .head-block {
+	padding-bottom: 50px;
+}
+.project_listing_details {
+	text-align: left;
+}
+.project_listing_details .equal-hight {
+	background: #fff;
+	border: 1px #f0f3f5 solid;
+	box-shadow: 0px 0px 20px rgba(100, 100, 100, 0.1);
+	border-radius: 5px;
+	position: relative;	
+	min-height: 180px;
+}
+
+.project-img-block {
+	position: relative;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #f8f8f8;
+}
+.project_listing_details .project_listing-img-block img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.project_listing_details .pro-description {
+    width: 100%;
+	border-bottom: 1px solid #eeeeee;
+	padding: 0px 0px 10px;
+	margin-bottom: 30px;
+}
+.project_listing_details .pro-description h3 {
+    font-size: 30px!important;
+    font-weight: 400;
+    line-height: 30px;
+	color: #687377!important;
+	padding-bottom: 10px!important;
+}
+.project_listing_details .pro-description h4 {
+    color: #abaaaa;
+	font-size: 24px;
+}
+.project_listing_details .pro-description h4.location:before {
+    color: #abaaaa;
+	font-family: 'fontawesome';
+    content: "\f041";
+    position: relative;
+    font-size: 1rem;
+    opacity: .6;
+    margin-right: .5rem;
+}
+
+.project_listing_details .cnt-block {
+	padding: 0px;
+}
+
+.project_listing_details .cnt-block .content-flex {
+	display: flex;
+    justify-content:space-between;
+}
+.project_listing_details .cnt-block .divider-line {
+	background-color: #eeeeee;
+	height: 1px;
+	margin-top: -5px;
+	margin-bottom: 15px;
+}
+
+.project_listing_details h3 {
+	display: block;
+	padding-bottom: 10px;
+	color: #007c8f;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 16px;
+}
+.project_listing_details p {
+	padding-bottom: 20px;
+	line-height: 16px;
+}
+.project_listing_details .equal-hight a {
+	top: 50px;
+	font-size: 16px;
+	color: #e2e2e2;
+}
+.project_listing_details .equal-hight a:hover {
+	color: #f29a32;
+}
+
+.attachment-download {
+	background-color: #57bce2;
+	color: #FFFFFF;
+	padding: 5px 10px!important;
+	border-radius: 6px;
+}
+.attachment-download:Hover {
+	background-color: #f29a32;
+	color: #FFFFFF;
 }
 
 
@@ -2296,6 +2582,11 @@ ul.consortium li .text-area p {
 	ul.our-values.opt2 li .text-area {
 		width: 78%;
 	}
+	
+	.more-features .padd-right {
+    	padding-right: 0px;
+		margin-bottom: 30px;
+	}
 }
 
 /*Medium devices (tablets, 768px and up)*/
@@ -2615,7 +2906,7 @@ ul.consortium li .text-area p {
 		padding-top: 52px;
 	}
 	.content-marketing .head-block h2 {
-		padding-bottom: 20px;
+		padding-bottom: 10px;
 	}
 	.content-marketing .head-block p {
 		font-size: 14px;
@@ -2693,7 +2984,7 @@ ul.consortium li .text-area p {
 	.create-bridge h2,
 	.generate-forms h2,
 	.invoice-factoring .cnt-block h2 {
-		padding-bottom: 20px;
+		padding-bottom: 10px;
 	}
 	.digital-bond .cnt-block h3,
 	.create-bridge h3,
@@ -2878,6 +3169,8 @@ ul.consortium li .text-area p {
 	.image-block-wrapper .padd-left {
 		padding-left: 0px;
 	}
+	
+	.project_listing_details .pro-description {margin-top: 30px;}
 }
 
 /*Extra small devices (portrait phones, less than 576px)*/
@@ -2988,6 +3281,9 @@ ul.consortium li .text-area p {
 	.image-block-wrapper .padd-left {
 		padding-left: 0px;
 	}
+	
+	.project_listing_details .pro-description h3 {font-size: 24px!important;line-height:24px;}
+	.project_listing_details .pro-description h4 {font-size: 20px!important;}
 }
 
 /* Landscape phones and down */
@@ -3037,6 +3333,9 @@ ul.consortium li .text-area p {
 	.image-block-wrapper .padd-left {
 		padding-left: 0px;
 	}
+	
+	.project_listing_details .pro-description h3 {font-size: 22px!important;line-height:22px;}
+	.project_listing_details .pro-description h4 {font-size: 18px!important;}
 }
 
 /* Landscape iPhone 6 Plus */

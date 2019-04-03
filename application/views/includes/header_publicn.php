@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/auto-hide.css" /> -->
 	<!-- <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/js/menu.css" /> -->
 	
-	
 	<?php if(uri_string()){ ?>
 	
 	 <!-- Juery UI -->
