@@ -1,5 +1,5 @@
 <!-- START APP WRAPPER -->
-<header>
+        <header>
             <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/main.css" />
             <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/auto-hide.css" />
             <link rel="stylesheet" type="text/css" href="<?=base_url('assets/bond-assets/css/datatables/dataTables.bootstrap.1.10.15.min.css');?>" />
@@ -106,14 +106,14 @@
                                                 <label for="Discounted Value">Discounted Value</label><sup>*</sup>
                                                 <input type="text" class="form-control  form-controlCustom form-control-lg" id="dvalue" name="dvalue" placeholder = "Discounted Value">
                                             </div>
-											 
+											
                                             <div class="form-group col-lg-4 col-md-6">
                                                 <label for="captcha">Enter Captcha</label><sup>*</sup>
-                                                <input class="form-control form-controlCustom form-control-lg" id="defaultReal" name="defaultReal" captchav="" autocomplete="" maxlength="50" required data-required-error="" tabindex="5" aria-required="true" type="text"placeholder="Captcha">                                            
+                                                <input class="form-control form-controlCustom form-control-lg" id="defaultReal" name="defaultReal" captchav="" autocomplete="" maxlength="50" required data-required-error="" tabindex="5" aria-required="true" type="text" placeholder="Captcha">                                            
                                                 <input type="hidden" id="captcha_val" />
                                                 <div class="captcha-error has-error" style="display:none"><div class="help-block col-xs-12 col-sm-reset inline"><font color="red" style="margin-left: -10px;">Enter Letters Shown Above.</font></div></div><!-- Invalid Captcha ! -->
                                             </div>
-                                            </div>
+                                            </div> 
 
                                             <div class="card-footer border-0 text-center">
                                             <div class="form-actions">
@@ -178,8 +178,11 @@
                                 <div class="card-body">
 
                                     <div class="form-row" style="padding-top:15px">
-                                            <div class="form-group col-lg-4 col-md-12"><div class=" form-column-headings"style="margin-left:10px; width:1090px; height:450px;overflow-y:scroll;box-shadow: 0px 2px 10px #6c757d;"> 
-                                                <pre id="contractData"  >
+                                            <div class="form-group col-md-12">
+                                            <!--<div class="form-column-headings" style="height:450px;overflow-y:scroll;box-shadow: 0px 2px 10px #6c757d;"> 
+                                                <pre id="contractData">-->
+                                            <div> 
+                                                <pre id="contractData" class="language-markup scrollable">
 
                                                 </pre>
                                                 </div>
@@ -262,7 +265,6 @@
                                 
                             </div>
                         </div>
-                    </div>
                 </section>
             </div>
         </div>
@@ -299,8 +301,8 @@
 
 <div id="loader" style="display: none;"></div>
 <div class="modal fade" id="contractexists" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static" >
-		<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">
-			
+		<div class="modal-dialog">
+		<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
 			<div class="modal-content">
                 <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"> <span class="hidden-xs">&times;</span> <span class="hidden-md hidden-lg"> <img src="<?php echo base_url() ?>assets/images/icon/log_arrow.png"  alt="icon" /></span> </button>
@@ -320,8 +322,8 @@
 </div>
 <div id="loader" style="display: none;"></div>
 <div class="modal fade" id="thankyou" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
-		<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">
-			
+		<div class="modal-dialog" style="">
+		<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
 			<div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"> <span class="hidden-xs">&times;</span> <span class="hidden-md hidden-lg"> <img src="<?php echo base_url() ?>assets/images/icon/log_arrow.png"  alt="icon" /></span> </button>
