@@ -906,7 +906,7 @@ div.descrip {
 	float: left;
 }
 .dynamic_table .dataTables_paginate {
-	padding-bottom: 0px;
+	padding-bottom: 10px;
 	width: 100%;
 	float: left;
 	padding-top: 10px;

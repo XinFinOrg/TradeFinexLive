@@ -43,7 +43,7 @@
 									<img class="img-rounded img-responsive" src="<?=base_url();?>assets/images/page/contact_3.jpg" alt="cimage 3"> 
 								</div>
 								<div class="col-md-8 col-xs-12 col-sm-8">
-									<h2 class="title"> TradeFinex Assocation</h2>
+									<h2 class="title"> TradeFinex Association</h2>
 									<p class="content">Responsible for assisting in the development, acceptance and general improvement of XDC01 protocol and its resources, the association handles all kinds of commercial inquiries surrounding XDC token and real world applications. Stay appraised with the development in underlying XDC01 protocol that powers the TradeFinex platform and hence, global trade and financing.</p>
 								</div>
 							</div>

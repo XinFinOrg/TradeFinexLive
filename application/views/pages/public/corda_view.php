@@ -3,7 +3,7 @@
         <div class="container">
             <h3>R3 Corda Bridge</h3>
             <br>
-            <h4 class="infactor">Mitigate Counter - Party Risk By Making Your Financial Instruments Interoperable & Liquid.</h4>
+            <h4 class="infactor">Mitigate Counter - Party Risk By Making Your Financial Instruments Interoperable & Liquid</h4>
         </div>
     </section>
     
@@ -69,7 +69,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <h2>R3 Corda-XinFin Bridge connectivity</h2>
-                        <p>The Relayer Bridge deploys Corda Smart ContractState OntoXinFin Network Smart Contract State (ContractInstance)</p>
+                        <p>The Relayer Bridge deploys Corda Smart Contract State onto XinFin Network Smart Contract State (ContractInstance)</p>
                         <ul class="more-features-list">
                             <li>Atomic Swap (Include Hash of the transaction)</li>
                             <li>Built-in XDC Wallet and smart contracts make the transaction easier, transparent, and secure.</li>
@@ -97,7 +97,7 @@
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/help-icon.png" alt=""></span>
                             <h3>Help Center</h3>
-                            <p>Your questions or feedback</p>
+                            <p>Let us know your questions or feedback.</p>
                         </div>
                         </a>
                     </li>
@@ -105,8 +105,8 @@
                         <a href="faq.html">
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/faqs-icon.png" alt=""></span>
-                            <h3>Faqs</h3>
-                            <p>General and Technical Frequently asked questions Resource Link</p>
+                            <h3>FAQs</h3>
+                            <p>General or Technical-Ask your questions here!</p>
                         </div>
                         </a>
                     </li>
@@ -115,7 +115,7 @@
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/techdoc-icon.png" alt=""></span>
                             <h3>Technical Documents</h3>
-                            <p>Technical Resource, API link, Example code and Release note </p>
+                            <p>Find Technical Resource, API link, Example code, and Release note here.</p>
                         </div>
                         </a>
                     </li>

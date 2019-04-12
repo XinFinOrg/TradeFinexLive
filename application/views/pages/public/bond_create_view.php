@@ -1,5 +1,6 @@
 <!-- START APP WRAPPER -->
         <header>
+            <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/bootstrap.css" />
             <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/main.css" />
             <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/auto-hide.css" />
             <link rel="stylesheet" type="text/css" href="<?=base_url('assets/bond-assets/css/datatables/dataTables.bootstrap.1.10.15.min.css');?>" />
@@ -9,7 +10,18 @@
         <!-- START TOP HEADER WRAPPER -->
         <div class="header-wrapper">
             
-
+			<div class="header-top">
+                <!-- START MOBILE MENU TRIGGER -->
+                <ul class="mobile-only navbar-nav nav-left">
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" data-toggle-state="aside-left-open">
+                            <i class="icon dripicons-align-justify"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- END MOBILE MENU TRIGGER -->
+            </div>
+            
             <!-- START HEADER BOTTOM -->
             <div class="header-bottom">
                 <div class="container">
@@ -18,8 +30,8 @@
                         <ul class="nav metismenu">
                             <li class="sidebar-header mobile-only mobile-nav-heading"><span>&nbsp;</span></li>
                             <li><a class="active" id="createBondHeader" ><i class="icon dripicons-document-edit"></i><span class="hide-menu">1. Create Bond</span></a></li>
-                            <li><a  id="deployHeader"><i class="icon dripicons-document-new"></i><span class="hide-menu">2. Deploy</span></a></li>
-                            <li><a  id="bondCompleteHeader"><i class="icon dripicons-document-new"></i><span class="hide-menu">3. Discover Bonds</span></a></li>
+                            <li><a id="deployHeader"><i class="icon dripicons-document-new"></i><span class="hide-menu">2. Deploy</span></a></li>
+                            <li><a id="bondCompleteHeader"><i class="icon dripicons-document-new"></i><span class="hide-menu">3. Discover Bonds</span></a></li>
                             <!-- <li><a href="issue-quote.html"><i class="icon dripicons-export"></i><span class="hide-menu">Issue Quote</span></a></li>
                             <li><a href="create-organization.html"><i class="icon dripicons-user-group"></i><span class="hide-menu">Create Organization</span></a></li>
                             <li><a href="portfolio.html"><i class="icon dripicons-folder-open"></i><span class="hide-menu">Portfolio</span></a></li>
@@ -118,8 +130,9 @@
                                             <div class="card-footer border-0 text-center">
                                             <div class="form-actions">
                                                 <div class="row">
-                                                    <div class="col-md-12 footerBtns">
-                                                        <button type="submit" id="bond_create" class="btnn btnn-primary btnn-rounded"  > Create Bond</button>
+                                                    <!--<div class="col-md-12 footerBtns">-->
+                                                    <div class="col-md-12">
+                                                        <button type="submit" id="bond_create" class="btnn btnn-primary btnn-rounded"> Create Bond</button>
                                                         <!-- <button class="btn btn-light btn-rounded btn-outline" id="bondCreateCancel">Cancel</button> -->
 													</div>
 													<br>
@@ -222,19 +235,16 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-body">
-                                    
-                                    
-                                    <div class="form-group col-md-12 mb-4">
+                                <div class="card-body">                                   
+                                   
+                                   <div class="form-group col-md-12 mb-4">
                                             <!-- <label class="right-inner-addon">
                                                 <i class="  fa fa-search"></i>
                                                 <input type="search" class="form-controlCustom input-sm" aria-controls="bonds_listing" placeholder="Search...">
                                                 
                                             </label> -->
-                                            <div class="dynamic_table   ">
-                                            <button type="submit" id="refreshBondsList" class="btnn btnn-primary btnn-rounded" style = "float:right" > Refresh </button>
-                                   
-                                       
+                                            <div class="dynamic_table">
+                                            <button type="submit" id="refreshBondsList" class="btnn btnn-primary btnn-rounded float-right"> Refresh </button>
                                
 
                                     <div class="table-responsive">
@@ -247,19 +257,17 @@
                                                         <th>Total Supply</th>
                                                         <th>Face Value</th>
                                                         <th class="text-center"style="width:14%;">Status</th>
-                                                        <th>Address</th>
-                                                        
+                                                        <th>Address</th>                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody id="discoverBondTable">
-
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
-                                    
+                                    </div>                                    
                                 </div>
                                 </div>
+                                
                                 </div>
                                 
                                 

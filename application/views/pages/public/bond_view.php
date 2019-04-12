@@ -3,7 +3,7 @@
         <div class="container">
             <h3>Digital Bond</h3>
             <br>
-            <h4 class="infactor">Create, Manage, and Liquidate Bond Instruments On Blockchain.</h4>
+            <h4 class="infactor">Create, Manage and Liquidate Bond Instruments On Blockchain.</h4>
         </div>
     </section>
     
@@ -70,7 +70,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <h2>Create, Manage and Liquidate Bonds Instrument Online</h2>
-                        <p>A Fully Digital Solution On Blockchain Eliminates Counterparty Delays, and allow Instant Settlement.</p>
+                        <p>A fully blockchain based digital solution eliminates counter-party delays, and allow instant settlement.</p>
                         <ul class="more-features-list">
                             <li>Digital Bond platform for Broker-dealer and license entity</li>
                             <li>Digital platforms enhance secondary market liquidity</li>
@@ -92,8 +92,7 @@
                 <div class="row text-center">
                     <div class="col-md-10 col-md-offset-1">
                         <div class="head-block">
-                            <h2>Get an overview on Digital bond Platform</h2>
- 
+                            <h2>Get an overview on Digital bond Platform</h2> 
                         </div>
                     </div>
                 </div>
@@ -124,7 +123,7 @@
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/help-icon.png" alt=""></span>
                             <h3>Help Center</h3>
-                            <p>Your questions or feedback</p>
+                            <p>Let us know your questions or feedback.</p>
                         </div>
                         </a>
                     </li>
@@ -132,8 +131,8 @@
                         <a href="https://docs.tradefinex.org/FinIns/Bonds/">
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/faqs-icon.png" alt=""></span>
-                            <h3>Faqs</h3>
-                            <p>General and Technical Frequently asked questions Resource Link</p>
+                            <h3>FAQs</h3>
+                            <p>General or Technical-Ask your questions here!</p>
                         </div>
                         </a>
                     </li>
@@ -142,7 +141,7 @@
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/techdoc-icon.png" alt=""></span>
                             <h3>Technical Documents</h3>
-                            <p>Technical Resource, API link, Example code and Release note </p>
+                            <p>Find Technical Resource, API link, Example code, and Release note here.</p>
                         </div>
                         </a>
                     </li>

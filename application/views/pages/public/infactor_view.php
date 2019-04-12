@@ -162,8 +162,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
-                        <h2>How it works?</h2>
-                        <p>Invoice Factoring is an accepted form of working capital management solution. It does so by converting your unpaid invoices to cash. Invoice Factoring allows companies to receive cash instantly, customers to live by friendly payment terms and investors (the factor) to earn some profits in terms of fee.</p>
+                        <h2>How does it work?</h2>
+                        <p>Invoice Factoring is an accepted form of working capital management solution. It does so by converting your unpaid invoices to cash. Invoice Factoring allows companies to instantly receive cash, customers to live by friendly payment terms and investors (the factor) to earn some profits in terms of fee.</p>
                         <ul class="more-features-list">
                             <li>InFactor is a platform for factoring Trade Instruments, mainly invoices.</li>
                             <li>Built in XDC Wallet and smart contracts make invoice factoring easier, transparent, and secure.</li>
@@ -192,7 +192,7 @@
                     <div class="col-md-10 col-md-offset-1">
                         <div class="head-block">
                             <h2>Get an overview</h2>
-                            <p>Connect to more financiers in a whole new way.</p>
+                            <p>Connect to financiers in a whole new effective and efficient way.</p>
                         </div>
                     </div>
                 </div>
@@ -223,7 +223,7 @@
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/help-icon.png" alt=""></span>
                             <h3>Help Center</h3>
-                            <p>Let us know your questions or feedback</p>
+                            <p>Let us know your questions or feedback.</p>
                       		<!--<a href="http://docs.infactor.io" class="know-more">Know more</a>-->
                         </div>
                         </a>

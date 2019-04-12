@@ -28,8 +28,8 @@
 	
 	<div class="container" >
 		<div class="row">
-			<a id="submitp_btn" data-toggle="modal" data-target="#submit_popup" data-backdrop="static" data-keyboard="false"></a>
-			<div id="submit_popup" class="modal fade" role="dialog">
+			<a id="submitp_btn" data-toggle="modal" data-target="#submit_popup"></a>
+			<div id="submit_popup" class="modal fade" role="dialog" data-keyboard="false">
 				<div class="modal-dialog"> 
 				
 					<!-- Modal content-->
