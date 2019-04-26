@@ -128,44 +128,44 @@
                                             </div> 
 
                                             <div class="card-footer border-0 text-center">
-                                            <div class="form-actions">
-                                                <div class="row">
-                                                    <!--<div class="col-md-12 footerBtns">-->
-                                                    <div class="col-md-12">
-                                                        <button type="submit" id="bond_create" class="btnn btnn-primary btnn-rounded"> Create Bond</button>
-                                                        <!-- <button class="btn btn-light btn-rounded btn-outline" id="bondCreateCancel">Cancel</button> -->
-													</div>
-													<br>
+                                                <div class="form-actions">
+                                                    <div class="row">
+                                                        <!--<div class="col-md-12 footerBtns">-->
+                                                        <div class="col-md-12">
+                                                            <button type="submit" id="bond_create" class="btnn btnn-primary btnn-rounded"> Create Bond</button>
+                                                            <!-- <button class="btn btn-light btn-rounded btn-outline" id="bondCreateCancel">Cancel</button> -->
+                                                        </div>
+                                                        <br>
+                                                    </div>
                                                 </div>
-                                            </div>
                                         
 
-											<div class="">
+                                                <div class="">
+                                                        <label class="hidden">
+                                                            <input class="input-focus input-focus-notr" id="isPausable" name="isPausable" value="true" />
+                                                            <span class="form-name floating-label">isPausable<sup>*</sup></span> 
+                                                        </label>
+                                                        </div>
+                                                        <div class="">
+                                                        <label class="hidden">
+                                                            <input class="input-focus input-focus-notr" id="isBurnable" name="isBurnable" value="true" />
+                                                            <span class="form-name floating-label">isBurnable<sup>*</sup></span> 
+                                                        </label>
+                                                        </div>
+                                                        <div class="">
+                                                        <label class="hidden">
+                                                            <input class="input-focus input-focus-notr" id="isMintable" name="isMintable" value="true"/>
+                                                            <span class="form-name floating-label">isMintable<sup>*</sup></span> 
+                                                        </label>
+                                                </div>
+                                                <div class="form-group col-md-4">
                                                     <label class="hidden">
-                                                        <input class="input-focus input-focus-notr" id="isPausable" name="isPausable" value="true" />
-                                                        <span class="form-name floating-label">isPausable<sup>*</sup></span> 
+                                                        <input class="input-focus input-focus-notr" id="isUpgradeable" name="isUpgradeable" value="true"/>
+                                                        <span class="form-name floating-label">isUpgradeable<sup>*</sup></span> 
                                                     </label>
-                                                    </div>
-                                                    <div class="">
-                                                    <label class="hidden">
-                                                        <input class="input-focus input-focus-notr" id="isBurnable" name="isBurnable" value="true" />
-                                                        <span class="form-name floating-label">isBurnable<sup>*</sup></span> 
-                                                    </label>
-                                                    </div>
-                                                    <div class="">
-                                                    <label class="hidden">
-                                                        <input class="input-focus input-focus-notr" id="isMintable" name="isMintable" value="true"/>
-                                                        <span class="form-name floating-label">isMintable<sup>*</sup></span> 
-                                                    </label>
-								            </div>
-                                            <div class="form-group col-md-4">
-                                                <label class="hidden">
-                                                    <input class="input-focus input-focus-notr" id="isUpgradeable" name="isUpgradeable" value="true"/>
-                                                    <span class="form-name floating-label">isUpgradeable<sup>*</sup></span> 
-                                                </label>
-                                            </div>                                          
-                                        </div>
-                                        
+                                                </div>                                          
+                                            </div>
+                                            
                                     </div>
                                 </form>
                             </div>

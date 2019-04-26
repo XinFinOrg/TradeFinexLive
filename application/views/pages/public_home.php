@@ -119,8 +119,8 @@
                         <h2>Invoice Factoring</h2>
                         <p>The TradeFinex Invoice Factoring Platform equips participants with an alternative financial marketplace that operates in a fully transparent environment.</p>
                         <div class="button-box">
-                        	<a href="https://docs.xinfin.org/docs/dapp/infactor.io/conduct-a-poc" class="get-started">Start POC</a>
-                        	<a href="<?=base_url('publicv/infactor');?>" class="get-started">Explore</a>
+						<a href="https://docs.xinfin.org/docs/dapp/infactor.io/conduct-a-poc" class="get-started">Start POC</a>
+                        <a href="<?=base_url('publicv/infactor');?>" class="get-started">Explore</a>
                         </div>
                     </div>
                     <div class="col-md-7 right">
@@ -162,7 +162,7 @@
                         <h2>TradeFinex Round Table Series Consortium Event</h2>
                         <p>This Roundtable Event places the Trade and Finance Stakeholder and Infrastructure Financier on one stage to address the increasing global trade gap as well as the Infrastructure deficit while discussing the promises of blockchain.</p>
                         <div class="button-box">
-                        	<a href="https://www.eventbrite.sg/o/19693668397" target="_blank" class="get-started">Register</a>
+                        	<a href="https://www.eventbrite.sg/e/tradefinex-2019-adgm-abu-dhabi-18-june-2019-tickets-58351822873?ref=estw" target="_blank" class="get-started">Register</a>
                             <a href="http://events.tradefinex.org/" target="_blank" class="get-started">Explore</a>
                         </div>
                     </div>
