@@ -168,7 +168,7 @@
                             <li>InFactor is a platform for factoring Trade Instruments, mainly invoices.</li>
                             <li>Built in XDC Wallet and smart contracts make invoice factoring easier, transparent, and secure.</li>
                         </ul>
-                        <div class="more-features-btn-holder"><a href="https://docs.xinfin.org/docs/dapp/infactor.io/conduct-a-poc" class="get-started">Start POC</a></div>
+                        <div class="more-features-btn-holder"><a href="<?=base_url('publicv/invoice_factoring');?>" class="get-started">Start POC</a></div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <div class="videos_video_wrap">

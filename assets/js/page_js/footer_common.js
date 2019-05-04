@@ -238,6 +238,37 @@
 			$('#deployTab').hide();
 			$('#bondCompleteTab').hide()
 		});	
+
+		$('#invoiceCompleteHeader').click(function() {
+			$('#uploadinvoiceHeader').removeClass('active');
+			$('#invoiceCompleteHeader').addClass('active')
+			$('#uploadinvoiceTab').hide();
+			$('#invoicedeployTab').hide();
+			$('#invoiceCompleteTab').show();
+		});	
+
+		$('#uploadinvoiceHeader').click(function() {
+			$('#uploadinvoiceHeader').addClass('active');
+			$('#invoiceCompleteHeader').removeClass('active')
+			$('#uploadinvoiceTab').show();
+			$('#invoicedeployTab').hide();
+			$('#invoiceCompleteTab').hide()
+		});	
+		$('#quickCompleteHeader').click(function() {
+			$('#QuickbookHeader').removeClass('active');
+			$('#quickCompleteHeader').addClass('active')
+			$('#quickbookT').hide();
+			$('#quickdeployTab').hide();
+			$('#quickCompleteTab').show();
+		});	
+		$('#QuickbookHeader').click(function() {
+			$('#QuickbookHeader').addClass('active');
+			$('#invoiceCompleteHeader').removeClass('active')
+			$('#quickbookT').show();
+			$('#quickdeployTab').hide();
+			$('#quickCompleteTab').hide()
+		});	
+		
 		searchButton();goTop();removePreloader();responsiveMenu();/* slideTeam(); */
 		
 		$('.lazy').slick({
@@ -735,6 +766,8 @@
 				}
 			}); 	
 		}); 
+
+		
 
 		   // Auto Hide Menu Option for Horizontal Menu
 			// ------------------------------------------------

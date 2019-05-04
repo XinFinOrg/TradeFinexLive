@@ -66,106 +66,193 @@
                                     <div class="card-body">
 
                                         <div class="form-row">
-											<div class="form-group col-md-12"><div class=" form-column-headings"> Bond Details</div></div>
-                                                
-                                            <div class="form-group col-md-4">
-                                                <label for="tokenName">Bond Name</label><sup>*</sup>
-                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="tokenName" name="tokenName" placeholder="Bond Name">
+                                        <div class="form-group col-md-4">
+                                                <label for="industry">Bond Name</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="tokenName" name= "tokenName" placeholder="Bond Name">
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label for="tokenSymbol">Ticker</label><sup>*</sup>
-                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="tokenSymbol" name="tokenSymbol" placeholder="Ticker">
-                                            </div> 
-											<div class="form-group col-md-4">
-                                                <label for="typeofbond">Type Of Bond</label><sup>*</sup>
-                                                <input type="text" class="form-control form-controlCustom form-control-lg" value="Zero Coupon" readonly="true">
+                                                <label for="industry">Industry</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="industry" name= "industry" placeholder="Industry">
                                             </div>
-											<div class="form-group col-lg-4 col-md-6">
-                                                <label for="decimals">Decimals</label><sup>*</sup>
-                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="tokenDecimals" name="tokenDecimals" value="18" readonly="true" />
-                                            </div>
-
-											<div class="form-group col-lg-4 col-md-6">
-                                                <label for="tokenSupply">Token Supply</label><sup>*</sup>
-                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="tokenSupply" name="tokenSupply" placeholder="Token Supply" >
-                                            </div>                                     
+                                            <div class="form-group col-md-4">
+                                                <label for="ticker">Ticker</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="tokenSymbol" name= "tokenSymbol" placeholder="Ticker">
+                                            </div>  
+			  
+                                                                                 
                                         </div>
                                         
                                         <div class="form-row">
-                                            <hr class="thick dashed m-b-30">
+                                        <div class="col-md-4">
+                                            <div class="form-row">
+                                            <div class="form-group col-md-12"><div class=" form-column-headings"> Identifiers</div></div>
+                                            <div class="form-group col-md-12">
+                                                <label for="isin">ISIN</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="isin"  name= "isin" placeholder="ISIN">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="cusip">CUSIP</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="cusip"  name= "cusip" placeholder="CUSIP">
+                                            </div>
+                                            </div>
+                                            </div>
+                                            
+                                            <div class="col-md-8">
+                                            <div class="form-row">
+                                            <div class="form-group col-md-12"><div class=" form-column-headings"> Credit Debit Rating</div></div>
+                                            <div class="form-group col-md-4">
+                                                <label for="moodys">Moody's</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="moodys" name= "moodys"  placeholder="Moody's">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="s&p">S&P</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="snp"  name= "snp" placeholder="S&P">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="fitch">Fitch</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="fitch"  name= "fitch" placeholder="Fitch">
+                                            </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <hr class="thick dashed m-b-30">
+                                        <div class="form-row">
+                                        <div class="form-group col-md-12"><div class=" form-column-headings"> Bond Details</div></div>
+                                            <div class="form-group col-lg-3 col-md-6">
+                                                <label for="firstSettleDate">First Settle Date</label>
+                                                <input type="date" style = "line-height: 21px;" class="form-control form-controlCustom form-control-lg" id="fsDate"  name= "fsdate" placeholder="dd/mm/yyyy">
+                                            </div>
+                                            <div class="form-group col-lg-3 col-md-6">
+                                                <label for="maturityDate">Maturity Date</label>
+                                                <input type="date" style = "line-height: 21px;" class="form-control form-controlCustom form-control-lg" id="maturityDate" name= "maturitydate"  placeholder="dd/mm/yyyy">
+                                            </div>
+                                            <div class="form-group col-lg-3 col-md-6">
+                                                <label for="faceValue">Face Value</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="ethRate"  name= "ethRate" placeholder="Face Value">
+                                            </div>
+                                            <div class="form-group col-lg-3 col-md-6">
+                                                <label for="amountOutstanding">Amount Outstanding</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="amtstanding" name="amtstanding" placeholder="Amount Outstanding">
+                                            </div>
                                         </div>
                                         
-                                        <div class="form-row">
-											<div class="form-group col-md-12"><div class=" form-column-headings"> Coupon Details</div></div>
+                                        <hr class="thick dashed m-b-30">
+                                        
+                                           
+                                            <div class="form-row">
+                                            <div class="form-group col-md-12"><div class=" form-column-headings"> Coupon Details</div></div>
+                                            <div class="form-group col-md-4">
+                                            <p class="f-w-400 font-size-16">Type</p>
+                                            <?php
+                                                $b = 0; $f = 0; $s = 0;
+                                                if(isset($_GET['fi']) || (!isset($_GET['fl']))){
+                                                    $fi = 1;
+                                                }
+                                                if(isset($_GET['fl'])){
+                                                    $fl = 1;
+                                                }
                                                 
+							                ?>
+                                            <div class="custom-control custom-radio custom-control-inline">
+												<input type="radio" id="fixed" name="customRadioInline1" class="custom-control-input" <?=(($fi == 1) ? 'checked="checked"' : '');?>>
+												<label class="custom-control-label" for="fixed">Fixed</label>
+											</div>
+                                            <div class="custom-control custom-radio custom-control-inline">
+												<input type="radio" id="floating" name="customRadioInline1" class="custom-control-input" <?=(($fl == 1) ? 'checked="checked"' : '');?>>
+												<label class="custom-control-label" for="floating">Floating</label>
+											</div>
+                                            </div>
+                                            
+                                            
                                             <div class="form-group col-md-4">
-                                                <label for="MinimumContribution">Minimum Contribution</label><sup>*</sup>
-                                                <input type="text" class="form-control  form-controlCustom form-control-lg" id="bonusRate" name="bonusRate" placeholder="Minimum Contribution">
+                                                <label for="frequency">Frequency</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="frequency"  name= "frequency" placeholder="Frequency">
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label for="FaceValue">Face Value</label><sup>*</sup>
-                                                <input type="text" class="form-control  form-controlCustom form-control-lg" id="ethRate" name="ethRate" placeholder="Face Value">
-                                            </div> 
-											<div class="form-group col-lg-4">
-                                                <label for="Coupon">Coupon (%)</label>
-                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="coupon" name="coupon" placeholder="Coupon">
+                                                <label for="1stDate">1st Date</label>
+                                                <input type="date"  style = "line-height: 21px;" class="form-control form-controlCustom form-control-lg" id="firstDate"  name= "firstdate" placeholder="dd/mm/yyyy">
                                             </div>
-											<div class="form-group col-lg-4 col-md-6">
-                                                <label for="Tenure">Tenure (in Years)</label><sup>*</sup>
-                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="tenure" name="tenure" placeholder = "Tenure (in Years)">
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="rate">Rate</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="coupon"  name= "coupon" placeholder="Rate">
                                             </div>
-											<div class="form-group col-lg-4 col-md-6">
-                                                <label for="Discounted Value">Discounted Value</label><sup>*</sup>
-                                                <input type="text" class="form-control  form-controlCustom form-control-lg" id="dvalue" name="dvalue" placeholder = "Discounted Value">
+                                            <div class="form-group col-md-4">
+                                                <label for="benchmark">Benchmark</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="benchmark"  name= "benchmark" placeholder="Benchmark">
                                             </div>
-											
-                                            <div class="form-group col-lg-4 col-md-6">
-                                                <label for="captcha">Enter Captcha</label><sup>*</sup>
-                                                <input class="form-control form-controlCustom form-control-lg" id="defaultReal" name="defaultReal" captchav="" autocomplete="" maxlength="50" required data-required-error="" tabindex="5" aria-required="true" type="text" placeholder="Captcha">                                            
-                                                <input type="hidden" id="captcha_val" />
-                                                <div class="captcha-error has-error" style="display:none"><div class="help-block col-xs-12 col-sm-reset inline"><font color="red" style="margin-left: -10px;">Enter Letters Shown Above.</font></div></div><!-- Invalid Captcha ! -->
+                                            <div class="form-group col-md-4">
+                                                <label for="benchmark">Minimum Contribution</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="bonusrate"  name= "bonusRate" placeholder="Minimum Contribution">
                                             </div>
-                                            </div> 
-
-                                            <div class="card-footer border-0 text-center">
-                                                <div class="form-actions">
-                                                    <div class="row">
-                                                        <!--<div class="col-md-12 footerBtns">-->
-                                                        <div class="col-md-12">
-                                                            <button type="submit" id="bond_create" class="btnn btnn-primary btnn-rounded"> Create Bond</button>
-                                                            <!-- <button class="btn btn-light btn-rounded btn-outline" id="bondCreateCancel">Cancel</button> -->
-                                                        </div>
-                                                        <br>
-                                                    </div>
+                                        </div>
+                                        
+                                        <hr class="thick dashed m-b-30">
+                                        
+                                        <div class="form-row">
+                                        <div class="form-group col-md-12"><div class=" form-column-headings"> Bond Token</div></div>
+                                            <div class="form-group col-md-6">
+                                                <label for="tokenDecimals">Token Decimals</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="tokenDecimals" name = "tokenDecimals" placeholder="Token Decimals"  value="18" readonly="true" >
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="marketSupply">Market Supply</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="tokenSupply"  name= "tokenSupply" placeholder="Market Supply">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="tokenDecimals">Type</label>
+                                                <input type="text" class="form-control form-controlCustom form-control-lg" id="type" name="type"   value="Zero Coupon" readonly="true" >
+                                            </div>
+                                            <div class="form-group  col-md-6">
+                                                    <label for="captcha">Enter Captcha</label><sup>*</sup>
+                                                    <input class="form-control form-controlCustom form-control-lg" id="defaultReal" name="defaultReal" captchav="" autocomplete="" maxlength="50" required data-required-error="" tabindex="5" aria-required="true" type="text" placeholder="Captcha">                                            
+                                                    <input type="hidden" id="captcha_val" />
+                                                    <div class="captcha-error has-error" style="display:none"><div class="help-block col-xs-12 col-sm-reset inline"><font color="red" style="margin-left: -10px;">Enter Letters Shown Above.</font></div></div><!-- Invalid Captcha ! -->
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="card-footer border-0 text-center">
+                                            <div class="form-actions">
+                                             
+                                                <div class="row">
+                                                            <!--<div class="col-md-12 footerBtns">-->
+                                                            <div class="col-md-12">
+                                                                <button type="submit" id="bond_create" class="btnn btnn-primary btnn-rounded"> Create Bond</button>
+                                                                <!-- <button class="btn btn-light btn-rounded btn-outline" id="bondCreateCancel">Cancel</button> -->
+                                                            </div>
+                                                            <br>
                                                 </div>
-                                        
-
-                                                <div class="">
+                                            </div>
+                                            <div class="">
                                                         <label class="hidden">
                                                             <input class="input-focus input-focus-notr" id="isPausable" name="isPausable" value="true" />
                                                             <span class="form-name floating-label">isPausable<sup>*</sup></span> 
                                                         </label>
-                                                        </div>
-                                                        <div class="">
+                                                    </div>
+                                                    <div class="">
                                                         <label class="hidden">
                                                             <input class="input-focus input-focus-notr" id="isBurnable" name="isBurnable" value="true" />
                                                             <span class="form-name floating-label">isBurnable<sup>*</sup></span> 
                                                         </label>
-                                                        </div>
-                                                        <div class="">
+                                                    </div>
+                                        
+                                                    <div class="">
                                                         <label class="hidden">
                                                             <input class="input-focus input-focus-notr" id="isMintable" name="isMintable" value="true"/>
                                                             <span class="form-name floating-label">isMintable<sup>*</sup></span> 
                                                         </label>
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label class="hidden">
-                                                        <input class="input-focus input-focus-notr" id="isUpgradeable" name="isUpgradeable" value="true"/>
-                                                        <span class="form-name floating-label">isUpgradeable<sup>*</sup></span> 
-                                                    </label>
-                                                </div>                                          
-                                            </div>
-                                            
+								                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label class="hidden">
+                                                            <input class="input-focus input-focus-notr" id="isUpgradeable" name="isUpgradeable" value="true"/>
+                                                            <span class="form-name floating-label">isUpgradeable<sup>*</sup></span> 
+                                                        </label>
+                                            </div>        
+
+											                                         
+                                        </div>
+                                        
                                     </div>
                                 </form>
                             </div>
@@ -243,46 +330,44 @@
                                                 <input type="search" class="form-controlCustom input-sm" aria-controls="bonds_listing" placeholder="Search...">
                                                 
                                             </label> -->
-                                            <div class="dynamic_table">
+                                        <div class="dynamic_table">
                                             <button type="submit" id="refreshBondsList" class="btnn btnn-primary btnn-rounded float-right"> Refresh </button>
                                
 
-                                    <div class="table-responsive">
-                                        
-                                       
-                                            <table id="bonds_listing" class="table " cellspacing="0" width="100%" >
-                                                <thead>
-                                                    <tr>
-                                                        <th>Bond Name</th>
-                                                        <th>Total Supply</th>
-                                                        <th>Face Value</th>
-                                                        <th class="text-center"style="width:14%;">Status</th>
-                                                        <th>Address</th>                                                        
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="discoverBondTable">
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>                                    
-                                </div>
+                                            <div class="table-responsive">
+                                                
+                                            
+                                                    <table id="bonds_listing" class="table " cellspacing="0" width="100%" >
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Bond Name</th>
+                                                                <th>Total Supply</th>
+                                                                <th>Face Value</th>
+                                                                <th class="text-center"style="width:14%;">Status</th>
+                                                                <th>Address</th>                                                        
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="discoverBondTable">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>                                    
+                                    </div>
                                 </div>
                                 
-                                </div>
+                             </div>
                                 
                                 
-                            </div>
                         </div>
+                    </div>
                 </section>
             </div>
         </div>
         
 
         
-    <?php
-	//$this->load->view('includes/block_features');
-	$this->load->view('includes/login_modal');
-	?>
+    
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> -->
    

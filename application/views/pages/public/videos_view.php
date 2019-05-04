@@ -11,7 +11,7 @@
 							<div class="videos_video">
 								<!--<iframe src="https://www.youtube.com/embed/mjrhTnZ16f8?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>-->
                                 <div class="embed-responsive embed-responsive-16by9 embed-div">
-<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/mjrhTnZ16f8?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/mjrhTnZ16f8?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 								<div class="videos_video_content">
 									<p>Presenting TradeFInex and Consortium introduction at "Blockchain for Finance Conference 2018" Boston</p>									
 								</div>
@@ -21,7 +21,7 @@
 							<div class="videos_video">
 								<!--<iframe src="https://www.youtube.com/embed/C0DF2A5ssk8?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>-->
                                 <div class="embed-responsive embed-responsive-16by9 embed-div">
-<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/C0DF2A5ssk8?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/C0DF2A5ssk8?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 								<div class="videos_video_content">
 									<p>TradeFinex platform Demonstration</p>									
 								</div>
@@ -31,23 +31,45 @@
 							<div class="videos_video">
 								<!--<iframe src="https://www.youtube.com/embed/bYIJETgOY_g?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>-->
                                 <div class="embed-responsive embed-responsive-16by9 embed-div">
-<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/bYIJETgOY_g?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/bYIJETgOY_g?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 								<div class="videos_video_content">
 									<p>Banking for the Unbanked - Leveraging XinFin Blockchain towards addressing economic disparity</p>									
 								</div>
 							</div>
 						</div>
-                        <div class="col-md-3 col-sm-6 col-xs-12 videos_video_wraper">
+                        <div class="row" >
+						<div class="col-md-3 col-sm-6 col-xs-12 videos_video_wraper">
 							<div class="videos_video">
 								<!--<iframe src="https://www.youtube.com/embed/IkvCEE6VVNg?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>-->
                                 <div class="embed-responsive embed-responsive-16by9 embed-div">
-<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/IkvCEE6VVNg?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/IkvCEE6VVNg?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 								<div class="videos_video_content">
 									<p>TradeFinex Case Study - Financing of solar plant using XinFin Hybrid Blockchain and IoT</p>									
 								</div>
 							</div>
 						</div>
+					</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 videos_video_wraper">
+							<div class="videos_video">
+								<!--<iframe src="https://www.youtube.com/embed/bYIJETgOY_g?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>-->
+                                <div class="embed-responsive embed-responsive-16by9 embed-div">
+								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/WnQ78Pz3Ecw?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+								<div class="videos_video_content">
+									<p>Invoice Creation Demo</p>									
+								</div>
+							</div>
 						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 videos_video_wraper">
+							<div class="videos_video">
+								<!--<iframe src="https://www.youtube.com/embed/IkvCEE6VVNg?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>-->
+                                <div class="embed-responsive embed-responsive-16by9 embed-div">
+								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ooXxifTzJgk?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+								<div class="videos_video_content">
+									<p>Bond Creation Demo</p>									
+								</div>
+							</div>
+						</div>
+					</div>
 						
 			</div>
 		</div>

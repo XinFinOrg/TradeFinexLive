@@ -1,8 +1,242 @@
-$(function () {
-	// var jQueryScript = document.createElement('script');  
-	// jQueryScript.setAttribute('src','http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.10.5/jquery.dataTables.min.js');
-	// document.head.appendChild(jQueryScript);
+function showLoader() {
+	document.getElementById("loader").style.display = "block";
+}						
 
+function hideLoader() {
+	document.getElementById("loader").style.display = "none";
+}
+
+// Split the array into halves and merge them recursively 
+function mergeSort (arr) {
+	if (arr.length === 1) {
+	// return once we hit an array with a single item
+	return arr
+	}
+
+	const middle = Math.floor(arr.length / 2) // get the middle item of the array rounded down
+	const left = arr.slice(0, middle) // items on the left side
+	const right = arr.slice(middle) // items on the right side
+
+	return merge(
+	mergeSort(left),
+	mergeSort(right)
+	)
+}
+
+// compare the arrays item by item and return the concatenated result
+function merge (left, right) {
+	let result = []
+	let indexLeft = 0
+	let indexRight = 0
+
+	while (indexLeft < left.length && indexRight < right.length) {
+	if (new Date(left[indexLeft].createdAt).getTime() > new Date(right[indexRight].createdAt).getTime()) {
+		result.push(left[indexLeft])
+		indexLeft++
+	} else {
+		result.push(right[indexRight])
+		indexRight++
+	}
+	}
+
+	return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight))
+}
+
+function invoiceList(data) {
+	var discoverinvoiceTable = "";
+	var status = "Deployed";
+	var mergeSortedData = mergeSort(data);
+	$.each(mergeSortedData, function(k,v) {
+		// console.log('timestamp:',new Date(v.createdAt));
+		if(v.tokenContractAddress == null) {
+			status = "Pending";
+		} else {
+			status = "Deployed";
+		}
+		discoverinvoiceTable += `
+							<tr class="bondRow">
+								<td>`+v.coinName+`</td>
+								<td>`+v.coinSymbol+`</td>
+								<td>`+status+`</td>
+								<td>`+v.createdAt+`</td>
+								<td class="truncate"><span><a href = "https://gateway.ipfs.io/ipfs/`+v.ipfsHash+`" target="_blank" >`+v.ipfsHash+`</a><span></td>
+								<td class="truncate"><span><a href = "https://ropsten.etherscan.io/address/`+v.tokenContractAddress+`" target="_blank" >`+v.tokenContractAddress+`</a><span></td>
+							</tr>
+							`;
+	});
+
+	$('#discoverinvoiceTable').html(discoverinvoiceTable);
+	$("#invoice_listing").DataTable({
+		"bSort": false,
+		"dom": "Bfrtip",
+		"bDestroy": true,
+		"pageLength": 10
+		
+	});
+}
+
+function uploadInvoice(data) {
+	var uploadInvoiceObj = {
+		"tokenSymbol": $('#dNum_'+ data)[0].innerText,
+		"tokenName": $('#cName_'+ data)[0].innerText,
+		"type":"invoice",
+		"isOwnable":"true",
+		"isBurnable":"true",
+		"isPausable":"true",
+		"amount":$('#amount_'+ data)[0].innerText,
+		"date":$('#date_'+ data)[0].innerText
+	};
+	$.post("https://api.mycontract.co/v1/client/login", { "email": "mansi@xinfin.org", "password": "manuvora" }, function (res) {
+				// console.log(res);
+				
+				localStorage.setItem("token", res.token);
+				var token = localStorage.getItem("token", res.token);
+				
+					var invoice = {
+						"async": true,
+						"crossDomain": true,
+						"url": "https://api.mycontract.co/v1/invoice/quickbook/upload",
+						"method": "GET",
+						"headers": {
+							// "content-type": "application/json",
+							"authorization":token
+						},
+						"processData": false
+					}
+				
+					$.ajax(invoice).done(function (response) {
+						// console.log('response>>>>', response);
+						
+						var fileHashh = response.hash;	
+						// after file upload make erc721 call
+						uploadInvoiceObj['hash'] = fileHashh;		
+						// console.log(uploadInvoiceObj)				
+							if (res.token != null && res.token == token) {
+									var quick = {
+										"async": true,
+										"crossDomain": true,
+										"url": "https://api.mycontract.co/v1/smartcontract/ERC721",
+										"method": "POST",
+										"headers": {
+											"content-type": "application/json",
+											"authorization":token
+										},
+										"processData": false,
+										"data": JSON.stringify(uploadInvoiceObj)
+									}
+									$.ajax(quick).done(function(response){
+										// console.log('resposne>>>>>',response);
+										$('#quickbookT').hide();
+										$('#quickdeployTab').show();
+										$('#QuickbookHeader').removeClass('active');
+										$('#quickdeployHeader').addClass('active');
+									
+										$('#invoiceData').html('<p>'+response+'</p>');
+										
+										if(response.status == false) {
+											$('#quickbookT').show();
+											$('#invoiceexists').modal('show');
+											$('#invoiceexists').css('opacity', '1')
+											$('#quickdeployTab').hide();	
+										} 
+										else {
+											$('#quickbookT').hide();
+											$('#quickdeployTab').show();							
+											$('#QuickbookHeader').removeClass('active');
+											
+											$('#QuickbookHeader').css('pointer-events', 'none');
+											$('#quickdeployHeader').addClass('active');
+											//console.log( response);
+											
+											$('#invoiceData').html('<p>'+response+'</p>');
+											//console.log('formdata done:', formDataObj.tokenName);
+											const coinData = {
+												"coinName": uploadInvoiceObj.tokenName,
+												"network" : "testnet",
+												"type" : "erc721"
+											};
+
+
+											$("#deploy_invoice").on('click', function (e) {
+												showLoader();
+												$('#deploy_invoice').prop('disabled', true);
+												var deploy = {
+													"async": true,
+													"crossDomain": true,
+													"url": "https://api.mycontract.co/v1/smartcontract/deploy",
+													"method": "POST",
+													"headers": {
+														"content-type": "application/json",
+														"authorization":token
+													},
+													"processData": false,
+													"data": JSON.stringify(coinData)
+												}
+												
+														
+												$.ajax(deploy).done(function(response){
+													console.log('response deploy>>', response)
+													if (response.status == true){
+														
+														hideLoader();
+														$("#invoiceprocess").modal("show");
+														$('#invoiceprocess').css('opacity', '1')
+														$('#invoicebtn').click(function() {
+															$("#invoiceprocess").modal("hide");
+															$('#quickdeployTab').hide();
+															$('#quickdeployHeader').removeClass('active');
+															$('#quickCompleteHeader').addClass('active');
+															$('#QuickbookHeader').css('pointer-events', 'auto');
+															$('#quickCompleteTab').show();
+
+															var discover = {
+																"async": true,
+																"crossDomain": true,
+																"url": "https://api.mycontract.co/v1/smartcontract/invoices",
+																"method": "POST",
+																"headers": {
+																	"content-type": "application/json",
+																	"authorization":token
+																},
+																"processData": false,
+																"data": ""
+															
+														}
+
+														$.ajax(discover).done(function(response){
+															console.log('invicelist ',response);
+															// response.projects
+															invoiceList(response.projects);
+															// $('#createBondHeader').on('click');
+														})
+														
+													})
+
+							
+					
+							}
+						});
+	
+		
+
+					console.log('uploadInvoice>>>>', uploadInvoiceObj);
+	
+
+											});
+										
+									
+										}
+									})
+						};
+					});
+				})
+}
+
+$(function () {
+	var jQueryScript = document.createElement('script');  
+	// jQueryScript.setAttribute('src','http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.10.5/jquery.dataTables.min.js');
+	document.head.appendChild(jQueryScript);
+	console.log("Quickbook updated");
 	var site_url = $('#site_url').val();
 	var csrf_name = $('#csrf_tokens').attr('name');
 	var csrf_value = $('#csrf_tokens').val();
@@ -470,14 +704,8 @@ $(function () {
 		}
 	});
 
-	function showLoader() {
-		document.getElementById("loader").style.display = "block";
-    }						
-
-    function hideLoader() {
-		document.getElementById("loader").style.display = "none";
-	}
 	
+
 	function bondList(data) {
 		var discoverBondTable = "";
 		var status = "Deployed";
@@ -546,8 +774,9 @@ $(function () {
 		return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight))
 	}
 
+
 	$('#refreshBondsList').click(function() {
-		showLoader
+		// showLoader();
 		$.post("https://api.mycontract.co/v1/client/login", { "email": "mansi@xinfin.org", "password": "manuvora" }, function (res) {
 				//console.log(res);
 			localStorage.setItem("token", res.token);
@@ -569,6 +798,34 @@ $(function () {
 				console.log(response);
 				// response.projects
 				bondList(response.projects);
+				
+			})
+		});
+	 });
+
+	 $('#refreshinvoiceList').click(function() {
+		// showLoader();
+		$.post("https://api.mycontract.co/v1/client/login", { "email": "mansi@xinfin.org", "password": "manuvora" }, function (res) {
+				//console.log(res);
+			localStorage.setItem("token", res.token);
+			var token = localStorage.getItem("token");
+			var discover = {
+				"async": true,
+				"crossDomain": true,
+				"url": "https://api.mycontract.co/v1/smartcontract/invoices",
+				"method": "POST",
+				"headers": {
+					"content-type": "application/json",
+					"authorization":token
+				},
+				"processData": false,
+				"data": ""
+			
+			}
+			$.ajax(discover).done(function(response){
+				console.log(response);
+				// response.projects
+				invoiceList(response.projects);
 				
 			})
 		});
@@ -608,12 +865,76 @@ $(function () {
 				maxlength: 15,
 				LetterOnly: true
 			},
+			industry:{
+				required: true,
+				minlength: 1,
+				maxlength: 15,
+				LetterOnly: true
+			},
 			tokenSymbol: {
 				required: true,
 				minlength: 2,
 				maxlength: 10,
 				LetterOnly: true
 			},
+			isin: {
+				required: true,
+				minlength: 8,
+				maxlength: 8,
+				alphanumericOnly: true
+			},
+			cusip: {
+				required: true,
+				minlength: 8,
+				maxlength: 8,
+				alphanumericOnly: true
+			},
+			moodys: {
+				required: true,
+				minlength: 1,
+				maxlength: 10,
+				LetterOnly: true
+			},
+			snp: {
+				required: true,
+				minlength: 1,
+				maxlength: 10,
+				LetterOnly: true
+			},
+			fitch: {
+				required: true,
+				minlength: 1,
+				maxlength: 10,
+				LetterOnly: true
+			},
+			fsdate: {
+				required: true,
+			},
+			maturitydate: {
+				required: true,
+			},
+			amtstanding: {
+				required: true,
+				minlength: 1,
+				maxlength: 10,
+				numberOnly: true
+			},
+			frequency: {
+				required: true,
+				minlength: 1,
+				maxlength: 10,
+				numberOnly: true
+			},
+			firstdate: {
+				required: true,
+			},
+			benchmark: {
+				required: true,
+				minlength: 1,
+				maxlength: 10,
+				numberOnly: true
+			},
+			
 			tokenSupply: {
 				required: true,
 				min:1,
@@ -639,13 +960,7 @@ $(function () {
 				minlength: 1,
 				DecNumberOnly: true
 			},
-			tenure: {
-				required: true,
-				min:1,
-				max:100,
-				minlength: 1,
-				numberOnly: true
-			},
+			
 			defaultReal: {
 				equalTo: '#captcha_val'
 			}
@@ -657,44 +972,91 @@ $(function () {
 				minlength: "Characters length should be atleast 2",
 				maxlength: "Characters length should not exceeded than 15"
 			},
-			tokenSymbol: {
-				required: "Please enter bond symbol",
-				minlength: "Characters length should be atleast 2",
-				maxlength: "Characters length should not exceeded than 10"
+			industry: {
+				required: "Please enter Industry",
+				minlength: "Characters length should be atleast 1",
+				maxlength: "Characters length should not exceeded than 15"
 			},
-			tokenSupply: {
-				required: "Please enter issuance size",
-				min:"Please enter value more than 0",
-				minlength: "Digits length should be atleast 2"
+			isin: {
+				required: "Please enter ISIN",
+				minlength: "Characters length should be atleast 8",
+				maxlength: "Characters length should not exceeded than 8"
+			},
+			cusip: {
+				required: "Please enter CUSIP",
+				minlength: "Characters length should be atleast 8",
+				maxlength: "Characters length should not exceeded than 8"
+			},
+			moodys: {
+				required: "Please enter Moody's",
+				minlength: "Characters length should be atleast 1",
+				maxlength: "Characters length should not exceeded than 4"
+			},
+			snp: {
+				required: "Please enter S&P",
+				minlength: "Characters length should be atleast 1",
+				maxlength: "Characters length should not exceeded than 4"
+			},
+			fitch: {
+				required: "Please enter Fitch",
+				minlength: "Characters length should be atleast 1",
+				maxlength: "Characters length should not exceeded than 4"
+			},
+			fsDate: {
+				required: "Please enter First Settle Date",
+				
+			},
+			maturityDate: {
+				required: "Please enter Maturity Date",
+				
 			},
 			ethRate: {
-				required: "Please enter face value",
-				min:"Please enter value more than 0",
-				minlength: "Digits length should be atleast 2"
+				required: "Please enter Face Value",
+				minlength: "Digits length should be atleast 1",
+				maxlength: "Digits length should not exceeded than 10"
 			},
 			bonusRate: {
-				required: "Please enter minimum contribution",
-				min:"Please enter value more than 0",
+				required: "Please enter Minimum Contribution",
+				minlength: "Digits length should be atleast 1",
+				maxlength: "Digits length should not exceeded than 10"
+			},
+			frequency: {
+				required: "Please enter frequency",
+				minlength: "Digits length should be atleast 1",
+				maxlength: "Digits length should not exceeded than 10"
+			},
+			amtstanding: {
+				required: "Please enter Amount Outstanding",
 				minlength: "Digits length should be atleast 2",
-				maxlength: "Digits length should not exceeded than 15"
+				maxlength: "Digits length should not exceeded than 10"
+			},
+			firstDate: {
+				required: "Please enter First Date",
+				
 			},
 			coupon: {
 				required: "Please enter coupon",
 				min:"Please enter value more than 0.1",
 				minlength: "Digits length should be atleast 2"
 			},
-			tenure: {
-				required: "Please enter tenure",
-				min:"Please enter value more than 0",
+			benchmark: {
+				required: "Please enter Benchmark",
 				minlength: "Digits length should be atleast 2",
-				
+				maxlength: "Digits length should not exceeded than 10"
 			},
-			dvalue: {
-				required: "Please enter discount value",
-				minlength: "Digits length should be atleast 2",
-				maxlength: "Digits length should not exceeded than 15"
+			
+			tokenSymbol: {
+				required: "Please enter bond symbol",
+				minlength: "Characters length should be atleast 2",
+				maxlength: "Characters length should not exceeded than 15"
+			},
+			tokenSupply: {
+				required: "Please enter issuance size",
+				min:"Please enter value more than 0",
+				minlength: "Digits length should be atleast 2"
 			},
 			defaultReal:"Please enter correct captcha (Letters are Case sensitive)."
+			
 		},
 		onkeyup: function (elem) {
 
@@ -728,9 +1090,15 @@ $(function () {
 				var formDataObj = {};
 				$.each(formObj, function (k, v) {
 					v = v.split('=');
-					formDataObj[v[0]] = v[1];
+					if(v[0] === "fsdate" || v[0] === "maturitydate" || v[0] === "firstdate") {
+						var date = v[1].split('-');
+						date = date[2] + `/` + date[1] + '/' + date[0];
+						formDataObj[v[0]] = date;
+					} else {
+						formDataObj[v[0]] = v[1];
+					}
 				})
-				//console.log('formDataObj', formDataObj);
+				console.log('formDataObj>>>>>>>', formDataObj);
 				localStorage.setItem("formData", formData);
 				var token = localStorage.getItem("token", res.token);
 				//console.log(token);
@@ -740,7 +1108,7 @@ $(function () {
 					var settings = {
 						"async": true,
 						"crossDomain": true,
-						"url": "https://api.mycontract.co/v1/smartcontract/ERC20",
+						"url": "https://api.mycontract.co/v1/smartcontract/ZEROBond",
 						"method": "POST",
 						"headers": {
 							"content-type": "application/json",
@@ -767,6 +1135,7 @@ $(function () {
 						if(response.status == false) {
 							$('#createBondTab').show();
 							$('#contractexists').modal('show');
+							$('#contractexists').css('opacity', '1')
 							$('#deployTab').hide();
 							
 						} else {
@@ -784,7 +1153,8 @@ $(function () {
 							//console.log('formdata done:', formDataObj.tokenName);
 							const coinData = {
 								"coinName": formDataObj.tokenName,
-								"network" : "testnet"
+								"network" : "testnet",
+								"type" : "erc20"
 							};
 
 
@@ -798,7 +1168,8 @@ $(function () {
 									"method": "POST",
 									"headers": {
 										"content-type": "application/json",
-										"authorization":token
+										"authorization":token,
+										// "type":"erc20"
 									},
 									"processData": false,
 									"data": JSON.stringify(coinData)
@@ -806,10 +1177,12 @@ $(function () {
 								
 										
 								$.ajax(deploy).done(function(response){
+									console.log('response deploy>>>>>>>>', response)
 
 									if (response.status == true){
 										hideLoader();
 										$("#thankyou").modal("show");
+										$('#thankyou').css('opacity', '1')
 										$('#DeployBtn').click(function() {
 											$("#thankyou").modal("hide");
 											$('#deployTab').hide();
@@ -834,7 +1207,7 @@ $(function () {
 											}
 
 											$.ajax(discover).done(function(response){
-												// console.log(response);
+												console.log('contract>>>>>>>>>>>>>>', response);
 												// response.projects
 												bondList(response.projects);
 												// $('#createBondHeader').on('click');
@@ -870,77 +1243,504 @@ $(function () {
 
 	});
 
+	$('#invoiceCompleteHeader').click(function() {
+		$.post("https://api.mycontract.co/v1/client/login", { "email": "mansi@xinfin.org", "password": "manuvora" }, function (res) {
+			//console.log(res);
+			localStorage.setItem("token", res.token);
+			var token = localStorage.getItem("token");
+			var discover = {
+				"async": true,
+				"crossDomain": true,
+				"url": "https://api.mycontract.co/v1/smartcontract/invoices",
+				"method": "POST",
+				"headers": {
+					"content-type": "application/json",
+					"authorization":token
+				},
+				"processData": false,
+				"data": ""
+			
+			}
 
+			$.ajax(discover).done(function(response){
+				 console.log(response);
+				// response.projects
+				invoiceList(response.projects);
+			})
+		});
+	 });
+	 $('#quickCompleteHeader').click(function() {
+		$.post("https://api.mycontract.co/v1/client/login", { "email": "mansi@xinfin.org", "password": "manuvora" }, function (res) {
+			//console.log(res);
+			localStorage.setItem("token", res.token);
+			var token = localStorage.getItem("token");
+			var discover = {
+				"async": true,
+				"crossDomain": true,
+				"url": "https://api.mycontract.co/v1/smartcontract/invoices",
+				"method": "POST",
+				"headers": {
+					"content-type": "application/json",
+					"authorization":token
+				},
+				"processData": false,
+				"data": ""
+			
+			}
 
-	$("#advertise-form").validate({
+			$.ajax(discover).done(function(response){
+				 console.log(response);
+				// response.projects
+				invoiceList(response.projects);
+			})
+		});
+ 	});
+	$("#invoice_factoring-form").validate({
 		rules: {
-			mname: {
+			tokenName:{
 				required: true,
 				minlength: 2,
-				maxlength: 30,
+				maxlength: 15,
 				LetterOnly: true
 			},
-			memail: {
-				EmailGeneral: true,
-				required: true
-			},
-			mmob: {
+			tokenSymbol:{
 				required: true,
-				//numberOnly: true,
-				mobilenumberOnly: true
+				minlength: 2,
+				maxlength: 10,
+				LetterOnly: true
 			},
-			mcomp: {
-				required: true,
-				minlength: 3,
-				maxlength: 40,
-				CalphanumericOnly: true
-			},
-			musertype: "required",
-			mmsg: {
-				required: true,
-				minlength: 5,
-				maxlength: 5,
-				messageFormat1: true
-			},
+			file:"required",
 			defaultReal: {
 				equalTo: '#captcha_val'
 			}
+
 		},
 		messages: {
-			mname: {
-				required: "Please enter Your full name",
+			tokenName:{
+				required: "Please enter Invoice ID",
 				minlength: "Characters length should be atleast 2",
-				maxlength: "Characters length should not exceeded than 30"
+				maxlength: "Characters length should not exceeded than 15"
 			},
-			memail: "Please enter a valid email",
-			mcomp: {
-				required: "Please enter company name",
-				minlength: "Characters length should be atleast 3",
-				maxlength: "Characters length should not exceeded than 40"
+			tokenSymbol:{
+				required: "Please enter Contract ID",
+				minlength: "Characters length should be atleast 2",
+				maxlength: "Characters length should not exceeded than 10"
 			},
-			musertype: "Please choose a user type",
-			mmsg: {
-				required: "Please type your message",
-				minlength: "Text length should be atleast 5",
-				maxlength: "Characters length should not exceeded than 140"
-			},
-			mmob: {
-				required: "Please enter a valid mobile number"
-			},
-			defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+			file:"Document required",
+			defaultReal:"Please enter correct captcha (Letters are Case sensitive)."
+			
 		},
 		onkeyup: function (elem) {
 
 			var element_id = $(elem).attr('id');
 
-			if (element_id == 'mname' || element_id == 'mmsg' || element_id == 'mcomp') {
+			if (element_id == 'tokenName' || element_id == 'tokenSymbol') {
 
 				var strv = $('#' + element_id).val();
 
 				$('#' + element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
+
 			}
+
+		},
+		success: function (elem) {
+		},
+		error: function (elem) {
+		},
+		submitHandler: function (form) {
+			$.post("https://api.mycontract.co/v1/client/login", { "email": "mansi@xinfin.org", "password": "manuvora" }, function (res) {
+				// console.log(res);
+				localStorage.setItem("token", res.token);
+				var formData = $(form).serialize();
+				const formObj = formData.trim().split('&');
+				var formDataObj = {};
+				$.each(formObj, function (k, v) {
+					v = v.split('=');
+					formDataObj[v[0]] = v[1];
+				});
+				
+				// console.log('formDataObj', formDataObj);
+				localStorage.setItem("formData", formData);
+				var token = localStorage.getItem("token", res.token);
+				// console.log(token);
+				showLoader();
+				$('#invoiceData').prop('disabled', true);
+				var input = document.querySelector('input[type="file"]');
+				var formData = new FormData();
+				formData.append("file", input.files[0]);
+				console.log('formdata>>>>', formData)
+				var fileHash;
+
+				var invoice = {
+					"async": true,
+					"crossDomain": true,
+					"url": "https://api.mycontract.co/v1/invoice/quickbook/uploadinvoice",
+					"method": "POST",
+					"async": true,
+					"data": formData,
+					"cache": false,
+					"contentType": false,
+					"processData": false,
+					"timeout": 60000
+				}
+				
+					$.ajax(invoice).done(function (response) {
+						console.log('response>>>>', response);
+						fileHash = response.hash;
+
+
+
+						// after file upload make erc721 call
+						formDataObj['hash'] = fileHash;
+						console.log('formdataobj', formDataObj)
+						if (res.token != null && res.token == token) {
+							var settings = {
+								"async": true,
+								"crossDomain": true,
+								"url": "https://api.mycontract.co/v1/smartcontract/ERC721",
+								"method": "POST",
+								"headers": {
+									"content-type": "application/json",
+									"authorization":token
+								},
+								"processData": false,
+								"data": JSON.stringify(formDataObj)
+							}
+					
+
+					$.ajax(settings).done(function (response) {
+
+						$('#uploadinvoiceTab').hide();
+						$('#invoicedeployTab').show();
+						$('#uploadinvoiceHeader').removeClass('active');
+						$('#invoicedeployHeader').addClass('active');
+						$('#uploadmanform').hide();
+						//console.log( response);
+						hideLoader();
+						$('#invoiceData').html('<p>'+response+'</p>');
+						// console.log('formdata done:', formDataObj.tokenName);
+						
+
+						// console.log('response', response);
+						if(response.status == false) {
+							$('#uploadinvoiceTab').show();
+							$('#invoiceexists').modal('show');
+							$('#invoiceexists').css('opacity', '1')
+							$('#invoicedeployTab').hide();
+							
+						} 
+						else {
+							// console.log('response else', response)
+							$('#uploadinvoiceTab').hide();
+							$('#invoicedeployTab').show();							
+							$('#uploadinvoiceHeader').removeClass('active');
+							
+							$('#uploadinvoiceHeader').css('pointer-events', 'none');
+							$('#invoicedeployHeader').addClass('active');
+							//console.log( response);
+							hideLoader();
+							$('#invoiceData').html('<p>'+response+'</p>');
+							//console.log('formdata done:', formDataObj.tokenName);
+							const coinData = {
+								"coinName": formDataObj.tokenName,
+								"network" : "testnet",
+								"type" : "erc721"
+							};
+
+
+							$("#deploy_invoice").on('click', function (e) {
+								showLoader();
+								$('#deploy_invoice').prop('disabled', true);
+								var deploy = {
+									"async": true,
+									"crossDomain": true,
+									"url": "https://api.mycontract.co/v1/smartcontract/deploy",
+									"method": "POST",
+									"headers": {
+										"content-type": "application/json",
+										"authorization":token
+									},
+									"processData": false,
+									"data": JSON.stringify(coinData)
+								}
+								
+										
+								$.ajax(deploy).done(function(response){
+									console.log('response deploy>>', response)
+									if (response.status == true){
+										hideLoader();
+										$("#invoiceprocess").modal("show");
+										$('#invoiceprocess').css('opacity', '1')
+										$('#invoicebtn').click(function() {
+											$("#invoiceprocess").modal("hide");
+											$('#invoicedeployTab').hide();
+											$('#invoicedeployHeader').removeClass('active');
+											$('#invoiceCompleteHeader').addClass('active');
+											$('#uploadinvoiceHeader').css('pointer-events', 'auto');
+											$('#invoiceCompleteTab').show();
+
+											var discover = {
+												"async": true,
+												"crossDomain": true,
+												"url": "https://api.mycontract.co/v1/smartcontract/invoices",
+												"method": "POST",
+												"headers": {
+													"content-type": "application/json",
+													"authorization":token
+												},
+												"processData": false,
+												"data": ""
+											
+										}
+
+										$.ajax(discover).done(function(response){
+											// console.log(response);
+											// response.projects
+											invoiceList(response.projects);
+											// $('#createBondHeader').on('click');
+										})
+										
+										});
+									}
+									// console.log('response', response, response.crowdsaleReceipt.transactionHash);
+									else{
+										alert("Oops!!Something went wrong");
+										location.reload();
+									}
+							
+								});
+						
+							
+							});
+
+							}		
+					});
+					
+				}
+					}).fail(function(error) {
+						console.log(error);
+					});
+				
+
+				
+			}).fail(function () {
+					alert("error");
+				});
+
 		}
+
+
 	});
+
+	// $('#file').change(function () {
+	// 	/* here we take the file extension and set an array of valid extensions */
+	// 	var res = $('#file').val();
+	// 	var arr = res.split("\\");
+	// 	var filename = arr.slice(-1)[0];
+	// 	filextension = filename.split(".");
+	// 	filext = "." + filextension.slice(-1)[0];
+	// 	filesize = this.files[0].size;
+
+	// 	valid = [".pdf"]; // ".doc",".txt",".rtf",".docx",".ppt",".pptx",".pps",".xls",".xlsx",
+	// 	/* if file is not valid we show the error icon, the red alert, and hide the submit button */
+	// 	if (valid.indexOf(filext.toLowerCase()) == -1) {
+	// 		$(".imgupload").hide("slow");
+	// 		$(".imgupload.ok").hide("slow");
+	// 		$(".imgupload.stop").show("slow");
+
+	// 		$('#namefile').css({ "color": "red" });
+	// 		$(this).val('');
+	// 		if (parseFloat(filesize) > 2097152) {
+
+	// 			$('#namefile').html("File Size must be less than 2MB!");
+
+	// 		} else {
+
+	// 			$('#namefile').html(filename + " is Invalid format!");
+	// 		}
+
+	// 	} else if (parseFloat(filesize) > 2097152) {
+
+	// 		$(".imgupload").hide("slow");
+	// 		$(".imgupload.ok").hide("slow");
+	// 		$(".imgupload.stop").show("slow");
+
+	// 		$('#namefile').css({ "color": "red" });
+	// 		$(this).val('');
+
+	// 		$('#namefile').html("File Size must be less than 2MB!");
+
+	// 	} else {
+	// 		/* if file is valid we show the green alert and show the valid submit */
+	// 		$(".imgupload").hide("slow");
+	// 		$(".imgupload.stop").hide("slow");
+	// 		$(".imgupload.ok").show("slow");
+
+	// 		$('#namefile').css({ "color": "green" });
+	// 		$('#namefile').html(filename);
+
+	// 	}
+	// });
+
+	$('#uploadman').click(function() {
+		$('#uploadinvoiceTab').hide();
+		$('#uploadmanform').show();
+		$('#invoiceCompleteHeader').css('pointer-events', 'none');
+								
+	})
+
+	function quickbookList(data) {
+		// console.log('data>>', data)
+		var discoverquickbookTable = "";
+		$.each(data, function(k,v) {
+			// console.log('timestamp:',new Date(v.createdAt));
+			
+			discoverquickbookTable += `
+								<tr class="bondRow" id="invoiceRow-`+k+`">
+									<td id="dNum_`+k+`">`+v.DocNumber+`</td>
+									<td id="cName_`+k+`">`+v.CustomerRef.name+`</td>
+									<td id="line_`+k+`">`+v.Line[0].Description+`</td>
+									<td id="amount_`+k+`">`+v.TotalAmt+`</td>
+									<td id="date_`+k+`">`+v.DueDate+`</td>
+									<td><div class="btn-block"> <button  onclick="uploadInvoice('`+k+`');" class="btnn btnn-primary btnn-rounded btn-sm">Upload</button></div></td>
+								</tr>
+								`;
+		});
+
+		$('#quickbookTable').html(discoverquickbookTable);
+		$("#quickbook_listing").DataTable({
+			"bSort": false,
+			"dom": "Bfrtip",
+			"bDestroy": true,
+			"pageLength": 10
+			
+		});
+	}
+
+	$("#quickbooks").click(function() {
+		// alert('quickboook')
+		var link = "";
+		$.post("https://api.mycontract.co/v1/client/login", { "email": "mansi@xinfin.org", "password": "manuvora" }, function (res) {
+				//console.log(res);
+			localStorage.setItem("token", res.token);
+			var token = localStorage.getItem("token");
+			var login = {
+				"async": true,
+				"crossDomain": true,
+				"url": "https://api.mycontract.co/v1/invoice/quickbook/login",
+				"method": "GET",
+				"headers": {
+					"authorization":token
+				},
+				"processData": false,
+				"data": ""
+			
+			}
+			$.ajax(login).done(function(response){
+				// console.log(response);
+				// alert('response')
+				if(response.status == true){
+					window.location.href = response.login_url;
+				}
+				
+			})
+		});
+	});
+
+	if(window.location.href.indexOf("quickbook_dashboard") > -1) {
+		$.post("https://api.mycontract.co/v1/client/login", { "email": "mansi@xinfin.org", "password": "manuvora" }, function (res) {
+			localStorage.setItem("token", res.token);
+			var token = localStorage.getItem("token");
+			var dashboard = {
+				"async": true,
+				"crossDomain": true,
+				"url": "https://api.mycontract.co/v1/invoice/quickbook/dashboard",
+				"method": "GET",
+				"headers": {
+					"authorization":token
+				},
+				"processData": false,
+				"data": ""
+			
+			}
+			$.ajax(dashboard).done(function(response){
+				// console.log(response);
+				quickbookList(response.data);
+				
+			})
+		});
+	}
+	
+	
+	// $("#advertise-form").validate({
+	// 	rules: {
+	// 		mname: {
+	// 			required: true,
+	// 			minlength: 2,
+	// 			maxlength: 30,
+	// 			LetterOnly: true
+	// 		},
+	// 		memail: {
+	// 			EmailGeneral: true,
+	// 			required: true
+	// 		},
+	// 		mmob: {
+	// 			required: true,
+	// 			//numberOnly: true,
+	// 			mobilenumberOnly: true
+	// 		},
+	// 		mcomp: {
+	// 			required: true,
+	// 			minlength: 3,
+	// 			maxlength: 40,
+	// 			CalphanumericOnly: true
+	// 		},
+	// 		musertype: "required",
+	// 		mmsg: {
+	// 			required: true,
+	// 			minlength: 5,
+	// 			maxlength: 5,
+	// 			messageFormat1: true
+	// 		},
+	// 		defaultReal: {
+	// 			equalTo: '#captcha_val'
+	// 		}
+	// 	},
+	// 	messages: {
+	// 		mname: {
+	// 			required: "Please enter Your full name",
+	// 			minlength: "Characters length should be atleast 2",
+	// 			maxlength: "Characters length should not exceeded than 30"
+	// 		},
+	// 		memail: "Please enter a valid email",
+	// 		mcomp: {
+	// 			required: "Please enter company name",
+	// 			minlength: "Characters length should be atleast 3",
+	// 			maxlength: "Characters length should not exceeded than 40"
+	// 		},
+	// 		musertype: "Please choose a user type",
+	// 		mmsg: {
+	// 			required: "Please type your message",
+	// 			minlength: "Text length should be atleast 5",
+	// 			maxlength: "Characters length should not exceeded than 140"
+	// 		},
+	// 		mmob: {
+	// 			required: "Please enter a valid mobile number"
+	// 		},
+	// 		defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+	// 	},
+	// 	onkeyup: function (elem) {
+
+	// 		var element_id = $(elem).attr('id');
+
+	// 		if (element_id == 'mname' || element_id == 'mmsg' || element_id == 'mcomp') {
+
+	// 			var strv = $('#' + element_id).val();
+
+	// 			$('#' + element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
+	// 		}
+	// 	}
+	// });
 
 	$("#consortium-form").validate({
 		rules: {
@@ -1018,70 +1818,70 @@ $(function () {
 		}
 	});
 
-	$("#careers-form").validate({
-		rules: {
-			mfname: {
-				required: true,
-				minlength: 2,
-				maxlength: 30,
-				LetterOnly: true
-			},
-			memail: {
-				required: true,
-				EmailGeneral: true
-			},
-			mmob: {
-				required: true,
-				//numberOnly: true,
-				mobilenumberOnly: true
-			},
-			mlinkurl: {
-				required: true,
-				LinkedinUrl: true
-			},
-			mcoverl: {
-				required: true,
-				minlength: 5,
-				maxlength: 150,
-				messageFormat2: true
-			},
-			mfile: "required",
-			defaultReal: {
-				equalTo: '#captcha_val'
-			}
-		},
-		messages: {
-			mfname: {
-				required: "Please enter Your full name",
-				minlength: "Characters length should be atleast 2",
-				maxlength: "Characters length should not exceeded than 30"
-			},
-			memail: "Please enter a valid email",
-			mlinkurl: "Please enter a valid Linkedin URL",
-			mcoverl: {
-				required: "Please write few words about Yourself",
-				minlength: "Characters length should be atleast 5",
-				maxlength: "Characters length should not exceeded than 150"
-			},
-			mfile: "Please upload Your resume(.pdf only)",
-			mmob: {
-				required: "Please enter a valid mobile number"
-			},
-			defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
-		},
-		onkeyup: function (elem) {
+	// $("#careers-form").validate({
+	// 	rules: {
+	// 		mfname: {
+	// 			required: true,
+	// 			minlength: 2,
+	// 			maxlength: 30,
+	// 			LetterOnly: true
+	// 		},
+	// 		memail: {
+	// 			required: true,
+	// 			EmailGeneral: true
+	// 		},
+	// 		mmob: {
+	// 			required: true,
+	// 			//numberOnly: true,
+	// 			mobilenumberOnly: true
+	// 		},
+	// 		mlinkurl: {
+	// 			required: true,
+	// 			LinkedinUrl: true
+	// 		},
+	// 		mcoverl: {
+	// 			required: true,
+	// 			minlength: 5,
+	// 			maxlength: 150,
+	// 			messageFormat2: true
+	// 		},
+	// 		mfile: "required",
+	// 		defaultReal: {
+	// 			equalTo: '#captcha_val'
+	// 		}
+	// 	},
+	// 	messages: {
+	// 		mfname: {
+	// 			required: "Please enter Your full name",
+	// 			minlength: "Characters length should be atleast 2",
+	// 			maxlength: "Characters length should not exceeded than 30"
+	// 		},
+	// 		memail: "Please enter a valid email",
+	// 		mlinkurl: "Please enter a valid Linkedin URL",
+	// 		mcoverl: {
+	// 			required: "Please write few words about Yourself",
+	// 			minlength: "Characters length should be atleast 5",
+	// 			maxlength: "Characters length should not exceeded than 150"
+	// 		},
+	// 		mfile: "Please upload Your resume(.pdf only)",
+	// 		mmob: {
+	// 			required: "Please enter a valid mobile number"
+	// 		},
+	// 		defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+	// 	},
+	// 	onkeyup: function (elem) {
 
-			var element_id = $(elem).attr('id');
+	// 		var element_id = $(elem).attr('id');
 
-			if (element_id == 'mfname' || element_id == 'mcoverl') {
+	// 		if (element_id == 'mfname' || element_id == 'mcoverl') {
 
-				var strv = $('#' + element_id).val();
+	// 			var strv = $('#' + element_id).val();
 
-				$('#' + element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
+	// 			$('#' + element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
 
-			}
-		}
-	});
+	// 		}
+	// 	}
+	// });
 
 	$('#mfile').change(function () {
 		/* here we take the file extension and set an array of valid extensions */
@@ -1151,16 +1951,25 @@ $(function () {
 
 	});
 
-	$('#bondCreateCancel').click(function() {
-		location.reload();
-	});
+	
 
 	$('#createBondHeader').click(function() {
 		//console.log('alert')
 		location.reload();
 	});
-	
+	$('#uploadinvoiceHeader').click(function() {
+		//console.log('alert')
+		location.reload();
+	});
+	$('#QuickbookHeader').click(function() {
+		//console.log('alert')
+		location.reload();
+	});
 	$('#sorry').click(function() {
 		location.reload();
 	});
 });
+
+
+
+
