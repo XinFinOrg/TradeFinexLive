@@ -40,7 +40,7 @@
         
         
         
-<section class="banner-outer">
+        <section class="banner-outer">
             <!--<div class="banner-slider">-->
                 <div class="banner banner2 slide1">
                     <div class="container">
@@ -119,8 +119,8 @@
                         <h2>Invoice Factoring</h2>
                         <p>The TradeFinex Invoice Factoring Platform equips participants with an alternative financial marketplace that operates in a fully transparent environment.</p>
                         <div class="button-box">
-						<a href="https://docs.xinfin.org/docs/dapp/infactor.io/conduct-a-poc" class="get-started">Start POC</a>
-                        <a href="<?=base_url('publicv/infactor');?>" class="get-started">Explore</a>
+                        	<a href="<?=base_url('publicv/invoice_factoring');?>" class="get-started">Start POC</a>
+                        	<a href="<?=base_url('publicv/infactor');?>" class="get-started">Explore</a>
                         </div>
                     </div>
                     <div class="col-md-7 right">

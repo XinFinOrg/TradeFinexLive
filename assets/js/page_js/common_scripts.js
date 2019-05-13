@@ -231,7 +231,33 @@ function uploadInvoice(data) {
 					});
 				})
 }
-
+function alphaex(data) {
+	var form = new FormData();
+	form.append("name", $('#alphaCN_'+ data)[0].innerText);
+	form.append("contract_address",$('#alphaTCA_'+ data)[0].innerText);
+	form.append("symbol", $('#alphaCN_'+ data).data('symbol'));
+	form.append("token_decimals", "18");
+	form.append("requested_by", "TradeFinex");
+	form.append("logo_url", "http://uat.alphaex.net/front/assets/imgs/USDC.png");
+	form.append("email_id", "mansi@xinfin.org");		
+	var alphaex = {
+		"async": true,
+		"crossDomain": true,
+		"url": "http://uat.alphaex.net/api/add_erc20",
+		"method": "POST",
+		"contentType": false,
+		"mimeType": "multipart/form-data",
+		"data":form,
+		"processData": false
+	}
+	$.ajax(alphaex).done(function (response) {
+		console.log(JSON.parse(response).message);
+		$('#alphaexshow').modal("show");
+		$('#alphaexshow').css('opacity', '1')
+		$('#alphaexData').html('<p>'+JSON.parse(response).message+'</p>');
+		
+	})
+}
 $(function () {
 	var jQueryScript = document.createElement('script');  
 	// jQueryScript.setAttribute('src','http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.10.5/jquery.dataTables.min.js');
@@ -719,11 +745,12 @@ $(function () {
 			}
 			discoverBondTable += `
 								<tr class="bondRow">
-									<td>`+v.coinName+`</td>
+									<td id="alphaCN_`+k+`" data-symbol="`+v.coinSymbol+`">`+v.coinName+`</td>
 									<td>`+v.tokenSupply+`</td>
 									<td>`+v.ETHRate+`</td>
 									<td>`+status+`</td>
-									<td class="truncate"><span><a href = "https://ropsten.etherscan.io/tx/`+v.tokenContractHash+`" target="_blank" >`+v.tokenContractHash+`</a><span></td>
+									<td id="alphaTCA_`+k+`" class="truncate"><span><a href = "https://ropsten.etherscan.io/tx/`+v.tokenContractHash+`" target="_blank" >`+v.tokenContractHash+`</a><span></td>
+									<td><div class="btn-block"> <button  onclick="alphaex('`+k+`');" class="btnn btnn-primary btnn-rounded btn-sm">Connect to AlphaEx</button></div></td>
 								</tr>
 								`;
 		});
@@ -1303,6 +1330,15 @@ $(function () {
 				maxlength: 15,
 				LetterOnly: true
 			},
+			date:{
+				required: true
+			},
+			amount:{
+				required: true,
+				minlength: 1,
+				maxlength: 15,
+				numberOnly: true
+			},
 			tokenSymbol:{
 				required: true,
 				minlength: 2,
@@ -1324,6 +1360,14 @@ $(function () {
 			tokenSymbol:{
 				required: "Please enter Contract ID",
 				minlength: "Characters length should be atleast 2",
+				maxlength: "Characters length should not exceeded than 10"
+			},
+			date:{
+				required: "Please enter Date"
+			},
+			amount:{
+				required: "Please enter Amount",
+				minlength: "Characters length should be atleast 1",
 				maxlength: "Characters length should not exceeded than 10"
 			},
 			file:"Document required",

@@ -343,8 +343,9 @@
                                                                 <th>Bond Name</th>
                                                                 <th>Total Supply</th>
                                                                 <th>Face Value</th>
-                                                                <th class="text-center"style="width:14%;">Status</th>
-                                                                <th>Address</th>                                                        
+                                                                <th >Status</th>
+                                                                <th>Address</th>  
+                                                                <th>Connect</th>                                                        
                                                             </tr>
                                                         </thead>
                                                         <tbody id="discoverBondTable">
@@ -424,6 +425,26 @@
 				<div class="modal-body text-center">
 
 						<p>Contract Deployment in process.</p>
+						
+						<div class="btnn-more">
+							<button id="DeployBtn" type="submit" class="btnn btnn-primary btnn-rounded"  data-keyboard="false"> Ok </button> 
+						</div>						
+							                                           
+				</div>
+			</div>
+	 	</div>
+</div>
+<div class="modal fade" id="alphaexshow" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog" style="">
+		<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
+			<div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"> <span class="hidden-xs">&times;</span> <span class="hidden-md hidden-lg"> <img src="<?php echo base_url() ?>assets/images/icon/log_arrow.png"  alt="icon" /></span> </button>
+                </div>
+				<div class="modal-body text-center">
+
+                <pre id="alphaexData" class="language-markup scrollable">
+						
 						
 						<div class="btnn-more">
 							<button id="DeployBtn" type="submit" class="btnn btnn-primary btnn-rounded"  data-keyboard="false"> Ok </button> 

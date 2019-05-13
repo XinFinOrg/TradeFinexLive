@@ -78,7 +78,7 @@
 
 									<h5 class="card-header">Connect Invoice to Blockchain State</h5>
 									<div class="card-body">
-										<p>Lorem Ipsum simply dumm text Lorem Ipsum simply dumm text Lorem Ipsum simply dumm text Lorem Ipsum simply dumm text </p>
+										<!-- <p>Lorem Ipsum simply dumm text Lorem Ipsum simply dumm text Lorem Ipsum simply dumm text Lorem Ipsum simply dumm text </p> -->
 									</div>
 
 								</div>
@@ -216,29 +216,34 @@
                                     <div class="form-row">
                                                           
                                                     
-                                                <div class="form-group col-md-6">
-                                                    <label for="industry">Invoice ID</label>
+                                                <div class="form-group col-md-4">
+                                                    <label for="industry">Invoice ID</label><sup>*</sup>
                                                     <input type="text" class="form-control form-controlCustom form-control-lg" id="tokenName" name = "tokenName" placeholder="Invoice ID">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="ticker">Contract ID</label>
+                                                <div class="form-group col-md-4">
+                                                    <label for="ticker">Contract ID</label><sup>*</sup>
                                                     <input type="text" class="form-control form-controlCustom form-control-lg" id="tokenSymbol" name = "tokenSymbol" placeholder="Contract ID">
+                                                </div> 
+                                                <div class="form-group col-md-4">
+                                                    <label for="date">Date</label><sup>*</sup>
+                                                    <input type="date" style = "line-height: 21px;" class="form-control form-controlCustom form-control-lg" id="date" name = "date" placeholder="Date">
                                                 </div> 
                                                                                             
                                     </div>
-                                    <div class="form-row">                                            
-                                                <div class="form-group col-md-6">
-                                                    <label for="validatedCustomLabel">Upload Document</label>
+                                    <div class="form-row">   
+                                                 <div class="form-group col-md-4">
+                                                    <label for="amount">Amount</label><sup>*</sup>
+                                                    <input type="text" class="form-control form-controlCustom form-control-lg" id="amount" name = "amount" placeholder="Amount">
+                                                </div>                                          
+                                                <div class="form-group col-md-4">
+                                                    <label for="validatedCustomLabel">Upload Document</label><sup>*</sup>
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input form-control form-controlCustom form-control-lg" multiple="" style="cursor:pointer;" placeholder="Choose file..." id="validatedCustomFile" name="file" required="">
                                                         <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                                                         <!-- <div class="invalid-feedback">Example custom file feedback</div> -->
                                                     </div>
-                                                </div>
-                                                
-                                                
-                                                 
-                                                <div class="form-group  col-md-6">
+                                                </div>    
+                                                <div class="form-group  col-md-4">
                                                     <label for="captcha">Enter Captcha</label><sup>*</sup>
                                                     <input class="form-control form-controlCustom form-control-lg" id="defaultReal" name="defaultReal" captchav="" autocomplete="" maxlength="50" required data-required-error="" tabindex="5" aria-required="true" type="text" placeholder="Captcha">                                            
                                                     <input type="hidden" id="captcha_val" />
