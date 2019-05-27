@@ -25,19 +25,21 @@ class User extends CI_Model {
         if($check > 0){
             // Get prev user data
             $result = $query->row_array();
-            
+        
             // Update user data
-            $data['modified'] = date("Y-m-d H:i:s");
-            $update = $this->db->update($this->tableName, $data, array('id'=>$result['id']));
-            
+            // $data['modified'] = date("Y-m-d H:i:s");
+            // $update = $this->db->update($this->tableName, $data, array('id'=>$result['id']));
+            // echo "User already exists";
+            redirect('publicv/bond_create');
+            // die;
             // user id
-            $userID = $result['id'];
+            // $userID = $result['id'];
         }else{
             // Insert user data
             $data['created'] = date("Y-m-d H:i:s");
             $data['modified'] = date("Y-m-d H:i:s");
-            $insert = $this->db->insert($this->tableName,$data);
             
+            $insert = $this->db->insert($this->tableName,$data);
             // user id
             $userID = $this->db->insert_id();
         }

@@ -60,7 +60,7 @@ $autoload['packages'] = array();
 
     CI_Minifier
 */
-$autoload['libraries'] = array('database', 'session');
+$autoload['libraries'] = array('database','session');
 
 /*
 | -------------------------------------------------------------------
@@ -91,7 +91,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('cache','url');
+$autoload['helper'] = array('url');
 
 /*
 | -------------------------------------------------------------------

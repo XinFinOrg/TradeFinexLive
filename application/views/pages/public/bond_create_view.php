@@ -36,6 +36,11 @@
                             <li><a href="create-organization.html"><i class="icon dripicons-user-group"></i><span class="hide-menu">Create Organization</span></a></li>
                             <li><a href="portfolio.html"><i class="icon dripicons-folder-open"></i><span class="hide-menu">Portfolio</span></a></li>
                             <li><a href="syndicate.html"><i class="icon dripicons-meter"></i><span class="hide-menu">Syndicate</span></a></li> -->
+                            <?php 
+                                if(isset($_SESSION["token"])){?>
+                                    <li><a href="<?php echo base_url() ?>sociallog/out">Logout</a></li>
+                            <?php } ?>
+                            
                         </ul>
                     </nav>
                     <!-- END MAIN MENU -->
@@ -120,11 +125,11 @@
                                         <div class="form-group col-md-12"><div class=" form-column-headings"> Bond Details</div></div>
                                             <div class="form-group col-lg-3 col-md-6">
                                                 <label for="firstSettleDate">First Settle Date</label>
-                                                <input type="date" style = "line-height: 21px;" class="form-control form-controlCustom form-control-lg" id="fsDate"  name= "fsdate" placeholder="dd/mm/yyyy">
+                                                <input type="text" style = "line-height: 21px;" class="form-control form-controlCustom form-control-lg" id="fsdate"  name= "fsdate" placeholder="dd/mm/yy" >
                                             </div>
                                             <div class="form-group col-lg-3 col-md-6">
                                                 <label for="maturityDate">Maturity Date</label>
-                                                <input type="date" style = "line-height: 21px;" class="form-control form-controlCustom form-control-lg" id="maturityDate" name= "maturitydate"  placeholder="dd/mm/yyyy">
+                                                <input type="text" style = "line-height: 21px;" class="form-control form-controlCustom form-control-lg"  id="mtdate" name= "maturitydate" placeholder="dd/mm/yy" >
                                             </div>
                                             <div class="form-group col-lg-3 col-md-6">
                                                 <label for="faceValue">Face Value</label>
@@ -170,7 +175,7 @@
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="1stDate">1st Date</label>
-                                                <input type="date"  style = "line-height: 21px;" class="form-control form-controlCustom form-control-lg" id="firstDate"  name= "firstdate" placeholder="dd/mm/yyyy">
+                                                <input type="text"  style = "line-height: 21px;" class="form-control form-controlCustom form-control-lg" id="firstDate"  name= "firstdate" placeholder="dd/mm/yyyy">
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -443,12 +448,12 @@
                 </div>
 				<div class="modal-body text-center">
 
-                <pre id="alphaexData" class="language-markup scrollable">
+                <p id="alphaexData"></p>
 						
-						
-						<div class="btnn-more">
-							<button id="DeployBtn" type="submit" class="btnn btnn-primary btnn-rounded"  data-keyboard="false"> Ok </button> 
-						</div>						
+				<div class="btnn-more">
+					<button id="alphaexok" type="submit" class="btnn btnn-primary btnn-rounded"  data-keyboard="false"> Ok </button> 
+				</div>				
+										
 							                                           
 				</div>
 			</div>

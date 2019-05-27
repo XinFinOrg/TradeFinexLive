@@ -594,35 +594,35 @@
 		$("#start_within").datepicker({
             dateFormat: "dd/mm/yy",
             minDate: 0,
-			maxDate: "+1y",
-			autoclose: true,
-			ignoreReadonly: true,
-			changeMonth: true,
-			changeYear: true,
+						maxDate: "+1y",
+						autoclose: true,
+						ignoreReadonly: true,
+						changeMonth: true,
+						changeYear: true,
             onSelect: function (date) {
 				
                 var dt2 = $('#finish_within');
 				
-				var min_close_select_date = $(this).datepicker('getDate');
-				min_close_select_date.setDate(min_close_select_date.getDate() + 1);
-				var max_close_select_date = $(this).datepicker('getDate');
-				max_close_select_date.setDate(max_close_select_date.getDate() + 7300);
-				
-				dt2.datepicker('setDate', min_close_select_date);
-				dt2.datepicker('option', 'minDate', min_close_select_date);
-				/* dt2.datepicker('option', 'maxDate', max_close_select_date);  */
-				
-				if($.trim($(this).val()) !== ''){
-					$(this).parent().addClass('input-focust');
-					$("#finish_within").parent().addClass('input-focust');
-				}else{
-					$(this).parent().removeClass('input-focust');
-					$("#finish_within").parent().removeClass('input-focust');
-				}
-            }
-        });
+						var min_close_select_date = $(this).datepicker('getDate');
+						min_close_select_date.setDate(min_close_select_date.getDate() + 1);
+						var max_close_select_date = $(this).datepicker('getDate');
+						max_close_select_date.setDate(max_close_select_date.getDate() + 7300);
+						
+						dt2.datepicker('setDate', min_close_select_date);
+						dt2.datepicker('option', 'minDate', min_close_select_date);
+						/* dt2.datepicker('option', 'maxDate', max_close_select_date);  */
+						
+						if($.trim($(this).val()) !== ''){
+							$(this).parent().addClass('input-focust');
+							$("#finish_within").parent().addClass('input-focust');
+						}else{
+							$(this).parent().removeClass('input-focust');
+							$("#finish_within").parent().removeClass('input-focust');
+						}
+								}
+      });
 		
-        $('#finish_within').datepicker({
+    $('#finish_within').datepicker({
             dateFormat: "dd/mm/yy",
 			minDate: 0,
 			maxDate: "+20y",
@@ -636,8 +636,8 @@
 				}else{
 					$(this).parent().removeClass('input-focust');
 				}
-			}
-        });
+				}
+       });
 				
 		var cval = $('#pcountry option:selected').val();
 		var sclass = '.cref_'+cval;

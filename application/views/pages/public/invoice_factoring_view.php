@@ -226,7 +226,7 @@
                                                 </div> 
                                                 <div class="form-group col-md-4">
                                                     <label for="date">Date</label><sup>*</sup>
-                                                    <input type="date" style = "line-height: 21px;" class="form-control form-controlCustom form-control-lg" id="date" name = "date" placeholder="Date">
+                                                    <input type="date" style = "line-height: 21px;" class="form-control form-controlCustom form-control-lg" id="date" name = "date" placeholder="Date"min="<?=date('Y-m-d') ?>">
                                                 </div> 
                                                                                             
                                     </div>

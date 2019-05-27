@@ -98,7 +98,7 @@
                             <h2>Digital Bond</h2>
                             <p>Create, manage and liquidate bond instruments online. A fully digital blockchain solution eliminates counterparty delays and provides instant settlement.</p>
                             <div class="button-box">
-                            	<a href="<?=base_url('publicv/bond_create');?>" class="get-started">Start POC</a>
+							<a href="javascript:void(0)" data-toggle="modal" data-target="#sociallogin" class="get-started">Start POC</a>
                             	<a href="<?=base_url('publicv/digital_bond');?>" class="get-started">Explore</a>
                             </div>
                         </div>
@@ -449,7 +449,32 @@
 	 </div>
 	 <!-- /.container --> 
 </section>
+<section>
+<div class="modal fade" id="sociallogin" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static" >
+		<div class="modal-dialog">
+		<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
+			<div class="modal-content">
+                <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"> <span class="hidden-xs">&times;</span> <span class="hidden-md hidden-lg"> <img src="<?php echo base_url() ?>assets/images/icon/log_arrow.png"  alt="icon" /></span> </button>
+                </div>
+				<div class="modal-body text-center">
+			<div class="row">	 
+				<!-- <div class="col-md-5 col-xs-12 text-center sign_up_box"> -->
+					<!-- <div class="sign_up"> -->
+						<h3 >Login Using Social Accounts</h3>
+						<!-- <span class="signbox"><a href="<?=base_url()?>googlelogin/login"><img src="<?=base_url()?>assets/images/google-btn.png" alt=""/></a></span> -->
 
+						<span ><a href="<?php echo base_url("sociallogin/login")?>"><img src="<?php echo base_url() ?>assets/images/img/google-btn.png" alt=""></a></span>
+						<span><a href="<?php echo base_url("user_authentication/fblogin")?>" ><img src="<?php echo base_url() ?>assets/images/img/fb-login-btn.png" alt=""></a></span>
+                        <span><a href="<?php echo base_url("gitlogin/login")?>" ><img src="<?php echo base_url() ?>assets/images/img/github_button.png" alt=""></a></span>
+						
+                        <br>
+					</div>
+				<!-- </div> -->
+			</div>
+	</div>
+			</div>
+</section>
 
 
 <section class="flat-row flat-team featured_logo">

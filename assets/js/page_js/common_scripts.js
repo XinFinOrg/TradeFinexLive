@@ -60,7 +60,7 @@ function invoiceList(data) {
 								<td>`+status+`</td>
 								<td>`+v.createdAt+`</td>
 								<td class="truncate"><span><a href = "https://gateway.ipfs.io/ipfs/`+v.ipfsHash+`" target="_blank" >`+v.ipfsHash+`</a><span></td>
-								<td class="truncate"><span><a href = "https://ropsten.etherscan.io/address/`+v.tokenContractAddress+`" target="_blank" >`+v.tokenContractAddress+`</a><span></td>
+								<td class="truncate"><span><a href = "http://apothem.network/#explorer" target="_blank" >`+v.tokenContractAddress+`</a><span></td>
 							</tr>
 							`;
 	});
@@ -152,7 +152,7 @@ function uploadInvoice(data) {
 											//console.log('formdata done:', formDataObj.tokenName);
 											const coinData = {
 												"coinName": uploadInvoiceObj.tokenName,
-												"network" : "testnet",
+												"network" : "apothem",
 												"type" : "erc721"
 											};
 
@@ -238,7 +238,7 @@ function alphaex(data) {
 	form.append("symbol", $('#alphaCN_'+ data).data('symbol'));
 	form.append("token_decimals", "18");
 	form.append("requested_by", "TradeFinex");
-	form.append("logo_url", "http://uat.alphaex.net/front/assets/imgs/USDC.png");
+	form.append("logo_url", "https://uat.alphaex.net/front/assets/imgs/USDC.png");
 	form.append("email_id", "mansi@xinfin.org");		
 	var alphaex = {
 		"async": true,
@@ -251,7 +251,7 @@ function alphaex(data) {
 		"processData": false
 	}
 	$.ajax(alphaex).done(function (response) {
-		console.log(JSON.parse(response).message);
+		// console.log(JSON.parse(response).message);
 		$('#alphaexshow').modal("show");
 		$('#alphaexshow').css('opacity', '1')
 		$('#alphaexData').html('<p>'+JSON.parse(response).message+'</p>');
@@ -262,7 +262,7 @@ $(function () {
 	var jQueryScript = document.createElement('script');  
 	// jQueryScript.setAttribute('src','http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.10.5/jquery.dataTables.min.js');
 	document.head.appendChild(jQueryScript);
-	console.log("Quickbook updated");
+	// console.log("Quickbook updated");
 	var site_url = $('#site_url').val();
 	var csrf_name = $('#csrf_tokens').attr('name');
 	var csrf_value = $('#csrf_tokens').val();
@@ -738,7 +738,7 @@ $(function () {
 		var mergeSortedData = mergeSort(data);
 		$.each(mergeSortedData, function(k,v) {
 			// console.log('timestamp:',new Date(v.createdAt));
-			if(v.tokenContractHash == null) {
+			if(v.tokenContractAddress == null) {
 				status = "Pending";
 			} else {
 				status = "Deployed";
@@ -749,7 +749,7 @@ $(function () {
 									<td>`+v.tokenSupply+`</td>
 									<td>`+v.ETHRate+`</td>
 									<td>`+status+`</td>
-									<td id="alphaTCA_`+k+`" class="truncate"><span><a href = "https://ropsten.etherscan.io/tx/`+v.tokenContractHash+`" target="_blank" >`+v.tokenContractHash+`</a><span></td>
+									<td id="alphaTCA_`+k+`" class="truncate"><span><a href = "http://apothem.network/#explorer" target="_blank" >`+v.tokenContractAddress+`</a><span></td>
 									<td><div class="btn-block"> <button  onclick="alphaex('`+k+`');" class="btnn btnn-primary btnn-rounded btn-sm">Connect to AlphaEx</button></div></td>
 								</tr>
 								`;
@@ -882,8 +882,36 @@ $(function () {
 				bondList(response.projects);
 			})
 		});
- 	});
+	 });
+	
+	$('#mtdate').datepicker({
+		dateFormat: "dd-mm-yy" ,
+		onSelect: function(date){   
+			var date1 = $('#mtdate').datepicker('getDate'); 
+			newDate = new Date( Date.parse( date1 ) );  
+			$('#firstDate').datepicker("option","maxDate",newDate);
+		} 
+	});
+	$('#firstDate').datepicker({
+		dateFormat: "dd-mm-yy" 
+	});
 
+	$("#fsdate").datepicker({
+		dateFormat: "dd-mm-yy", 
+		minDate:  0,
+		onSelect: function(date){            
+			var date1 = $('#fsdate').datepicker('getDate');           
+			var date = new Date( Date.parse( date1 ) ); 
+			date.setDate( date.getDate() + 1 );        
+			var newDate = date.toDateString(); 
+			newDate = new Date( Date.parse( newDate ) );                      
+			$('#mtdate').datepicker("option","minDate",newDate); 
+			$('#firstDate').datepicker("option","minDate",newDate); 
+			
+		}
+	});
+	
+	
 	$("#bond_create-form").validate({
 		rules: {
 			tokenName: {
@@ -906,14 +934,14 @@ $(function () {
 			},
 			isin: {
 				required: true,
-				minlength: 8,
-				maxlength: 8,
+				minlength: 12,
+				maxlength: 12,
 				alphanumericOnly: true
 			},
 			cusip: {
 				required: true,
-				minlength: 8,
-				maxlength: 8,
+				minlength: 12,
+				maxlength: 12,
 				alphanumericOnly: true
 			},
 			moodys: {
@@ -1006,13 +1034,13 @@ $(function () {
 			},
 			isin: {
 				required: "Please enter ISIN",
-				minlength: "Characters length should be atleast 8",
-				maxlength: "Characters length should not exceeded than 8"
+				minlength: "Characters length should be atleast 12",
+				maxlength: "Characters length should not exceeded than 12"
 			},
 			cusip: {
 				required: "Please enter CUSIP",
-				minlength: "Characters length should be atleast 8",
-				maxlength: "Characters length should not exceeded than 8"
+				minlength: "Characters length should be atleast 12",
+				maxlength: "Characters length should not exceeded than 12"
 			},
 			moodys: {
 				required: "Please enter Moody's",
@@ -1103,6 +1131,8 @@ $(function () {
 			var dvalue = (ethRate / ((1 + (coupon/100)) ** tenure));
 			$('#dvalue').val(dvalue);
 
+			
+
 		},
 		success: function (elem) {
 		},
@@ -1180,7 +1210,7 @@ $(function () {
 							//console.log('formdata done:', formDataObj.tokenName);
 							const coinData = {
 								"coinName": formDataObj.tokenName,
-								"network" : "testnet",
+								"network" : "apothem",
 								"type" : "erc20"
 							};
 
@@ -1269,6 +1299,7 @@ $(function () {
 
 
 	});
+
 
 	$('#invoiceCompleteHeader').click(function() {
 		$.post("https://api.mycontract.co/v1/client/login", { "email": "mansi@xinfin.org", "password": "manuvora" }, function (res) {
@@ -1487,7 +1518,7 @@ $(function () {
 							//console.log('formdata done:', formDataObj.tokenName);
 							const coinData = {
 								"coinName": formDataObj.tokenName,
-								"network" : "testnet",
+								"network" : "apothem",
 								"type" : "erc721"
 							};
 
@@ -2010,6 +2041,9 @@ $(function () {
 		location.reload();
 	});
 	$('#sorry').click(function() {
+		location.reload();
+	});
+	$('#alphaexok').click(function() {
 		location.reload();
 	});
 });

@@ -1,13 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class gitlogin extends CI_Controller {
+class Gitlogin extends CI_Controller {
 
 public function __construct()
 {
 	parent::__construct();
-
-	$this->load->library('facebook');
 
 	$this->load->model('user');
 }
@@ -15,49 +13,85 @@ public function __construct()
 public function index(){
 	$userData = array();
 	
-	// Check if user is logged in
-	if($this->git->is_authenticated()){
-		// Get user facebook profile details
-		$fbUser = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,link,gender,picture');
-
-		// Preparing data for database insertion
-		$userData['oauth_provider'] = 'facebook';
-		$userData['oauth_uid']    = !empty($fbUser['id'])?$fbUser['id']:'';;
-		$userData['first_name']    = !empty($fbUser['first_name'])?$fbUser['first_name']:'';
-		$userData['last_name']    = !empty($fbUser['last_name'])?$fbUser['last_name']:'';
-		$userData['email']        = !empty($fbUser['email'])?$fbUser['email']:'';
-		$userData['gender']        = !empty($fbUser['gender'])?$fbUser['gender']:'';
-		$userData['picture']    = !empty($fbUser['picture']['data']['url'])?$fbUser['picture']['data']['url']:'';
-		$userData['link']        = !empty($fbUser['link'])?$fbUser['link']:'';
-		
-		// Insert or update user data
-		$userID = $this->user->checkUser($userData);
-		
-		// Check user data insert or update status
-		if(!empty($userID)){
-			$data['userData'] = $userData;
-			$this->session->set_userdata('userData', $userData);
-		}else{
-		   $data['userData'] = array();
-		}
-		
-		// Get logout URL
-		$data['logoutURL'] = $this->facebook->logout_url();
-	}else{
-		// Get login URL
-		$data['authURL'] =  $this->facebook->login_url();
+}
+public function login(){
+	
+    $client_id = "2d264d61e985d4809d43";
+    $redirect_url = "https://demo.tradefinex.org/publicv/bond_create";
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $url = 'https://github.com/login/oauth/authorize?client_id='. $client_id. "&redirect_url=".$redirect_url."&scope=user";
+        header("location: $url");
 	}
 	
-	// Load login & profile view
-	$this->load->view('user_authentication/facebook_profile',$data);
 }
 
-public function logout() {
-	// Remove local Facebook session
-	$this->facebook->destroy_session();
-	// Remove user data from session
-	$this->session->unset_userdata('userData');
-	// Redirect to login page
-	redirect('user_authentication');
-}	
+function fetchData()
+{
+    $client_id = "2d264d61e985d4809d43";
+    $redirect_url = "https://demo.tradefinex.org/publicv/bond_create";
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if (isset($_GET['code'])) {
+            $code = $_GET['code'];
+            $post = http_build_query(array(
+                    'client_id' => $client_id,
+                    'redirect_url' => $redirect_url,
+                    'client_secret' => 'e0141fa85195f84b400314b7cc67ef9cb4d65b7c',
+                    'code' => $code,
+
+                ));
+        }
+
+        $access_data = file_get_contents("https://github.com/login/oauth/access_token?". $post);
+       
+        $exploded1 = explode('access_token=', $access_data);
+        $exploded2 = explode('&scope=user', $exploded1[1]);
+
+        $access_token = $exploded2[0];
+        
+
+        $opts = [ 'http' => [
+                        'method' => 'GET',
+                        'header' => [ 'User-Agent: PHP']
+                    ]
+        ];
+
+        //fetching user data
+        $url = "https://api.github.com/user?access_token=$access_token";
+        $context = stream_context_create($opts);
+        $data = file_get_contents($url, false, $context);
+
+    
+        $user_data = json_decode($data, true);
+        $username = $user_data['login'];
+
+
+        //fetching email data
+        $url1 = "https://api.github.com/user/emails?access_token=$access_token";
+        $emails = file_get_contents($url1, false, $context);
+        $emails = json_decode($emails, true);
+
+        $email = $emails[0];
+       
+        $userPayload = [
+            'username' => $username,
+            'email' => $email,
+            'fetched from' => "github"
+        ];
+        $_SESSION['payload'] = $userPayload;
+        $_SESSION['user'] = $username;
+
+        return $userPayload;
+        $userID = $this->user->checkUser($userPayload);
+		$this->session->set_userdata('loggedIn', true);
+			$this->session->set_userdata('userData', $userPayload);
+
+			
+			redirect('publicv/bond_create');
+
+    }
+    else {
+        die('error');
+    }
+    
+}
 }

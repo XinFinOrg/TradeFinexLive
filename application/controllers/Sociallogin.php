@@ -18,15 +18,9 @@ public function __construct()
 	
 	public function index()
 	{
-		$data = array();
-		$this->load->view('includes/headern', $data);
-		$this->load->view('includes/header_publicn', $data);
-		$this->load->view('login_view');
-		$this->load->view('includes/footer_commonn', $data);
-		$this->load->view('pages_scripts/common_scripts', $data);
-		$this->load->view('includes/footern', $data);	
-		
+		$this->load->view('pages/bond_create');
 	}
+	
 	
 	public function login()
 	{
@@ -34,10 +28,10 @@ public function __construct()
 		$clientId = '974340167294-4tm547181uu7v0gtqj4d1bv4gp1ffugq.apps.googleusercontent.com'; //Google client ID
 		$clientSecret = 's1gEY7eIayJBjcYHbsvnA8Ha'; //Google client secret
 		$redirectURL = base_url().'sociallogin/login';
-		$redirectURL = 'http://localhost/DemoTradeFinex/sociallogin/login';
+		// $redirectURL = 'http://localhost/DemoTradeFinex/sociallogin/login';
+		
 			
-		//https://curl.haxx.se/docs/caextract.html
-
+		
 		//Call Google API
 		$gClient = new Google_Client();
 		$gClient->setApplicationName('Login');
@@ -72,12 +66,13 @@ public function __construct()
 			$userData['picture']        = !empty($gpInfo['picture'])?$gpInfo['picture']:'';
 		
 			$userID = $this->user->checkUser($userData);
-		
+			
+			
 			$this->session->set_userdata('loggedIn', true);
 			$this->session->set_userdata('userData', $userData);
 
 			
-			redirect('user_authentication/profile/');
+			redirect('publicv/bond_create');
 			// $this->load->view('user_authentication/profile',$userData);
 
 			// echo "<pre>";
@@ -94,4 +89,7 @@ public function __construct()
 		
 		
 	}	
+
+	
+
 }

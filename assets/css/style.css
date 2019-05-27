@@ -2034,6 +2034,7 @@ to {
 	overflow-x: hidden;
 	overflow-y: hidden;
 	z-index: 10000;
+	top:-75px;
 }
 #login .modal-dialog {
 	width: 470px;
