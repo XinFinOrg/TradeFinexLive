@@ -525,12 +525,12 @@
 							
 						</div>
 					</div>
-					<div class="owl-item">
+					<!-- <div class="owl-item">
 						<div class="team-member" style="background-color: #fff;">
 							<div class="member-image image"><img class="img-responsive" data-lazy="../assets/images/page/enterprise-logo.jpg" alt="Enterprise" /></div>
 							
 						</div>
-					</div>
+					</div> -->
 					<div class="owl-item">
 						<div class="team-member" style="background-color: #fff;">
 							<div class="member-image image"><img class="img-responsive" data-lazy="../assets/images/page/indsoft-logo.jpg" alt="IndSoft" /></div>
