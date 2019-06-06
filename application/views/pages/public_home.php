@@ -40,7 +40,7 @@
         
         
         
-        <section class="banner-outer">
+<section class="banner-outer">
             <!--<div class="banner-slider">-->
                 <div class="banner banner2 slide1">
                     <div class="container">
