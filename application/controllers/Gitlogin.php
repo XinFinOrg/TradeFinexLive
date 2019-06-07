@@ -7,17 +7,18 @@ public function __construct()
 {
 	parent::__construct();
 
-	$this->load->model('user');
+    $this->load->model('user');
+    $this->load->library(array('session'));
+    $this->load->driver('session');
 }
 	
 public function index(){
-	$userData = array();
-	
+	$this->load->view('pages/public/bond_create',$_SESSION['token']);
 }
+
 public function login(){
-	
     $client_id = "2d264d61e985d4809d43";
-    $redirect_url = "https://demo.tradefinex.org/publicv/bond_create";
+    $redirect_url = "http://localhost/DemoTradeFinex/gitlogin/gitcallback";
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $url = 'https://github.com/login/oauth/authorize?client_id='. $client_id. "&redirect_url=".$redirect_url."&scope=user";
         header("location: $url");
@@ -25,7 +26,7 @@ public function login(){
 	
 }
 
-function fetchData()
+public function gitcallback()
 {
     $client_id = "2d264d61e985d4809d43";
     $redirect_url = "https://demo.tradefinex.org/publicv/bond_create";
@@ -42,13 +43,11 @@ function fetchData()
         }
 
         $access_data = file_get_contents("https://github.com/login/oauth/access_token?". $post);
-       
         $exploded1 = explode('access_token=', $access_data);
         $exploded2 = explode('&scope=user', $exploded1[1]);
 
         $access_token = $exploded2[0];
         
-
         $opts = [ 'http' => [
                         'method' => 'GET',
                         'header' => [ 'User-Agent: PHP']
@@ -59,9 +58,9 @@ function fetchData()
         $url = "https://api.github.com/user?access_token=$access_token";
         $context = stream_context_create($opts);
         $data = file_get_contents($url, false, $context);
-
-    
+        
         $user_data = json_decode($data, true);
+        
         $username = $user_data['login'];
 
 
@@ -69,18 +68,27 @@ function fetchData()
         $url1 = "https://api.github.com/user/emails?access_token=$access_token";
         $emails = file_get_contents($url1, false, $context);
         $emails = json_decode($emails, true);
-
         $email = $emails[0];
+        $email = $email['email'];
        
         $userPayload = [
-            'username' => $username,
+            'oauth_uid' => $access_token,
             'email' => $email,
-            'fetched from' => "github"
+            'first_name' => $username,
+            'last_name' => " ",
+            'gender' => " ",
+            'locale' => "",
+            'link' => "",
+            'picture'=> "",
+            'oauth_provider' => "github"
         ];
+        
         $_SESSION['payload'] = $userPayload;
         $_SESSION['user'] = $username;
+        $_SESSION['token'] = $access_token;
+        // var_dump($access_token) ;
+        // die;
 
-        return $userPayload;
         $userID = $this->user->checkUser($userPayload);
 		$this->session->set_userdata('loggedIn', true);
 			$this->session->set_userdata('userData', $userPayload);
@@ -90,6 +98,7 @@ function fetchData()
 
     }
     else {
+        echo 'fetchdata error>>>';
         die('error');
     }
     
