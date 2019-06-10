@@ -1,7 +1,7 @@
 <div class="sub_page_wraper">
     <section class="finance_solutions">
         <div class="container">
-            <h3>Digital Bond</h3>
+            <h3>BOSS 101</h3>
             <br>
             <h4 class="infactor">Create, Manage and Liquidate Bond Instruments On Blockchain.</h4>
         </div>
@@ -16,7 +16,7 @@
                     <div class="col-md-10 col-md-offset-1">
                         <div class="head-block">
                             <h2>Creating Global Bond Standard</h2>
-                            <p>Connecting Traditional Bond Market with Digital Bond Standard.</p>
+                            <p>Connecting Traditional Bond Market with BOSS 101 Standard.</p>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                         <h2>Create, Manage and Liquidate Bonds Instrument Online</h2>
                         <p>A fully blockchain based digital solution eliminates counter-party delays, and allow instant settlement.</p>
                         <ul class="more-features-list">
-                            <li>Digital Bond platform for Broker-dealer and license entity</li>
+                            <li>BOSS 101 platform for Broker-dealer and license entity</li>
                             <li>Digital platforms enhance secondary market liquidity</li>
                         </ul>
                         <div class="more-features-btn-holder"><a href="javascript:void(0)" data-toggle="modal" data-target="#sociallogin" class="get-started">Start POC</a></div>
@@ -92,7 +92,7 @@
                 <div class="row text-center">
                     <div class="col-md-10 col-md-offset-1">
                         <div class="head-block">
-                            <h2>Get an overview on Digital bond Platform</h2> 
+                            <h2>Get an overview on BOSS 101 Platform</h2> 
                         </div>
                     </div>
                 </div>

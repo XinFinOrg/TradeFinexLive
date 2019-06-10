@@ -8,7 +8,7 @@
 					<div class="text-heading"> </div>
 					<p class="slider_lower_content">Mitigate Counter-Party Risk by making your Financial Instruments Interoperable & Liquid</p>
 					<a class="trade_home_call_to-action" href="<?=base_url('publicv/infactor');?>">Invoice</a>
-					<a class="trade_home_call_to-action" href="<?=base_url('publicv/bond_create');?>">Digital Bond</a>
+					<a class="trade_home_call_to-action" href="<?=base_url('publicv/bond_create');?>">BOSS 101</a>
 				</div>
 				
 			</div>
@@ -52,7 +52,7 @@
 									<p class="animated fadeInDown delay-04s">Start your trial in a regulatory sandbox environment</p>
                                     <div class="button-box mt-30">
                                         <a href="<?=base_url('publicv/infactor');?>" class="get-started animated fadeInDown delay-04s">Invoice</a>
-                                		<a href="<?=base_url('publicv/digital_bond');?>" class="get-started animated fadeInDown delay-05s">Digital Bond</a>
+                                		<a href="<?=base_url('publicv/boss_101');?>" class="get-started animated fadeInDown delay-05s">BOSS 101</a>
                                 	</div>
                             </div>
                         </div>
@@ -95,11 +95,11 @@
                 <div class="row">
                     <div class="col-md-6 col-md-push-6">
                         <div class="cnt-block padd-left">
-                            <h2>Digital Bond</h2>
+                            <h2>BOSS 101</h2>
                             <p>Create, manage and liquidate bond instruments online. A fully digital blockchain solution eliminates counterparty delays and provides instant settlement.</p>
                             <div class="button-box">
 							<a href="javascript:void(0)" data-toggle="modal" data-target="#sociallogin" class="get-started">Start POC</a>
-                            	<a href="<?=base_url('publicv/digital_bond');?>" class="get-started">Explore</a>
+                            	<a href="<?=base_url('publicv/boss_101');?>" class="get-started">Explore</a>
                             </div>
                         </div>
                     </div>

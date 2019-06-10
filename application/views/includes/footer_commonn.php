@@ -102,7 +102,7 @@
 							<div class="widget widget-categories">
 								<h3 class="widget-title">Explore</h3>
 								<ul class="one-half">
-									<li> <a href="<?=base_url();?>publicv/digital_bond" title="">Digital Bond</a></li>
+									<li> <a href="<?=base_url();?>publicv/boss_101" title="">BOSS 101</a></li>
 									<li> <a href="<?=base_url();?>publicv/invoice_factoring" title="">Invoice Factoring</a></li>	
 									<li> <a href="<?=base_url();?>publicv/consortium" title="">Consortium Membership</a></li>
 									<li> <a href="http://events.tradefinex.org/" title="">Consortium Event</a></li>

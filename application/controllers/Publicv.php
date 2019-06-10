@@ -169,7 +169,7 @@ class Publicv extends CI_Controller {
 	}
 	
 	
-	public function digital_bond(){
+	public function boss_101(){
         
         $data = array();
         
