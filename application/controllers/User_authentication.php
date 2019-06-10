@@ -34,7 +34,7 @@ class User_Authentication extends CI_Controller
 		$permissions = ['email']; 
 	// For more permissions like user location etc you need to send your application for review
 	
-		$loginUrl = $helper->getLoginUrl('https://demo.tradefinex.org/user_authentication/fbcallback', $permissions);
+		$loginUrl = $helper->getLoginUrl('https://tradefinex.org/user_authentication/fbcallback', $permissions);
 		header("location: ".$loginUrl);
 	}	
 
@@ -55,7 +55,7 @@ class User_Authentication extends CI_Controller
 				if(isset($session)) {
 					$accessToken = $session->getToken();
 				} else {
-					$accessToken = $helper->getAccessToken('https://demo.tradefinex.org/user_authentication/fbcallback');
+					$accessToken = $helper->getAccessToken('https://tradefinex.org/user_authentication/fbcallback');
 				}	 
 				// echo $accessToken;
 				// die;
