@@ -174,7 +174,7 @@
                         <div class="videos_video_wrap">
                     <div class="row">
                         <div class="col-md-12 videos_video_wraper">
-                            <iframe src="https://www.youtube.com/embed/GIp_h7U9aRQ?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>
+                            <iframe src="https://www.youtube.com/embed/j6rALxsO6nc?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>
                         </div>
                     </div>
                 </div>
@@ -219,7 +219,7 @@
                 <h2>Still, have questions?</h2>
                 <ul class="row features-listing">
                     <li class="col-md-4 equal-hight">
-                        <a href="http://docs.infactor.io">
+                        <a href="https://docs.tradefinex.org/FinIns/Invoices/" target="_blank">
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/help-icon.png" alt=""></span>
                             <h3>Help Center</h3>
@@ -229,7 +229,7 @@
                         </a>
                     </li>
                     <li class="col-md-4 equal-hight">
-                        <a href="http://docs.infactor.io/faq/General/">
+                        <a href="https://docs.tradefinex.org/FinIns/Invoices/" target="_blank">
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/faqs-icon.png" alt=""></span>
                             <h3>FAQs</h3>
@@ -239,7 +239,7 @@
                         </a>
                     </li>
                     <li class="col-md-4 equal-hight">
-                        <a href="http://docs.infactor.io/Guide/API/">
+                        <a href="https://docs.tradefinex.org/FinIns/Invoices/" target="_blank">
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/techdoc-icon.png" alt=""></span>
                             <h3>Technical Documents</h3>

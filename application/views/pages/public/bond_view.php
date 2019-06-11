@@ -78,7 +78,11 @@
                         <div class="more-features-btn-holder"><a href="javascript:void(0)" data-toggle="modal" data-target="#sociallogin" class="get-started">Start POC</a></div>
                     </div>
                     <div class="col-sm-6 col-md-6">
-                        <img src="../assets/banner-assets/images/coming-soon-video.jpg" class="img-responsive" alt="">
+                        <div class="videos_video_wrap">
+                    <div class="row">
+                        <div class="col-md-12 videos_video_wraper">
+                            <iframe src="https://www.youtube.com/embed/CNXr3fpwfbA?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -119,7 +123,7 @@
                 <h2>Still have questions?</h2>
                 <ul class="row features-listing">
                     <li class="col-md-4 equal-hight">
-                        <a href="https://docs.tradefinex.org/FinIns/Bonds/">
+                        <a href="https://docs.tradefinex.org/FinIns/Bonds/" target="_blank">
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/help-icon.png" alt=""></span>
                             <h3>Help Center</h3>
@@ -128,7 +132,7 @@
                         </a>
                     </li>
                     <li class="col-md-4 equal-hight">
-                        <a href="https://docs.tradefinex.org/FinIns/Bonds/">
+                        <a href="https://docs.tradefinex.org/FinIns/Bonds/" target="_blank">
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/faqs-icon.png" alt=""></span>
                             <h3>FAQs</h3>
@@ -137,7 +141,7 @@
                         </a>
                     </li>
                     <li class="col-md-4 equal-hight">
-                        <a href="https://docs.tradefinex.org/FinIns/Bonds/">
+                        <a href="https://docs.tradefinex.org/FinIns/Bonds/" target="_blank">
                         <div class="info-content">
                         	<span class="icon-holder"><img src="../assets/banner-assets/images/techdoc-icon.png" alt=""></span>
                             <h3>Technical Documents</h3>
@@ -175,7 +179,3 @@
 			</div>
 	 	</div>
 </div>
-</div>
-<?php
-	$this->load->view('includes/login_modal');
-?>

@@ -7045,6 +7045,7 @@ left:16px;
 	border: 1px solid #e4e5e6;
 	background-color: #ffffff;
 	min-height: 200;
+	height: 100%;
 }
 .videos_video_content {
 	/*padding: 10px 20px 0px 20px;*/
@@ -7075,7 +7076,7 @@ left:16px;
 	margin: 10px 0px;
 }
 .read_more a {
-	color: #ec484b;
+	color: #ec484b!important;
 }
 .privacy_policy {
 	width: 100%;
@@ -9075,4 +9076,7 @@ span .current {
 	background-color: #fff!important;
 	border-color: rgba(141,166,195,.5)!important;
 	color: #839bb3!important;
+}
+.video_container {
+	display: flex;
 }
