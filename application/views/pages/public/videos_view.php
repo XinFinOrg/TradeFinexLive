@@ -53,7 +53,7 @@
 							<div class="videos_video">
 								<!--<iframe src="https://www.youtube.com/embed/bYIJETgOY_g?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>-->
                                 <div class="embed-responsive embed-responsive-16by9 embed-div">
-								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tT3RqpWRv4o?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/krqBx0yGprE?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 								<div class="videos_video_content">
 									<p>Invoice Factoring using Quickbook</p>									
 								</div>
@@ -63,7 +63,7 @@
 							<div class="videos_video">
 								<!--<iframe src="https://www.youtube.com/embed/bYIJETgOY_g?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>-->
                                 <div class="embed-responsive embed-responsive-16by9 embed-div">
-								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/j6rALxsO6nc?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/M7W16RPfSE4?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 								<div class="videos_video_content">
 									<p>Invoice Factoring manually</p>									
 								</div>
@@ -73,7 +73,7 @@
 							<div class="videos_video">
 								<!--<iframe src="https://www.youtube.com/embed/IkvCEE6VVNg?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>-->
                                 <div class="embed-responsive embed-responsive-16by9 embed-div">
-								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/CNXr3fpwfbA?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/TUiYU_6EuPo?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 								<div class="videos_video_content">
 									<p>BOSS 101</p>									
 								</div>

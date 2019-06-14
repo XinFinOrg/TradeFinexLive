@@ -389,7 +389,7 @@
 							<div class="home_consortium_video">
 								<!--<iframe src="https://www.youtube.com/embed/mjrhTnZ16f8?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>-->
                                 <div class="embed-responsive embed-responsive-16by9 embed-div">
-								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/CNXr3fpwfbA?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe></div>
+								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/TUiYU_6EuPo?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe></div>
 								<div class="videos_video_content">
 									<p>Presenting TradeFInex BOSS 101</p>
 									<br>
@@ -400,7 +400,7 @@
 							<div class="home_consortium_video">
 								<!--<iframe src="https://www.youtube.com/embed/jLaqms1IHWE?feature=oembed" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>-->
                                 <div class="embed-responsive embed-responsive-16by9 embed-div">
-								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/j6rALxsO6nc?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe></div>
+								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/M7W16RPfSE4?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe></div>
 								<div class="videos_video_content">
 									<p>Presenting TradeFInex Invoice Factoring manually</p>
 									<br><br>
@@ -411,7 +411,7 @@
 							<div class="home_consortium_video">
 								<!--<iframe src="https://www.youtube.com/embed/3INyDwUFQgs?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="150" frameborder="0"></iframe>-->
                                 <div class="embed-responsive embed-responsive-16by9 embed-div">
-								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tT3RqpWRv4o?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe></div>
+								<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/krqBx0yGprE?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe></div>
 								<div class="videos_video_content">
 									<p>Presenting TradeFInex Invoice Factoring  Quickbooks</p>
 									<br>
