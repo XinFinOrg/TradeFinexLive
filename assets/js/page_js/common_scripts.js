@@ -940,8 +940,8 @@ $(function () {
 			},
 			cusip: {
 				required: true,
-				minlength: 12,
-				maxlength: 12,
+				minlength: 9,
+				maxlength: 9,
 				alphanumericOnly: true
 			},
 			moodys: {
