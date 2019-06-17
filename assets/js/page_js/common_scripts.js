@@ -1039,8 +1039,8 @@ $(function () {
 			},
 			cusip: {
 				required: "Please enter CUSIP",
-				minlength: "Characters length should be atleast 12",
-				maxlength: "Characters length should not exceeded than 12"
+				minlength: "Characters length should be atleast 9",
+				maxlength: "Characters length should not exceeded than 9"
 			},
 			moodys: {
 				required: "Please enter Moody's",
