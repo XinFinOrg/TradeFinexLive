@@ -32,24 +32,23 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-6 mt-70 mb-70">
                         <div class="padd-left">
-                            <h2>What your Membership includes:</h2>
+                            <h2>What includes:</h2>
+                            <p>Enterprise Application blockchain Build on XinFin</p>
                             <ul class="more-features-list">
-                                <li>Get support and interaction (Slack) with consortium colleagues.</li>
-                                <li>Conduct unlimited online Proof of Concepts with TradeFinex Platform.</li>
-                                <li>Get regular newsletters on activities in Trade and Finance.</li>
-                                <li>Get free virtual pass (Sky Business Meeting) access to yearly Roundtable of TradeFinex. (Normal cost is USD 200/per event access)</li>
-                                <li>Get to interact with Trade Finance Ecosystem participants around the world.</li>
-                                <li>Your company logo and link listed in TradeFinex ecosystem partners.</li>
-                                <li>A POC completion press release to create awareness for your company.</li>
-                                <li>Become a member in just USD 199. Offer for a limited time only!!!</li>
+                                <li>Live public Network</li>
+                                <li>Your own private Network with Java Client</li>
+                                <li>KYC enforced nodes</li>
+                                <li>Access to TradeFinex roundtable with 30+ regulators</li>
+                                <li>Exchange listings with regulated exchanges</li>
+                                <li>Middleware bridge to ERP, Open Banking (Oracle, Finastra), R3</li>
                             </ul>
-                            <!--<div class="more-features-btn-holder mt-20"><a href="#" class="get-started">Subscribe </a></div>-->
-                            <div class="more-features-btn-holder mt-20">
+                            <div class="more-features-btn-holder mt-20"><a href="<?=base_url('publicv/contact');?>" class="get-started">Enquire Now</a></div>
+                            <!--<div class="more-features-btn-holder mt-20">
                                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                                     <input name="cmd" type="hidden" value="_s-xclick" />
                                     <input name="hosted_button_id" type="hidden" value="XPXLS3L3KDGBJ" />
                                     <input alt="PayPal &ndash; The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/en_GB/SG/i/btn/btn_subscribeCC_LG.gif" type="image" /> <img src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" alt="" width="1" height="1" border="0" /></form>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -98,15 +97,7 @@
                         <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#maccordion" href="#collapseFour">Whom do I contact for more information on TradeFinex Consortium?</a> </h4>
                     </div>
                     <div id="collapseFour" class="panel-collapse collapse">
-                        <div class="panel-body">Most of the information is available on TradeFinex website but if you still have any questions, please feel free to <a href="<?=base_url('publicv/contact');?>">Contact us</a>.</div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#maccordion" href="#collapseFive">What payment methods are accepted?</a> </h4>
-                    </div>
-                    <div id="collapseFive" class="panel-collapse collapse">
-                        <div class="panel-body">The TradeFinex Consortium will be accepting payments via PayPal only.</div>
+                        <div class="panel-body">Most of the information is available on TradeFinex website but if you still have any questions, please feel free to <a href="<?=base_url('publicv/contact');?>" style="color:#687377;text-decoration:underline!important;">Contact us</a>.</div>
                     </div>
                 </div>
             </div>
