@@ -73,7 +73,7 @@
 							<div class="form-group focus-group">
 								<label class="form-label">
 									<input class="form-input input-focus-notr" id="mmob" name="mmob" type="text" tabindex="3" autocomplete="" />
-									<span class="form-name floating-label">MOBILE NO<sup>*</sup></span> 
+									<span class="form-name floating-label">MOBILE NO</span> 
 								</label>
 							</div>
 							<div class="form-group focus-group">
@@ -82,7 +82,7 @@
 									<span class="form-name floating-label">COMPANY<sup>*</sup></span> 
 								</label>
 							</div>
-							<div class="form-group focus-group">
+							<!-- <div class="form-group focus-group">
 								<div class="select_drop"> <span class="ti-angle-down"></span>
 									<select class="form-control appearance_back" id="musertype" name="musertype">
 										<option value=""></option>
@@ -93,8 +93,8 @@
 									</select>
 									<span class="form-name floating-label">USER TYPE<sup>*</sup></span>  
 								</div>
-							</div>
-							<div class="form-group focus-group">
+							</div> -->
+							<!-- <div class="form-group focus-group">
 								<div class="select_drop"> <span class="ti-angle-down"></span>
 									<select class="form-control appearance_back" id="menquiry" name="menquiry">
 										<option value=""></option>
@@ -108,7 +108,7 @@
 									</select>
 									<span class="form-name floating-label">ASSISTANCE REQUIRED<sup>*</sup></span> 
 								</div>
-							</div>
+							</div> -->
 							<div class="form-group focus-group">
 								<textarea class="input-focus-notr" id="mmsg" name="mmsg"></textarea>
 								<span class="form-name floating-label">MESSAGE<sup>*</sup></span> 

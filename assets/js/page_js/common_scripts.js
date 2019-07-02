@@ -656,7 +656,7 @@ $(function () {
 				required: true
 			},
 			mmob: {
-				required: true,
+				// required: true,
 				//numberOnly: true,
 				mobilenumberOnly: true,
 
@@ -693,9 +693,9 @@ $(function () {
 			},
 			musertype: "Please choose a user type",
 			menquiry: "Please choose Your enquiry type",
-			mmob: {
-				required: "Please enter a valid mobile number"
-			},
+			// mmob: {
+			// 	required: "Please enter a valid mobile number"
+			// },
 			mmsg: {
 				required: "Please type your message",
 				minlength: "Characters length should be atleast 15.",
