@@ -57,7 +57,7 @@
 				
 						<li class="hassubs"> <a href="javascript:void(0)" title="">Financial Instruments Supported</a>
 							<ul class="submenu">
-								<li class=""><a href="<?=base_url();?>publicv/boss_101" title="Know About BOSS 101">BOSS 101</a></li>
+								<li class=""><a href="<?=base_url();?>publicv/boss_101" title="Know About BOSS 101">Bonds/Guarantees</a></li>
                                 <li class=""><a href="<?=base_url();?>publicv/infactor" title="Know about infactor">Invoice Factoring</a></li>
 								<li class=""><a href="<?=base_url();?>publicv/corda_bridge" title="Know about infactor">Corda Bridge (Coming Soon)</a></li>
 
@@ -85,7 +85,7 @@
 								<p> Access account and manage tasks</p>
 								<p>To access the platform, use dummy <a href="<?=base_url();?>publicv/cred" >Credentials</a></p>
 								<a href="<?php echo base_url() ?>registration" class="pull-left acount_btn"> Sign Up</a> 
-								<a href="javascript:void(0)" class="pull-right acount_btn btn_logged" data-toggle="modal" data-target="#login"> Log In</a>
+								<a href="#" class="pull-right acount_btn btn_logged" data-toggle="modal" data-target="#login"> Log In</a>
 							</ul>
 						</li>
 						<li class="hidden-md hidden-lg"> <a href="javascript:void(0)" title="">Account</a>
