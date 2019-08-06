@@ -51,6 +51,7 @@
                                     <p class="animated fadeInDown delay-03s">Mitigate Counter-Party Risk by making your Financial Instruments Interoperable & Liquid.</p>
 									<p class="animated fadeInDown delay-04s">Start your trial in a regulatory sandbox environment</p>
                                     <div class="button-box mt-30">
+										<a href="http://exchange.tradefinex.org" class="get-started animated fadeInDown delay-04s">Exchange</a>
                                         <a href="<?=base_url('publicv/infactor');?>" class="get-started animated fadeInDown delay-04s">Invoice</a>
                                 		<a href="<?=base_url('publicv/boss_101');?>" class="get-started animated fadeInDown delay-05s">BOSS 101</a>
                                 	</div>
