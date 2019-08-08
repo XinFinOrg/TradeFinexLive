@@ -71,8 +71,8 @@
 								</ul>-->
 							</ul>
 						</li>
-						<li class="hidden-xs hidden-sm"> | </li>
-						<li> <a href="<?=base_url();?>publicv/projects" title="Projects">Projects</a> </li>
+						<!-- <li class="hidden-xs hidden-sm"> | </li>
+						<li> <a href="<?=base_url();?>publicv/projects" title="Projects">Projects</a> </li> -->
                         
                         <li class="hidden-xs hidden-sm"> | </li>
 						<li> <a href="https://docs.tradefinex.org/faq/general/" title="FAQ">FAQs</a> </li>
