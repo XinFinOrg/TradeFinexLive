@@ -81,7 +81,7 @@
                         <div class="videos_video_wrap">
                     <div class="row">
                         <div class="col-md-12 videos_video_wraper">
-                            <iframe src="https://www.youtube.com/embed/CNXr3fpwfbA?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>
+                            <iframe src="https://www.youtube.com/embed/TUiYU_6EuPo?feature=oembed" gesture="media" allowfullscreen="" width="100%" height="352" frameborder="0"></iframe>
                         </div>
                     </div>
                 </div>
