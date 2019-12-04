@@ -53,14 +53,14 @@ class Reset extends CI_Controller {
 		
 		$action = $this->input->post('action');
 		$req_passwd = $this->input->post('password');
-		echo("1.".$action."<br>2.".$req_passwd);
+		// echo("1.".$action."<br>2.".$req_passwd);
 		$data_add['tfu_passwd'] = openssl_encrypt($this->input->post('password'),"AES-128-ECB",$encryption_key);
 		
 // 		$data_add['tfu_passwd'] = $this->input->post('password');
 				
-		$result = $this->manage->verify_user($email, $hash);
-				
-// 		print_r($result);
+		$result1 = $this->manage->verify_user($email, $hash,$data_add['tfu_passwd']);
+			$result = json_decode($result1);
+ 		 // echo(">>".$result[0]->tfu_id);
 				
 		if($action == 'reset_password' && $req_passwd != ''){
 		    
@@ -69,7 +69,7 @@ class Reset extends CI_Controller {
 		  //  print_r($result);
 				// 			echo '</pre>';	
 			$time_now = strtotime(date('Y-m-d H:i:s'));
-			echo($time_now." ".$expired);
+			// echo($time_now." ".$expired);
 			if($time_now > $expired){
 			    
 				$this->session->set_flashdata('msg_type', 'error'); // error_userlink
@@ -78,19 +78,22 @@ class Reset extends CI_Controller {
 			}else{
 				// $datan = array();
 				// $datan['tfu_active'] = 1;
-				// echo $expired;
-					$this->manage->update_base_user_info_by_id($result[0]->tfu_id, $data_add['tfu_passwd']);
-			
-				$this->session->set_flashdata('msg_type', 'success'); // reset_password
-				$this->session->set_flashdata("email_sent_common", "<h3>Password Changed</h3>");
-				$this->session->set_flashdata("popup_desc", "<p>Password has been successfully changed. Please <a href='".base_url()."'>click here</a> to go home.</p>");
+				 // echo ("KKK".$expired);
+					$response = $this->manage->update_base_user_info_by_id($result[0]->tfu_id, $data_add['tfu_passwd']);
+			// echo ("KKK".$response );
+				if($response == 1){
+					$this->session->set_flashdata('msg_type', 'success'); // reset_password
+					$this->session->set_flashdata("email_sent_common", "<h3>Password Changed</h3>");
+					$this->session->set_flashdata("popup_desc", "<p>Password has been successfully changed. Please <a href='".base_url()."'>click here</a> to go home.</p>");
+								
+				}
 			
 			}
 			
-	    	//redirect(base_url().'thankyouc');
+	    	 redirect(base_url().'thankyouc');
 				
 		}else{
-		    echo("inside else");
+		   // echo("inside else");
 			if($action == 'reset_password'){
 				
 				$data['msg'] = 'error';

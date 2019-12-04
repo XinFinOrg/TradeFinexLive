@@ -23,7 +23,7 @@
 						</div>
 												
 						<div class="form-group btn-more">
-							<button id="signupSubmit" type="submit" class="btn">Reset Now</button>
+							<button id="" type="submit" class="btn">Reset Now</button>
 						</div>
 						<div class="row">
 							<?php echo $this->session->flashdata('error_userlink'); ?>

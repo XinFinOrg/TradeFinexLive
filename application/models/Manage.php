@@ -58,39 +58,45 @@
 			$query = $this->db->get();
 
 			$result = $query->result();
+				if(!empty($result) && is_array($result) && sizeof($result) <> 0){
+					foreach($result as $row){
+					$type_id = $row->tfu_utype;
+					echo ("MMM".$type_id);
+					$this->db->select('*');
+					$this->db->from('{PRE}user tfu');
 
-			if(!empty($result) && is_array($result) && sizeof($result) <> 0){
+					if($type_id == 1){
+						$this->db->join('{PRE}service_provider tfsp', 'tfsp.tfsp_user_ref = tfu.tfu_id');
+						// $where = "tfsp.tfsp_email = '$email'";
+					}
 
-				$type_id = $result[0]->tfu_utype;
-				$this->db->select('*');
-				$this->db->from('{PRE}user tfu');
+					if($type_id == 2){
+						$this->db->join('{PRE}financier tff', 'tff.tff_user_ref = tfu.tfu_id');
+						// $where = "tff.tff_email = '$email'";
+					}
 
-				if($type_id == 1){
-					$this->db->join('{PRE}service_provider tfsp', 'tfsp.tfsp_user_ref = tfu.tfu_id');
-					// $where = "tfsp.tfsp_email = '$email'";
+					if($type_id == 3){
+						$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tfu.tfu_id');
+						// $where = "tfb.tfb_email = '$email'";
+					}
+
+					$where = "tfu.tfu_usern = '$email' AND tfu_domain_type = '".$data_add['user_access_domain_type']."' AND tfu_domain_name = '".$data_add['user_access_domain_name']."'";
+
+					$this->db->where($where);
+					$query = $this->db->get();
+					$result = $query->result();
+					foreach($result as $has){
+						echo ("hhhh".$result);
+					}
+					return $result = $query->result();
+					
+						
 				}
+				}else{
 
-				if($type_id == 2){
-					$this->db->join('{PRE}financier tff', 'tff.tff_user_ref = tfu.tfu_id');
-					// $where = "tff.tff_email = '$email'";
+					return false;
 				}
-
-				if($type_id == 3){
-					$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tfu.tfu_id');
-					// $where = "tfb.tfb_email = '$email'";
-				}
-
-				$where = "tfu.tfu_usern = '$email' AND tfu_domain_type = '".$data_add['user_access_domain_type']."' AND tfu_domain_name = '".$data_add['user_access_domain_name']."'";
-
-				$this->db->where($where);
-				$query = $this->db->get();
-
-				return $result = $query->result();
-
-			}else{
-
-				return false;
-			}
+			
 		}
 
 		public function update_profile_by_id($id, $data){
