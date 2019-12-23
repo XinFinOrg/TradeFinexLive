@@ -216,7 +216,7 @@ $(function () {
 					$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"http://62.233.65.6:3110/api/uploadDoc",
+						url:"http://62.233.65.6:3120/api/uploadDoc",
 						data:{"data":dataFile[1]},
 						success: resp => {
 							// console.log("response success: ",resp)
@@ -235,7 +235,7 @@ $(function () {
 					// console.log('formDataObj>>>>>>>', JSON.stringify(coinData));
 						if(resp.status == true){
 							hash = resp.hash;
-							$.post("http://62.233.65.6:3110/api/generateContract",{
+							$.post("http://62.233.65.6:3120/api/generateContract",{
 							"ipfsHash":hash,
 							"instrumentType":formDataObj.instrument,
 							"amount":formDataObj.amount,
@@ -257,7 +257,7 @@ $(function () {
 									$("#deploy_contract").on('click', function (e) {
 										showLoader();
 										$('#deploy_contract').prop('disabled', true);
-										$.post("http://62.233.65.6:3110/api/deployContract",{
+										$.post("http://62.233.65.6:3120/api/deployContract",{
 										"ipfsHash":hash,
 										"instrumentType":formDataObj.instrument,
 										"amount":formDataObj.amount,
@@ -443,7 +443,7 @@ $(function () {
 					$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"http://62.233.65.6:3110/api/uploadDoc",
+						url:"http://62.233.65.6:3120/api/uploadDoc",
 						data:{"data":dataFile[1]},
 						success: resp => {
 							// console.log("response success: ",resp)
@@ -461,7 +461,7 @@ $(function () {
 							
 							// console.log(">>>>>>",ciphertext,"????????",originalText);
 
-							$.post("http://62.233.65.6:3110/api/generateContract",{
+							$.post("http://62.233.65.6:3120/api/generateContract",{
 							"ipfsHash":hash,
 							"instrumentType":formDataObj.instrument,
 							"amount":formDataObj.amount,
@@ -484,7 +484,7 @@ $(function () {
 									$("#deploy_contract").on('click', function (e) {
 										showLoader();
 										$('#deploy_contract').prop('disabled', true);
-										$.post("http://62.233.65.6:3110/api/deployContract",{
+										$.post("http://62.233.65.6:3120/api/deployContract",{
 										"ipfsHash":hash,
 										"instrumentType":formDataObj.instrument,
 										"amount":formDataObj.amount,
@@ -716,7 +716,7 @@ $(function () {
 						$.ajax({
 							type:"POST",
 							dataType:"json",
-							url:"http://62.233.65.6:3110/api/getDocHash",
+							url:"http://62.233.65.6:3120/api/getDocHash",
 							data:{"contractAddr":formDataObj.contract_address,
 								  "passKey": resp.key,
 								  "contractType" : "commonInstrument"
@@ -834,7 +834,7 @@ $(function () {
 						$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"http://62.233.65.6:3110/api/getDocHash",
+						url:"http://62.233.65.6:3120/api/getDocHash",
 						data:{"contractAddr":formDataObj.contract_address,
 							  "passKey": resp.key,
 							  "contractType" : "brokerInstrument"

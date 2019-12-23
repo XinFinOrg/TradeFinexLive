@@ -134,9 +134,9 @@
                                     <label for="private-key">Enter Private Key <span><a href="https://howto.xinfin.org/XinFinWallet/features/" target="_blank">How to Create PrivateKey?</a></span></label>
                                     <input type="text" class="form-control" id="private_key" name="private_key" autocomplete= "off" placeholder="Enter Private Key">
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                  <span><a href="http://faucet.apothem.network/" target="_blank">Get Test XDC Tokens</a></span>
-                                </div>
+                                </div> -->
                                  <div class="row">
 									<div class="form-group col-md-6 col-xs-6">
 										<input type="hidden" name="action" value="adddetail" />
