@@ -1,4 +1,4 @@
-assets/*
+
 application/cache/*
 application/views/includes/*
 application/config/*
