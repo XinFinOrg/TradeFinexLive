@@ -79,17 +79,18 @@ class Reset extends CI_Controller {
 				// $datan = array();
 				// $datan['tfu_active'] = 1;
 				 // echo ("KKK".$expired);
-					 $this->manage->update_base_user_info_by_id($result[0]->tfu_id, $data_add['tfu_passwd']);
+					$response = $this->manage->update_base_user_info_by_id($result[0]->tfu_id, $data_add['tfu_passwd']);
 			// echo ("KKK".$response );
+				if($response == 1){
 					$this->session->set_flashdata('msg_type', 'success'); // reset_password
 					$this->session->set_flashdata("email_sent_common", "<h3>Password Changed</h3>");
 					$this->session->set_flashdata("popup_desc", "<p>Password has been successfully changed. Please <a href='".base_url()."'>click here</a> to go home.</p>");
 								
-				
+				}
 			
 			}
-			redirect(base_url().'thankyouc');
-	    	 
+			
+	    	 redirect(base_url().'thankyouc');
 				
 		}else{
 		   // echo("inside else");

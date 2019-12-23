@@ -5,6 +5,13 @@ function showLoader() {
 function hideLoader() {
 	document.getElementById("loader").style.display = "none";
 }
+function showLoader1() {
+	document.getElementById("tf-loader-wrapper").style.display = "block";
+}						
+
+function hideLoader1() {
+	document.getElementById("tf-loader-wrapper").style.display = "none";
+}
 
 // Split the array into halves and merge them recursively 
 function mergeSort (arr) {
@@ -60,7 +67,7 @@ function invoiceList(data) {
 								<td>`+status+`</td>
 								<td>`+v.createdAt+`</td>
 								<td class="truncate"><span><a href = "https://gateway.ipfs.io/ipfs/`+v.ipfsHash+`" target="_blank" >`+v.ipfsHash+`</a><span></td>
-								<td class="truncate"><span><a href = "http://apothem.network/#explorer" target="_blank" >`+v.tokenContractAddress+`</a><span></td>
+								<td class="truncate"><span><a href = "https://ropsten.etherscan.io/address/`+v.tokenContractAddress+`" target="_blank" >`+v.tokenContractAddress+`</a><span></td>
 							</tr>
 							`;
 	});
@@ -152,7 +159,7 @@ function uploadInvoice(data) {
 											//console.log('formdata done:', formDataObj.tokenName);
 											const coinData = {
 												"coinName": uploadInvoiceObj.tokenName,
-												"network" : "apothem",
+												"network" : "testnet",
 												"type" : "erc721"
 											};
 
@@ -656,9 +663,9 @@ $(function () {
 				required: true
 			},
 			mmob: {
-				// required: true,
+				// required: false,
 				//numberOnly: true,
-				mobilenumberOnly: true,
+				mobilenumberOnly: true
 
 			},
 			mcomp: {
@@ -667,7 +674,7 @@ $(function () {
 				maxlength: 40,
 				CalphanumericOnly: true
 			},
-			musertype: "required",
+			// musertype: "required",
 			menquiry: "required",
 			mmsg: {
 				required: true,
@@ -691,7 +698,7 @@ $(function () {
 				minlength: "Company name should be atleast 3 charcters long",
 				maxlength: "Characters length should not exceeded than 40"
 			},
-			musertype: "Please choose a user type",
+			// musertype: "Please choose a user type",
 			menquiry: "Please choose Your enquiry type",
 			// mmob: {
 			// 	required: "Please enter a valid mobile number"
@@ -730,7 +737,55 @@ $(function () {
 		}
 	});
 
-	
+	$("#casestudy-form").validate({
+		rules: {
+			memail: {
+				EmailGeneral: true,
+				required: true
+			},
+			mmob: {
+				required: true,
+				mobilenumberOnly: true
+
+			},
+			defaultReal: {
+				equalTo: '#captcha_val'
+			}
+		},
+		messages: {
+			memail: "Please enter a valid email",
+			mmob: {
+				required: "Please enter a valid mobile number",
+				mobilenumberOnly : "Please enter numbers only"
+			},
+			defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+		},
+		onkeyup: function (elem) {
+
+			var element_id = $(elem).attr('id');
+
+			if (element_id == 'mname' || element_id == 'mmsg' || element_id == 'mcomp') {
+
+				var strv = $('#' + element_id).val();
+
+				$('#' + element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
+
+			}
+
+			if (element_id == 'mmob') {
+
+				var tval = $('#' + element_id).val();
+				tvala = tval.split(' ');
+			}
+		},
+		success: function (elem) {
+
+
+		},
+		error: function (elem) {
+
+		}
+	});	
 
 	function bondList(data) {
 		var discoverBondTable = "";
@@ -749,7 +804,7 @@ $(function () {
 									<td>`+v.tokenSupply+`</td>
 									<td>`+v.ETHRate+`</td>
 									<td>`+status+`</td>
-									<td id="alphaTCA_`+k+`" class="truncate"><span><a href = "http://apothem.network/#explorer" target="_blank" >`+v.tokenContractAddress+`</a><span></td>
+									<td id="alphaTCA_`+k+`" class="truncate"><span><a href = "https://ropsten.etherscan.io/address/`+v.tokenContractAddress+`" target="_blank" >`+v.tokenContractAddress+`</a><span></td>
 									<td><div class="btn-block"> <button  onclick="alphaex('`+k+`');" class="btnn btnn-primary btnn-rounded btn-sm">Connect to AlphaEx</button></div></td>
 								</tr>
 								`;
@@ -1210,7 +1265,7 @@ $(function () {
 							//console.log('formdata done:', formDataObj.tokenName);
 							const coinData = {
 								"coinName": formDataObj.tokenName,
-								"network" : "apothem",
+								"network" : "testnet",
 								"type" : "erc20"
 							};
 
@@ -1518,7 +1573,7 @@ $(function () {
 							//console.log('formdata done:', formDataObj.tokenName);
 							const coinData = {
 								"coinName": formDataObj.tokenName,
-								"network" : "apothem",
+								"network" : "testnet",
 								"type" : "erc721"
 							};
 

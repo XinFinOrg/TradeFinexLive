@@ -448,7 +448,7 @@
 			}
 		});
                 
-                $('#file-upload-comp').change(function(){
+        $('#file-upload-comp').change(function(){
 			/* here we take the file extension and set an array of valid extensions */
 			var res = $(this).val();
 			var arr = res.split("\\");
@@ -1503,7 +1503,7 @@
 				data: {'proj_id' : p_id, 'puser_id' : puser_id, 'puser_type' : puser_type, 'user_id' : user_id, 'user_type' : user_type, 'pro_row_id' : pro_row_id, 'pay_cycle_no' : pay_cycle_no, '<?=$csrf['name'];?>' : '<?=$csrf['hash'];?>'},
 				success: function (data) {
 					
-					console.log(data);
+					//console.log(data);
 					var jsona = $.parseJSON(data);
 					
 					if(parseInt(jsona['status']) == 1){
@@ -1535,7 +1535,7 @@
 				data: {'xuser_name' : xuser_name, 'xuser_passwd' : xuser_password, 'action' : 'get_otp', '<?=$csrf['name'];?>' : '<?=$csrf['hash'];?>'},
 				success: function (data) {
 				
-					console.log(data);
+					//console.log(data);
 					var jsona = $.parseJSON(data);
 										
 					if(!$.isEmptyObject(jsona)){
@@ -1583,7 +1583,7 @@
 				data: {'xuser_name' : xuser_name, 'xuser_passwd' : xuser_password, 'action' : 'get_otp', '<?=$csrf['name'];?>' : '<?=$csrf['hash'];?>'},
 				success: function (data) {
 				
-					console.log(data);
+					//console.log(data);
 					var jsona = $.parseJSON(data);
 										
 					if(!$.isEmptyObject(jsona)){
@@ -1630,7 +1630,7 @@
 				data: {'xuser_otp' : xotp_val, 'action' : 'xinfin_login_add_wallet', '<?=$csrf['name'];?>' : '<?=$csrf['hash'];?>'},
 				success: function (data) {
 					
-					console.log(data);
+					//console.log(data);
 					var jsona = $.parseJSON(data);
 					
 					if(!$.isEmptyObject(jsona)){
@@ -1702,7 +1702,7 @@
 				data: {'xuser_otp' : xotp_val, 'ftokens' : ftokens, 'action' : 'xinfin_login', '<?=$csrf['name'];?>' : '<?=$csrf['hash'];?>'},
 				success: function (data) {
 					
-					console.log(data);
+					//console.log(data);
 					var jsona = $.parseJSON(data);
 					
 					if(!$.isEmptyObject(jsona)){
@@ -1779,7 +1779,7 @@
 				data: {'rproject_ref' : proj_id, 'ruser_type' : 2, 'pay_cycle' : pay_cycle, 'request_type' : '', 'raction' : 'pay_financier', 'action' : 'smart_contract', '<?=$csrf['name'];?>' : '<?=$csrf['hash'];?>'},
 				success: function (data) {
 				
-					console.log(data);
+					//console.log(data);
 					var jsona = $.parseJSON(data);
 					
 					if(!$.isEmptyObject(jsona)){
@@ -1912,9 +1912,9 @@
 				data: {'rproject_ref' : proj_id, 'ruser_id' : user_id, 'ruser_type' : user_type_ref, 'request_type' : '', 'raction' : 'pay_beneficiary', 'action' : 'smart_contract', '<?=$csrf['name'];?>' : '<?=$csrf['hash'];?>'},
 				success: function (data) {
 				
-					console.log(data);
+					// console.log(data);
 					var jsona = $.parseJSON(data);
-					
+					//console.log("php file",jsona);
 					if(!$.isEmptyObject(jsona)){
 					
 						if(jsona['status'].toLowerCase() == 'success'){

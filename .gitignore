@@ -8,3 +8,13 @@ ca/application/cache/*
 ca/application/views/includes/*
 ca/application/config/*
 ca/application/log/*
+application/logs/*
+node_modules
+application/config/session/*
+package.json
+package-lock.json
+dummy.txt
+newpages/*
+assets/instrument_files/*
+application/config/config.php
+application/config/database.php

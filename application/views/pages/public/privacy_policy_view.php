@@ -1,15 +1,28 @@
+<!-- Inside Page Terms and Conditions -->
 <div class="sub_page_wraper">
-	<section class="privacy_policy">
-		<div class="container">
-			<h3>Privacy Policy</h3>
-		</div>
-	</section>
-	<section class="privacy_policy_part">
-		<div class="container">
-			<p class="red_icon"><img src="<?=base_url()?>assets/images/icon/line.png" alt="icon"></p>
-			<h2 class="black_sec_title">Privacy Policy</h2>
-			<div class="privacy_policy_content">
-				<h4>Privacy Policy</h4>
+
+<section class="tf-inner-banner">
+    <div class="container">
+        <h3>Privacy Policy</h3>
+        <h4>&nbsp;</h4>
+    </div>
+</section>
+
+<!-- Terms and Conditions -->
+<section id="case-study" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="section-title text-center">
+                    <h2 class="mb-0">Privacy Policy</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tf-terms-conditions_content">
+                	<h4>Privacy Policy</h4>
 				<p>The most significant aspect of TradeFinex is to preserve your belief and confidence in us by safeguarding your privacy. You will be provided with complete information about the process of your data being collected, stored/saved and utilized by us. We recommend you to kindly review our Privacy Policy thoroughly. You explicitly permit us to use and reveal your personal details as per the Privacy Policy, by visiting TradeFinex’s Website/WAP Site/Applications. You will forbid using or accessing TradeFinex website, WAP site or mobile applications, if you disagree to any term/terms of this policy. TradeFinex has the authority to alter the terms of this policy without any prior communication. You are requested to keep yourself updated on any such alterations made by TradeFinex by keeping a check regularly. The Privacy Policy must evenly pertain to TradeFinex desktop website, TradeFinex mobile WAP site & TradeFinex mobile/desktop applications.</p>
 
 				<h4>General</h4>
@@ -45,10 +58,16 @@
 
 				<h4>Consent</h4>
 				<p>Once you browse the TradeFinex website or provide your details, you agree and consent for the information gathered & use of such information that you have revealed to TradeFinex, in agreement with the Privacy Policy.</p>
-			</div>
+				</div>
+            </div>
 		</div>
-	</section>
-</div>	
+	</div>
+</section>
+<!-- /. Terms and Conditions -->
+
+</div>
+<!-- /. Inside Page Terms and Conditions -->
+	
 
 <?php 
 	//$this->load->view('includes/block_features');

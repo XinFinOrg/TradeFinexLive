@@ -58,10 +58,11 @@
 			$query = $this->db->get();
 
 			$result = $query->result();
+// echo("<br>LLL".json_encode($result));
 				if(!empty($result) && is_array($result) && sizeof($result) <> 0){
 					foreach($result as $row){
 					$type_id = $row->tfu_utype;
-					echo ("MMM".$type_id);
+					// echo ("MMM".$type_id);
 					$this->db->select('*');
 					$this->db->from('{PRE}user tfu');
 
@@ -78,17 +79,16 @@
 					if($type_id == 3){
 						$this->db->join('{PRE}beneficiary tfb', 'tfb.tfb_user_ref = tfu.tfu_id');
 						// $where = "tfb.tfb_email = '$email'";
+						// echo ("jjjjj".$email."<br>");
 					}
 
 					$where = "tfu.tfu_usern = '$email' AND tfu_domain_type = '".$data_add['user_access_domain_type']."' AND tfu_domain_name = '".$data_add['user_access_domain_name']."'";
 
 					$this->db->where($where);
 					$query = $this->db->get();
-					$result = $query->result();
-					foreach($result as $has){
-						echo ("hhhh".$result);
-					}
-					return $result = $query->result();
+					$result1 = $query->result();	
+		
+					return json_encode($result);
 					
 						
 				}
@@ -125,10 +125,13 @@
 		}
 
 		public function update_base_user_info_by_id($id, $data){
-
+$data1 = [
+            'tfu_passwd' => $data,
+        ];
 			$where = "tfu_id = '$id'";
 			$this->db->where($where);
-			$this->db->update('{PRE}user', $data);
+			$res = $this->db->update('{PRE}user', $data1);
+			return $res;
 		}
 
 		public function update_user_info_by_id_type($uid, $type, $data){
@@ -1295,5 +1298,73 @@
 				$this->db->where($where);
 				$this->db->update('{PRE}register_otp', $data_add);
 			}
+		}
+
+		public function add_instrument($data_add){
+
+			$data = array();
+			if(isset($data_add['name'])){
+				$data['tfi_instrument'] = $data_add['instrument'];
+				$data['tfi_name'] = $data_add['name'];
+				$data['tfi_country'] = $data_add['country'];
+				$data['tfi_currency'] = $data_add['currency_supported'];
+				$data['tfi_amount'] = $data_add['amount'];
+				$data['tfi_maturityDate'] = $data_add['maturity_date'];
+				$data['tfi_docRef'] = $data_add['docRef'];
+				$data['tfi_contractAddr'] = $data_add['contractAddr'];
+				$data['tfi_deployerAddr'] = $data_add['deployerAddr'];
+				$data['tfi_secretKey'] = $data_add['secretKey'];
+			}
+			else{
+				$data['tfi_instrument'] = $data_add['instrument'];
+				$data['tfi_country'] = $data_add['country'];
+				$data['tfi_currency'] = $data_add['currency_supported'];
+				$data['tfi_amount'] = $data_add['amount'];
+				$data['tfi_maturityDate'] = $data_add['maturity_date'];
+				$data['tfi_docRef'] = $data_add['docRef'];
+				$data['tfi_contractAddr'] = $data_add['contractAddr'];
+				$data['tfi_deployerAddr'] = $data_add['deployerAddr'];
+				$data['tfi_secretKey'] = $data_add['secretKey'];
+			}
+			
+
+
+			$this->db->insert('{PRE}instrument', $data);
+			$id = $this->db->insert_id();
+
+			$data = array();
+
+		
+			return 1;
+			// }
+		}
+		
+		public function get_instrument(){
+
+			$this->db->select('*');
+			$this->db->from('{PRE}instrument');
+			$query = $this->db->get();
+
+			return $result = $query->result();
+		}
+		public function get_secretkey($contractAddr){
+
+			$this->db->select('*');
+			$this->db->from('{PRE}instrument');
+			$where = "tfi_contractAddr = '$contractAddr'";
+			$this->db->where($where);
+			$query = $this->db->get();
+
+			return $result = $query->result();
+		}
+		public function get_secretkey_by_docRef($docRef){
+
+			$this->db->select('*');
+			$this->db->from('{PRE}instrument');
+			$where = "tfi_docRef = '$docRef'";
+			$this->db->where($where);
+			$query = $this->db->get();
+
+			return $result = $query->result();
 		}
 	}

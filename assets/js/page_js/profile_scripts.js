@@ -1559,9 +1559,9 @@
 				data: {'rproject_ref' : proj_id, 'ruser_id' : user_id, 'ruser_type' : user_type_ref, 'request_type' : '', 'raction' : 'pay_beneficiary', 'action' : 'smart_contract', csrf_name : csrf_value},
 				success: function (data) {
 				
-					console.log(data);
+					// console.log(data);
 					var jsona = $.parseJSON(data);
-					
+					console.log("js file",jsona);
 					if(!$.isEmptyObject(jsona)){
 					
 						if(jsona['status'].toLowerCase() == 'success'){

@@ -1,6 +1,6 @@
 .intl-tel-input { position: relative; }
 .intl-tel-input .hide { display: none; }
-.intl-tel-input .flag-dropdown { position: absolute; z-index: 111;cursor: pointer;top: 18px;left: 9px; }
+.intl-tel-input .flag-dropdown { position: absolute; z-index: 111;cursor: pointer;/*top: 18px;*/left: 9px; }
 .intl-tel-input .flag-dropdown .selected-flag { /* margin: 1px; padding: 15px 16px 6px 6px; */ 
 	
 	height: 20px;

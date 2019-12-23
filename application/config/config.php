@@ -224,7 +224,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 2;
+$config['log_threshold'] = 3;
 
 /*
 |--------------------------------------------------------------------------
@@ -457,7 +457,7 @@ $config['csrf_token_name'] = 'csrf_iksen_tslick50';
 $config['csrf_cookie_name'] = 'csrf_iksen_cslick50';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = FALSE;
-$config['csrf_exclude_uris'] = array('user/update_log', 'user/update_visibility', 'user/update_notification', 'notify/listing_count', 'notify/listing_ui', 'notify/mlisting_ui', 'notify/mlisting_count', 'listing/details', 'listing/search' , 'notify/update_notifyc', 'project/cancel_invite', 'registration/get_regotp');
+$config['csrf_exclude_uris'] = array('user/update_log', 'user/update_visibility', 'user/update_notification', 'notify/listing_count', 'notify/listing_ui', 'notify/mlisting_ui', 'notify/mlisting_count', 'listing/details', 'listing/search' , 'notify/update_notifyc', 'project/cancel_invite', 'registration/get_regotp','publicv/buyer_supplier','publicv/get_passkey','publicv/get_access');
 
 /*
 |--------------------------------------------------------------------------
@@ -479,7 +479,7 @@ $config['csrf_exclude_uris'] = array('user/update_log', 'user/update_visibility'
 | by the output class.  Do not 'echo' any values with compression enabled.
 |
 */
-$config['compress_output'] = TRUE;
+$config['compress_output'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------

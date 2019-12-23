@@ -59,7 +59,7 @@ body {
 ::-moz-focus-inner,button::-moz-focus-inner, a::-moz-focus-inner {border:0;outline: 0;} */
 
 a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, caption, canvas, center, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, form, footer, header, hgroup, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label,legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, tt, table, tbody, textarea, tfoot, thead, time, tr, th, td, u, ul, var, video {
-	font-family: 'open_sansregular';
+	/*font-family: 'open_sansregular';*/
 	font-size: 100%;
 	font-weight: inherit;
 	font-style: inherit;
@@ -174,8 +174,8 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
 	display: inline-block;
 	color: #fff;
 	padding: 0px 27px 0 27px;
-	height: 64px;
-	line-height: 48px;
+	height: 44px;
+	line-height: 21px;
 	font-size: 14px;
 	color: #fff;
 	background: #2aa3ef;
@@ -452,7 +452,8 @@ footer {
 	position: relative;
 }
 #mainnav ul.menu > li {
-	margin-right: 16px;
+	/*-right: 16px;*/
+	margin-right: 10px;
 }
 #mainnav ul.menu > li:last-child {
 	margin-right: 0px;
@@ -467,7 +468,7 @@ footer {
 	line-height: 80px;
 	font-size: 15px;
 	color: #3c566b;
-	font-family: 'open_sansregular';
+	/*font-family: 'open_sansregular';*/
 	cursor: pointer;
 }
 #mainnav ul.menu > li > a > .fa {
@@ -542,16 +543,15 @@ footer {
   color: #2aa3ef;
 }
 
-.mainnav li ul li:hover,
+/*.mainnav li ul li:hover,
 .mainnav li ul li ul li:hover {
   background-color: #fff;
-  /* color: #354f65; */
+  color: #354f65;
   padding-left: 20px;
   transition: ease-in-out 0.35s;
   -moz-transition: ease-in-out 0.35s;
-  -webkit-transition: ease-in-out 0.35s;
-  
-}
+  -webkit-transition: ease-in-out 0.35s;  
+}*/
 /* Center the loader */
 #loader {
 	position: fixed;
@@ -643,7 +643,7 @@ footer {
 	width: 250px;
 	background-color: #fff;
 	top: 150px;
-	right: 0;
+	/*right: 0;*/
 	visibility: hidden;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
@@ -673,11 +673,13 @@ footer {
 }
 #mainnav .menu > li > .submenu > li > a {
 	color: #282c3f;
+	background-color: #fff;
 	display: block;
 	padding: 0px 0px 0px 15px;
 	line-height: 50px;
-	font-family: 'open_sansregular';
+	/*font-family: 'open_sansregular';*/
 	font-size: 15px;
+	padding-left: 20px;
 }
 #mainnav .menu > li > .submenu > li > a:hover {
 	background-color: #fff;
@@ -687,6 +689,7 @@ footer {
 #mainnav .menu > li > .submenu > li > a > i {
 	margin-right: 10px;
 }
+
 /* Mobile navigation */
 #mainnav-mobi {
 	display: block;
@@ -947,8 +950,9 @@ footer {
 .footer-bottom .copyright {
 	color: #c2c2c2;
 	font-size: 13px;
-	font-family: 'open_sansregular';
+	/*font-family: 'open_sansregular';*/
 	float: none;
+	line-height: 20px;
 	/*text-align: center;*/
 }
 .logo-ft {
@@ -1024,8 +1028,8 @@ text-align: justify;
 	margin-bottom: 15px;
 	margin-left: 0px;
 	font-size: 16px;
-	text-transform: uppercase;
-	font-family: 'open_sanssemibold';
+	/*text-transform: uppercase;
+	font-family: 'open_sanssemibold';*/
 	color : #fff;
 }
 .widget-categories ul.one-half {
@@ -1037,7 +1041,7 @@ text-align: justify;
 .widget-categories ul.one-half li a {
 	color: #fff;
 	font-size: 13px;
-	font-family: 'open_sansregular';
+	/*font-family: 'open_sanssemibold';*/
 }
 .widget-categories ul.one-half li a:hover {
 	color: #4ca1af;
@@ -1045,11 +1049,14 @@ text-align: justify;
 /* Widget Contact */
 
 .widget-contact h3.widget-title {
-	margin-bottom: 20px;
 	margin-left: 0px;
 	font-size: 16px;
-	text-transform: uppercase;
-	font-family: 'open_sanssemibold';
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 10px;
+    line-height: 18px;
+	/*text-transform: uppercase;
+	font-family: 'open_sanssemibold';*/
 	clear: both;
 }
 .widget-contact ul.contact-infomation li {
@@ -1623,7 +1630,7 @@ to {
 .go-top {
 	position: fixed !important;
 	bottom: 20px;
-	right: 20px;
+	left: 20px;
 	background-color: #fff;
 	border-radius: 3px;
 	line-height: 40px;
@@ -1976,6 +1983,9 @@ to {
  font-size:14px;
  font-family: 'open_sansregular';
 }
+
+#mainnav .menu > li > .submenu.home_account {right: 0!important;}/* added for Account login dropdown alignment */
+
 .home_account {
 	width: 335px !important;
 	min-height: 150px;

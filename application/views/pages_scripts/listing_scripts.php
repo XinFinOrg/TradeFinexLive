@@ -208,9 +208,9 @@
 				},
 				ppricetax: {
 					required: true,
-					signedDecNumberOnly:true,
-					min:0.01
-					//range:[0.01,15.00]
+					decnumberOnly:true,
+					// min:0.01
+					range:[0.01,15.00]
 				},
 				pvalid: {
 					required: true,
@@ -245,7 +245,7 @@
 				},
 				ppricetax: {
 					required: "This field is mandatory",
-					min: "Finance amount should be greater than 0 and at least 0.01"
+					// min: "Finance amount should be greater than 0 and at least 0.01"
 				},
 				pvalid: {
 					required: "This field is mandatory",
@@ -346,8 +346,9 @@
 				},
 				ppricetax: {
 					required: true,
-					signedDecNumberOnly: true,
-					min: 0.01
+					decnumberOnly: true,
+					// min: 0.01
+					range:[0.01,15.0]
 				},
 				pvalid: {
 					required: true,
@@ -385,7 +386,7 @@
 				}, /* and less or equal to <?=number_format($project_listed_info[0]->fixedBudget, 0, '', '')?> */
 				ppricetax: {
 					required: "This field is mandatory",
-					min: "Tax percentage should be greater than 0 and at least 0.01"
+					// min: "Tax percentage should be greater than 0 and at least 0.01"
 				},
 				pvalid: {
 					required: "This field is mandatory",

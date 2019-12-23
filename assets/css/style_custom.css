@@ -56,11 +56,11 @@
 	-moz-transition: all .8s cubic-bezier(.3, .95, .3, .95);
 	transition: all .8s cubic-bezier(.3, .95, .3, .95);*/
 }
-.btn-more button:hover:before {
+/* .btn-more button:hover:before { */
 /*opacity: 0;
 	transform: scale(1.2);
 	visibility: hidden;*/
-}
+/* } */
 .btn-more button:visited, .btn-more button:focus {
 	color: #fff;
 }
@@ -93,8 +93,8 @@
 #signupForm .input-focus {
 	border-bottom: 0px;
 }
-#loginForm .form-label, #signupForm .form-label {
-}
+/* #loginForm .form-label, #signupForm .form-label {
+} */
 #resetpForm .input-focus:first-child {
 	border-bottom-width: 0px;
 }
@@ -633,7 +633,7 @@ input.error, textarea.error, select.error {
 	border: 1px solid #a24649 !important;
 	background: #fef4f5;
 	color: #a24649;
-	z-index: 8;
+	/* z-index: 8; */
 }
 #pdoc, #mfile, .pdoc {
 	opacity: 0;
@@ -981,8 +981,8 @@ a.more_info:hover .descrip {
 	margin-left: 0px;
 	width: 100%;
 }
-#xinfinForm input[type="password"] {
-}
+/* #xinfinForm input[type="password"] {
+} */
 #xinfinForm input.error .floating-label {
 	color: #a24649;
 }

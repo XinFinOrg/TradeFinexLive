@@ -1,109 +1,168 @@
-<section class="financier_banner common_slider">
-	<div id="myCarousel" class="carousel slide" data-ride="carousel"> 
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-		</ol>
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner">
-			<div class="item active"> <img src="<?=base_url();?>assets/images/slider/supplier_banner_1.jpg" />
-				<div class="row">
-					<div class="carousel-caption">
-						<div class="col-md-8 col-sm-9 col-xs-12">
-							<h3>Lightning fast settlement using Blockchain based smart contracts </h3>
-							<p>TradeFinex: Peer to Peer trade and financing using Blockchain Technology</p>
-							<div id="video" class="btn-more">
-								<a href="<?=base_url('publicv/videos');?>">
-								    <span> <i class="fa fa-play-circle"></i> </span> <span>Watch Video</span> 
-							    </a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item"> <img src="<?=base_url();?>assets/images/slider/supplier_banner_2.jpg" />
-				<div class="row">
-					<div class="carousel-caption">
-						<div class="col-md-8 col-sm-9 col-xs-12">
-							<h3>Reach global customers using TradeFinex platform</h3>
-							<p>TradeFinex: Peer to Peer trade and financing using Blockchain Technology</p>
-							<div id="video" class="btn-more">
-								<a href="<?=base_url('publicv/videos');?>">
-								    <span> <i class="fa fa-play-circle"></i> </span> <span>Watch Video</span> 
-							    </a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item"> <img src="<?=base_url();?>assets/images/slider/supplier_banner_3.jpg" />
-				<div class="row">
-					<div class="carousel-caption">
-						<div class="col-md-8 col-sm-9 col-xs-12">
-							<h3>Global peer to peer commerce without intermediaries </h3>
-							<p>TradeFinex: Peer to Peer trade and financing using Blockchain Technology</p>
-							<div id="video" class="btn-more">
-								<a href="<?=base_url('publicv/videos');?>">
-								    <span> <i class="fa fa-play-circle"></i> </span> <span>Watch Video</span> 
-							    </a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="supplier_first_icon">
-	<div class="container">
-		<div class="row">
-			<div class="first_icon_text">
-				<div class="col-md-5 col-sm-5 col-xs-12 pull-right"> <img src="<?=base_url();?>assets/images/page/supplier_icon.png" class="img-responsive" /> </div>
-				<div class="col-md-7 col-sm-7 col-xs-12 pull-left">
-					<h4>Who Suppliers are?</h4>
-					<p>A supplier is an individual or a company that offers services or manufactures / distribute goods to another organization. They could be designated authorised personnel from the organisation such as the board members or senior management professionals or employees from marketing, technical, finance or procurement functions.</p>
-					<div class="btn-more float-left margin_top_25"> <a href="<?php echo base_url() ?>registration/?s" title="Get Started">Get Started</a> </div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="supplier_sec_icon">
-	<div class="container">
-		<div class="row">
-			<div class="first_icon_text">
-				<div class="col-md-5 col-sm-6 col-xs-12 static_img_bottom_padd"> <img src="<?=base_url();?>assets/images/page/supplier_icon_1.png" class="img-responsive" /> </div>
-				<div class="col-md-7 col-sm-6 col-xs-12">
-					<h4>How Suppliers participate?</h4>
-					<p>While suppliers are looking to gain visibility on global tenders and customer base, they face the challenges of volatility, uncertainty, complexity and ambiguity in supply chain. XinFin’s platform, TradeFinex aims to minimize inefficiencies in trade and finance using Blockchain Technology. Powered by XinFin’s XDC01 protocol TradeFinex, a peer to peer contract platform, can be used with existing laws of the land and payment rails or in an approved jurisdiction using underlying XDC tokens.</p>
-					<p>Suppliers can participate by creating an account on TradeFinex. Suppliers can reach out to potential buyers and submit techno-commercial proposals on this platform. They can execute escrow based smart contracts with global beneficiaries. The payments terms can be linked to customized smart contract milestones, triggered upon delivery of goods or services.</p>
-					<div class="btn-more float-left margin_top_25"> <a href="<?php echo base_url() ?>registration/?s" title="Get Started">Get Started</a> </div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="supplier_third_icon">
-	<div class="container">
-		<div class="row">
-			<div class="third_icon_text">
-				<div class="col-md-5 col-sm-5 col-xs-12 pull-right static_img_bottom_padd"> <img src="<?=base_url();?>assets/images/page/supplier_icon_2.png" class="img-responsive" /> </div>
-				<div class="col-md-7 col-sm-7 col-xs-12 pull-left">
-					<h4>How Suppliers profit?</h4>
-					<p>TradeFinex aims to reduce the inefficiencies in global trade and finance thereby enhancing reach and doing commerce at fractional cost. Through TradeFinex, suppliers get access to global tenders and can tap global markets. Escrow capability of the smart contracts ensures supplier payments are transparent and secure. The peer to peer nature of smart contracts helps suppliers conduct cross border trade without intermediary overheads thereby improving profitability. The underlying rating system builds supplier credibility. The Hedge Pool capability protects Suppliers from volatility in the local currency. Participation incentive in form of XDC tokens from TradeFinex is an added advantage. </p>
-					<div class="btn-more float-left margin_top_25"> <a href="<?php echo base_url() ?>registration/?s" title="Get Started">Get Started</a> </div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+    <!-- Inside Page Buyers / Suppliers -->
+    <div class="sub_page_wraper">
+
+        <section class="tf-inner-banner">
+            <div class="container">
+                <h3>Buyers / Suppliers</h3>
+                <h4>Improve cash flow. Easy Access to Trade Financing.</h4>
+            </div>
+        </section>
+
+        <!-- Buyers / Suppliers Form -->
+        <section id="xdc-protocol-features-benefits" class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="section-title text-center pb-30">
+                            <h2 class="mb-0">Get Started</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="tf-buyer-supplier_form-block">
+                            <form id="suppliers-form" class="tf-suppliers-form">
+                                <div class="form-group">
+                                    <label for="instrument-type">Type of Instrument</label>
+
+                                    <div id="tab" class="tf-form-tabs" data-toggle="buttons">
+                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
+                                            <input type="radio" class="" name="Receivable" value="Receivable" id="Receivable" />Receivable
+                                        </a>
+                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
+                                            <input type="radio" class="" name="Letter-of-Credit" value="Letter of Credit" id="Letter-of-Credit" />Letter of Credit
+                                        </a>
+                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
+                                            <input type="radio" class="" name="Bank-Guarantees" value="Bank Guarantees" id="Bank-Guarantees" />Bank Guarantees
+                                        </a>
+                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
+                                            <input type="radio" class="" name="SBLC" value="SBLC" id="SBLC" />SBLC
+                                        </a>
+                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
+                                            <input type="radio" class="" name="Warehouse-Receipt" value="Warehouse Receipt" id="Warehouse-Receipt" />Warehouse Receipt
+                                        </a>
+                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
+                                            <input type="radio" class="" name="Payable" value="Payable" id="Payable" />Payable
+                                        </a>
+                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
+                                            <input type="radio" class="" name="Other" value="Other" id="Other" />Other
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div id="select-country" class="form-group">
+                                    <label for="country-origination">Country of Origination</label>
+                                    <select class="form-control" id="country-origination">
+                                        <option value="" disabled="" selected="">Select Country</option>
+                                        <option value="AF">Afghanistan</option>
+                                        <option value="AL">Albania</option>
+                                        <option value="DZ">Algeria</option>
+                                        <option value="AO">Angola</option>
+                                        <option value="AI">Anguilla</option>
+                                        <option value="AQ">Antarctica</option>
+                                        <option value="AR">Argentina</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="BS">Bahamas</option>
+                                        <option value="BH">Bahrain</option>
+                                        <option value="BD">Bangladesh</option>
+                                        <option value="BB">Barbados</option>
+                                        <option value="BY">Belarus</option>
+                                        <option value="BE">Belgium</option>
+                                        <option value="BZ">Belize</option>
+                                        <option value="BM">Bermuda</option>
+                                        <option value="BT">Bhutan</option>
+                                        <option value="BW">Botswana</option>
+                                        <option value="BR">Brazil</option>
+                                        <option value="BG">Bulgaria</option>
+                                        <option value="KH">Cambodia</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="CN">China</option>
+                                        <option value="CO">Colombia</option>
+                                        <option value="CG">Congo</option>
+                                        <option value="CR">Costa Rica</option>
+                                        <option value="CY">Cyprus</option>
+                                        <option value="DK">Denmark</option>
+                                        <option value="DM">Dominica</option>
+                                        <option value="EG">Egypt</option>
+                                        <option value="ER">Eritrea</option>
+                                        <option value="EE">Estonia</option>
+                                    </select>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="amount">Amount</label>
+                                        <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount">
+                                    </div>
+                                    <div id="currency-supported" class="form-group col-md-6">
+                                        <label for="currency-supported">Currency Supported</label>
+                                        <select class="form-control" id="currency-supported">
+                                            <option value="USD" selected="USD">USD</option>
+                                            <option value="GBP">GBP</option>
+                                            <option value="GBP">JPY</option>
+                                            <option value="GBP">XDC</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="maturity-date">Instrument Maturity Date</label>
+                                    <input type="date" class="form-control" id="maturity-date" placeholder="dd/mm/yyyy">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="supporting-document">Upload Supporting Document <span class="text-green">( PDF/ JPG, GIF Only )</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+										<span class="btn btn-primary" onClick="$(this).parent().find('input[type=file]').click();">Browse</span>
+                                        <input name="uploaded_file" onChange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());" style="display: none;" type="file">
+                                        </span>
+                                        <span class="form-control"></span>
+                                    </div>
+                                </div>
+
+                                <div class="tf-notice">
+                                    <div class="tf-notice_content">
+                                        <p>Origination and deal distribution fees 0.001% of instrument value.</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="private-key">Enter Private Key <span><a href="https://howto.xinfin.org/XinFinWallet/features/" target="_blank">How to Create PrivateKey?</a></span></label>
+                                    <input type="text" class="form-control" id="private-key" name="private-key" placeholder="Enter Private Key">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-blue text-uppercase">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /. Buyers /Suppliers Form -->
+
+    </div>
+    <!-- /. Inside Page Buyers / Suppliers Detail -->
 
 <?php
 	
-	$this->load->view('includes/block_create_account');
+	// $this->load->view('includes/block_create_account');
 	//$this->load->view('includes/block_features');	
 	$this->load->view('includes/login_modal');
 	
 ?>	
+<!-- Form Skip to next Heading -->
+<script type="text/javascript">
+    $(function() {
+        $('a[href*=#]').on('click', function(e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top
+            }, 500, 'linear');
+        });
+    });
+</script>
+<!-- Form Skip to next Heading -->

@@ -52,33 +52,33 @@
 			<div class="nav-wrap">
 				<nav id="mainnav" class="mainnav">
 					<ul class="menu">
-					    <li><a href="<?=base_url();?>publicv/consortium" title="Consortium">Consortium</a></li>
-					    <li class="hidden-xs hidden-sm"> | </li>
-				
-						<li class="hassubs"> <a href="javascript:void(0)" title="">Financial Instruments Supported</a>
-							<ul class="submenu">
-								<li class=""><a href="http://exchange.tradefinex.org" title="Exchange">Exchange</a></li>
-								<li class=""><a href="<?=base_url();?>publicv/boss_101" title="Know About BOSS 101">Bonds/Guarantees</a></li>
-                                <li class=""><a href="<?=base_url();?>publicv/infactor" title="Know about infactor">Invoice Factoring</a></li>
-								<li class=""><a href="<?=base_url();?>publicv/corda_bridge" title="Know about infactor">Corda Bridge (Coming Soon)</a></li>
-
-                                				
-								<!--<ul class="dropdown">
-									<li class="subs"><a href="<?=base_url();?>publicv/infactor" title="Know about infactor">InFactor</a></li>
-									<li><a href="<?=base_url();?>publicv/financier" title="Know about financier">Financier</a></li>
-									<li><a href="<?=base_url();?>publicv/beneficiary" title="Know about beneficiary">Beneficiary</a></li>
-									<li><a href="<?=base_url();?>publicv/supplier" title="Know about supplier">Supplier</a></li>
-								</ul>-->
+					    <li class="hassubs"> <a href="javascript:void(0)" title="">Trade Instruments</a>
+							<ul class="submenu">								
+								<li> <a href="<?=base_url();?>publicv/buyer_supplier">For Buyers / Suppliers</a></li>
+                                <li> <a href="<?=base_url();?>publicv/brokers">For Brokers</a></li>
+								<li> <a href="<?=base_url();?>publicv/financier">For Financiers</a></li>
 							</ul>
 						</li>
-						<!-- <li class="hidden-xs hidden-sm"> | </li>
-						<li> <a href="<?=base_url();?>publicv/projects" title="Projects">Projects</a> </li> -->
+						
+						<li class="hidden-xs hidden-sm"> | </li>
+						<li> <a href="http://exchange.tradefinex.org/" target="_blank" title="">Electronic Trading Platform</a> </li>
+						
+						<li class="hidden-xs hidden-sm"> | </li>				
+						<li class="hassubs"> <a href="javascript:void(0)" title="">Origination Tools</a>
+							<ul class="submenu">
+								<li> <a href="https://infactor.io/">Invoice Factoring</a></li>
+                                <li> <a href="<?=base_url();?>publicv/infactor">Invoice Digitization</a></li>
+                                <li> <a href="<?=base_url();?>publicv/boss_101">Bond</a></li>
+                                <li> <a href="https://st.mycontract.co/login" target="_blank">Stable Coin</a></li>
+                                <li> <a href="<?=base_url();?>publicv/supply_chain">Supply Chain - Track & Trace</a></li>
+							</ul>
+						</li>
                         
                         <li class="hidden-xs hidden-sm"> | </li>
-						<li> <a href="https://docs.tradefinex.org/faq/general/" title="FAQ">FAQs</a> </li>
+						<li> <a href="<?=base_url();?>publicv/case_study" title="">Case Study</a> </li>
 				
 						<li class="hidden-xs hidden-sm"> | </li>
-						<li> <a href="<?=base_url();?>publicv/contact" title="">Contact us </a> </li>
+						<li> <a href="<?=base_url();?>publicv/contact" title="">Contact Us </a> </li>
 						<li class="hidden-xs hidden-sm"> | </li>
 						<li class="hidden-xs hidden-sm large_device_loginp"> <a href="javascript:void(0)" title=""><img src="<?=base_url();?>assets/images/icon/signin_icon.jpg" alt="icon"> </a>
 							<ul class="submenu home_account">
@@ -86,7 +86,7 @@
 								<p> Access account and manage tasks</p>
 								<p>To access the platform, use dummy <a href="<?=base_url();?>publicv/cred" >Credentials</a></p>
 								<a href="<?php echo base_url() ?>registration" class="pull-left acount_btn"> Sign Up</a> 
-								<a href="#" class="pull-right acount_btn btn_logged" data-toggle="modal" data-target="#login"> Log In</a>
+								<a href="javascript:void(0)" class="pull-right acount_btn btn_logged" data-toggle="modal" data-target="#login"> Log In</a>
 							</ul>
 						</li>
 						<li class="hidden-md hidden-lg"> <a href="javascript:void(0)" title="">Account</a>
