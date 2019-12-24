@@ -291,7 +291,7 @@ $(function () {
 													console.log("response1 : ",err);
 												})
 												
-												const hashUrl = `https://explorer.apothem.network/tx/${resp.receipt.transactionHash}`;
+												const hashUrl = `https://explorer.xinfin.network/tx/${resp.receipt.transactionHash}`;
 												const tHtml = `
 																<p>
 																	<span>Contract Address:</span><br>${resp.receipt.contractAddress.toLowerCase()}</p>
@@ -520,7 +520,7 @@ $(function () {
 													console.log("response1 : ",err);
 												})
 
-												const hashUrl = `https://explorer.apothem.network/tx/${resp.receipt.transactionHash}`;
+												const hashUrl = `https://explorer.xinfin.network/tx/${resp.receipt.transactionHash}`;
 												const tHtml = `
 																<p>
 																	<span>Contract Address:</span><br>${resp.receipt.contractAddress.toLowerCase()}</p>

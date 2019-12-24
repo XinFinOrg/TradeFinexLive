@@ -117,7 +117,7 @@
 							<form id="checkprivatekey_form" class="tf-suppliers-form" enctype="multipart/form-data" method="post">
                             
                                 <div class="form-group ">
-                                    <label for="private-key"class="left">Enter Private Key<span><a href="<?php echo base_url()?>publicv/setup_masternode" target="_blank">How to Create PrivateKey?</a></span></label>
+                                    <label for="private-key"class="left">Enter Private Key<span><a href="<?php echo base_url()?>publicv/setup_masternode" target="_blank">How to Create PrivateKey & Setup Masternode?</a></span></label>
                                     <input type="text" class="form-control" id="privateKey" name="privateKey" autocomplete= "off"placeholder="Enter Private Key">
                                 </div>
                                 <div class="row">
