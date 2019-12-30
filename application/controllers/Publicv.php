@@ -814,7 +814,7 @@ class Publicv extends CI_Controller {
 		} 
   
 
-		if(startsWith($privkey,"0x") || startsWith($privkey,"xdc")){
+		if(startsWith($privkey,"0x")){
 			$privkey = $this->input->post('privkey');
 		}
 		else{
