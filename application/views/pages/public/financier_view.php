@@ -114,10 +114,11 @@
                         <div class="deployedData_modal_block">
                             <p class="left"><strong>*Only Trusted Masternode Entity witin Network can access the record.If you are Masternode holder, Enter Private Key & get access to the document.</strong></p>
 							<!--<p id="deployedData" style="word-break: break-all;"></p>-->
+                            <p><span><a href="<?php echo base_url()?>publicv/setup_masternode" target="_blank">How to Create PrivateKey & Setup Masternode?</a></span></p>
 							<form id="checkprivatekey_form" class="tf-suppliers-form" enctype="multipart/form-data" method="post">
                             
                                 <div class="form-group ">
-                                    <label for="private-key"class="left">Enter Private Key<span><a href="<?php echo base_url()?>publicv/setup_masternode" target="_blank">How to Create PrivateKey & Setup Masternode?</a></span></label>
+                                    <label for="private-key"class="left">Enter Private Key</label>
                                     <input type="text" class="form-control" id="privateKey" name="privateKey" autocomplete= "off"placeholder="Enter Private Key">
                                 </div>
                                 <div class="row">
