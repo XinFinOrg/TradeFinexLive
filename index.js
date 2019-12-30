@@ -495,7 +495,24 @@ if (_.isEmpty(privKey)){
 contarctInst.methods
   .getCandidates()
   .call()
-  .then(resp => {
-    const account = web3.eth.accounts.privateKeyToAccount(privKey);
-    console.log(resp.includes(account.address));
-});
+  .then(async resp => {
+    let found = false;
+    let account = web3.eth.accounts.privateKeyToAccount(privKey);
+    const argvOwner = account.address.toString().toLowerCase();
+    for (let x = 0; x < resp.length; x++) {
+      let candidateAddr = resp[x];
+      let ownerAddr = await contarctInst.methods
+        .getCandidateOwner(candidateAddr)
+        .call();
+      ownerAddr = ownerAddr.toString().toLowerCase();
+      if (ownerAddr === argvOwner) {
+        found = true;
+        break;
+      }
+    }
+    console.log(found);
+  })
+  .catch(e => {
+    console.log("error");
+    console.log(e);
+  });

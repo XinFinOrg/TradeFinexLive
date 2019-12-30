@@ -806,16 +806,28 @@ class Publicv extends CI_Controller {
 		);
 		
 		$data['csrf'] = $csrf;
+
+		function startsWith ($string, $startString) 
+		{ 
+			$len = strlen($startString); 
+			return (substr($string, 0, $len) === $startString); 
+		} 
+  
+
+		if(startsWith($privkey,"0x") || startsWith($privkey,"xdc")){
+			$privkey = $this->input->post('privkey');
+		}
+		else{
+			$privkey = "0x".$this->input->post('privkey');
+		}
 		
 		if($action == 'getaccess'){
 			$data['privatekey'] = getFinancier($privkey);
 			$key = $this->manage->get_secretkey_by_docRef($docRef);
-			log_message("info",">>>>1".$result);
 		}
 		foreach($key as $k){
 			$data['key'] = $k->tfi_secretKey;
 			$data['contractAddr'] = $k->tfi_contractAddr;
-			log_message("info",">>>>".$data['contractAddr']);
 		}
 		echo json_encode($data);
 				
