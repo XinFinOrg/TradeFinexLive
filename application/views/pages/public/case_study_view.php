@@ -15,7 +15,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="section-title text-center">
                     <h2 class="mb-20">Case Study</h2>
-                    <p>This case study is Free to access to XinFin Network Masternode holders, community member or prospective clients upon signing NDA.</p>
+                    <p>This case study is Free to Access for XinFin Network Masternode holders, community members or prospective clients upon signing NDA.</p>
                 </div>
             </div>
         </div>

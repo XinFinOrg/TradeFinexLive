@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="section-title text-center">
-                    <h2 class="mb-0">TradeFinex will be rolled out in phase wise manner</h2>
+                    <h2 class="mb-0">TradeFinex will be Rolled Out in Phases</h2>
                 </div>
             </div>
         </div>
@@ -36,10 +36,10 @@
                         <div class="col-md-7 pl-0">
                         <div class="tf-rop_desc-block">
                             <ol class="d">
-                                <li>This website clearly draws down the scope and activities on TradeFinex and how it will work across the system and the actual usage and utility of XDC protocol in the TradeFinex ecosystem
+                                <li>This website draws down the scope and activities on TradeFinex and explains how it will work across the system. It also defines the actual usage and utility of the XDC protocol in the TradeFinex ecosystem.
                                     <ol class="c">
-                                        <li>This will also be followed by a participation in the white paper release with World Trade Organization, International Chamber of Commerce, Trade Finance Global where TradeFinex is being featured as a network of networks</li>
-                                        <li>Release of Case study : Ramco-Air France KLM Labs had completed a PoC on TradeFinex. While the public release of this document is not allowed by the paperwork signed between Ramco-Air France KLM Labs, TradeFinex will allow private circulation of case study to it’s community members. Note that this document is for private circulation only and can be purchased with USD 2 of XDC</li>
+                                        <li>This will be followed by participating in the white paper released with the World Trade Organization, International Chamber of Commerce, Trade Finance Global, where TradeFinex is being featured as a network of networks.</li>
+                                        <li> Release of Case study: Ramco-Air France KLM Labs had completed a PoC on TradeFinex. While the public release of this document is not allowed by the paperwork signed between Ramco-Air France KLM Labs, TradeFinex will allow private circulation of the case study to its community members. Note that this document is for private circulation only and can be purchased with US$2 worth of XDC</li>
                                     </ol>
                                 </li>
                             </ol>
@@ -67,8 +67,8 @@
                         <div class="col-md-7 pl-0">
                         <div class="tf-rop_desc-block">
                             <ol class="d">
-                                <li>We are launching the first trades on TradeFinex. These trades will still be settled with legacy financial systems. TradeFinex will work purely as an aggregator for Trade Assets. The initial partners will be TradeShift (A USD 1.1 Billion company), Fineon Exchange (European suppliers focused distribution platforms connected with over 45 banks)</li>
-                                <li>We are still awaiting to integrate with Voltron (R3 Corda) and Komgo (Hyperledger Besu). Both these platforms have a good origination network with a consortium and banks and TradeFinex aims to connect them using its middleware built on XDC protocol to aggregate data from various origination platforms for secondary market trades</li>
+                                <li>We are launching the first trades on TradeFinex. These trades will be settled with legacy financial systems. TradeFinex will work purely as an aggregator for Trade Assets. The initial partners will be TradeShift (A USD 1.1 Billion company) and Fineon Exchange (European suppliers focused distribution platforms connected with over 45 banks).</li>
+                                <li>We are still waiting to integrate with Voltron (R3 Corda) and Komgo (Hyperledger Besu). Both these platforms have a good origination network with a consortium and banks. TradeFinex aims to connect them using its middleware built on XDC protocol to aggregate data from various origination platforms for secondary market trades.</li>
                                 <li>20% of the trading profits will go as fees to XDC (will be burned)</li>
                             </ol>
                         </div>
@@ -95,9 +95,9 @@
                         <div class="col-md-7 pl-0">
                         <div class="tf-rop_desc-block">
                             <ol class="d">
-                                <li>We have started to position XDC as a gateway for Trade Finance assets to the existing funds, HNIs, Non-bank funders</li>
-                                <li>This volume will pick up gradually</li>
-                                <li>We are looking to list with as many fiat channels as possible for XDC-Fiat Gateway</li>
+                                <li>We have started to position XDC as a gateway for Trade Finance assets to the existing funds, HNIs, Non-bank funders.</li>
+                                <li>This volume will pick up gradually.</li>
+                                <li>We are looking to list with as many fiat channels as possible for XDC-Fiat Gateway.</li>
                             </ol>
                         </div>
                         </div>

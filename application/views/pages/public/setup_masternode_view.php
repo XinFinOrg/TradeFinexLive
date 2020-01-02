@@ -4,7 +4,7 @@
 <section class="tf-inner-banner">
     <div class="container">
         <h3>Guide to Setup Masternode</h3>
-        <h4>XinFin offers the first and only genuinely one-click masternode deployment.</h4>
+        <h4>XinFin Offers the First and Only Genuinely One-Click Masternode Deployment.</h4>
     </div>
 </section>
 
@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="section-title text-center">
-                    <h2 class="mb-0">To Become a part of the Network Download One Click Installer</h2>
+                    <h2 class="mb-0">To Become a part of the Network, Download the One-Click Installer</h2>
                 </div>
             </div>
         </div>
@@ -54,8 +54,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <p>Setting up masternode of XInFIn needs you to stake 10M of XDC coins that makes you trusted validator, so that our network of originators or funders can work with you and exchange the information.</p>
-                <p>You can at anytime resign the node and get your 10M XDc back to sell in secondary market and get the money back as per market rate of XDC at that time.</P>
+                <p>To set up a Masternode of XInFIn, you must stake 10M XDC coins to verify yourself as a trusted validator. This allows our network of originators or funders to work with you and exchange the information.</p>
+                <p>You can resign the node and get your 10M XDC back at any time. You can then sell them in a secondary market and get the money back as per market rate of XDC at that time.</P>
                 <p>For more details, Click <a href="<?php echo base_url()?>publicv/xdc_liquidity">here.</p>
             </div>
         </div>
