@@ -5,7 +5,7 @@
                 <div class="col-md-5 tf-home-banner-left-content">
                     <h2 class="head-title">Empowering Trade Finance Ecosystem</h2>
                     <div class="desc">
-                        <p>Network for Trade Finance Originators to distribute Trade Assets to the growing class of alternative asset investors.</p>
+                        <p>A Network for Trade Finance Originators to Distribute Trade Assets to the Growing Class of AlternativeAsset Investors.</p>
                     </div>
 
                     <div class="hero-tabs-desktop-container">
@@ -36,7 +36,7 @@
                                     <div class="tf-home-hero-right-col-text">
                                         <h2>For Buyers / Suppliers</h2>
                                         <div class="tf-bottom-col-1">
-                                            <p>Improve cash flow. Easy Access to Trade Financing. Corporate & Government treasuries can effectively manage their capital, strengthen their Buyer/Supplier relationships.</p>
+                                            <p>Improve Cash Flow. Easy Access to Trade Financing. Corporate & Government Treasuries can Effectively Manage their Capital, Strengthen their Buyer/Supplier Relationships.</p>
                                             <p></p>
                                         </div>
                                         <div class="tf-bottom-col-2">
@@ -103,7 +103,7 @@
 
                     <div class="tf-hybrid-dls-bg">
                         <h1 class="title">Hybrid Distributed Ledger Solution</h1>
-                        <p>Fully digital access to origination, distribution, Custody and settlement of Trade Finance assets powered by XDC Protocol.</p>
+                        <p>Fully digital access to origination, distribution, custody and settlement of Trade Finance assets powered by XDC Protocol.</p>
                         <a class="btn border white text-uppercase" href="<?=base_url();?>publicv/hybrid_distributed_ledger_solution">Learn More</a>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                     <div class="tf-instrument-support_alt_block alt_block_first-child">
                         <h2>Receivables (Invoice)</h2>
                         <div class="tf-instrument-support_alt">
-                            <p>TradeFinex Network offer Digitize and De-Centralized way to manage Invoice and technology revolutionise how transactions are validated, invoices issued and payments made.</p>
+                            <p>TradeFinex Network offers a Digitized and De-Centralized way to manage Invoices. The technology revolutionizes how transactions are validated, invoices are issued and payments are made.</p>
                         </div>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                     <div class="tf-instrument-support_block">
                         <h2>Letter of Credit</h2>
                         <div class="tf-instrument-support">
-                            <p>TradeFinex Network offer De-Centralized way to manage letters of credit and electronic presentations. Buyers, sellers, banks and carriers can electronically exchange letters of credit, electronic bills of lading, insurance certificates and other trade documentation over a decentralized Blockchain network.</p>
+                            <p>TradeFinex Network offers a De-Centralized way to manage letters of credit and electronic presentations. Buyers, sellers, banks and carriers can electronically exchange letters of credit, electronic bills of lading, insurance certificates and other trade documentation over a decentralized Blockchain network.</p>
                         </div>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                     <div class="tf-instrument-support_alt_block">
                         <h2>Guarantees</h2>
                         <div class="tf-instrument-support_alt">
-                            <p>TradeFinex Network enable organisations to Create and manage guarantees and bonds from multiple financial institutions with full control and visibility reducing the risk of potential fraud, errors and cost of credit and administration.</p>
+                            <p>TradeFinex Network enables organizations to create and manage guarantees and bonds from multiple financial institutions with full control and visibility. This reduces the risk of potential fraud, errors and cost of credit and administration.</p>
                         </div>
                         <div class="info-button-block">
                             <a class="btn info-button btn-block" href="boss_101.html">Explore Bonds</a>
@@ -155,7 +155,7 @@
                     <div class="tf-instrument-support_block">
                         <h2>Bills of Lading</h2>
                         <div class="tf-instrument-support">
-                            <p>Digital bill of lading (dBL) application gives carriers and logistics providers the ability to create, send, amend and manage bills of lading digitally with greater accuracy, integrity and speed. TradeFinex helps to reduce the risk of fraud and improves efficiency and speed.</p>
+                            <p>Digital bill of lading (DBL) application gives carriers and logistics providers the ability to create, send, amend and manage bills of lading digitally with greater accuracy, integrity and speed. TradeFinex helps reduce the risk of fraud and improves efficiency and speed.</p>
                         </div>
                     </div>
                 </div>
@@ -171,7 +171,7 @@
                 <div class="col-md-10 col-md-offset-1">
                     <div class="section-title text-center">
                         <h2 class="mb-20 text-white">Global Trade Finance Asset Distribution Platform</h2>
-                        <p class="light">Tokenize and Trade Cross border Trade Finance assets for greater and competitive liquidity.</p>
+                        <p class="light">Tokenize and Trade Cross Border Trade Finance Assets for Greater and Competitive Liquidity.</p>
                     </div>
                 </div>
             </div>
@@ -189,7 +189,7 @@
                 <div class="col-md-12">
                     <div class="section-title text-center">
                         <h2 class="mb-20">For Platforms</h2>
-                        <p>TradeFinex is interoperable with a wide range Trade Finance Digitization Platforms, Connect your origination platforms to a wide network of funders & Get Access to secondary market distribution marketplace.</p>
+                        <p>TradeFinex is interoperable with a wide range of Trade Finance Digitization Platforms. Connect your origination platforms to a wide network of funders & get access to the secondary market distribution marketplace.</p>
                     </div>
                 </div>
             </div>
@@ -239,7 +239,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6 tf-settlement-box">
                     <h2>About XDC Liquidity</h2>
-                    <p>Explore XDC as a protocol for instant global settlement and counterparty risk mitigation for Trade Finance.</p>
+                    <p>Explore XDC as a protocol for an instant global settlement and counterparty risk mitigation for Trade Finance.</p>
 					<a href="<?=base_url();?>publicv/xdc_liquidity" class="btn border blue text-uppercase">Learn More</a>
                 </div>
             </div>
@@ -252,7 +252,7 @@
         <div class="action-wrapper">
             <div class="container">
                 <div class="action-text">
-                    <p class="action-subtitle_1">WTO (World Trade Organization) and ICC (International Chamber of Commerce) talking about TradeFinex & XinFin.</p>
+                    <p class="action-subtitle_1">World Trade Organization (WTO) and the International Chamber of Commerce (ICC) talking about TradeFinex & XinFin.</p>
                 </div>
                 <div class="action-btn text-center"><a href="https://www.tradefinanceglobal.com/blockchain/dlt-download" class="btn border white text-uppercase mt-25">Download Report</a></div>
             </div>
@@ -267,7 +267,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <div class="section-title text-center">
                         <h2 class="mb-20">Videos</h2>
-                        <p>Below are a few brief videos which you may find helpful.</p>
+                        <p>Below are a few brief videos you may find helpful.</p>
                     </div>
                 </div>
             </div>
@@ -314,7 +314,7 @@
                     <div class="col-md-10 col-md-offset-1">
                         <div class="section-title text-center">
                             <h2 class="mb-20">Partnership and Alliances</h2>
-                            <p>TradeFinex is partnering with leading brands in the blockchain space to provide outstanding solutions and services, which match the standards of our fast-paced industry.</p>
+                            <p>TradeFinex is partnering with leading brands in the blockchain space to provide outstanding solutions and services that match the standards of our fast-paced industry.</p>
                         </div>
                     </div>
                 </div>

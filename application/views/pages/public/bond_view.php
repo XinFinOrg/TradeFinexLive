@@ -14,7 +14,7 @@
                     <div class="col-md-12">
                         <div class="section-title text-center">
                             <h2 class="mb-10">Creating Global Bond Standard</h2>
-                            <p>Connecting Traditional Bond Market with BOSS 101 Standard.</p>
+                            <p>Connecting the Traditional Bond Market with BOSS 101 Standard.</p>
                         </div>
                     </div>
                 </div>
@@ -25,8 +25,8 @@
                             <div class="equal-hight clearfix">
                                 <div class="ico-block"><img src="../assets/banner-assets/images/innerpage-images/avoid-failure-risk-ico.png" class="rounded img-responsive" alt=""></div>
                                 <div class="cnt-block">
-                                    <h3>Avoid risk of single point failure</h3>
-                                    <p>Blockchains don't have a single point of failure.</p>
+                                    <h3>Avoid Risks of Single-Point Failure</h3>
+                                    <p>Bunk the fear of a single point of failure as blockchains don’t have one.</p>
                                 </div>
                             </div>
                         </li>
@@ -35,7 +35,7 @@
                                 <div class="ico-block"><img src="../assets/banner-assets/images/innerpage-images/easy-fast-integration-ico.png" class="rounded img-responsive" alt=""></div>
                                 <div class="cnt-block">
                                     <h3>Faster and more Transparent</h3>
-                                    <p>Transparent and secure using blockchain technology.</p>
+                                    <p>Blockchain technology makes processes transparent and secure.</p>
                                 </div>
                             </div>
                         </li>
@@ -68,7 +68,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6 mb-30">
                         <h2>Create, Manage and Liquidate Bonds Instrument Online</h2>
-                        <p>A fully blockchain based digital solution eliminates counter-party delays, and allow instant settlement.</p>
+                        <p>A fully blockchain-based digital solution eliminates counter-party delays and allows instant settlement.</p>
                         <div class="tf-more-features-list">
                             <ul>
                                 <li>BOSS 101 platform for Broker-dealer and license entity.</li>
@@ -124,7 +124,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-title text-center">
-                            <h2 class="mb-0">Still, have Questions?</h2>
+                            <h2 class="mb-0">Still Have Questions?</h2>
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                                     <div class="info-content">
                                         <span class="icon-holder"><img src="../assets/banner-assets/images/innerpage-images/faqs-icon.png" alt=""></span>
                                         <h3>FAQs</h3>
-                                        <p>General or Technical-Ask your questions here!</p>
+                                        <p>General or Technical: Ask your questions here!</p>
                                     </div>
                                 </a>
                             </li>
@@ -154,7 +154,7 @@
                                     <div class="info-content">
                                         <span class="icon-holder"><img src="../assets/banner-assets/images/innerpage-images/techdoc-icon.png" alt=""></span>
                                         <h3>Technical Documents</h3>
-                                        <p>Find Technical Resource, API link, Example code, and Release note here.</p>
+                                        <p>Find a technical resource, API link, example code, and release note here.</p>
                                     </div>
                                 </a>
                             </li>

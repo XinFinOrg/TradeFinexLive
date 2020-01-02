@@ -4,7 +4,7 @@
 <section class="tf-inner-banner">
     <div class="container">
         <h3>XDC Liquidity</h3>
-        <h4>Explore XDC as a protocol for instant global settlement and counterparty risk mitigation for Trade Finance.</h4>
+        <h4>Explore XDC as a Protocol for Instant Global Settlement and Counterparty Risk Mitigation for Trade Finance.</h4>
     </div>
 </section>
 
@@ -28,13 +28,13 @@
                             <h2>Features</h2>
                             <div class="tf-dls-benefits">
                                 <ul>
-                                    <li>Prevent Frauds through transparency</li>
-                                    <li>Immediate counter-party risk mitigation
+                                    <li>Prevent fraud through transparency.</li>
+                                    <li>Immediate counter-party risk mitigation.</li>
                                         <ul style="margin-top:10px;">
-                                            <li>Trade Securitization assets are held in central custody and settled via correspondent banking channels</li>
-                                            <li>The risk of central failures in global trade are increasing due to trade wars, political issues (e.g. US, China, Hong Kong)</li>
-                                            <li>XDC Protocol allows you to hold securitized Trade Finance assets or negotiable instruments in a fully tokenized digital form in your custody that can be transferred between financial institutions on a peer to peer network without any risk of a centralised failure</li>
-                                            <li>The tokenized assets can be settled with digital fiat cash of choice (USD, EUR, JPY, AUD, CAD, GBP, SGD, HKD and many more…) issued on XinFin Network or digital asset of the XinFin Network “XDC” nodes on cloud or even a personal or company computer</li>
+                                            <li>Trade securitization assets are held in central custody and settled via correspondent banking channels.</li>
+                                            <li>The risk of central failures in global trade is increasing due to trade wars, political issues (e.g. the U.S., China, Hong Kong, etc).</li>
+                                            <li>XDC Protocol allows you to hold securitized Trade Finance assets or negotiable instruments in a fully tokenized digital form in your custody. They can then be transferred between financial institutions on a peer to peer network without any risk of a centralized failure.</li>
+                                            <li>The tokenized assets can be settled with digital fiat cash of choice (USD, EUR, JPY, AUD, CAD, GBP, SGD, HKD and many more…) issued on XinFin Network or digital asset of the XinFin Network “XDC” nodes on cloud or even a personal or company computer.</li>
                                         </ul>
                                     </li>
                                     <li>Interoperability with major systems
@@ -66,8 +66,8 @@
                                 <ul>
                                     <li>Background
                                         <ul style="margin-top:10px;">
-                                            <li>Ripple has successfully showcased use case of digital asset on it’s decentralised network, XRP</li>
-                                            <li>Liquidity of XRP can be used by remittance companies across corridors to process faster retail payments</li>
+                                            <li>Ripple has successfully showcased the use case of digital asset on it’s decentralised network, XRP</li>
+                                            <li>Remittance companies can use the liquidity of XRP across corridors to process faster retail payments.</li>
                                             <li>XRP Built its liquidity from USD 250,000 per day to approx USD 2 Billion per day
                                                 <ul style="margin-top:10px;">
                                                     <li class="link-break-out">Historical - <a href="https://coinmarketcap.com/historical/20170226/"target="_blank">https://coinmarketcap.com/historical/20170226/</a></li>
@@ -76,11 +76,11 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li>XDC, Digital Asset on XinFin Network (stands for XinFin Digital Contract)
+                                    XDC, Digital Asset on XinFin Network (stands for XinFin Digital Contract)
                                         <ul style="margin-top:10px;">
                                             <li class="link-break-out">Currently traded across 18 global markets - <a href="https://coinmarketcap.com/currencies/xinfin-network/"target="_blank">https://coinmarketcap.com/currencies/xinfin-network/</a></li>
-                                            <li>XDC has demonstrated ability to be liquid asset against multiple fiat currencies across different jurisdictions</li>
-                                            <li>Liquidity against fiat currencies enables instant settlement and mitigates counterparty risk</li>
+                                            <li>XDC has demonstrated the ability to be a liquid asset against multiple fiat currencies across different jurisdictions.</li>
+                                            <li>Liquidity against fiat currencies enables instant settlement and mitigates counterparty risk.</li>
                                             <li>XDC was more liquid than XRP against Indonesian FX markets of IDR (Indonesian Rupiah)</li>
                                             <li>XDC was the most liquid asset on IDEX [A Decentralised exchange connected to Coinbase, US based regulated digital asset exchange.]</li>
                                         </ul>
@@ -93,7 +93,7 @@
                                             <li>AED</li>
                                         </ul>
                                     </li>
-                                    <li>This will enable buyers, suppliers or financiers in instant mitigation of counterparty risk by settling direct in XDC or any fiat currency through XDC</li>
+                                    <li>This will enable buyers, suppliers or financiers in instant mitigation of counterparty risk by settling directly in XDC or any fiat currency through XDC.</li>
                                 </ul>
                             </div>
                         </div>
