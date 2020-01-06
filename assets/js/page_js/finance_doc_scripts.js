@@ -13,6 +13,8 @@ $(function () {
 	var site_url = $('#site_url').val();
 	var csrf_name = $('#csrf_tokens').attr('name');
 	var csrf_value = $('#csrf_tokens').val();
+	var paypal_addr;
+	var paypal_doc_redem;
 
 	jQuery.validator.addMethod("LetterOnly", function (value, element) {
 		// allow any non-whitespace characters as the host part
@@ -112,6 +114,26 @@ $(function () {
 	//Buyer-Supplier Form
 	$("#suppliers_form").validate({
 		rules: {
+			address:{
+				required:true,
+				contractAddress:true,
+				normalizer: function(value) {
+					// Update the value of the element
+					this.value = $.trim(value);
+					check = this.value;
+					if(check.startsWith("0x")){
+						check = check.slice(2);
+					}
+					else if(check.startsWith("xdc")){
+						check = check.slice(3);
+					}
+					else{
+						check = this.value;
+					}
+					// Use the trimmed value for validation
+					return check;
+				}
+			},
 			instrument: {
 				required:function() {
 					return $('[name="instrument"]:checked').length === 0; 
@@ -153,6 +175,10 @@ $(function () {
 			}
 		},
 		messages: {
+			address:{
+				required : "Please enter valid contract address",
+				contractAddress : "Contract address is a combination of alphabets and numbers starting with xdc/0x"
+			},
 			instrument:"Please select instrument",
 			pcountry: {
 				required: "Please select country"
@@ -170,6 +196,60 @@ $(function () {
 				privateKey : "Enter valid private key of 64 characters"
 			},
 		},
+		onkeyup: function (elem) {
+			
+			var element_id = $(elem).attr('id');
+			if (element_id == 'private_key') {
+				var _addr = document.getElementById("private_key");
+				var myurl = 'get_address';
+				showLoader();
+				$.ajax({
+					type: "POST",
+					url: myurl,
+					dataType:"json",
+					data: {"action":"getaddress","privkey":$(_addr).val()}, // serializes the form's elements.
+					success: (resp =>{
+						// console.log(resp);
+					})// show response from the php script.
+					}).done(resp => {
+						// console.log(resp);
+						document.getElementById("custom").value = resp.privatekey;
+						var _custom = document.getElementById("custom");
+						// console.log(">>",$(_custom).val());
+						$.post("paypal",{
+							'addr':resp.privatekey
+						}).then(resp => {
+							var jsona = $.parseJSON(resp);
+							// console.log("response : ",resp,jsona);
+							if(jsona.length > 0){
+								if(parseFloat(jsona[0].tfpp_doc_redem) < 1){
+									hideLoader();
+									$("#paypal").modal("show");
+									$('#paypal').css('opacity', '1');
+								}
+								else{
+									//all ok
+									hideLoader();
+									paypal_addr = jsona[0].tfpp_address;
+									paypal_doc_redem = parseFloat(jsona[0].tfpp_doc_redem);
+								}
+							}
+							else{
+								hideLoader();
+								$("#paypal").modal("show");
+								$('#paypal').css('opacity', '1');
+							}
+							
+							
+						}).fail(err => {
+							console.log("response1 : ",err);
+						})
+						
+					})
+			
+
+			}
+		},
 		success: function (elem) {
 
 
@@ -179,7 +259,7 @@ $(function () {
 			 
 		},
 		submitHandler: function (form, e) {
-			$('#suppliers').prop('disabled', true);
+			
 			showLoader();
 			var formData = $(form).serialize();
 			const formObj = formData.trim().split('&');
@@ -198,7 +278,7 @@ $(function () {
 				reader.onload = function () {
 					dataFile = reader.result;
 					dataFile = dataFile.split("base64,");
-					
+					console.log(">>>>",window.location.search)
 					
 					// after getting value of datafile name make the ajax call
 					$.each(formObj, function (k, v) {
@@ -284,6 +364,8 @@ $(function () {
 													"deployerAddr":resp.deployerAddr.toLowerCase(),
 													"secretKey" : passkey,
 													"docRef":formDataObj.instrument+formDataObj.docRef,
+													"addr" :paypal_addr,
+													"doc":paypal_doc_redem,
 													"csrf_name": csrf_value
 												}).then(resp => {
 													// console.log("response : ",resp);
@@ -291,7 +373,7 @@ $(function () {
 													console.log("response1 : ",err);
 												})
 												
-												const hashUrl = `https://explorer.xinfin.network/tx/${resp.receipt.transactionHash}`;
+												const hashUrl = `http://explorer.apothem.network/tx/${resp.receipt.transactionHash}`;
 												const tHtml = `
 																<p>
 																	<span>Contract Address:</span><br>${resp.receipt.contractAddress.toLowerCase()}</p>
@@ -520,7 +602,7 @@ $(function () {
 													console.log("response1 : ",err);
 												})
 
-												const hashUrl = `https://explorer.xinfin.network/tx/${resp.receipt.transactionHash}`;
+												const hashUrl = `http://explorer.apothem.network/tx/${resp.receipt.transactionHash}`;
 												const tHtml = `
 																<p>
 																	<span>Contract Address:</span><br>${resp.receipt.contractAddress.toLowerCase()}</p>

@@ -83,3 +83,14 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+// PayPal configuration 
+define('PAYPAL_ID', 'info-facilitator@tradechainlabs.com'); 
+define('PAYPAL_SANDBOX', FALSE); //TRUE or FALSE 
+ 
+define('PAYPAL_RETURN_URL', 'https://tradefinex.org/publicv/buyer_supplier'); 
+define('PAYPAL_CANCEL_URL', 'htts://tradefinex.org/publicv/error_page'); 
+define('PAYPAL_NOTIFY_URL', 'http://www.example.com/ipn.php'); 
+define('PAYPAL_CURRENCY', 'USD'); 
+
+define('PAYPAL_URL', (PAYPAL_SANDBOX == FALSE)?"https://www.sandbox.paypal.com/cgi-bin/webscr":"https://www.paypal.com/cgi-bin/webscr");

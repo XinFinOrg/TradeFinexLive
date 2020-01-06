@@ -678,6 +678,21 @@ class Publicv extends CI_Controller {
 		$data['page'] = 'buyer_supplier';
 		$data['pcountry'] = 0;
 
+		if(!empty($_GET['item_number']) && !empty($_GET['tx']) && !empty($_GET['amt']) && !empty($_GET['cm']) && !empty($_GET['cc']) && !empty($_GET['st'])){ 
+			$dbdata = $this->manage->get_paypal_paymentby_tx($_GET['tx']);
+			$db = json_encode($dbdata);
+			if(sizeof($dbdata) > 0 ){
+				$this->session->set_flashdata('msg_type', 'error');
+				// redirect($this->uri->uri_string());
+				redirect(current_url());
+			}
+			else{
+				$result = $this->manage->add_paypal_details($_GET);
+				
+			}
+			
+		}
+
 		$action = $this->input->post('action');
 		$data['instrument'] = $this->input->post('instrument');
 		$data['country'] = $this->input->post('pcountry');
@@ -711,7 +726,11 @@ class Publicv extends CI_Controller {
 		
 
 		if($action == 'adddetail'){
-			$result = $this->manage->add_instrument($data);
+			$result['contract'] = $this->manage->add_instrument($data);
+			$addr = $this->input->post('addr');
+			$doc = $this->input->post('doc');
+			log_message("info","<<1.".$addr,"3.".$doc);
+			$result['txn'] = $this->manage->update_paypalpayment_by_txn($addr,$doc);
 		}
 		if($action == 'getpasskey'){
 			$key = $this->manage->get_secretkey($contractAddr);
@@ -4200,6 +4219,79 @@ class Publicv extends CI_Controller {
 		$curl = curl_init();
 
 		
+		echo json_encode($data);
+				
+	}
+	public function test(){
+		
+		$data = array();
+		
+		echo (">>>3".json_encode($_GET));
+	}
+	public function error_page(){
+		
+		$data = array();
+		if(!empty($_GET['item_number']) && !empty($_GET['tx']) && !empty($_GET['amt']) && !empty($_GET['cc']) && !empty($_GET['st'])){ 
+			// Get transaction information from URL 
+			$data['item_number'] = $_GET['item_number'];  
+			$data['txn_id'] = $_GET['tx']; 
+			$data['payment_gross'] = $_GET['amt']; 
+			$data['currency_code'] = $_GET['cc']; 
+			$data['payment_status'] = $_GET['st']; 
+			 
+			var_dump(">>>>".$_GET);
+			 
+			
+		} 
+	
+				
+	}
+	public function paypal(){
+		
+		$data = array();
+		
+		$addr = $this->input->post('addr');
+		log_message("info","<<4".$addr);
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
+		
+		$dbdata = $this->manage->get_paypal_payment($addr);
+		echo json_encode($dbdata);
+				
+	}
+
+	public function get_address(){
+		
+		$data = array();
+		
+		$action = $this->input->post('action');
+		$privkey = $this->input->post('privkey');
+
+		log_message("info",">>>".$action.$privkey);
+		
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
+
+		
+		if($action == 'getaddress'){
+			$data['privatekey'] = getAddress($privkey);
+		}
+		foreach($key as $k){
+			$data['key'] = $k->tfi_secretKey;
+			$data['contractAddr'] = $k->tfi_contractAddr;
+		}
 		echo json_encode($data);
 				
 	}

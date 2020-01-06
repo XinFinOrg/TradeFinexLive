@@ -105,4 +105,23 @@ if (!function_exists('getFinancier'))
     }
 }
 
+if (!function_exists('getAddress'))
+{
+    function getAddress($key)
+    {
+        try{
+            $output = array();
+            $node = exec('cd && node paypal.js --privKey='.$key,$output);
+            // var_dump($output);
+            log_message('info','private key exist'.$node);
+            return $node;
+        
+        }
+        catch (Exception $e) {
+            log_message("error".$e->getMessage());
+            return '0';
+        }
+        
+    }
+}
 

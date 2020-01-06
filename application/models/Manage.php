@@ -1367,4 +1367,62 @@ $data1 = [
 
 			return $result = $query->result();
 		}
+
+		public function get_paypal_payment($addr){
+
+			$this->db->select('*');
+			$this->db->from('{PRE}paypal_payment');
+			$where = "tfpp_address = '$addr'";
+			$this->db->where($where);
+			$query = $this->db->get();
+
+			return $result = $query->result();
+		}
+
+		public function get_paypal_paymentby_tx($tx){
+
+			$this->db->select('*');
+			$this->db->from('{PRE}paypal_payment_logs');
+			$where = "tfpp_txn_id = '$tx'";
+			$this->db->where($where);
+			$query = $this->db->get();
+
+			return $result = $query->result();
+		}
+
+		public function add_paypal_details($data_add){
+
+			$data = array();
+			
+			$data['tfpp_paddress'] = $data_add['cm'];
+			$data['tfpp_inumber'] = $data_add['item_number'];
+			$data['tfpp_txn_id'] = $data_add['tx'];
+			$data['tfpp_amount'] = $data_add['amt'];
+			$data['tfpp_currency_code'] = $data_add['cc'];
+			$data['tfpp_pstatus'] = $data_add['st'];
+			
+			$data1['tfpp_address'] = $data_add['cm'];
+			$data1['tfpp_doc_redem'] = floatval($data_add['amt']) / 10;
+			$this->db->insert('{PRE}paypal_payment_logs', $data);
+			$id = $this->db->insert_id();
+			$this->db->insert('{PRE}paypal_payment', $data1);
+			$id = $this->db->insert_id();
+
+		
+			return 1;
+			// }
+		}
+		public function update_paypalpayment_by_txn($addr, $doc){
+
+			$datan = array();
+			log_message("info","<<2.".$addr.$doc);
+			$data1 = [
+				'tfpp_doc_redem' => floatval($doc) - 1,
+			];
+				$where = "tfpp_address = '$addr'";
+				$this->db->where($where);
+				$res = $this->db->update('{PRE}paypal_payment', $data1);
+				return $res;
+		}
+		
 	}
