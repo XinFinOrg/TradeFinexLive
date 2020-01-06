@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.tradefinex.org/assets/images/icon/logo.png" alt="TradeFinex" width="226">
+  <img src="https://www.tradefinex.org/assets/images/icon/logo.jpg" alt="TradeFinex" width="226">
   <br>
 </p>
 
