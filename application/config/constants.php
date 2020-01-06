@@ -85,11 +85,11 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 // PayPal configuration 
-define('PAYPAL_ID', 'info-facilitator@tradechainlabs.com'); 
+define('PAYPAL_ID', 'info@tradechainlabs.com'); 
 define('PAYPAL_SANDBOX', FALSE); //TRUE or FALSE 
  
 define('PAYPAL_RETURN_URL', 'https://tradefinex.org/publicv/buyer_supplier'); 
-define('PAYPAL_CANCEL_URL', 'htts://tradefinex.org/publicv/error_page'); 
+define('PAYPAL_CANCEL_URL', 'https://tradefinex.org/publicv/error_page'); 
 define('PAYPAL_NOTIFY_URL', 'http://www.example.com/ipn.php'); 
 define('PAYPAL_CURRENCY', 'USD'); 
 
