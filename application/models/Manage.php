@@ -1402,7 +1402,7 @@ $data1 = [
 			$data['tfpp_pstatus'] = $data_add['st'];
 			
 			$data1['tfpp_address'] = $data_add['cm'];
-			$data1['tfpp_doc_redem'] = (floatval($data_add['amt']) + floatval(0.5)) / 10;
+			$data1['tfpp_doc_redem'] = floatval($data_add['amt']) / 10;
 			$this->db->insert('{PRE}paypal_payment_logs', $data);
 			$id = $this->db->insert_id();
 			$this->db->insert('{PRE}paypal_payment', $data1);
