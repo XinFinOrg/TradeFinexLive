@@ -277,7 +277,7 @@
                 </div>
 				<div class="modal-body text-center">
                         <div class="deployedData_modal_block">
-							<p>Document Hash.</p>
+							<p>Document Hash.View the uploaded document</p>
 							<!--<p id="deployedData" style="word-break: break-all;"></p>-->
 							
 							<div id="hashData" style="word-break: break-all;">
@@ -301,7 +301,7 @@
                 </div>
 				<div class="modal-body text-center">
                         <div class="deployedData_modal_block">
-							<p>Pay for you document through Paypal</p>
+							<p>Pay for your document through Paypal</p>
 							<!--<p id="deployedData" style="word-break: break-all;"></p>-->
 						<form action="<?php echo PAYPAL_URL; ?>" method="post">
 							<!-- Identify your business so that you can collect the payments. -->
