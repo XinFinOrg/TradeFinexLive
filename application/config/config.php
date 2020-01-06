@@ -457,7 +457,7 @@ $config['csrf_token_name'] = 'csrf_iksen_tslick50';
 $config['csrf_cookie_name'] = 'csrf_iksen_cslick50';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = FALSE;
-$config['csrf_exclude_uris'] = array('user/update_log', 'user/update_visibility', 'user/update_notification', 'notify/listing_count', 'notify/listing_ui', 'notify/mlisting_ui', 'notify/mlisting_count', 'listing/details', 'listing/search' , 'notify/update_notifyc', 'project/cancel_invite', 'registration/get_regotp','publicv/buyer_supplier','publicv/get_passkey','publicv/get_access');
+$config['csrf_exclude_uris'] = array('user/update_log', 'user/update_visibility', 'user/update_notification', 'notify/listing_count', 'notify/listing_ui', 'notify/mlisting_ui', 'notify/mlisting_count', 'listing/details', 'listing/search' , 'notify/update_notifyc', 'project/cancel_invite', 'registration/get_regotp','publicv/buyer_supplier','publicv/get_passkey','publicv/get_access','publicv/paypal','publicv/get_address');
 
 /*
 |--------------------------------------------------------------------------
