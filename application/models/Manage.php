@@ -1342,7 +1342,7 @@ $data1 = [
 		public function get_instrument(){
 
 			$this->db->select('*');
-			$this->db->from('{PRE}instrument');
+			$this->db->from('{PRE}instrument')->order_by('tfi_createdAt', 'desc');
 			$query = $this->db->get();
 
 			return $result = $query->result();
