@@ -93,4 +93,4 @@ define('PAYPAL_CANCEL_URL', 'htts://tradefinex.org/publicv/error_page');
 define('PAYPAL_NOTIFY_URL', 'http://www.example.com/ipn.php'); 
 define('PAYPAL_CURRENCY', 'USD'); 
 
-define('PAYPAL_URL', (PAYPAL_SANDBOX == FALSE)?"https://www.sandbox.paypal.com/cgi-bin/webscr":"https://www.paypal.com/cgi-bin/webscr");
+define('PAYPAL_URL', (PAYPAL_SANDBOX == TRUE)?"https://www.sandbox.paypal.com/cgi-bin/webscr":"https://www.paypal.com/cgi-bin/webscr");
