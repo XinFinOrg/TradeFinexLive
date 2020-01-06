@@ -313,7 +313,7 @@
                             <!-- Specify details about the item that buyers will purchase. -->
                             <input type="hidden" name="item_name" value="Document">
                             <input type="hidden" name="item_number" value="1">
-                            <input type="hidden" name="amount" value="10">
+                            <input type="hidden" name="amount" value="0.5">
                             <input type="hidden" id="custom"name="custom" value="0">
                             <input type="hidden" name="currency_code" value="USD">
 
