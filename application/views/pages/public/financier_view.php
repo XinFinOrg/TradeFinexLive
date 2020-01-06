@@ -3,7 +3,7 @@
 
 <section class="tf-inner-banner">
 	<div class="container">
-		<h3>Finaciers</h3>
+		<h3>Financiers</h3>
 		<h4>Expand your trade finance portfolio.</h4>
 	</div>
 </section>
