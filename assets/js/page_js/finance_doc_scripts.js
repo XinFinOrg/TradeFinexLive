@@ -272,7 +272,7 @@ $(function () {
 					$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"http://62.233.65.6:3110/api/uploadDoc",
+						url:"https://tfd.xinfin.net/api/uploadDoc",
 						data:{"data":dataFile[1]},
 						success: resp => {
 							// console.log("response success: ",resp)
@@ -291,7 +291,7 @@ $(function () {
 					// console.log('formDataObj>>>>>>>', JSON.stringify(coinData));
 						if(resp.status == true){
 							hash = resp.hash;
-							$.post("http://62.233.65.6:3110/api/generateContract",{
+							$.post("https://tfd.xinfin.net/api/generateContract",{
 							"ipfsHash":hash,
 							"instrumentType":formDataObj.instrument,
 							"amount":formDataObj.amount,
@@ -313,7 +313,7 @@ $(function () {
 									$("#deploy_contract").on('click', function (e) {
 										showLoader();
 										$('#deploy_contract').prop('disabled', true);
-										$.post("http://62.233.65.6:3110/api/deployContract",{
+										$.post("https://tfd.xinfin.net/api/deployContract",{
 										"ipfsHash":hash,
 										"instrumentType":formDataObj.instrument,
 										"amount":formDataObj.amount,
@@ -482,7 +482,7 @@ $(function () {
 						document.getElementById("custom").value = resp.privatekey;
 						var _custom = document.getElementById("custom");
 						// console.log(">>",$(_custom).val());
-						$.post("test2",{
+						$.post("paypal",{
 							'addr':resp.privatekey.toLowerCase()
 						}).then(resp => {
 							var jsona = $.parseJSON(resp);
@@ -561,7 +561,7 @@ $(function () {
 					$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"http://62.233.65.6:3110/api/uploadDoc",
+						url:"https://tfd.xinfin.net/api/uploadDoc",
 						data:{"data":dataFile[1]},
 						success: resp => {
 							// console.log("response success: ",resp)
@@ -579,7 +579,7 @@ $(function () {
 							
 							// console.log(">>>>>>",ciphertext,"????????",originalText);
 
-							$.post("http://62.233.65.6:3110/api/generateContract",{
+							$.post("https://tfd.xinfin.net/api/generateContract",{
 							"ipfsHash":hash,
 							"instrumentType":formDataObj.instrument,
 							"amount":formDataObj.amount,
@@ -602,7 +602,7 @@ $(function () {
 									$("#deploy_contract").on('click', function (e) {
 										showLoader();
 										$('#deploy_contract').prop('disabled', true);
-										$.post("http://62.233.65.6:3110/api/deployContract",{
+										$.post("https://tfd.xinfin.net/api/deployContract",{
 										"ipfsHash":hash,
 										"instrumentType":formDataObj.instrument,
 										"amount":formDataObj.amount,
@@ -836,7 +836,7 @@ $(function () {
 						$.ajax({
 							type:"POST",
 							dataType:"json",
-							url:"http://62.233.65.6:3110/api/getDocHash",
+							url:"https://tfd.xinfin.net/api/getDocHash",
 							data:{"contractAddr":formDataObj.contract_address,
 								  "passKey": resp.key,
 								  "contractType" : "commonInstrument"
@@ -954,7 +954,7 @@ $(function () {
 						$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"http://62.233.65.6:3110/api/getDocHash",
+						url:"https://tfd.xinfin.net/api/getDocHash",
 						data:{"contractAddr":formDataObj.contract_address,
 							  "passKey": resp.key,
 							  "contractType" : "brokerInstrument"
