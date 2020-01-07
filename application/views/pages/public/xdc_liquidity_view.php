@@ -11,7 +11,14 @@
 <!-- XDC Liquidity for Trade Finance -->
 <section id="xdc-liquidity" class="section">
     <div class="container">
-        <div class="row">
+        <div class="row mt-40">
+			<div class="col-md-10 col-md-offset-1">
+				<script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
+				<div class="coinmarketcap-currency-widget" data-currencyid="2634" data-base="USD"></div>
+			</div>
+		</div>
+
+        <div class="row" style="margin-top:24.5px!important;">
             <div class="col-md-8 col-md-offset-2">
                 <div class="section-title text-center">
                     <h2 class="mb-20">XDC Liquidity for Trade Finance</h2>
@@ -81,7 +88,7 @@
                                             <li class="link-break-out">Currently traded across 18 global markets - <a href="https://coinmarketcap.com/currencies/xinfin-network/"target="_blank">https://coinmarketcap.com/currencies/xinfin-network/</a></li>
                                             <li>XDC has demonstrated the ability to be a liquid asset against multiple fiat currencies across different jurisdictions.</li>
                                             <li>Liquidity against fiat currencies enables instant settlement and mitigates counterparty risk.</li>
-                                            <li>XDC was more liquid than XRP against Indonesian FX markets of IDR (Indonesian Rupiah)</li>
+                                            <li>XDC was the second most liquid Digital Asset against Indonesian FX markets for IDR (Indonesian Rupiah)</li>
                                             <li>XDC was the most liquid asset on IDEX [A Decentralised exchange connected to Coinbase, US based regulated digital asset exchange.]</li>
                                         </ul>
                                     </li>
@@ -102,12 +109,7 @@
             </div>
         </div>
 		
-		<div class="row mt-40">
-			<div class="col-md-10 col-md-offset-1">
-				<script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
-				<div class="coinmarketcap-currency-widget" data-currencyid="2634" data-base="USD"></div>
-			</div>
-		</div>
+		
 				
     </div>
 </section>
