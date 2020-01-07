@@ -10,7 +10,7 @@
 		<div class="mail_template welcome_mail">
 			<div class="main_content">
 				<div class="mail_template_header">
-					<div class="mail_template_header_logo"> <img src="<?=base_url()?>assets/images/icon/logo.jpg" alt="logo"> </div>
+					<div class="mail_template_header_logo"> <img src="<?=base_url()?>assets/images/icon/logo.png" alt="logo"> </div>
 				</div>
 				<div class="mail_template_banner"> <img src="<?=base_url()?>assets/images/img/welcome_mail.jpg" alt="img"> </div>
 				<div class="mail_template_body">

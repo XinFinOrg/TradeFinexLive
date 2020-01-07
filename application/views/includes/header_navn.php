@@ -4,7 +4,7 @@
 			<div class="btn-menu"> <span></span> </div>
 			<div id="logo" class="logo"> 
 				<a href="<?php if($user_ids == 0){ echo base_url(); }else{ echo base_url().'dashboard'; } ?>">
-					<img class="img-responsive" src="<?php echo base_url() ?>assets/images/icon/logo.jpg" alt="logo" />
+					<img class="img-responsive" src="<?php echo base_url() ?>assets/images/icon/logo.png" alt="logo" />
 				</a>
 			</div>
 			<?php
