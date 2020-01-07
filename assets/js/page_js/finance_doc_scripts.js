@@ -486,7 +486,7 @@ $(function () {
 							'addr':resp.privatekey.toLowerCase()
 						}).then(resp => {
 							var jsona = $.parseJSON(resp);
-							console.log("response : ",resp,jsona);
+							// console.log("response : ",resp,jsona);
 							if(jsona.length > 0){
 								if(parseFloat(jsona[0].tfpp_doc_redem) < 1){
 									hideLoader();
