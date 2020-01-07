@@ -192,7 +192,7 @@ $(function () {
 						document.getElementById("custom").value = resp.privatekey;
 						var _custom = document.getElementById("custom");
 						// console.log(">>",$(_custom).val());
-						$.post("test2",{
+						$.post("paypal",{
 							'addr':resp.privatekey.toLowerCase()
 						}).then(resp => {
 							var jsona = $.parseJSON(resp);
