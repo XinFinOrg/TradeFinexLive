@@ -789,7 +789,7 @@ class Publicv extends CI_Controller {
 			'name' => $this->security->get_csrf_token_name(),
 			'hash' => $this->security->get_csrf_hash()
 		);
-		
+
 		$data['csrf'] = $csrf;
 		
 		$instrument = $this->manage->get_instrument();
@@ -3604,6 +3604,21 @@ class Publicv extends CI_Controller {
 		
 		$data['page'] = 'brokers';
 		$data['pcountry'] = 0;
+
+		if(!empty($_GET['item_number']) && !empty($_GET['tx']) && !empty($_GET['amt']) && !empty($_GET['cm']) && !empty($_GET['cc']) && !empty($_GET['st'])){ 
+			$dbdata = $this->manage->get_paypal_paymentby_tx($_GET['tx']);
+			$db = json_encode($dbdata);
+			if(sizeof($dbdata) > 0 ){
+				$this->session->set_flashdata('msg_type', 'error');
+				// redirect($this->uri->uri_string());
+				redirect(current_url());
+			}
+			else{
+				$result = $this->manage->add_paypal_details($_GET);
+				
+			}
+			
+		}
 
 		$action = $this->input->post('action');
 		$data['instrument'] = $this->input->post('instrument');

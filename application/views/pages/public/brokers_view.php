@@ -28,6 +28,13 @@
                                 echo form_open_multipart(base_url().'publicv/brokers', $attributes);
                             ?>
                                 <div class="form-group">
+                                    <label for="private-key">Enter Private Key <span><a href="https://howto.xinfin.org/XinFinWallet/features/" target="_blank">How to Create PrivateKey?</a></span></label>
+                                    <input type="text" class="form-control" id="private_key" name="private_key" autocomplete= "off" placeholder="Enter Private Key">
+                                </div>
+                                 <div class="form-group">
+                                 <span><a href="http://faucet.apothem.network/" target="_blank">Get Test XDC Tokens</a></span>
+                                </div>
+                                <div class="form-group">
                                     <label for="instrument-type" id="instrument">Type of Instrument</label>
 
                                     <div id="tab" class="tf-form-tabs" data-toggle="buttons">
@@ -130,13 +137,7 @@
                                     <label for="supporting-document" style="display:none" class="error"id="error1">Please file less than 5MB</label>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="private-key">Enter Private Key <span><a href="https://howto.xinfin.org/XinFinWallet/features/" target="_blank">How to Create PrivateKey?</a></span></label>
-                                    <input type="text" class="form-control" id="private_key" name="private_key" autocomplete= "off" placeholder="Enter Private Key">
-                                </div>
-                                <!-- <div class="form-group">
-                                 <span><a href="http://faucet.apothem.network/" target="_blank">Get Test XDC Tokens</a></span>
-                                </div> -->
+                                
                                  <div class="row">
 									<div class="form-group col-md-6 col-xs-6">
 										<input type="hidden" name="action" value="adddetail" />
@@ -285,6 +286,48 @@
                             <div class="form-group">
 								<button id="okBtn" type="submit" class="btn btn-blue text-uppercase" data-keyboard="false">OK</button>
 							</div>							
+						</div>
+				</div>
+			</div>
+	 	</div>
+</div>
+<div class="modal fade" id="paypal" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog" style="">
+		<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
+			<div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="<?php echo base_url()?>publicv/brokers" data-dismiss="modal"> <span class="hidden-xs">&times;</span> <span class="hidden-md hidden-lg"> <img src="<?php echo base_url() ?>assets/images/icon/log_arrow.png"  alt="icon" /></span> </button>
+                </div>
+				<div class="modal-body text-center">
+                        <div class="deployedData_modal_block">
+							<p>Pay for your document through Paypal</p>
+							<!--<p id="deployedData" style="word-break: break-all;"></p>-->
+						<form action="<?php echo PAYPAL_URL; ?>" method="post">
+							<!-- Identify your business so that you can collect the payments. -->
+                            <input type="hidden" name="business" value="<?php echo PAYPAL_ID; ?>">
+
+                            <!-- Specify a Buy Now button. -->
+                            <input type="hidden" name="cmd" value="_xclick">
+
+                            <!-- Specify details about the item that buyers will purchase. -->
+                            <input type="hidden" name="item_name" value="Document">
+                            <input type="hidden" name="item_number" value="1">
+                            <input type="hidden" name="amount" value="10">
+                            <input type="hidden" id="custom"name="custom" value="0">
+                            <input type="hidden" name="currency_code" value="USD">
+
+                            <!-- Specify URLs -->
+                            <input type='hidden' name='cancel_return' value='<?php echo PAYPAL_CANCEL_URL; ?>'>
+                            <input type='hidden' name='return' value='<?php echo base_url() ?>publicv/brokers'>
+                            <input type='hidden' name='rm' value='2'>
+
+                            
+								
+                            </div>
+                            <div class="form-group">
+								<button id="membership_payment" type="submit" class="btn btn-blue text-uppercase" data-keyboard="false">Pay Now</button>
+							</div>	
+                            </form>							
 						</div>
 				</div>
 			</div>
