@@ -729,7 +729,7 @@ class Publicv extends CI_Controller {
 			$result['contract'] = $this->manage->add_instrument($data);
 			$addr = $this->input->post('addr');
 			$doc = $this->input->post('doc');
-			log_message("info","<<1.".$addr,"3.".$doc);
+			// log_message("info","<<1.".$addr,"3.".$doc);
 			$result['txn'] = $this->manage->update_paypalpayment_by_txn($addr,$doc);
 		}
 		if($action == 'getpasskey'){
@@ -789,16 +789,26 @@ class Publicv extends CI_Controller {
 			'name' => $this->security->get_csrf_token_name(),
 			'hash' => $this->security->get_csrf_hash()
 		);
-
-		$data['csrf'] = $csrf;
 		
+		$data['csrf'] = $csrf;
+		$d;
+		$sum=0;
 		$instrument = $this->manage->get_instrument();
+		$data['count'] = $this->manage->get_instrument_count();
+		$receivable = $this->manage->get_receivable_instrument_sum();
+		foreach($receivable as $k){
+			$sum = floatval($sum) + floatval($k->tfi_amount);
+			
+		}
+		// echo $sum;
+		// die;
+		
 		if($instrument && !empty($instrument) && is_array($instrument) && sizeof($instrument) <> 0){
 			$data['instrument'] = $instrument;						
 		}
 
 		if($action == 'getaccess'){
-			log_message("info",">>>>",$docRef);
+			// log_message("info",">>>>",$docRef);
 		}
 
 				
@@ -4093,7 +4103,7 @@ class Publicv extends CI_Controller {
 			// }
 
 		if($action == 'send_mail'){
-		log_message("info",">>>>>>mail send");
+		// log_message("info",">>>>>>mail send");
 			$config = array();
 			$config = $this->config->item('$econfig');
 						
@@ -4140,7 +4150,7 @@ class Publicv extends CI_Controller {
 	
 	public function sendMail()
 	{
-		log_message("info",">>>>");
+		// log_message("info",">>>>");
 	    $data = array();
 		$mail_data = array();
 		$result = array();
@@ -4149,8 +4159,8 @@ class Publicv extends CI_Controller {
 		$action = $this->input->post('action');
 		$email = $this->input->post('email');
 		$deployData = $this->input->post('deployData');
-		log_message("info",">>>>1",gettype($email));
-		log_message("info",">>>>2",gettype($deployData));
+		// log_message("info",">>>>1",gettype($email));
+		// log_message("info",">>>>2",gettype($deployData));
 		
 		$data['csrf'] = array();
 		
@@ -4212,7 +4222,7 @@ class Publicv extends CI_Controller {
 		$show = cmcModule();
 		foreach($show as $sh) {
 			
-			log_message("info",$sh->price_usd) ;
+			// log_message("info",$sh->price_usd) ;
 			$data = $sh->price_usd;
 			
 		}
@@ -4266,7 +4276,7 @@ class Publicv extends CI_Controller {
 		$data = array();
 		
 		$addr = $this->input->post('addr');
-		log_message("info","<<4".$addr);
+		// log_message("info","<<4".$addr);
 		$data['csrf'] = array();
 		
 		$csrf = array(
@@ -4277,6 +4287,7 @@ class Publicv extends CI_Controller {
 		$data['csrf'] = $csrf;
 		
 		$dbdata = $this->manage->get_paypal_payment($addr);
+		// log_message("info","@@@".json_encode($dbdata));
 		echo json_encode($dbdata);
 				
 	}
@@ -4288,7 +4299,7 @@ class Publicv extends CI_Controller {
 		$action = $this->input->post('action');
 		$privkey = $this->input->post('privkey');
 
-		log_message("info",">>>".$action.$privkey);
+		// log_message("info",">>>".$action.$privkey);
 		
 		$data['csrf'] = array();
 		

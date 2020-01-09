@@ -193,7 +193,7 @@ $(function () {
 						var _custom = document.getElementById("custom");
 						// console.log(">>",$(_custom).val());
 						$.post("paypal",{
-							'addr':resp.privatekey.toLowerCase()
+							'addr':resp.privatekey
 						}).then(resp => {
 							var jsona = $.parseJSON(resp);
 							// console.log("response : ",resp,jsona);

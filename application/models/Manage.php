@@ -1405,17 +1405,37 @@ $data1 = [
 			$data1['tfpp_doc_redem'] = floatval($data_add['amt']) / 10;
 			$this->db->insert('{PRE}paypal_payment_logs', $data);
 			$id = $this->db->insert_id();
-			$this->db->insert('{PRE}paypal_payment', $data1);
-			$id = $this->db->insert_id();
 
+			$addr = $data_add['cm'];
+			$data2 = [
+				'tfpp_doc_redem' => 1,
+			];
+			$this->db->select('*');
+			$this->db->from('{PRE}paypal_payment');
+			$where = "tfpp_address = '$addr'";
+			$this->db->where($where);
+			$query = $this->db->get();
+			$result = $query->result();
+			// log_message("info","getresult".json_encode($result)."////".$query->result());
+			
+			if($query->num_rows() > 0) {
+				// log_message("info","check1");
+				$where = "tfpp_address = '$addr'";
+				$this->db->where($where);
+				$res = $this->db->update('{PRE}paypal_payment', $data2);
+			}
+			else{
+				// log_message("info","check");
+				$this->db->insert('{PRE}paypal_payment', $data1);
+				$id = $this->db->insert_id();
+			}
+				
 		
 			return 1;
-			// }
 		}
 		public function update_paypalpayment_by_txn($addr, $doc){
 
 			$datan = array();
-			log_message("info","<<2.".$addr.$doc);
 			$data1 = [
 				'tfpp_doc_redem' => floatval($doc) - 1,
 			];
@@ -1423,6 +1443,24 @@ $data1 = [
 				$this->db->where($where);
 				$res = $this->db->update('{PRE}paypal_payment', $data1);
 				return $res;
+		}
+		public function get_instrument_count(){
+
+			$this->db->select('*');
+			$this->db->from('{PRE}instrument');
+			$query = $this->db->get();
+
+			return $result = $query->num_rows();
+		}
+		public function get_receivable_instrument_sum(){
+
+			$this->db->select('tfi_amount,tfi_currency');
+			$this->db->from('{PRE}instrument');
+			$where = "tfi_instrument = 'REC'";
+			$this->db->where($where);
+			$query = $this->db->get();
+			// log_message("info","<<2.".json_encode($query->result()));
+			return $result = $query->result();
 		}
 		
 	}
