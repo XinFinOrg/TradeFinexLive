@@ -177,16 +177,24 @@ $(function () {
 			var element_id = $(elem).attr('id');
 			if (element_id == 'private_key') {
 				var _addr = document.getElementById("private_key");
-				var myurl = 'get_address';
-				showLoader();
-				$.ajax({
-					type: "POST",
-					url: myurl,
-					dataType:"json",
-					data: {"action":"getaddress","privkey":$(_addr).val()}, // serializes the form's elements.
-					success: (resp =>{
-						// console.log(resp);
-					})// show response from the php script.
+				var addrKey = $(_addr).val();
+				if(addrKey.startsWith("0x")){
+					addrKey = addrKey.slice(2);
+				}
+				else{
+					addrKey = addrKey;
+				}
+				if(addrKey.length == 64){
+					var myurl = 'get_address';
+					showLoader();
+					$.ajax({
+						type: "POST",
+						url: myurl,
+						dataType:"json",
+						data: {"action":"getaddress","privkey":$(_addr).val()}, // serializes the form's elements.
+						success: (resp =>{
+							// console.log(resp);
+						})// show response from the php script.
 					}).done(resp => {
 						// console.log(resp);
 						document.getElementById("custom").value = resp.privatekey;
@@ -199,6 +207,7 @@ $(function () {
 							// console.log("response : ",resp,jsona);
 							if(jsona.length > 0){
 								if(parseFloat(jsona[0].tfpp_doc_redem) < 1){
+									// console.log("response1 : ",jsona);
 									hideLoader();
 									$("#paypal").modal("show");
 									$('#paypal').css('opacity', '1');
@@ -222,7 +231,7 @@ $(function () {
 						})
 						
 					})
-			
+				}
 
 			}
 		},
