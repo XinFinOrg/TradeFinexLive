@@ -1,5 +1,5 @@
- <!-- Inside Page Financiers -->
- <div class="sub_page_wraper">
+<!-- Inside Page Financiers -->
+<div class="sub_page_wraper">
 
 <section class="tf-inner-banner">
 	<div class="container">
@@ -14,14 +14,503 @@
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<div class="section-title text-center">
-					<h2 class="mb-20">Instrument Currently Active for Funding</h2>
+					<h2 class="mb-0">Instrument Currently Active for Funding</h2>
 				</div>
 			</div>
-		</div>
+		</div>		
+		
+		
+		<!-- <div class="row projectFactsWrapColumns">
+                <div class="col-md-12"> -->
+					<!--<div class="section-title text-center">
+						<h3 class="mb-0">Total Instruments</h3>
+					</div>-->
+					<!-- <div id="projectFacts" class="sectionClass">
+    <div class="fullWidth eight columns">
+        <div class="projectFactsWrap">
+            <div class="item single">
+                <p id="number1" class="counter"><?php echo $total_count ?></p>
+                <span></span>
+                <p>Total Instruments For Funding</p>
+				<p class="small">(Amount in USD)</p>
+            </div>
+			<div class="item single">
+                <p id="number2" class="counter"><?php echo $count ?></p>
+                <span></span>
+                <p>Active Instruments For Funding</p>
+				<p class="small">(Amount in USD)</p>
+            </div>
+			<div class="item single">
+                <p id="number3" class="counter"><?php echo $tot_sum ?></p>
+                <span></span>
+                <p>Total Value of Trade Instruments</p>
+				<p class="small">(Amount in USD)</p>
+            </div>
+        </div>
+    </div>
+</div>
+					
+                </div> -->
+				
+                <!-- <div class="col-md-12">
+					<div class="section-title text-center">
+						<h3 class="mb-0">Trade Instruments Live worth USD</h3>
+					</div>					
+					<div id="projectFacts" class="sectionClass">
+                    <div class="fullWidth eight columns">
+                        <div class="projectFactsWrap flex-projectFactsWrap">
+                            <div class="item">
+                                <p id="number1" class="counter"><?php echo $rec_sum ?></p>
+                                <span></span>
+                                <p>Receviables</p>
+                            </div>
+                            <div class="item">
+                                <p id="number2" class="counter"><?php echo $loc_sum ?></p>
+                                <span></span>
+                                <p>Letter of Credit</p>
+                            </div>
+                            <div class="item">
+                                <p id="number3" class="counter"><?php echo $bg_sum ?></p>
+                                <span></span>
+                                <p>Bank Guarantees</p>
+                            </div>
+                            <div class="item">
+                                <p id="number4" class="counter"><?php echo $sblc_sum ?></p>
+                                <span></span>
+                                <p>SBLC</p>
+                            </div>
+                            <div class="item">
+                                <p id="number5" class="counter"><?php echo $wr_sum ?></p>
+                                <span></span>
+                                <p>Warehouse Receipt</p>
+                            </div>
+                            <div class="item">
+                                <p id="number6" class="counter"><?php echo $pay_sum ?></p>
+                                <span></span>
+                                <p>Payable</p>
+                            </div>
+                            <div class="item">
+                                <p id="number7" class="counter"><?php echo $oth_sum ?></p>
+                                <span></span>
+                                <p>Other</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+					
+					
+					
+				<!-- </div>
+        </div>
+	 -->
+	
+		
 
 		<div class="row">
                     <div class="col-md-12">
-                        <div class="tf-financier-table tf-element">
+					
+					<div class="tf-assets-table-area">
+                        <div class="tf-filters">
+                            <div class="tf-ticker-head">
+                                <ul class="nav tf-nav-tabs tf-ticker-nav tf-ticker-nav-desktop form-tabs" role="tablist">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="#tab1" role="tab" data-toggle="tab" aria-selected="true">All</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a class="nav-link" href="#tab2" role="tab" data-toggle="tab" aria-selected="true">Receivables</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#tab3" role="tab" data-toggle="tab" aria-selected="false">Letters of Credit</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#tab4" role="tab" data-toggle="tab" aria-selected="false">Bank Guarantees</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#tab5" role="tab" data-toggle="tab" aria-selected="false">SBLC</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#tab6" role="tab" data-toggle="tab" aria-selected="false">Warehousing Receipt</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a class="nav-link" href="#tab7" role="tab" data-toggle="tab" aria-selected="false">Payable</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a class="nav-link" href="#tab8" role="tab" data-toggle="tab" aria-selected="false">Other</a>
+                                    </li>
+                                </ul>
+                                <div class="tf-ticker-nav-mobile">
+                                    <select class="form-control" id="tab_selector">
+                                        <option value="0">All</option>
+										<option value="1">Receivables</option>
+                                        <option value="2">Letters of Credit</option>
+                                        <option value="3">Bank Guarantees</option>
+                                        <option value="4">SBLC</option>
+                                        <option value="5">Warehousing Receipt</option>
+										<option value="6">Payable</option>
+										<option value="7">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tf-assets-table-block">
+                            <div class="tf-assets-table-block-inner">
+                                <div class="tab-content">
+                                    <!-- Start All Data -->
+                                    <div role="tabpanel" class="tab-pane fade in active" id="tab1">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="tf-financier-table tf-element">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                <th scope="col">INSTRUMENT TYPE</th>
+                                                                <th scope="col">INSTRUMENT REF</th>
+                                                                <th scope="col">COUNTRY OF ORIGINATION</th>
+                                                                <th scope="col">AMOUNT</th>
+                                                                <th scope="col">DATE OF MATURITY</th>
+                                                                <th scope="col">&nbsp;</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                <?php
+                                                                foreach ($instrument as $instru) { ?>
+                                                                <td class="bold"><?php 
+                                                                    if($instru->tfi_instrument == "SBLC")
+                                                                    {  echo 'SBLC'; 
+                                                                    }
+                                                                    else if($instru->tfi_instrument == "REC")
+                                                                    {  echo 'Receivable'; 
+                                                                    }
+                                                                    else if($instru->tfi_instrument == "LC")
+                                                                    {  echo 'Letter Of Credit'; 
+                                                                    }
+                                                                    else if($instru->tfi_instrument == "BG")
+                                                                    {  echo 'Bank Guarantees'; 
+                                                                    }
+                                                                    else if($instru->tfi_instrument == "PAY")
+                                                                    {  echo 'Payable'; 
+                                                                    }
+                                                                    else if($instru->tfi_instrument == "OTH")
+                                                                    {  echo 'Other'; 
+                                                                    }
+                                                                    else if($instru->tfi_instrument == "WR")
+                                                                    {  echo 'Warehouse Receipt'; 
+                                                                    }
+                                                                    
+                                                                    ?></td>
+                                                                        <td><?php echo $instru->tfi_docRef ?></td>
+                                                                        <td><?php echo $instru->tfi_country ?></td>
+                                                                        <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
+                                                                        <td><?php echo $instru->tfi_maturityDate ?></td>
+                                                                        <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                        </tr>
+                                                                        <?php } ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End All Data -->
+
+                                    <!-- Start Receivables Data -->
+                                    <div role="tabpanel" class="tab-pane fade" id="tab2">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="tf-financier-table tf-element">
+						 
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                            <th scope="col">INSTRUMENT TYPE</th>
+                                                            <th scope="col">INSTRUMENT REF</th>
+                                                            <th scope="col">COUNTRY OF ORIGINATION</th>
+                                                            <th scope="col">AMOUNT</th>
+                                                            <th scope="col">DATE OF MATURITY</th>
+                                                            <th scope="col">&nbsp;</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                            <?php
+                                                            foreach ($instrument as $instru) { 
+                                                                if($instru->tfi_instrument == "REC"){?>
+                                                                    <td class="bold"><?php if($instru->tfi_instrument == "REC")
+                                                                                    {  echo 'Receivable'; 
+                                                                                    }?></td>
+                                                                    <td><?php echo $instru->tfi_docRef ?></td>
+                                                                    <td><?php echo $instru->tfi_country ?></td>
+                                                                    <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
+                                                                    <td><?php echo $instru->tfi_maturityDate ?></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    </tr>
+                                                            <?php }}?>
+                                                            
+                                                        </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Receivables Data -->
+
+                                    <!-- Start Letter of Credit Data -->
+                                    <div role="tabpanel" class="tab-pane fade" id="tab3">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="tf-financier-table tf-element">
+						 
+                                            <div class="table-responsive">
+                                            <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">INSTRUMENT TYPE</th>
+                                                <th scope="col">INSTRUMENT REF</th>
+                                                <th scope="col">COUNTRY OF ORIGINATION</th>
+                                                <th scope="col">AMOUNT</th>
+                                                <th scope="col">DATE OF MATURITY</th>
+                                                <th scope="col">&nbsp;</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><?php
+                                                    foreach ($instrument as $instru) { 
+                                                        if($instru->tfi_instrument == "LC"){?>
+                                                <td class="bold"><?php if($instru->tfi_instrument == "LC")
+                                                            {  echo 'Letter of Credit'; 
+                                                            } ?></td>
+                                                <td><?php echo $instru->tfi_docRef ?></td>
+                                                <td><?php echo $instru->tfi_country ?></td>
+                                                <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
+                                                <td><?php echo $instru->tfi_maturityDate ?></td>
+                                                <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                </tr>
+                                                        <?php }}?>
+                                            </tbody>
+                                            </table></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Letter of Credit Data -->
+
+                                    <!-- Start Bank Gurantees Data -->
+                                    <div role="tabpanel" class="tab-pane fade" id="tab4">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="tf-financier-table tf-element">
+						 
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">INSTRUMENT TYPE</th>
+                                                                    <th scope="col">INSTRUMENT REF</th>
+                                                                    <th scope="col">COUNTRY OF ORIGINATION</th>
+                                                                    <th scope="col">AMOUNT</th>
+                                                                    <th scope="col">DATE OF MATURITY</th>
+                                                                    <th scope="col">&nbsp;</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr><?php
+                                                                    foreach ($instrument as $instru) { 
+                                                                        if($instru->tfi_instrument == "BG"){?>
+                                                                    <td class="bold"><?php if($instru->tfi_instrument == "BG")
+                                                                                    {  echo 'Bank Gurantee'; 
+                                                                                    }?></td>
+                                                                    <td><?php echo $instru->tfi_docRef ?></td>
+                                                                    <td><?php echo $instru->tfi_country ?></td>
+                                                                    <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
+                                                                    <td><?php echo $instru->tfi_maturityDate ?></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                </tr>
+                                                                                <?php }}?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Bank Gurantees Data -->
+
+                                    <!-- Start SBLC Data -->
+                                    <div role="tabpanel" class="tab-pane fade" id="tab5">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="tf-financier-table tf-element">
+						 
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                            <th scope="col">INSTRUMENT TYPE</th>
+                                                            <th scope="col">INSTRUMENT REF</th>
+                                                            <th scope="col">COUNTRY OF ORIGINATION</th>
+                                                            <th scope="col">AMOUNT</th>
+                                                            <th scope="col">DATE OF MATURITY</th>
+                                                            <th scope="col">&nbsp;</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr><?php
+                                                                    foreach ($instrument as $instru) { 
+                                                                        if($instru->tfi_instrument == "SBLC"){?>
+                                                            <td class="bold"><?php if($instru->tfi_instrument == "SBLC")
+                                                                                    {  echo 'SBLC'; 
+                                                                                    }?></td>
+                                                            <td><?php echo $instru->tfi_docRef ?></td>
+                                                            <td><?php echo $instru->tfi_country ?></td>
+                                                            <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
+                                                            <td><?php echo $instru->tfi_maturityDate ?></td>
+                                                            <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                            </tr>
+                                                                                <?php }}?>
+                                                        </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!-- End SBLC Data -->
+									
+									<!-- Start Warehousing Receipt Data -->
+                                    <div role="tabpanel" class="tab-pane fade" id="tab6">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="tf-financier-table tf-element">
+						 
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                <th scope="col">INSTRUMENT TYPE</th>
+                                                                <th scope="col">INSTRUMENT REF</th>
+                                                                <th scope="col">COUNTRY OF ORIGINATION</th>
+                                                                <th scope="col">AMOUNT</th>
+                                                                <th scope="col">DATE OF MATURITY</th>
+                                                                <th scope="col">&nbsp;</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr><?php
+                                                                    foreach ($instrument as $instru) { 
+                                                                        if($instru->tfi_instrument == "WR"){?>
+                                                                <td class="bold"><?php if($instru->tfi_instrument == "WR")
+                                                                                    {  echo 'Warehouse Receipt'; 
+                                                                                    }?></td>
+                                                                <td><?php echo $instru->tfi_docRef ?></td>
+                                                                <td><?php echo $instru->tfi_country ?></td>
+                                                                <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
+                                                                <td><?php echo $instru->tfi_maturityDate ?></td>
+                                                                <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                </tr>
+                                                                                <?php }}?>
+                                                            </tbody>
+                                                            </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Warehousing Receipt Data -->
+									
+									<!-- Start Payable Data -->
+                                    <div role="tabpanel" class="tab-pane fade" id="tab7">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="tf-financier-table tf-element">
+						 
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                            <th scope="col">INSTRUMENT TYPE</th>
+                                                            <th scope="col">INSTRUMENT REF</th>
+                                                            <th scope="col">COUNTRY OF ORIGINATION</th>
+                                                            <th scope="col">AMOUNT</th>
+                                                            <th scope="col">DATE OF MATURITY</th>
+                                                            <th scope="col">&nbsp;</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr><?php
+                                                                    foreach ($instrument as $instru) { 
+                                                                        if($instru->tfi_instrument == "PAY"){?>
+                                                                <td class="bold"><?php if($instru->tfi_instrument == "PAY")
+                                                                                    {  echo 'Payable'; 
+                                                                                    }?></td>
+                                                                <td><?php echo $instru->tfi_docRef ?></td>
+                                                                <td><?php echo $instru->tfi_country ?></td>
+                                                                <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
+                                                                <td><?php echo $instru->tfi_maturityDate ?></td>
+                                                                <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                </tr>
+                                                                                <?php }}?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Payable Data -->
+                                    <!-- Start OTHER Data -->
+                                    <div role="tabpanel" class="tab-pane fade" id="tab8">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="tf-financier-table tf-element">
+						 
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                            <th scope="col">INSTRUMENT TYPE</th>
+                                                            <th scope="col">INSTRUMENT REF</th>
+                                                            <th scope="col">COUNTRY OF ORIGINATION</th>
+                                                            <th scope="col">AMOUNT</th>
+                                                            <th scope="col">DATE OF MATURITY</th>
+                                                            <th scope="col">&nbsp;</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr><?php
+                                                                    foreach ($instrument as $instru) { 
+                                                                        if($instru->tfi_instrument == "OTH"){?>
+                                                                <td class="bold"><?php if($instru->tfi_instrument == "OTH")
+                                                                                    {  echo 'Other'; 
+                                                                                    }?></td>
+                                                                <td><?php echo $instru->tfi_docRef ?></td>
+                                                                <td><?php echo $instru->tfi_country ?></td>
+                                                                <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
+                                                                <td><?php echo $instru->tfi_maturityDate ?></td>
+                                                                <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                </tr>
+                                                                                <?php }}?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End OTHER Data -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+						
+						
+						
+						
+						<!--<div class="tf-financier-table tf-element">
                             <div class="overflow-fade left on"></div>
                             <div class="overflow-fade right on"></div>
                             <div class="table">
@@ -93,7 +582,7 @@
                                     
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
 	</div>
@@ -306,4 +795,31 @@ function passData(docRef){
     });
 
 }
+</script>
+
+
+
+<!--Animated counters script start -->
+<script>
+$(document).ready(function() {
+	$('.counter').each(function () {
+		$(this).prop('Counter',0).animate({
+		Counter: $(this).text()
+	}, {
+	duration: 4000,
+	easing: 'swing',
+	step: function (now) {
+		//$(this).text(Math.ceil(now));
+		$(this).text(this.Counter.toFixed(0));
+	}
+	});
+	});
+});
+</script>
+<!--Animated counters script end -->
+
+<script>
+$('#tab_selector').on('change', function (e) {
+	$('.form-tabs li a').eq($(this).val()).tab('show');
+});
 </script>
