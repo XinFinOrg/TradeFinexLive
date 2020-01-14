@@ -53,7 +53,7 @@
 										<a href="https://explorer.xinfin.network/publicAPIDoc" class="btn border white mt-10">EXPLORER APIs</a>
 									</div>									
                                     <div class="info-button-block">
-                                        <a class="btn info-button btn-block play-btn video" href="https://www.youtube.com/watch?v=krqBx0yGprE"><span class="fa fa-play-circle"></span> Tokenize an Lnstrument</a>
+                                        <a class="btn info-button btn-block play-btn video" href="https://www.youtube.com/watch?v=krqBx0yGprE"><span class="fa fa-play-circle"></span> Tokenize an Instrument</a>
                                     </div>
                                 </div>
                             </div>
