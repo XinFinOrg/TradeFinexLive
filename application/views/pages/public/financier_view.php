@@ -208,6 +208,41 @@
                                                                         <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
                                                                         </tr>
                                                                         <?php } ?>
+                                                                        <tr>
+                                                                    <?php
+                                                                    foreach ($buyersupplier as $bs) { 
+                                                                        ?>
+                                                                    <td class="bold"><?php 
+                                                                    if($bs->tfbs_loanp == "SBLC")
+                                                                    {  echo 'SBLC'; 
+                                                                    }
+                                                                    else if($bs->tfbs_loanp == "REC")
+                                                                    {  echo 'Receivable'; 
+                                                                    }
+                                                                    else if($bs->tfbs_loanp == "LC")
+                                                                    {  echo 'Letter Of Credit'; 
+                                                                    }
+                                                                    else if($bs->tfbs_loanp == "BG")
+                                                                    {  echo 'Bank Guarantees'; 
+                                                                    }
+                                                                    else if($bs->tfbs_loanp == "PAY")
+                                                                    {  echo 'Payable'; 
+                                                                    }
+                                                                    else if($bs->tfbs_loanp == "OTH")
+                                                                    {  echo 'Other'; 
+                                                                    }
+                                                                    else if($bs->tfbs_loanp == "WR")
+                                                                    {  echo 'Warehouse Receipt'; 
+                                                                    }
+                                                                    
+                                                                    ?></td>
+                                                                    <td><?php echo $bs->tfbs_docRef?></td>
+                                                                    <td><?php echo $bs->tfbs_country ?></td>
+                                                                    <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
+                                                                    <td><?php echo $bs->tfbs_maturityDate ?></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    </tr>
+                                                                    <?php }?>
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -248,8 +283,24 @@
                                                                     <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
                                                                     <td><?php echo $instru->tfi_maturityDate ?></td>
                                                                     <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                                </tr>
+                                                                    <?php }}?>
+                                                                    <tr>
+                                                                    <?php
+                                                                    foreach ($buyersupplier as $bs) { 
+                                                                        if($bs->tfbs_loanp == "REC"){?>
+                                                                    <td class="bold"><?php if($bs->tfbs_loanp == "REC")
+                                                                                    {  echo 'Receivable'; 
+                                                                                    }?></td>
+                                                                    <td><?php echo $bs->tfbs_docRef?></td>
+                                                                    <td><?php echo $bs->tfbs_country ?></td>
+                                                                    <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
+                                                                    <td><?php echo $bs->tfbs_maturityDate ?></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
                                                                     </tr>
-                                                            <?php }}?>
+                                                                    <?php }}?>
+                                                            
+                                                            
                                                             
                                                         </tbody>
                                                         </table>
@@ -292,6 +343,20 @@
                                                 <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
                                                 </tr>
                                                         <?php }}?>
+                                                <tr>
+                                                            <?php
+                                                            foreach ($buyersupplier as $bs) { 
+                                                                if($bs->tfbs_loanp == "LC"){?>
+                                                            <td class="bold"><?php if($bs->tfbs_loanp == "LC")
+                                                                            {  echo 'Letter of Credit'; 
+                                                                            }?></td>
+                                                            <td><?php echo $bs->tfbs_docRef?></td>
+                                                            <td><?php echo $bs->tfbs_country ?></td>
+                                                            <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
+                                                            <td><?php echo $bs->tfbs_maturityDate ?></td>
+                                                            <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                            </tr>
+                                                            <?php }}?>
                                             </tbody>
                                             </table></div></div>
                                             </div>
@@ -331,6 +396,20 @@
                                                                     <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
                                                                 </tr>
                                                                                 <?php }}?>
+                                                                    <tr>
+                                                                    <?php
+                                                                    foreach ($buyersupplier as $bs) { 
+                                                                        if($bs->tfbs_loanp == "BG"){?>
+                                                                    <td class="bold"><?php if($bs->tfbs_loanp == "BG")
+                                                                                    {  echo 'Bank Gurantee'; 
+                                                                                    }?></td>
+                                                                    <td><?php echo $bs->tfbs_docRef?></td>
+                                                                    <td><?php echo $bs->tfbs_country ?></td>
+                                                                    <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
+                                                                    <td><?php echo $bs->tfbs_maturityDate ?></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    </tr>
+                                                                    <?php }}?>
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -372,6 +451,20 @@
                                                             <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
                                                             </tr>
                                                                                 <?php }}?>
+                                                            <tr>
+                                                            <?php
+                                                            foreach ($buyersupplier as $bs) { 
+                                                                if($bs->tfbs_loanp == "SBLC"){?>
+                                                            <td class="bold"><?php if($bs->tfbs_loanp == "SBLC")
+                                                                            {  echo 'SBLC'; 
+                                                                            }?></td>
+                                                            <td><?php echo $bs->tfbs_docRef?></td>
+                                                            <td><?php echo $bs->tfbs_country ?></td>
+                                                            <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
+                                                            <td><?php echo $bs->tfbs_maturityDate ?></td>
+                                                            <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                            </tr>
+                                                            <?php }}?>
                                                         </tbody>
                                                         </table>
                                                     </div>
@@ -413,6 +506,20 @@
                                                                 <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
                                                                 </tr>
                                                                                 <?php }}?>
+                                                                                <tr>
+                                                                    <?php
+                                                                    foreach ($buyersupplier as $bs) { 
+                                                                        if($bs->tfbs_loanp == "WR"){?>
+                                                                    <td class="bold"><?php if($bs->tfbs_loanp == "WR")
+                                                                                    {  echo 'Warehouse Receipt'; 
+                                                                                    }?></td>
+                                                                    <td><?php echo $bs->tfbs_docRef?></td>
+                                                                    <td><?php echo $bs->tfbs_country ?></td>
+                                                                    <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
+                                                                    <td><?php echo $bs->tfbs_maturityDate ?></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    </tr>
+                                                                    <?php }}?>
                                                             </tbody>
                                                             </table>
                                                     </div>
@@ -454,6 +561,20 @@
                                                                 <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
                                                                 </tr>
                                                                                 <?php }}?>
+                                                                                <tr>
+                                                                    <?php
+                                                                    foreach ($buyersupplier as $bs) { 
+                                                                        if($bs->tfbs_loanp == "PAY"){?>
+                                                                    <td class="bold"><?php if($bs->tfbs_loanp == "PAY")
+                                                                                    {  echo 'Payable'; 
+                                                                                    }?></td>
+                                                                    <td><?php echo $bs->tfbs_docRef?></td>
+                                                                    <td><?php echo $bs->tfbs_country ?></td>
+                                                                    <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
+                                                                    <td><?php echo $bs->tfbs_maturityDate ?></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    </tr>
+                                                                    <?php }}?>             
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -494,6 +615,21 @@
                                                                 <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
                                                                 </tr>
                                                                                 <?php }}?>
+
+                                                                                <tr>
+                                                                    <?php
+                                                                    foreach ($buyersupplier as $bs) { 
+                                                                        if($bs->tfbs_loanp == "OTH"){?>
+                                                                    <td class="bold"><?php if($bs->tfbs_loanp == "OTH")
+                                                                                    {  echo 'Other'; 
+                                                                                    }?></td>
+                                                                    <td><?php echo $bs->tfbs_docRef?></td>
+                                                                    <td><?php echo $bs->tfbs_country ?></td>
+                                                                    <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
+                                                                    <td><?php echo $bs->tfbs_maturityDate ?></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    </tr>
+                                                                    <?php }}?>
                                                             </tbody>
                                                         </table>
                                                     </div>

@@ -1347,6 +1347,14 @@ $data1 = [
 
 			return $result = $query->result();
 		}
+		public function get_buyersupplier($date){
+
+			$this->db->select('*');
+			$this->db->from('{PRE}funding')->where('tfbs_maturityDate >=',$date)->order_by('tfbs_createdAt', 'desc');
+			$query = $this->db->get();
+
+			return $result = $query->result();
+		}
 		public function get_secretkey($contractAddr){
 
 			$this->db->select('*');
@@ -1535,14 +1543,17 @@ $data1 = [
 		public function add_funding_details($data_add){
 
 			$data = array();
-			
+
 			$data['tfbs_email'] = $data_add['email'];
 			$data['tfbs_fullName'] = $data_add['name'];
 			$data['tfbs_mobileNo'] = $data_add['mobile'];
 			$data['tfbs_companyName'] = $data_add['compN'];
+			$data['tfbs_docRef'] = $data_add['docRef'];
 			$data['tfbs_loanp'] = $data_add['loanp'];
 			$data['tfbs_amount'] = $data_add['amount'];
+			$data['tfbs_country'] = $data_add['country'];
 			$data['tfbs_currency'] = $data_add['currency'];
+			$data['tfbs_maturityDate'] = $data_add['maturityDate'];
 			
 			
 			$this->db->insert('{PRE}funding', $data);

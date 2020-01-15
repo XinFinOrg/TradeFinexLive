@@ -688,14 +688,14 @@ class Publicv extends CI_Controller {
 			}
 			else{
 				// $_GET['amt'] = 1;
-				$result = $this->manage->add_paypal_details($_GET);
-			// 	$burn = burnXDC($_GET['amt']);
-			// 	foreach($burn as $b){
-			// 		echo $b;
-			// 		die;
-			// 		log_message("info","burning percent".$b->status);
-			// 	}
-			// 	log_message("info","::::::".$burn.$_GET['amt']);
+					$result = $this->manage->add_paypal_details($_GET);
+				// $burn = burnXDC($_GET['amt']);
+				// foreach($burn as $b){
+				// 	echo $b;
+				// 	die;
+				// 	log_message("info","burning percent".$b->status);
+				// }
+				// log_message("info","::::::".$burn.$_GET['amt']);
 			}
 			
 		}
@@ -765,18 +765,37 @@ class Publicv extends CI_Controller {
 		
 		$data['csrf'] = $csrf;
 		
+		$milliseconds = round(microtime(true) * 1000);
+		
+		
 		$action = $this->input->post('action');
 		$data['email'] = strtolower($this->input->post('memail'));
 		$data['name'] = $this->input->post('mname');
 		$data['mobile'] = $this->input->post('mmob');
 		$data['compN'] = $this->input->post('mcomp');
 		$data['loanp'] = $this->input->post('loanp');
+		$data['docRef'] = $data['loanp'].$milliseconds;
 		$data['amount'] = $this->input->post('amount');
 		$data['currency'] = $this->input->post('currency');
+		$NewDate = Date('Y-m-d', strtotime("+90 days"));
+		$data['maturityDate'] = $NewDate;
 
+		$split = preg_split("/[+\s]+/", $data['mobile']);
+		$ccountries = $this->plisting->get_country_byphone($split[1]);
+		if($ccountries && !empty($ccountries) && is_array($ccountries) && sizeof($ccountries) <> 0){
+			foreach($ccountries as $country){
+				$data['country'] = $country->tfc_name;
+			}
+						
+		} 
 		
+		
+		// echo json_encode($data);
+		// die;
 		
 		if($action == 'send_mail'){
+			// echo (">>>".$data['country'].$split[1]);
+			// die;
 			$data['result'] = $this->manage->add_funding_details($data);
 			// echo json_encode($data);
 			// die;
@@ -874,6 +893,40 @@ class Publicv extends CI_Controller {
 		);
 		
 		$data['csrf'] = $csrf;
+		
+		$date = date('Y-m-d');
+		$instrument = $this->manage->get_instrument($date);
+		$buyersupplier = $this->manage->get_buyersupplier($date);
+		
+		if($instrument && !empty($instrument) && is_array($instrument) && sizeof($instrument) <> 0){
+			$data['instrument'] = $instrument;						
+		}
+		if($buyersupplier && !empty($buyersupplier) && is_array($buyersupplier) && sizeof($buyersupplier) <> 0){
+			$data['buyersupplier'] = $buyersupplier;					
+		}
+				
+		$this->load->view('includes/headern', $data);
+		$this->load->view('includes/header_publicn', $data);
+		$this->load->view('pages/public/financier_view', $data);
+		$this->load->view('includes/footer_commonn', $data);
+		$this->load->view('pages_scripts/common_scripts', $data);
+		$this->load->view('includes/footern');
+	}
+	public function statistics(){
+		
+		$data = array();
+		
+		$data['page'] = 'statistics';
+
+			
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
 		$d;
 		$data['rec_sum']=0;
 		$data['loc_sum']=0;
@@ -885,7 +938,7 @@ class Publicv extends CI_Controller {
 		$data['tot_sum']=0;
 		$usd_amount = 0;
 		$date = date('Y-m-d');
-		$instrument = $this->manage->get_instrument($date);
+		// $instrument = $this->manage->get_instrument($date);
 		$data['count'] = $this->manage->get_instrument_active_count($date);
 		$data['total_count'] = $this->manage->get_instrument_count();
 		$receivable = $this->manage->get_receivable_instrument_sum();
@@ -1302,14 +1355,11 @@ class Publicv extends CI_Controller {
 			$data['instrument'] = $instrument;						
 		}
 
-		if($action == 'getaccess'){
-			// log_message("info",">>>>",$docRef);
-		}
 
 				
 		$this->load->view('includes/headern', $data);
 		$this->load->view('includes/header_publicn', $data);
-		$this->load->view('pages/public/financier_view', $data);
+		$this->load->view('pages/public/statistics_view', $data);
 		$this->load->view('includes/footer_commonn', $data);
 		$this->load->view('pages_scripts/common_scripts', $data);
 		$this->load->view('includes/footern');

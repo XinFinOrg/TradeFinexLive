@@ -302,6 +302,21 @@
 						
 			return $result = $query->result();
 		}
+		public function get_country_byphone($term){
+			
+			$this->db->select('*');
+			$this->db->from('{PRE}country');
+			$where = "tfc_phonecode = '$term'";
+			$this->db->where($where);
+						
+			// if($term){
+			// 	$this->db->like('tfc_name', $term);
+			// }
+			
+			$query = $this->db->get();
+						
+			return $result = $query->result();
+		}
 		
 		public function get_state($term = ''){
 			
