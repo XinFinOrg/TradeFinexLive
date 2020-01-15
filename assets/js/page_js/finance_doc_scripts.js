@@ -18,7 +18,7 @@ $(function () {
 
 	jQuery.validator.addMethod("LetterOnly", function (value, element) {
 		// allow any non-whitespace characters as the host part
-		return this.optional(element) || /^(?!(\s))([a-zA-Z\s])*$/.test(value);
+		return this.optional(element) || /^([a-zA-Z]+\s)*([a-zA-Z])+$/.test(value);
 	}, 'The text must start with a letter and should not contain special characters.');
 
 	jQuery.validator.addMethod("LettersWithDotHiphen", function (value, element) {
@@ -426,7 +426,8 @@ $(function () {
 				}
 			},
 			name:{
-				required:true
+				required:true,
+				LetterOnly : true
 			},
 			pcountry: {
 				required: true
@@ -474,7 +475,10 @@ $(function () {
 				decnumberOnly : "Enter Numbers only",
 				min : "Amount should be greater than 0.1"
 			},
-			name : "Please enter Broker Name",
+			name : {
+				required:"Please enter Broker Name",
+				LetterOnly : "Check spaces between names"
+			},
 			currency_supported: "Please choose currency supported",
 			maturity_date: "Please choose date",
 			uploaded_file: "Please upload doucment",
@@ -772,7 +776,8 @@ $(function () {
 			mname: {
 				required: "Please enter Your full name",
 				minlength: "Characters length should be atleast 2",
-				maxlength: "Characters length should not exceeded than 30"
+				maxlength: "Characters length should not exceeded than 30",
+				LetterOnly : "Check spaces between names"
 			},
 			memail: "Please enter a valid email",
 			currency:{
