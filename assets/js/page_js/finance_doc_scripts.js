@@ -111,6 +111,17 @@ $(function () {
 		return this.optional( element ) || /^[0-9a-z]{40}$/.test( value );
 	  }, 'This field allows only number from 0-9 and alphabets from a-z');
 
+	  //Captcha
+	var captchav = $('#defaultReal').attr('captchav');
+
+	if (typeof captchav === "undefined") {
+		// ...
+	} else {
+
+		var decryptval = CryptoJS.AES.decrypt($('#defaultReal').attr('captchav'), "/" + 5381).toString(CryptoJS.enc.Utf8);
+		$('#captcha_val').val(decryptval);
+	}
+
 	//Buyer-Supplier Form
 	$("#suppliers_form").validate({
 		rules: {
@@ -406,6 +417,7 @@ $(function () {
 
 		}
 	});
+
 	$("#brokers_form").validate({
 		rules: {
 			instrument: {
@@ -711,6 +723,99 @@ $(function () {
 				  console.log('Error: ', error);
 				}
 			}
+
+		}
+	});
+
+	$("#b_s_form").validate({
+		rules: {
+			mname: {
+				required: true,
+				minlength: 2,
+				maxlength: 30,
+				LetterOnly: true
+			},
+			memail: {
+				EmailGeneral: true,
+				required: true
+			},
+			mmob: {
+				required: true,
+				//numberOnly: true,
+				mobilenumberOnly: true
+
+			},
+			currency:{
+				required:true
+			},
+			mcomp: {
+				required: true,
+				minlength: 3,
+				maxlength: 500,
+				alphanumericOnly: true
+			},
+			amount: {
+				required: true,
+				decnumberOnly : true,
+				min : 0.1
+			},
+			loanp: {
+				required:function() {
+					return $('[name="loanp"]:checked').length === 0; 
+				}
+			},
+			defaultReal: {
+				equalTo: '#captcha_val'
+			}
+		},
+		messages: {
+			mname: {
+				required: "Please enter Your full name",
+				minlength: "Characters length should be atleast 2",
+				maxlength: "Characters length should not exceeded than 30"
+			},
+			memail: "Please enter a valid email",
+			currency:{
+				required:"Please select currency"
+			},
+			mcomp: {
+				required: "Please enter company name ",
+				minlength: "Company name should be atleast 3 charcters long",
+				maxlength: "Characters length should not exceeded than 40"
+			},
+			amount: {
+				required: "Please enter correct amount ",
+				decnumberOnly : "Enter Numbers only",
+				min : "Amount should be greater than 0.1"
+			},
+			loanp: {
+				required: "Please select your purpose of loan",
+			},
+			defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+		},
+		onkeyup: function (elem) {
+
+			var element_id = $(elem).attr('id');
+
+			if (element_id == 'mname' || element_id == 'mmsg' || element_id == 'mcomp') {
+
+				var strv = $('#' + element_id).val();
+
+				$('#' + element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
+
+			}
+
+			if (element_id == 'mmob') {
+
+				var tval = $('#' + element_id).val();
+				tvala = tval.split(' ');
+			}
+		},
+		success: function (elem) {
+
+
+		},
+		error: function (elem) {
 
 		}
 	});
