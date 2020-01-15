@@ -766,7 +766,7 @@ class Publicv extends CI_Controller {
 		$data['csrf'] = $csrf;
 		
 		$action = $this->input->post('action');
-		$data['email'] = $this->input->post('memail');
+		$data['email'] = strtolower($this->input->post('memail'));
 		$data['name'] = $this->input->post('mname');
 		$data['mobile'] = $this->input->post('mmob');
 		$data['compN'] = $this->input->post('mcomp');
