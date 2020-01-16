@@ -1376,6 +1376,17 @@ $data1 = [
 			return $result = $query->result();
 		}
 
+		public function get_contact_details($docRef){
+
+			$this->db->select('*');
+			$this->db->from('{PRE}funding');
+			$where = "tfbs_docRef = '$docRef'";
+			$this->db->where($where);
+			$query = $this->db->get();
+
+			return $result = $query->result();
+		}
+
 		public function get_paypal_payment($addr){
 
 			$this->db->select('*');
