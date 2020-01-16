@@ -1426,10 +1426,10 @@ class Publicv extends CI_Controller {
 			$suser = $this->manage->get_superadmin();
 			
 			$from_email = 'info@tradefinex.org'; 
-			$to_email ="mansi@xinfin.org";
+			// $to_email ="mansi@xinfin.org";
 					
 			$this->email->from($from_email, 'Admin Tradefinex'); 
-			$this->email->to($to_email);
+			$this->email->to("mansi@xinfin.org","rushabh@xinfin.org");
 			$this->email->bcc($from_email);
 			$this->email->set_mailtype('html');
 			$this->email->set_newline("\r\n");
