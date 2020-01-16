@@ -1429,7 +1429,7 @@ class Publicv extends CI_Controller {
 			// $to_email ="mansi@xinfin.org";
 					
 			$this->email->from($from_email, 'Admin Tradefinex'); 
-			$this->email->to("mansi@xinfin.org","rushabh@xinfin.org");
+			$this->email->to("mansi@xinfin.org , rushabh@xinfin.org , omkar@xinfin.org, atul@xinfin.org, rik@xinfin.org");
 			$this->email->bcc($from_email);
 			$this->email->set_mailtype('html');
 			$this->email->set_newline("\r\n");

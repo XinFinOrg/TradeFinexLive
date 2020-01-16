@@ -978,6 +978,7 @@ function passData_bs(docRef){
                             })// show response from the php script.
                             }).done(resp => {
                                 toastr.success('Successfully notfied to admin', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+                                setTimeout(location.reload.bind(location), 6000);
                             })
                         });
                             
