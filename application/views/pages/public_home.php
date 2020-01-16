@@ -147,7 +147,7 @@
                             <p>TradeFinex Network enables organizations to create and manage guarantees and bonds from multiple financial institutions with full control and visibility. This reduces the risk of potential fraud, errors and cost of credit and administration.</p>
                         </div>
                         <div class="info-button-block">
-                            <a class="btn info-button btn-block" href="boss_101.html">Explore Bonds</a>
+                            <a class="btn info-button btn-block" href="<?=base_url();?>publicv/boss_101">Explore Bonds</a>
                         </div>
                     </div>
                 </div>

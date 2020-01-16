@@ -22,7 +22,11 @@
         <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="tf-contact-us_form-block">
-                            <form id="b_s_form" class="b_s_form tf-contact-us_form form-commom" enctype="multipart/form-data" method="post">
+                            <!--<form id="b_s_form" class="b_s_form tf-supplier-form form-commom" enctype="multipart/form-data" method="post">-->
+							 <?php
+                                $attributes = array('id' => 'b_s_form', 'class' => 'tf-suppliers-form', 'method' => 'post', 'role' => 'form');
+                                echo form_open_multipart(base_url().'publicv/buyersupplier', $attributes);
+                            ?>
 								<div class="form-group">
 									<?php echo $this->session->flashdata('email_sent'); ?>
 								</div>
@@ -54,9 +58,53 @@
 									</label>
 									</div>
 								</div>
-								<div class="form-group">
-                                    <label for="instrument-type" id="loanp">Type of Instrument<sup>*</sup></label>
 
+
+
+								<div class="form-group">
+									<label for="instrument-type" id="loanp">Type of Instrument<sup>*</sup></label>
+									<div class="radiobtn">
+										<input type="radio" name="loanp" id="Receivable" value="REC" />
+										<label for="Receivable">Receivable</label>
+									</div>									
+								
+									<div class="radiobtn">
+										<input type="radio" name="loanp" id="Letter-of-Credit" value="LC" />
+										<label for="Letter-of-Credit">Letter of Credit</label>
+									</div>
+								
+									<div class="radiobtn">
+										<input type="radio" name="loanp" id="Bank-Guarantees" value="BG" />
+										<label for="Bank-Guarantees">Bank Guarantees</label>
+									</div>
+								
+									<div class="radiobtn">
+										<input type="radio" name="loanp" id="SBLC" value="SBLC" />
+										<label for="SBLC">SBLC</label>
+									</div>
+									
+									<div class="radiobtn">
+										<input type="radio" name="loanp" id="Warehouse-Receipt" value="WR" />
+										<label for="Warehouse-Receipt">Warehouse Receipt</label>
+									</div>
+									
+									<div class="radiobtn">
+										<input type="radio" name="loanp" id="Payable" value="PAY" />
+										<label for="Payable">Payable</label>
+									</div>
+									
+									<div class="radiobtn">
+										<input type="radio" name="loanp" id="Other" value="OTH" />
+										<label for="Other">Other</label>
+									</div>
+									
+									<label id="loanp-error" class="error" for="loanp"></label>
+								</div>
+								
+								
+								
+								<!--<div class="form-group">
+                                    <label for="instrument-type" id="loanp">Type of Instrument<sup>*</sup></label>
                                     <div id="tab" class="tf-form-tabs" data-toggle="buttons">
                                         <a href="#select-country" class="btn btn-default" data-toggle="tab">
                                             <input type="radio" class="" name="loanp" value="REC" id="Receivable" />Receivable
@@ -80,7 +128,8 @@
                                             <input type="radio" class="" name="loanp" value="OTH" id="Other" />Other
                                         </a>
                                     </div>
-                                </div>
+                                </div>-->
+								
 								<div class="row">
                                 <div id="currency_supported" class="form-group col-md-6">
                                         <label for="currency">Currency<sup>*</sup></label>
@@ -99,22 +148,18 @@
 											<input class="form-control" id="amount" name="amount"placeholder="Loan Amount" type="text" tabindex="6" autocomplete="off"required data-required-error=""  aria-required="true" />
 										</label>
 									</div>
-									
-									
-                                    </div>
+                                </div>
+								
 								<div class="form-group">
                                     <label for="defaultReal">Enter Captcha <sup>*</sup></label>
 										<input class="form-control" id="defaultReal" name="defaultReal" captchav="" autocomplete="off" maxlength="50" required data-required-error="" tabindex="5" aria-required="true" type="text">
 										<!-- <div class="captcha-error has-error" style="display:none">
                                             <div class="help-block col-xs-12 col-sm-reset inline"><font color="red" style="margin-left: -10px;">Enter Letters Shown Above.</font>
                                             </div>
-									    </div> -->
-								
+									    </div> -->								
 									<input type="hidden" name="action" value="send_mail" /><input type="hidden" id="captcha_val" />
 									<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 								</div>
-                                
-								
 								
 								<div class="form-group">
 									<button type="submit" class="btn btn-blue text-uppercase" onclick="return subcontact()"> Submit</button>
@@ -161,15 +206,3 @@ function subcontact() {
 	//$this->load->view('includes/block_features');	
 	$this->load->view('includes/login_modal');	
 ?>	
-<!-- Form Skip to next Heading -->
-<script type="text/javascript">
-    $(function() {
-        $('a[href*=#]').on('click', function(e) {
-            e.preventDefault();
-            $('html, body').animate({
-                scrollTop: $($(this).attr('href')).offset().top
-            }, 500, 'linear');
-        });
-    });
-</script>
-<!-- Form Skip to next Heading -->

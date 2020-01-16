@@ -240,7 +240,7 @@
                                                                     <td><?php echo $bs->tfbs_country ?></td>
                                                                     <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
                                                                     <td><?php echo $bs->tfbs_maturityDate ?></td>
-                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData_bs('<?php echo $bs->tfbs_docRef ?>')"><span>Get Access</span></button></td>
                                                                     </tr>
                                                                     <?php }?>
                                                             </tbody>
@@ -296,7 +296,7 @@
                                                                     <td><?php echo $bs->tfbs_country ?></td>
                                                                     <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
                                                                     <td><?php echo $bs->tfbs_maturityDate ?></td>
-                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData_bs('<?php echo $bs->tfbs_docRef ?>')"><span>Get Access</span></button></td>
                                                                     </tr>
                                                                     <?php }}?>
                                                             
@@ -354,7 +354,7 @@
                                                             <td><?php echo $bs->tfbs_country ?></td>
                                                             <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
                                                             <td><?php echo $bs->tfbs_maturityDate ?></td>
-                                                            <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                            <td><button class="btn btn-blue" onclick="passData_bs('<?php echo $bs->tfbs_docRef ?>')"><span>Get Access</span></button></td>
                                                             </tr>
                                                             <?php }}?>
                                             </tbody>
@@ -407,7 +407,7 @@
                                                                     <td><?php echo $bs->tfbs_country ?></td>
                                                                     <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
                                                                     <td><?php echo $bs->tfbs_maturityDate ?></td>
-                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData_bs('<?php echo $bs->tfbs_docRef ?>')"><span>Get Access</span></button></td>
                                                                     </tr>
                                                                     <?php }}?>
                                                             </tbody>
@@ -462,7 +462,7 @@
                                                             <td><?php echo $bs->tfbs_country ?></td>
                                                             <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
                                                             <td><?php echo $bs->tfbs_maturityDate ?></td>
-                                                            <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                            <td><button class="btn btn-blue" onclick="passData_bs('<?php echo $bs->tfbs_docRef ?>')"><span>Get Access</span></button></td>
                                                             </tr>
                                                             <?php }}?>
                                                         </tbody>
@@ -517,7 +517,7 @@
                                                                     <td><?php echo $bs->tfbs_country ?></td>
                                                                     <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
                                                                     <td><?php echo $bs->tfbs_maturityDate ?></td>
-                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData_bs('<?php echo $bs->tfbs_docRef ?>')"><span>Get Access</span></button></td>
                                                                     </tr>
                                                                     <?php }}?>
                                                             </tbody>
@@ -572,7 +572,7 @@
                                                                     <td><?php echo $bs->tfbs_country ?></td>
                                                                     <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
                                                                     <td><?php echo $bs->tfbs_maturityDate ?></td>
-                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData_bs('<?php echo $bs->tfbs_docRef ?>')"><span>Get Access</span></button></td>
                                                                     </tr>
                                                                     <?php }}?>             
                                                             </tbody>
@@ -627,7 +627,7 @@
                                                                     <td><?php echo $bs->tfbs_country ?></td>
                                                                     <td><?php echo $bs->tfbs_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$bs->tfbs_amount),'0'),'.') ?></td>
                                                                     <td><?php echo $bs->tfbs_maturityDate ?></td>
-                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $bs->tfbs_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData_bs('<?php echo $bs->tfbs_docRef ?>')"><span>Get Access</span></button></td>
                                                                     </tr>
                                                                     <?php }}?>
                                                             </tbody>
@@ -646,79 +646,7 @@
 						
 						
 						
-						<!--<div class="tf-financier-table tf-element">
-                            <div class="overflow-fade left on"></div>
-                            <div class="overflow-fade right on"></div>
-                            <div class="table">
-                                <div class="table-head">
-                                    <div class="cell-wrapper">
-                                        <div class="table-cell" style="width: 16%;"><span>Instrument Type</span></div>
-                                    </div>
-									<div class="cell-wrapper">
-                                        <div class="table-cell" style="width: 16%;"><span>Instrument Ref</span></div>
-                                    </div>
-                                    <div class="cell-wrapper">
-                                        <div class="table-cell" style="width: 17%;"><span>Country of Origination</span></div>
-                                    </div>
-                                    <div class="cell-wrapper">
-                                        <div class="table-cell" style="width: 15%;"><span>Amount</span></div>
-                                    </div>
-                                    <div class="cell-wrapper">
-                                        <div class="table-cell" style="width: 16%;"><span>Date of Maturity</span></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <?php
-                                // if ($instrumnent && !empty($instrumnent) && is_array($instrumnent) && sizeof($instrumnent) <> 0) {
-                                    foreach ($instrument as $instru) { ?>
-                                    <div class="table-row collapsed">
-                                        <div class="cell-wrapper">
-                                            <div class="table-cell bold" style="width: 16%;"><span><?php 
-                                            if($instru->tfi_instrument == "SBLC")
-                                            {  echo 'SBLC'; 
-                                            }
-                                            else if($instru->tfi_instrument == "REC")
-                                            {  echo 'Receivable'; 
-                                            }
-                                            else if($instru->tfi_instrument == "LC")
-                                            {  echo 'Letter Of Credit'; 
-                                            }
-                                            else if($instru->tfi_instrument == "BG")
-                                            {  echo 'Bank Guarantees'; 
-                                            }
-                                            else if($instru->tfi_instrument == "PAY")
-                                            {  echo 'Payable'; 
-                                            }
-                                            else if($instru->tfi_instrument == "OTH")
-                                            {  echo 'Other'; 
-                                            }
-                                            else if($instru->tfi_instrument == "WR")
-                                            {  echo 'Warehouse Receipt'; 
-                                            }
-                                            
-                                            ?></span></div>
-                                        </div>
-										<div class="cell-wrapper">
-                                            <div class="table-cell bold small" style="width: 16%;"><?php echo $instru->tfi_docRef ?></div>
-                                        </div>
-                                        <div class="cell-wrapper">
-                                            <div class="table-cell" style="width: 17%;"><span><?php echo $instru->tfi_country ?></span></div>
-                                        </div>
-                                        <div class="cell-wrapper">
-                                            <div class="table-cell bold" style="width: 15%;"><span><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></span></div>
-                                        </div>
-                                        <div class="cell-wrapper">
-                                            <div class="table-cell" style="width: 16%;"><span><?php echo $instru->tfi_maturityDate ?></span></div>
-                                        </div>
-                                        <div class="table-cell" style="width: 16%;">
-											<button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button>
-										</div>
-                                    </div>
-                                    <?php }?>
-                                    
-                                </div>
-                            </div>
-                        </div>-->
+						
                     </div>
                 </div>
 	</div>
@@ -797,6 +725,34 @@
                             </div>
                             <div class="form-group">
 								<button id="okBtn" type="submit" class="btn btn-blue text-uppercase" data-keyboard="false">OK</button>
+							</div>							
+						</div>
+				</div>
+			</div>
+	 	</div>
+</div>
+<div id="tf-loader-wrapper" style="display: none;"><div id="tf-loader"></div></div>
+<div class="modal fade" id="contact" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog" style="">
+		<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
+			<div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="location.reload()" data-dismiss="modal"> <span class="hidden-xs">&times;</span> <span class="hidden-md hidden-lg"> <img src="<?php echo base_url() ?>assets/images/icon/log_arrow.png"  alt="icon" /></span> </button>
+                </div>
+				<div class="modal-body text-center">
+                        <div class="deployedData_modal_block">
+							<p><strong>Buyer/Supplier Details</strong></p>
+							<!--<p id="deployedData" style="word-break: break-all;"></p>-->
+							
+							<div id="contactData" style="word-break: break-all;">
+								
+								
+                            </div>
+                            <div class="form-group">
+								<button id="financeBtn" type="submit" class="btn btn-blue text-uppercase" data-keyboard="false">Finance Project</button>
+							</div>	
+                            <div class="form-group">
+								<button id="doneBtn" type="submit" class="btn btn-blue text-uppercase" data-keyboard="false">OK</button>
 							</div>							
 						</div>
 				</div>
@@ -926,6 +882,121 @@ function passData(docRef){
                         })
                     }
                 })
+            }
+        })
+    });
+
+}
+function passData_bs(docRef){
+    var myurl = '<?php echo base_url()?>publicv/get_access';
+    $("#privkey").modal("show");
+    $('#privkey').css('opacity', '1');
+    $('#checkprivkey').click(function(e) {
+        var privkey = document.getElementById("privateKey").value;
+        jQuery.validator.addMethod("privateKey", function(value, element) {
+		// allow any non-whitespace characters as the host part
+            return this.optional( element ) || /^[0-9a-f]{64}$/.test( value );
+        }, 'This field allows only number from 0-9 and alphabets from a-f');
+        $('#checkprivatekey_form').validate({
+            rules: {
+                privateKey: {
+                    required:true,
+                    privateKey : true,
+                    normalizer: function(value) {
+                        // Update the value of the element
+                        this.value = $.trim(value);
+                        check = this.value;
+                        if(check.startsWith("0x")){
+                            check = check.slice(2);
+                        }
+                        else{
+                            check = this.value;
+                        }
+                        // Use the trimmed value for validation
+                        return check;
+                    }
+                }
+            },
+            messages: {
+                privateKey:{
+                    required: "Please enter a private key",
+                    privateKey : "Enter valid private key of 64 characters"
+                }
+            },
+            success: function (elem) {
+
+
+            },
+            error: function (elem) {
+                
+                
+            },
+            submitHandler: function (form, e) {
+                // console.log(privkey,docRef);
+                e.preventDefault();
+                $("#privkey").modal("hide"); 
+                showLoader1();   
+                $.ajax({
+                type: "POST",
+                url: myurl,
+                dataType:"json",
+                data: {"action":"getdetails","docRef":docRef,"privkey":privkey}, // serializes the form's elements.
+                success: (resp =>{
+                    // console.log(resp);
+                })// show response from the php script.
+                }).done(resp => {
+                                
+                    if(resp.privatekey == "true"){
+                        // console.log(resp);
+                        
+                        const tHtml = `
+                                    <div class="text-center">
+                                        <p>
+                                            <br><label><strong>Full Name:</strong>${resp.contact[0].tfbs_fullName}</label>
+                                            <br><label><strong>Company Name:</strong>${resp.contact[0].tfbs_companyName}</label>
+                                        </p>
+                                    </div>
+                                        `
+                        hideLoader1();
+                        
+                        $("#contact").modal("show");
+                        $('#contact').css('opacity', '1');
+                        $('#contactData').html(tHtml);
+                        $('#doneBtn').click(function() {
+                            $("#contact").modal("hide");
+                            location.reload();
+                        });
+                        $('#financeBtn').click(function() {
+                            $("#contact").modal("hide");
+                            $.ajax({
+                            type: "POST",
+                            url: myurl,
+                            dataType:"json",
+                            data: {"action":"sendmail","docRef":docRef,"privkey":privkey}, // serializes the form's elements.
+                            success: (resp =>{
+                                console.log(resp);
+                            })// show response from the php script.
+                            }).done(resp => {
+                                toastr.success('Successfully notfied to admin', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+                            })
+                        });
+                            
+                    }     
+                    else{
+                        hideLoader1();
+                        $("#wrngprivkey").modal("show");
+                        $('#wrngprivkey').css('opacity', '1');
+                        $('#ok').click(function(e) {
+                            location.reload();
+                        })
+                    }                      
+                                                    
+                }).fail(error =>{
+                    // hideLoader();
+                    toastr.error('Something went wrong.', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+                    setTimeout(location.reload.bind(location), 6000);
+                })
+                
             }
         })
     });

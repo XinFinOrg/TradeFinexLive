@@ -687,15 +687,15 @@ class Publicv extends CI_Controller {
 				redirect(current_url());
 			}
 			else{
-				// $_GET['amt'] = 1;
-					$result = $this->manage->add_paypal_details($_GET);
-				// $burn = burnXDC($_GET['amt']);
-				// foreach($burn as $b){
-				// 	echo $b;
-				// 	die;
-				// 	log_message("info","burning percent".$b->status);
-				// }
-				// log_message("info","::::::".$burn.$_GET['amt']);
+				$_GET['amt'] = 1;
+				$result = $this->manage->add_paypal_details($_GET);
+				$burn = burnXDC($_GET['amt']);
+				foreach($burn as $b){
+					echo $b;
+					die;
+					log_message("info","burning percent".$b->status);
+				}
+				log_message("info","::::::".$burn.$_GET['amt']);
 			}
 			
 		}
@@ -1398,14 +1398,63 @@ class Publicv extends CI_Controller {
 		if($action == 'getaccess'){
 			$data['privatekey'] = getFinancier($privkey);
 			$key = $this->manage->get_secretkey_by_docRef($docRef);
+			foreach($key as $k){
+				$data['key'] = $k->tfi_secretKey;
+				$data['contractAddr'] = $k->tfi_contractAddr;
+			}
 		}
-		foreach($key as $k){
-			$data['key'] = $k->tfi_secretKey;
-			$data['contractAddr'] = $k->tfi_contractAddr;
+		$data['docRef'] = $docRef;
+			
+		if($action == 'getdetails'){
+			$data['privatekey'] = getFinancier($privkey);
+			$data['address'] = getAddress($privkey);
+			if($data['privatekey'] == "true"){
+				$data['contact'] = $this->manage->get_contact_details($docRef);
+			}
+			
+		}
+		if($action == 'sendmail'){
+			$data['address'] = getAddress($privkey);
+			
+			$config = array();
+			$config = $this->config->item('$econfig');
+						
+			$this->email->initialize($config);
+			// $this->email->cc('another@another-example.com');
+			// $this->email->bcc('them@their-example.com');
+			
+			$suser = $this->manage->get_superadmin();
+			
+			$from_email = 'info@tradefinex.org'; 
+			$to_email ="mansi@xinfin.org";
+					
+			$this->email->from($from_email, 'Admin Tradefinex'); 
+			$this->email->to($to_email);
+			$this->email->bcc($from_email);
+			$this->email->set_mailtype('html');
+			$this->email->set_newline("\r\n");
+			$this->email->subject('Access for Buyer/Supplier Details'); 
+			$mail_body = $this->load->view('templates/mails/req_doc_mail_body', $data, TRUE);
+			$this->email->message($mail_body);
+		
+            		
+			// Send mail ** Our customer support team will respond to your query as soon as possible. Please find below the details of the query submitted.
+			if($this->email->send()){ 
+				log_message("info","Email Sent successfully");
+			}	
+			else{ 
+				log_message("error","Error in sending email");
+			}
+			
+			
+
+			
+			
 		}
 		echo json_encode($data);
 				
 	}
+	
 	
 	public function contact(){
 		
@@ -4581,59 +4630,13 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
 		
-		if($data['user_id'] <> 0){
-			
-			$options = array();
-			$options['user_id'] = $data['user_id'];
-			$options['user_type'] = $data['user_type_ref'];
-			
-			$data['notifications'] = get_notification_status($options);
-		}
 		
 		if($data['user_id'] <> 0){
 					
 			$uresult = $this->manage->get_user_info_by_id_and_type($data['user_id'], $data['user_type_ref']);
 						
-			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
-				
-				if($data['user_type_ref'] == 1){
-					$data['ufname'] = $uresult[0]->tfsp_fname;
-					$data['ulname'] = $uresult[0]->tfsp_lname;
-					$data['uemail'] = $uresult[0]->tfsp_email;
-					$data['ucontact'] = $uresult[0]->tfsp_contact;
-					$data['uaddress'] = $uresult[0]->tfsp_address;
-					$data['uprofpic'] = $uresult[0]->tfsp_pic_file;
-					$data['uname'] = $uresult[0]->tfu_usern;
-					$data['upass'] = $uresult[0]->tfu_passwd;
-					$data['uvisibility'] = $uresult[0]->tfsp_public_visibility;
-				}
-				
-				if($data['user_type_ref'] == 2){
-					$data['ufname'] = $uresult[0]->tff_fname;
-					$data['ulname'] = $uresult[0]->tff_lname;
-					$data['uemail'] = $uresult[0]->tff_email;
-					$data['ucontact'] = $uresult[0]->tff_contact;
-					$data['uaddress'] = $uresult[0]->tff_address;
-					$data['uprofpic'] = $uresult[0]->tff_pic_file;
-					$data['uname'] = $uresult[0]->tfu_usern;
-					$data['upass'] = $uresult[0]->tfu_passwd;
-					$data['uvisibility'] = $uresult[0]->tff_public_visibility;
-				}
-				
-				if($data['user_type_ref'] == 3){
-					$data['ufname'] = $uresult[0]->tfb_fname;
-					$data['ulname'] = $uresult[0]->tfb_lname;
-					$data['uemail'] = $uresult[0]->tfb_email;
-					$data['ucontact'] = $uresult[0]->tfb_contact;
-					$data['uaddress'] = $uresult[0]->tfb_address;
-					$data['uprofpic'] = $uresult[0]->tfb_pic_file;
-					$data['uname'] = $uresult[0]->tfu_usern;
-					$data['upass'] = $uresult[0]->tfu_passwd;
-				}
-			}
+			
 			
 			$this->load->view('includes/headern', $data);
 			$this->load->view('includes/header_publicn', $data);
@@ -4660,7 +4663,9 @@ class Publicv extends CI_Controller {
 			
 			$from_email = 'info@tradefinex.org'; 
 			$to_email = $this->input->post('memail'); 
-					
+			$data['email'] = $this->input->post('memail');
+			$data['mmob'] = $this->input->post('mmob');
+
 			$message .= '<strong>Email : </strong>'.$this->input->post('memail').'<br/>';
 			$message .= '<strong>Contact : </strong>'.$this->input->post('mmob').'<br/>';
 			
@@ -4668,8 +4673,9 @@ class Publicv extends CI_Controller {
 			$this->email->to($to_email);
 			$this->email->bcc($from_email);
 			$this->email->set_mailtype('html');
-			$this->email->subject('Tradefinex Case Study Request'); 
-			$this->email->message($message);
+			$this->email->subject('Tradefinex Case Study Request');
+			$mail_body = $this->load->view('templates/mails/case_study_mail_body', $data, TRUE);
+			$this->email->message($mail_body); 
 					
 			// Send mail ** Our customer support team will respond to your query as soon as possible. Please find below the details of the query submitted.
 			if($this->email->send()){ 
@@ -4858,11 +4864,12 @@ class Publicv extends CI_Controller {
 		
 		if($action == 'getaddress'){
 			$data['privatekey'] = getAddress($privkey);
+			foreach($key as $k){
+				$data['key'] = $k->tfi_secretKey;
+				$data['contractAddr'] = $k->tfi_contractAddr;
+			}
 		}
-		foreach($key as $k){
-			$data['key'] = $k->tfi_secretKey;
-			$data['contractAddr'] = $k->tfi_contractAddr;
-		}
+		
 		echo json_encode($data);
 				
 	}
