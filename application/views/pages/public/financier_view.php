@@ -205,7 +205,7 @@
                                                                         <td><?php echo $instru->tfi_country ?></td>
                                                                         <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
                                                                         <td><?php echo $instru->tfi_maturityDate ?></td>
-                                                                        <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                        <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Access</span></button></td>
                                                                         </tr>
                                                                         <?php } ?>
                                                                         <tr>
@@ -282,7 +282,7 @@
                                                                     <td><?php echo $instru->tfi_country ?></td>
                                                                     <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
                                                                     <td><?php echo $instru->tfi_maturityDate ?></td>
-                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Access</span></button></td>
                                                                                 </tr>
                                                                     <?php }}?>
                                                                     <tr>
@@ -340,7 +340,7 @@
                                                 <td><?php echo $instru->tfi_country ?></td>
                                                 <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
                                                 <td><?php echo $instru->tfi_maturityDate ?></td>
-                                                <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Access</span></button></td>
                                                 </tr>
                                                         <?php }}?>
                                                 <tr>
@@ -393,7 +393,7 @@
                                                                     <td><?php echo $instru->tfi_country ?></td>
                                                                     <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
                                                                     <td><?php echo $instru->tfi_maturityDate ?></td>
-                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                    <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Access</span></button></td>
                                                                 </tr>
                                                                                 <?php }}?>
                                                                     <tr>
@@ -448,7 +448,7 @@
                                                             <td><?php echo $instru->tfi_country ?></td>
                                                             <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
                                                             <td><?php echo $instru->tfi_maturityDate ?></td>
-                                                            <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                            <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Access</span></button></td>
                                                             </tr>
                                                                                 <?php }}?>
                                                             <tr>
@@ -503,7 +503,7 @@
                                                                 <td><?php echo $instru->tfi_country ?></td>
                                                                 <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
                                                                 <td><?php echo $instru->tfi_maturityDate ?></td>
-                                                                <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Access</span></button></td>
                                                                 </tr>
                                                                                 <?php }}?>
                                                                                 <tr>
@@ -558,7 +558,7 @@
                                                                 <td><?php echo $instru->tfi_country ?></td>
                                                                 <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
                                                                 <td><?php echo $instru->tfi_maturityDate ?></td>
-                                                                <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Access</span></button></td>
                                                                 </tr>
                                                                                 <?php }}?>
                                                                                 <tr>
@@ -612,7 +612,7 @@
                                                                 <td><?php echo $instru->tfi_country ?></td>
                                                                 <td><?php echo $instru->tfi_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',$instru->tfi_amount),'0'),'.') ?></td>
                                                                 <td><?php echo $instru->tfi_maturityDate ?></td>
-                                                                <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Document Access</span></button></td>
+                                                                <td><button class="btn btn-blue" onclick="passData('<?php echo $instru->tfi_docRef ?>')"><span>Get Access</span></button></td>
                                                                 </tr>
                                                                                 <?php }}?>
 
