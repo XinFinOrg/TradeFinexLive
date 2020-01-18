@@ -5,7 +5,7 @@
                 <div class="col-md-5 tf-home-banner-left-content">
                     <h2 class="head-title">Empowering Trade Finance Ecosystem</h2>
                     <div class="desc">
-                        <p>A Network for Trade Finance Originators to Distribute Trade Assets to the Growing Class of AlternativeAsset Investors.</p>
+                        <p>A Network for Trade Finance Originators to Distribute Trade Assets to the Growing Class of Alternative Asset Investors.</p>
                     </div>
 
                     <div class="hero-tabs-desktop-container">
