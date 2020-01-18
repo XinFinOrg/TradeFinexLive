@@ -5249,7 +5249,7 @@ class Publicv extends CI_Controller {
 			
 			$this->email->from($from_email, 'Support Tradefinex'); 
 			$this->email->to($to_email);
-			$this->email->bcc("mansi@xinfin.org,atul@xinfin.org,rusabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org");
+			$this->email->bcc("mansi@xinfin.org,atul@xinfin.org,rushabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org");
 			$this->email->set_mailtype('html');
 			$this->email->subject('Tradefinex Case Study Request');
 			$mail_body = $this->load->view('templates/mails/case_study_mail_body', $data, TRUE);

@@ -15,7 +15,7 @@
 				<div class="mail_template_banner"> <img src="<?=base_url()?>assets/images/img/explore_back.jpg" alt="img"> </div>
 				<div class="mail_template_body">
 					<p>Hi,</p>
-					<p>Your request with Email <?php echo $email ?> and Mobile No. <?php echo $mmob ?> has been received by us. Soon we will contact you for further process of accessing case study document. </p>
+					<p>Your request with Email <?php echo $email ?> and Mobile No. <?php echo $mmob ?> has been received by us. Please sign the NDA and revert back to us on <a href="info@tradefinex.org">info@tradefinex.org</a>.After signing NDA, the user will be able to access the case study document over mail. </p>
 				</div>
 				<div class="mail_template_footer">
 					<div class="mail_template_footer_content">
