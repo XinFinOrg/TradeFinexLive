@@ -36,32 +36,44 @@
                                     <input type="text" class="form-control" id="private_key" name="private_key" autocomplete= "off"placeholder="Enter Private Key">
                                 </div>
                                 <div class="form-group">
-                                    <label for="instrument-type" id="instrument">Type of Instrument</label>
-
-                                    <div id="tab" class="tf-form-tabs" data-toggle="buttons">
-                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
-                                            <input type="radio" class="" name="instrument" value="REC" id="Receivable" />Receivable
-                                        </a>
-                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
-                                            <input type="radio" class="" name="instrument" value="LC" id="Letter-of-Credit" />Letter of Credit
-                                        </a>
-                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
-                                            <input type="radio" class="" name="instrument" value="BG" id="Bank-Guarantees" />Bank Guarantees
-                                        </a>
-                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
-                                            <input type="radio" class="" name="instrument" value="SBLC" id="SBLC" />SBLC
-                                        </a>
-                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
-                                            <input type="radio" class="" name="instrument" value="WR" id="Warehouse-Receipt" />Warehouse Receipt
-                                        </a>
-                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
-                                            <input type="radio" class="" name="instrument" value="PAY" id="Payable" />Payable
-                                        </a>
-                                        <a href="#select-country" class="btn btn-default" data-toggle="tab">
-                                            <input type="radio" class="" name="instrument" value="OTH" id="Other" />Other
-                                        </a>
-                                    </div>
-                                </div>
+									<label for="instrument-type" id="instrument">Type of Instrument<sup>*</sup></label>
+									<div class="radiobtn">
+										<input type="radio" name="instrument" id="Receivable" value="REC" />
+										<label for="Receivable">Receivable</label>
+									</div>									
+								
+									<div class="radiobtn">
+										<input type="radio" name="instrument" id="Letter-of-Credit" value="LC" />
+										<label for="Letter-of-Credit">Letter of Credit</label>
+									</div>
+								
+									<div class="radiobtn">
+										<input type="radio" name="instrument" id="Bank-Guarantees" value="BG" />
+										<label for="Bank-Guarantees">Bank Guarantees</label>
+									</div>
+								
+									<div class="radiobtn">
+										<input type="radio" name="instrument" id="SBLC" value="SBLC" />
+										<label for="SBLC">SBLC</label>
+									</div>
+									
+									<div class="radiobtn">
+										<input type="radio" name="instrument" id="Warehouse-Receipt" value="WR" />
+										<label for="Warehouse-Receipt">Warehouse Receipt</label>
+									</div>
+									
+									<div class="radiobtn">
+										<input type="radio" name="instrument" id="Payable" value="PAY" />
+										<label for="Payable">Payable</label>
+									</div>
+									
+									<div class="radiobtn">
+										<input type="radio" name="instrument" id="Other" value="OTH" />
+										<label for="Other">Other</label>
+									</div>
+									
+									<label id="instrument-error" class="error" for="instrument"></label>
+								</div>
 
                                 <div id="select-country" class="form-group">
                                     <label for="country-origination">Country of Origination</label>
