@@ -50,7 +50,7 @@
 					<div class="row flex-row">
 						<div class="col-md-4 col-sm-4 col-xs-6">
 							<div class="counterFact bgOffWhite">
-								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$loc_sum),'0'),'.')?></span></div>
+								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$rec_sum),'0'),'.')?></span></div>
 								<p>Receivables</p>
 							</div>
 						</div>
