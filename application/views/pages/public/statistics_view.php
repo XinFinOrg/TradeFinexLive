@@ -24,7 +24,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="section-title text-center pb-25">
-								<h3 class="mb-0 mt-20">Number of Trade Instruments Live</h3>
+								<h3 class="mb-0 mt-20">Number of Trade Instruments</h3>
 							</div>
 						</div>
 					</div>
@@ -38,19 +38,25 @@
 						<div class="col-md-12 col-sm-6 col-xs-6">
 						<div class="counterFact bgLightBlue">
 							<div class="factTitle"><span class="counter"><?php echo $count?></span></div>
-							<p>Trade Instruments Live</p>
+							<p>Trade Instruments <strong><span style="color:#32CD32;">Live</span></strong></p>
+						</div>
+						</div>
+						<div class="col-md-12 col-sm-6 col-xs-6">
+						<div class="counterFact bgLightBlue">
+							<div class="factTitle">$ <span class="counter"><?php echo $tot_sum?></span></div>
+							<p>Trade Instruments worth </p>
 						</div>
 						</div>
 					</div>
                 </div>
 				<div class="col-md-8 col-sm-12">
 					<div class="section-title text-center pb-25">
-						<h3 class="mb-0 mt-20">Total Value of Trade Instruments Live </h3>
+						<h3 class="mb-0 mt-20">Total Value of Trade Instruments </h3>
 					</div>
 					<div class="row flex-row">
 						<div class="col-md-4 col-sm-4 col-xs-6">
 							<div class="counterFact bgOffWhite">
-								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$rec_sum),'0'),'.')?></span></div>
+								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$loc_sum),'0'),'.')?></span></div>
 								<p>Receivables</p>
 							</div>
 						</div>
@@ -156,20 +162,20 @@
 			<div class="row flex-row">
                 <div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgWhite">
-                        <div class="factTitle"><span class="counter">3 </span></div>
-                        <p>(SGD, IDR, USD)</p>
+                        <div class="factTitle"><span class="counter">0 </span></div>
+                        <!-- <p>(SGD, IDR, USD)</p> -->
                     	<p>Legacy Fiat Channels</p>
                 	</div>
                 </div>
 				<div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgWhite">
-                        <div class="factTitle">$ <span class="counter">300,000</span></div>
+                        <div class="factTitle">$ <span class="counter">0</span></div>
                     	<p>Digital Asset based channel through XDC Protocol</p>
                 	</div>
                 </div>
 				<div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgWhite">
-                        <div class="factTitle">$ <span class="counter">500,000</span></div>
+                        <div class="factTitle">$ <span class="counter">0</span></div>
                     	<p>Digital Asset based channel through Fiat backed Stablecoins</p>
                 	</div>
                 </div>
@@ -182,7 +188,7 @@
 			<div class="row flex-row">                
 				<div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgOffWhite">
-                        <div class="factTitle"><span class="counter">5,000,000</span> XDC</div>
+                        <div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$utility),'0'),'.')?></span></div>
                     	<p>Utility Fees Paid in XDC Protocol for Peer to Peer Trade Assets Distribution</p>
                 	</div>
                 </div>
@@ -200,7 +206,7 @@
                 </div>
 				<div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgOffWhite">
-                        <div class="factTitle"><span class="counter"><?php echo $marketCap?></span></div>
+                        <div class="factTitle">$ <span class="counter"><?php echo $marketCap?></span></div>
                     	<p>Fully diluted Market Cap of XDC Protocol Tokens</p>
                 	</div>
                 </div>

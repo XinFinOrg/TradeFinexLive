@@ -1925,7 +1925,9 @@ class Publicv extends CI_Controller {
 		$data['stakedXDC'] = $split[0];
 		$data['stakedXDCUSD'] = floatval(570000000 * $data['xdc_usd']);
 		
-		// echo  $data['oth_sum'] ;
+		$utility = $this->manage->get_instrument_value();
+		$data['utility'] = floatval(10 * $utility);
+		// echo  $data['utility'] ;
 		// die;
 		
 		if($instrument && !empty($instrument) && is_array($instrument) && sizeof($instrument) <> 0){

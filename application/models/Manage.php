@@ -1638,5 +1638,14 @@ $data1 = [
 		
 			return 1;
 		}
+		public function get_instrument_value(){
+			
+			$this->db->select('tfi_maturityDate');
+			$this->db->from('{PRE}instrument');
+			$query = $this->db->get();
+
+
+			return $result = $query->num_rows();
+		}
 		
 	}
