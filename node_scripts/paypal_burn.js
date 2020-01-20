@@ -56,7 +56,7 @@ async function paypalBurnToken(amount) {
     }
 
     let burnPercent = config.burnPercent;
-    console.log("burnPercent: ", burnPercent);
+    // console.log("burnPercent: ", burnPercent);
     const burn_amnt = Math.round((burnPercent * amnt_xdc) / 100);
     if (burn_amnt <= 0) {
       console.log("error");
@@ -72,8 +72,8 @@ async function paypalBurnToken(amount) {
 
     const accountBalance = await web3.eth.getBalance(account.address);
     if (accountBalance < config.threshold && accountBalance >= burn_amnt) {
-      console.log("warning");
-      console.log("threshold reached");
+      // console.log("warning");
+      // console.log("threshold reached");
     } else if (accountBalance < burn_amnt) {
       console.log("error");
       console.error("insufficient balance");
@@ -92,12 +92,12 @@ async function paypalBurnToken(amount) {
       .sendSignedTransaction(signed.rawTransaction)
       .then(async receipt => {
         if (receipt.status === true) {
-          console.log("success");
+          // console.log("success");
           console.log(receipt);
           return;
         }
-        console.log("error");
-        console.log("execution failed");
+        // console.log("error");
+        // console.log("execution failed");
         console.log(receipt);
       })
       .catch(e => {

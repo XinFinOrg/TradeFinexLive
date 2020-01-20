@@ -1419,6 +1419,8 @@ $data1 = [
 			$data['tfpp_amount'] = $data_add['amt'];
 			$data['tfpp_currency_code'] = $data_add['cc'];
 			$data['tfpp_pstatus'] = $data_add['st'];
+			$data['tfpp_burnStatus'] = $data_add['burnStatus'];
+			$data['tfpp_burntransactionHash'] = $data_add['transactionHash'];
 			
 			$data1['tfpp_address'] = $data_add['cm'];
 			$data1['tfpp_doc_redem'] = floatval($data_add['amt']) / 10;
@@ -1647,5 +1649,4 @@ $data1 = [
 
 			return $result = $query->num_rows();
 		}
-		
 	}

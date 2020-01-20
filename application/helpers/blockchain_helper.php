@@ -76,7 +76,7 @@ if (!function_exists('cmcModule'))
 		
 		if($rcurlxdc){
 			$rcurlxdca = json_decode(stripslashes($rcurlxdc));
-			if(strtolower($rcurlxdca->status) == 'success'){
+            if(strtolower($rcurlxdca->status) == 'success'){
 				$xdcpval = $rcurlxdca->todayxdcprice;
 			}
 		}
@@ -91,9 +91,9 @@ if (!function_exists('getFinancier'))
     {
         try{
             $output = array();
-            $node = exec('cd && node index.js --privKey='.$key,$output);
+            $node = exec('cd node_scripts && node index.js --privKey='.$key,$output);
             // var_dump($output);
-            log_message('info','private key exist'.$node);
+            // log_message('info','private key exist'.$node);
             return $node;
         
         }
@@ -111,9 +111,9 @@ if (!function_exists('getAddress'))
     {
         try{
             $output = array();
-            $node = exec('cd && node paypal.js --privKey='.$key,$output);
+            $node = exec('cd node_scripts && node paypal.js --privKey='.$key,$output);
             // var_dump($output);
-            log_message('info','private key exist'.$node);
+            // log_message('info','private key exist'.$node);
             return $node;
         
         }
@@ -160,7 +160,7 @@ if (!function_exists('burnXDC'))
             $output = array();
             $node = exec('cd node_scripts && node paypal_burn.js --amnt='.$amount,$output);
             // var_dump($output);
-            log_message('info','Burn'.$output.json_encode($output));
+            log_message('info','Burn'.$output);
             return $output;
         
         }
@@ -180,7 +180,7 @@ if (!function_exists('getXDCburntValue'))
             $CI =& get_instance();
             $CI->load->library('curl');
             
-            $rcurlxdc = $CI->curl->simple_post('https://explorer.xinfin.network/totalBurntValue');
+            $rcurlxdc = $CI->curl->simple_post('https://explorerapi.xinfin.network/totalBurntValue');
             
             if($rcurlxdc){
                 $rcurlxdca = json_decode($rcurlxdc);
@@ -207,7 +207,7 @@ if (!function_exists('getmasternode'))
             $CI =& get_instance();
             $CI->load->library('curl');
             
-            $rcurlxdc = $CI->curl->simple_post('https://explorer.xinfin.network/totalMasterNodes');
+            $rcurlxdc = $CI->curl->simple_post('https://explorerapi.xinfin.network/totalMasterNodes');
             
             if($rcurlxdc){
                 $rcurlxdca = json_decode($rcurlxdc);
@@ -234,7 +234,7 @@ if (!function_exists('stakedXDC'))
             $CI =& get_instance();
             $CI->load->library('curl');
             
-            $rcurlxdc = $CI->curl->simple_post('https://explorer.xinfin.network/totalStakedValue');
+            $rcurlxdc = $CI->curl->simple_post('https://explorerapi.xinfin.network/totalStakedValue');
             
             if($rcurlxdc){
                 $rcurlxdca = json_decode($rcurlxdc);
@@ -242,6 +242,60 @@ if (!function_exists('stakedXDC'))
             }
 		
 		return $rcurlxdc;
+    
+        
+        }
+        catch (Exception $e) {
+            log_message("error".$e->getMessage());
+            return '0';
+        }
+        
+    }
+}
+
+if (!function_exists('totalXDC'))
+{
+    function totalXDC()
+    {
+        try{
+            $CI =& get_instance();
+            $CI->load->library('curl');
+            
+            $rcurlxdc = $CI->curl->simple_post('https://explorerapi.xinfin.network/publicAPI?module=balance&action=totalXDC&apikey=YourApiKeyToken');
+            
+            if($rcurlxdc){
+                $rcurlxdca = json_decode($rcurlxdc);
+                log_message("info","Total XDC".$rcurlxdc);
+            }
+		
+		return $rcurlxdca;
+    
+        
+        }
+        catch (Exception $e) {
+            log_message("error".$e->getMessage());
+            return '0';
+        }
+        
+    }
+}
+
+if (!function_exists('todayRewards'))
+{
+    function todayRewards()
+    {
+        try{
+            $CI =& get_instance();
+            $CI->load->library('curl');
+            
+            $rcurlxdc = $CI->curl->simple_post('https://explorer.xinfin.network/todayRewards');
+            
+            if($rcurlxdc){
+                $rcurlxdca = json_decode($rcurlxdc);
+                log_message("info","Total XDC".$rcurlxdc);
+            }
+		
+		return $rcurlxdca;
     
         
         }

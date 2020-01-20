@@ -8,7 +8,7 @@
         </div>
     </section>
 
-    <!-- Statistics -->
+    <!-- Statistics 
     <section id="financiers" class="section pb-40">
         <div class="container">
             <div class="row">
@@ -24,7 +24,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="section-title text-center pb-25">
-								<h3 class="mb-0 mt-20">Number of Trade Instruments</h3>
+								<h3 class="mb-0 mt-20">Number of Trade Instruments Live</h3>
 							</div>
 						</div>
 					</div>
@@ -38,20 +38,14 @@
 						<div class="col-md-12 col-sm-6 col-xs-6">
 						<div class="counterFact bgLightBlue">
 							<div class="factTitle"><span class="counter"><?php echo $count?></span></div>
-							<p>Trade Instruments <strong><span style="color:#32CD32;">Live</span></strong></p>
-						</div>
-						</div>
-						<div class="col-md-12 col-sm-6 col-xs-6">
-						<div class="counterFact bgLightBlue">
-							<div class="factTitle">$ <span class="counter"><?php echo $tot_sum?></span></div>
-							<p>Trade Instruments worth </p>
+							<p>Trade Instruments Live</p>
 						</div>
 						</div>
 					</div>
                 </div>
 				<div class="col-md-8 col-sm-12">
 					<div class="section-title text-center pb-25">
-						<h3 class="mb-0 mt-20">Total Value of Trade Instruments </h3>
+						<h3 class="mb-0 mt-20">Total Value of Trade Instruments Live </h3>
 					</div>
 					<div class="row flex-row">
 						<div class="col-md-4 col-sm-4 col-xs-6">
@@ -98,52 +92,7 @@
 						</div>
 					</div>
 				</div>
-            </div>
-
-            <!--<div class="row projectFactsWrapColumns">
-                <div class="col-md-3">
-                    <div class="section-title text-center">
-						<h3 class="mb-0">Trade Instruments Live</h3>
-					</div>
-                    <div id="projectFacts" class="sectionClass">
-                        <div class="fullWidth eight columns">
-                            <div class="projectFactsWrap">
-                                <div class="item single single-1">
-                                    <p id="number1"><span class="counter">5</span></p>
-                                    <p>Instruments Live</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-				
-				<div class="col-md-9">
-                    <div class="section-title text-center">
-						<h3 class="mb-0">Total Value of Trade Instruments Live worth USD 50 Million</h3>
-					</div>
-                    <div id="projectFacts" class="sectionClass">
-                        <div class="fullWidth eight columns">
-                            <div class="projectFactsWrap">
-                                <div class="item single">
-                                    <p id="number1">$ <span class="counter">15</span> Million</p>
-                                    <span></span>
-                                    <p>Receivables</p>
-                                </div>
-                                <div class="item single">
-                                    <p id="number2">$ <span class="counter">15</span> Million</p>
-                                    <span></span>
-                                    <p>Letter of Credits</p>
-                                </div>
-                                <div class="item single">
-                                    <p id="number3">$ <span class="counter">20</span> Million</p>
-                                    <p>Other</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-			
+            </div>			
         </div>
     </section>
 
@@ -162,20 +111,20 @@
 			<div class="row flex-row">
                 <div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgWhite">
-                        <div class="factTitle"><span class="counter">0 </span></div>
-                        <!-- <p>(SGD, IDR, USD)</p> -->
+                        <div class="factTitle"><span class="counter">3 </span></div>
+                        <p>(SGD, IDR, USD)</p>
                     	<p>Legacy Fiat Channels</p>
                 	</div>
                 </div>
 				<div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgWhite">
-                        <div class="factTitle">$ <span class="counter">0</span></div>
+                        <div class="factTitle">$ <span class="counter">300,000</span></div>
                     	<p>Digital Asset based channel through XDC Protocol</p>
                 	</div>
                 </div>
 				<div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgWhite">
-                        <div class="factTitle">$ <span class="counter">0</span></div>
+                        <div class="factTitle">$ <span class="counter">500,000</span></div>
                     	<p>Digital Asset based channel through Fiat backed Stablecoins</p>
                 	</div>
                 </div>
@@ -188,7 +137,7 @@
 			<div class="row flex-row">                
 				<div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgOffWhite">
-                        <div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$utility),'0'),'.')?></span></div>
+                        <div class="factTitle"><span class="counter">5,000,000</span> XDC</div>
                     	<p>Utility Fees Paid in XDC Protocol for Peer to Peer Trade Assets Distribution</p>
                 	</div>
                 </div>
@@ -206,7 +155,7 @@
                 </div>
 				<div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgOffWhite">
-                        <div class="factTitle">$ <span class="counter"><?php echo $marketCap?></span></div>
+                        <div class="factTitle"><span class="counter"><?php echo $marketCap?></span></div>
                     	<p>Fully diluted Market Cap of XDC Protocol Tokens</p>
                 	</div>
                 </div>
@@ -255,6 +204,242 @@
                 </div>
             </div> 
 		</div>
+	</section>-->
+	
+	
+	
+	
+	<!-- Statistics -->
+    <section id="statistics" class="section pb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="section-title text-center noBorderAfter pb-15">
+                        <h2 class="mb-0">Statistics</h2>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="row">
+                <div class="col-md-12">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-title pb-25">
+								<h3 class="mb-15 mt-20">Number of Trade Instruments</h3>
+							</div>
+						</div>
+					</div>
+					<div class="row flex-row">
+						<div class="col-md-4 col-sm-4 col-xs-6">
+						<div class="counterFact bgOffWhiteShadow">
+							<div class="factTitle"><span class="counter"><?php echo $total_count?></span></div>
+							<div class="tf-divider"><hr /></div>
+							<p>Total Trade Instruments</p>
+						</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-6">
+						<div class="counterFact bgOffWhiteShadow">
+							<div class="factTitle"><span class="counter"><?php echo $count?></span></div>
+							<div class="tf-divider"><hr /></div>
+							<p>Trade Instruments <span class="live">Live</span></p>
+						</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-6">
+						<div class="counterFact bgOffWhiteShadow">
+							<div class="factTitle">$ <span class="counter"><?php echo $tot_sum?></span></div>
+							<div class="tf-divider"><hr /></div>
+							<p>Trade Instruments worth</p>
+						</div>
+						</div>
+					</div>
+                </div>				
+            </div>	
+			
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-title pb-25">
+						<h3 class="mb-15 mt-20">Total Value of Trade Instruments Live </h3>
+					</div>
+					<div class="row flex-row">
+						<div class="col-md-4 col-sm-4 col-xs-6">
+							<div class="counterFact bgOffWhiteShadow">
+								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$loc_sum),'0'),'.')?></span></div>
+								<div class="tf-divider"><hr /></div>
+								<p>Receivables</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-6">
+							<div class="counterFact bgOffWhiteShadow">
+								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$loc_sum),'0'),'.')?></span></div>
+								<div class="tf-divider"><hr /></div>
+								<p>Letter of Credits</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-6">
+							<div class="counterFact bgOffWhiteShadow">
+								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$bg_sum),'0'),'.')?></span> </div>
+								<div class="tf-divider"><hr /></div>
+								<p>Bank Guarantees</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-6">
+							<div class="counterFact bgOffWhiteShadow">
+								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$sblc_sum),'0'),'.')?></span></div>
+								<div class="tf-divider"><hr /></div>
+								<p>SBLC</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-6">
+							<div class="counterFact bgOffWhiteShadow">
+								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$wr_sum),'0'),'.')?></span> </div>
+								<div class="tf-divider"><hr /></div>
+								<p>Warehouse Receipt</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-6">
+							<div class="counterFact bgOffWhiteShadow">
+								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$pay_sum),'0'),'.')?></span></div>
+								<div class="tf-divider"><hr /></div>
+								<p>Payable</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-6">
+							<div class="counterFact bgOffWhiteShadow">
+								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$oth_sum),'0'),'.')?></span></div>
+								<div class="tf-divider"><hr /></div>
+								<p>Other</p>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+					
+        </div>
+    </section>
+
+	
+	
+	<section id="statistics" class="section tf-grey-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+                    <div class="section-title text-center">
+                        <h2 class="mb-15">Number of Instruments Funded through XDC Protocol</h2>
+                    </div>
+				</div>
+			</div>
+			
+			<div class="row flex-row">
+                <div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle"><span class="counter">0 </span></div>
+						<div class="tf-divider"><hr /></div>
+                        <!-- <p>(SGD, IDR, USD)</p> -->
+                    	<p>Legacy Fiat Channels</p>
+                	</div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle">$ <span class="counter">0</span></div>
+						<div class="tf-divider"><hr /></div>
+                    	<p>Digital Asset based channel through XDC Protocol</p>
+                	</div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle">$ <span class="counter">0</span></div>
+						<div class="tf-divider"><hr /></div>
+                    	<p>Digital Asset based channel through Fiat backed Stablecoins</p>
+                	</div>
+                </div>
+            </div>
+		</div>
+	</section>
+	
+	<section id="statistics" class="section">
+		<div class="container">			
+			<div class="row flex-row">                
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$utility),'0'),'.')?></span></div>
+						<div class="tf-divider"><hr /></div>
+                    	<p>Utility Fees Paid in XDC Protocol for Peer to Peer Trade Assets Distribution</p>
+                	</div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle"><?php echo $xdc_burnt?> </div>
+						<div class="tf-divider"><hr /></div>
+                    	<p>XDC Protocol tokens sent to burning contract for Fee processing</p>
+                	</div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle">$ <span class="counter"><?php echo $xdc_usd?></span></div>
+						<div class="tf-divider"><hr /></div>
+                    	<p>Current Price of XDC Protocol Token</p>
+                	</div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle">$ <span class="counter"><?php echo $marketCap?></span></div>
+						<div class="tf-divider"><hr /></div>
+                    	<p>Fully diluted Market Cap of XDC Protocol Tokens</p>
+                	</div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle"><span class="counter"><?php echo $xdcMasternode ?></span></div>
+						<div class="tf-divider"><hr /></div>
+                    	<p>Number of Live Masternodes in XDC Network</p>
+                	</div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle"><span class="counter"><?php echo $stakedXDC ?></span> Million XDC</div>
+						<div class="tf-divider"><hr /></div>
+                    	<p>Total capital locked in XDC Masternodes</p>
+                	</div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle">$ <span class="counter"><?php echo $stakedXDCUSD?></span></div>
+						<div class="tf-divider"><hr /></div>
+                    	<p>Fiat Value of Total Capital locked in XDC Masternodes</p>
+                	</div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle"><span class="counter"><?php echo $rewards?></span> XDC</div>
+						<div class="tf-divider"><hr /></div>
+                    	<p>Monthly Masternode rewards generated for XDC Masternodes</p>
+                	</div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle">$ <span class="counter"><?php echo $rewardsUSD?></span></div>
+						<div class="tf-divider"><hr /></div>
+                    	<p>Fiat Value of rewards generated by XDC Masternodes</p>
+                	</div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle"><span class="counter">0.90</span> % Per Month</div>
+						<div class="tf-divider"><hr /></div>
+                        <p><span class="counter">10.8</span> % Per Year</p>
+                    	<p>Approx Return on Peer to Peer XDC Masternodes</p>
+                	</div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="counterFact bgOffWhiteShadow">
+                        <div class="factTitle">$ <span class="counter"><?php echo $xdvolume?></span></div>
+						<div class="tf-divider"><hr /></div>
+                    	<p>Daily Volume of XDC Tokens</p>
+                	</div>
+                </div>
+            </div> 
+		</div>
 	</section>
 	
 	
@@ -283,7 +468,7 @@
                 $(this).prop('Counter', 0).animate({
                     Counter: $(this).text()
                 }, {
-                    duration: 3000,
+                    duration: 1500,
                     easing: 'swing',
                     step: function(now) {
                         //$(this).text(Math.ceil(now));
@@ -313,7 +498,7 @@
         jQuery(document).ready(function($) {
             $('.counter').counterUp({
                 delay: 10,
-                time: 3000,
+                time: 1500,
             });
         });
     </script>

@@ -687,15 +687,26 @@ class Publicv extends CI_Controller {
 				redirect(current_url());
 			}
 			else{
-				$_GET['amt'] = 1;
-				$result = $this->manage->add_paypal_details($_GET);
 				$burn = burnXDC($_GET['amt']);
-				foreach($burn as $b){
-					echo $b;
-					die;
-					log_message("info","burning percent".$b->status);
+				$status = explode(': ',$burn[9]);
+				$status = $status[1];
+				$status = str_replace(",","", $status);
+				$transactionHash = explode(': ',$burn[11]);
+				$transactionHash = $transactionHash[1];
+				if($status == true){
+					$_GET['burnStatus'] = $status;
+					$transactionHash = explode(': ',$burn[11]);
+					$transactionHash = $transactionHash[1];
+					$transactionHash = str_replace(array("'",","),"", $transactionHash);
+					$_GET['transactionHash'] = $transactionHash;
+					$result = $this->manage->add_paypal_details($_GET);
+					
 				}
-				log_message("info","::::::".$burn.$_GET['amt']);
+				else{
+					$_GET['burnStatus'] = false;
+					$_GET['transactionHash'] = '0x';
+					$result = $this->manage->add_paypal_details($_GET);
+				}
 			}
 			
 		}
@@ -1924,6 +1935,10 @@ class Publicv extends CI_Controller {
 		$split  = explode(' ',$stakedXDC);
 		$data['stakedXDC'] = $split[0];
 		$data['stakedXDCUSD'] = floatval(570000000 * $data['xdc_usd']);
+		
+		$rewards = todayRewards();
+		$data['rewards'] = floatval(31 * $rewards);
+		$data['rewardsUSD'] = floatval($data['rewards'] * $data['xdc_usd']);
 		
 		$utility = $this->manage->get_instrument_value();
 		$data['utility'] = floatval(10 * $utility);
@@ -4797,7 +4812,26 @@ class Publicv extends CI_Controller {
 				redirect(current_url());
 			}
 			else{
-				$result = $this->manage->add_paypal_details($_GET);
+				$burn = burnXDC($_GET['amt']);
+				$status = explode(': ',$burn[9]);
+				$status = $status[1];
+				$status = str_replace(",","", $status);
+				$transactionHash = explode(': ',$burn[11]);
+				$transactionHash = $transactionHash[1];
+				if($status == true){
+					$_GET['burnStatus'] = $status;
+					$transactionHash = explode(': ',$burn[11]);
+					$transactionHash = $transactionHash[1];
+					$transactionHash = str_replace(array("'",","),"", $transactionHash);
+					$_GET['transactionHash'] = $transactionHash;
+					$result = $this->manage->add_paypal_details($_GET);
+					
+				}
+				else{
+					$_GET['burnStatus'] = false;
+					$_GET['transactionHash'] = '0x';
+					$result = $this->manage->add_paypal_details($_GET);
+				}
 				
 			}
 			
