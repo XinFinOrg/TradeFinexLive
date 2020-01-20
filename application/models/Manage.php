@@ -1469,7 +1469,11 @@ $data1 = [
 			$this->db->from('{PRE}instrument');
 			$query = $this->db->get();
 
-			return $result = $query->num_rows();
+			$this->db->select('*');
+			$this->db->from('{PRE}funding');
+			$query1 = $this->db->get();
+
+			return $result = floatval($query->num_rows() + $query1->num_rows());
 		}
 		public function get_instrument_active_count($date){
 			
@@ -1479,7 +1483,13 @@ $data1 = [
 			$this->db->where($where);
 			$query = $this->db->get();
 
-			return $result = $query->num_rows();
+			$this->db->select('tfbs_maturityDate');
+			$this->db->from('{PRE}funding');
+			$where = "tfbs_maturityDate >='$date'";
+			$this->db->where($where);
+			$query1 = $this->db->get();
+
+			return $result = floatval($query->num_rows() + $query1->num_rows());
 		}
 		public function get_receivable_instrument_sum(){
 
@@ -1488,8 +1498,16 @@ $data1 = [
 			$where = "tfi_instrument = 'REC'";
 			$this->db->where($where);
 			$query = $this->db->get();
+
+			$this->db->select('tfbs_amount,tfbs_currency');
+			$this->db->from('{PRE}funding');
+			$where = "tfbs_loanp = 'REC'";
+			$this->db->where($where);
+			$query1 = $this->db->get();
 			// log_message("info","<<2.".json_encode($query->result()));
-			return $result = $query->result();
+			$result['instrument'] = $query->result();
+			$result['funding'] = $query1->result();
+			return $result;
 		}
 		public function get_sblc_instrument_sum(){
 
@@ -1498,8 +1516,16 @@ $data1 = [
 			$where = "tfi_instrument = 'SBLC'";
 			$this->db->where($where);
 			$query = $this->db->get();
-			// log_message("info","<<2.".json_encode($query->result()));
-			return $result = $query->result();
+
+			$this->db->select('tfbs_amount,tfbs_currency');
+			$this->db->from('{PRE}funding');
+			$where = "tfbs_loanp = 'SBLC'";
+			$this->db->where($where);
+			$query1 = $this->db->get();
+			// log_message("info","<<2.".json_encode($query1->result()));
+			$result['instrument'] = $query->result();
+			$result['funding'] = $query1->result();
+			return $result;
 		}
 		public function get_loc_instrument_sum(){
 
@@ -1508,8 +1534,16 @@ $data1 = [
 			$where = "tfi_instrument = 'LC'";
 			$this->db->where($where);
 			$query = $this->db->get();
-			// log_message("info","<<2.".json_encode($query->result()));
-			return $result = $query->result();
+			
+			$this->db->select('tfbs_amount,tfbs_currency');
+			$this->db->from('{PRE}funding');
+			$where = "tfbs_loanp = 'LC'";
+			$this->db->where($where);
+			$query1 = $this->db->get();
+			// log_message("info","<<2.".json_encode($query1->result()));
+			$result['instrument'] = $query->result();
+			$result['funding'] = $query1->result();
+			return $result;
 		}
 		public function get_oth_instrument_sum(){
 
@@ -1518,8 +1552,16 @@ $data1 = [
 			$where = "tfi_instrument = 'OTH'";
 			$this->db->where($where);
 			$query = $this->db->get();
-			// log_message("info","<<2.".json_encode($query->result()));
-			return $result = $query->result();
+
+			$this->db->select('tfbs_amount,tfbs_currency');
+			$this->db->from('{PRE}funding');
+			$where = "tfbs_loanp = 'OTH'";
+			$this->db->where($where);
+			$query1 = $this->db->get();
+			// log_message("info","<<2.".json_encode($query1->result()));
+			$result['instrument'] = $query->result();
+			$result['funding'] = $query1->result();
+			return $result;
 		}
 		public function get_wr_instrument_sum(){
 
@@ -1528,8 +1570,16 @@ $data1 = [
 			$where = "tfi_instrument = 'WR'";
 			$this->db->where($where);
 			$query = $this->db->get();
-			// log_message("info","<<2.".json_encode($query->result()));
-			return $result = $query->result();
+
+			$this->db->select('tfbs_amount,tfbs_currency');
+			$this->db->from('{PRE}funding');
+			$where = "tfbs_loanp = 'WR'";
+			$this->db->where($where);
+			$query1 = $this->db->get();
+			// log_message("info","<<2.".json_encode($query1->result()));
+			$result['instrument'] = $query->result();
+			$result['funding'] = $query1->result();
+			return $result;
 		}
 		public function get_pay_instrument_sum(){
 
@@ -1538,8 +1588,16 @@ $data1 = [
 			$where = "tfi_instrument = 'PAY'";
 			$this->db->where($where);
 			$query = $this->db->get();
-			// log_message("info","<<2.".json_encode($query->result()));
-			return $result = $query->result();
+
+			$this->db->select('tfbs_amount,tfbs_currency');
+			$this->db->from('{PRE}funding');
+			$where = "tfbs_loanp = 'PAY'";
+			$this->db->where($where);
+			$query1 = $this->db->get();
+			// log_message("info","<<2.".json_encode($query1->result()));
+			$result['instrument'] = $query->result();
+			$result['funding'] = $query1->result();
+			return $result;
 		}
 		public function get_bg_instrument_sum(){
 
@@ -1548,8 +1606,16 @@ $data1 = [
 			$where = "tfi_instrument = 'BG'";
 			$this->db->where($where);
 			$query = $this->db->get();
-			// log_message("info","<<2.".json_encode($query->result()));
-			return $result = $query->result();
+
+			$this->db->select('tfbs_amount,tfbs_currency');
+			$this->db->from('{PRE}funding');
+			$where = "tfbs_loanp = 'BG'";
+			$this->db->where($where);
+			$query1 = $this->db->get();
+			// log_message("info","<<2.".json_encode($query1->result()));
+			$result['instrument'] = $query->result();
+			$result['funding'] = $query1->result();
+			return $result;
 		}
 		public function add_funding_details($data_add){
 

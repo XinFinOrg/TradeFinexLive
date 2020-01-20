@@ -171,3 +171,84 @@ if (!function_exists('burnXDC'))
         
     }
 }
+
+if (!function_exists('getXDCburntValue'))
+{
+    function getXDCburntValue()
+    {
+        try{
+            $CI =& get_instance();
+            $CI->load->library('curl');
+            
+            $rcurlxdc = $CI->curl->simple_post('https://explorer.xinfin.network/totalBurntValue');
+            
+            if($rcurlxdc){
+                $rcurlxdca = json_decode($rcurlxdc);
+                log_message("info","XDC Burnt".$rcurlxdc);
+            }
+		
+		return $rcurlxdc;
+    
+        
+        }
+        catch (Exception $e) {
+            log_message("error".$e->getMessage());
+            return '0';
+        }
+        
+    }
+}
+
+if (!function_exists('getmasternode'))
+{
+    function getmasternode()
+    {
+        try{
+            $CI =& get_instance();
+            $CI->load->library('curl');
+            
+            $rcurlxdc = $CI->curl->simple_post('https://explorer.xinfin.network/totalMasterNodes');
+            
+            if($rcurlxdc){
+                $rcurlxdca = json_decode($rcurlxdc);
+                log_message("info","XDC masternodes".$rcurlxdc);
+            }
+		
+		return $rcurlxdc;
+    
+        
+        }
+        catch (Exception $e) {
+            log_message("error".$e->getMessage());
+            return '0';
+        }
+        
+    }
+}
+
+if (!function_exists('stakedXDC'))
+{
+    function stakedXDC()
+    {
+        try{
+            $CI =& get_instance();
+            $CI->load->library('curl');
+            
+            $rcurlxdc = $CI->curl->simple_post('https://explorer.xinfin.network/totalStakedValue');
+            
+            if($rcurlxdc){
+                $rcurlxdca = json_decode($rcurlxdc);
+                log_message("info","XDC staked".$rcurlxdc);
+            }
+		
+		return $rcurlxdc;
+    
+        
+        }
+        catch (Exception $e) {
+            log_message("error".$e->getMessage());
+            return '0';
+        }
+        
+    }
+}

@@ -958,7 +958,7 @@ input.error, textarea.error, select.error {border-color: #ea212d!important;}
 
 
 
-.sectionClass {
+/*.sectionClass {
   padding: 0px 0px 40px 0px;
   position: relative;
   display: block;
@@ -1168,4 +1168,28 @@ input.error, textarea.error, select.error {border-color: #ea212d!important;}
   .projectFactsWrap .item:nth-child(7) {background: rgb(120,185,255,0.1);}
   .projectFactsWrap .item.single {flex:100%;padding: 15px 0px;}
   .projectFactsWrap .item.single p {min-height:inherit;}
+}*/
+
+
+
+
+
+.counterFact {height:100%;padding:20px 20px;text-align:center;border-radius:4px;margin-bottom:20px;}
+.counterFact.bgWhite {background:#FFFFFF;}
+.counterFact.bgOffWhite {border:1px solid rgb(0,123,255,0.1);box-shadow:0 0px 10px 0px rgba(0, 0, 0, 0.01);}
+.counterFact.bgLightBlue {background:rgb(0,123,255,0.03);border:1px solid rgb(0,123,255,0.1);box-shadow:0 0px 10px 0px rgba(0, 0, 0, 0.01);}
+.counterFact .factTitle {font-size:24px;font-weight:600;color:#007bff;line-height:34px;letter-spacing:-1px;margin-bottom:10px;}
+.counterFact p {font-size:18px;font-weight:400;color:#687377;line-height:20px;margin-bottom:0px;}
+/* Flexbox Equal Height Bootstrap Columns (fully responsive) */
+@media only screen and (min-width : 577px) {
+  .flex-row.row {display: flex;flex-wrap: wrap;}
+  .flex-row.row > [class*='col-'] {display: flex;flex-direction: column;}
+  .flex-row.row:after, .flex-row.row:before {display: flex;}
+  .flex-row.row > [class*='col-'] > .box {display: flex;flex: 1;}  
+}
+@media (max-width: 991px){
+  .counterFact .factTitle {font-size:22px;}
+}
+@media (max-width: 576px){
+  #financiers .col-xs-6 {width: 100%;}
 }
