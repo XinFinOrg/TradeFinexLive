@@ -7,11 +7,11 @@
                 <h4>Improve cash flow. Easy Access to Trade Financing.</h4>
             </div>
         </section>
-        <section class="section" >
+        <!-- <section class="section" >
         <div class="col-md-3 col-xs-12 col-sm-4 funding_video" >
 				<div class="row">
                     <div class="col-md-6 col-xs-5">
-                        <img class="img-responsive" src="../assets/images/page/media/media_46.png" alt="logo" > 
+                        <img class="img-responsive" src="../assets/images/img/media_46.png" alt="logo" > 
 					</div>
                 </div>
                 <div class="row">
@@ -20,14 +20,16 @@
 					</div>	
 				</div>
 			</div> 
-</section>
+</section> -->
         <!-- Buyers / Suppliers Form -->
         <section id="xdc-protocol-features-benefits" class="section" >
             <div class="container"id="createinstrument"style="display:block;">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="section-title text-center pb-30">
-                            <h2 class="mb-0">Apply for Funding</h2>
+                            <h2 class="mb-0">Apply for Funding</h2><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            ( <a href="https://www.youtube.com/embed/4bK1CrfaFf4?feature=oembed" target="_blank"  allowfullscreen>How to apply for funding?
+                        </a>)
                         </div>
                     </div>
                 </div>
@@ -47,6 +49,9 @@
                                 <div class="form-group">
                                     <label for="private-key">Enter Private Key <span><a href="https://howto.xinfin.org/XinFinWallet/features/" target="_blank">How to Create PrivateKey?</a></span></label>
                                     <input type="text" class="form-control" id="private_key" name="private_key" autocomplete= "off"placeholder="Enter Private Key">
+                                </div>
+                                <div class="form-group">
+                                 <span><a href="http://faucet.apothem.network/" target="_blank">Get Test XDC Tokens</a></span>
                                 </div>
                                 <div class="form-group">
 									<label for="instrument-type" id="instrument">Type of Instrument<sup>*</sup></label>
@@ -128,8 +133,8 @@
                                     <!--<label for="maturity-date">Instrument Maturity Date</label>
                                     <input type="date" class="form-control" id="maturity_date" name="maturity_date" placeholder="dd/mm/yyyy">-->
                                     <label for="maturity-date">Instrument Maturity Date</label>
-                                    <div id="date" data-date-format="dd-mm-yyyy">
-                                    <input  type="text" class="form-control" id="maturity_date" name="maturity_date" placeholder="dd-mm-yyyy"autocomplete="off">
+                                    <div id="date" data-date-format="yyyy-mm-dd">
+                                    <input  type="text" class="form-control" id="maturity_date" name="maturity_date" placeholder="yyyy-mm-dd"autocomplete="off">
                                     <div class="input-group-addon" style="display:none"><span class="fa fa-calendar"></span></div>
                                     </div>
                                 </div>
@@ -155,7 +160,7 @@
                                         </span>
                                         <span class="form-control"></span>
                                     </div>
-                                    <p>*Origination & deal distribution fee is USD 10 worth of XDC per instrument (20% fees in XDC will be burn automatically). This document will be encrypted & stored on our Blockchain Network and will be viewable to financiers only</p>
+                                    <p>*Application & deal distribution fee is USD 10 worth of XDC per instrument (20% fees in XDC will burn automatically). This document will be encrypted & stored on XinFin Blockchain Network and will be viewable to financiers only.</p>
                                     <label for="supporting-document" style="display:none" class="error" id="error">Please upload correct file format.</label>
                                     <label for="supporting-document" style="display:none" id="error1" class="error">Please file less than 5MB</label>
                                 </div>
@@ -279,14 +284,14 @@
                             
                                 <div class="form-group"style="display:none" id="email_set">
                                     <input class="form-control" id="email" name="email" type="text" autocomplete="" aria-required="true" placeholder="Email Id" >
-                                    <input type="hidden" name="action" value="send_mail" />
+                                    <input type="hidden" name="action" value="send_mail" /><br><br><br>
                                     <button id="DownloadBtn" onclick="mail()" type="submit"class="btn btn-blue text-uppercase" data-keyboard="false">OK</button>
                                 </div>
                         
 							<div class="form-group">
 								<button id="CopyBtn" type="submit" onclick="copy('deployedData')" class="btn btn-blue text-uppercase" data-keyboard="false">Copy</button>
 								<button id="DownloadBtn" type="submit" onclick="PrintDiv()"class="btn btn-blue text-uppercase" data-keyboard="false">Download</button>
-								<button id="EmailBtn" type="submit" onclick="showemail()"class="btn btn-blue text-uppercase" data-keyboard="false" disabled>Email</button>
+								<button id="EmailBtn" type="submit" onclick="showemail()"class="btn btn-blue text-uppercase" data-keyboard="false" >Email</button>
 							</div>							
 						</div>
 				</div>
@@ -303,7 +308,7 @@
                 </div>
 				<div class="modal-body text-center">
                         <div class="deployedData_modal_block">
-							<p>Document Hash.View the uploaded document</p>
+							<p>Document Hash.</p>
 							<!--<p id="deployedData" style="word-break: break-all;"></p>-->
 							
 							<div id="hashData" style="word-break: break-all;">
@@ -422,7 +427,7 @@ function PrintDiv() {
 function showemail(){
     document.getElementById("email_set").style.display="block";
 }
-// function mail(){
+function mail(){
     var email = document.getElementById("email").value;
     var deployData = document.getElementById("deployedData").innerHTML;
     // alert(email);
@@ -465,3 +470,7 @@ function showemail(){
     });
 </script>
 <!-- Form Skip to next Heading -->
+
+
+
+
