@@ -688,15 +688,13 @@ class Publicv extends CI_Controller {
 			}
 			else{
 				$burn = burnXDC($_GET['amt']);
-				$status = explode(': ',$burn[9]);
+				$status = explode(': ',$burn[10]);
 				$status = $status[1];
 				$status = str_replace(",","", $status);
-				$transactionHash = explode(': ',$burn[11]);
-				$transactionHash = $transactionHash[1];
 				if($status == true){
 					$_GET['burnStatus'] = $status;
-					$transactionHash = explode(': ',$burn[11]);
-					$transactionHash = $transactionHash[1];
+					// $transactionHash = explode(': ',$burn[13]);
+					$transactionHash = $burn[13];
 					$transactionHash = str_replace(array("'",","),"", $transactionHash);
 					$_GET['transactionHash'] = $transactionHash;
 					$result = $this->manage->add_paypal_details($_GET);
@@ -707,6 +705,7 @@ class Publicv extends CI_Controller {
 					$_GET['transactionHash'] = '0x';
 					$result = $this->manage->add_paypal_details($_GET);
 				}
+			
 			}
 			
 		}
@@ -1920,15 +1919,17 @@ class Publicv extends CI_Controller {
 			
 		}
 		$data['tot_sum'] = floatval($data['rec_sum'] + $data['wr_sum'] + $data['oth_sum'] + $data['loc_sum'] + $data['sblc_sum'] + $data['pay_sum'] + $data['bg_sum']);
+		$totalXDC = totalXDC();
+		$data['totalXDC'] = $totalXDC->result;
 		$show = cmcModule();
-			
+				
 		foreach($show as $sh) {
 	
 		$data['xdc_usd'] = $sh->price_usd;
-		$data['marketCap'] = $sh->market_cap_usd;
 		$data['xdvolume'] = $sh->{'24h_volume_usd'};
 		
 		}
+		$data['marketCap'] = floatval( $data['totalXDC'] * $data['xdc_usd']);
 		$data['xdc_burnt'] = getXDCburntValue();
 		$data['xdcMasternode'] = getmasternode();
 		$stakedXDC = stakedXDC();
@@ -1939,7 +1940,7 @@ class Publicv extends CI_Controller {
 		$rewards = todayRewards();
 		$data['rewards'] = floatval(31 * $rewards);
 		$data['rewardsUSD'] = floatval($data['rewards'] * $data['xdc_usd']);
-		
+
 		$utility = $this->manage->get_instrument_value();
 		$data['utility'] = floatval(10 * $utility);
 		// echo  $data['utility'] ;
@@ -2023,8 +2024,8 @@ class Publicv extends CI_Controller {
 			// $to_email ="mansi@xinfin.org";
 					
 			$this->email->from($from_email, 'Admin Tradefinex'); 
-			$this->email->to("mansi@xinfin.org,atul@xinfin.org,rusabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org");
-			// $this->email->bcc("mansi@xinfin.org,atul@xinfin.org,rusabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org");
+			$this->email->to("mansi@xinfin.org,atul@xinfin.org,rushabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org");
+			// $this->email->bcc("mansi@xinfin.org,atul@xinfin.org,rushabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org");
 			$this->email->set_mailtype('html');
 			$this->email->set_newline("\r\n");
 			$this->email->subject('Access for Buyer/Supplier Details'); 
@@ -4813,15 +4814,13 @@ class Publicv extends CI_Controller {
 			}
 			else{
 				$burn = burnXDC($_GET['amt']);
-				$status = explode(': ',$burn[9]);
+				$status = explode(': ',$burn[10]);
 				$status = $status[1];
 				$status = str_replace(",","", $status);
-				$transactionHash = explode(': ',$burn[11]);
-				$transactionHash = $transactionHash[1];
 				if($status == true){
 					$_GET['burnStatus'] = $status;
-					$transactionHash = explode(': ',$burn[11]);
-					$transactionHash = $transactionHash[1];
+					// $transactionHash = explode(': ',$burn[13]);
+					$transactionHash = $burn[13];
 					$transactionHash = str_replace(array("'",","),"", $transactionHash);
 					$_GET['transactionHash'] = $transactionHash;
 					$result = $this->manage->add_paypal_details($_GET);
@@ -5264,8 +5263,8 @@ class Publicv extends CI_Controller {
 			// }
 
 		if($action == 'send_mail'){
-		// log_message("info",">>>>>>mail send");
-		$atch = $_SERVER['DOCUMENT_ROOT'].'/assets/project_agreements/NDA_TradeFinex_Tech_Ltd_AD.pdf';
+		log_message("info",">>>>>".$_SERVER['DOCUMENT_ROOT'].'/assets/project_agreements/NDA_TradeFinex_Tech_Ltd_AD.pdf');
+			$atch = $_SERVER['DOCUMENT_ROOT'].'/assets/project_agreements/NDA_TradeFinex_Tech_Ltd_AD.pdf';
 			$config = array();
 			$config = $this->config->item('$econfig');
 						
@@ -5285,13 +5284,13 @@ class Publicv extends CI_Controller {
 			
 			$this->email->from($from_email, 'Support Tradefinex'); 
 			$this->email->to($to_email);
-			$this->email->bcc("mansi@xinfin.org,atul@xinfin.org,rushabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org");
+			$this->email->bcc('mansi@xinfin.org,atul@xinfin.org,rushabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org');
 			$this->email->set_mailtype('html');
 			$this->email->subject('Tradefinex Case Study Request');
 			$mail_body = $this->load->view('templates/mails/case_study_mail_body', $data, TRUE);
 			$this->email->message($mail_body); 
 			$this->email->attach($atch, array(
-				'mime' => 'application/pdf'));
+        'mime' => 'application/pdf'));
 					
 			// Send mail ** Our customer support team will respond to your query as soon as possible. Please find below the details of the query submitted.
 			if($this->email->send()){ 
