@@ -273,20 +273,20 @@
             </div>
 
             <div class="row mb-30">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="video-frame">
+                        <div class="embed-container">
+                            <iframe src="https://www.youtube.com/embed/4bK1CrfaFf4?feature=oembed" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <p>Apply for Trade Finance Funding on TradeFinex Network</p>
+                    </div>
+                </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="video-frame">
                         <div class="embed-container">
                             <iframe src="https://www.youtube.com/embed/TUiYU_6EuPo?feature=oembed" frameborder="0" allowfullscreen></iframe>
                         </div>
                         <p>Presenting TradeFinex BOSS 101</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="video-frame">
-                        <div class="embed-container">
-                            <iframe src="https://www.youtube.com/embed/M7W16RPfSE4?feature=oembed" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <p>Presenting TradeFinex Invoice Factoring manually</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">

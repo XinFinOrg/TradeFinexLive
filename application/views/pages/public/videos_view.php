@@ -80,6 +80,14 @@
                         <p>Presenting TradeFinex Invoice Factoring Quickbooks</p>
                     </div>
                 </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="video-frame">
+                        <div class="embed-container">
+                            <iframe src="https://www.youtube.com/embed/4bK1CrfaFf4?feature=oembed" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <p>Apply for Trade Finance Funding on TradeFinex Network</p>
+                    </div>
+                </div>
             </div>
 				
     </div>
