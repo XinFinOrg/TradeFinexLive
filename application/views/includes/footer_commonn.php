@@ -158,7 +158,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 col-sm-7">
-                        <div class="copyright">Copyright &copy; 2019 TRADEFINEX TECH LTD (ADGM RegLab Participant), All rights reserved.</div>
+                        <div class="copyright">Copyright &copy; 2020 TRADEFINEX TECH LTD (ADGM RegLab Participant), All rights reserved.</div>
                     </div>
                     <div class="col-md-5 col-sm-5">
                         <div class="copyright pull-right"><a href="<?=base_url();?>publicv/privacy_policy">Privacy Policy</a> | <a href="<?=base_url();?>publicv/terms_condition">Terms & Conditions</a></div>
