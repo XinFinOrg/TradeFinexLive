@@ -1943,8 +1943,8 @@ class Publicv extends CI_Controller {
 
 		$utility = $this->manage->get_instrument_value();
 		$data['utility'] = floatval(10 * $utility);
-		echo  (">>".$data['loc_sum'].">>>>".$data['rec_sum'].$data['tot_sum']);
-		die;
+		// echo  (">>".$data['loc_sum'].">>>>".$data['rec_sum'].$data['tot_sum']);
+		// die;
 		
 		if($instrument && !empty($instrument) && is_array($instrument) && sizeof($instrument) <> 0){
 			$data['instrument'] = $instrument;						
