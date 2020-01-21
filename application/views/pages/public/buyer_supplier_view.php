@@ -410,36 +410,30 @@ function showemail(){
     document.getElementById("email_set").style.display="block";
 }
 // function mail(){
-//     var email = document.getElementById("email").value;
-//     var deployData = document.getElementById("deployedData").innerHTML;
-//     alert(email);
-//     alert(deployData);
-
-//         <?php 			
-//             log_message("info","<<<<");
-//             $this->load->library(array('session', 'encrypt', 'email'));
-//             $config = array();
-// 			$config = $this->config->item('$econfig');
-//             $this->email->initialize($config);
-//             log_message("info","<<<<1",$config);
-//             $suser = $this->manage->get_superadmin();
-			
-// 			$from_email = 'contact@tradefinex.org'; 
-// 			$to_email = $email;
-//             log_message("info","<<<<2",$from_email,$to_email);
-// 			$message .= '<strong>Message : </strong>'.$deployData.'<br/>';
-			
-// 			$this->email->from($from_email, 'Support Tradefinex'); 
-// 			$this->email->to($to_email);
-// 			$this->email->bcc($from_email);
-// 			$this->email->set_mailtype('html');
-// 			$this->email->subject('Contract Details'); 
-// 			$this->email->message($message);
-            		
-// 			// Send mail ** Our customer support team will respond to your query as soon as possible. Please find below the details of the query submitted.
-		
-// 		?>
-// }
+    var email = document.getElementById("email").value;
+    var deployData = document.getElementById("deployedData").innerHTML;
+    // alert(email);
+    // alert(deployData);
+    var myurl = '<?php echo base_url()?>publicv/sendMail';
+    $.ajax({
+        type: "POST",
+        url: myurl,
+        dataType:"json",
+        data: {"action":"sendmail","email":email,"deployData":deployData}, // serializes the form's elements.
+        success: (resp =>{
+            // console.log(resp);
+            if(resp.status == 1){
+                toastr.success('Mail sent successfully', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+			    setTimeout(location.reload.bind(location), 6000);
+            }
+            else{
+                toastr.error('Mail can not be sent', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+			    setTimeout(location.reload.bind(location), 6000);
+            }
+            
+        })// show response from the php script.
+        })
+}
 </script>
 <?php
         $this->load->view('includes/footer_commonn', $data);

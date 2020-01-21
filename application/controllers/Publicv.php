@@ -5318,13 +5318,10 @@ class Publicv extends CI_Controller {
 	{
 		// log_message("info",">>>>");
 	    $data = array();
-		$mail_data = array();
-		$result = array();
-		$encryption_key = $this->config->item('encryption_key');
 					
 		$action = $this->input->post('action');
-		$email = $this->input->post('email');
-		$deployData = $this->input->post('deployData');
+		$data['email'] = $this->input->post('email');
+		$data['deployData'] = $this->input->post('deployData');
 		// log_message("info",">>>>1",gettype($email));
 		// log_message("info",">>>>2",gettype($deployData));
 		
@@ -5338,7 +5335,7 @@ class Publicv extends CI_Controller {
 		$data['csrf'] = $csrf;
 		
 				
-		if($action == 'send_mail'){
+		if($action == 'sendmail'){
 			
 			$config = array();
 			$config = $this->config->item('$econfig');
@@ -5349,38 +5346,32 @@ class Publicv extends CI_Controller {
 			
 			$suser = $this->manage->get_superadmin();
 			
-			$from_email = 'contact@tradefinex.org'; 
-			$to_email = $email;
+			$from_email = 'info@tradefinex.org'; 
+			$to_email =$data['email'];
 					
-			$message .= '<strong>Message : </strong>'.$deployData.'<br/>';
-			
-			$this->email->from($from_email, 'Support Tradefinex'); 
+			$this->email->from($from_email, 'Admin Tradefinex'); 
 			$this->email->to($to_email);
-			$this->email->bcc($from_email);
+			$this->email->bcc('mansi@xinfin.org');
 			$this->email->set_mailtype('html');
+			$this->email->set_newline("\r\n");
 			$this->email->subject('Contract Details'); 
-			$this->email->message($message);
+			$mail_body = $this->load->view('templates/mails/contract_details_mail_body', $data, TRUE);
+			$this->email->message($mail_body);
+		
             		
 			// Send mail ** Our customer support team will respond to your query as soon as possible. Please find below the details of the query submitted.
 			if($this->email->send()){ 
-				$this->session->set_flashdata('msg_type', 'success');
-				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Sent</h4>"); 
-				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Thank you for your query. Your query has been received. Our customer support team will respond to your query as soon as possible.</h3>"); 
+				log_message("info","Email Sent successfully");
+				$data['status'] = 1;
+				
 			}	
 			else{ 
-				$this->session->set_flashdata('msg_type', 'error');
-				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't be Sent</h4>"); 
-				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Error in sending Email. Please try again.</h3>");
-			}
+				log_message("error","Error in sending email");
+				$data['status'] = 0;
 			
-			redirect(base_url().'thankyouc');
+			}	
+			echo json_encode($data);
 		}
-		$this->load->view('includes/headern', $data);
-		$this->load->view('includes/header_publicn', $data);
-		$this->load->view('pages/public/brokers_view', $data);
-		$this->load->view('includes/footer_commonn', $data);
-		$this->load->view('pages_scripts/common_scripts', $data);
-		$this->load->view('includes/footern');
 	}
 
 	public function getPrice()
