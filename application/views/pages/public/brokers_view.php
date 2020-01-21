@@ -7,7 +7,20 @@
                 <h4>Digitize and Automate Document Distribution with Financiers.</h4>
             </div>
         </section>
-
+        <section class="section" >
+        <div class="col-md-3 col-xs-12 col-sm-4 funding_video" >
+				<div class="row">
+                    <div class="col-md-6 col-xs-5">
+                        <img class="img-responsive" src="../assets/images/page/media/media_46.png" alt="logo" > 
+					</div>
+                </div>
+                <div class="row">
+					<div class="col-md-8 col-xs-7"> 
+						<a href="https://www.youtube.com/embed/4bK1CrfaFf4?feature=oembed" target="_blank"  allowfullscreen><strong>How to apply for funding?</strong></a>
+					</div>	
+				</div>
+			</div> 
+</section>
         <!-- Buyers / Suppliers Form -->
         <section id="xdc-protocol-features-benefits" class="section" >
             <div class="container"id="createinstrument"style="display:block;">
