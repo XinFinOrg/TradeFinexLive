@@ -855,6 +855,72 @@ class Publicv extends CI_Controller {
 		
 	}
 	
+	
+	
+	public function fees(){
+		
+		$data = array();
+		
+		$data['page'] = 'fees';
+		$data['msg'] = '';
+		$data['user_id'] = 0;
+		$data['user_type'] = '';
+		$data['full_name'] = '';
+				
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
+		
+		$user = $this->session->userdata('logged_in');
+		
+		if($user && !empty($user) && sizeof($user) <> 0){
+			$data['full_name'] = $user['user_full_name'];
+			$data['user_id'] = $user['user_id'];
+			$data['user_type_ref'] = $user['user_type_ref'];
+			redirect(base_url().'dashboard');
+		}else{
+			// redirect(base_url().'log/out');
+		}
+		
+		$data['notifications'] = array();
+		$data['notifications'] = get_initial_notification_status();
+		
+		if($data['user_id'] <> 0){
+			
+			$options = array();
+			$options['user_id'] = $data['user_id'];
+			$options['user_type'] = $data['user_type_ref'];
+			
+			$data['notifications'] = get_notification_status($options);
+		}
+		
+		$data['notifications'] = array();
+		$data['notifications'] = get_initial_notification_status();
+		
+		if($data['user_id'] <> 0){
+			
+			$options = array();
+			$options['user_id'] = $data['user_id'];
+			$options['user_type'] = $data['user_type_ref'];
+			
+			$data['notifications'] = get_notification_status($options);
+		}
+		
+		$this->load->view('includes/headern', $data);
+		$this->load->view('includes/header_publicn', $data);
+		$this->load->view('pages/public/fees_view', $data);
+		$this->load->view('includes/footer_commonn', $data);
+		$this->load->view('pages_scripts/common_scripts', $data);
+		$this->load->view('includes/footern');
+	
+	}
+	
+	
 	public function get_passkey(){
 		
 		$data = array();
@@ -961,10 +1027,10 @@ class Publicv extends CI_Controller {
 				foreach($show as $sh) {
 				
 				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_rec'] = $sh->price_usd;
+				$data['price'] = $sh->price_usd;
 				
 				}
-				$usd_amount = floatval($data['price_rec']) * floatval($k->tfi_amount);
+				$usd_amount = floatval($data['price']) * floatval($k->tfi_amount);
 				$data['rec_sum'] = floatval($data['rec_sum']) + floatval($usd_amount);
 				
 				
@@ -974,10 +1040,10 @@ class Publicv extends CI_Controller {
 				foreach($show as $sh) {
 				
 				log_message("info","GBP_USD".$sh) ;
-				$data['price_rec'] = $sh;
+				$data['price'] = $sh;
 				
 				}
-				$usd_amount = floatval($data['price_rec']) * floatval($k->tfi_amount);
+				$usd_amount = floatval($data['price']) * floatval($k->tfi_amount);
 				$data['rec_sum'] = floatval($data['rec_sum']) + floatval($usd_amount);
 				
 			}
@@ -986,10 +1052,10 @@ class Publicv extends CI_Controller {
 				foreach($show as $sh) {
 				
 				log_message("info","EUR_USD".$sh) ;
-				$data['price_rec'] = $sh;
+				$data['price'] = $sh;
 				
 				}
-				$usd_amount = floatval($data['price_rec']) * floatval($k->tfi_amount);
+				$usd_amount = floatval($data['price']) * floatval($k->tfi_amount);
 				$data['rec_sum'] = floatval($data['rec_sum']) + floatval($usd_amount);
 				
 			}
@@ -998,10 +1064,10 @@ class Publicv extends CI_Controller {
 				foreach($show as $sh) {
 				
 				log_message("info","JPY_USD".$sh) ;
-				$data['price_rec'] = $sh;
+				$data['price'] = $sh;
 				
 				}
-				$usd_amount = floatval($data['price_rec']) * floatval($k->tfi_amount);
+				$usd_amount = floatval($data['price']) * floatval($k->tfi_amount);
 				$data['rec_sum'] = floatval($data['rec_sum']) + floatval($usd_amount);
 				
 			}
@@ -1942,11 +2008,11 @@ class Publicv extends CI_Controller {
 		$data['rewardsUSD'] = floatval($data['rewards'] * $data['xdc_usd']);
 
 		$utility = $this->manage->get_instrument_value();
-		$data['utility'] = 30 + floatval(10 * $utility);
+		$data['utility'] = floatval(10 * $utility);
 
 		$data['percent'] = floatval(($data['rewards'] / 10000000) * 100);
 		$data['percent_year'] = floatval($data['percent'] * 12); 
-		// echo  (">>".$data['loc_sum'].">>>>".$data['rec_sum'].$data['tot_sum']);
+		// echo  $data['utility'] ;
 		// die;
 		
 		if($instrument && !empty($instrument) && is_array($instrument) && sizeof($instrument) <> 0){
@@ -2024,11 +2090,11 @@ class Publicv extends CI_Controller {
 			$suser = $this->manage->get_superadmin();
 			
 			$from_email = 'info@tradefinex.org'; 
-			// $to_email ="mansi@xinfin.org";
+			$to_email ="mansi@xinfin.org";
 					
 			$this->email->from($from_email, 'Admin Tradefinex'); 
-			$this->email->to("mansi@xinfin.org,atul@xinfin.org,rushabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org");
-			// $this->email->bcc("mansi@xinfin.org,atul@xinfin.org,rushabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org");
+			$this->email->to($to_email);
+			$this->email->bcc($from_email);
 			$this->email->set_mailtype('html');
 			$this->email->set_newline("\r\n");
 			$this->email->subject('Access for Buyer/Supplier Details'); 
@@ -5287,7 +5353,7 @@ class Publicv extends CI_Controller {
 			
 			$this->email->from($from_email, 'Support Tradefinex'); 
 			$this->email->to($to_email);
-			$this->email->bcc('mansi@xinfin.org,atul@xinfin.org,rushabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org');
+			$this->email->bcc('mansi@xinfin.org');
 			$this->email->set_mailtype('html');
 			$this->email->subject('Tradefinex Case Study Request');
 			$mail_body = $this->load->view('templates/mails/case_study_mail_body', $data, TRUE);
@@ -5321,6 +5387,8 @@ class Publicv extends CI_Controller {
 	{
 		// log_message("info",">>>>");
 	    $data = array();
+		
+		$encryption_key = $this->config->item('encryption_key');
 					
 		$action = $this->input->post('action');
 		$data['email'] = $this->input->post('email');
@@ -5366,14 +5434,14 @@ class Publicv extends CI_Controller {
 			if($this->email->send()){ 
 				log_message("info","Email Sent successfully");
 				$data['status'] = 1;
-				
+				return $data;
 			}	
 			else{ 
 				log_message("error","Error in sending email");
 				$data['status'] = 0;
-			
+				return $data;
 			}	
-			echo json_encode($data);
+			
 		}
 	}
 
