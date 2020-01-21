@@ -11,7 +11,7 @@
         <div class="col-md-3 col-xs-12 col-sm-4 funding_video" >
 				<div class="row">
                     <div class="col-md-6 col-xs-5">
-                        <img class="img-responsive" src="../assets/images/img/media_46.png" alt="logo" > 
+                        <img class="img-responsive" src="../assets/images/page/media/media_46.png" alt="logo" > 
 					</div>
                 </div>
                 <div class="row">
