@@ -1942,7 +1942,7 @@ class Publicv extends CI_Controller {
 		$data['rewardsUSD'] = floatval($data['rewards'] * $data['xdc_usd']);
 
 		$utility = $this->manage->get_instrument_value();
-		$data['utility'] = floatval(10 * $utility);
+		$data['utility'] = 30 + floatval(10 * $utility);
 		// echo  (">>".$data['loc_sum'].">>>>".$data['rec_sum'].$data['tot_sum']);
 		// die;
 		
