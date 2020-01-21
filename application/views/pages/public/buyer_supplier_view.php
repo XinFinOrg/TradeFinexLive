@@ -102,6 +102,7 @@
                                             <option value="GBP">GBP</option>
                                             <option value="JPY">JPY</option>
                                             <option value="EUR">EUR</option>
+                                            <option value="SGD">SGD</option>
                                             <option value="XDC">XDC</option>
                                         </select>
                                     </div>
