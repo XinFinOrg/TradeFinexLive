@@ -961,7 +961,7 @@ class Publicv extends CI_Controller {
 				foreach($show as $sh) {
 				
 				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price'] = $sh->price_usd;
+				$data['price_rec'] = $sh->price_usd;
 				
 				}
 				$usd_amount = floatval($data['price']) * floatval($k->tfi_amount);
@@ -974,7 +974,7 @@ class Publicv extends CI_Controller {
 				foreach($show as $sh) {
 				
 				log_message("info","GBP_USD".$sh) ;
-				$data['price'] = $sh;
+				$data['price_rec'] = $sh;
 				
 				}
 				$usd_amount = floatval($data['price']) * floatval($k->tfi_amount);
@@ -986,7 +986,7 @@ class Publicv extends CI_Controller {
 				foreach($show as $sh) {
 				
 				log_message("info","EUR_USD".$sh) ;
-				$data['price'] = $sh;
+				$data['price_rec'] = $sh;
 				
 				}
 				$usd_amount = floatval($data['price']) * floatval($k->tfi_amount);
@@ -998,7 +998,7 @@ class Publicv extends CI_Controller {
 				foreach($show as $sh) {
 				
 				log_message("info","JPY_USD".$sh) ;
-				$data['price'] = $sh;
+				$data['price_rec'] = $sh;
 				
 				}
 				$usd_amount = floatval($data['price']) * floatval($k->tfi_amount);
@@ -1943,7 +1943,7 @@ class Publicv extends CI_Controller {
 
 		$utility = $this->manage->get_instrument_value();
 		$data['utility'] = floatval(10 * $utility);
-		// echo  $data['utility'] ;
+		// echo  $data['tot_sum'];
 		// die;
 		
 		if($instrument && !empty($instrument) && is_array($instrument) && sizeof($instrument) <> 0){
