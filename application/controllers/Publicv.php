@@ -964,7 +964,7 @@ class Publicv extends CI_Controller {
 				$data['price_rec'] = $sh->price_usd;
 				
 				}
-				$usd_amount = floatval($data['price']) * floatval($k->tfi_amount);
+				$usd_amount = floatval($data['price_rec']) * floatval($k->tfi_amount);
 				$data['rec_sum'] = floatval($data['rec_sum']) + floatval($usd_amount);
 				
 				
@@ -977,7 +977,7 @@ class Publicv extends CI_Controller {
 				$data['price_rec'] = $sh;
 				
 				}
-				$usd_amount = floatval($data['price']) * floatval($k->tfi_amount);
+				$usd_amount = floatval($data['price_rec']) * floatval($k->tfi_amount);
 				$data['rec_sum'] = floatval($data['rec_sum']) + floatval($usd_amount);
 				
 			}
@@ -989,7 +989,7 @@ class Publicv extends CI_Controller {
 				$data['price_rec'] = $sh;
 				
 				}
-				$usd_amount = floatval($data['price']) * floatval($k->tfi_amount);
+				$usd_amount = floatval($data['price_rec']) * floatval($k->tfi_amount);
 				$data['rec_sum'] = floatval($data['rec_sum']) + floatval($usd_amount);
 				
 			}
@@ -1001,7 +1001,7 @@ class Publicv extends CI_Controller {
 				$data['price_rec'] = $sh;
 				
 				}
-				$usd_amount = floatval($data['price']) * floatval($k->tfi_amount);
+				$usd_amount = floatval($data['price_rec']) * floatval($k->tfi_amount);
 				$data['rec_sum'] = floatval($data['rec_sum']) + floatval($usd_amount);
 				
 			}
@@ -1943,8 +1943,8 @@ class Publicv extends CI_Controller {
 
 		$utility = $this->manage->get_instrument_value();
 		$data['utility'] = floatval(10 * $utility);
-		// echo  $data['tot_sum'];
-		// die;
+		echo  (">>".$data['loc_sum'].$data['rec_sum'].$data['tot_sum']);
+		die;
 		
 		if($instrument && !empty($instrument) && is_array($instrument) && sizeof($instrument) <> 0){
 			$data['instrument'] = $instrument;						
