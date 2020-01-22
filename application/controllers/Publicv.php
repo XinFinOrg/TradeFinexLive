@@ -2090,11 +2090,11 @@ class Publicv extends CI_Controller {
 			$suser = $this->manage->get_superadmin();
 			
 			$from_email = 'info@tradefinex.org'; 
-			$to_email ="mansi@xinfin.org";
+			// $to_email ="mansi@xinfin.org";
 					
 			$this->email->from($from_email, 'Admin Tradefinex'); 
-			$this->email->to($to_email);
-			$this->email->bcc($from_email);
+			$this->email->to('mansi@xinfin.org,atul@xinfin.org,rushabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org');
+			// $this->email->bcc('mansi@xinfin.org,atul@xinfin.org,rushabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org');
 			$this->email->set_mailtype('html');
 			$this->email->set_newline("\r\n");
 			$this->email->subject('Access for Buyer/Supplier Details'); 
@@ -2246,7 +2246,7 @@ class Publicv extends CI_Controller {
 			
 			$this->email->from($from_email, 'Support Tradefinex'); 
 			$this->email->to($to_email);
-			$this->email->bcc($from_email);
+			$this->email->bcc('mansi@xinfin.org,atul@xinfin.org,rushabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org');
 			$this->email->set_mailtype('html');
 			$this->email->subject('Tradefinex Enquiry'); 
 			$this->email->message($message);
@@ -5347,13 +5347,10 @@ class Publicv extends CI_Controller {
 			$to_email = $this->input->post('memail'); 
 			$data['email'] = $this->input->post('memail');
 			$data['mmob'] = $this->input->post('mmob');
-
-			$message .= '<strong>Email : </strong>'.$this->input->post('memail').'<br/>';
-			$message .= '<strong>Contact : </strong>'.$this->input->post('mmob').'<br/>';
 			
 			$this->email->from($from_email, 'Support Tradefinex'); 
 			$this->email->to($to_email);
-			$this->email->bcc('mansi@xinfin.org');
+			$this->email->bcc('mansi@xinfin.org,atul@xinfin.org,rushabh@xinfin.org,rik@xinfin.org,omkar@xinfin.org');
 			$this->email->set_mailtype('html');
 			$this->email->subject('Tradefinex Case Study Request');
 			$mail_body = $this->load->view('templates/mails/case_study_mail_body', $data, TRUE);
