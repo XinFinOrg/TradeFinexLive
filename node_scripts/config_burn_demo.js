@@ -26,8 +26,7 @@ let threshold = 3000000000000000000000; // def set to 3000 XDC
 if (!_.isEmpty(argv["network"])) {
   if (Object.keys(networkConfig).includes(argv["network"])) {
     if (
-      _.isEmpty(networkConfig[argv["network"]].rpc) ||
-      _.isEmpty(networkConfig[argv["network"]].chainId)
+      _.isEmpty(networkConfig[argv["network"]].rpc)
     ) {
       console.log("error");
       console.log("incomplete setup for network ", argv["network"]);
