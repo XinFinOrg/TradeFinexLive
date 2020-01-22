@@ -5431,14 +5431,14 @@ class Publicv extends CI_Controller {
 			if($this->email->send()){ 
 				log_message("info","Email Sent successfully");
 				$data['status'] = 1;
-				return $data;
+				
 			}	
 			else{ 
 				log_message("error","Error in sending email");
 				$data['status'] = 0;
-				return $data;
+				
 			}	
-			
+			echo json_encode($data);
 		}
 	}
 
