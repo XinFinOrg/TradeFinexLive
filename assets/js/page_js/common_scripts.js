@@ -695,7 +695,7 @@ $(function () {
 			memail: "Please enter a valid email",
 			mcomp: {
 				required: "Please enter company name ",
-				minlength: "Company name should be atleast 3 charcters long",
+				minlength: "Company name should be atleast 3 characters long",
 				maxlength: "Characters length should not exceeded than 40"
 			},
 			// musertype: "Please choose a user type",
