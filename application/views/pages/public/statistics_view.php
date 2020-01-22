@@ -50,7 +50,7 @@
 					<div class="row flex-row">
 						<div class="col-md-4 col-sm-4 col-xs-6">
 							<div class="counterFact bgOffWhite">
-								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$loc_sum),'0'),'.')?></span></div>
+								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$rec_sum),'0'),'.')?></span></div>
 								<p>Receivables</p>
 							</div>
 						</div>
@@ -246,7 +246,7 @@
 						</div>
 						<div class="col-md-4 col-sm-4 col-xs-6">
 						<div class="counterFact bgOffWhiteShadow">
-							<div class="factTitle">$ <span class="counter"><?php echo $tot_sum?></span></div>
+							<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$tot_sum),'0'),'.')?></span></div>
 							<div class="tf-divider"><hr /></div>
 							<p>Trade Instruments worth</p>
 						</div>
@@ -465,14 +465,14 @@
 	
 	
 	
-	<!--Animated counters script start -->
+	<!--Animated counters script start 
     <script>
         $(document).ready(function() {
             $('.counter').each(function() {
                 $(this).prop('Counter', 0).animate({
                     Counter: $(this).text()
                 }, {
-                    duration: 1500,
+                    duration: 1000,
                     easing: 'swing',
                     step: function(now) {
                         //$(this).text(Math.ceil(now));
@@ -502,7 +502,17 @@
         jQuery(document).ready(function($) {
             $('.counter').counterUp({
                 delay: 10,
-                time: 1500,
+                time: 1000,
             });
-        });
+        });	
+		
+		
+		function numberWithCommas(x) {
+    		return x.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
+		}
+		$('.counter').each(function(){
+			var v_pound = $(this).html();
+			v_pound = numberWithCommas(v_pound);
+		$(this).html(v_pound)
+		})
     </script>
