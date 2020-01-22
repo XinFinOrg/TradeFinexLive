@@ -103,6 +103,7 @@
                                 <li> <a href="<?=base_url();?>publicv/brokers">For Brokers</a></li>
 								<li> <a href="<?=base_url();?>publicv/financier">For Financiers</a></li>
 								<li> <a href="<?=base_url();?>publicv/statistics">Statistics</a></li>
+								<li> <a href="<?=base_url();?>publicv/fees">Fees</a></li>
                             </ul>
                         </div>
                     </div>
