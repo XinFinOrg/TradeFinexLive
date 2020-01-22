@@ -16,7 +16,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <div class="section-title text-center noBorderAfter">
                         <h2 class="mb-10">Fees</h2>
-						<p>All fees for TradeFinex will be paid in XDC. Initially, fees will be a fixed amount of TradeFinex, which we may change periodically to maintain an approximate fiat value.</p>
+						<p>All fees for TradeFinex are payable in <a href="<?=base_url();?>publicv/xdc_liquidity">XDC</a>.</p>
                     </div>
                 </div>
             </div>
