@@ -796,7 +796,7 @@ $(function () {
 			loanp: {
 				required: "Please select your purpose of loan",
 			},
-			defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+			// defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
 		},
 		onkeyup: function (elem) {
 

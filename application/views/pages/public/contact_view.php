@@ -63,7 +63,7 @@
 								<div class="form-group">
 									<label for="defaultReal">Enter Captcha <sup>*</sup></label>
 										<input class="form-control" id="defaultReal" name="defaultReal" captchav="" autocomplete="" maxlength="50" required data-required-error="" tabindex="5" aria-required="true" type="text">
-										<div class="captcha-error has-error" style="display:none"><div class="help-block col-xs-12 col-sm-reset inline"><font color="red" style="margin-left: -10px;">Enter Letters Shown Above.</font></div>
+										<div class="captcha-error has-error" style="display:none"><div class="help-block col-xs-12 col-sm-reset inline"><font color="red" style="margin-left: -10px;">Please enter correct captcha (Letters are Case sensitive).</font></div>
 									</div><!-- Invalid Captcha ! -->
 								</div>
 								
