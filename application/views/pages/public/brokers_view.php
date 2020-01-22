@@ -385,7 +385,7 @@ function copy(containerid) {
     else if (window.getSelection) {
         var range = document.createRange();
         range.selectNode(document.getElementById(containerid));
-        window.getSelection().addRange(range);
+        // window.getSelection().addRange(range);
         document.execCommand("copy");
         toastr.success('Copied.', {timeOut: 2500});
     }
