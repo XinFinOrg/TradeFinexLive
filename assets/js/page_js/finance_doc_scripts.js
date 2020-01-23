@@ -826,16 +826,16 @@ $(function () {
 	});
 
 	$('#maturity_date').datepicker({
-			format: "dd-mm-yyyy",
-			minDate:0,
-			autoclose: true,
-			// todayHighlight: true,
-			startDate: '-0m'
-        //endDate: '+2d'
-		}).on('changeDate', function(ev){
-			$('#sDate1').text($('#datepicker').data('date'));
-			$('#datepicker').datepicker('hide');
-		});
+		format: "yyyy-mm-dd",
+		minDate:0,
+		autoclose: true,
+		// todayHighlight: true,
+		startDate: '-0m'
+	//endDate: '+2d'
+	}).on('changeDate', function(ev){
+		$('#sDate1').text($('#datepicker').data('date'));
+		$('#datepicker').datepicker('hide');
+	});
 		
 	
 	
