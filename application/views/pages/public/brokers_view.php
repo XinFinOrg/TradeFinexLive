@@ -179,6 +179,11 @@
                             </form>
                         </div>
                     </div>
+                    <div class="row" >
+                        <div class="form-group col-md-4 col-xs-4" style="float:right">
+                            <button  id="bulk" name="bulk" type="submit" class="btn btn-blue text-uppercase" disabled>Bulk Upload</button><p> (Coming Soon)</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="container"id="getdochash"style="display:none;">
