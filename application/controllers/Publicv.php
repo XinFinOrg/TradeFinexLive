@@ -2001,7 +2001,7 @@ class Publicv extends CI_Controller {
 		$stakedXDC = stakedXDC();
 		$split  = explode(' ',$stakedXDC);
 		$data['stakedXDC'] = $split[0];
-		$data['stakedXDCUSD'] = floatval(570000000 * $data['xdc_usd']);
+		$data['stakedXDCUSD'] = floatval($data['stakedXDC'] * $data['xdc_usd']);
 		
 		$rewards = todayRewards();
 		$data['rewards'] = floatval(31 * $rewards);
