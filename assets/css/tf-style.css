@@ -176,7 +176,7 @@ Home banner Tabbed
 */
 /*.nav-pills>li {text-align:center;color: #454545!important;font-weight: 600;border: 2px solid #d6e9f8!important;border-radius: 4px;width: 32.5%;font-size:90%;}*/
 .nav-pills {display: flex;}
-.nav-pills>li {text-align:center;color: #454545!important;font-weight: 600;border: 2px solid #d6e9f8!important;border-radius: 4px;flex: 1 1 auto;font-size:90%;}
+.nav-pills>li {text-align:center;color: #454545!important;font-weight: 600;border: 2px solid #d6e9f8!important;border-radius: 4px;flex: 1 1 auto;font-size:90%;font-weight:700;}
 .nav-pills>li+li {margin-left: 1%;}
 .nav-pills>li a {color: #454545!important;line-height: 26px;}
 .nav-pills>li:hover, .nav-pills>li a:hover {border-radius: 4px;background-color:#f6fbff;}
@@ -198,7 +198,7 @@ Home banner Tabbed
 }
 @media (max-width: 480px) {
 .tf-home-banner h2.head-title {font-size:24px;line-height:28px;}
-.nav-pills>li {font-size:10px;}
+.nav-pills>li {font-size:10px;-webkit-transform: scale(1, 1.1);}
 .nav-pills>li a {line-height: 16px;padding: 10px 8px;}
 }
 
@@ -212,6 +212,10 @@ Home banner Tabbed
 .tf-bottom-col-1 {width: 69%;display: inline-block;padding-top: 8px;}
 .tf-bottom-col-1 p {font-size: 15px;font-weight:400;line-height: 1.5;color: #687377;margin: 0px 20px 0 0;}
 .tf-bottom-col-2 {width: 29%;display: inline-block;padding-top: 8px;vertical-align: top;}
+@media only screen and (max-width: 1199px) and (min-width: 992px)  {
+.tf-bottom-col-2 {padding-top: 16px;}
+.tf-bottom-col-2 .tf-block {font-size:12px;}
+}
 @media (max-width: 767px) {
 .tf-bottom-col-1 {width:100%;}
 .tf-bottom-col-2 {width:100%;}
@@ -923,6 +927,14 @@ input.error, textarea.error, select.error {border-color: #ea212d!important;}
 .tf-terms-conditions_content ul {margin-left: 35px;}
 .tf-terms-conditions_content ul li {list-style: disc;line-height:1.5;margin-bottom: 10px;}
 
+
+/*-- What is Tradefinex --*/
+.tf-what-is-tradefinex .mobile-view {display:none;}
+@media (max-width: 576px) {
+.tf-what-is-tradefinex .desktop-view {display:none;}
+.tf-what-is-tradefinex .mobile-view {display:block;}
+}
+
 /*-----------------------------------------
 Inner Page Content
 -----------------------------------------*/
@@ -997,8 +1009,6 @@ Footer
   #statistics .section-title h3 {font-size:20px;}
   .counterFact .factTitle {font-size:20px;margin-bottom:0px;}
 }
-
-
 
 .tf-fees-bordered .tf-fees-view {border: 1px solid #e8e8e8;}
 .tf-fees-view {width: 100%;overflow: hidden;border-radius: 1px;border: 1px solid #e8e8e8;}
