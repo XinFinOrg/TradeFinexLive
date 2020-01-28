@@ -95,7 +95,7 @@
         <footer>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 mb-40">
+                    <div class="col-md-2 col-sm-6 mb-40">
                         <div class="widget widget-categories">
                             <h4 class="footer-title">Trade Instruments</h4>
                             <ul class="footer-list">                                
@@ -130,7 +130,7 @@
                             </ul>
                         </div>
                     </div>
-					<div class="col-md-2 col-sm-6 mb-40">
+					<div class="col-md-3 col-sm-6 mb-40">
                         <div class="widget widget-categories">
                             <h4 class="footer-title">Other Links</h4>
                             <ul class="footer-list">
@@ -138,6 +138,8 @@
                                 <li> <a href="http://events.tradefinex.org/" target="_blank">Consortium Event</a></li>
                                 <li> <a href="https://docs.tradefinex.org/faq/general/" target="_blank">FAQs</a></li>
 								<li> <a href="<?=base_url();?>publicv/media_center">Media Center</a></li>
+								<li> <a href="<?=base_url();?>publicv/private_distributed_ledger_solution"> Private Distributed Ledger Solution</a></li>
+								<li> <a href="<?=base_url();?>publicv/hybrid_distributed_ledger_solution"> Hybrid Distributed Ledger Solution</a></li>
                             </ul>
                         </div>
                     </div>

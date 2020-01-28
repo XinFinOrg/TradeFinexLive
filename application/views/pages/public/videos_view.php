@@ -88,6 +88,14 @@
                         <p>Apply for Trade Finance Funding on TradeFinex Network</p>
                     </div>
                 </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="video-frame">
+                        <div class="embed-container">
+                            <iframe src="https://www.youtube.com/embed/xA34M-D25rM?feature=oembed" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <p>Become an Financier on TradeFinex Network | Explained</p>
+                    </div>
+                </div>
             </div>
 				
     </div>
