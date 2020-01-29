@@ -349,6 +349,7 @@
                 <div class="row">
                     <div class="customer-logos slider">
                         <div class="slide"><img src="assets/images/partnerships-alliances/ramco_logo.png"></div>
+						<div class="slide"><img src="assets/images/partnerships-alliances/copper_logo.png"></div>
                         <div class="slide"><img src="assets/images/partnerships-alliances/temasek_logo.png"></div>
                         <div class="slide"><img src="assets/images/partnerships-alliances/aix_logo.png"></div>
                         <div class="slide"><img src="assets/images/partnerships-alliances/circle_logo.png"></div>
