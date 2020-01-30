@@ -210,15 +210,15 @@ $(function () {
 						// console.log(resp);
 						document.getElementById("custom").value = resp.privatekey;
 						var _custom = document.getElementById("custom");
-						// console.log(">>",$(_custom).val());
+						
 						$.post("paypal",{
 							'addr':resp.privatekey
 						}).then(resp => {
 							var jsona = $.parseJSON(resp);
-							// console.log("response : ",resp,jsona);
+							
 							if(jsona.length > 0){
 								if(parseFloat(jsona[0].tfpp_doc_redem) < 1){
-									// console.log("response1 : ",jsona);
+									
 									hideLoader();
 									$("#paypal").modal("show");
 									$('#paypal').css('opacity', '1');
@@ -261,7 +261,6 @@ $(function () {
 			const formObj = formData.trim().split('&');
 			var formDataObj = {};
 			var files = document.getElementById('uploaded_file').files;
-			// fileName = files[0].name.substring(0,3);
 			var dataFile;
 			var hash;
 			
@@ -288,7 +287,7 @@ $(function () {
 						}
 					})
 					formDataObj.docRef = (new Date()).getTime();
-					// console.log(">>>>",formDataObj.docRef);
+					
 					$.ajax({
 						type:"POST",
 						dataType:"json",
@@ -306,9 +305,9 @@ $(function () {
 							
 						}
 					}).done(resp => {
-					// .then(resp => {
+					
 						// console.log("response : ",resp);
-					// console.log('formDataObj>>>>>>>', JSON.stringify(coinData));
+					
 						if(resp.status == true){
 							hash = resp.hash;
 							$.post("https://tfd.xinfin.net/api/generateContract",{
@@ -324,7 +323,7 @@ $(function () {
 							}).then(resp => {
 								// console.log("response : ",resp);
 								if(resp.status == true){
-									// console.log(">>>>",document.getElementById("createinstrument"))
+									
 									passkey = resp.passKey,
 									hideLoader();
 									document.getElementById("createinstrument").style.display = "none";
@@ -514,7 +513,7 @@ $(function () {
 						// console.log(resp);
 						document.getElementById("custom").value = resp.privatekey;
 						var _custom = document.getElementById("custom");
-						// console.log(">>",$(_custom).val());
+						
 						$.post("paypal",{
 							'addr':resp.privatekey
 						}).then(resp => {
@@ -522,7 +521,7 @@ $(function () {
 							// console.log("response : ",resp,jsona);
 							if(jsona.length > 0){
 								if(parseFloat(jsona[0].tfpp_doc_redem) < 1){
-									// console.log("response1 : ",jsona);
+									
 									hideLoader();
 									$("#paypal").modal("show");
 									$('#paypal').css('opacity', '1');
@@ -564,8 +563,6 @@ $(function () {
 			const formObj = formData.trim().split('&');
 			var formDataObj = {};
 			var files = document.getElementById('uploaded_file').files;
-			// fileName = files[0].name.substring(0,3);
-			// console.log(">>>",fileName);
 			var dataFile;
 			var hash;
 			if (files.length > 0) {
@@ -591,7 +588,7 @@ $(function () {
 						}
 					})
 					formDataObj.docRef = (new Date()).getTime();
-					// console.log(">>>>",formDataObj.pcountry.replace(/[+]/g," "));
+					
 					$.ajax({
 						type:"POST",
 						dataType:"json",
@@ -604,15 +601,12 @@ $(function () {
 							console.log("response error: ",err)
 						}
 					}).done(resp => {
-					// .then(resp => {
+					
 						// console.log("response : ",resp);
-					// console.log('formDataObj>>>>>>>', JSON.stringify(coinData));
+					
 						if(resp.status == true){
 							hash = resp.hash;
-							// key = resp.key;
-							
-							// console.log(">>>>>>",ciphertext,"????????",originalText);
-
+					
 							$.post("https://tfd.xinfin.net/api/generateContract",{
 							"ipfsHash":hash,
 							"instrumentType":formDataObj.instrument,
@@ -627,7 +621,7 @@ $(function () {
 							}).then(resp => {
 								// console.log("response : ",resp);
 								if(resp.status == true){
-									// console.log(">>>>",document.getElementById("createinstrument"))
+									
 									passkey = resp.passKey,
 									hideLoader();
 									document.getElementById("createinstrument").style.display = "none";
@@ -930,8 +924,7 @@ $(function () {
 			 
 		},
 		submitHandler: function (form, e) {
-			// $('#contractdoc').prop('disabled', true);
-			e.preventDefault();
+			
 			showLoader();
 			var formData = $(form).serialize();
 			const formObj = formData.trim().split('&');
@@ -948,15 +941,14 @@ $(function () {
 							formDataObj[v[0]] = v[1];
 						}
 					})
-					// formDataObj.docRef = (new Date()).getTime();
-					// console.log(">>>>",formDataObj);
+					
 					$.ajax({
 						type: 'POST',
 						url: "get_passkey",
 						dataType:"json",
 						data: { 'pass': 'getpasskey', 'contractAddr': formDataObj.contract_address,csrf_name:csrf_value},
 						success: function(result){
-							// var jsona = $.parseJSON(result);
+						
 						//    console.log(result);
 						}
 					  }).done(resp => {
@@ -976,9 +968,9 @@ $(function () {
 								console.log("response error: ",err)
 							}
 						}).done(resp => {
-						// .then(resp => {
+						
 							// console.log("response : ",resp);
-							// console.log('formDataObj>>>>>>>', resp);
+							
 							e.preventDefault();
 							if(resp.status == true){
 								const hashUrl = `https://ipfs-gateway.xinfin.network/${resp.ipfsHash}`;
@@ -1048,8 +1040,7 @@ $(function () {
 			 
 		},
 		submitHandler: function (form, e) {
-			// $('#contractdoc').prop('disabled', true);
-			e.preventDefault();
+			
 			showLoader();
 			var formData = $(form).serialize();
 			const formObj = formData.trim().split('&');
@@ -1066,15 +1057,14 @@ $(function () {
 							formDataObj[v[0]] = v[1];
 						}
 					})
-					// formDataObj.docRef = (new Date()).getTime();
-					// console.log(">>>>",formDataObj);
+					
 					$.ajax({
 						type: 'POST',
 						url: "get_passkey",
 						dataType:"json",
 						data: { 'pass': 'getpasskey', 'contractAddr': formDataObj.contract_address,csrf_name:csrf_value},
 						success: function(result){
-							// var jsona = $.parseJSON(result);
+							
 						//    console.log(result);
 						}
 					  }).done(resp => {
@@ -1094,9 +1084,9 @@ $(function () {
 							console.log("response error: ",err)
 						}
 							}).done(resp => {
-							// .then(resp => {
+							
 								// console.log("response : ",resp);
-								console.log('formDataObj>>>>>>>', resp);
+								
 								e.preventDefault();
 								if(resp.status == true){
 									const hashUrl = `https://ipfs-gateway.xinfin.network/${resp.ipfsHash}`;
