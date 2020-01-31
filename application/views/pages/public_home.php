@@ -31,7 +31,7 @@
                     <div class="tab-content clearfix">
                         <div class="tab-pane active" id="1b">
                             <div class="tf-img-container">
-                                <img src="assets/images/banner/for-buyers-suppliers_screen.jpg" alt="" />
+                                <img src="assets/images/banner/for-buyers-suppliers_screen.jpg" alt="Banner1" />
                                 <div class="tf-bottom-box img-footer">
                                     <div class="tf-home-hero-right-col-text">
                                         <h2>For Buyers / Suppliers</h2>
@@ -49,7 +49,7 @@
 						
 						<div class="tab-pane" id="2b">
                             <div class="tf-img-container">
-                                <img src="assets/images/banner/for-suppliers_screen.jpg" alt="" />
+                                <img src="assets/images/banner/for-suppliers_screen.jpg" alt="Supplier-Banner" />
                                 <div class="tf-bottom-box img-footer">
                                     <div class="tf-home-hero-right-col-text">
                                         <h2>For Brokers</h2>
@@ -67,7 +67,7 @@
 						
 						<div class="tab-pane" id="3b">
                             <div class="tf-img-container">
-                                <img src="assets/images/banner/for-financiers_screen.jpg" alt="" />
+                                <img src="assets/images/banner/for-financiers_screen.jpg" alt="Financier-Banner" />
                                 <div class="tf-bottom-box img-footer">
                                     <div class="tf-home-hero-right-col-text">
                                         <h2>For Financiers</h2>
@@ -348,17 +348,17 @@
 
                 <div class="row">
                     <div class="customer-logos slider">
-                        <div class="slide"><img src="assets/images/partnerships-alliances/ramco_logo.png"></div>
-						<div class="slide"><img src="assets/images/partnerships-alliances/copper_logo.png"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/temasek_logo.png"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/aix_logo.png"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/circle_logo.png"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/r3Marketplace_logo.png"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/adgm_logo.png"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/assocham_logo.png"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/indsoft_logo.png"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/nanyang_logo.png"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/omfif_logo.png"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/ramco_logo.png" alt="Ramco"></div>
+						<div class="slide"><img src="assets/images/partnerships-alliances/copper_logo.png" alt="Copper"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/temasek_logo.png" alt="Temasek"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/aix_logo.png" alt="AIX"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/circle_logo.png" alt="Circle"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/r3Marketplace_logo.png" alt="R3-Marketplace"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/adgm_logo.png" alt="ADGM"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/assocham_logo.png" alt="Assocham"> </div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/indsoft_logo.png" alt="IndSoft"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/nanyang_logo.png"> alt="Nanyang"</div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/omfif_logo.png" alt="OMFIF"></div>
                     </div>
                 </div>
             </div>
