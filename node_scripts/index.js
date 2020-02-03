@@ -478,7 +478,7 @@ const contractAbi = [
 ];
 
 const web3 = new Web3(
-  new Web3.providers.HttpProvider("http://rpc.xinfin.network")
+  new Web3.providers.HttpProvider("https://rpc.xinfin.network")
 );
 const contarctInst = new web3.eth.Contract(
   contractAbi,
