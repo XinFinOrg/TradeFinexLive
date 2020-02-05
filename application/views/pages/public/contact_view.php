@@ -57,23 +57,26 @@
 								
 								<div class="form-group">
 									<label for="mmsg">Message <sup>*</sup></label>
-									<textarea class="form-control" id="mmsg" name="mmsg"></textarea>
+									<textarea class="form-control" id="mmsg" name="mmsg" tabindex="5"></textarea>
 								</div>
 								
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label for="defaultReal">Enter Captcha <sup>*</sup></label>
-										<input class="form-control" id="defaultReal" name="defaultReal" captchav="" autocomplete="" maxlength="50" required data-required-error="" tabindex="5" aria-required="true" type="text">
+										<input class="form-control" id="defaultReal" name="defaultReal" captchav="" autocomplete="off" maxlength="50" required data-required-error="" tabindex="5" aria-required="true" type="text" onchange="grecaptcha.execute()">
 										<div class="captcha-error has-error" style="display:none"><div class="help-block col-xs-12 col-sm-reset inline"><font color="red" style="margin-left: -10px;">Please enter correct captcha (Letters are Case sensitive).</font></div>
-									</div><!-- Invalid Captcha ! -->
-								</div>
-								
+									</div> Invalid Captcha ! -->
+								<!-- </div>  -->
 								<div class="form-group">
-									<input type="hidden" name="action" value="send_mail" /><input type="hidden" id="captcha_val" />
+									<div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('recaptcha_site_key'); ?>" ></div>
+									<label style="display:none;color:#ea212d;font-size: 12px;" id="captcha_id" name="captcha_id">Please verify the captcha.</label>
+								</div>
+								<div class="form-group">
+									<input type="hidden" name="action" value="send_mail" />
 									<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 								</div>
 								
 								<div class="form-group">
-									<button type="submit" class="btn btn-blue text-uppercase" onclick="return subcontact()"> Submit</button>
+									<input type="submit" class="btn btn-blue text-uppercase" id="contact" name="contact" ></input>
 								</div>
 								
                             </form>
@@ -110,8 +113,40 @@ function subcontact() {
 
     // e.preventDefault(); // avoid to execute the actual submit of the form.
 }
-</script>
 
+</script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</script>
+<script type="text/javascript">
+ $(document).ready(function(){
+
+$('#contact-form').on('submit', function(event){
+	var myurl = '<?php echo base_url()?>publicv/contact';
+	var response = grecaptcha.getResponse();
+	if(response.length != 0){
+		document.getElementById('captcha_id').style.display = 'none';
+		$.ajax({
+			url:myurl,
+			method:"POST",
+			data:$(this).serialize(),
+			dataType:"json",
+			success: function(data)
+				{
+					// alert(data); // show response from the php script.
+				}
+		})
+	}
+	else{
+		// alert("please verify you are humann!"); 
+		document.getElementById('captcha_id').style.display = 'block';
+		event.preventDefault();
+		return false;
+	}
+			
+});
+
+});
+</script>
 
 <?php
 	//$this->load->view('includes/block_features');	

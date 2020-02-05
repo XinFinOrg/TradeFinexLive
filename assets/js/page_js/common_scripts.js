@@ -662,12 +662,7 @@ $(function () {
 				EmailGeneral: true,
 				required: true
 			},
-			mmob: {
-				required: false,
-				//numberOnly: true,
-				mobilenumberOnly: true
-
-			},
+			
 			mcomp: {
 				required: true,
 				minlength: 3,
@@ -699,7 +694,7 @@ $(function () {
 				maxlength: "Characters length should not exceeded than 40"
 			},
 			// musertype: "Please choose a user type",
-			menquiry: "Please choose Your enquiry type",
+			// menquiry: "Please choose Your enquiry type",
 			// mmob: {
 			// 	required: "Please enter a valid mobile number"
 			// },
