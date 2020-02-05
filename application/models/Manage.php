@@ -125,9 +125,12 @@
 		}
 
 		public function update_base_user_info_by_id($id, $data){
-$data1 = [
-            'tfu_passwd' => $data,
-        ];
+			$data1 = [
+				'tfu_passwd' => $data,
+			];
+			$data1 = [
+				'tfu_active' => $data,
+			];
 			$where = "tfu_id = '$id'";
 			$this->db->where($where);
 			$res = $this->db->update('{PRE}user', $data1);
@@ -1429,7 +1432,7 @@ $data1 = [
 
 			$addr = $data_add['cm'];
 			$data2 = [
-				'tfpp_doc_redem' => 1,
+				'tfpp_doc_redem' => floatval($data_add['amt']) / 10,
 			];
 			$this->db->select('*');
 			$this->db->from('{PRE}paypal_payment');
@@ -1456,6 +1459,19 @@ $data1 = [
 		}
 		public function update_paypalpayment_by_txn($addr, $doc){
 
+			$this->db->select('tfpp_doc_redem');
+			$this->db->from('{PRE}paypal_payment');
+			$where = "tfpp_address ='$addr'";
+			$this->db->where($where);
+			$query = $this->db->get();
+
+			$document = $query->result();
+
+			foreach($document as $docu){
+				$doc = $docu->tfpp_doc_redem;
+			}
+
+			log_message("info","address redem".$doc);
 			$datan = array();
 			$data1 = [
 				'tfpp_doc_redem' => floatval($doc) - 1,
