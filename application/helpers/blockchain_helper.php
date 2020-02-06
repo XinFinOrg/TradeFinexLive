@@ -306,3 +306,30 @@ if (!function_exists('todayRewards'))
         
     }
 }
+
+if (!function_exists('xdcVolume'))
+{
+    function xdcVolume()
+    {
+        try{
+            $CI =& get_instance();
+            $CI->load->library('curl');
+            
+            $rcurlxdc = $CI->curl->simple_get('https://api2.alphaex.net/api/xdcVolume');
+            
+            if($rcurlxdc){
+                $rcurlxdca = json_decode($rcurlxdc);
+                log_message("info","XDC Volume".$rcurlxdc);
+            }
+		
+		return $rcurlxdca;
+    
+        
+        }
+        catch (Exception $e) {
+            log_message("error".$e->getMessage());
+            return '0';
+        }
+        
+    }
+}
