@@ -1992,7 +1992,8 @@ class Publicv extends CI_Controller {
 		foreach($show as $sh) {
 	
 		$data['xdc_usd'] = $sh->price_usd;
-		$data['xdvolume'] = $sh->{'24h_volume_usd'};
+		$xdcVolume = floatval($data['xdc_usd'] * $alphaXDCVolume->xdcVolume);
+			$data['xdvolume'] = floatval($sh->{'24h_volume_usd'} + $xdcVolume) ;
 		
 		}
 		$data['marketCap'] = floatval( $data['totalXDC'] * $data['xdc_usd']);
