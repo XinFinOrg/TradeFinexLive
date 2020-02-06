@@ -342,6 +342,7 @@ $(function () {
 										"country":formDataObj.pcountry.replace(/[+]/g," "),
 										"contractType":"commonInstrument",
 										"passKey" :passkey,
+										"nonceAdder":0,
 										"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key
 										}).then(resp => {
 											// console.log("response : ",resp);
@@ -641,6 +642,7 @@ $(function () {
 										"name":"BKR-"+formDataObj.name.replace(/[+]/g," "),
 										"contractType":"brokerInstrument",
 										"passKey" :passkey,
+										"nonceAdder":0,
 										"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key
 										}).then(resp => {
 											// console.log("response : ",resp);
