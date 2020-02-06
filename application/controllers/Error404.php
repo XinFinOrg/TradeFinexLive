@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Error extends CI_Controller {
+class Error404 extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
@@ -10,7 +10,7 @@ class Error extends CI_Controller {
 		$this->output->delete_cache();
 	}
 	
-	public function p404()
+	public function index()
 	{
 		$data = array();
 		$result = array();
