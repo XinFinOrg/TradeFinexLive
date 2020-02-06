@@ -2174,55 +2174,54 @@ class Publicv extends CI_Controller {
 			else{
 				$data['response'] = $response_data->success;
 				log_message("info","Captcha Verified".$response_data->success);
-				if($action == 'send_mail'){
-					$config = array();
-					$config = $this->config->item('$econfig');
-								
-					$this->email->initialize($config);
-					// $this->email->cc('another@another-example.com');
-					// $this->email->bcc('them@their-example.com');
-					
-					$suser = $this->manage->get_superadmin();
-					
-					$from_email = 'contact@tradefinex.org'; 
-					$to_email = $this->input->post('memail'); 
-							
-					$message = '<strong>Name : </strong>'.ucwords($this->input->post('mname')).'<br/>';
-					$message .= '<strong>Email : </strong>'.$this->input->post('memail').'<br/>';
-					$message .= '<strong>Contact : </strong>'.$this->input->post('mmob').'<br/>';
-					$message .= '<strong>Company : </strong>'.$this->input->post('mcomp').'<br/>';
-					// $message .= '<strong>User Type : </strong>'.$this->input->post('musertype').'<br/>';
-					// $message .= '<strong>Service Type : </strong>'.$this->input->post('menquiry').'<br/>';
-					$message .= '<strong>Message : </strong>'.$this->input->post('mmsg').'<br/>';
-					
-					$this->email->from($from_email, 'Support Tradefinex'); 
-					$this->email->to($to_email);
-					$this->email->bcc($from_email);
-					$this->email->set_mailtype('html');
-					$this->email->subject('Tradefinex Enquiry'); 
-					$this->email->message($message);
-							
-					// Send mail ** Our customer support team will respond to your query as soon as possible. Please find below the details of the query submitted.
-					if($this->email->send()){ 
-						log_message("info","mail sent");
-						$this->session->set_flashdata('msg_type', 'success');
-						$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Sent</h4>"); 
-						$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Thank you for your query. Your query has been received. Our customer support team will respond to your query as soon as possible.</h3>"); 
-					}	
-					else{ 
-						log_message("error","mail not sent");
-						$this->session->set_flashdata('msg_type', 'error');
-						$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't be Sent</h4>"); 
-						$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Error in sending Email. Please try again.</h3>");
-					}
-					redirect(base_url().'thankyouc');
-				}
+				
 			}
 				
-		}	
-
-			
+		}
 		
+		if($action == 'send_mail'){
+			$config = array();
+			$config = $this->config->item('$econfig');
+						
+			$this->email->initialize($config);
+			// $this->email->cc('another@another-example.com');
+			// $this->email->bcc('them@their-example.com');
+			
+			$suser = $this->manage->get_superadmin();
+			
+			$from_email = 'contact@tradefinex.org'; 
+			$to_email = $this->input->post('memail'); 
+					
+			$message = '<strong>Name : </strong>'.ucwords($this->input->post('mname')).'<br/>';
+			$message .= '<strong>Email : </strong>'.$this->input->post('memail').'<br/>';
+			$message .= '<strong>Contact : </strong>'.$this->input->post('mmob').'<br/>';
+			$message .= '<strong>Company : </strong>'.$this->input->post('mcomp').'<br/>';
+			// $message .= '<strong>User Type : </strong>'.$this->input->post('musertype').'<br/>';
+			// $message .= '<strong>Service Type : </strong>'.$this->input->post('menquiry').'<br/>';
+			$message .= '<strong>Message : </strong>'.$this->input->post('mmsg').'<br/>';
+			
+			$this->email->from($from_email, 'Support Tradefinex'); 
+			$this->email->to($to_email);
+			$this->email->bcc($from_email);
+			$this->email->set_mailtype('html');
+			$this->email->subject('Tradefinex Enquiry'); 
+			$this->email->message($message);
+					
+			// Send mail ** Our customer support team will respond to your query as soon as possible. Please find below the details of the query submitted.
+			if($this->email->send()){ 
+				log_message("info","mail sent");
+				$this->session->set_flashdata('msg_type', 'success');
+				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Sent</h4>"); 
+				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Thank you for your query. Your query has been received. Our customer support team will respond to your query as soon as possible.</h3>"); 
+			}	
+			else{ 
+				log_message("error","mail not sent");
+				$this->session->set_flashdata('msg_type', 'error');
+				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Email Can't be Sent</h4>"); 
+				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Error in sending Email. Please try again.</h3>");
+			}
+			redirect(base_url().'thankyouc');
+		}
 		
 		$this->load->view('includes/headern', $data);
 		$this->load->view('includes/header_publicn', $data);
@@ -5413,24 +5412,12 @@ class Publicv extends CI_Controller {
 		}
 		
 	}
-	public function gitpull(){
+	public function gitPull() {
 		
-		$data = array();
-		
-		$data['csrf'] = array();
-		
-		$csrf = array(
-			'name' => $this->security->get_csrf_token_name(),
-			'hash' => $this->security->get_csrf_hash()
-		);
-		
-		$data['csrf'] = $csrf;
-		
-		$curl = curl_init();
+		//make sure to make the shell file executeable first before running the shell_exec function
+		$output = shell_exec('git pull origin devnew');
+		echo $output;
 
-		
-		echo json_encode($data);
-				
 	}
 	public function test(){
 		
