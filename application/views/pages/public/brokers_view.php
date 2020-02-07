@@ -28,13 +28,12 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="section-title text-center pb-30">
                             <h2 class="mb-0">Apply for Funding</h2><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                            ( <a href="https://www.youtube.com/embed/4bK1CrfaFf4?feature=oembed" target="_blank"  allowfullscreen>How to apply for funding?
-                        </a>)
+                            ( <a class="video-popup" href="https://www.youtube.com/watch?v=4bK1CrfaFf4">How to apply for funding?</a> )
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row" id = "brokers">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="tf-buyer-supplier_form-block">
                             <!-- <form id="brokers_form" class="tf-suppliers-form" enctype="multipart/form-data" method="post"> -->
@@ -179,12 +178,15 @@
                             </form>
                         </div>
                     </div>
-                    <div class="row" >
-                        <div class="form-group col-md-4 col-xs-4" style="float:right">
-                            <button  id="bulk" name="bulk" type="submit" class="btn btn-blue text-uppercase" disabled>Bulk Upload</button><p> (Coming Soon)</p>
-                        </div>
+                    
+					<div class="col-md-8 col-md-offset-2 mt-5">
+                            <div class="form-group text-right">
+                                <button  id="bulk" name="bulk" type="submit" class="btn btn-blue text-uppercase" onclick="location.href='<?php echo base_url() ?>publicv/multiBrokers'" disabled>Bulk Upload</button><p> (Coming Soon)</p>
+                            </div>
                     </div>
+					
                 </div>
+                
             </div>
             <div class="container"id="getdochash"style="display:none;">
                 <div class="row">
@@ -333,7 +335,7 @@
                 </div>
 				<div class="modal-body text-center">
                         <div class="deployedData_modal_block">
-							<p>Pay for your document through Paypal</p>
+                        <p>Pay 10 USD for your document through Paypal</p><br>
 							<!--<p id="deployedData" style="word-break: break-all;"></p>-->
 						<form action="<?php echo PAYPAL_URL; ?>" method="post">
 							<!-- Identify your business so that you can collect the payments. -->
@@ -366,6 +368,52 @@
 			</div>
 	 	</div>
 </div>
+<div class="modal fade" id="bulkPaypal" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog" style="">
+		<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
+			<div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="location.reload()" data-dismiss="modal"> <span class="hidden-xs">&times;</span> <span class="hidden-md hidden-lg"> <img src="<?php echo base_url() ?>assets/images/icon/log_arrow.png"  alt="icon" /></span> </button>
+                </div>
+				<div class="modal-body text-center">
+                        <div class="deployedData_modal_block">
+                        <p>Pay 10 USD for your document through Paypal</p><br>
+				
+						<form action="<?php echo PAYPAL_URL; ?>" method="post">
+							<!-- Identify your business so that you can collect the payments. -->
+                            <input type="hidden" name="business" value="<?php echo PAYPAL_ID; ?>">
+
+                            <div class="form-group" id="email_set">
+                                    <input class="form-control" id="numberDoc" onchange="docNumber()" name="numberDoc" type="text" autocomplete="off" placeholder="Number of Documents" >
+                                    
+                            </div>
+                            <!-- Specify a Buy Now button. -->
+                            <input type="hidden" name="cmd" value="_xclick">
+
+                            <!-- Specify details about the item that buyers will purchase. -->
+                            <input type="hidden" name="item_name" value="Document">
+                            <input type="hidden" name="item_number" value="1">
+                            <input type="hidden" id="bulkAmount" name="amount" value="10">
+                            <input type="hidden" id="customm"name="custom" value="0">
+                            <input type="hidden" name="currency_code" value="USD">
+
+                            <!-- Specify URLs -->
+                            <input type='hidden' name='cancel_return' value='<?php echo PAYPAL_CANCEL_URL; ?>'>
+                            <input type='hidden' name='return' value='<?php echo base_url() ?>publicv/brokers'>
+                            <input type='hidden' name='rm' value='2'>
+
+                            
+								
+                            </div>
+                            <div class="form-group">
+								<button id="bulkMembership_payment" type="submit" class="btn btn-blue text-uppercase" data-keyboard="false">Pay Now</button>
+							</div>	
+                            </form>							
+						</div>
+				</div>
+			</div>
+	 	</div>
+</div>
 
 <script type="text/javascript">
 function docShow(){
@@ -390,7 +438,7 @@ function copy(containerid) {
     else if (window.getSelection) {
         var range = document.createRange();
         range.selectNode(document.getElementById(containerid));
-        // window.getSelection().addRange(range);
+        window.getSelection().addRange(range);
         document.execCommand("copy");
         toastr.success('Copied.', {timeOut: 2500});
     }
@@ -452,6 +500,15 @@ function mail(){
         })// show response from the php script.
         })
 }
+
+
+
+function docNumber(){
+    var amountt = document.getElementById("numberDoc").value;
+    document.getElementById("bulkAmount").value = amountt*10;
+    // console.log("??1",document.getElementById("bulkAmount").value);
+}
+
 </script>
 <?php
         $this->load->view('includes/footer_commonn', $data);
@@ -472,5 +529,19 @@ function mail(){
 <!-- Form Skip to next Heading -->
 
 
+<!-- Video Link Lightbox -->
+<script type = "text/javascript" >
+$('.video-popup').magnificPopup({
+  type: 'iframe',
+  iframe: {
+    patterns: {
+      youtube: {
+        index: 'youtube.com',
+        src: 'https://www.youtube.com/embed/4bK1CrfaFf4'
 
-
+      }
+    }
+  }
+});
+</script>
+<!-- Video Link Lightbox -->

@@ -105,8 +105,8 @@
 
             <div class="row">
                 <div class="col-md-12 tf-what-is-tradefinex">
-                    <img src="assets/banner-assets/images/inner-banner/what-is-tradefinex.png" class="img-responsive desktop-view" />
-					<img src="assets/banner-assets/images/inner-banner/what-is-tradefinex_mobileview.png" class="img-responsive mobile-view" />
+                    <img src="assets/banner-assets/images/inner-banner/what-is-tradefinex.jpg" class="img-responsive desktop-view" />
+					<img src="assets/banner-assets/images/inner-banner/what-is-tradefinex_mobileview.jpg" class="img-responsive mobile-view" />
                 </div>                
             </div>
         </div>

@@ -28,8 +28,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="section-title text-center pb-30">
                             <h2 class="mb-0">Apply for Funding</h2><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                            ( <a href="https://www.youtube.com/embed/4bK1CrfaFf4?feature=oembed" target="_blank"  allowfullscreen>How to apply for funding?
-                        </a>)
+                            ( <a class="video-popup" href="https://www.youtube.com/watch?v=4bK1CrfaFf4">How to apply for funding?</a> )
                         </div>
                     </div>
                 </div>
@@ -40,7 +39,7 @@
                             <!-- <form id="suppliers_form" class="tf-suppliers-form" enctype="multipart/form-data" method="post"> -->
                             <?php
                                 $attributes = array('id' => 'suppliers_form', 'class' => 'tf-suppliers-form', 'method' => 'post', 'role' => 'form');
-                                echo form_open_multipart(base_url().'publicv/buyer_supplier', $attributes);
+                                echo form_open_multipart(base_url().'publicv/buyersupplier', $attributes);
                             ?>
                                 <!-- <div class="form-group">
                                     <label for="private-key">Enter Address </label>
@@ -153,7 +152,7 @@
 
                                 <div class="form-group">
                                     <label for="supporting-document">Upload all supporting documents like Credit Report, KYC, and Business Profile as one PDF file.**Max file size 10 MB</label>
-                                    <div class="input-group">
+									 <div class="input-group">
                                         <span class="input-group-btn">
                                         <span class="btn btn-primary" onClick="$(this).parent().find('input[type=file]').click();">Browse</span>
                                         <input name="uploaded_file" id = "uploaded_file"onChange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());" accept=",.pdf" style="display: none;" type="file">
@@ -332,7 +331,7 @@
                 </div>
 				<div class="modal-body text-center">
                         <div class="deployedData_modal_block">
-							<p>Pay for your document through Paypal</p>
+							<p>Pay 10 USD for your document through Paypal</p><br>
 							<!--<p id="deployedData" style="word-break: break-all;"></p>-->
 						<form action="<?php echo PAYPAL_URL; ?>" method="post">
 							<!-- Identify your business so that you can collect the payments. -->
@@ -471,6 +470,19 @@ function mail(){
 </script>
 <!-- Form Skip to next Heading -->
 
+<!-- Video Link Lightbox -->
+<script type = "text/javascript" >
+$('.video-popup').magnificPopup({
+  type: 'iframe',
+  iframe: {
+    patterns: {
+      youtube: {
+        index: 'youtube.com',
+        src: 'https://www.youtube.com/embed/4bK1CrfaFf4'
 
-
-
+      }
+    }
+  }
+});
+</script>
+<!-- Video Link Lightbox -->
