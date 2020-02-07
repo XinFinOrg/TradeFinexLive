@@ -16,10 +16,6 @@ class Error404 extends CI_Controller {
 		$result = array();
 		
 		$data['page'] = 'error404';
-		$data['msg'] = '';
-		$data['user_id'] = 0;
-		$data['user_type'] = '';
-		$data['full_name'] = '';
 		
 		$data['csrf'] = array();
 		
@@ -29,17 +25,6 @@ class Error404 extends CI_Controller {
 		);
 		
 		$data['csrf'] = $csrf;
-			
-		$user = $this->session->userdata('logged_in');
-		
-		if($user && !empty($user) && sizeof($user) <> 0){
-			$data['full_name'] = $user['user_full_name'];
-			$data['user_id'] = $user['user_id'];
-			$data['user_type'] = str_replace('-', ' ', $user['user_type']);
-			$data['user_type_ref'] = $user['user_type_ref'];
-		}else{
-		
-		}
 		
 		$this->load->view('includes/headern', $data);
 		$this->load->view('includes/header_publicn', $data);
