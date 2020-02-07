@@ -7,7 +7,11 @@ class Error404 extends CI_Controller {
 		parent::__construct();
         $this->load->helper(array('form', 'url', 'date', 'xdcapi'));
 		$this->load->library(array('session', 'encrypt', 'email'));
-		$this->output->delete_cache();
+		$this->load->model(array('plisting', 'manage'));
+		// $this->output->cache(0.5);
+		$this->config->load('emailc');
+		$data = array();
+		$data_add = array();
 	}
 	
 	public function index()
