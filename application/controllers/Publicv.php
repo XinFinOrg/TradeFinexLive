@@ -1985,35 +1985,25 @@ class Publicv extends CI_Controller {
 			
 		}
 		$data['tot_sum'] = floatval($data['rec_sum'] + $data['wr_sum'] + $data['oth_sum'] + $data['loc_sum'] + $data['sblc_sum'] + $data['pay_sum'] + $data['bg_sum']);
-		$totalXDC = totalXDC();
-		$data['totalXDC'] = $totalXDC->result;
-		$show = cmcModule();
-		$alphaXDCVolume = xdcVolume();	
-			
-		foreach($show as $sh) {
-	
-		$data['xdc_usd'] = $sh->price_usd;
-		$xdcVolume = floatval($data['xdc_usd'] * $alphaXDCVolume->xdcVolume);
-			$data['xdvolume'] = floatval($sh->{'24h_volume_usd'} + $xdcVolume) ;
+		$allStats = getXinFinStats();
 		
-		}
-		$data['marketCap'] = floatval( $data['totalXDC'] * $data['xdc_usd']);
-		$data['xdc_burnt'] = getXDCburntValue();
-		$data['xdcMasternode'] = getmasternode();
-		$stakedXDC = stakedXDC();
-		$split  = explode(' ',$stakedXDC);
-		$data['stakedXDC'] = $split[0];
-		$data['stakedXDCUSD'] = floatval($data['stakedXDC'] * 1000000 * $data['xdc_usd']);
+		$data['xdc_usd'] = $allStats->priceUsd;
+		$data['xdvolume'] = $allStats->xdcVol24HR ;
 		
-		$rewards = todayRewards();
-		$data['rewards'] = floatval(31 * $rewards);
-		$data['rewardsUSD'] = floatval($data['rewards'] * $data['xdc_usd']);
+		$data['marketCap'] = $allStats->totalXDCFiat;
+		$data['xdc_burnt'] = $allStats->burntBalance;
+		$data['xdcMasternode'] = $allStats->totalMasterNodes;
+		$data['stakedXDC'] = $allStats->totalStakedValue;
+		$data['stakedXDCUSD'] = $allStats->totalStakedValueFiat;
+		
+		$data['rewards'] = $allStats->monthlyRewards;
+		$data['rewardsUSD'] = $allStats->monthlyRewardsFiat;
 
 		$utility = $this->manage->get_instrument_value();
-		$data['utility'] = 30 + floatval(10 * $utility);
+		$data['utility'] = floatval(10 * $utility);
 
-		$data['percent'] = floatval(($data['rewards'] / 10000000) * 100);
-		$data['percent_year'] = floatval($data['percent'] * 12); 
+		$data['percent'] = $allStats->monthlyRewardPer;
+		$data['percent_year'] = $allStats->yearlyRewardPer;
 		// echo  $data['utility'] ;
 		// die;
 		

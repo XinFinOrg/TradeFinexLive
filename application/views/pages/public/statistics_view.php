@@ -50,7 +50,7 @@
 					<div class="row flex-row">
 						<div class="col-md-4 col-sm-4 col-xs-6">
 							<div class="counterFact bgOffWhite">
-								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$rec_sum),'0'),'.')?></span></div>
+								<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$loc_sum),'0'),'.')?></span></div>
 								<p>Receivables</p>
 							</div>
 						</div>
@@ -370,7 +370,7 @@
 				<div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgOffWhiteShadow">
 					<a href="https://explorer.xinfin.network/addr/xdc0000000000000000000000000000000000000000" target="_blank">
-					<div class="factTitle"><?php echo $xdc_burnt?> </div>
+					<div class="factTitle"><span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$xdc_burnt),'0'),'.')?></span> XDC</div>
 						<div class="tf-divider"><hr /></div>
                     	<p>XDC Protocol tokens sent to burning contract for Fee processing</p></a>
                 	</div>
@@ -400,8 +400,8 @@
                 </div>
 				<div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgOffWhiteShadow">
-					<a href="https://explorer.xinfin.network/addr/xdc0000000000000000000000000000000000000088" target="_blank">
-                        <div class="factTitle"><span class="counter"><?php echo $stakedXDC ?></span> Million XDC</div>
+					<a href="https://explorer.xinfin.network/addr/xdc0000000000000000000000000000000000000000" target="_blank">
+                        <div class="factTitle"><span class="counter"><?php echo $stakedXDC ?></span> XDC</div>
 						<div class="tf-divider"><hr /></div>
                     	<p>Total capital locked in XDC Masternodes</p></a>
                 	</div>

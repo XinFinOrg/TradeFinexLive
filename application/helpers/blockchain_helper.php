@@ -172,154 +172,181 @@ if (!function_exists('burnXDC'))
     }
 }
 
-if (!function_exists('getXDCburntValue'))
-{
-    function getXDCburntValue()
-    {
-        try{
-            $CI =& get_instance();
-            $CI->load->library('curl');
+// if (!function_exists('getXDCburntValue'))
+// {
+//     function getXDCburntValue()
+//     {
+//         try{
+//             $CI =& get_instance();
+//             $CI->load->library('curl');
             
-            $rcurlxdc = $CI->curl->simple_post('https://explorerapi.xinfin.network/totalBurntValue');
+//             $rcurlxdc = $CI->curl->simple_post('https://explorerapi.xinfin.network/totalBurntValue');
             
-            if($rcurlxdc){
-                $rcurlxdca = json_decode($rcurlxdc);
-                log_message("info","XDC Burnt".$rcurlxdc);
-            }
+//             if($rcurlxdc){
+//                 $rcurlxdca = json_decode($rcurlxdc);
+//                 log_message("info","XDC Burnt".$rcurlxdc);
+//             }
 		
-		return $rcurlxdc;
+// 		return $rcurlxdc;
     
         
-        }
-        catch (Exception $e) {
-            log_message("error".$e->getMessage());
-            return '0';
-        }
+//         }
+//         catch (Exception $e) {
+//             log_message("error".$e->getMessage());
+//             return '0';
+//         }
         
-    }
-}
+//     }
+// }
 
-if (!function_exists('getmasternode'))
-{
-    function getmasternode()
-    {
-        try{
-            $CI =& get_instance();
-            $CI->load->library('curl');
+// if (!function_exists('getmasternode'))
+// {
+//     function getmasternode()
+//     {
+//         try{
+//             $CI =& get_instance();
+//             $CI->load->library('curl');
             
-            $rcurlxdc = $CI->curl->simple_post('https://explorerapi.xinfin.network/totalMasterNodes');
+//             $rcurlxdc = $CI->curl->simple_post('https://explorerapi.xinfin.network/totalMasterNodes');
             
-            if($rcurlxdc){
-                $rcurlxdca = json_decode($rcurlxdc);
-                log_message("info","XDC masternodes".$rcurlxdc);
-            }
+//             if($rcurlxdc){
+//                 $rcurlxdca = json_decode($rcurlxdc);
+//                 log_message("info","XDC masternodes".$rcurlxdc);
+//             }
 		
-		return $rcurlxdc;
+// 		return $rcurlxdc;
     
         
-        }
-        catch (Exception $e) {
-            log_message("error".$e->getMessage());
-            return '0';
-        }
+//         }
+//         catch (Exception $e) {
+//             log_message("error".$e->getMessage());
+//             return '0';
+//         }
         
-    }
-}
+//     }
+// }
 
-if (!function_exists('stakedXDC'))
-{
-    function stakedXDC()
-    {
-        try{
-            $CI =& get_instance();
-            $CI->load->library('curl');
+// if (!function_exists('stakedXDC'))
+// {
+//     function stakedXDC()
+//     {
+//         try{
+//             $CI =& get_instance();
+//             $CI->load->library('curl');
             
-            $rcurlxdc = $CI->curl->simple_post('https://explorerapi.xinfin.network/totalStakedValue');
+//             $rcurlxdc = $CI->curl->simple_post('https://explorerapi.xinfin.network/totalStakedValue');
             
-            if($rcurlxdc){
-                $rcurlxdca = json_decode($rcurlxdc);
-                log_message("info","XDC staked".$rcurlxdc);
-            }
+//             if($rcurlxdc){
+//                 $rcurlxdca = json_decode($rcurlxdc);
+//                 log_message("info","XDC staked".$rcurlxdc);
+//             }
 		
-		return $rcurlxdc;
+// 		return $rcurlxdc;
     
         
-        }
-        catch (Exception $e) {
-            log_message("error".$e->getMessage());
-            return '0';
-        }
+//         }
+//         catch (Exception $e) {
+//             log_message("error".$e->getMessage());
+//             return '0';
+//         }
         
-    }
-}
+//     }
+// }
 
-if (!function_exists('totalXDC'))
-{
-    function totalXDC()
-    {
-        try{
-            $CI =& get_instance();
-            $CI->load->library('curl');
+// if (!function_exists('totalXDC'))
+// {
+//     function totalXDC()
+//     {
+//         try{
+//             $CI =& get_instance();
+//             $CI->load->library('curl');
             
-            $rcurlxdc = $CI->curl->simple_post('https://explorerapi.xinfin.network/publicAPI?module=balance&action=totalXDC&apikey=YourApiKeyToken');
+//             $rcurlxdc = $CI->curl->simple_post('https://explorerapi.xinfin.network/publicAPI?module=balance&action=totalXDC&apikey=YourApiKeyToken');
             
-            if($rcurlxdc){
-                $rcurlxdca = json_decode($rcurlxdc);
-                log_message("info","Total XDC".$rcurlxdc);
-            }
+//             if($rcurlxdc){
+//                 $rcurlxdca = json_decode($rcurlxdc);
+//                 log_message("info","Total XDC".$rcurlxdc);
+//             }
 		
-		return $rcurlxdca;
+// 		return $rcurlxdca;
     
         
-        }
-        catch (Exception $e) {
-            log_message("error".$e->getMessage());
-            return '0';
-        }
+//         }
+//         catch (Exception $e) {
+//             log_message("error".$e->getMessage());
+//             return '0';
+//         }
         
-    }
-}
+//     }
+// }
 
-if (!function_exists('todayRewards'))
-{
-    function todayRewards()
-    {
-        try{
-            $CI =& get_instance();
-            $CI->load->library('curl');
+// if (!function_exists('todayRewards'))
+// {
+//     function todayRewards()
+//     {
+//         try{
+//             $CI =& get_instance();
+//             $CI->load->library('curl');
             
-            $rcurlxdc = $CI->curl->simple_post('https://explorer.xinfin.network/todayRewards');
+//             $rcurlxdc = $CI->curl->simple_post('https://explorer.xinfin.network/todayRewards');
             
-            if($rcurlxdc){
-                $rcurlxdca = json_decode($rcurlxdc);
-                log_message("info","Total XDC".$rcurlxdc);
-            }
+//             if($rcurlxdc){
+//                 $rcurlxdca = json_decode($rcurlxdc);
+//                 log_message("info","Total XDC".$rcurlxdc);
+//             }
 		
-		return $rcurlxdca;
+// 		return $rcurlxdca;
     
         
-        }
-        catch (Exception $e) {
-            log_message("error".$e->getMessage());
-            return '0';
-        }
+//         }
+//         catch (Exception $e) {
+//             log_message("error".$e->getMessage());
+//             return '0';
+//         }
         
-    }
-}
+//     }
+// }
 
-if (!function_exists('xdcVolume'))
+// if (!function_exists('xdcVolume'))
+// {
+//     function xdcVolume()
+//     {
+//         try{
+//             $CI =& get_instance();
+//             $CI->load->library('curl');
+            
+//             $rcurlxdc = $CI->curl->simple_get('https://api2.alphaex.net/api/xdcVolume');
+            
+//             if($rcurlxdc){
+//                 $rcurlxdca = json_decode($rcurlxdc);
+//                 log_message("info","XDC Volume".$rcurlxdc);
+//             }
+		
+// 		return $rcurlxdca;
+    
+        
+//         }
+//         catch (Exception $e) {
+//             log_message("error".$e->getMessage());
+//             return '0';
+//         }
+        
+//     }
+// }
+
+if (!function_exists('getXinFinStats'))
 {
-    function xdcVolume()
+    function getXinFinStats()
     {
         try{
             $CI =& get_instance();
             $CI->load->library('curl');
             
-            $rcurlxdc = $CI->curl->simple_get('https://api2.alphaex.net/api/xdcVolume');
+            $rcurlxdc = $CI->curl->simple_post('https://explorer.xinfin.network/getXinFinStats');
             
             if($rcurlxdc){
                 $rcurlxdca = json_decode($rcurlxdc);
-                log_message("info","XDC Volume".$rcurlxdc);
+                log_message("info","Xinfin Stats".$rcurlxdc);
             }
 		
 		return $rcurlxdca;
