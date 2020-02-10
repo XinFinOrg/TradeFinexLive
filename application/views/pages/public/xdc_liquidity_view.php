@@ -36,8 +36,8 @@
                             <div class="tf-dls-benefits">
                                 <ul>
                                     <li>Prevent fraud through transparency.</li>
-                                    <li>Immediate counter-party risk mitigation.</li>
-                                        <ul style="margin-top:10px;">
+                                    <li>Immediate counter-party risk mitigation.
+                                        <ul style="margin-top:5px;">
                                             <li>Trade securitization assets are held in central custody and settled via correspondent banking channels.</li>
                                             <li>The risk of central failures in global trade is increasing due to trade wars, political issues (e.g. the U.S., China, Hong Kong, etc).</li>
                                             <li>XDC Protocol allows you to hold securitized Trade Finance assets or negotiable instruments in a fully tokenized digital form in your custody. They can then be transferred between financial institutions on a peer to peer network without any risk of a centralized failure.</li>
@@ -57,11 +57,11 @@
                                         <ul style="margin-top:10px;">
                                             <li>ADGM</li>
                                             <li>Qatar (In Process)
-                                                <li>Japan (In Process)</li>
-                                                <li>Singapore (In Process)</li>
-                                                <li>Hong Kong (In Process)</li>
+                                            <li>Japan (In Process)</li>
+                                            <li>Singapore (In Process)</li>
+                                            <li>Hong Kong (In Process)</li>
                                         </ul>
-                                        </li>
+                                     </li>
                                 </ul>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    XDC, Digital Asset on XinFin Network (stands for XinFin Digital Contract)
+                                    <li>XDC, Digital Asset on XinFin Network (stands for XinFin Digital Contract)
                                         <ul style="margin-top:10px;">
                                             <li class="link-break-out">Currently traded across 18 global markets - <a href="https://coinmarketcap.com/currencies/xinfin-network/"target="_blank">https://coinmarketcap.com/currencies/xinfin-network/</a></li>
                                             <li>XDC has demonstrated the ability to be a liquid asset against multiple fiat currencies across different jurisdictions.</li>
