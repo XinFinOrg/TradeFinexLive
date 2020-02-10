@@ -30,7 +30,7 @@
 	<meta name="theme-color" content="#ffffff">
 	
 	<meta name="description" content="A Blockchain Network for Trade Finance Originators to Distribute Trade Assets to the Growing Class of Alternative Asset Investors." />
-	<meta name="keywords" content="Originate to distribute, Originate to distribute network, Originate to distribute platform, Blockchain Network for Trade Finance Originators, Distribute tarde assets, TradeFinex">
+	<meta name="keywords" content="Trade financing, Trade finance, Global trade finance, Originate to distribute, Originate to distribute network, Originate to distribute platform, Blockchain Network for Trade Finance Originators, Distribute tarde assets, TradeFinex">
 	<link rel="canonical" href="https://www.tradefinex.org/" />
 	<meta property="og:locale" content="en_US" />
 	<meta property="og:type" content="website" />
@@ -38,5 +38,14 @@
 	<meta property="og:description" content="A Blockchain Network for Trade Finance Originators to Distribute Trade Assets to the Growing Class of Alternative Asset Investors." />
 	<meta property="og:url" content="https://www.tradefinex.org/" />
 	<meta property="og:site_name" content="TradeFinex" />
+	
+	<script type='application/ld+json'> 
+	{
+	  "@context": "http://www.schema.org",
+	  "@type": "WebSite",
+	  "name": "TradeFinex",
+	  "url": "https://tradefinex.org"
+	}
+	 </script>
 
 	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
