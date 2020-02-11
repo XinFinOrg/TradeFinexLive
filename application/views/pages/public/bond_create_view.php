@@ -67,7 +67,7 @@
                         <div class="col-md-12">
                             <div class="card" style="">
                                 <?php $attributes = array('id' => 'bond_create-form', 'class' => '', 'method' => 'post', 'role' => 'form');
-                            echo form_open_multipart(base_url().'publicv/bond_create/', $attributes); ?>
+                            echo form_open_multipart(base_url().'publicv/bondCreate/', $attributes); ?>
                                     <div class="card-body">
 
                                         <div class="form-row">
@@ -209,12 +209,11 @@
                                                 <label for="tokenDecimals">Type</label>
                                                 <input type="text" class="form-control form-controlCustom form-control-lg" id="type" name="type"   value="Zero Coupon" readonly="true" >
                                             </div>
-                                            <div class="form-group  col-md-6">
-                                                    <label for="captcha">Enter Captcha</label><sup>*</sup>
-                                                    <input class="form-control form-controlCustom form-control-lg" id="defaultReal" name="defaultReal" captchav="" autocomplete="" maxlength="50" required data-required-error="" tabindex="5" aria-required="true" type="text" placeholder="Captcha">                                            
-                                                    <input type="hidden" id="captcha_val" />
-                                                    <div class="captcha-error has-error" style="display:none"><div class="help-block col-xs-12 col-sm-reset inline"><font color="red" style="margin-left: -10px;">Enter Letters Shown Above.</font></div></div><!-- Invalid Captcha ! -->
-                                            </div>
+                                            <div class="form-group">
+                                                <label for="captcha">Enter Captcha</label><sup>*</sup>
+                                                    <div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('recaptcha_site_key'); ?>" ></div>
+                                                    <label style="display:none;color:#a24649;font-size: 12px;" id="captcha_id" name="captcha_id">Please verify the captcha.</label>
+                                                </div>
                                         </div>
                                       
                                         <div class="card-footer border-0 text-center">
@@ -460,7 +459,38 @@
 	 	</div>
 </div>
   
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</script>
+<script type="text/javascript">
+ $(document).ready(function(){
 
+	$('#bond_create-form').on('submit', function(event){
+		var myurl = '<?php echo base_url()?>publicv/invoiceFactoring';
+		var response = grecaptcha.getResponse();
+		if(response.length != 0){
+			document.getElementById('captcha_id').style.display = 'none';
+			$.ajax({
+				url:myurl,
+				method:"POST",
+				data:$(this).serialize(),
+				dataType:"json",
+				success: function(data)
+					{
+						// alert(data); // show response from the php script.
+					}
+			})
+		}
+		else{
+			// alert("please verify you are humann!"); 
+			document.getElementById('captcha_id').style.display = 'block';
+			event.preventDefault();
+			return false;
+		}
+				
+	});
+
+});
+</script>
     
    
     

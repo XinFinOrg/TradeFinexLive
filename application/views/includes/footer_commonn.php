@@ -99,7 +99,7 @@
                         <div class="widget widget-categories">
                             <h4 class="footer-title">Trade Instruments</h4>
                             <ul class="footer-list">                                
-                                <li> <a href="<?=base_url();?>publicv/buyer_supplier">For Buyers / Suppliers</a></li>
+                                <li> <a href="<?=base_url();?>publicv/buyersupplier">For Buyers / Suppliers</a></li>
                                 <li> <a href="<?=base_url();?>publicv/brokers">For Brokers</a></li>
 								<li> <a href="<?=base_url();?>publicv/financier">For Financiers</a></li>
 								<li> <a href="<?=base_url();?>publicv/statistics">Statistics</a></li>
@@ -113,9 +113,9 @@
                             <ul class="footer-list">
                                 <li> <a href="https://infactor.io/">Invoice Factoring</a></li>
                                 <li> <a href="<?=base_url();?>publicv/infactor">Invoice Digitization</a></li>
-                                <li> <a href="<?=base_url();?>publicv/boss_101">Bond</a></li>
+                                <li> <a href="<?=base_url();?>publicv/boss101">Bond</a></li>
                                 <li> <a href="https://st.mycontract.co/login" target="_blank">Stable Coin</a></li>
-                                <li> <a href="<?=base_url();?>publicv/supply_chain">Supply Chain - Track & Trace</a></li>
+                                <li> <a href="<?=base_url();?>publicv/supplyChain">Supply Chain - Track & Trace</a></li>
                             </ul>
                         </div>
                     </div>
@@ -123,8 +123,8 @@
                         <div class="widget widget-categories">
                             <h4 class="footer-title">About Us</h4>
                             <ul class="footer-list">
-                                <li> <a href="<?=base_url();?>publicv/xdc_liquidity">XDC Liquidity</a></li>
-								<li> <a href="<?=base_url();?>publicv/case_study">Case Study</a></li>
+                                <li> <a href="<?=base_url();?>publicv/xdcLiquidity">XDC Liquidity</a></li>
+								<li> <a href="<?=base_url();?>publicv/caseStudy">Case Study</a></li>
                                 <li> <a href="<?=base_url();?>publicv/rollout">Rollout Plan</a></li>
                                 <li> <a href="<?=base_url();?>publicv/contact">Contact Us</a></li>
                             </ul>
@@ -134,12 +134,12 @@
                         <div class="widget widget-categories">
                             <h4 class="footer-title">Other Links</h4>
                             <ul class="footer-list">
-                                <li> <a href="<?=base_url();?>publicv/setup_masternode">Join The Network</a></li>
+                                <li> <a href="<?=base_url();?>publicv/setupMasternode">Join The Network</a></li>
                                 <li> <a href="http://events.tradefinex.org/" target="_blank">Consortium Event</a></li>
                                 <li> <a href="https://docs.tradefinex.org/faq/general/" target="_blank">FAQs</a></li>
-								<li> <a href="<?=base_url();?>publicv/media_center">Media Center</a></li>
-								<li> <a href="<?=base_url();?>publicv/private_distributed_ledger_solution"> Private Distributed Ledger Solution</a></li>
-								<li> <a href="<?=base_url();?>publicv/hybrid_distributed_ledger_solution"> Hybrid Distributed Ledger Solution</a></li>
+								<li> <a href="<?=base_url();?>publicv/mediaCenter">Media Center</a></li>
+								<li> <a href="<?=base_url();?>publicv/privateDistributedLedgerSolution"> Private Distributed Ledger Solution</a></li>
+								<li> <a href="<?=base_url();?>publicv/hybridDistributedLedgerSolution"> Hybrid Distributed Ledger Solution</a></li>
                             </ul>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                         <div class="copyright">Copyright &copy; 2020 TRADEFINEX TECH LTD (ADGM RegLab Participant), All rights reserved.</div>
                     </div>
                     <div class="col-md-5 col-sm-5">
-                        <div class="copyright pull-right"><a href="<?=base_url();?>publicv/privacy_policy">Privacy Policy</a> | <a href="<?=base_url();?>publicv/terms_condition">Terms & Conditions</a></div>
+                        <div class="copyright pull-right"><a href="<?=base_url();?>publicv/privacyPolicy">Privacy Policy</a> | <a href="<?=base_url();?>publicv/termsCondition">Terms & Conditions</a></div>
                     </div>
                 </div>
             </div>
@@ -206,12 +206,6 @@
 		<!-- Form Validations -->
 		
 		<script src="<?=base_url('assets/js/intlTelInput.min.js');?>"></script> 
-				
-		<!-- captha -->
-		<script src="<?=base_url('assets/js/captcha/jquery.plugin.min.js');?>"></script>
-		<script src="<?=base_url('assets/js/captcha/jquery.realperson.min.js');?>"></script>
-		<script src="<?=base_url('assets/js/captcha/md5.min.js');?>"></script>
-		<script src="<?=base_url('assets/js/captcha/aes.min.js');?>"></script>
 		
 		<script src="<?=base_url('assets/js/bootstrap/bootstrap-confirmation.min.js');?>"></script>
 		<script src="<?=base_url('assets/js/bootstrap/bootstrap-multiselect.min.js');?>"></script>
@@ -269,43 +263,75 @@
 				
 				$('#mmob').intlTelInput();
 				
-				$('#defaultReal').realperson();
-				
 			<?php } ?>	
 									
 		</script>
 
-<!-- Partnership and Alliances Logo Slider-->
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.customer-logos').slick({
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 1500,
-            arrows: false,
-            dots: false,
-            pauseOnHover: false,
-            responsive: [{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 4
-                }
-            }, {
-                breakpoint: 520,
-                settings: {
-                    slidesToShow: 3
-                }
-            }, {
-                breakpoint: 420,
-                settings: {
-                    slidesToShow: 2
-                }
-            }]
-        });
-    });
-</script>
-<!-- Partnership and Alliances Logo Slider-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+		<!-- Partnership and Alliances Logo Slider-->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.customer-logos').slick({
+					slidesToShow: 5,
+					slidesToScroll: 1,
+					autoplay: true,
+					autoplaySpeed: 1500,
+					arrows: false,
+					dots: false,
+					pauseOnHover: false,
+					responsive: [{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 4
+						}
+					}, {
+						breakpoint: 520,
+						settings: {
+							slidesToShow: 3
+						}
+					}, {
+						breakpoint: 420,
+						settings: {
+							slidesToShow: 2
+						}
+					}]
+				});
+			});
+		</script>
+
+
+		<!-- Script for Multiupload Input btn -->
+		<script type="text/javascript">
+		'use strict';
+		;( function ( document, window, index )
+		{
+			var inputs = document.querySelectorAll( '.inputfile' );
+			Array.prototype.forEach.call( inputs, function( input )
+			{
+				var label	 = input.nextElementSibling,
+					labelVal = label.innerHTML;
+				input.addEventListener( 'change', function( e )
+				{
+					var fileName = '';
+					if( this.files && this.files.length > 1 )
+						fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+					else
+						fileName = e.target.value.split( '\\' ).pop();
+					if( fileName )
+						label.querySelector( 'span' ).innerHTML = fileName;
+					else
+						label.innerHTML = labelVal;
+				});
+				// Firefox bug fix
+				input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+				input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+			});
+		}( document, window, 0 ));
+		</script>
+		<!-- Script for Multiupload Input btn -->
+
+		<!-- Partnership and Alliances Logo Slider-->
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>-->
+		<script src="<?=base_url('assets/js/bootstrap-datepicker.js');?>"></script>
+		<script src="<?=base_url('assets/js/toastr.min.js');?>"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>

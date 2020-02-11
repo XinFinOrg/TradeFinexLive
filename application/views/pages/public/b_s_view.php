@@ -156,8 +156,8 @@
 										<div class="captcha-error has-error" style="display:none">
                                             <div class="help-block col-xs-12 col-sm-reset inline"><font color="red" style="margin-left: -10px;">Please enter correct captcha (Letters are Case sensitive).</font>
                                             </div>
-									    </div>								
-									<input type="hidden" name="action" value="send_mail" /><input type="hidden" id="captcha_val" />
+									    </div><input type="hidden" id="captcha_val" />								
+									<input type="hidden" name="action" value="send_mail" />
 									<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 								</div>
 								

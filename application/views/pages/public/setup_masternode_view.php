@@ -56,7 +56,7 @@
             <div class="col-md-10 col-md-offset-1">
                 <p>To set up a Masternode of XInFIn, you must stake 10M XDC coins to verify yourself as a trusted validator. This allows our network of originators or funders to work with you and exchange the information.</p>
                 <p>You can resign the node and get your 10M XDC back at any time. You can then sell them in a secondary market and get the money back as per market rate of XDC at that time.</P>
-                <p>For more details, Click <a href="<?php echo base_url()?>publicv/xdc_liquidity">here.</p>
+                <p>For more details, Click <a href="<?php echo base_url()?>publicv/xdcLiquidity">here.</p>
             </div>
         </div>
         <div class="row">
@@ -80,9 +80,9 @@
         <div class="row mt-40">
             <div class="col-md-8 col-md-offset-2">
                 <div class="text-center">
-                    <a href="<?=base_url();?>publicv/about_xinfin_masternode" class="btn btn-blue text-uppercase mt-10 mb-10">ABOUT XINFIN MASTERNODE</a>
+                    <a href="<?=base_url();?>publicv/aboutXinfinMasternode" class="btn btn-blue text-uppercase mt-10 mb-10">ABOUT XINFIN MASTERNODE</a>
                     <a href="<?=base_url();?>publicv/docker" class="btn btn-blue text-uppercase mt-10 mb-10">DOCKER</a>
-                    <a href="<?=base_url();?>publicv/masternode_faqs" class="btn btn-blue text-uppercase mt-10 mb-10">FAQ's</a>
+                    <a href="<?=base_url();?>publicv/masternodeFaqs" class="btn btn-blue text-uppercase mt-10 mb-10">FAQ's</a>
                 </div>
             </div>
         </div>

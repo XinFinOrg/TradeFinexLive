@@ -1,11 +1,5 @@
 	<!-- Boostrap -->
-	<!-- <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/bond-assets/css/bootstrap.css" /> -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/bootstrap.min.css');?>" />
-	<!-- <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/main.bundle.css" /> -->
-	
-	<!-- <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/main.css" />
-	<link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/css/auto-hide.css" /> -->
-	<!-- <link rel="stylesheet" href="<?=base_url();?>assets/bond-assets/js/menu.css" /> -->
 	
 	<?php if(uri_string()){ ?>
 	
@@ -19,8 +13,6 @@
 	<!-- ICONS STYLES -->
     <link rel="stylesheet" href="<?=base_url('assets/css/icons/dripicons.min.css');?>" />
 
-	<!-- Captcha -->
-	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/captcha/jquery.realperson.min.css');?>" />
 	
 	<?php } if($user_id > 0){ ?>
 	
@@ -32,15 +24,13 @@
 	<?php } ?>
 	
 	<!-- Lazy Loading Slider CSS -->
-	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/slick.css');?>">
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/slick-theme.css');?>">
 
-	<!--Custom bond style  -->
-	
 	
 	<!-- Theme style -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/style.css');?>" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/style_custom.css');?>" /> 
+
 	<!-- Reponsive -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/responsive.css');?>" />
     
@@ -48,9 +38,10 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/tf-style.css');?>" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/banner-assets/css/magnific-popup.css');?>" />
 	
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
-	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet" type="text/css" />
-	<link src="https:////cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/datepicker.css');?>" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/toastr.min.css');?>" />
+	<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet" type="text/css" />
+	<link src="https:////cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" type="text/css" />-->
 	
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

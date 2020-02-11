@@ -4,7 +4,7 @@
 			<h3>Contact TradeFinex</h3>
 			<p>TradeFinex: Peer to Peer trade and financing using Blockchain Technology</p>
 			<div id="video" class="btn-more">
-				<a href="<?=base_url('publicv/case_study/#case_video_section');?>">
+				<a href="<?=base_url('publicv/caseStudy/#case_video_section');?>">
 					<span> <i class="fa fa-play-circle"></i> </span> <span>Watch Video</span> 
 				</a>
 			</div>

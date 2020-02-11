@@ -4,7 +4,7 @@
 			<h3>Consortium Membership for Tradefinex</h3>
 			<p>Consortium-Led Asset Tokenisation Platform Using Blockchain Technology</p>
 			<div class="btn-more">
-				<a href="<?=base_url('publicv/case_study/#case_video_section');?>">
+				<a href="<?=base_url('publicv/caseStudy/#case_video_section');?>">
 					<span> <i class="fa fa-play-circle"></i> </span> <span>Watch Video</span> 
 				</a>
 			</div>

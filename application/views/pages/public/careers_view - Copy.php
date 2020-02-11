@@ -80,7 +80,7 @@
 						<div class="form-group">
 							<div class="check-box">
 								<input class="careers_ckeck" id="mcheck" name="mcheck" checked="checked" type="checkbox">
-								<span>I agree to the TradeFinex <small><a href="<?php echo base_url() ?>publicv/privacy_policy" target="_blank"> Terms & Conditions</a></small> | <small><a href="<?php echo base_url() ?>publicv/terms_condition" target="_blank">Privacy Policy</a></small></span>
+								<span>I agree to the TradeFinex <small><a href="<?php echo base_url() ?>publicv/privacyPolicy" target="_blank"> Terms & Conditions</a></small> | <small><a href="<?php echo base_url() ?>publicv/termsCondition" target="_blank">Privacy Policy</a></small></span>
 							</div>
 						</div>
 						<input type="hidden" name="action" value="send_mail" />

@@ -29,24 +29,32 @@
 						
 						
 						<div class="row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group ">
 								<label for="memail">Email ID <sup>*</sup></label>
 									<input class="form-control" id="memail" name="memail" type="text" autocomplete="" required data-required-error="" tabindex="1" aria-required="true" />
 								</label>
 							</div>
-							<div class="form-group col-md-6">
+						</div>
+						<div class="row">
+							<div class="form-group ">
 								<label for="mmob">Mobile No. <sup>*</sup></label>
 									<input class="form-control" id="mmob" name="mmob" type="text" tabindex="2" autocomplete="" required data-required-error="" aria-required="true"/>
 								</label>
 							</div>
-						</div>
+						<div>
 						
-						
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="defaultReal">Enter Captcha <sup>*</sup></label>
 								<input class="form-control" id="defaultReal" name="defaultReal" captchav="" autocomplete="off" maxlength="50" required data-required-error="" tabindex="3" aria-required="true" type="text">
 								<div class="captcha-error has-error" style="display:none"><div class="help-block col-xs-12 col-sm-reset inline"><font color="red" style="margin-left: -10px;">Please enter correct captcha (Letters are Case sensitive).</font></div>
-							</div><!-- Invalid Captcha ! -->
+							</div>
+						</div> -->
+
+						<div class="form-group ">
+							<label for="captcha">Enter Captcha <sup>*</sup></label>
+							<div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('recaptcha_site_key'); ?>" ></div>
+							<label style="display:none;color:#ea212d;font-size: 12px;" id="captcha_id" name="captcha_id">Please verify the captcha.</label>
+							</div>
 						</div>
 						
 						<div class="form-group">
@@ -55,7 +63,7 @@
 						</div>
 						
 						<div class="form-group">
-							<button type="submit" class="btn btn-blue text-uppercase" onclick="return casestudy()"> Submit</button>
+							<button type="submit" class="btn btn-blue text-uppercase" id="contact" name="contact" > Submit</button>
 						</div>
 						
 					</form>
@@ -77,26 +85,37 @@
 </div>
 <!-- /. Inside Page Case Study -->
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</script>
+<script type="text/javascript">
+ $(document).ready(function(){
 
-<script>
-function casestudy() {
+	$('#casestudy-form').on('submit', function(event){
+		var myurl = '<?php echo base_url()?>publicv/caseStudy';
+		var response = grecaptcha.getResponse();
+		if(response.length != 0){
+			document.getElementById('captcha_id').style.display = 'none';
+			$.ajax({
+				url:myurl,
+				method:"POST",
+				data:$(this).serialize(),
+				dataType:"json",
+				success: function(data)
+					{
+						// alert(data); // show response from the php script.
+					}
+			})
+		}
+		else{
+			// alert("please verify you are humann!"); 
+			document.getElementById('captcha_id').style.display = 'block';
+			event.preventDefault();
+			return false;
+		}
+				
+	});
 
-    var myurl = '<?php echo base_url()?>publicv/case_study';// the script where you handle the form input.
-
-    // alert(myurl);
-
-    $.ajax({
-           type: "POST",
-           url: myurl,
-           data: $("form").serialize(), // serializes the form's elements.
-           success: function(data)
-           {
-               // alert(data); // show response from the php script.
-           }
-         });
-
-    // e.preventDefault(); // avoid to execute the actual submit of the form.
-}
+});
 </script>
 
 

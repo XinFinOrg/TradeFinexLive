@@ -16,7 +16,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <div class="section-title text-center noBorderAfter">
                         <h2 class="mb-10">Fees</h2>
-						<p>All fees for TradeFinex are payable in <a href="<?=base_url();?>publicv/xdc_liquidity">XDC</a>.</p>
+						<p>All fees for TradeFinex are payable in <a href="<?=base_url();?>publicv/xdcLiquidity">XDC</a>.</p>
                     </div>
                 </div>
             </div>

@@ -277,7 +277,7 @@ $(function () {
 
 	jQuery.validator.addMethod("LetterOnly", function (value, element) {
 		// allow any non-whitespace characters as the host part
-		return this.optional(element) || /^(?!(\s))([a-zA-Z\s])*$/.test(value);
+		return this.optional(element) || /^([a-zA-Z]+\s)*[a-zA-Z0-9]+$/.test(value);
 	}, 'The text must start with a letter and should not contain special characters.');
 
 	jQuery.validator.addMethod("LettersWithDotHiphen", function (value, element) {
@@ -640,16 +640,6 @@ $(function () {
 		}
 	});
 
-	var captchav = $('#defaultReal').attr('captchav');
-
-	if (typeof captchav === "undefined") {
-		// ...
-	} else {
-
-		var decryptval = CryptoJS.AES.decrypt($('#defaultReal').attr('captchav'), "/" + 5381).toString(CryptoJS.enc.Utf8);
-		$('#captcha_val').val(decryptval);
-	}
-
 	$("#contact-form").validate({
 		rules: {
 			mname: {
@@ -662,7 +652,12 @@ $(function () {
 				EmailGeneral: true,
 				required: true
 			},
-			
+			// mmob: {
+			// 	required: false,
+			// 	//numberOnly: true,
+			// 	mobilenumberOnly: true
+
+			// },
 			mcomp: {
 				required: true,
 				minlength: 3,
@@ -677,33 +672,31 @@ $(function () {
 				maxlength: 300,
 				messageFormat1: true
 			},
-			defaultReal: {
-				equalTo: '#captcha_val'
-			}
+			
 		},
 		messages: {
 			mname: {
-				required: "Please enter Your full name",
-				minlength: "Characters length should be atleast 2",
-				maxlength: "Characters length should not exceeded than 30"
+				required: "Please enter Your full name.",
+				minlength: "Characters length should be atleast 2.",
+				maxlength: "Characters length should not exceeded than 30.",
+				LetterOnly : "Check spaces between names."
 			},
-			memail: "Please enter a valid email",
+			memail: "Please enter a valid email.",
 			mcomp: {
-				required: "Please enter company name ",
-				minlength: "Company name should be atleast 3 characters long",
-				maxlength: "Characters length should not exceeded than 40"
+				required: "Please enter company name. ",
+				minlength: "Company name should be atleast 3 charcters long.",
+				maxlength: "Characters length should not exceeded than 40."
 			},
 			// musertype: "Please choose a user type",
-			// menquiry: "Please choose Your enquiry type",
+			// menquiry: "Please choose Your enquiry type.",
 			// mmob: {
 			// 	required: "Please enter a valid mobile number"
 			// },
 			mmsg: {
-				required: "Please type your message",
+				required: "Please type your message.",
 				minlength: "Characters length should be atleast 15.",
-				maxlength: "Characters length should not exceeded than 300"
-			},
-			// defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+				maxlength: "Characters length should not exceeded than 300."
+			}
 		},
 		onkeyup: function (elem) {
 
@@ -742,9 +735,6 @@ $(function () {
 				required: true,
 				mobilenumberOnly: true
 
-			},
-			defaultReal: {
-				equalTo: '#captcha_val'
 			}
 		},
 		messages: {
@@ -752,8 +742,7 @@ $(function () {
 			mmob: {
 				required: "Please enter a valid mobile number",
 				mobilenumberOnly : "Please enter numbers only"
-			},
-			// defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+			}
 		},
 		onkeyup: function (elem) {
 
@@ -1064,10 +1053,6 @@ $(function () {
 				max:100,
 				minlength: 1,
 				DecNumberOnly: true
-			},
-			
-			defaultReal: {
-				equalTo: '#captcha_val'
 			}
 
 		},
@@ -1159,8 +1144,7 @@ $(function () {
 				required: "Please enter issuance size",
 				min:"Please enter value more than 0",
 				minlength: "Digits length should be atleast 2"
-			},
-			defaultReal:"Please enter correct captcha (Letters are Case sensitive)."
+			}
 			
 		},
 		onkeyup: function (elem) {
@@ -1426,10 +1410,7 @@ $(function () {
 				maxlength: 10,
 				LetterOnly: true
 			},
-			file:"required",
-			defaultReal: {
-				equalTo: '#captcha_val'
-			}
+			file:"required"
 
 		},
 		messages: {
@@ -1451,8 +1432,7 @@ $(function () {
 				minlength: "Characters length should be atleast 1",
 				maxlength: "Characters length should not exceeded than 10"
 			},
-			file:"Document required",
-			defaultReal:"Please enter correct captcha (Letters are Case sensitive)."
+			file:"Document required"
 			
 		},
 		onkeyup: function (elem) {
@@ -1510,7 +1490,7 @@ $(function () {
 				}
 				
 					$.ajax(invoice).done(function (response) {
-						console.log('response>>>>', response);
+						// console.log('response>>>>', response);
 						fileHash = response.hash;
 
 
@@ -1900,9 +1880,6 @@ $(function () {
 				minlength: 5,
 				maxlength: 140,
 				messageFormat1: true
-			},
-			defaultReal: {
-				equalTo: '#captcha_val'
 			}
 		},
 		messages: {
@@ -1926,8 +1903,7 @@ $(function () {
 				},*/
 			mmob: {
 				required: "Please enter a valid mobile number"
-			},
-			defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+			}
 		},
 		onkeyup: function (elem) {
 

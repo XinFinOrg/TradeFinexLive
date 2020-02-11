@@ -61,7 +61,7 @@
                                 		<p>$2.2 M Annually</p>
                                     </div>
                                     <div class="col-md-12 text-center">
-                                    	<a href="<?=base_url('publicv/projects_detail');?>" class="get-started">View Project</a>
+                                    	<a href="<?=base_url('publicv/projectsDetail');?>" class="get-started">View Project</a>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                                 		<p>$2.2 M Annually</p>
                                     </div>
                                     <div class="col-md-12 text-center">
-                                    	<a href="<?=base_url('publicv/projects_detail');?>" class="get-started">View Project</a>
+                                    	<a href="<?=base_url('publicv/projectsDetail');?>" class="get-started">View Project</a>
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +156,7 @@
                                 		<p>$2.2 M Annually</p>
                                     </div>
                                     <div class="col-md-12 text-center">
-                                    	<a href="<?=base_url('publicv/projects_detail');?>" class="get-started">View Project</a>
+                                    	<a href="<?=base_url('publicv/projectsDetail');?>" class="get-started">View Project</a>
                                     </div>
                                 </div>
                             </div>

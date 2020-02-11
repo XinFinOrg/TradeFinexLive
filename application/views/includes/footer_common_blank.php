@@ -14,8 +14,8 @@
 								<ul class="one-half">
 									<li> <a href="<?=base_url();?>publicv/contact" title="">Contact Us </a> </li>
 									<li> <a href="<?=base_url();?>publicv/faq" title="">FAQs</a> </li>
-									<li> <a href="<?=base_url();?>publicv/privacy_policy" title="">Privacy Policy </a> </li>
-									<li> <a href="<?=base_url();?>publicv/terms_condition" title="">Terms & Conditions </a> </li>
+									<li> <a href="<?=base_url();?>publicv/privacyPolicy" title="">Privacy Policy </a> </li>
+									<li> <a href="<?=base_url();?>publicv/termsCondition" title="">Terms & Conditions </a> </li>
 								</ul>
 							</div>
 							<!-- /.widget-categories --> 
@@ -37,8 +37,8 @@
 							<div class="widget widget-categories">
 								<h3 class="widget-title">Resources</h3>
 								<ul class="one-half">
-									<li> <a href="<?=base_url();?>publicv/media_center" title="">Media Center </a> </li>
-									<li> <a href="<?=base_url();?>publicv/case_study" title="">Case Study </a> </li>
+									<li> <a href="<?=base_url();?>publicv/mediaCenter" title="">Media Center </a> </li>
+									<li> <a href="<?=base_url();?>publicv/caseStudy" title="">Case Study </a> </li>
 									<li> <a href="javascript:void(0)" title="">Mobile Apps (Coming Soon)</a> </li>
 								</ul>
 							</div>

@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row tf-vertical-align">
                 <div class="col-md-5 tf-home-banner-left-content">
-                    <h2 class="head-title">Empowering Trade Finance Ecosystem</h2>
+                    <h1 class="head-title">Empowering Trade Finance Ecosystem</h1>
                     <div class="desc">
                         <p>A Network for Trade Finance Originators to Distribute Trade Assets to the Growing Class of Alternative Asset Investors.</p>
                     </div>
@@ -16,7 +16,7 @@
                         </ul>
                     </div>
 
-                    <div class="tf-get-started-btn mt-30"><a href="<?=base_url();?>publicv/setup_masternode" class="btn btn-red text-uppercase tf-block">Join The Network</a></div>
+                    <div class="tf-get-started-btn mt-30"><a href="<?=base_url();?>publicv/setupMasternode" class="btn btn-red text-uppercase tf-block">Join The Network</a></div>
 
                     <div class="hero-tabs-mobile-container">
                         <ul class="nav nav-pills">                            
@@ -31,16 +31,16 @@
                     <div class="tab-content clearfix">
                         <div class="tab-pane active" id="1b">
                             <div class="tf-img-container">
-                                <img src="assets/images/banner/for-buyers-suppliers_screen.jpg" alt="Banner1" />
+                                <img src="assets/images/banner/for-buyers-suppliers_screen.jpg" alt="Buyers / Suppliers Platform" />
                                 <div class="tf-bottom-box img-footer">
                                     <div class="tf-home-hero-right-col-text">
-                                        <h2>For Buyers / Suppliers</h2>
+                                        <h3>For Buyers / Suppliers</h3>
                                         <div class="tf-bottom-col-1">
                                             <p>Improve Cash Flow. Easy Access to Trade Financing. Corporate & Government Treasuries can Effectively Manage their Capital, Strengthen their Buyer/Supplier Relationships.</p>
                                             <p></p>
                                         </div>
                                         <div class="tf-bottom-col-2">
-                                            <div class="tabs-container"> <a class="btn border blue tf-block text-uppercase" href="<?=base_url();?>publicv/buyer_supplier">Apply for Finance</a></div>
+                                            <div class="tabs-container"> <a class="btn border blue tf-block text-uppercase" href="<?=base_url();?>publicv/buyersupplier">Apply for Finance</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -49,10 +49,10 @@
 						
 						<div class="tab-pane" id="2b">
                             <div class="tf-img-container">
-                                <img src="assets/images/banner/for-suppliers_screen.jpg" alt="Supplier-Banner" />
+                                <img src="assets/images/banner/for-suppliers_screen.jpg" alt="Brokers Platform" />
                                 <div class="tf-bottom-box img-footer">
                                     <div class="tf-home-hero-right-col-text">
-                                        <h2>For Brokers</h2>
+                                        <h3>For Brokers</h3>
                                         <div class="tf-bottom-col-1">
                                             <p>Digitize and Automate Document Distribution with financiers on global peer to peer trade distribution network.</p>
                                             <p></p>
@@ -67,10 +67,10 @@
 						
 						<div class="tab-pane" id="3b">
                             <div class="tf-img-container">
-                                <img src="assets/images/banner/for-financiers_screen.jpg" alt="Financier-Banner" />
+                                <img src="assets/images/banner/for-financiers_screen.jpg" alt="Marketplace for Trade Finance Assets" />
                                 <div class="tf-bottom-box img-footer">
                                     <div class="tf-home-hero-right-col-text">
-                                        <h2>For Financiers</h2>
+                                        <h3>For Financiers</h3>
                                         <div class="tf-bottom-col-1">
                                             <p>Expand your trade finance portfolio. TradeFinex enables Financial Institutions & Non-Bank funders to access an emerging Low-risk alternative asset class.</p>
                                             <p></p>
@@ -97,7 +97,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="section-title text-center">
-                        <h2 class="mb-20">What is TradeFinex</h2>
+                        <h3 class="mb-20">What is TradeFinex</h3>
 						<p>TradeFinex is a peer to peer decentralized platform for Trade Finance originators to distribute deals to wide range of bank or non-bank funders.</p>
                     </div>
                 </div>
@@ -105,8 +105,8 @@
 
             <div class="row">
                 <div class="col-md-12 tf-what-is-tradefinex">
-                    <img src="assets/banner-assets/images/inner-banner/what-is-tradefinex.jpg" class="img-responsive desktop-view" />
-					<img src="assets/banner-assets/images/inner-banner/what-is-tradefinex_mobileview.jpg" class="img-responsive mobile-view" />
+                    <img src="assets/banner-assets/images/what-is-tradefinex.jpg" alt="Trade Finance Distribution Blockchain Network Diagram" class="img-responsive desktop-view" />
+					<img src="assets/banner-assets/images/what-is-tradefinex_mobileview.jpg" alt="Trade Finance Distribution Blockchain Network Diagram" class="img-responsive mobile-view" />
                 </div>                
             </div>
         </div>
@@ -125,13 +125,13 @@
                     <div class="tf-private-dls-bg">
                         <h1 class="title">Private Distributed Ledger Solution</h1>
                         <p>TradeFinex lets you access a wide range of alternative assets on a decentralized cloud node.</p>
-                        <a class="btn border white text-uppercase" href="<?=base_url();?>publicv/private_distributed_ledger_solution">Learn More</a>
+                        <a class="btn border white text-uppercase" href="<?=base_url();?>publicv/privateDistributedLedgerSolution">Learn More</a>
                     </div>
 
                     <div class="tf-hybrid-dls-bg">
                         <h1 class="title">Hybrid Distributed Ledger Solution</h1>
                         <p>Fully digital access to origination, distribution, custody and settlement of Trade Finance assets powered by XDC Protocol.</p>
-                        <a class="btn border white text-uppercase" href="<?=base_url();?>publicv/hybrid_distributed_ledger_solution">Learn More</a>
+                        <a class="btn border white text-uppercase" href="<?=base_url();?>publicv/hybridDistributedLedgerSolution">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -145,7 +145,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="section-title text-center">
-                        <h2 class="mb-0">Instrument Support</h2>
+                        <h3 class="mb-0">Instrument Support</h3>
                     </div>
                 </div>
             </div>
@@ -174,7 +174,7 @@
                             <p>TradeFinex Network enables organizations to create and manage guarantees and bonds from multiple financial institutions with full control and visibility. This reduces the risk of potential fraud, errors and cost of credit and administration.</p>
                         </div>
                         <div class="info-button-block">
-                            <a class="btn info-button btn-block" href="<?=base_url();?>publicv/boss_101">Explore Bonds</a>
+                            <a class="btn info-button btn-block" href="<?=base_url();?>publicv/boss101">Explore Bonds</a>
                         </div>
                     </div>
                 </div>
@@ -197,7 +197,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="section-title text-center">
-                        <h2 class="mb-20 text-white">Global Trade Finance Asset Distribution Platform</h2>
+                        <h1 class="mb-20 text-white">Global Trade Finance Asset Distribution Platform</h1>
                         <p class="light">Tokenize and Trade Cross Border Trade Finance Assets for Greater and Competitive Liquidity.</p>
                     </div>
                 </div>
@@ -215,7 +215,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title text-center">
-                        <h2 class="mb-20">For Platforms</h2>
+                        <h3 class="mb-20">For Platforms</h3>
                         <p>TradeFinex is interoperable with a wide range of Trade Finance Digitization Platforms. Connect your origination platforms to a wide network of funders & get access to the secondary market distribution marketplace.</p>
                     </div>
                 </div>
@@ -224,22 +224,22 @@
             <div class="row mb-10 platform-logo">
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <figure>
-                        <img src="assets/images/for-platforms/tradeshift_logo.png" alt="tradeshift" class="img-responsive logoc">
+                        <img src="assets/images/for-platforms/tradeshift_logo.png" alt="tradeshift logo" class="img-responsive logoc">
                     </figure>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <figure>
-                        <img src="assets/images/for-platforms/intuit-quickbook_logo.png" alt="Intuit Quickbook" class="img-responsive logoc">
+                        <img src="assets/images/for-platforms/intuit-quickbook_logo.png" alt="Intuit Quickbook logo" class="img-responsive logoc">
                     </figure>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <figure>
-                        <img src="assets/images/for-platforms/corda_logo.png" alt="Corda" class="img-responsive logoc">
+                        <img src="assets/images/for-platforms/corda_logo.png" alt="Corda logo" class="img-responsive logoc">
                     </figure>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <figure>
-                        <img src="assets/images/for-platforms/oracle_logo.png" alt="Oracle" class="img-responsive logoc">
+                        <img src="assets/images/for-platforms/oracle_logo.png" alt="Oracle logo" class="img-responsive logoc">
                     </figure>
                 </div>
             </div>
@@ -253,7 +253,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="section-title text-center">
-                        <h2 class="mb-0">For Settlements</h2>
+                        <h3 class="mb-0">For Settlements</h3>
                     </div>
                 </div>
             </div>
@@ -267,7 +267,7 @@
                 <div class="col-md-6 col-sm-6 tf-settlement-box">
                     <h2>About XDC Liquidity</h2>
                     <p>Explore XDC as a protocol for an instant global settlement and counterparty risk mitigation for Trade Finance.</p>
-					<a href="<?=base_url();?>publicv/xdc_liquidity" class="btn border blue text-uppercase">Learn More</a>
+					<a href="<?=base_url();?>publicv/xdcLiquidity" class="btn border blue text-uppercase">Learn More</a>
                 </div>
             </div>
         </div>
@@ -293,7 +293,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="section-title text-center">
-                        <h2 class="mb-20">Videos</h2>
+                        <h3 class="mb-20">Videos</h3>
                         <p>Below are a few brief videos you may find helpful.</p>
                     </div>
                 </div>
@@ -340,7 +340,7 @@
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <div class="section-title text-center">
-                            <h2 class="mb-20">Partnership and Alliances</h2>
+                            <h3 class="mb-20">Partnership and Alliances</h3>
                             <p>TradeFinex is partnering with leading brands in the blockchain space to provide outstanding solutions and services that match the standards of our fast-paced industry.</p>
                         </div>
                     </div>
@@ -348,17 +348,17 @@
 
                 <div class="row">
                     <div class="customer-logos slider">
-                        <div class="slide"><img src="assets/images/partnerships-alliances/ramco_logo.png" alt="Ramco"></div>
-						<div class="slide"><img src="assets/images/partnerships-alliances/copper_logo.png" alt="Copper"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/temasek_logo.png" alt="Temasek"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/aix_logo.png" alt="AIX"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/circle_logo.png" alt="Circle"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/r3Marketplace_logo.png" alt="R3-Marketplace"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/adgm_logo.png" alt="ADGM"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/assocham_logo.png" alt="Assocham"> </div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/indsoft_logo.png" alt="IndSoft"></div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/nanyang_logo.png"> alt="Nanyang"</div>
-                        <div class="slide"><img src="assets/images/partnerships-alliances/omfif_logo.png" alt="OMFIF"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/ramco_logo.png" alt="Ramco logo"></div>
+						<div class="slide"><img src="assets/images/partnerships-alliances/copper_logo.png" alt="Copper logo"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/temasek_logo.png" alt="Temasek Polytechnic logo"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/aix_logo.png" alt="AIX logo"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/circle_logo.png" alt="Circle logo"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/r3Marketplace_logo.png" alt="R3-Marketplace logo"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/adgm_logo.png" alt="Abu Dhabi Global Market logo"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/assocham_logo.png" alt="Assocham logo"> </div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/indsoft_logo.png" alt="IndSoft logo"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/nanyang_logo.png" alt="Nanyang Technological University Logo"></div>
+                        <div class="slide"><img src="assets/images/partnerships-alliances/omfif_logo.png" alt="OMFIF logo"></div>
                     </div>
                 </div>
             </div>

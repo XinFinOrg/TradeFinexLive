@@ -56,7 +56,7 @@
 
     function submit_contract() {
 alert("hi");
-        var myurl = '<?php echo base_url()?>publicv/smart_contract';// the script where you handle the form input.
+        var myurl = '<?php echo base_url()?>publicv/smartContract';// the script where you handle the form input.
 console.log("LLL",myurl);
         $.ajax({
             type: "POST",

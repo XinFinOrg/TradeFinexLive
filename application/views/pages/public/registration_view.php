@@ -85,7 +85,7 @@
 					<div class="btn-more"> <button id="signupSubmit" type="submit" class="btn btn-info" disabled="disabled"> Sign Up </button> </div>
 
 					<div class="row bottom_most">
-						<p class="policy">By clicking Sign Up, you agree to TradeFinex's <br/><a href="<?php echo base_url() ?>publicv/terms_condition" target="_blank">Terms of Use </a> and <a href="<?php echo base_url() ?>publicv/privacy_policy" target="_blank">Privacy Policy. </a></p>
+						<p class="policy">By clicking Sign Up, you agree to TradeFinex's <br/><a href="<?php echo base_url() ?>publicv/termsCondition" target="_blank">Terms of Use </a> and <a href="<?php echo base_url() ?>publicv/privacyPolicy" target="_blank">Privacy Policy. </a></p>
 					</div>
 				</form>
 			</div>

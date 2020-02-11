@@ -18,7 +18,7 @@ $(function () {
 
 	jQuery.validator.addMethod("LetterOnly", function (value, element) {
 		// allow any non-whitespace characters as the host part
-		return this.optional(element) || /^([a-zA-Z]+\s)*([a-zA-Z])+$/.test(value);
+		return this.optional(element) || /^([a-zA-Z]+\s)*[a-zA-Z0-9]+$/.test(value);
 	}, 'The text must start with a letter and should not contain special characters.');
 
 	jQuery.validator.addMethod("LettersWithDotHiphen", function (value, element) {
@@ -30,7 +30,6 @@ $(function () {
 		// allow any non-whitespace characters as the host part
 		return this.optional(element) || /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$#!&*%])[0-9a-zA-Z@$#!&*%]{8,}$/.test(value);
 	}, 'The text must start with a letter and should contain 1 uppercase,1 number and 1 special character');
-
 
 	jQuery.validator.addMethod("EmailGeneral", function (value, element) {
 		var re = /^([a-zA-Z])(.*[a-z])(.*[a-z0-9_\+-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*\.([a-z]{2,})$/;
@@ -56,7 +55,7 @@ $(function () {
 
 	jQuery.validator.addMethod("alphanumericOnly", function (value, element) {
 		// allow any non-whitespace characters as the host part
-		return this.optional(element) || /^([a-zA-Z])([a-zA-Z0-9\s])+$/i.test(value);
+		return this.optional(element) || /^([a-zA-Z]+\s)*[a-zA-Z0-9]+$/i.test(value);
 	}, 'The text must combination of letter and numbers; Not started with number; should not contain special characters');
 
 	jQuery.validator.addMethod("signedDecNumberOnly", function (value, element) {
@@ -111,16 +110,6 @@ $(function () {
 		return this.optional( element ) || /^[0-9a-z]{40}$/.test( value );
 	  }, 'This field allows only number from 0-9 and alphabets from a-z');
 
-	  //Captcha
-	var captchav = $('#defaultReal').attr('captchav');
-
-	if (typeof captchav === "undefined") {
-		// ...
-	} else {
-
-		var decryptval = CryptoJS.AES.decrypt($('#defaultReal').attr('captchav'), "/" + 5381).toString(CryptoJS.enc.Utf8);
-		$('#captcha_val').val(decryptval);
-	}
 
 	//Buyer-Supplier Form
 	$("#suppliers_form").validate({
@@ -196,7 +185,7 @@ $(function () {
 					addrKey = addrKey;
 				}
 				if(addrKey.length == 64){
-					var myurl = 'get_address';
+					var myurl = 'getAddress';
 					showLoader();
 					$.ajax({
 						type: "POST",
@@ -341,15 +330,15 @@ $(function () {
 										"docRef":formDataObj.instrument+formDataObj.docRef,
 										"country":formDataObj.pcountry.replace(/[+]/g," "),
 										"contractType":"commonInstrument",
-										"passKey" :passkey,
 										"nonceAdder":0,
+										"passKey" :passkey,
 										"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key
 										}).then(resp => {
 											// console.log("response : ",resp);
 											
 											
 											if(resp.status == true){
-												$.post("buyer_supplier",{
+												$.post("buyersupplier",{
 													'action':"adddetail",
 													'instrument': formDataObj.instrument,
 													'amount':formDataObj.amount,
@@ -369,7 +358,7 @@ $(function () {
 													console.log("response1 : ",err);
 												})
 												
-												const hashUrl = `http://explorer.apothem.network/tx/${resp.receipt.transactionHash}`;
+												const hashUrl = `https://explorer.xinfin.network/tx/${resp.receipt.transactionHash}`;
 												const tHtml = `
 																<p>
 																	<span>Contract Address:</span><br>${resp.receipt.contractAddress.toLowerCase()}</p>
@@ -418,6 +407,97 @@ $(function () {
 		}
 	});
 
+	//Buyer-Supplier  Alternative Form
+	$("#b_s_form").validate({
+		rules: {
+			mname: {
+				required: true,
+				minlength: 2,
+				maxlength: 30,
+				LetterOnly: true
+			},
+			memail: {
+				EmailGeneral: true,
+				required: true
+			},
+			mmob: {
+				required: true,
+				//numberOnly: true,
+				mobilenumberOnly: true
+
+			},
+			currency:{
+				required:true
+			},
+			mcomp: {
+				required: true,
+				minlength: 3,
+				maxlength: 500,
+				alphanumericOnly: true
+			},
+			amount: {
+				required: true,
+				decnumberOnly : true,
+				min : 0.1
+			},
+			loanp: {
+				required:true,
+			}
+		},
+		messages: {
+			mname: {
+				required: "Please enter Your full name",
+				minlength: "Characters length should be atleast 2",
+				maxlength: "Characters length should not exceeded than 30",
+				LetterOnly : "Check spaces between names"
+			},
+			memail: "Please enter a valid email",
+			currency:{
+				required:"Please select currency"
+			},
+			mcomp: {
+				required: "Please enter company name ",
+				minlength: "Company name should be atleast 3 charcters long",
+				maxlength: "Characters length should not exceeded than 40"
+			},
+			amount: {
+				required: "Please enter correct amount ",
+				decnumberOnly : "Enter Numbers only",
+				min : "Amount should be greater than 0.1"
+			},
+			loanp: {
+				required: "Please select your type of instrument",
+			}
+		},
+		onkeyup: function (elem) {
+
+			var element_id = $(elem).attr('id');
+
+			if (element_id == 'mname' || element_id == 'mmsg' || element_id == 'mcomp') {
+
+				var strv = $('#' + element_id).val();
+
+				$('#' + element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
+
+			}
+
+			if (element_id == 'mmob') {
+
+				var tval = $('#' + element_id).val();
+				tvala = tval.split(' ');
+			}
+		
+		},
+		success: function (elem) {
+
+
+		},
+		error: function (elem) {
+
+		}
+	});
+
+	//Brokers Form
 	$("#brokers_form").validate({
 		rules: {
 			instrument: {
@@ -427,7 +507,7 @@ $(function () {
 			},
 			name:{
 				required:true,
-				LetterOnly : true
+				LetterOnly:true
 			},
 			pcountry: {
 				required: true
@@ -477,7 +557,7 @@ $(function () {
 			},
 			name : {
 				required:"Please enter Broker Name",
-				LetterOnly : "Check spaces between names"
+				LetterOnly:"Check spaces between name"
 			},
 			currency_supported: "Please choose currency supported",
 			maturity_date: "Please choose date",
@@ -500,7 +580,7 @@ $(function () {
 					addrKey = addrKey;
 				}
 				if(addrKey.length == 64){
-					var myurl = 'get_address';
+					var myurl = 'getAddress';
 					showLoader();
 					$.ajax({
 						type: "POST",
@@ -607,7 +687,8 @@ $(function () {
 					
 						if(resp.status == true){
 							hash = resp.hash;
-					
+							
+
 							$.post("https://tfd.xinfin.net/api/generateContract",{
 							"ipfsHash":hash,
 							"instrumentType":formDataObj.instrument,
@@ -641,15 +722,15 @@ $(function () {
 										"country":formDataObj.pcountry.replace(/[+]/g," "),
 										"name":"BKR-"+formDataObj.name.replace(/[+]/g," "),
 										"contractType":"brokerInstrument",
-										"passKey" :passkey,
 										"nonceAdder":0,
+										"passKey" :passkey,
 										"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key
 										}).then(resp => {
 											// console.log("response : ",resp);
 											
 											
 											if(resp.status == true){
-												$.post("buyer_supplier",{
+												$.post("buyersupplier",{
 													'action':"adddetail",
 													'instrument': formDataObj.instrument,
 													'amount':formDataObj.amount,
@@ -670,7 +751,7 @@ $(function () {
 													console.log("response1 : ",err);
 												})
 
-												const hashUrl = `http://explorer.apothem.network/tx/${resp.receipt.transactionHash}`;
+												const hashUrl = `https://explorer.xinfin.network/tx/${resp.receipt.transactionHash}`;
 												const tHtml = `
 																<p>
 																	<span>Contract Address:</span><br>${resp.receipt.contractAddress.toLowerCase()}</p>
@@ -727,114 +808,350 @@ $(function () {
 		}
 	});
 
-	$("#b_s_form").validate({
+	//Multi Brokers Form
+	$("#bulkBrokers_form").validate({
 		rules: {
-			mname: {
-				required: true,
-				minlength: 2,
-				maxlength: 30,
-				LetterOnly: true
+			instrument: {
+				required:function() {
+					return $('[name="instrument"]:checked').length === 0; 
+				}
 			},
-			memail: {
-				EmailGeneral: true,
+			name:{
+				required:true,
+				LetterOnly:true
+			},
+			pcountry: {
 				required: true
-			},
-			mmob: {
-				required: true,
-				//numberOnly: true,
-				mobilenumberOnly: true
-
-			},
-			currency:{
-				required:true
-			},
-			mcomp: {
-				required: true,
-				minlength: 3,
-				maxlength: 500,
-				alphanumericOnly: true
 			},
 			amount: {
 				required: true,
 				decnumberOnly : true,
-				min : 0.1
+				min:0.1
 			},
-			loanp: {
-				required:function() {
-					return $('[name="loanp"]:checked').length === 0; 
+			uploaded_file:"required",
+			currency_supported: {
+				required: true
+			},
+			maturity_date: {
+				required: true
+			},
+			uploaded_file: {
+				required: true
+			},
+			private_key: {
+				required:true,
+				privateKey : true,
+				normalizer: function(value) {
+					// Update the value of the element
+					this.value = $.trim(value);
+					check = this.value;
+					if(check.startsWith("0x")){
+						check = check.slice(2);
+					}
+					else{
+						check = this.value;
+					}
+					// Use the trimmed value for validation
+					return check;
 				}
-			},
-			defaultReal: {
-				equalTo: '#captcha_val'
 			}
 		},
 		messages: {
-			mname: {
-				required: "Please enter Your full name",
-				minlength: "Characters length should be atleast 2",
-				maxlength: "Characters length should not exceeded than 30",
-				LetterOnly : "Check spaces between names"
-			},
-			memail: "Please enter a valid email",
-			currency:{
-				required:"Please select currency"
-			},
-			mcomp: {
-				required: "Please enter company name ",
-				minlength: "Company name should be atleast 3 charcters long",
-				maxlength: "Characters length should not exceeded than 40"
+			instrument:"Please select instrument",
+			pcountry: {
+				required: "Please select country"
 			},
 			amount: {
 				required: "Please enter correct amount ",
 				decnumberOnly : "Enter Numbers only",
 				min : "Amount should be greater than 0.1"
 			},
-			loanp: {
-				required: "Please select your purpose of loan",
+			name : {
+				required:"Please enter Broker Name",
+				LetterOnly:"Check spaces between name"
 			},
-			// defaultReal: "Please enter correct captcha (Letters are Case sensitive)."
+			currency_supported: "Please choose currency supported",
+			maturity_date: "Please choose date",
+			uploaded_file: "Please upload doucment",
+			private_key: {
+				required: "Please enter a private key",
+				privateKey : "Enter valid private key of 64 characters"
+			},
 		},
 		onkeyup: function (elem) {
-
+			
 			var element_id = $(elem).attr('id');
+			if (element_id == 'private_key') {
+				var _addr = document.getElementById("private_key");
+				var addrKey = $(_addr).val();
+				if(addrKey.startsWith("0x")){
+					addrKey = addrKey.slice(2);
+				}
+				else{
+					addrKey = addrKey;
+				}
+				if(addrKey.length == 64){
+					var myurl = 'getAddress';
+					showLoader();
+					$.ajax({
+						type: "POST",
+						url: myurl,
+						dataType:"json",
+						data: {"action":"getaddress","privkey":$(_addr).val()}, // serializes the form's elements.
+						success: (resp =>{
+							// console.log(resp);
+						})// show response from the php script.
+					}).done(resp => {
+						// console.log(resp);
+						document.getElementById("customm").value = resp.privatekey;
+						var _custom = document.getElementById("customm");
+						// console.log(">>",$(_custom).val());
+						$.post("paypal",{
+							'addr':resp.privatekey
+						}).then(resp => {
+							var jsona = $.parseJSON(resp);
+							// console.log("response : ",resp,jsona);
+							if(jsona.length > 0){
+								if(parseFloat(jsona[0].tfpp_doc_redem) < 1){
+									// console.log("response1 : ",jsona);
+									hideLoader();
+									$("#bulkPaypal").modal("show");
+									$('#bulkPaypal').css('opacity', '1');
+								}
+								else{
+									//all ok
+									hideLoader();
+									paypal_addr = jsona[0].tfpp_address;
+									paypal_doc_redem = parseFloat(jsona[0].tfpp_doc_redem);
+								}
+							}
+							else{
+								hideLoader();
+								$("#paypal").modal("show");
+								$('#paypal').css('opacity', '1');
+							}
+							
+							
+						}).fail(err => {
+							console.log("response1 : ",err);
+						})
+						
+					})
+				}
 
-			if (element_id == 'mname' || element_id == 'mmsg' || element_id == 'mcomp') {
-
-				var strv = $('#' + element_id).val();
-
-				$('#' + element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
-
-			}
-
-			if (element_id == 'mmob') {
-
-				var tval = $('#' + element_id).val();
-				tvala = tval.split(' ');
 			}
 		},
 		success: function (elem) {
-
+		
 
 		},
 		error: function (elem) {
 
+		},
+		submitHandler: function (form, e) {
+			
+			showLoader();
+			var formData = $(form).serialize();
+			const formObj = formData.trim().split('&');
+			var formDataObj = {};
+			var files = document.getElementById('uploaded_file').files;
+			var dataFile;
+			var hash;
+			const filearr = [];
+			const deploy = [];
+			if (files.length > 0) {
+				Array.prototype.forEach.call(files,  child => {
+					var reader = new FileReader();
+					reader.readAsDataURL(child);
+					reader.onload  =  async function () {
+						dataFile = reader.result;
+						dataFile = dataFile.split("base64,");
+						filearr.push(dataFile[1]);
+					// after getting value of datafile name make the ajax call
+					$.each(formObj, function (k, v) {
+						v = v.split('=');
+						if(v[0] === "fsdate" || v[0] === "maturitydate" || v[0] === "firstdate") {
+							var date = v[1].split('-');
+							date = date[2] + `/` + date[1] + '/' + date[0];
+							formDataObj[v[0]] = date;
+						} else {
+							formDataObj[v[0]] = v[1];
+						}
+					});
+					formDataObj.docRef = (new Date()).getTime();
+					
+					};
+					
+				});	
+				
+			}
+
+			const fileReaderInterval = setInterval(() => {
+				if (filearr.length === files.length) {
+					// read complete
+					clearInterval(fileReaderInterval);
+					for(var i = 0; i < filearr.length; i++ ){
+						const childd = i;
+						let resp = $.ajax({
+							type:"POST",
+							dataType:"json",
+							url:"https://tfd.xinfin.net/api/uploadDoc",
+							data:{"data":dataFile[1]},
+							success: (resp =>{
+								console.log(resp);
+								if(resp.status == true){
+									hash = resp.hash;
+		
+									$.post("https://tfd.xinfin.net/api/generateContract",{
+									"ipfsHash":hash,
+									"instrumentType":formDataObj.instrument,
+									"amount":formDataObj.amount,
+									"currencySupported":formDataObj.currency_supported,
+									"maturityDate":formDataObj.maturity_date,
+									"docRef":formDataObj.instrument+formDataObj.docRef,
+									"country":formDataObj.pcountry.replace(/[+]/g," "),
+									"name":"BKR-"+formDataObj.name.replace(/[+]/g," "),
+									"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key,
+									"contractType":"brokerInstrument"
+									}).then(respond => {
+										console.log("Generate Contract : ",respond.status,childd);
+										if(respond.status == true){
+											passkey = respond.passKey,
+											$.post("https://tfd.xinfin.net/api/deployContract",{
+											"ipfsHash":hash,
+											"instrumentType":formDataObj.instrument,
+											"amount":formDataObj.amount,
+											"currencySupported":formDataObj.currency_supported,
+											"maturityDate":formDataObj.maturity_date,
+											"docRef":formDataObj.instrument+formDataObj.docRef,
+											"country":formDataObj.pcountry.replace(/[+]/g," "),
+											"name":"BKR-"+formDataObj.name.replace(/[+]/g," "),
+											"contractType":"brokerInstrument",
+											"nonceAdder":childd,
+											"passKey" :passkey,
+											"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key
+											}).then(respondd => {
+												console.log(" Deploy Contract : ",respondd);
+												
+												deploy.push({fileNo:childd,contract_address:respondd.receipt.contractAddress.toLowerCase(),txHash:respondd.receipt.transactionHash});
+												// txHash.push(resp.receipt.transactionHash);
+												if(respondd.status == true){
+													$.post("buyersupplier",{
+													'action':"adddetail",
+													'instrument': formDataObj.instrument,
+													'amount':formDataObj.amount,
+													"currency_supported":formDataObj.currency_supported,
+													"maturity_date":formDataObj.maturity_date,
+													"pcountry":formDataObj.pcountry.replace(/[+]/g," "),
+													"name":"BKR-"+formDataObj.name.replace(/[+]/g," "),
+													"docRef":formDataObj.instrument+formDataObj.docRef,
+													"contractAddr":respondd.receipt.contractAddress.toLowerCase(),
+													"deployerAddr":respondd.deployerAddr.toLowerCase(),
+													"secretKey" : passkey,
+													"addr" :paypal_addr,
+													"doc":paypal_doc_redem,
+													"csrf_name": csrf_value
+													}).then(res =>{
+														if(i === filearr.length){
+																			
+															var ress =Object.entries(deploy);			
+															let rows = "";
+															for (var j = 0; j < ress.length; j++) { 
+																const hashUrl = `https://explorer.apothem.network/tx/${deploy[j].txHash}`;
+																rows += `<tr>
+																<td>${deploy[j].fileNo +1}</td>
+																<td>${deploy[j].contract_address}</td>
+																<td><a href="${hashUrl}" target="_blank">${deploy[j].txHash}</a></td>
+																</tr>`
+														
+															 } 
+															const html = `<table id="admin-table" class="table table-striped jambo_table bulk_action" cellspacing="0" width="100%"
+																			<thead>
+																				<tr>
+																					<td>File No</td>
+																					<td>Contract Address</td>
+																					<td>Transaction Hash</td>
+																				</tr>
+																			</thead>
+																			<tbody>`
+																			+rows+
+																			`</tbody>
+																		</table>`
+															hideLoader();
+															document.getElementById("createinstrument").style.display = "none";
+															document.getElementById("showTransactions").style.display = "block";
+															$("#deployedData").html(html);
+															
+															toastr.success('Successfully added document', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+															$("#okTx").on('click', function (e) {
+																setTimeout(location.reload.bind(location));
+															})
+														}
+														
+													}).fail(error =>{
+														hideLoader();
+														toastr.error('Something went wrong.', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+														setTimeout(location.reload.bind(location), 6000);
+													})
+														
+													
+												}
+												else if (respondd.status == false){
+													hideLoader();
+													toastr.error('Invalid Private Key/Insufficient balance.', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+													setTimeout(location.reload.bind(location), 6000);
+												}	
+											});									
+										}
+										else if(respond.status == false){
+												hideLoader();
+												toastr.error('Something went wrong.', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+												setTimeout(location.reload.bind(location), 6000);
+											
+										}
+									}).fail(error =>{
+										hideLoader();
+										toastr.error('Something went wrong.', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+										setTimeout(location.reload.bind(location), 6000);
+									});		
+									
+								}
+								else if (resp.status == false){
+									hideLoader();
+									toastr.error('Invalid Private Key/Insufficient balance.', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+									setTimeout(location.reload.bind(location), 6000);
+								}
+							})					
+						});
+
+
+						
+						
+					}
+					
+				}
+			})
+				
+					
 		}
+			
 	});
 
+	//Date
 	$('#maturity_date').datepicker({
-		format: "yyyy-mm-dd",
-		minDate:0,
-		autoclose: true,
-		// todayHighlight: true,
-		startDate: '-0m'
-	//endDate: '+2d'
-	}).on('changeDate', function(ev){
-		$('#sDate1').text($('#datepicker').data('date'));
-		$('#datepicker').datepicker('hide');
-	});
+			format: "yyyy-mm-dd",
+			minDate:0,
+			autoclose: true,
+			// todayHighlight: true,
+			startDate: '-0m'
+        //endDate: '+2d'
+		}).on('changeDate', function(ev){
+			$('#sDate1').text($('#datepicker').data('date'));
+			$('#datepicker').datepicker('hide');
+		});
 		
 	
-	
+	//File Validation Form
 	$('#uploaded_file').change(function(){ 
 		
 		const fi = document.getElementById('uploaded_file');
@@ -849,12 +1166,11 @@ $(function () {
 				document.getElementById('uploaded_file').innerHTML = filename;
 				filextension=filename.split(".");
 				filext="."+filextension.slice(-1)[0];
-				// /console.log(">>>>>>",file.name,filextension,filext);
+				
 				valid=[".pdf"];
 					if (valid.indexOf(filext.toLowerCase())==-1){
 						document.getElementById("error").style.display = "block";
 						document.getElementById("instru").disabled = true;
-						// document.getElementById("brokers").disabled = true;
 						
 						if ('size' in file) {
 							const fsize = file.size; 
@@ -869,7 +1185,7 @@ $(function () {
 					else{
 						document.getElementById("error").style.display = "none";
 						document.getElementById("instru").disabled = false;
-						// document.getElementById("brokers").disabled = false;
+						
 						if ('size' in file) {
 							const fsize = file.size; 
 							if(parseFloat(fsize) > 10485760) {
@@ -888,6 +1204,7 @@ $(function () {
 		
 	});
 	
+	//View Buyer Supplier Document Form
 	$('#contractdoc_form').validate({
 		rules: {
 			contract_address: {
@@ -946,11 +1263,11 @@ $(function () {
 					
 					$.ajax({
 						type: 'POST',
-						url: "get_passkey",
+						url: "getPasskey",
 						dataType:"json",
 						data: { 'pass': 'getpasskey', 'contractAddr': formDataObj.contract_address,csrf_name:csrf_value},
 						success: function(result){
-						
+							
 						//    console.log(result);
 						}
 					  }).done(resp => {
@@ -973,7 +1290,6 @@ $(function () {
 						
 							// console.log("response : ",resp);
 							
-							e.preventDefault();
 							if(resp.status == true){
 								const hashUrl = `https://ipfs-gateway.xinfin.network/${resp.ipfsHash}`;
 								const tHtml = `
@@ -1003,7 +1319,8 @@ $(function () {
 					
 			
 	});
-	
+
+	//View Broker Document Form
 	$('#contractdocc_form').validate({
 		rules: {
 			contract_address: {
@@ -1062,7 +1379,7 @@ $(function () {
 					
 					$.ajax({
 						type: 'POST',
-						url: "get_passkey",
+						url: "getPasskey",
 						dataType:"json",
 						data: { 'pass': 'getpasskey', 'contractAddr': formDataObj.contract_address,csrf_name:csrf_value},
 						success: function(result){
@@ -1087,9 +1404,7 @@ $(function () {
 						}
 							}).done(resp => {
 							
-								// console.log("response : ",resp);
 								
-								e.preventDefault();
 								if(resp.status == true){
 									const hashUrl = `https://ipfs-gateway.xinfin.network/${resp.ipfsHash}`;
 									const tHtml = `

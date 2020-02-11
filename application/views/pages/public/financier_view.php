@@ -667,7 +667,7 @@
                         <div class="deployedData_modal_block">
                             <p class="left"><strong>*Only trusted masternode entity within the network can access the record. If you are a Masternode holder, enter the private key & access the document.</strong></p>
 							<!--<p id="deployedData" style="word-break: break-all;"></p>-->
-                            <p><span><a href="<?php echo base_url()?>publicv/setup_masternode" target="_blank">How to Create PrivateKey & Setup Masternode?</a></span></p>
+                            <p><span><a href="<?php echo base_url()?>publicv/setupMasternode" target="_blank">How to Create PrivateKey & Setup Masternode?</a></span></p>
 							<form id="checkprivatekey_form" class="tf-suppliers-form" enctype="multipart/form-data" method="post">
                             
                                 <div class="form-group ">
@@ -771,7 +771,7 @@
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 <script type="text/javascript" >
 function passData(docRef){
-    var myurl = '<?php echo base_url()?>publicv/get_access';
+    var myurl = '<?php echo base_url()?>publicv/getAccess';
     $("#privkey").modal("show");
     $('#privkey').css('opacity', '1');
     $('#checkprivkey').click(function(e) {
@@ -888,7 +888,7 @@ function passData(docRef){
 
 }
 function passData_bs(docRef){
-    var myurl = '<?php echo base_url()?>publicv/get_access';
+    var myurl = '<?php echo base_url()?>publicv/getAccess';
     $("#privkey").modal("show");
     $('#privkey').css('opacity', '1');
     $('#checkprivkey').click(function(e) {
@@ -978,7 +978,6 @@ function passData_bs(docRef){
                             })// show response from the php script.
                             }).done(resp => {
                                 toastr.success('Successfully notfied to admin', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
-                                setTimeout(location.reload.bind(location), 6000);
                             })
                         });
                             

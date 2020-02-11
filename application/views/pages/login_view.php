@@ -46,7 +46,7 @@
 						<p class="form-group">
 							<a href="<?php echo base_url() ?>registration" class="btn btn-info btn-block create_account">Create an account</a>
 						</p>
-						<p class="form-group send_email">By signing in you are agreeing to our <a href="<?php echo base_url() ?>publicv/terms_condition" target="_blank">Terms and Conditions</a> and our <a href="<?php echo base_url() ?>publicv/privacy_policy" target="_blank">Privacy Policy</a>.</p>
+						<p class="form-group send_email">By signing in you are agreeing to our <a href="<?php echo base_url() ?>publicv/termsCondition" target="_blank">Terms and Conditions</a> and our <a href="<?php echo base_url() ?>publicv/privacyPolicy" target="_blank">Privacy Policy</a>.</p>
 					</form>
 				</div>
 			</div>
