@@ -45,9 +45,9 @@
                                     <label for="private-key">Enter Private Key <span><a href="https://howto.xinfin.org/XinFinWallet/features/" target="_blank">How to Create PrivateKey?</a></span></label>
                                     <input type="text" class="form-control" id="private_key" name="private_key" autocomplete= "off" placeholder="Enter Private Key">
                                 </div>
-                                 <div class="form-group">
+                                 <!-- <div class="form-group">
                                  <span><a href="http://faucet.apothem.network/" target="_blank">Get Test XDC Tokens</a></span>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
 									<label for="instrument-type" id="instrument">Type of Instrument<sup>*</sup></label>
 									<div class="radiobtn">
@@ -181,7 +181,7 @@
                     
 					<div class="col-md-8 col-md-offset-2 mt-5">
                             <div class="form-group text-right">
-                                <button  id="bulk" name="bulk" type="submit" class="btn btn-blue text-uppercase" onclick="location.href='<?php echo base_url() ?>publicv/multiBrokers'">Bulk Upload</button><p> (Coming Soon)</p>
+                                <button  id="bulk" name="bulk" type="submit" class="btn btn-blue text-uppercase" onclick="location.href='<?php echo base_url() ?>publicv/multiBrokers'" disabled>Bulk Upload</button><p> (Coming Soon)</p>
                             </div>
                     </div>
 					

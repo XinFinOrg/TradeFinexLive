@@ -2018,7 +2018,7 @@ class Publicv extends CI_Controller {
 		$data['rewardsUSD'] = $allStats->monthlyRewardsFiat;
 
 		$utility = $this->manage->get_instrument_value();
-		$data['utility'] = floatval(10 * $utility);
+		$data['utility'] = 20 + floatval(10 * $utility);
 
 		$data['percent'] = $allStats->monthlyRewardPer;
 		$data['percent_year'] = $allStats->yearlyRewardPer;
