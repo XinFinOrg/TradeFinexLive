@@ -415,7 +415,7 @@
                 </div>
 				<div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgOffWhiteShadow">
-                        <div class="factTitle"><span class="counter"><?php echo $rewards?></span> XDC</div>
+                        <div class="factTitle"><span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$rewards),'0'),'.')?></span> XDC</div>
 						<div class="tf-divider"><hr /></div>
                     	<p>Monthly Masternode rewards generated for XDC Masternodes</p>
                 	</div>
