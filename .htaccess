@@ -11,6 +11,8 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ ./index.php?$1 [L,QSA]
 
+ErrorDocument 404 /error404
+
 # ----------------------------------------------------------------------
 # Allow loading of external fonts
 # ----------------------------------------------------------------------
