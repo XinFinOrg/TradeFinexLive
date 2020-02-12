@@ -1,4 +1,5 @@
 User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
+Disallow: /thankyouc
 Sitemap: https://tradefinex.org/
