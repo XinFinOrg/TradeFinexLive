@@ -2,4 +2,32 @@ User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
 Disallow: /thankyouc
+Disallow: /bondCreate
+Disallow: /publicv/beneficiary
+Disallow: /publicv/buyerssupplier
+Disallow: /publicv/getPasskey
+Disallow: /publicv/getAccess
+Disallow: /publicv/advertise
+Disallow: /publicv/careers
+Disallow: /publicv/faq
+Disallow: /publicv/financeSolutions
+Disallow: /publicv/tradeSolutions
+Disallow: /publicv/quickbook_dashboard
+Disallow: /publicv/invoiceFactoring
+Disallow: /publicv/sendMail
+Disallow: /publicv/smartContract
+Disallow: /publicv/test
+Disallow: /publicv/errorPage
+Disallow: /publicv/paypal
+Disallow: /publicv/getAddress
+Disallow: /unsubscribe
+Disallow: /verify
+Disallow: /verifyX
+Disallow: /reset
+Disallow: /smartcontract
+Disallow: /smartcontractX
+Disallow: /sociallog
+Disallow: /sociallogin
+Disallow: /user_aunthenticate
+
 Sitemap: https://tradefinex.org/
