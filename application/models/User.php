@@ -30,7 +30,7 @@ class User extends CI_Model {
             // $data['modified'] = date("Y-m-d H:i:s");
             // $update = $this->db->update($this->tableName, $data, array('id'=>$result['id']));
             // echo "User already exists";
-            redirect('publicv/bond_create');
+            redirect('publicv/bondCreate');
             // die;
             // user id
             // $userID = $result['id'];

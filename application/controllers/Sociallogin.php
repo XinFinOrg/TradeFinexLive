@@ -72,7 +72,7 @@ public function __construct()
 			$this->session->set_userdata('userData', $userData);
 
 			
-			redirect('publicv/bond_create');
+			redirect('publicv/bondCreate');
 			// $this->load->view('user_authentication/profile',$userData);
 
 			// echo "<pre>";

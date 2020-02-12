@@ -81,7 +81,7 @@ class User_Authentication extends CI_Controller
 			$this->session->set_userdata('userData', $userData);
 
 			
-			redirect('publicv/bond_create');
+			redirect('publicv/bondCreate');
 			
 		 
 	}

@@ -29,7 +29,7 @@ public function login(){
 public function gitcallback()
 {
     $client_id = "2d264d61e985d4809d43";
-    $redirect_url = "https://tradefinex.org/publicv/bond_create";
+    $redirect_url = "https://tradefinex.org/publicv/bondCreate";
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         if (isset($_GET['code'])) {
             $code = $_GET['code'];
@@ -94,7 +94,7 @@ public function gitcallback()
 			$this->session->set_userdata('userData', $userPayload);
 
 			
-			redirect('publicv/bond_create');
+			redirect('publicv/bondCreate');
 
     }
     else {
