@@ -2,7 +2,7 @@ User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
 Disallow: /thankyouc
-Disallow: /bondCreate
+Disallow: /publicv/bondCreate
 Disallow: /publicv/beneficiary
 Disallow: /publicv/buyerssupplier
 Disallow: /publicv/getPasskey
