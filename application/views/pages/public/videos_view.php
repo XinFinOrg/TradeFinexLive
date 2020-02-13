@@ -56,24 +56,23 @@
                         <p>TradeFinex 2020 - Abu Dhabi Part 4 - XinFin Partner with Copper.co announced</p>
                     </div>
                 </div>
-				
 				<div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="video-frame">
                         <div class="embed-container">
-                            <iframe src="https://www.youtube.com/embed/mjrhTnZ16f8?feature=oembed" frameborder="0" allowfullscreen></iframe>
+                            <iframe src="https://www.youtube.com/embed/4bK1CrfaFf4?feature=oembed" frameborder="0" allowfullscreen></iframe>
                         </div>
-                        <p>Presenting TradeFInex and Consortium introduction at "Blockchain for Finance Conference 2018" Boston</p>
+                        <p>Apply for Trade Finance Funding on TradeFinex Network</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="video-frame">
+                        <div class="embed-container">
+                            <iframe src="https://www.youtube.com/embed/xA34M-D25rM?feature=oembed" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <p>Become an Financier on TradeFinex Network | Explained</p>
                     </div>
                 </div>
 				
-				<div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="video-frame">
-                        <div class="embed-container">
-                            <iframe src="https://www.youtube.com/embed/C0DF2A5ssk8?feature=oembed" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <p>TradeFinex platform Demonstration</p>
-                    </div>
-                </div>
 				
 				<div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="video-frame">
@@ -120,17 +119,18 @@
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="video-frame">
                         <div class="embed-container">
-                            <iframe src="https://www.youtube.com/embed/4bK1CrfaFf4?feature=oembed" frameborder="0" allowfullscreen></iframe>
+                            <iframe src="https://www.youtube.com/embed/mjrhTnZ16f8?feature=oembed" frameborder="0" allowfullscreen></iframe>
                         </div>
-                        <p>Apply for Trade Finance Funding on TradeFinex Network</p>
+                        <p>Presenting TradeFInex and Consortium introduction at "Blockchain for Finance Conference 2018" Boston</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
+				
+				<div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="video-frame">
                         <div class="embed-container">
-                            <iframe src="https://www.youtube.com/embed/xA34M-D25rM?feature=oembed" frameborder="0" allowfullscreen></iframe>
+                            <iframe src="https://www.youtube.com/embed/C0DF2A5ssk8?feature=oembed" frameborder="0" allowfullscreen></iframe>
                         </div>
-                        <p>Become an Financier on TradeFinex Network | Explained</p>
+                        <p>TradeFinex platform Demonstration</p>
                     </div>
                 </div>
             </div>
