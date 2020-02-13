@@ -126,7 +126,8 @@
                                 <li> <a href="<?=base_url();?>publicv/xdcLiquidity">XDC Liquidity</a></li>
 								<li> <a href="<?=base_url();?>publicv/caseStudy">Case Study</a></li>
                                 <li> <a href="<?=base_url();?>publicv/rollout">Rollout Plan</a></li>
-                                <li> <a href="<?=base_url();?>publicv/contact">Contact Us</a></li>
+								<li> <a href="<?=base_url();?>publicv/contact">Contact Us</a></li>
+								<li> <a href="<?=base_url();?>swagger/index.html" target="_blank">Bulk Upload API</a></li>
                             </ul>
                         </div>
                     </div>

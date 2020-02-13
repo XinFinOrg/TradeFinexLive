@@ -1,0 +1,264 @@
+swagger: "2.0"
+info:
+  description: "This is a Bulk document upload API .  You can find out more about     TradeFinex at [https://tradefinex.org](https://tradefinex.org)."
+  version: "1.0.0"
+  title: "Bulk Upload using API"
+  termsOfService: "https://tradefinex.org/publicv/termsCondition"
+  contact:
+    email: "contact@tradefinex.org"
+host: "demoapi.tradefinex.org"
+basePath: "/api"
+tags:
+- name: "uploadMultiDoc"
+  description: "Upload Multiple document"
+- name: "generateMultiDocContract"
+  description: "Generate Smart Contract for multiple documents along with random encryption pass key for hash"
+- name: "deployMultiContract"
+  description: "Deploy each smart contract created on the blockchain server"
+schemes:
+- "https"
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /uploadMultiDoc:
+    post:
+      tags:
+      - "uploadMultiDoc"
+      description: "Upload Multiple document in base64 format"
+      operationId: "adddoc"
+      parameters:
+      - name: "data"
+        in: "body"
+        description: "base64 value of document"
+        required: true
+        schema:
+          $ref: "#/definitions/uploadMultiDoc"
+      responses:
+        200:
+          description: "status: true,
+                       hashes:[
+                         - QmXYa1jyEMCJ3BXQukaC1L6BM99y1C1J2JVWbuCUYh1TQf
+                         - QmPXVMTE4coCzQL5TAabTpAGYXNYsCyYE2R3usJ3fMpHiT
+                       ]"
+        521:
+          description: "Web Server is down"
+        400:
+          description: "Bad Request"
+        500:
+          description: "Internal Error"
+  /generateMultiDocContract:
+    post:
+      tags:
+      - "generateMultiDocContract"
+      description: "Generate Smart Contract for multiple documents along with randon encryption pass key for hash"
+      operationId: "generatedoc"
+      parameters:
+      - name: "allDocs"
+        in: "body"
+        description: "Meta data along with encrypted hash"
+        required: true
+        schema:
+          $ref: "#/definitions/generateMultiDocContract"
+      responses:
+        200:
+         description: "status: true
+                      contracts: 
+                       - contract: pragma solidity ^0.5.14;\n\n\ncontract DocContract {\n    address public owner;\n    constructor() public {\n        owner  = msg.sender;\n    }\nstring public ipfsHash = \"a72d7f6a3fa5f779a068283684574b831e1984a396dc1a368fa396dc1a368fb68ec085b68ec08568a77552\";\n    string public instrumentType = \"Receivable\";\n    string public amount = \"10000\";\n    string public currencySupported = \"XDC\";\n    string public maturityDate = \"20-01-2020\";\n    string public docRef = \"REC15215202\";\n    string public country = \"Singapore\";\n    string public name = \"Mansi\";\n  function getData() public view returns(string memory,string memory,string memory,string memory,string memory,string memory,string memory) {\n        return (instrumentType,amount,currencySupported,maturityDate,docRef,country, name);\n    }\nfunction getDocHash() public view returns (string memory) {\n        return (ipfsHash);\n    }\n}\n    \n
+                        passKey: 60eafa7a80e094bcee790b5acc94b758793a4ebc06fe5b1e09d744d34591048589509ea6e3842b4db56831d3ef9 \n\n
+                        contract:pragma solidity ^0.5.14;\n\n\ncontract DocContract {\n    address public owner;\n    constructor() public {\n        owner  = msg.sender;\n    }\n string public ipfsHash = \"2090f9ed726eb68ec085deab2b5b8ffc38c9dfba396dc1a368f115661179e5118d0ed8b0e3b68252859e8ed\";\n    string public instrumentType = \"Receivable\";\n    string public amount = \"10000\";\n    string public currencySupported = \"XDC\";\n    string public maturityDate = \"20-01-2020\";\n    string public docRef = \"REC15215202\";\n    string public country = \"Singapore\";\n    string public name = \"Mansi\";\n function getData() public view returns(string memory,string memory,string memory,string memory,string memory,string memory,string memory) {\n        return (instrumentType,amount,currencySupported,maturityDate,docRef,country, name);\n  function getDocHash() public view returns (string memory) {\n        return (ipfsHash);\n    }\n}\n    \n 
+                        passKey: ce6f80cc70acc0701acb67988334aeb61dc382eec4584e8d73c81be178c646889d2a48586e97770f8b7b23c672b5248b243"
+        521:
+          description: "Web Server is down"
+        400:
+          description: "Bad Request"
+        500:
+          description: "Internal Error"
+  /deployMultiContract:
+    post:
+      tags:
+      - "deployMultiContract"
+      description: "Deploy each smart contract created on the blockchain server"
+      operationId: "deploydoc"
+      parameters:
+      - name: "allDocs"
+        in: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/deployMultiContract"
+      responses:
+        200:
+          description: "status: true
+                       receipts:
+                         - receipt:
+                             blockHash: '0xfb4050decbb6bc079ec8e834ff7c0d18c2789c6e5b50153dca853c533a6f719d'\n
+                             blockNumber: 5092569\n
+                             contractAddress: xdc41506ea0022A91cBcA89E12210ad7eAf1D768200\n
+                             cumulativeGasUsed: 2583206\n
+                             from: xdc7d1e511b33b34c9aa611c6e40ce9ddacb2383ac6\n
+                             gasUsed: 1291603\n
+                             logs: []\n
+                             logsBloom: '0x0000000000000000000000000000000000000000000000000000000000000000000000'\n
+                             status: true\n
+                             to: null\n
+                             transactionHash: '0x25f45ebc51e327c391e7e2f1208314edcbd5fc5cceddd459c6f50bfde28783e5'\n
+                             transactionIndex: 1\n
+                           deployerAddr: '0x7D1E511B33b34C9Aa611c6e40ce9DdAcB2383Ac6'\n\n
+                           receipt:
+                             blockHash: '0xfb4050decbb6bc079ec8e834ff7c0d18c2789c6e5b50153dca853c533a6f719d'\n
+                             blockNumber: 5092569\n
+                             contractAddress: xdc7617a2abe1f3787b88Bfd9af4502e32c64683350\n
+                             cumulativeGasUsed: 3874745\n
+                             from: xdc7d1e511b33b34c9aa611c6e40ce9ddacb2383ac6\n
+                             gasUsed: 1291539\n
+                             logs: []\n
+                             logsBloom: '0x0000000000000000000000000000000000000000000000000000000000000000000000'\n
+                             status: true\n
+                             to: null\n
+                             transactionHash: '0x01b84e72fcc01e3349881ebfbb0e0aadfaadb0e72d7b64e296f4cdf0eb5466ea'\n
+                             transactionIndex: 2\n
+                           deployerAddr: '0x7D1E511B33b34C9Aa611c6e40ce9DdAcB2383Ac6'\n"
+        521:
+          description: "Web Server is down"
+        400:
+          description: "Bad Request"
+        500:
+          description: "Internal Error"
+definitions:
+  uploadMultiDoc:
+      title: uploadMultiDoc
+      example:
+        data: ["/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMSEBASEhASEBAQDw8VEA8QEA8PDw8QFRUWFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OFRAQFysdFR0tKy0tKy0tLS0rLS0tKystKy0tLSsrLSsrKystLS0tLS0tKy03KzcrLSstLS0rKysrK//AABEIAKgBLAMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAADBAIFAAEGBwj/xAA9EAACAQIEAwUGAggGAwAAAAABAgADEQQSITEFQVETImFxgQYyQpGhwVJiBxQVcqKx0fAjM2Oy4fEkQ4L/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAmEQADAQACAgIBAwUAAAAAAAAAARECAyESMUFRI",
+          "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMSEBASEhASEBAQDw8VEA8QEA8PDw8QFRUWFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OFRAQFysdFR0tKy0tKy0tLS0rLS0tKystKy0tLSsrLSsrKystLS0tLS0tKy03KzcrLSstLS0rKysrK//AABEIAKgBLAMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAADBAIFAAEGBwj/xAA9EAACAQIEAwUGAggGAwAAAAABAgADEQQSITEFQVETImFxgQYyQpGhwVJiBxQVcqKx0fAjM2Oy4fEkQ4L/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAmEQADAQACAgIBAwUAAAAAAAAAARECAyESMUFRI"]
+      type: object
+      properties:
+        data:
+          type: string
+          format: base64
+      required:
+      - data
+  generateMultiDocContract:
+      title: generateMultiDocContract
+      example:
+        allDocs:
+          - ipfsHash: QmQmZ2pVAXEd4CvhvnfDQAf2QcWK9Ny342rzptJ9y2u8S4
+            instrumentType: Receivable
+            amount: '10000'
+            currencySupported: XDC
+            maturityDate: 20-01-2020
+            name: Mansi
+            docRef: REC15215202
+            country: Singapore
+            privKey: aaa2bd9f5df86fec2b424fdd00ddacdfa6f0a73a93f273fc64be51febe61eea6
+            contractType: brokerInstrument
+          - ipfsHash: QmPXVMTE4coCzQL5TAabTpAGYXNYsCyYE2R3usJ3fMpHiT
+            instrumentType: Other
+            amount: '10000'
+            currencySupported: SGD
+            maturityDate: 20-01-2020
+            name: Mansi
+            docRef: REC15215203
+            country: Singapore
+            privKey: aaa2bd9f5df86fec2b424fdd00ddacdfa6f0a73a93f273fc64be51febe61eea6
+            contractType: brokerInstrument
+        
+      type: object
+      properties:
+        ipfsHash: 
+          type: string
+        instrumentType: 
+          type: string
+        amount: 
+          type: string
+        currencySupported: 
+          type: string
+        maturityDate: 
+          type: string
+        name: 
+          type: string
+        docRef: 
+          type: string
+        country: 
+          type: string
+        privKey: 
+          type: string
+        contractType: 
+          type: string
+      required:
+      - allDocs
+      - ipfsHash
+      - instrumentType
+      - amount
+      - currencySupported
+      - maturityDate
+      - name
+      - docRef
+      - country
+      - privKey
+      - contractType
+  deployMultiContract:
+      title: deployMultiContract
+      example:
+        allDocs:
+          - ipfsHash: QmQmZ2pVAXEd4CvhvnfDQAf2QcWK9Ny342rzptJ9y2u8S4
+            instrumentType: Receivable
+            amount: '10000'
+            currencySupported: XDC
+            maturityDate: 20-01-2020
+            name: Mansi
+            docRef: REC15215202
+            country: Singapore
+            privKey: '0xaaa2bd9f5df86fec2b424fdd00ddacdfa6f0a73a93f273fc64be51febe61eea6'
+            contractType: brokerInstrument
+            passKey: aa0b0225771a4b3ec209920783bc7d1aa20f99097c51fdf90c03b2db0fb3ed75c7ee55eac1a7194f0e1ed1ddf7fef4dc954e0179d71127efb9401c8449c9bb01
+          - ipfsHash: QmPXVMTE4coCzQL5TAabTpAGYXNYsCyYE2R3usJ3fMpHiT
+            instrumentType: Receivable
+            amount: '10000'
+            currencySupported: XDC
+            maturityDate: 20-01-2020
+            name: Mansi
+            docRef: REC15215202
+            country: Singapore
+            privKey: '0xaaa2bd9f5df86fec2b424fdd00ddacdfa6f0a73a93f273fc64be51febe61eea6'
+            contractType: brokerInstrument
+            passKey: e62dd1cd04cd9a4237c2f0f1ab1403f7cef247879ddb933e970458c6e502143229ee92b07de45d61dfd70b69ae2d0d56bc7dfdd6e95e17ced485cc0d35011def
+          
+      type: object
+      properties:
+        ipfsHash: 
+          type: string
+        instrumentType: 
+          type: string
+        amount: 
+          type: string
+        currencySupported: 
+          type: string
+        maturityDate: 
+          type: string
+        name: 
+          type: string
+        docRef: 
+          type: string
+        country: 
+          type: string
+        privKey: 
+          type: string
+        contractType: 
+          type: string
+        passKey: 
+          type: string
+      required:
+      - allDocs
+      - ipfsHash
+      - instrumentType
+      - amount
+      - currencySupported
+      - maturityDate
+      - name
+      - docRef
+      - country
+      - privKey
+      - contractType
+      - passKey

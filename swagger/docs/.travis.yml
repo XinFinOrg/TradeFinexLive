@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+- "8"
+cache:
+  directories:
+  - node_modules
+
+install:
+- npm install
+
+script:
+- node shins.js
+- node buildstyle.js
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github-token: $GH_TOKEN
+  repo: XinFin/apidocs
+  local-dir: .
+  target-branch: gh-pages
+  fqdn: apidocs.XinFin.com
+  on:
+    branch: master
