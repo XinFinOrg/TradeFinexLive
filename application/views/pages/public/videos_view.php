@@ -19,8 +19,45 @@
             </div>
         </div>
 
-        <div class="row inside-videos">
-                <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="row inside-videos">               
+				
+				<div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="video-frame">
+                        <div class="embed-container">
+                            <iframe src="https://www.youtube.com/embed/FZhSpnJICxE?feature=oembed" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <p>TradeFinex 2020 - Abu Dhabi Part 1 | RegLab Explained by Mr. Bhaskar Dasgupta</p>
+                    </div>
+                </div>
+				
+				<div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="video-frame">
+                        <div class="embed-container">
+                            <iframe src="https://www.youtube.com/embed/gF7gQVJmmic?feature=oembed" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <p>TradeFinex 2020 - Abu Dhabi Part 2 - TradeFinex Explained by Mr. Ritesh Kakkad and Mr. Atul Khekade</p>
+                    </div>
+                </div>
+				
+				<div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="video-frame">
+                        <div class="embed-container">
+                            <iframe src="https://www.youtube.com/embed/qeVVbfNgXEQ?feature=oembed" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <p>TradeFinex 2020 - Abu Dhabi Part 3 - Working of Fineon Exchange by Mr. Michel Kilzi</p>
+                    </div>
+                </div>
+				
+				<div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="video-frame">
+                        <div class="embed-container">
+                            <iframe src="https://www.youtube.com/embed/K6qAWEXKPcg?feature=oembed" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <p>TradeFinex 2020 - Abu Dhabi Part 4 - XinFin Partner with Copper.co announced</p>
+                    </div>
+                </div>
+				
+				<div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="video-frame">
                         <div class="embed-container">
                             <iframe src="https://www.youtube.com/embed/mjrhTnZ16f8?feature=oembed" frameborder="0" allowfullscreen></iframe>
