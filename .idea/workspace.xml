@@ -2115,7 +2115,7 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="PhpWebServerValidation" path_to_validation_script="C:\xampp\htdocs\tradefinex" selected_validation_type="LOCAL" web_path_to_validation_script="http://localhost/tradefinex/" />
+  <component name="PhpWebServerValidation" path_to_validation_script="C:\xampp\htdocs\tradefinex" selected_validation_type="LOCAL" web_path_to_validation_script="https://tradefinex.org" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.0">
     <include_path>
       <path value="$PROJECT_DIR$/phpMyAdmin/vendor/symfony/expression-language" />

@@ -163,7 +163,7 @@ class CI_Xmlrpcs extends CI_Xmlrpc {
 					'system.multicall'	 => array(
 										'function' => 'this.multicall',
 										'signature' => array(array($this->xmlrpcArray, $this->xmlrpcArray)),
-										'docstring' => 'Combine multiple RPC calls in one request. See http://www.xmlrpc.com/discuss/msgReader$1208 for details')
+										'docstring' => 'Combine multiple RPC calls in one request. See https://www.xmlrpc.com/discuss/msgReader$1208 for details')
 				);
 	}
 

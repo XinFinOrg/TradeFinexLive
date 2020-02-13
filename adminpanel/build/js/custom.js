@@ -2497,7 +2497,7 @@ if (typeof NProgress != 'undefined') {
 					title: 'Click for Google',
 					start: new Date(y, m, 28),
 					end: new Date(y, m, 29),
-					url: 'http://google.com/'
+					url: 'https://google.com/'
 				  }]
 				});
 				

@@ -50,7 +50,7 @@ $(function() {
     },
 	editable: true,
 	// US Holidays
-	events: 'http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic'
+	events: 'https://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic'
 	
 	});
 });
