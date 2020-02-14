@@ -439,7 +439,7 @@
 					<div class="counterFact bgOffWhiteShadow">
                         <div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$xdvolume),'0'),'.')?></span></div>
 						<div class="tf-divider"><hr /></div>
-                    	<p>Daily Volume of XDC Tokens</p>
+                    	<p>Daily Exchanges Volume of XDC/XDCE Tokens</p>
                 	</div>
                 </div>
             </div> 
