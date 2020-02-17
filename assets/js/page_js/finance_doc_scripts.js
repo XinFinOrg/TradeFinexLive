@@ -200,7 +200,7 @@ $(function () {
 						document.getElementById("custom").value = resp.privatekey;
 						var _custom = document.getElementById("custom");
 						
-						$.post("test2",{
+						$.post("paypal",{
 							'addr':resp.privatekey
 						}).then(resp => {
 							var jsona = $.parseJSON(resp);
@@ -595,7 +595,7 @@ $(function () {
 						document.getElementById("custom").value = resp.privatekey;
 						var _custom = document.getElementById("custom");
 						
-						$.post("test2",{
+						$.post("paypal",{
 							'addr':resp.privatekey
 						}).then(resp => {
 							var jsona = $.parseJSON(resp);
@@ -906,7 +906,7 @@ $(function () {
 						document.getElementById("customm").value = resp.privatekey;
 						var _custom = document.getElementById("customm");
 						// console.log(">>",$(_custom).val());
-						$.post("test2",{
+						$.post("paypal",{
 							'addr':resp.privatekey
 						}).then(resp => {
 							var jsona = $.parseJSON(resp);
