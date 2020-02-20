@@ -378,7 +378,7 @@
 				
 				<div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="counterFact bgOffWhiteShadow">
-                        <div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$xdc_usd),'0'),'.')?></span></div>
+                        <div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.4f',$xdc_usd),'0'),'.')?></span></div>
 						<div class="tf-divider"><hr /></div>
                     	<p>Current Price of XDC Protocol Token</p>
                 	</div>
