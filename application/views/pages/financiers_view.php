@@ -771,7 +771,7 @@
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 <script type="text/javascript" >
 function passData(docRef){
-    var myurl = '<?php echo base_url()?>publicv/getAccess';
+    var myurl = '<?php echo base_url()?>finxtradez/getAccess';
     $("#privkey").modal("show");
     $('#privkey').css('opacity', '1');
     $('#checkprivkey').click(function(e) {
