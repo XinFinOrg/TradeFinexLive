@@ -1048,15 +1048,16 @@ Footer
 .tf-fees-bordered .tf-fees-item-label {background-color: #fafafa;vertical-align: middle;}
 .tf-fees-bordered .tf-fees-item-label, .tf-fees-bordered .tf-fees-item-content {padding: 16px 24px;border-right: 1px solid #e8e8e8;}
 .tf-fees-row > th, .tf-fees-row > td {padding-bottom: 16px;}
-.tf-fees-item-label {font-weight: 600;font-size: 14px;line-height: 1.5;white-space: nowrap;width: 225px!important;}
+.tf-fees-row > th {width: 110px!important;}
+.tf-fees-item-label {font-weight: 600;font-size: 14px;line-height: 1.5;white-space: nowrap;width: 210px!important;}
 .tf-fees-bordered .tf-fees-item-label:last-child, .tf-fees-bordered .tf-fees-item-content:last-child {border-right: none;}
 .tf-fees-item-content {display: table-cell;font-size: 14px;line-height: 1.5;}
 .tf-fees-item-content hr {border-color: #e8e8e8!important;}
 .tf-fees-item-content h3 {font-family: 'Libre Baskerville', serif;font-size: 1.25em;font-weight:500;color: #1f2151;margin-bottom: 0.4em;}
 .tf-fees-item-content p {line-height:18px;margin-bottom:0px;}
+.tf-fees-item-content h3 span {font-family: 'Muli', sans-serif;line-height:18px;font-size: 15px;color: #687377;margin-bottom:0px;}
 @media (max-width: 576px){
 	.tf-fees-bordered .tf-fees-item-label {padding: 16px 15px;}
 	.tf-fees-item-label {width: 180px!important;}
 	.tf-fees-item-content h3 {font-size: 1.17em;}
-	.tf-fees-item-content p {font-size: 14px;}
 }

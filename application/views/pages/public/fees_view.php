@@ -29,6 +29,42 @@
 								<table>
 									<tbody>
 									<tr class="tf-fees-row">
+										<th class="tf-fees-item-label">For<br />Borrowers</th>
+										<td class="tf-fees-item-content" colspan="5">
+											<h3><span>Tokenization Fees:</span> USD 10 <span>Per Document (Less than 10MB) (Payable in XDC)</span></h3>	
+											<hr />
+											<h3>0.5% <span>Success Fee through transaction (Payable in XDC)</span></h3>											
+										</td>
+									</tr>
+									<tr class="tf-fees-row">
+										<th class="tf-fees-item-label">For<br />Funders</th>
+										<td class="tf-fees-item-content" colspan="5">
+											<p><a href="<?=base_url();?>publicv/setupMasternode">Setup Masternode</a> to Access Tradable Assets (Need to Stake 10M XDC)</p>
+										</td>
+									</tr>
+									<tr class="tf-fees-row">
+										<th class="tf-fees-item-label">For<br />Origination Partners</th>
+										<td class="tf-fees-item-content" colspan="5">
+											<p>No fees to tokenized Document using <a href="https://www.tradefinex.org/swagger/index.html" target="_blank">bulk API upload feature</a></p>
+											<hr />
+											<h3>25% <span>Of Total Fees (Payable in XDC) - TradeFinex Network</span></h3>
+											<hr />
+											<h3>75% <span>Of Total Fees - To Origination Partner</span></h3>
+										</td>
+									</tr>
+									<tr class="tf-fees-row">
+										<th class="tf-fees-item-label">For<br />Distribution Partners</th>
+										<td class="tf-fees-item-content" colspan="5">
+											<h3>25% <span>Of Total Fees (Payable in XDC) - TradeFinex Network</span></h3>
+											<hr />
+											<h3>75% <span>Of Total Fees - To Distribution Partner</span></h3>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+								<!--<table>
+									<tbody>
+									<tr class="tf-fees-row">
 										<th class="tf-fees-item-label">Borrowers/Originators</th>
 										<td class="tf-fees-item-content" colspan="5">
 											<h3>USD 10</h3>
@@ -46,7 +82,7 @@
 										</td>
 									</tr>
 									</tbody>
-								</table>
+								</table>-->
 							</div>
 						</div>
 					</div>
