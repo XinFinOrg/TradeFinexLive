@@ -47,6 +47,7 @@ p {font-size: 15px;color: #687377;line-height: 1.5;margin-bottom: 15px;}
 .btn.btn-blue {background: #007bff;color: #FFFFFF;border: 2px solid #007bff !important;}
 .btn.btn-blue:hover {background: none;color: #007bff!important;border: 2px solid #007bff!important;}
 
+.btn.btn-white.bordered {background: rgba(255,255,255,0.9);color: #687377;border:1px solid rgb(232, 237, 245, 1)}
 .btn.btn-white {background: rgba(255,255,255,0.7);color: #687377;}
 .btn.btn-white:hover {background: rgba(255,255,255,1);color: #007bff!important;}
 .btn.btn-white i {margin-left:4px;margin-right:0px;}
@@ -1067,7 +1068,6 @@ Footer
 
 
 
-
 .tf-host-mn {display:flex;height:100%;padding:30px 15px;text-align:left;border-radius:4px;margin-bottom:30px;}
 .tf-host-mn.bgWhite {background:#FFFFFF;}
 .tf-host-mn.bgOffWhiteShadow {box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px 0px;border: none !important;background-color: rgb(255, 255, 255) !important;}
@@ -1083,22 +1083,21 @@ Footer
 .kyc-upload-modal .modal-footer {padding-bottom:0px;}
 
 .ukb-mobile {display:none;}
-@media (max-width: 1199px) and (min-width: 992px) {.tf-host-mn .mn-desc {margin-left:20px;}.tf-host-mn .factTitle {font-size:22px;}.tf-host-mn p {font-size:18px;}}
+@media (max-width: 1199px) and (min-width: 992px) {.tf-host-mn .mn-desc {margin-left:20px;}/*.tf-host-mn .factTitle {font-size:22px;}.tf-host-mn p {font-size:18px;}*/}
 
 @media (min-width: 767px) {.vertical-align {display: flex;align-items: center;flex-direction: row;}}
 
 @media (max-width: 992px) {
-	.start-now-block {margin-bottom:15px;}
 	.ukb-desktop {display:none;}
 	.ukb-mobile {display:block;}
 }
-
+.start-now-block {margin-bottom:30px;}
 .start-now-desc ul {
   margin: 0px;
 }
 
 .start-now-desc li {
-	    font-size: 18px;
+	font-size: 18px;
     font-weight: 500;
     color: rgb(123, 123, 123, 0.85) !important;
     line-height: 22px;
@@ -1139,5 +1138,27 @@ Footer
     -moz-appearance: none;
     background: url(../images/arrow-down.png) rgba(255, 255, 255, 0.9) no-repeat 98.5%!important;
 	background-size: 10px!important;
+}
+
+.mn-desc-lg .form-control {
+    display: block;
+    width: 100%!important;
+    height: calc(2em + 1rem + 1px);
+    padding: .275rem 1.5rem .275rem .75rem;
+	margin-bottom:5px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border:1px solid rgb(232, 237, 245, 0.5);
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url(../images/arrow-down.png) rgba(255, 255, 255, 0.9) no-repeat 98.5%!important;
+	background-size: 10px!important;
+	margin-bottom: 20px;
 }
 

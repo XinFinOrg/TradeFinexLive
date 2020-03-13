@@ -3,8 +3,8 @@
 
     <section class="tf-inner-banner">
         <div class="container">
-            <h3>Stake XDC and Become a Network Member</h3>
-            <h4>Pay using Paypal  & Setup Masternode Instantly</h4>
+            <h3>Stake XDC & Become a Network Member</h3>
+            <h4>Pay using Paypal & Setup Masternode Instantly</h4>
         </div>
     </section>
 	
@@ -14,36 +14,29 @@
 	<!-- Statistics -->
 	<section id="statistics" class="section tf-grey-bg">
 		<div class="container">
-			<div class="row">
+			<!--<div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="section-title text-center noBorderAfter pb-0">
                         <h2 class="mb-0">&nbsp;</h2>
                     </div>
                 </div>
-            </div>
+            </div>-->
 			
-			<div class="row mb-30 vertical-align flex-row">
+			<div class="row vertical-align flex-row">
 			<div class="col-md-4">
 							<div class="start-now-block">
 								<h2 class="mb-20">Setup Masternode</h2>
-								<!-- <p class="mb-30">Fast, Reliable and Affordable Masternode Hosting.</p> -->
-								
-								<p>To Become a network member, upload the Know Your Community (KYC) certificate in PDF format.
-
+								<!-- <p class="mb-30">Fast, Reliable and Affordable Masternode Hosting.</p> -->								
+								<p>To Become a network member, upload the Know Your Community (KYC) certificate in PDF format.</p>
 								<p>This KYC certificate needs to be signed by one of the following personnel:</p>
-
 								<p>Company Secretary, A Notary Public, Chartered Secretary, Consulate, or A lawyer with Seal.</p>
-								<p><a href="https://docs.google.com/document/d/1Us9chjXEDYrDOpfuwWITxaQOSEYxYIpJpwWuYK0TyXY" target="_blank"> Format for Individual</a> | <a href="https://docs.google.com/document/d/1eyjFp3DXhrpLscngELocmXFwJ_Y8H9si6n8Z2SLADhg
-									"target="_blank">Format for Corporate</a></p>
+								<p><a class="btn btn-white bordered btn-small" href="https://docs.google.com/document/d/1Us9chjXEDYrDOpfuwWITxaQOSEYxYIpJpwWuYK0TyXY" target="_blank"> Format for Individual</a> <a class="btn btn-white bordered btn-small" href="https://docs.google.com/document/d/1eyjFp3DXhrpLscngELocmXFwJ_Y8H9si6n8Z2SLADhg "target="_blank">Format for Corporate</a></p>
 								<div class="upload-kyc-btn ukb-desktop">
-									<a data-toggle="modal" id = "kycModal"data-target="#mnKycUploader" class="btn btn-blue text-uppercase"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; UPLOAD KYC</a>
+									<a data-toggle="modal" id="kycModal"data-target="#mnKycUploader" class="btn btn-blue text-uppercase"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; UPLOAD KYC</a>
 								</div>
-								<div class="col-lg-12 col-md-12 col-xs-12 text-center">
-							<div class="upload-kyc-btn ukb-mobile">
-								<a data-toggle="modal" id = "kycModall" data-target="#mnKycUploader" class="btn btn-blue text-uppercase"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; UPLOAD KYC</a>
+								<div class="upload-kyc-btn ukb-mobile">
+								<a data-toggle="modal" id="kycModall" data-target="#mnKycUploader" class="btn btn-blue text-uppercase"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; UPLOAD KYC</a>
 							</div>
-		
-						</div>
 							</div>
 						</div>
 						
@@ -100,8 +93,8 @@
 							</div>
 						</div>
 						</div>
-						<div class="row center">
-							<div class="mn-desc col-md-8"> 
+						<!--<div class="row center">-->
+							<div class="mn-desc-lg col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<select class="mb10 form-control" id="nummasternode" onchange="docNumber()">
                                     <option value="1">Setup 1 Masternode</option>
                                     <option value="2" >Setup 2 Masternode</option>
@@ -112,12 +105,11 @@
                                     <option value="7" >Setup 7 Masternode</option>
 									<option value="8" >Setup 8 Masternode</option>
 									<option value="9" >Setup 9 Masternode</option>
-									<option value="10" >Setup 10 Masternode</option>
-									
+									<option value="10" >Setup 10 Masternode</option>									
                                 </select>
 								<!-- <input class=" form-control" type="number" onchange="docNumber()"id = "nummasternode" name ="nummasternode" placeholder="1" value = "1"> -->
 							</div>
-							<div class="form-group col-md-4"> 
+							<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<form action="<?php echo PAYPAL_URL; ?>" method="post">
 									<!-- Identify your business so that you can collect the payments. -->
 									<input type="hidden" name="business" value="<?php echo PAYPAL_ID; ?>">
@@ -137,20 +129,13 @@
 									<input type='hidden' name='return' value='<?php echo base_url(); ?>publicv/hostMasternode'>
 									<input type='hidden' name='rm' value='2'>
 
-									
-										
-									</div>
-									
-											<input type='hidden' name="action" value="masternode">
-											<button id="masternode_payment" type="submit" class="btn btn-blue text-uppercase" data-keyboard="false" disabled>Pay Now</button>
-										
-									
+									<button id="masternode_payment" type="submit" class="btn btn-blue text-uppercase btn-block" data-keyboard="false" disabled><i class="fa fa-paypal" aria-hidden="true"></i>&nbsp; Pay Now</button>
 								</form>
-							</div>		
-						</div>
-									
 							</div>
+							<!--</div>	-->	
 						</div>
+					</div>
+				</div>
 			</div>
 			
 			<!-- <div class="row">
@@ -174,8 +159,8 @@
 					</div>
 			
 				</div>
-			</div> -->
-		</div>
+			</div> 
+		</div>-->
     </section>	
 </div>
 
