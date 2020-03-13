@@ -39,7 +39,7 @@
 									<tr class="tf-fees-row">
 										<th class="tf-fees-item-label">For<br />Funders</th>
 										<td class="tf-fees-item-content" colspan="5">
-											<p><a href="<?=base_url();?>publicv/setupMasternode">Setup Masternode</a> to Access Tradable Assets (Need to Stake 10M XDC)</p>
+											<p><a href="<?=base_url();?>publicv/hostMasternode">Setup Masternode</a> to Access Tradable Assets (Need to Stake 10M XDC)</p>
 										</td>
 									</tr>
 									<tr class="tf-fees-row">

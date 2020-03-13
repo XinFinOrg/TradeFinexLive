@@ -136,7 +136,7 @@
                         <div class="widget widget-categories">
                             <h4 class="footer-title">Other Links</h4>
                             <ul class="footer-list">
-                                <li> <a href="<?=base_url();?>publicv/setupMasternode">Join The Network</a></li>
+                                <li> <a href="<?=base_url();?>publicv/hostMasternode">Join The Network</a></li>
                                 <li> <a href="http://events.tradefinex.org/" target="_blank">Consortium Event</a></li>
                                 <li> <a href="https://docs.tradefinex.org/faq/general/" target="_blank">FAQs</a></li>
 								<li> <a href="<?=base_url();?>publicv/mediaCenter">Media Center</a></li>

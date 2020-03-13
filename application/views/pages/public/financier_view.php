@@ -667,7 +667,7 @@
                         <div class="deployedData_modal_block">
                             <p class="left"><strong>*Only trusted masternode entity within the network can access the record. If you are a Masternode holder, enter the private key & access the document.</strong></p>
 							<!--<p id="deployedData" style="word-break: break-all;"></p>-->
-                            <p><span><a href="<?php echo base_url()?>publicv/setupMasternode" target="_blank">How to Create PrivateKey & Setup Masternode?</a></span></p>
+                            <p><span><a href="<?php echo base_url()?>publicv/hostMasternode" target="_blank">How to Create PrivateKey & Setup Masternode?</a></span></p>
 							<form id="checkprivatekey_form" class="tf-suppliers-form" enctype="multipart/form-data" method="post">
                             
                                 <div class="form-group ">

@@ -16,7 +16,7 @@
                         </ul>
                     </div>
 
-                    <div class="tf-get-started-btn mt-30"><a href="<?=base_url();?>publicv/setupMasternode" class="btn btn-red text-uppercase tf-block">Join The Network</a></div>
+                    <div class="tf-get-started-btn mt-30"><a href="<?=base_url();?>publicv/hostMasternode" class="btn btn-red text-uppercase tf-block">Join The Network</a></div>
 
                     <div class="hero-tabs-mobile-container">
                         <ul class="nav nav-pills">                            

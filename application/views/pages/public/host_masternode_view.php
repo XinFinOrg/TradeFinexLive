@@ -3,8 +3,8 @@
 
     <section class="tf-inner-banner">
         <div class="container">
-            <h3>Stake XDC and Become a Network Member ( by setting up Masternode )</h3>
-            <h4>Host Masternode in a few clicks</h4>
+            <h3>Stake XDC and Become a Network Member</h3>
+            <h4>Pay using Paypal  & Setup Masternode Instantly</h4>
         </div>
     </section>
 	
