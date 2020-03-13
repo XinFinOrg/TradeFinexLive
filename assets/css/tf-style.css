@@ -1140,23 +1140,4 @@ Footer
     background: url(../images/arrow-down.png) rgba(255, 255, 255, 0.9) no-repeat 98.5%!important;
 	background-size: 10px!important;
 }
-.mn-input .form-control {
-  display: block;
-  width: 100%!important;
-  height: calc(1em + 1rem + 1px);
-  padding: 1.3rem .5rem 1.3rem .75rem;
-margin-bottom:5px;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border:1px solid rgb(232, 237, 245, 0.5);
-  border-radius: .25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: url(../images/arrow-down.png) rgba(255, 255, 255, 0.9) no-repeat 98.5%!important;
-background-size: 10px!important;
-}
+

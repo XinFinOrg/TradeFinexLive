@@ -3,7 +3,7 @@
 
     <section class="tf-inner-banner">
         <div class="container">
-            <h3>Staking & Masternodes Services</h3>
+            <h3>Stake XDC and Become a Network Member ( by setting up Masternode )</h3>
             <h4>Host Masternode in a few clicks</h4>
         </div>
     </section>
@@ -101,8 +101,21 @@
 						</div>
 						</div>
 						<div class="row center">
-							<div class="mn-input col-md-8"> 
-								<input class=" form-control" type="number" onchange="docNumber()"id = "nummasternode" name ="nummasternode" placeholder="1" value = "1">
+							<div class="mn-desc col-md-8"> 
+							<select class="mb10 form-control" id="nummasternode" onchange="docNumber()">
+                                    <option value="1">Setup 1 Masternode</option>
+                                    <option value="2" >Setup 2 Masternode</option>
+                                    <option value="3" >Setup 3 Masternode</option>
+									<option value="4" >Setup 4 Masternode</option>
+									<option value="5">Setup 5 Masternode</option>
+                                    <option value="6" >Setup 6 Masternode</option>
+                                    <option value="7" >Setup 7 Masternode</option>
+									<option value="8" >Setup 8 Masternode</option>
+									<option value="9" >Setup 9 Masternode</option>
+									<option value="10" >Setup 10 Masternode</option>
+									
+                                </select>
+								<!-- <input class=" form-control" type="number" onchange="docNumber()"id = "nummasternode" name ="nummasternode" placeholder="1" value = "1"> -->
 							</div>
 							<div class="form-group col-md-4"> 
 								<form action="<?php echo PAYPAL_URL; ?>" method="post">
@@ -129,7 +142,7 @@
 									</div>
 									
 											<input type='hidden' name="action" value="masternode">
-											<button id="masternode_payment" type="submit" class="btn btn-blue text-uppercase" data-keyboard="false" disabled>Pay</button>
+											<button id="masternode_payment" type="submit" class="btn btn-blue text-uppercase" data-keyboard="false" disabled>Pay Now</button>
 										
 									
 								</form>
@@ -220,7 +233,7 @@
 function docNumber(){
     var amountt = document.getElementById("nummasternode").value;
     document.getElementById("bulkAmount").value = amountt*<?php echo $amount?>;
-    // console.log("??1",document.getElementById("bulkAmount").value);
+    console.log("??1",document.getElementById("bulkAmount").value);
 }
 
 $( document ).ready(function() {
