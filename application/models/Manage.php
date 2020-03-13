@@ -1411,6 +1411,16 @@
 
 			return $result = $query->result();
 		}
+		public function get_paypal_payment_masternodeby_tx($tx){
+
+			$this->db->select('*');
+			$this->db->from('{PRE}masternode_paypal_payment_logs');
+			$where = "tfmpp_transaction = '$tx'";
+			$this->db->where($where);
+			$query = $this->db->get();
+
+			return $result = $query->result();
+		}
 
 		public function add_paypal_details($data_add){
 
@@ -1457,6 +1467,36 @@
 		
 			return 1;
 		}
+
+		public function add_masternode_paypal_details($data_add){
+
+			$data = array();
+			
+			$data['tfmpp_cm'] = $data_add['cm'];
+			$data['tfmpp_transaction'] = $data_add['tx'];
+			$data['tfmpp_amount'] = $data_add['amt'];
+			$data['tfmpp_currency'] = $data_add['cc'];
+			$data['tfmpp_status'] = $data_add['st'];
+			
+			$this->db->insert('{PRE}masternode_paypal_payment_logs', $data);
+			$id = $this->db->insert_id();
+		
+			return 1;
+		}
+
+		public function masternode_kyc_details($data_add){
+
+			$data = array();
+			
+			$data['tfmk_status'] = $data_add['status'];
+			$data['tfmk_hash'] = $data_add['hash'];
+			
+			$this->db->insert('{PRE}masternode_kyc', $data);
+			$id = $this->db->insert_id();
+		
+			return 1;
+		}
+
 		public function update_paypalpayment_by_txn($addr, $doc){
 
 			$this->db->select('tfpp_doc_redem');
@@ -1471,7 +1511,7 @@
 				$doc = $docu->tfpp_doc_redem;
 			}
 
-			log_message("info","address redem".$doc);
+			// log_message("info","address redem".$doc);
 			$datan = array();
 			$data1 = [
 				'tfpp_doc_redem' => floatval($doc) - 1,
