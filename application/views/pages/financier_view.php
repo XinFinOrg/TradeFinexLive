@@ -827,7 +827,7 @@ function passData(docRef){
             }
             }).done(resp => {
             // .then(resp => {
-                // console.log("response : ",resp);
+                console.log("response : ",resp);
                 hideLoader1();
                 // console.log('formDataObj>>>>>>>', resp);
                 if(resp.status == true){
