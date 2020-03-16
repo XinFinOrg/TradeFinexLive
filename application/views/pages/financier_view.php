@@ -918,10 +918,6 @@ function passData_bs(docRef){
                     toastr.error('Something went wrong.', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
                     setTimeout(location.reload.bind(location), 6000);
                 })
-                
-            }
-        })
-    });
 
 }
 </script>
