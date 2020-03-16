@@ -426,6 +426,125 @@ class Login extends CI_Controller {
 			redirect(base_url());
 		}
 	}
+
+	public function financier_login()
+	{
+		$data = array();
+		$result = array();
+		
+		$data['page'] = 'demo_login';
+	
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
+		
+		$encryption_key = $this->config->item('encryption_key');
+	
+		$action = $this->input->post('action');
+		$data['user_name'] = $this->input->post('user_name');
+		$data['user_password'] = openssl_encrypt($this->input->post('user_password'),"AES-128-ECB",$encryption_key);
+			
+		$domain = $this->siteURL();
+		
+		$domain_arr = explode('.', $domain);
+		
+		$domain_type = $domain_arr[0];
+		
+		$data['user_access_domain_type'] = $domain_type;
+				
+		if(!empty($domain_arr) && sizeof($domain_arr) <> 0){
+			
+			$domain_name = '';
+			
+			for($i  = 1; $i < sizeof($domain_arr); $i++){
+				
+				if($i > 1){
+					$domain_name .= '.'.$domain_arr[$i];
+				}else{
+					$domain_name .= $domain_arr[$i];
+				}
+			}
+		}
+		
+		$data['user_access_domain_name'] = $domain_name;
+		
+		if($action == 'login'){
+			if($data['user_name'] == "info@tradefinex.org"){
+				$result = $this->manage->fetch_user($data);
+			}
+			else{
+				$this->session->set_flashdata('error', "<div style='color:red;'>Not Correct User.");
+				redirect(base_url().'publicv/financier');
+			}
+			
+		}
+		
+		if(!empty($result) && is_array($result) && sizeof($result) <> 0){
+			
+			if($result['error'] == 0 && $result['user_detail']->tfu_admin_blocked == 0){
+				
+				if($result['user_detail']->tfu_utype == 1){
+					$user_full_name = $result['user_detail']->tfsp_fname.' '.$result['user_detail']->tfsp_lname;
+					$user_type = 'Service-Provider';
+				}
+				
+				if($result['user_detail']->tfu_utype == 2){
+					$user_full_name = $result['user_detail']->tff_fname.' '.$result['user_detail']->tff_lname;
+					$user_type = 'Financier';
+				}
+				
+				if($result['user_detail']->tfu_utype == 3){
+					$user_full_name = $result['user_detail']->tfb_fname.' '.$result['user_detail']->tfb_lname;
+					$user_type = 'Beneficiary';
+				}
+				
+				$session_data = array(
+					'user_id' => $result['user_detail']->tfu_id,
+					'user_type' => $user_type,
+					'user_type_ref' => $result['user_detail']->tfu_utype,
+					'user_full_name' => $user_full_name
+				);
+				$this->session->set_userdata('logged_in', $session_data);
+				$data['msg'] = 'success';
+				$this->session->set_flashdata('success', "<div style='color:green;'>Logged In.");
+				redirect(base_url().'dashboard/financier');
+			}
+			
+			if($result['error'] == 0 && $result['user_detail']->tfu_admin_blocked == 1){
+				
+				echo "Blocked";
+				die;
+			}	
+			
+			if($result['error'] == 1){
+				echo "error";
+				die;
+			}	
+		}	
+
+		
+		
+		$user = $this->session->userdata('logged_in');
+				
+		if($user && !empty($user) && sizeof($user) <> 0){
+			
+			$data['full_name'] = $user['user_full_name'];
+			$data['user_id'] = $user['user_id'];
+			
+			
+			redirect(base_url().'dashboard/financier');
+		}else{
+			if($action <> 'login'){
+				redirect(base_url().'log/out');
+			}
+		}
+		
+	}
 }
 
 ?>

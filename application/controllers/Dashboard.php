@@ -959,5 +959,44 @@ class Dashboard extends CI_Controller {
 		// return $protocol . $domainName;
 		return $domainName;
 	}
+
+	public function financier(){
+		
+		$data = array();
+		
+		$data['page'] = 'financier';
+
+		$action = $this->input->post('action');
+		$docRef = $this->input->post('docRef');
+
+		
+			
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
+		
+		$date = date('Y-m-d');
+		$instrument = $this->manage->get_instrument($date);
+		$buyersupplier = $this->manage->get_buyersupplier($date);
+		
+		if($instrument && !empty($instrument) && is_array($instrument) && sizeof($instrument) <> 0){
+			$data['instrument'] = $instrument;						
+		}
+		if($buyersupplier && !empty($buyersupplier) && is_array($buyersupplier) && sizeof($buyersupplier) <> 0){
+			$data['buyersupplier'] = $buyersupplier;					
+		}
+				
+		$this->load->view('includes/headern', $data);
+		$this->load->view('includes/header_publicn', $data);
+		$this->load->view('pages/financier_view', $data);
+		$this->load->view('includes/footer_commonn', $data);
+		$this->load->view('pages_scripts/common_scripts', $data);
+		$this->load->view('includes/footern');
+	}
 }
 	

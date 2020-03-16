@@ -678,7 +678,7 @@
                         <p>We connect global Buyer/Supplier or Brokers and Financiers</p>
                         <?php 
                             $attributes = array('id' => 'demo_loginForm', 'class' => 'tf-suppliers-form', 'method' => 'post','role' => 'form');
-                            echo form_open_multipart(base_url().'login/demo_login', $attributes); 
+                            echo form_open_multipart(base_url().'login/financier_login', $attributes); 
                         ?>
                             <div class="row">
                                 <div class="form-group col-md-6">
