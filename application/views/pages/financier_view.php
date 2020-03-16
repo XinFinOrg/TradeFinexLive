@@ -820,7 +820,7 @@ function passData(docRef){
                     "contractType" : "brokerInstrument"
             },
             success: resp => {
-                // console.log("response success: ",resp)
+                console.log("response success: ",resp)
             },
             error: err =>{
                 console.log("response error: ",err)
