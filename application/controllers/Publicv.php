@@ -2164,6 +2164,12 @@ class Publicv extends CI_Controller {
 			}
 			
 		}
+		if($action == 'getdetailsinternal'){
+			
+				$data['contact'] = $this->manage->get_contact_details($docRef);
+			
+			
+		}
 		if($action == 'sendmail'){
 			$data['address'] = getAddress($privkey);
 			

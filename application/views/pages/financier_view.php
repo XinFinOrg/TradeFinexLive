@@ -800,6 +800,7 @@
 function passData(docRef){
     var myurl = '<?php echo base_url()?>publicv/getAccess';
     
+    showLoader1(); 
         $.ajax({
         type: "POST",
         url: myurl,
@@ -820,14 +821,14 @@ function passData(docRef){
                     "contractType" : "brokerInstrument"
             },
             success: resp => {
-                console.log("response success: ",resp)
+                // console.log("response success: ",resp)
             },
             error: err =>{
                 console.log("response error: ",err)
             }
             }).done(resp => {
             // .then(resp => {
-                console.log("response : ",resp);
+                // console.log("response : ",resp);
                 hideLoader1();
                 // console.log('formDataObj>>>>>>>', resp);
                 if(resp.status == true){
@@ -862,64 +863,20 @@ function passData(docRef){
 }
 function passData_bs(docRef){
     var myurl = '<?php echo base_url()?>publicv/getAccess';
-    $("#privkey").modal("show");
-    $('#privkey').css('opacity', '1');
-    $('#checkprivkey').click(function(e) {
-        var privkey = document.getElementById("privateKey").value;
-        jQuery.validator.addMethod("privateKey", function(value, element) {
-		// allow any non-whitespace characters as the host part
-            return this.optional( element ) || /^[0-9a-f]{64}$/.test( value );
-        }, 'This field allows only number from 0-9 and alphabets from a-f');
-        $('#checkprivatekey_form').validate({
-            rules: {
-                privateKey: {
-                    required:true,
-                    privateKey : true,
-                    normalizer: function(value) {
-                        // Update the value of the element
-                        this.value = $.trim(value);
-                        check = this.value;
-                        if(check.startsWith("0x")){
-                            check = check.slice(2);
-                        }
-                        else{
-                            check = this.value;
-                        }
-                        // Use the trimmed value for validation
-                        return check;
-                    }
-                }
-            },
-            messages: {
-                privateKey:{
-                    required: "Please enter a private key",
-                    privateKey : "Enter valid private key of 64 characters"
-                }
-            },
-            success: function (elem) {
-
-
-            },
-            error: function (elem) {
-                
-                
-            },
-            submitHandler: function (form, e) {
-                // console.log(privkey,docRef);
-                e.preventDefault();
-                $("#privkey").modal("hide"); 
+    
+                 
                 showLoader1();   
                 $.ajax({
                 type: "POST",
                 url: myurl,
                 dataType:"json",
-                data: {"action":"getdetails","docRef":docRef,"privkey":privkey}, // serializes the form's elements.
+                data: {"action":"getdetailsinternal","docRef":docRef}, // serializes the form's elements.
                 success: (resp =>{
                     // console.log(resp);
                 })// show response from the php script.
                 }).done(resp => {
                                 
-                    if(resp.privatekey == "true"){
+                    
                         // console.log(resp);
                         
                         const tHtml = `
@@ -954,15 +911,7 @@ function passData_bs(docRef){
                             })
                         });
                             
-                    }     
-                    else{
-                        hideLoader1();
-                        $("#wrngprivkey").modal("show");
-                        $('#wrngprivkey').css('opacity', '1');
-                        $('#ok').click(function(e) {
-                            location.reload();
-                        })
-                    }                      
+                                     
                                                     
                 }).fail(error =>{
                     // hideLoader();
