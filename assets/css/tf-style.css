@@ -1010,7 +1010,7 @@ Footer
 
 
 
-
+/*-- Statistics Page --*/
 .counterFact {height:100%;padding:30px 20px;text-align:center;border-radius:4px;margin-bottom:30px;}
 .counterFact.bgWhite {background:#FFFFFF;}
 .counterFact.bgOffWhite {border:1px solid rgb(0,123,255,0.1);box-shadow:0 0px 10px 0px rgba(0, 0, 0, 0.01);}
@@ -1064,10 +1064,10 @@ Footer
 	.tf-fees-item-content h3 {font-size: 1.17em;}
 	.tf-fees-item-content p {font-size: 14px;}
 }
+/*-- Statistics Page --*/
 
 
-
-
+/*-- Host Masternode Page --*/
 .tf-host-mn {display:flex;height:100%;padding:30px 15px;text-align:left;border-radius:4px;margin-bottom:30px;}
 .tf-host-mn.bgWhite {background:#FFFFFF;}
 .tf-host-mn.bgOffWhiteShadow {box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px 0px;border: none !important;background-color: rgb(255, 255, 255) !important;}
@@ -1084,81 +1084,29 @@ Footer
 
 .ukb-mobile {display:none;}
 @media (max-width: 1199px) and (min-width: 992px) {.tf-host-mn .mn-desc {margin-left:20px;}/*.tf-host-mn .factTitle {font-size:22px;}.tf-host-mn p {font-size:18px;}*/}
-
 @media (min-width: 767px) {.vertical-align {display: flex;align-items: center;flex-direction: row;}}
-
-@media (max-width: 992px) {
-	.ukb-desktop {display:none;}
-	.ukb-mobile {display:block;}
-}
+@media (max-width: 992px) {.ukb-desktop {display:none;}.ukb-mobile {display:block;}}
 .start-now-block {margin-bottom:30px;}
-.start-now-desc ul {
-  margin: 0px;
-}
+.start-now-desc ul {margin: 0px;}
 
-.start-now-desc li {
-	font-size: 18px;
-    font-weight: 500;
-    color: rgb(123, 123, 123, 0.85) !important;
-    line-height: 22px;
-    margin-bottom: 15px;
-    margin-left: 1.5em;
-}
+.start-now-desc li{font-size:18px;font-weight:500;color:rgb(123,123,123,.85)!important;line-height:22px;margin-bottom:15px;margin-left:1.5em}
+.start-now-desc li i{padding:1px;width:25px;height:auto;float:left;margin-left:-1.75em;margin-right:0}
+.start-now-desc li i img{width:20px;height:auto;float:left}
+.mn-desc .form-control{display:block;width:100%!important;height:calc(1em + 1rem + 1px);padding:.275rem 1.5rem .275rem .75rem;margin-bottom:5px;font-size:14px;font-weight:400;line-height:16px;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid rgb(232,237,245,.5);border-radius:.25rem;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out;-webkit-appearance:none;-moz-appearance:none;background:url(../images/arrow-down.png) rgba(255,255,255,.9) no-repeat 98.5%!important;background-size:10px!important}
+.mn-desc-lg .form-control{display:block;width:100%!important;height:calc(2em + 1rem + 1px);padding:.275rem 1.5rem .275rem .75rem;margin-bottom:5px;font-size:14px;font-weight:400;line-height:16px;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid rgb(232,237,245,.5);border-radius:.25rem;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out;-webkit-appearance:none;-moz-appearance:none;background:url(../images/arrow-down.png) rgba(255,255,255,.9) no-repeat 98.5%!important;background-size:10px!important;margin-bottom:20px}
 
-.start-now-desc li i {
-  padding: 1px;
-    width: 25px;
-    height: auto;
-    float: left;
-    margin-left: -1.75em;
-    margin-right: 0px;
-}
-.start-now-desc li i img {
-  width:20px;
-  height:auto;
-  float: left;
-}
+#host-masternode .strategy-howTo-card-head h4 {font-size: 16px;line-height: 20px;padding: 5px 0px 5px 15px;color:#687377;font-weight: 600;-webkit-align-self: center!important;-ms-flex-item-align: center!important;-ms-grid-row-align: center!important;align-self: center!important;}
+#host-masternode .strategy-howTo-card-head {margin-bottom: 0px;}
+/*-- Host Masternode Page --*/
 
-.mn-desc .form-control {
-    display: block;
-    width: 100%!important;
-    height: calc(1em + 1rem + 1px);
-    padding: .275rem 1.5rem .275rem .75rem;
-	margin-bottom:5px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 16px;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border:1px solid rgb(232, 237, 245, 0.5);
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background: url(../images/arrow-down.png) rgba(255, 255, 255, 0.9) no-repeat 98.5%!important;
-	background-size: 10px!important;
-}
 
-.mn-desc-lg .form-control {
-    display: block;
-    width: 100%!important;
-    height: calc(2em + 1rem + 1px);
-    padding: .275rem 1.5rem .275rem .75rem;
-	margin-bottom:5px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 16px;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border:1px solid rgb(232, 237, 245, 0.5);
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background: url(../images/arrow-down.png) rgba(255, 255, 255, 0.9) no-repeat 98.5%!important;
-	background-size: 10px!important;
-	margin-bottom: 20px;
-}
-
+/*-- Strategy Page --*/
+.strategy-howTo-card {padding: 25px;border-radius: 5px;box-shadow: 0px 5px 30px rgba(0, 0, 0, .1);background: #fff;position: relative;height: 100%;z-index: 2;}
+.strategy-howTo-card-head {margin-bottom: 15px;margin-left: -25px!important;}
+.media {display: -ms-flexbox;display: flex;-ms-flex-align: start;align-items: flex-start;}
+.strategy-howTo-card-head .ico-step {background-color: #007bff;border: 3px solid #c9e2fd;border-left: none;padding: 15px 10px 15px 15px;min-width:80px!important;max-width:80px!important;border-bottom-right-radius: 50px;border-top-right-radius: 50px;}
+.strategy-howTo-card-head .ico-step p {text-align:left;color: #fff!important;font-size: 13px;line-height: 18px;margin-bottom:0px;}
+.strategy-howTo-card-head .ico-step p span {font-size: 16px;font-weight: 600;}
+.strategy-howTo-card-head h4 {font-size: 20px;line-height: 22px;padding: 5px 0px 5px 15px;color: #333333;font-weight: 600;-webkit-align-self: center!important;-ms-flex-item-align: center!important;-ms-grid-row-align: center!important;align-self: center!important;}
+.strategy-howTo-card p a {font-weight:600;text-decoration:underline;}
+/*-- Strategy Page --*/

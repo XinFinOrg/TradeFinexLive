@@ -7,12 +7,17 @@
             <h4>Pay using Paypal & Setup Masternode Instantly</h4>
         </div>
     </section>
-	
-	
-	
-	
-	<!-- Statistics -->
+
 	<section id="statistics" class="section tf-grey-bg">
+		<!-- <div class="container">
+			
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="counterFact bgOffWhiteShadow">
+					<h2>Cost = 10Million XDC (stake) + Cloud Hosting Fees (recurring)</h2>
+				</div>
+			</div>
+			
+		</div> -->
 		<div class="container">
 			<!--<div class="row">
                 <div class="col-md-8 col-md-offset-2">
@@ -21,92 +26,91 @@
                     </div>
                 </div>
             </div>-->
-			
 			<div class="row vertical-align flex-row">
-			<div class="col-md-4">
-							<div class="start-now-block">
-								<h2 class="mb-20">Setup Masternode</h2>
-								<!-- <p class="mb-30">Fast, Reliable and Affordable Masternode Hosting.</p> -->								
-								<p>To Become a network member, upload the Know Your Community (KYC) certificate in PDF format.</p>
-								<p>This KYC certificate needs to be signed by one of the following personnel:</p>
-								<p>Company Secretary, A Notary Public, Chartered Secretary, Consulate, or A lawyer with Seal.</p>
-								<p><a class="btn btn-white bordered btn-small" href="https://docs.google.com/document/d/1Us9chjXEDYrDOpfuwWITxaQOSEYxYIpJpwWuYK0TyXY" target="_blank"> Format for Individual</a> <a class="btn btn-white bordered btn-small" href="https://docs.google.com/document/d/1eyjFp3DXhrpLscngELocmXFwJ_Y8H9si6n8Z2SLADhg "target="_blank">Format for Corporate</a></p>
-								<div class="upload-kyc-btn ukb-desktop">
-									<a data-toggle="modal" id="kycModal"data-target="#mnKycUploader" class="btn btn-blue text-uppercase"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; UPLOAD KYC</a>
-								</div>
-								<div class="upload-kyc-btn ukb-mobile">
-								<a data-toggle="modal" id="kycModall" data-target="#mnKycUploader" class="btn btn-blue text-uppercase"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; UPLOAD KYC</a>
-							</div>
-							</div>
-						</div>
+					<div class="col-md-4">
+									<div class="start-now-block">
+										<h2 class="mb-20">Setup Masternode</h2>
+										<!-- <p class="mb-30">Fast, Reliable and Affordable Masternode Hosting.</p> -->								
+										<p>To Become a network member, upload the Know Your Community (KYC) certificate in PDF format.</p>
+										<p>This KYC certificate needs to be signed by one of the following personnel:</p>
+										<p>Company Secretary, A Notary Public, Chartered Secretary, Consulate, or A lawyer with Seal.</p>
+										<p><a class="btn btn-white bordered btn-small" href="https://docs.google.com/document/d/1Us9chjXEDYrDOpfuwWITxaQOSEYxYIpJpwWuYK0TyXY" target="_blank"> Format for Individual</a> <a class="btn btn-white bordered btn-small" href="https://docs.google.com/document/d/1eyjFp3DXhrpLscngELocmXFwJ_Y8H9si6n8Z2SLADhg "target="_blank">Format for Corporate</a></p>
+										<div class="upload-kyc-btn ukb-desktop">
+											<a data-toggle="modal" id="kycModal"data-target="#mnKycUploader" class="btn btn-blue text-uppercase"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; UPLOAD KYC</a>
+										</div>
+										<div class="upload-kyc-btn ukb-mobile">
+										<a data-toggle="modal" id="kycModall" data-target="#mnKycUploader" class="btn btn-blue text-uppercase"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; UPLOAD KYC</a>
+									</div>
+					</div>
+			</div>
 						
-						<div class="col-md-8">
+					<div class="col-md-8">
 						<div class="row flex-row">
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-						<div class="tf-host-mn bgOffWhiteShadow vertical-align">
-							<div class="mn-icon">
-								<img src="../assets/images/host-masternode-icons/xdc.png" />
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="tf-host-mn bgOffWhiteShadow vertical-align">
+									<div class="mn-icon">
+										<img src="../assets/images/host-masternode-icons/xdc.png" />
+									</div>
+									<div class="mn-desc">
+										<p>XDC PRICE</p>
+										<div class="factTitle">$ <?php echo rtrim(rtrim(sprintf('%.6f',$xdc_usd),'0'),'.') ?></div>
+									</div>
+								</div>
 							</div>
-							<div class="mn-desc">
-								<p>XDC PRICE</p>
-								<div class="factTitle">$ <?php echo rtrim(rtrim(sprintf('%.6f',$xdc_usd),'0'),'.') ?></div>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="tf-host-mn bgOffWhiteShadow vertical-align">
+									<div class="mn-icon">
+										<img src="../assets/images/host-masternode-icons/tokens.png" />
+									</div>
+									<div class="mn-desc">
+										<p>Tokens to Host Masternode</p>
+										<div class="factTitle">10M XDC</div>
+									</div>
+								</div>
 							</div>
-						</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-						<div class="tf-host-mn bgOffWhiteShadow vertical-align">
-							<div class="mn-icon">
-								<img src="../assets/images/host-masternode-icons/tokens.png" />
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="tf-host-mn bgOffWhiteShadow vertical-align">
+									<div class="mn-icon">
+										<img src="../assets/images/host-masternode-icons/dollar.png" />
+									</div>
+									<div class="mn-desc">
+									<p>Total price in US Dollar(10M XDC)</p>
+										<div class="factTitle">$ <?php echo rtrim(rtrim(sprintf('%.6f',$total_price),'0'),'.') ?></div>
+									</div>
+								</div>
 							</div>
-							<div class="mn-desc">
-								<p>Tokens to Host Masternode</p>
-								<div class="factTitle">10M XDC</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="tf-host-mn bgOffWhiteShadow vertical-align">
+									<div class="mn-icon">
+										<img src="../assets/images/host-masternode-icons/hosting-charges.png" />
+									</div>
+									<div class="mn-desc">
+										<p>Cloud Hosting Fees</p>
+										<select class="mb10 form-control" id="tab_selector">
+											<option value="Indsoft">Indsoft</option>
+											<option value="Amazon" disabled>Amazon (coming soon)</option>
+											<option value="Google Cloud" disabled>Google Cloud (coming soon)</option>
+											<option value="Azure" disabled>Azure (coming soon)</option>
+											
+										</select>
+										<div class="factTitle">USD 800/Annum </div>
+									</div>
+								</div>
 							</div>
-						</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-						<div class="tf-host-mn bgOffWhiteShadow vertical-align">
-							<div class="mn-icon">
-								<img src="../assets/images/host-masternode-icons/dollar.png" />
-							</div>
-							<div class="mn-desc">
-							<p>Total price in US Dollar(10M XDC)</p>
-								<div class="factTitle">$ <?php echo rtrim(rtrim(sprintf('%.6f',$total_price),'0'),'.') ?></div>
-							</div>
-						</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-						<div class="tf-host-mn bgOffWhiteShadow vertical-align">
-							<div class="mn-icon">
-								<img src="../assets/images/host-masternode-icons/hosting-charges.png" />
-							</div>
-							<div class="mn-desc">
-								<p>Hosting Charges</p>
-								<select class="mb10 form-control" id="tab_selector">
-                                    <option value="Indsoft">Indsoft</option>
-                                    <option value="Amazon" disabled>Amazon (coming soon)</option>
-                                    <option value="Google Cloud" disabled>Google Cloud (coming soon)</option>
-									<option value="Azure" disabled>Azure (coming soon)</option>
-									
-                                </select>
-								<div class="factTitle">USD 800/Annum </div>
-							</div>
-						</div>
-						</div>
-						<!--<div class="row center">-->
+							<!--<div class="row center">-->
 							<div class="mn-desc-lg col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<select class="mb10 form-control" id="nummasternode" onchange="docNumber()">
-                                    <option value="1">Setup 1 Masternode</option>
-                                    <option value="2" >Setup 2 Masternode</option>
-                                    <option value="3" >Setup 3 Masternode</option>
-									<option value="4" >Setup 4 Masternode</option>
-									<option value="5">Setup 5 Masternode</option>
-                                    <option value="6" >Setup 6 Masternode</option>
-                                    <option value="7" >Setup 7 Masternode</option>
-									<option value="8" >Setup 8 Masternode</option>
-									<option value="9" >Setup 9 Masternode</option>
-									<option value="10" >Setup 10 Masternode</option>									
-                                </select>
+								<select class="mb10 form-control" id="nummasternode" onchange="docNumber()">
+										<option value="1">Setup 1 Masternode</option>
+										<option value="2" >Setup 2 Masternode</option>
+										<option value="3" >Setup 3 Masternode</option>
+										<option value="4" >Setup 4 Masternode</option>
+										<option value="5">Setup 5 Masternode</option>
+										<option value="6" >Setup 6 Masternode</option>
+										<option value="7" >Setup 7 Masternode</option>
+										<option value="8" >Setup 8 Masternode</option>
+										<option value="9" >Setup 9 Masternode</option>
+										<option value="10" >Setup 10 Masternode</option>									
+								</select>
 								<!-- <input class=" form-control" type="number" onchange="docNumber()"id = "nummasternode" name ="nummasternode" placeholder="1" value = "1"> -->
 							</div>
 							<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -130,13 +134,12 @@
 									<input type='hidden' name='rm' value='2'>
 
 									<button id="masternode_payment" type="submit" class="btn btn-blue text-uppercase btn-block" data-keyboard="false" disabled><i class="fa fa-paypal" aria-hidden="true"></i>&nbsp; Pay Now</button>
+									<p class="mt-5 mb-0 text-center">Total Cost = 10Million XDC (stake) + Cloud Hosting Fees (recurring)</p>
 								</form>
 							</div>
 							<!--</div>	-->	
 						</div>
-					</div>
-				</div>
-			</div>
+		</div>
 			
 			<!-- <div class="row">
 				<div class="col-lg-6 col-md-6">
@@ -159,9 +162,69 @@
 					</div>
 			
 				</div>
-			</div> 
-		</div>-->
-    </section>	
+			</div> -->
+		</div>
+		</div>
+    </section>
+	
+	
+	<section id="host-masternode" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="section-title text-center">
+                    <h2 class="mb-0">Steps to Setup Masternode</h2>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                </div>
+            </div>
+
+            <div class="row flex-row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-30">
+                    <div class="strategy-howTo-card">
+                        <div class="strategy-howTo-card-head media">
+                            <div class="ico-step">
+                                <p>STEP <span>1</span></p>
+                            </div>
+                            <h4>Click on upload KYC</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-30">
+                    <div class="strategy-howTo-card">
+                        <div class="strategy-howTo-card-head media">
+                            <div class="ico-step">
+                                <p>STEP <span>2</span></p>
+                            </div>
+                            <h4>Upload the KYC and click on Submit</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-30">
+                    <div class="strategy-howTo-card">
+                        <div class="strategy-howTo-card-head media">
+                            <div class="ico-step">
+                                <p>STEP <span>3</span></p>
+                            </div>
+                            <h4>Pay for your Masternode through PayPal</h4>
+                        </div>
+                    </div>
+                </div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-30">
+                    <div class="strategy-howTo-card">
+                        <div class="strategy-howTo-card-head media">
+                            <div class="ico-step">
+                                <p>STEP <span>4</span></p>
+                            </div>
+                            <h4>Ta Da!!! Your Masternode is setup</h4>
+                        </div>
+                    </div>
+                </div>				
+
+            </div>
+        </div>
+    </section>
+	
+	
 </div>
 
 
