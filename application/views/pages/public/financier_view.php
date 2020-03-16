@@ -15,11 +15,17 @@
 			<div class="col-md-8 col-md-offset-2">
 				<div class="section-title text-center">
 					<h2 class="mb-0">Instrument Currently Active for Funding</h2>
+                    <h4 class="mb-0" onclick="show_login()">Financier Login</h4>
+                    
 				</div>
+                
 			</div>
+            <?php if($this->session->flashdata('error')){  
+                        echo $this->session->flashdata('error'); 
+                            } ?>
 		</div>		
 		
-		
+
 		<!-- <div class="row projectFactsWrapColumns">
                 <div class="col-md-12"> -->
 					<!--<div class="section-title text-center">
@@ -106,17 +112,17 @@
 	
 		
 
-		<div class="row">
-                    <div class="col-md-12">
-					
-					<div class="tf-assets-table-area">
+            <div class="row">
+                <div class="col-md-12">
+                
+                    <div class="tf-assets-table-area">
                         <div class="tf-filters">
                             <div class="tf-ticker-head">
                                 <ul class="nav tf-nav-tabs tf-ticker-nav tf-ticker-nav-desktop form-tabs" role="tablist">
                                     <li class="nav-item active">
                                         <a class="nav-link" href="#tab1" role="tab" data-toggle="tab" aria-selected="true">All</a>
                                     </li>
-									<li class="nav-item">
+                                    <li class="nav-item">
                                         <a class="nav-link" href="#tab2" role="tab" data-toggle="tab" aria-selected="true">Receivables</a>
                                     </li>
                                     <li class="nav-item">
@@ -131,23 +137,23 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#tab6" role="tab" data-toggle="tab" aria-selected="false">Warehousing Receipt</a>
                                     </li>
-									<li class="nav-item">
+                                    <li class="nav-item">
                                         <a class="nav-link" href="#tab7" role="tab" data-toggle="tab" aria-selected="false">Payable</a>
                                     </li>
-									<li class="nav-item">
+                                    <li class="nav-item">
                                         <a class="nav-link" href="#tab8" role="tab" data-toggle="tab" aria-selected="false">Other</a>
                                     </li>
                                 </ul>
                                 <div class="tf-ticker-nav-mobile">
                                     <select class="form-control" id="tab_selector">
                                         <option value="0">All</option>
-										<option value="1">Receivables</option>
+                                        <option value="1">Receivables</option>
                                         <option value="2">Letters of Credit</option>
                                         <option value="3">Bank Guarantees</option>
                                         <option value="4">SBLC</option>
                                         <option value="5">Warehousing Receipt</option>
-										<option value="6">Payable</option>
-										<option value="7">Other</option>
+                                        <option value="6">Payable</option>
+                                        <option value="7">Other</option>
                                     </select>
                                 </div>
                             </div>
@@ -257,7 +263,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="tf-financier-table tf-element">
-						 
+                        
                                                     <div class="table-responsive">
                                                         <table class="table table-hover">
                                                         <thead>
@@ -316,7 +322,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="tf-financier-table tf-element">
-						 
+                        
                                             <div class="table-responsive">
                                             <table class="table table-hover">
                                             <thead>
@@ -369,7 +375,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="tf-financier-table tf-element">
-						 
+                        
                                                     <div class="table-responsive">
                                                         <table class="table table-hover">
                                                             <thead>
@@ -424,7 +430,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="tf-financier-table tf-element">
-						 
+                        
                                                     <div class="table-responsive">
                                                         <table class="table table-hover">
                                                         <thead>
@@ -472,14 +478,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                <!-- End SBLC Data -->
-									
-									<!-- Start Warehousing Receipt Data -->
+                                    <!-- End SBLC Data -->
+
+                                    
+                                    <!-- Start Warehousing Receipt Data -->
                                     <div role="tabpanel" class="tab-pane fade" id="tab6">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="tf-financier-table tf-element">
-						 
+                            
                                                     <div class="table-responsive">
                                                         <table class="table table-hover">
                                                             <thead>
@@ -528,13 +535,13 @@
                                         </div>
                                     </div>
                                     <!-- End Warehousing Receipt Data -->
-									
-									<!-- Start Payable Data -->
+                                    
+                                    <!-- Start Payable Data -->
                                     <div role="tabpanel" class="tab-pane fade" id="tab7">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="tf-financier-table tf-element">
-						 
+                        
                                                     <div class="table-responsive">
                                                         <table class="table table-hover">
                                                         <thead>
@@ -583,12 +590,13 @@
                                         </div>
                                     </div>
                                     <!-- End Payable Data -->
+
                                     <!-- Start OTHER Data -->
                                     <div role="tabpanel" class="tab-pane fade" id="tab8">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="tf-financier-table tf-element">
-						 
+                        
                                                     <div class="table-responsive">
                                                         <table class="table table-hover">
                                                         <thead>
@@ -638,20 +646,71 @@
                                         </div>
                                     </div>
                                     <!-- End OTHER Data -->
+
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
-						
-						
-						
-						
-						
-                    </div>
+                    
+                    
                 </div>
+            </div>
 	</div>
 </section>
 <!-- /. Financiers -->
+<!-- /. Login -->
+<section id="login_crad" class="section pb-40"style="display:none;">
+    <div class="container">
+        <div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="section-title text-center">
+					<h2 class="mb-0">Demonstration</h2>
+				</div>
+			</div>
+		</div>	
+        <div class="tf-assets-table-area">
+            <!-- Login Modal -->
+            <div role="tabpanel" class="tab-pane fade in active"id="login">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-4">          
+                        <h3>Your Keys Await</h3>
+                        <p>We connect global Buyer/Supplier or Brokers and Financiers</p>
+                        <?php 
+                            $attributes = array('id' => 'demo_loginForm', 'class' => 'tf-suppliers-form', 'method' => 'post','role' => 'form');
+                            echo form_open_multipart(base_url().'login/demo_login', $attributes); 
+                        ?>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="user_email">Email <sup>*</sup></label>
+                                    <input type="text" class="form-control" id="user_name" name="user_name" autocomplete= "off"placeholder="Email" tabindex="1">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="user_password">Password<sup>*</sup> </label>
+                                    <input type="password" class="form-control" id="user_password" name="user_password" autocomplete= "off"placeholder="Password" tabindex="2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <?php echo $this->session->flashdata('error_logged_in'); ?>
+                               
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6 col-xs-6">
+                                    <input type="hidden" name="action" value="login" />
+                                    <button type="submit"   class="btn btn-blue text-uppercase">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- End Login Modal -->		
+        </div>
+    </div>
+</section>
+<!-- /. Login -->
 
 </div>
 <!-- /. Inside Page Financiers -->
@@ -667,7 +726,7 @@
                         <div class="deployedData_modal_block">
                             <p class="left"><strong>*Only trusted masternode entity within the network can access the record. If you are a Masternode holder, enter the private key & access the document.</strong></p>
 							<!--<p id="deployedData" style="word-break: break-all;"></p>-->
-                            <p><span><a href="<?php echo base_url()?>publicv/hostMasternode" target="_blank">How to Create PrivateKey & Setup Masternode?</a></span></p>
+                            <p><span><a href="<?php echo base_url()?>publicv/setupMasternode" target="_blank">How to Create PrivateKey & Setup Masternode?</a></span></p>
 							<form id="checkprivatekey_form" class="tf-suppliers-form" enctype="multipart/form-data" method="post">
                             
                                 <div class="form-group ">
@@ -1001,6 +1060,10 @@ function passData_bs(docRef){
         })
     });
 
+}
+function show_login(){
+    document.getElementById("login_crad").style.display="block";
+    document.getElementById("Financiers").style.display="none";
 }
 </script>
 

@@ -719,7 +719,7 @@ class Publicv extends CI_Controller {
 					$transactionHash = str_replace(array("'",","),"", $transactionHash);
 					$_GET['transactionHash'] = $transactionHash;
 					$result = $this->manage->add_paypal_details($_GET);
-					
+
 				}
 				else{
 					$_GET['burnStatus'] = false;
@@ -937,7 +937,75 @@ class Publicv extends CI_Controller {
 		$this->load->view('pages_scripts/common_scripts', $data);
 		$this->load->view('includes/footern');
 	
-	}
+	}	
+	
+	
+	public function hostMasternode(){
+		
+		$data = array();
+		
+		$data['page'] = 'host_masternode';
+		
+				
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
+		
+		$action = $this->input->post('action');
+		$number = $this->input->post('nummasternode');
+
+		$allStats = getXinFinStats();
+		
+		$data['xdc_usd'] = $allStats->priceUsd;
+
+		$data['total_price'] = floatval($data['xdc_usd'] * 10000000);
+
+		
+		$data['amount'] =  floatval(800 + $data['total_price']);
+		
+		
+		if($action == "kycdoc"){
+			$data['status'] = $this->input->post('status');
+			$data['hash'] = $this->input->post('hash');
+			$result1 = $this->manage->masternode_kyc_details($data);
+		}
+
+		if(!empty($_GET['item_number']) && !empty($_GET['tx']) && !empty($_GET['amt']) && !empty($_GET['cm']) && !empty($_GET['cc']) && !empty($_GET['st'])){ 
+			$dbdata = $this->manage->get_paypal_payment_masternodeby_tx($_GET['tx']);
+			$db = json_encode($dbdata);
+			if(sizeof($dbdata) > 0 ){
+				$this->session->set_flashdata('msg_type', 'error');
+				// redirect($this->uri->uri_string());
+				redirect(current_url());
+			}else{
+				$result = $this->manage->add_masternode_paypal_details($_GET);
+				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-family: 'open_sansregular';font-size:30px;color:#282c3f;font-weight:700;'>Confirmation</h4>"); 
+				$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#c5c5c5;padding-left:8px;padding-right:8px;'> Thank you for setting Masternode. "); 
+				$this->load->view('includes/headern', $data);
+				$this->load->view('includes/header_publicn', $data);
+				$this->load->view('pages/thankyou_signup', $data);
+				$this->load->view('includes/footer_commonn', $data);
+				$this->load->view('pages_scripts/thankyou_scripts', $data); 
+				$this->load->view('includes/footern', $data);
+			}
+			
+		}
+		
+		
+		$this->load->view('includes/headern', $data);
+		$this->load->view('includes/header_publicn', $data);
+		$this->load->view('pages/public/host_masternode_view', $data);
+		$this->load->view('includes/footer_commonn', $data);
+		$this->load->view('pages_scripts/common_scripts', $data);
+		$this->load->view('includes/footern');
+	
+	}	
+	
 	
 	public function getPasskey(){
 		
@@ -2077,6 +2145,14 @@ class Publicv extends CI_Controller {
 				$data['contractAddr'] = $k->tfi_contractAddr;
 			}
 		}
+
+		if($action == 'getaccessint'){
+			$key = $this->manage->get_secretkey_by_docRef($docRef);
+			foreach($key as $k){
+				$data['key'] = $k->tfi_secretKey;
+				$data['contractAddr'] = $k->tfi_contractAddr;
+			}
+		}
 		$data['docRef'] = $docRef;
 			
 		if($action == 'getdetails'){
@@ -2790,7 +2866,7 @@ class Publicv extends CI_Controller {
 		$this->load->view('pages_scripts/common_scripts', $data);
 		$this->load->view('includes/footern');
 	}
-		
+	 
 	public function faq(){
 		
 		$data = array();
@@ -5343,13 +5419,11 @@ class Publicv extends CI_Controller {
 				
 	}
 
-	public function hostMasternode(){
-		
+	public function strategy(){
+
 		$data = array();
-		
-		$data['page'] = 'host_masternode';
-		
-				
+		$data['page'] = 'strategy';       
+        
 		$data['csrf'] = array();
 		
 		$csrf = array(
@@ -5358,55 +5432,13 @@ class Publicv extends CI_Controller {
 		);
 		
 		$data['csrf'] = $csrf;
-		
-		$action = $this->input->post('action');
-		$number = $this->input->post('nummasternode');
-
-		$allStats = getXinFinStats();
-		
-		$data['xdc_usd'] = $allStats->priceUsd;
-
-		$data['total_price'] = floatval($data['xdc_usd'] * 10000000);
-
-		
-		$data['amount'] =  floatval(800 + $data['total_price']);
-		
-		
-		if($action == "kycdoc"){
-			$data['status'] = $this->input->post('status');
-			$data['hash'] = $this->input->post('hash');
-			$result1 = $this->manage->masternode_kyc_details($data);
-		}
-
-		if(!empty($_GET['item_number']) && !empty($_GET['tx']) && !empty($_GET['amt']) && !empty($_GET['cm']) && !empty($_GET['cc']) && !empty($_GET['st'])){ 
-			$dbdata = $this->manage->get_paypal_payment_masternodeby_tx($_GET['tx']);
-			$db = json_encode($dbdata);
-			if(sizeof($dbdata) > 0 ){
-				$this->session->set_flashdata('msg_type', 'error');
-				// redirect($this->uri->uri_string());
-				redirect(current_url());
-			}else{
-				$result = $this->manage->add_masternode_paypal_details($_GET);
-				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-family: 'open_sansregular';font-size:30px;color:#282c3f;font-weight:700;'>Confirmation</h4>"); 
-				$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#c5c5c5;padding-left:8px;padding-right:8px;'> Thank you for setting Masternode. "); 
-				$this->load->view('includes/headern', $data);
-				$this->load->view('includes/header_publicn', $data);
-				$this->load->view('pages/thankyou_signup', $data);
-				$this->load->view('includes/footer_commonn', $data);
-				$this->load->view('pages_scripts/thankyou_scripts', $data); 
-				$this->load->view('includes/footern', $data);
-			}
-			
-		}
-		
-		
-		$this->load->view('includes/headern', $data);
+        $this->load->view('includes/headern', $data);
 		$this->load->view('includes/header_publicn', $data);
-		$this->load->view('pages/public/host_masternode_view', $data);
-		$this->load->view('includes/footer_commonn', $data);
-		$this->load->view('pages_scripts/common_scripts', $data);
-		$this->load->view('includes/footern');
-	
+        $this->load->view('pages/public/viral_strategy', $data);
+        $this->load->view('includes/footer_commonn', $data);
+        $this->load->view('pages_scripts/common_scripts', $data);
+        $this->load->view('includes/footern');
+
 	}
 
 }
