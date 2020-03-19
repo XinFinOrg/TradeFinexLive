@@ -116,7 +116,6 @@
                                 <li> <a href="<?=base_url();?>publicv/boss101">Bond</a></li>
                                 <li> <a href="https://st.mycontract.co/login" target="_blank">Stable Coin</a></li>
                                 <li> <a href="<?=base_url();?>publicv/supplyChain">Supply Chain - Track & Trace</a></li>
-								<li> <a href="<?=base_url();?>publicv/hostMasternode">Host Masternode</a></li>
                             </ul>
                         </div>
                     </div>
