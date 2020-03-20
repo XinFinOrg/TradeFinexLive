@@ -173,66 +173,66 @@ $(function () {
 		},
 		onkeyup: function (elem) {
 			
-			var element_id = $(elem).attr('id');
-			if (element_id == 'private_key') {
-				var _addr = document.getElementById("private_key");
-				var addrKey = $(_addr).val();
-				if(addrKey.startsWith("0x")){
-					addrKey = addrKey.slice(2);
-				}
-				else{
-					addrKey = addrKey;
-				}
-				if(addrKey.length == 64){
-					var myurl = 'getAddress';
-					showLoader();
-					$.ajax({
-						type: "POST",
-						url: myurl,
-						dataType:"json",
-						data: {"action":"getaddress","privkey":$(_addr).val()}, // serializes the form's elements.
-						success: (resp =>{
-							// console.log(resp);
-						})// show response from the php script.
-					}).done(resp => {
-						// console.log(resp);
-						document.getElementById("custom").value = resp.privatekey;
-						var _custom = document.getElementById("custom");
+			// var element_id = $(elem).attr('id');
+			// if (element_id == 'private_key') {
+			// 	var _addr = document.getElementById("private_key");
+			// 	var addrKey = $(_addr).val();
+			// 	if(addrKey.startsWith("0x")){
+			// 		addrKey = addrKey.slice(2);
+			// 	}
+			// 	else{
+			// 		addrKey = addrKey;
+			// 	}
+			// 	if(addrKey.length == 64){
+			// 		var myurl = 'getAddress';
+			// 		showLoader();
+			// 		$.ajax({
+			// 			type: "POST",
+			// 			url: myurl,
+			// 			dataType:"json",
+			// 			data: {"action":"getaddress","privkey":$(_addr).val()}, // serializes the form's elements.
+			// 			success: (resp =>{
+			// 				// console.log(resp);
+			// 			})// show response from the php script.
+			// 		}).done(resp => {
+			// 			// console.log(resp);
+			// 			document.getElementById("custom").value = resp.privatekey;
+			// 			var _custom = document.getElementById("custom");
 						
-						$.post("paypal",{
-							'addr':resp.privatekey
-						}).then(resp => {
-							var jsona = $.parseJSON(resp);
+			// 			$.post("paypal",{
+			// 				'addr':resp.privatekey
+			// 			}).then(resp => {
+			// 				var jsona = $.parseJSON(resp);
 							
-							if(jsona.length > 0){
-								if(parseFloat(jsona[0].tfpp_doc_redem) < 1){
+			// 				if(jsona.length > 0){
+			// 					if(parseFloat(jsona[0].tfpp_doc_redem) < 1){
 									
-									hideLoader();
-									$("#paypal").modal("show");
-									$('#paypal').css('opacity', '1');
-								}
-								else{
-									//all ok
-									hideLoader();
-									paypal_addr = jsona[0].tfpp_address;
-									paypal_doc_redem = parseFloat(jsona[0].tfpp_doc_redem);
-								}
-							}
-							else{
-								hideLoader();
-								$("#paypal").modal("show");
-								$('#paypal').css('opacity', '1');
-							}
+			// 						hideLoader();
+			// 						$("#paypal").modal("show");
+			// 						$('#paypal').css('opacity', '1');
+			// 					}
+			// 					else{
+			// 						//all ok
+			// 						hideLoader();
+			// 						paypal_addr = jsona[0].tfpp_address;
+			// 						paypal_doc_redem = parseFloat(jsona[0].tfpp_doc_redem);
+			// 					}
+			// 				}
+			// 				else{
+			// 					hideLoader();
+			// 					$("#paypal").modal("show");
+			// 					$('#paypal').css('opacity', '1');
+			// 				}
 							
 							
-						}).fail(err => {
-							console.log("response1 : ",err);
-						})
+			// 			}).fail(err => {
+			// 				console.log("response1 : ",err);
+			// 			})
 						
-					})
-				}
+			// 		})
+			// 	}
 
-			}
+			// }
 		},
 		success: function (elem) {
 
@@ -568,66 +568,66 @@ $(function () {
 		},
 		onkeyup: function (elem) {
 			
-			var element_id = $(elem).attr('id');
-			if (element_id == 'private_key') {
-				var _addr = document.getElementById("private_key");
-				var addrKey = $(_addr).val();
-				if(addrKey.startsWith("0x")){
-					addrKey = addrKey.slice(2);
-				}
-				else{
-					addrKey = addrKey;
-				}
-				if(addrKey.length == 64){
-					var myurl = 'getAddress';
-					showLoader();
-					$.ajax({
-						type: "POST",
-						url: myurl,
-						dataType:"json",
-						data: {"action":"getaddress","privkey":$(_addr).val()}, // serializes the form's elements.
-						success: (resp =>{
-							// console.log(resp);
-						})// show response from the php script.
-					}).done(resp => {
-						// console.log(resp);
-						document.getElementById("custom").value = resp.privatekey;
-						var _custom = document.getElementById("custom");
+			// var element_id = $(elem).attr('id');
+			// if (element_id == 'private_key') {
+			// 	var _addr = document.getElementById("private_key");
+			// 	var addrKey = $(_addr).val();
+			// 	if(addrKey.startsWith("0x")){
+			// 		addrKey = addrKey.slice(2);
+			// 	}
+			// 	else{
+			// 		addrKey = addrKey;
+			// 	}
+			// 	if(addrKey.length == 64){
+			// 		var myurl = 'getAddress';
+			// 		showLoader();
+			// 		$.ajax({
+			// 			type: "POST",
+			// 			url: myurl,
+			// 			dataType:"json",
+			// 			data: {"action":"getaddress","privkey":$(_addr).val()}, // serializes the form's elements.
+			// 			success: (resp =>{
+			// 				// console.log(resp);
+			// 			})// show response from the php script.
+			// 		}).done(resp => {
+			// 			// console.log(resp);
+			// 			document.getElementById("custom").value = resp.privatekey;
+			// 			var _custom = document.getElementById("custom");
 						
-						$.post("paypal",{
-							'addr':resp.privatekey
-						}).then(resp => {
-							var jsona = $.parseJSON(resp);
-							// console.log("response : ",resp,jsona);
-							if(jsona.length > 0){
-								if(parseFloat(jsona[0].tfpp_doc_redem) < 1){
+			// 			$.post("paypal",{
+			// 				'addr':resp.privatekey
+			// 			}).then(resp => {
+			// 				var jsona = $.parseJSON(resp);
+			// 				// console.log("response : ",resp,jsona);
+			// 				if(jsona.length > 0){
+			// 					if(parseFloat(jsona[0].tfpp_doc_redem) < 1){
 									
-									hideLoader();
-									$("#paypal").modal("show");
-									$('#paypal').css('opacity', '1');
-								}
-								else{
-									//all ok
-									hideLoader();
-									paypal_addr = jsona[0].tfpp_address;
-									paypal_doc_redem = parseFloat(jsona[0].tfpp_doc_redem);
-								}
-							}
-							else{
-								hideLoader();
-								$("#paypal").modal("show");
-								$('#paypal').css('opacity', '1');
-							}
+			// 						hideLoader();
+			// 						$("#paypal").modal("show");
+			// 						$('#paypal').css('opacity', '1');
+			// 					}
+			// 					else{
+			// 						//all ok
+			// 						hideLoader();
+			// 						paypal_addr = jsona[0].tfpp_address;
+			// 						paypal_doc_redem = parseFloat(jsona[0].tfpp_doc_redem);
+			// 					}
+			// 				}
+			// 				else{
+			// 					hideLoader();
+			// 					$("#paypal").modal("show");
+			// 					$('#paypal').css('opacity', '1');
+			// 				}
 							
 							
-						}).fail(err => {
-							console.log("response1 : ",err);
-						})
+			// 			}).fail(err => {
+			// 				console.log("response1 : ",err);
+			// 			})
 						
-					})
-				}
+			// 		})
+			// 	}
 
-			}
+			// }
 		},
 		success: function (elem) {
 		
