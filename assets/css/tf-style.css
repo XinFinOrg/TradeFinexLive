@@ -769,7 +769,16 @@ input.error, textarea.error, select.error, label.error {border-color: #ea212d!im
 }
 
 /*-- Buyers / Suppliers Social sharing --*/
-widget h4 .widget-title {line-height:18px;}
+.contract-successBox {display: inline-block;width: 3em;height: 3em;margin-bottom: 1em;background-color: #11b500;text-align: center;border-radius:50px;}
+.contract-successBox i {background-image:url(../assets/images/icon/check_white.png);font-size:34px;line-height:34px;margin: auto;text-align: center;vertical-align: middle;}
+#deployedData {border-radius:5px;background-color:#f5f8fc;padding:15px;text-align:left;}
+#deployedData p {padding-bottom: 10px;border-bottom:1px solid #dbe8f9;line-height: 20px;}
+#deployedData p span {line-height: 25px;}
+#deployedData p a {color:#687377!important}
+#deployedData p:last-child {padding-bottom:0px;margin-bottom:0px;border-bottom:none;}
+
+.widget h4 .widget-title {line-height:18px;}
+.widget .text-green {font-size: 26px;font-weight: 600;color: #08cc51;line-height: 30px;margin-bottom: 5px;}
 .tf-social-bs {float: none;}
 .tf-social-bs li {text-align: center;width: auto !important;display: inline-block !important;vertical-align: top;clear: none !important;margin-right: 8px;margin-left: 0px;margin-bottom: 8px;padding: 0;}
 .tf-social-bs li a {width:40px;height:40px;color: #858585;font-size: 15px;line-height:40px!important;margin-right:0px;display: block;-webkit-border-radius: 100%;-moz-border-radius: 100%;border-radius: 50px;}
@@ -784,6 +793,14 @@ widget h4 .widget-title {line-height:18px;}
 .tf-social-bs .facebook:hover {background: #23335b;}
 .tf-social-bs .whatsapp {background: #25d366;}
 .tf-social-bs .whatsapp:hover {background: #188942;}
+.tf-social-bs .gmail {background: #f14336;}
+.tf-social-bs .gmail:hover {background: #d64b3d;}
+
+.input-group .form-control{font-family:inherit;display:block;width:100%;height:45px;padding:6px 12px;font-size:15px;line-height:1.42857143;color:#687377;background-color:#fff;background-image:none;border:1px solid #ccc;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:none;box-shadow:none;-webkit-transition:border-color ease-in-out .15s;-o-transition:border-color ease-in-out .15s;transition:border-color ease-in-out .15s}
+.input-group>.input-group-append>.btn {border-top-left-radius: 0;border-bottom-left-radius: 0;border:none;}
+.input-group>.input-group-append>.btn-secondary {color: #fff;background-color: #6c757d;border-color: #6c757d;}
+
+
 
 
 /*-- Old page Financiers --*/

@@ -179,24 +179,24 @@
                                 </div>
                                 <div class="row">
                                 <div class="col-md-12 col-sm-12">
-                                    <div class="widget widget-contact mt-5">
-                                        <h4 class="widget-title mb-10">Connect Financiers via Social Media</h4>
+                                    <div class="widget widget-contact mt-4">
+                                        <h1 class="text-green">Start sharing with your Network!</h1>
+										<h4 class="widget-title mb-10">Start Requesting for the Fund<!--Connect Financiers via Social Media--></h4>
                                         <ul class="tf-social-bs">
                                         <?php
-                                            $summary=rawurlencode('Our business is affected by “Coronavirus Emergency” and we are looking for Short term funding. 
-                                            Here is How to access my funding requirement:[Link-Diverts to hyperlink-How to be a financier].
-                                            Potential Funders can securely access our business profile and funding requirement by becoming part of the TradeFinex Network. https://www.tradefinex.org/publicv/financier.
-                                            Even your business is affected by coronavirus? Create your digital identity and Start sending requests for funding support.');
+                                            $summary=rawurlencode('My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q
+
+                                            Even your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2');
                                         ?>
                                             <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.linkedin.com/shareArticle?mini=true&url=<?php echo $summary ?>')" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=Our business is affected by “Coronavirus Emergency” and we are looking for Short term funding. %0D%0A%0D%0AHere is How to access my funding requirement:%0D%0A[Link-Diverts to hyperlink-How to be a financier]%0D%0A%0D%0APotential Funders can securely access our business profile and funding requirement by becoming part of the TradeFinex Network. https://www.tradefinex.org/publicv/financier %0D%0A%0D%0AEven your business is affected by coronavirus? Create your digital identity and Start sending requests for funding support.&url=[URL]')" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" class="twitter"><i class="fa fa-twitter"></i></a></li>
                                             <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?href=<?php echo $summary ?>')" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('whatsapp://send?text=Our business is affected by “Coronavirus Emergency” and we are looking for Short term funding. %0D%0A%0D%0AHere is How to access my funding requirement:%0D%0A[Link-Diverts to hyperlink-How to be a financier]%0D%0A%0D%0APotential Funders can securely access our business profile and funding requirement by becoming part of the TradeFinex Network. https://www.tradefinex.org/publicv/financier %0D%0A%0D%0AEven your business is affected by coronavirus? Create your digital identity and Start sending requests for funding support.')" data-action="share/whatsapp/share" class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('mailto:?subject=Is your business affected by corona virus?&body=Our business is affected by “Coronavirus Emergency” and we are looking for Short term funding. %0D%0A%0D%0AHere is How to access my funding requirement:%0D%0A[Link-Diverts to hyperlink-How to be a financier]%0D%0A%0D%0APotential Funders can securely access our business profile and funding requirement by becoming part of the TradeFinex Network. https://www.tradefinex.org/publicv/financier %0D%0A%0D%0AEven your business is affected by coronavirus? Create your digital identity and Start sending requests for funding support.')" data-action="share/gmail/share" class="gmail"><i class="fa fa-gmail"></i></a></li>
+                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('whatsapp://send?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/whatsapp/share" class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('mailto:?subject=Is your business affected by corona virus?&body=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/gmail/share" class="gmail"><i class="fa fa-envelope"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
-                            </div>  
+                            </div> 
                             </form>
                         </div>
                     </div>
