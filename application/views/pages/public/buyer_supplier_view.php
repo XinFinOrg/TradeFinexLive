@@ -177,7 +177,7 @@
 										<a id="getDoc" onclick="docShow()" class="btn btn-white btn-small">Access Document <i class="fa fa fa-angle-double-right"></i></a></span>
 									</div>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>
@@ -245,54 +245,45 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- /. Buyers /Suppliers Form -->
+            <div id="tf-loader-wrapper" style="display: none;"><div id="tf-loader"></div></div>
 
-    </div>
-
-   
-    <!-- /. Inside Page Buyers / Suppliers Detail -->
-    
-
-<?php
-	
-	// $this->load->view('includes/block_create_account');
-	//$this->load->view('includes/block_features');	
-	$this->load->view('includes/login_modal');
-	
-?>	
-
-<div id="tf-loader-wrapper" style="display: none;"><div id="tf-loader"></div></div>
-<div class="modal fade" id="thankyou" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
-		<div class="modal-dialog" style="">
+		
 		<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
-			<div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" onclick="location.reload()" data-dismiss="modal"> <span class="hidden-xs">&times;</span> <span class="hidden-md hidden-lg"> <img src="<?php echo base_url() ?>assets/images/icon/log_arrow.png"  alt="icon" /></span> </button>
-                </div>
-				<div class="modal-body text-center">
-                        <div class="deployedData_modal_block">
-							<h1>Contract Deployed Successfully.</h1>
+
+                    <div class="container"id="thankyou" style="display:none;">
+						<div class="contract-successBox"><i class="fa"><img src="../assets/images/icon/check_white.png" width="" height="" /></i></div>
+							<h1>Contract Deployed Successfully!</h1>
 							<p>Please save the contract address for further use.</p>
-							<!--<p id="deployedData" style="word-break: break-all;"></p>-->
-							
-							<div id="deployedData" style="word-break: break-all;">
-								
-								
+														
+							<div id="deployedData" style="word-break: break-all;">								
                             </div>
-                            
-                                <div class="form-group"style="display:none" id="email_set">
+							
+							<!--<div id="deployedData" style="word-break: break-all;">
+								<p><span>Contract Address:</span><br>xdcedf70f0ac47aebcb429c95adfb23f0c3c64aefe3</p>
+								<p><span>Transaction Hash:</span><br><a href="https://explorer.apothem.network/tx/0xfb11df11dc1d9a727c15ef9bfc3c161dc12e44a0ccf36b7586d1cbbd02fb4d04" target="_blank">0xfb11df11dc1d9a727c15ef9bfc3c161dc12e44a0ccf36b7586d1cbbd02fb4d04</a></p>								
+							</div>-->
+							
+							<div class="mt-10" style="display:none;" id="email_set">
+                                <div class="input-group">
                                     <input class="form-control" id="email" name="email" type="text" autocomplete="" aria-required="true" placeholder="Email Id" >
                                     <input type="hidden" name="action" value="send_mail" /><br><br><br>
-                                    <button id="DownloadBtn" onclick="mail()" type="submit"class="btn btn-blue text-uppercase" data-keyboard="false">OK</button>
+                                    <div class="input-group-append">
+                                        <button id="DownloadBtn" onclick="mail()" type="submit"class="btn btn-secondary text-uppercase" data-keyboard="false">OK</button>
+                                    </div>
                                 </div>
+							</div>
+                            
+                            <!--<div class="form-group" style="display:none" id="email_set">
+                            	<input class="form-control" id="email" name="email" type="text" autocomplete="" aria-required="true" placeholder="Email Id" >
+                                <input type="hidden" name="action" value="send_mail" /><br><br><br>
+                                <button id="DownloadBtn" onclick="mail()" type="submit"class="btn btn-blue text-uppercase" data-keyboard="false">OK</button>
+                            </div>-->
                         
-							<div class="form-group">
+							<div class="form-group mt-15 mb-10">
 								<button id="CopyBtn" type="submit" onclick="copy('deployedData')" class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Copy</button>
 								<button id="DownloadBtn" type="submit" onclick="PrintDiv()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Download</button>
 								<button id="EmailBtn" type="submit" onclick="showemail()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false" >Email</button>
 							</div>
-                            
                             
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
@@ -313,12 +304,31 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>                                         							
+                            </div>                                        							
 						</div>
-				</div>
-			</div>
-	 	</div>
-</div>
+                    </div>
+				
+			
+	 	
+
+        </section>
+        <!-- /. Buyers /Suppliers Form -->
+
+    </div>
+
+   
+    <!-- /. Inside Page Buyers / Suppliers Detail -->
+    
+
+<?php
+	
+	// $this->load->view('includes/block_create_account');
+	//$this->load->view('includes/block_features');	
+	$this->load->view('includes/login_modal');
+	
+?>	
+
+
 
 
 <div id="tf-loader-wrapper" style="display: none;"><div id="tf-loader"></div></div>

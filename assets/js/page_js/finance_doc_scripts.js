@@ -365,8 +365,8 @@ $(function () {
 																</p>
 																`
 												hideLoader();
-												$("#thankyou").modal("show");
-												$('#thankyou').css('opacity', '1');
+												document.getElementById("deploy").style.display = "none";
+												document.getElementById("thankyou").style.display = "block";
 												$('#deployedData').html(tHtml);
 												$('#DeployBtn').click(function() {
 													$("#thankyou").modal("hide");
@@ -1183,15 +1183,17 @@ $(function () {
 					} 
 					else{
 						document.getElementById("error").style.display = "none";
-						document.getElementById("instru").disabled = false;
+						
 						
 						if ('size' in file) {
 							const fsize = file.size; 
 							if(parseFloat(fsize) > 10485760) {
 								document.getElementById("error1").style.display = "block";
+								document.getElementById("instru").disabled = true;
 							}
 							else{
 								document.getElementById("error1").style.display = "none";
+								document.getElementById("instru").disabled = false;
 							}
 						}
 					}
