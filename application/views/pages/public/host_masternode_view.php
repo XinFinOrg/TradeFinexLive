@@ -7,7 +7,61 @@
             <h4>Pay using Paypal & Setup Masternode Instantly</h4>
         </div>
     </section>
+	<section id="host-masternode" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="section-title text-center">
+                    <h2 class="mb-0">Steps to Setup Masternode</h2>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                </div>
+            </div>
 
+            <div class="row flex-row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-30">
+                    <div class="strategy-howTo-card">
+                        <div class="strategy-howTo-card-head media">
+                            <div class="ico-step">
+                                <p>STEP <span>1</span></p>
+                            </div>
+                            <h4>Click on upload KYC</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-30">
+                    <div class="strategy-howTo-card">
+                        <div class="strategy-howTo-card-head media">
+                            <div class="ico-step">
+                                <p>STEP <span>2</span></p>
+                            </div>
+                            <h4>Upload the KYC and click on Submit</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-30">
+                    <div class="strategy-howTo-card">
+                        <div class="strategy-howTo-card-head media">
+                            <div class="ico-step">
+                                <p>STEP <span>3</span></p>
+                            </div>
+                            <h4>Pay for your Masternode through PayPal</h4>
+                        </div>
+                    </div>
+                </div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-30">
+                    <div class="strategy-howTo-card">
+                        <div class="strategy-howTo-card-head media">
+                            <div class="ico-step">
+                                <p>STEP <span>4</span></p>
+                            </div>
+                            <h4>Ta Da!!! Your Masternode is setup</h4>
+                        </div>
+                    </div>
+                </div>				
+
+            </div>
+        </div>
+    </section>
 	<section id="statistics" class="section tf-grey-bg">
 		<!-- <div class="container">
 			
@@ -167,62 +221,6 @@
 		</div>
     </section>
 	
-	
-	<section id="host-masternode" class="section">
-        <div class="container">
-            <div class="row">
-                <div class="section-title text-center">
-                    <h2 class="mb-0">Steps to Setup Masternode</h2>
-                </div>
-                <div class="col-md-8 col-md-offset-2">
-                </div>
-            </div>
-
-            <div class="row flex-row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-30">
-                    <div class="strategy-howTo-card">
-                        <div class="strategy-howTo-card-head media">
-                            <div class="ico-step">
-                                <p>STEP <span>1</span></p>
-                            </div>
-                            <h4>Click on upload KYC</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-30">
-                    <div class="strategy-howTo-card">
-                        <div class="strategy-howTo-card-head media">
-                            <div class="ico-step">
-                                <p>STEP <span>2</span></p>
-                            </div>
-                            <h4>Upload the KYC and click on Submit</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-30">
-                    <div class="strategy-howTo-card">
-                        <div class="strategy-howTo-card-head media">
-                            <div class="ico-step">
-                                <p>STEP <span>3</span></p>
-                            </div>
-                            <h4>Pay for your Masternode through PayPal</h4>
-                        </div>
-                    </div>
-                </div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-30">
-                    <div class="strategy-howTo-card">
-                        <div class="strategy-howTo-card-head media">
-                            <div class="ico-step">
-                                <p>STEP <span>4</span></p>
-                            </div>
-                            <h4>Ta Da!!! Your Masternode is setup</h4>
-                        </div>
-                    </div>
-                </div>				
-
-            </div>
-        </div>
-    </section>
 	
 	
 </div>

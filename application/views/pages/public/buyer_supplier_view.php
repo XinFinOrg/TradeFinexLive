@@ -285,6 +285,7 @@
                                         <button id="CopyBtn" type="submit" onclick="copy('deployedData')" class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Copy</button>
                                         <button id="DownloadBtn" type="submit" onclick="PrintDiv()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Download</button>
                                         <button id="EmailBtn" type="submit" onclick="showemail()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false" >Email</button>
+                                        <a class="btn border blue text-uppercase" href="https://xinfinorg.github.io/Finance/Index.html">Get Financiers Contact</a>
                                     </div>
                                     
                                     <div class="row">
