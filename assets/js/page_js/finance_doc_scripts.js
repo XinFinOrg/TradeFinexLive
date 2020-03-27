@@ -357,7 +357,7 @@ $(function () {
 													console.log("response1 : ",err);
 												})
 												
-												const hashUrl = `https://explorer.apothem.network/tx/${resp.receipt.transactionHash}`;
+												const hashUrl = `https://explorer.network/tx/${resp.receipt.transactionHash}`;
 												const tHtml = `
 																<p>
 																	<span>Contract Address:</span><br>${resp.receipt.contractAddress.toLowerCase()}</p>
@@ -750,7 +750,7 @@ $(function () {
 													console.log("response1 : ",err);
 												})
 
-												const hashUrl = `https://explorer.apothem.network/tx/${resp.receipt.transactionHash}`;
+												const hashUrl = `https://explorer.network/tx/${resp.receipt.transactionHash}`;
 												const tHtml = `
 																<p>
 																	<span>Contract Address:</span><br>${resp.receipt.contractAddress.toLowerCase()}</p>
@@ -1056,7 +1056,7 @@ $(function () {
 															var ress =Object.entries(deploy);			
 															let rows = "";
 															for (var j = 0; j < ress.length; j++) { 
-																const hashUrl = `https://explorer.apothem.network/tx/${deploy[j].txHash}`;
+																const hashUrl = `https://explorer.network/tx/${deploy[j].txHash}`;
 																rows += `<tr>
 																<td>${deploy[j].fileNo +1}</td>
 																<td>${deploy[j].contract_address}</td>
