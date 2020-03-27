@@ -287,7 +287,7 @@
                                         <button id="EmailBtn" type="submit" onclick="showemail()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false" >Email</button>
                                     </div>
                                     <div class="form-group mt-15 mb-10">
-                                        <a class="btn border blue text-uppercase" href="https://xinfinorg.github.io/Finance/Index.html" target="_blank">Get Financiers Contact</a>
+                                        <a class="btn border blue text-uppercase" href="https://xinfinorg.github.io/Finance/Index.html" target="_blank">Send Funding Request EMail to the Financiers available on Tradefinex network</a>
                                     </div>
                                     
                                     <div class="row">
