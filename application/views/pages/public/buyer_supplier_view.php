@@ -251,61 +251,65 @@
 		<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
 
                     <div class="container"id="thankyou" style="display:none;">
-						<div class="contract-successBox"><i class="fa"><img src="../assets/images/icon/check_white.png" width="" height="" /></i></div>
-							<h1>Contract Deployed Successfully!</h1>
-							<p>Please save the contract address for further use.</p>
-														
-							<div id="deployedData" style="word-break: break-all;">								
-                            </div>
-							
-							<!--<div id="deployedData" style="word-break: break-all;">
-								<p><span>Contract Address:</span><br>xdcedf70f0ac47aebcb429c95adfb23f0c3c64aefe3</p>
-								<p><span>Transaction Hash:</span><br><a href="https://explorer.apothem.network/tx/0xfb11df11dc1d9a727c15ef9bfc3c161dc12e44a0ccf36b7586d1cbbd02fb4d04" target="_blank">0xfb11df11dc1d9a727c15ef9bfc3c161dc12e44a0ccf36b7586d1cbbd02fb4d04</a></p>								
-							</div>-->
-							
-							<div class="mt-10" style="display:none;" id="email_set">
-                                <div class="input-group">
-                                    <input class="form-control" id="email" name="email" type="text" autocomplete="" aria-required="true" placeholder="Email Id" >
-                                    <input type="hidden" name="action" value="send_mail" /><br><br><br>
-                                    <div class="input-group-append">
-                                        <button id="DownloadBtn" onclick="mail()" type="submit"class="btn btn-secondary text-uppercase" data-keyboard="false">OK</button>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="contract-successBox"><i class="fa"><img src="../assets/images/icon/check_white.png" width="" height="" /></i></div>
+                                    <h1>Contract Deployed Successfully!</h1>
+                                    <p>Please save the contract address for further use.</p>
+                                                                
+                                    <div id="deployedData" style="word-break: break-all;">								
                                     </div>
-                                </div>
-							</div>
-                            
-                            <!--<div class="form-group" style="display:none" id="email_set">
-                            	<input class="form-control" id="email" name="email" type="text" autocomplete="" aria-required="true" placeholder="Email Id" >
-                                <input type="hidden" name="action" value="send_mail" /><br><br><br>
-                                <button id="DownloadBtn" onclick="mail()" type="submit"class="btn btn-blue text-uppercase" data-keyboard="false">OK</button>
-                            </div>-->
-                        
-							<div class="form-group mt-15 mb-10">
-								<button id="CopyBtn" type="submit" onclick="copy('deployedData')" class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Copy</button>
-								<button id="DownloadBtn" type="submit" onclick="PrintDiv()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Download</button>
-								<button id="EmailBtn" type="submit" onclick="showemail()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false" >Email</button>
-							</div>
-                            
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12">
-                                    <div class="widget widget-contact mt-4">
-                                        <h1 class="text-green">Start sharing with your Network!</h1>
-										<h4 class="widget-title mb-10">Start Requesting for the Fund<!--Connect Financiers via Social Media--></h4>
-                                        <ul class="tf-social-bs">
-                                        <?php
-                                            $summary=rawurlencode('My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q
+                                    
+                                    <!--<div id="deployedData" style="word-break: break-all;">
+                                        <p><span>Contract Address:</span><br>xdcedf70f0ac47aebcb429c95adfb23f0c3c64aefe3</p>
+                                        <p><span>Transaction Hash:</span><br><a href="https://explorer.apothem.network/tx/0xfb11df11dc1d9a727c15ef9bfc3c161dc12e44a0ccf36b7586d1cbbd02fb4d04" target="_blank">0xfb11df11dc1d9a727c15ef9bfc3c161dc12e44a0ccf36b7586d1cbbd02fb4d04</a></p>								
+                                    </div>-->
+                                    
+                                    <div class="mt-10" style="display:none;" id="email_set">
+                                        <div class="input-group">
+                                            <input class="form-control" id="email" name="email" type="text" autocomplete="" aria-required="true" placeholder="Email Id" >
+                                            <input type="hidden" name="action" value="send_mail" /><br><br><br>
+                                            <div class="input-group-append">
+                                                <button id="DownloadBtn" onclick="mail()" type="submit"class="btn btn-secondary text-uppercase" data-keyboard="false">OK</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!--<div class="form-group" style="display:none" id="email_set">
+                                        <input class="form-control" id="email" name="email" type="text" autocomplete="" aria-required="true" placeholder="Email Id" >
+                                        <input type="hidden" name="action" value="send_mail" /><br><br><br>
+                                        <button id="DownloadBtn" onclick="mail()" type="submit"class="btn btn-blue text-uppercase" data-keyboard="false">OK</button>
+                                    </div>-->
+                                
+                                    <div class="form-group mt-15 mb-10">
+                                        <button id="CopyBtn" type="submit" onclick="copy('deployedData')" class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Copy</button>
+                                        <button id="DownloadBtn" type="submit" onclick="PrintDiv()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Download</button>
+                                        <button id="EmailBtn" type="submit" onclick="showemail()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false" >Email</button>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="widget widget-contact mt-4">
+                                                <h1 class="text-green">Start sharing with your Network!</h1>
+                                                <h4 class="widget-title mb-10">Start Requesting for the Fund<!--Connect Financiers via Social Media--></h4>
+                                                <ul class="tf-social-bs">
+                                                <?php
+                                                    $summary=rawurlencode('My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q
 
-                                            Even your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2');
-                                        ?>
-                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.linkedin.com/shareArticle?mini=true&url=<?php echo $summary ?>')" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?href=<?php echo $summary ?>')" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('whatsapp://send?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/whatsapp/share" class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('mailto:?subject=Is your business affected by corona virus?&body=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/gmail/share" class="gmail"><i class="fa fa-envelope"></i></a></li>
-                                        </ul>
-                                    </div>
+                                                    Even your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2');
+                                                ?>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.linkedin.com/shareArticle?mini=true&url=<?php echo $summary ?>')" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?href=<?php echo $summary ?>')" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('whatsapp://send?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/whatsapp/share" class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('mailto:?subject=Is your business affected by corona virus?&body=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/gmail/share" class="gmail"><i class="fa fa-envelope"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>                                        							
                                 </div>
-                            </div>                                        							
-						</div>
+                            </div>
+                        </div>
                     </div>
 				
 			
