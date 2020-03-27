@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://www.tradefinex.org';
+$config['base_url'] = 'http://localhost/TradeFinexLive';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 3;
+$config['log_threshold'] = 4;
 
 /*
 |--------------------------------------------------------------------------
@@ -457,7 +457,7 @@ $config['csrf_token_name'] = 'csrf_iksen_tslick50';
 $config['csrf_cookie_name'] = 'csrf_iksen_cslick50';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = FALSE;
-$config['csrf_exclude_uris'] = array('user/update_log', 'user/update_visibility', 'user/update_notification', 'notify/listing_count', 'notify/listing_ui', 'notify/mlisting_ui', 'notify/mlisting_count', 'listing/details', 'listing/search' , 'notify/update_notifyc', 'project/cancel_invite', 'registration/get_regotp','publicv/buyer_supplier','publicv/get_passkey','publicv/get_access','publicv/paypal','publicv/get_address');
+$config['csrf_exclude_uris'] = array('apiexternal/register','apiexternal/login','user/update_log', 'user/update_visibility', 'user/update_notification', 'notify/listing_count', 'notify/listing_ui', 'notify/mlisting_ui', 'notify/mlisting_count', 'listing/details', 'listing/search' , 'notify/update_notifyc', 'project/cancel_invite', 'registration/get_regotp','publicv/buyersupplier','publicv/getPasskey','publicv/getAccess','publicv/test2','publicv/getAddress','publicv/sendMail','finxtradez/borrower','finxtradez/getAddress','finxtradez/getPasskey','finxtradez/getAccess','finxtradez/paypal','publicv/hostMasternode');
 
 /*
 |--------------------------------------------------------------------------
@@ -479,7 +479,7 @@ $config['csrf_exclude_uris'] = array('user/update_log', 'user/update_visibility'
 | by the output class.  Do not 'echo' any values with compression enabled.
 |
 */
-$config['compress_output'] = FALSE;
+$config['compress_output'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -530,3 +530,16 @@ function __autoload($class) {
         include_once(APPPATH."core/".$class.'.php');
     }
 }
+
+ 
+// To use reCAPTCHA, we need to sign up for an API key pair for your site which we already did above.
+ 
+$config['recaptcha_site_key'] = '6LfrjdUUAAAAAA4S0HrRCteQVbEpnbmqzWEIP0Xz'; 
+$config['recaptcha_secret_key'] = '6LfrjdUUAAAAAEGPE5gR_xBmy5sVFMCC4S6KuGZG'; 
+ 
+// reCAPTCHA supports 40+ languages
+ 
+$config['recaptcha_lang'] = 'en'; 
+ 
+/* End of file recaptcha.php 
+   Location: ./application/config/recaptcha.php */
