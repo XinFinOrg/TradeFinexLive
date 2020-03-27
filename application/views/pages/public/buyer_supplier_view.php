@@ -253,7 +253,7 @@
                     <div class="container"id="thankyou" style="display:none;">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
-                                <div class="contract-successBox"><i class="fa"><img src="../assets/images/icon/check_white.png" width="" height="" /></i></div>
+                                <div class="contract-successBox center"><i class="fa"><img src="../assets/images/icon/check_white.png" width="" height="" /></i></div>
                                     <h1>Contract Deployed Successfully!</h1>
                                     <p>Please save the contract address for further use.</p>
                                                                 
@@ -285,7 +285,9 @@
                                         <button id="CopyBtn" type="submit" onclick="copy('deployedData')" class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Copy</button>
                                         <button id="DownloadBtn" type="submit" onclick="PrintDiv()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Download</button>
                                         <button id="EmailBtn" type="submit" onclick="showemail()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false" >Email</button>
-                                        <a class="btn border blue text-uppercase" href="https://xinfinorg.github.io/Finance/Index.html">Get Financiers Contact</a>
+                                    </div>
+                                    <div class="form-group mt-15 mb-10">
+                                        <a class="btn border blue text-uppercase" href="https://xinfinorg.github.io/Finance/Index.html" target="_blank">Get Financiers Contact</a>
                                     </div>
                                     
                                     <div class="row">
