@@ -44,7 +44,7 @@ p {font-size: 15px;color: #687377;line-height: 1.5;margin-bottom: 15px;}
 .btn.btn-red {background: #ea212d;color: #FFFFFF;border: 2px solid #ea212d!important;}
 .btn.btn-red:hover {background: none;color: #ea212d!important;border: 2px solid #ea212d!important;}
 
-.btn.btn-blue {background: #007bff;color: #FFFFFF;border: 2px solid #007bff !important;}
+.btn.btn-blue {background: #007bff;color:#FFFFFF!important;border: 2px solid #007bff !important;}
 .btn.btn-blue:hover {background: none;color: #007bff!important;border: 2px solid #007bff!important;}
 
 .btn.btn-white.bordered {background: rgba(255,255,255,0.9);color: #687377;border:1px solid rgb(232, 237, 245, 1)}
@@ -769,19 +769,19 @@ input.error, textarea.error, select.error, label.error {border-color: #ea212d!im
 }
 
 /*-- Buyers / Suppliers Social sharing --*/
-.contract-successBox {display: inline-block;width: 3em;height: 3em;margin-bottom: 1em;background-color: #11b500;text-align: center;border-radius:50px;}
+.contract-successBox {display: inline-block;width: 3em;height: 3em;background-color: #49e639;text-align: center;border-radius:50px;vertical-align: middle;}
 .contract-successBox i {background-image:url(../assets/images/icon/check_white.png);font-size:34px;line-height:34px;margin: auto;text-align: center;vertical-align: middle;}
-#deployedData {border-radius:5px;background-color:#f5f8fc;padding:15px;text-align:left;}
-#deployedData p {padding-bottom: 10px;border-bottom:1px solid #dbe8f9;line-height: 20px;}
-#deployedData p span {line-height: 25px;}
+#deployedData {border-radius:5px;/*background-color:#f5f8fc;*/border: 1px solid #e7eaee;padding:15px;text-align:left;}
+#deployedData p {padding-bottom: 10px;border-bottom:1px solid #e7eaee;line-height: 20px;}
+#deployedData p span {line-height: 25px;font-weight:800!important;}
 #deployedData p a {color:#687377!important}
 #deployedData p:last-child {padding-bottom:0px;margin-bottom:0px;border-bottom:none;}
 
 .widget h4 .widget-title {line-height:18px;}
-.widget .text-green {font-size: 26px;font-weight: 600;color: #08cc51;line-height: 30px;margin-bottom: 5px;}
+.deployedData_modal_block .text-green, .widget .text-green {font-size: 26px;font-weight: 600;color: #08cc51;line-height: 30px;margin-bottom: 5px;}
 .tf-social-bs {float: none;}
 .tf-social-bs li {text-align: center;width: auto !important;display: inline-block !important;vertical-align: top;clear: none !important;margin-right: 8px;margin-left: 0px;margin-bottom: 8px;padding: 0;}
-.tf-social-bs li a {width:40px;height:40px;color: #858585;font-size: 15px;line-height:40px!important;margin-right:0px;display: block;-webkit-border-radius: 100%;-moz-border-radius: 100%;border-radius: 50px;}
+.tf-social-bs li a {width:50px;height:50px;color: #858585;font-size: 24px;line-height:50px!important;margin-right:0px;display: block;-webkit-border-radius: 100%;-moz-border-radius: 100%;border-radius: 50px;}
 .tf-social-bs li i {color:#FFFFFF;}
 .tf-social-bs li:last-child {margin-left: 0px;margin-right: 0px;}
 .tf-social-bs li a:not(:hover) {color: #c2c2c2;}
@@ -800,6 +800,9 @@ input.error, textarea.error, select.error, label.error {border-color: #ea212d!im
 .input-group>.input-group-append>.btn {border-top-left-radius: 0;border-bottom-left-radius: 0;border:none;}
 .input-group>.input-group-append>.btn-secondary {color: #fff;background-color: #6c757d;border-color: #6c757d;}
 
+/*Deployed data sharing page inline css starts*/
+.fundingDivider{margin:45px auto 40px;width:100%;position:relative;}.fundingDividerLine{overflow:hidden;height:20px;}.fundingDividerLine:after{content:'';display:block;margin:-25px auto 0;width:100%;height:25px;border-radius:125px/10px;box-shadow:0 0 8px #969595;}.fundingDivider span{width:70px;height:40px;position:absolute;bottom:100%;margin-bottom:-20px;left:48%;margin-left:-20px;border-radius:5px;box-shadow:0 2px 4px #d2d1d1;border:1px solid #f5f8fc;background:#fff;}.fundingDivider i{position:absolute;top:4px;bottom:4px;left:4px;right:4px;border-radius:5px;text-align:center;line-height:30px;font-style:normal;color:#969595;font-weight:500;}.column-one{padding:25px;border-radius:5px;background-color:#f5f8fc;}.column-two{padding:25px;border-radius:5px;background-color:#f5f8fc;}.column-one p,.column-two p{margin-bottom:0;}.fbox-successIcon{display:table;width:100%;margin-bottom:20px;background-color:#f5f8fc;border-radius:5px;padding:20px;}.fbox-successIcon-left{width:80%;display:table-cell;vertical-align:middle;}.fbox-successIcon-left h1{margin-bottom:0;}.fbox-successIcon-right{width:20%;display:table-cell;vertical-align:middle;height:100%;text-align:right;}
+/*Deployed data sharing page inline css starts*/
 
 
 

@@ -177,7 +177,7 @@
 										<a id="getDoc" onclick="docShow()" class="btn btn-white btn-small">Access Document <i class="fa fa fa-angle-double-right"></i></a></span>
 									</div>
                                 </div>
-
+                                
                             </form>
                         </div>
                     </div>
@@ -244,17 +244,24 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="tf-loader-wrapper" style="display: none;"><div id="tf-loader"></div></div>
+            </div>		
+		    <div id="tf-loader-wrapper" style="display: none;"><div id="tf-loader"></div></div>
 
-		
-		<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
 
-                    <div class="container"id="thankyou" style="display:none;">
-                        <div class="row">
+			<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
+
+                    <div class="container" id="thankyou" style="display:none;">
+                        <div class="row deployedData_modal_block">
                             <div class="col-md-8 col-md-offset-2">
-                                <div class="contract-successBox center"><i class="fa"><img src="../assets/images/icon/check_white.png" width="" height="" /></i></div>
-                                    <h1>Contract Deployed Successfully!</h1>
+                                <div class="fbox-successIcon">
+									<div class="fbox-successIcon-left">
+										<h1>Contract Deployed Successfully!</h1>
+								    </div>
+									<div class="fbox-successIcon-right">
+										<div class="contract-successBox"><i class="fa"><img src="../assets/images/icon/check_white.png" width="" height="" /></i></div>	
+								    </div>
+								</div>
+								
                                     <p>Please save the contract address for further use.</p>
                                                                 
                                     <div id="deployedData" style="word-break: break-all;">								
@@ -286,15 +293,56 @@
                                         <button id="DownloadBtn" type="submit" onclick="PrintDiv()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Download</button>
                                         <button id="EmailBtn" type="submit" onclick="showemail()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false" >Email</button>
                                     </div>
-                                    <div class="form-group mt-15 mb-10">
+                                    <!--<div class="form-group mt-15 mb-10">
                                         <a class="btn border blue text-uppercase" href="https://xinfinorg.github.io/Finance/Index.html" target="_blank">Send Funding Request EMail to the Financiers available on Tradefinex network</a>
-                                    </div>
+                                    </div>-->									
+									
+									<div class="row mt-25">
+										<div class="col-lg-12 text-center"><h1 class="text-green mb-20">Start Sending Funding Request!</h1></div>
+										<div class="col-md-6 mb-15">
+											<div class="column-one text-center">
+												<h3 class="mb-20">Send Funding Request Email to TradeFinex Network</h3>
+												<p><a class="btn btn-blue text-uppercase" href="https://xinfinorg.github.io/Finance/Index.html" target="_blank">Email Now <i class="fa fa-envelope"></i></a></p>
+											</div>
+										</div>
+										
+										<div class="col-md-6 mb-15">
+											<div class="column-two text-center">
+												<h3 class="mb-20">Send Funding Request Email to Your Funder Network</h3>
+												<p><a class="btn btn-blue text-uppercase" href="javascript:void(0)"onclick="javascript:genericSocialShare('mailto:?subject=Is your business affected by corona virus?&body=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')">Email Now <i class="fa fa-envelope"></i></a></p>
+											</div>
+										</div>
+									</div>
+									
+									<div class="fundingDivider"><div class="fundingDividerLine"></div><span><i>AND</i></span></div>
+									
+									<div class="row">
+									<div class="col-md-12">
+											<div class="widget widget-contact text-center">
+                                                <h1 class="text-green mb-20">Share Funding Request to Your Social Media Network</h1>
+												<!--<h4 class="widget-title mb-10">Start Requesting for the Fund</h4>-->
+                                                <ul class="tf-social-bs">
+                                                <?php
+                                                    $summary=rawurlencode('My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q
+
+                                                    Even your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2');
+                                                ?>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.linkedin.com/shareArticle?mini=true&url=<?php echo $summary ?>')" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?href=<?php echo $summary ?>')" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('whatsapp://send?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/whatsapp/share" class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                                                    <!--<li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('mailto:?subject=Is your business affected by corona virus?&body=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/gmail/share" class="gmail"><i class="fa fa-envelope"></i></a></li>-->
+                                                </ul>
+                                            </div>
+											</div>
+											</div>
+									
                                     
-                                    <div class="row">
+                                    <!--<div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="widget widget-contact mt-4">
                                                 <h1 class="text-green">Start sharing with your Network!</h1>
-                                                <h4 class="widget-title mb-10">Start Requesting for the Fund<!--Connect Financiers via Social Media--></h4>
+                                                <h4 class="widget-title mb-10">Start Requesting for the Fund</h4>
                                                 <ul class="tf-social-bs">
                                                 <?php
                                                     $summary=rawurlencode('My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q
@@ -309,11 +357,11 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div>                                        							
+                                    </div>-->
+
                                 </div>
                             </div>
                         </div>
-                    </div>
 				
 			
 	 	
