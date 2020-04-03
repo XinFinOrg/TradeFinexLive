@@ -393,14 +393,14 @@
                 </div>
 				<div class="modal-body text-center">
                         <div class="deployedData_modal_block">
-							<p>Create wallet to get XDC</p>
+							<h2>Create wallet to get XDC</h2>
 							<div class="tf-dls-benefits">
                                 <ul>
                                     <li><a href="https://howto.xinfin.org/XinFinAndWallet/features/" target="_blank">How to create Android Wallet?</a></li>
                                     <li><a href="https://howto.xinfin.org/XinFinWallet/features/" target="_blank">How to create Web Wallet?</a></li>
-                                    </ul>
+                                </ul>
                             </div>
-                            <p>Top up XDC to your wallet</p>
+                            <h2>Top up XDC to your wallet</h2>
 							<div class="tf-dls-benefits">
                                 <ul>
                                     <li><a href="https://xinfin.io/" target="_blank">From XinFin</a></li>
