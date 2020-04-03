@@ -758,8 +758,8 @@ $(function () {
 																</p>
 																`
 												hideLoader();
-												$("#thankyou").modal("show");
-												$('#thankyou').css('opacity', '1');
+												document.getElementById("deploy").style.display = "none";
+												document.getElementById("thankyou").style.display = "block";
 												$('#deployedData').html(tHtml);
 												$('#DeployBtn').click(function() {
 													$("#thankyou").modal("hide");

@@ -395,7 +395,13 @@
 							<p>Create wallet to get XDC</p>
 							
                             <p> <a href="https://howto.xinfin.org/XinFinAndWallet/features/" target="_blank">How to create Android Wallet?</a></p>
-                            <p><a href="https://howto.xinfin.org/XinFinWallet/features/" target="_blank">How to create web Wallet?</a></p>
+                            <p><a href="https://howto.xinfin.org/XinFinWallet/features/" target="_blank">How to create Web Wallet?</a></p>
+
+                            <p>Top up XDC to your wallet</p>
+							
+                            <p> <a href="https://xinfin.io/" target="_blank">From XinFin</a></p>
+                            <p><a href="https://www.alphaex.net" target="_blank">From Alphaex Exchange</a></p>
+                            <p><a href="https://www.stex.com" target="_blank">From Stex Exchange</a></p>
 														
 						</div>
 				</div>
