@@ -187,7 +187,7 @@
 			<div class="common_sec">
                 <p>
                     TradeFinex is a decentralized peer to peer marketplace platform, powered by XinFin
-                    hybrid Blockchain and its XDC01 protocol, which will bring together Governments, Institutions,
+                    hybrid Blockchain and its XDC protocol, which will bring together Governments, Institutions,
                     Buyers and Suppliers. TradeFinex aims to minimize global infrastructure deficit by minimizing
                     inefficiency in global trade and finance using Blockchain technology. TradeFinex platform than
                     can be used with existing laws of the land and payment rails or in an approved jurisdiction using
