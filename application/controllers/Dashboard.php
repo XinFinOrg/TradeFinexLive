@@ -982,10 +982,14 @@ class Dashboard extends CI_Controller {
 		
 		$date = date('Y-m-d');
 		$instrument = $this->manage->get_instrument($date);
+		$design = $this->manage->get_funddesign();
 		$buyersupplier = $this->manage->get_buyersupplier($date);
 		
 		if($instrument && !empty($instrument) && is_array($instrument) && sizeof($instrument) <> 0){
 			$data['instrument'] = $instrument;						
+		}
+		if($design && !empty($design) && is_array($design) && sizeof($design) <> 0){
+			$data['design'] = $design;						
 		}
 		if($buyersupplier && !empty($buyersupplier) && is_array($buyersupplier) && sizeof($buyersupplier) <> 0){
 			$data['buyersupplier'] = $buyersupplier;					

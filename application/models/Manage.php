@@ -1341,6 +1341,35 @@
 			return 1;
 			// }
 		}
+
+		public function add_funddesign($data_add){
+
+			$data = array();
+		
+			$data['tffd_fundName'] = $data_add['name'];
+			$data['tffd_mobileNo'] = $data_add['mmob'];
+			$data['tffd_country'] = $data_add['country'];
+			$data['tffd_currency'] = $data_add['currency_supported'];
+			$data['tffd_amount'] = $data_add['amount'];
+			$data['tffd_quantity'] = $data_add['quantity'];
+			$data['tffd_manuMethod'] = $data_add['manu_method'];
+			$data['tffd_materialType'] = $data_add['material_type'];
+			$data['tffd_docRef'] = $data_add['docRef'];
+			$data['tffd_contractAddr'] = $data_add['contractAddr'];
+			$data['tffd_deployerAddr'] = $data_add['deployerAddr'];
+			$data['tffd_secretKey'] = $data_add['secretKey'];
+			
+
+
+			$this->db->insert('{PRE}funddesign', $data);
+			$id = $this->db->insert_id();
+
+			$data = array();
+
+		
+			return 1;
+			// }
+		}
 		
 		public function get_instrument($date){
 
@@ -1350,6 +1379,15 @@
 
 			return $result = $query->result();
 		}
+		public function get_funddesign(){
+
+			$this->db->select('*');
+			$this->db->from('{PRE}funddesign')->order_by('tffd_createdAt', 'desc');
+			$query = $this->db->get();
+
+			return $result = $query->result();
+		}
+
 		public function get_buyersupplier($date){
 
 			$this->db->select('*');
@@ -1379,6 +1417,16 @@
 			return $result = $query->result();
 		}
 
+		public function get_secretkey_by_docRef_design($docRef){
+
+			$this->db->select('*');
+			$this->db->from('{PRE}funddesign');
+			$where = "tffd_docRef = '$docRef'";
+			$this->db->where($where);
+			$query = $this->db->get();
+
+			return $result = $query->result();
+		}
 		public function get_contact_details($docRef){
 
 			$this->db->select('*');

@@ -807,6 +807,344 @@ $(function () {
 		}
 	});
 
+	//Fund Design Form
+	$("#funddesign_form").validate({
+		rules: {
+			instrument: {
+				required:function() {
+					return $('[name="instrument"]:checked').length === 0; 
+				}
+			},
+			name:{
+				required:true,
+				LetterOnly:true
+			},
+			mmob: {
+					required: false,
+					//numberOnly: true,
+					mobilenumberOnly: true
+	
+				},
+			pcountry: {
+				required: true
+			},
+			amount: {
+				required: true,
+				decnumberOnly : true,
+				min:0.1
+			},
+			quantity: {
+				required: true,
+				numberOnly : true,
+				min:1
+			},
+			uploaded_file:"required",
+			currency_supported: {
+				required: true
+			},
+			manu_method: {
+				required: true
+			},
+			material_type: {
+				required: true
+			},
+			upload_file: {
+				required: true
+			},
+			private_key: {
+				required:true,
+				privateKey : true,
+				normalizer: function(value) {
+					// Update the value of the element
+					this.value = $.trim(value);
+					check = this.value;
+					if(check.startsWith("0x")){
+						check = check.slice(2);
+					}
+					else{
+						check = this.value;
+					}
+					// Use the trimmed value for validation
+					return check;
+				}
+			}
+		},
+		messages: {
+			instrument:"Please select instrument",
+			pcountry: {
+				required: "Please select country"
+			},
+			manu_method: {
+				required: "Please select Manufacturing Method"
+			},
+			material_type: {
+				required: "Please select Material Type"
+			},
+			amount: {
+				required: "Please enter correct amount ",
+				decnumberOnly : "Enter Numbers only",
+				min : "Amount should be greater than 0.1"
+			},
+			quantity: {
+				required: "Please enter correct quantity ",
+				numberOnly : "Enter Numbers only",
+				min : "Amount should be greater than 1"
+			},
+			name : {
+				required:"Please enter Broker Name",
+				LetterOnly:"Check spaces between name"
+			},
+			currency_supported: "Please choose currency supported",
+			maturity_date: "Please choose date",
+			uploaded_file: "Please upload doucment",
+			private_key: {
+				required: "Please enter a private key",
+				privateKey : "Enter valid private key of 64 characters"
+			},
+		},
+		onkeyup: function (elem) {
+			
+			// var element_id = $(elem).attr('id');
+			// if (element_id == 'private_key') {
+			// 	var _addr = document.getElementById("private_key");
+			// 	var addrKey = $(_addr).val();
+			// 	if(addrKey.startsWith("0x")){
+			// 		addrKey = addrKey.slice(2);
+			// 	}
+			// 	else{
+			// 		addrKey = addrKey;
+			// 	}
+			// 	if(addrKey.length == 64){
+			// 		var myurl = 'getAddress';
+			// 		showLoader();
+			// 		$.ajax({
+			// 			type: "POST",
+			// 			url: myurl,
+			// 			dataType:"json",
+			// 			data: {"action":"getaddress","privkey":$(_addr).val()}, // serializes the form's elements.
+			// 			success: (resp =>{
+			// 				// console.log(resp);
+			// 			})// show response from the php script.
+			// 		}).done(resp => {
+			// 			// console.log(resp);
+			// 			document.getElementById("custom").value = resp.privatekey;
+			// 			var _custom = document.getElementById("custom");
+						
+			// 			$.post("paypal",{
+			// 				'addr':resp.privatekey
+			// 			}).then(resp => {
+			// 				var jsona = $.parseJSON(resp);
+			// 				// console.log("response : ",resp,jsona);
+			// 				if(jsona.length > 0){
+			// 					if(parseFloat(jsona[0].tfpp_doc_redem) < 1){
+									
+			// 						hideLoader();
+			// 						$("#paypal").modal("show");
+			// 						$('#paypal').css('opacity', '1');
+			// 					}
+			// 					else{
+			// 						//all ok
+			// 						hideLoader();
+			// 						paypal_addr = jsona[0].tfpp_address;
+			// 						paypal_doc_redem = parseFloat(jsona[0].tfpp_doc_redem);
+			// 					}
+			// 				}
+			// 				else{
+			// 					hideLoader();
+			// 					$("#paypal").modal("show");
+			// 					$('#paypal').css('opacity', '1');
+			// 				}
+							
+							
+			// 			}).fail(err => {
+			// 				console.log("response1 : ",err);
+			// 			})
+						
+			// 		})
+			// 	}
+
+			// }
+		},
+		success: function (elem) {
+		
+
+		},
+		error: function (elem) {
+
+		},
+		submitHandler: function (form, e) {
+			$('#brokers').prop('disabled', true);
+			showLoader();
+			var formData = $(form).serialize();
+			const formObj = formData.trim().split('&');
+			var formDataObj = {};
+			var files = document.getElementById('upload_file').files;
+			var dataFile;
+			var hash;
+			if (files.length > 0) {
+				getBase64(files[0]);
+			}
+			function getBase64(file) {
+				var reader = new FileReader();
+				reader.readAsDataURL(file);
+				reader.onload = function () {
+					dataFile = reader.result;
+					dataFile = dataFile.split("base64,");
+					
+					
+					// after getting value of datafile name make the ajax call
+					$.each(formObj, function (k, v) {
+						v = v.split('=');
+						if(v[0] === "fsdate" || v[0] === "maturitydate" || v[0] === "firstdate") {
+							var date = v[1].split('-');
+							date = date[2] + `/` + date[1] + '/' + date[0];
+							formDataObj[v[0]] = date;
+						} else {
+							formDataObj[v[0]] = v[1];
+						}
+					})
+					formDataObj.docRef = (new Date()).getTime();
+					
+					$.ajax({
+						type:"POST",
+						dataType:"json",
+						url:"https://tfd.xinfin.net/api/uploadDoc",
+						data:{"data":dataFile[1]},
+						success: resp => {
+							// console.log("response success: ",resp)
+						},
+						error: err =>{
+							console.log("response error: ",err)
+						}
+					}).done(resp => {
+					
+						// console.log("response : ",resp);
+					
+						if(resp.status == true){
+							hash = resp.hash;
+							
+
+							$.post("https://tfd.xinfin.net/api/generateContract",{
+							"ipfsHash":hash,
+							"quantity":formDataObj.quantity,
+							"amount":formDataObj.amount,
+							"currencySupported":formDataObj.currency_supported,
+							"maturityDate":"07-04-2020",
+							"docRef":formDataObj.instrument+formDataObj.docRef,
+							"country":formDataObj.pcountry.replace(/[+]/g," "),
+							"name":formDataObj.name.replace(/[+]/g," "),
+							"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key,
+							"contractType":"brokerInstrument"
+							}).then(resp => {
+								// console.log("response : ",resp);
+								if(resp.status == true){
+									
+									passkey = resp.passKey,
+									hideLoader();
+									document.getElementById("createinstrument").style.display = "none";
+									document.getElementById("deploy").style.display = "block";
+									$('#contractData').html('<p>'+resp.contract+'</p>');
+									$("#deploy_contract").on('click', function (e) {
+										showLoader();
+										$('#deploy_contract').prop('disabled', true);
+										$.post("https://tfd.xinfin.net/api/deployContract",{
+										"ipfsHash":hash,
+										"quantity":formDataObj.quantity,
+										"amount":formDataObj.amount,
+										"currencySupported":formDataObj.currency_supported,
+										"maturityDate":"07-04-2020",
+										"docRef":formDataObj.instrument+formDataObj.docRef,
+										"country":formDataObj.pcountry.replace(/[+]/g," "),
+										"name":formDataObj.name.replace(/[+]/g," "),
+										"contractType":"brokerInstrument",
+										"nonceAdder":0,
+										"passKey" :passkey,
+										"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key
+										}).then(resp => {
+											// console.log("response : ",resp);
+											
+											
+											if(resp.status == true){
+												$.post("funddesign",{
+													'action':"adddetail",
+													'name': formDataObj.name,
+													'amount':formDataObj.amount,
+													"currency_supported":formDataObj.currency_supported,
+													"quantity" : formDataObj.quantity,
+													"manu_method": formDataObj.manu_method,
+													"material_type": formDataObj.material_type,
+													"pcountry":formDataObj.pcountry.replace(/[+]/g," "),
+													"name":formDataObj.name.replace(/[+]/g," "),
+													"docRef":formDataObj.instrument+formDataObj.docRef,
+													"contractAddr":resp.receipt.contractAddress.toLowerCase(),
+													"deployerAddr":resp.deployerAddr.toLowerCase(),
+													"secretKey" : passkey,
+													"addr" :paypal_addr,
+													"doc":paypal_doc_redem,
+													"csrf_name": csrf_value
+												}).then(resp => {
+													// console.log("response : ",resp);
+												}).fail(err => {
+													console.log("response1 : ",err);
+												})
+
+												const hashUrl = `https://explorer.xinfin.network/tx/${resp.receipt.transactionHash}`;
+												const tHtml = `
+																<p>
+																	<span>Contract Address:</span><br>${resp.receipt.contractAddress.toLowerCase()}</p>
+																	<span><p>Transaction Hash:</span><br><a href="${hashUrl}"target="_blank">${resp.receipt.transactionHash}</a>
+																</p>
+																`
+												hideLoader();
+												document.getElementById("deploy").style.display = "none";
+												document.getElementById("thankyou").style.display = "block";
+												$('#deployedData').html(tHtml);
+												$('#DeployBtn').click(function() {
+													$("#thankyou").modal("hide");
+													location.reload();
+												});
+											}
+											else if (resp.status == false){
+												hideLoader();
+												toastr.error('Invalid Private Key/Insufficient balance.', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+												setTimeout(location.reload.bind(location), 6000);
+											}
+											
+										}).fail(error =>{
+											hideLoader();
+											toastr.error('Something went wrong./', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+											setTimeout(location.reload.bind(location), 6000);
+										})
+									})
+								}
+								
+								
+							}).fail(error =>{
+								hideLoader();
+								toastr.error('Something went wrong./', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+								setTimeout(location.reload.bind(location), 6000);
+							})
+						}
+						else if (resp.status == false){
+							hideLoader();
+							toastr.error('Invalid Private Key/Insufficient balance.', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+							setTimeout(location.reload.bind(location), 6000);
+						}
+					
+					}).fail(error =>{
+						hideLoader();
+						toastr.error('Something went wrong./', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+						setTimeout(location.reload.bind(location), 6000);
+					})
+				};
+				reader.onerror = function (error) {
+				  console.log('Error: ', error);
+				}
+			}
+
+		}
+	});
+
 	//Multi Brokers Form
 	$("#bulkBrokers_form").validate({
 		rules: {
@@ -1167,6 +1505,60 @@ $(function () {
 				filext="."+filextension.slice(-1)[0];
 				
 				valid=[".pdf"];
+					if (valid.indexOf(filext.toLowerCase())==-1){
+						document.getElementById("error").style.display = "block";
+						document.getElementById("instru").disabled = true;
+						
+						if ('size' in file) {
+							const fsize = file.size; 
+							if(parseFloat(fsize) > 10485760) {
+								document.getElementById("error1").style.display = "block";
+							}
+							else{
+								document.getElementById("error1").style.display = "none";
+							}
+						}
+					} 
+					else{
+						document.getElementById("error").style.display = "none";
+						
+						
+						if ('size' in file) {
+							const fsize = file.size; 
+							if(parseFloat(fsize) > 10485760) {
+								document.getElementById("error1").style.display = "block";
+								document.getElementById("instru").disabled = true;
+							}
+							else{
+								document.getElementById("error1").style.display = "none";
+								document.getElementById("instru").disabled = false;
+							}
+						}
+					}
+				}
+				
+			}
+			}
+		}         
+		
+	});
+	//File Validation Form
+	$('#upload_file').change(function(){ 
+		
+		const fi = document.getElementById('upload_file');
+		if ('files' in fi) {
+			if (fi.files.length == 0) {
+			txt = "Select one or more files.";
+			} else {
+			for (var i = 0; i < fi.files.length; i++) {
+				var file = fi.files[i];
+				if ('name' in file) {
+				var filename = file.name;
+				document.getElementById('upload_file').innerHTML = filename;
+				filextension=filename.split(".");
+				filext="."+filextension.slice(-1)[0];
+				
+				valid=[".pdf",".stp",".dwg",".jpg",".png",".jpeng",".step"];
 					if (valid.indexOf(filext.toLowerCase())==-1){
 						document.getElementById("error").style.display = "block";
 						document.getElementById("instru").disabled = true;

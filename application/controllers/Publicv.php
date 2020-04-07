@@ -781,6 +781,95 @@ class Publicv extends CI_Controller {
 		
 	}
 
+	public function funddesign(){
+		
+		$data = array();
+		
+		$data['page'] = 'funddesign';
+		$data['pcountry'] = 0;
+
+		if(!empty($_GET['item_number']) && !empty($_GET['tx']) && !empty($_GET['amt']) && !empty($_GET['cm']) && !empty($_GET['cc']) && !empty($_GET['st'])){ 
+			$dbdata = $this->manage->get_paypal_paymentby_tx($_GET['tx']);
+			$db = json_encode($dbdata);
+			if(sizeof($dbdata) > 0 ){
+				$this->session->set_flashdata('msg_type', 'error');
+				// redirect($this->uri->uri_string());
+				redirect(current_url());
+			}
+			else{
+				$burn = burnXDC($_GET['amt']);
+				$status = explode(': ',$burn[10]);
+				$status = $status[1];
+				$status = str_replace(",","", $status);
+				if($status == true){
+					$_GET['burnStatus'] = $status;
+					// $transactionHash = explode(': ',$burn[13]);
+					$transactionHash = $burn[13];
+					$transactionHash = str_replace(array("'",","),"", $transactionHash);
+					$_GET['transactionHash'] = $transactionHash;
+					$result = $this->manage->add_paypal_details($_GET);
+
+				}
+				else{
+					$_GET['burnStatus'] = false;
+					$_GET['transactionHash'] = '0x';
+					$result = $this->manage->add_paypal_details($_GET);
+				}
+			
+			}
+			
+		}
+
+		$action = $this->input->post('action');
+		$data['instrument'] = $this->input->post('instrument');
+		$data['country'] = $this->input->post('pcountry');
+		if($this->input->post('name') != " " ){
+			$data['name'] = $this->input->post('name');
+		}
+		$data['currency_supported'] = $this->input->post('currency_supported');
+		$data['amount'] = $this->input->post('amount');
+		$data['maturity_date'] = $this->input->post('maturity_date');
+		$data['docRef'] = $this->input->post('docRef');
+		$data['contractAddr'] = $this->input->post('contractAddr');
+		$data['deployerAddr'] = $this->input->post('deployerAddr');
+		$data['secretKey'] = $this->input->post('secretKey');
+
+		
+
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
+		
+		$ccountries = $this->plisting->get_country();
+		
+		if($ccountries && !empty($ccountries) && is_array($ccountries) && sizeof($ccountries) <> 0){
+			$data['pcountries'] = $ccountries;			
+		}
+		
+
+		if($action == 'adddetail'){
+			$result['contract'] = $this->manage->add_funddesign($data);
+			$addr = $this->input->post('addr');
+			$doc = $this->input->post('doc');
+			// log_message("info","<<1.".$addr,"3.".$doc);
+			$result['txn'] = $this->manage->update_paypalpayment_by_txn($addr,$doc);
+		}
+		if($action == 'getpasskey'){
+			$key = $this->manage->get_secretkey($contractAddr);
+		}
+	
+		$this->load->view('includes/headern', $data);
+		$this->load->view('includes/header_publicn', $data);
+		$this->load->view('pages/public/fund_design', $data);
+		
+		
+	}
+
 	public function buyerssupplier(){
 		
 		$data = array();
@@ -875,6 +964,7 @@ class Publicv extends CI_Controller {
 		
 		
 	}
+	
 	
 	public function fees(){
 		
@@ -1058,10 +1148,14 @@ class Publicv extends CI_Controller {
 		
 		$date = date('Y-m-d');
 		$instrument = $this->manage->get_instrument($date);
+		$design = $this->manage->get_funddesign();
 		$buyersupplier = $this->manage->get_buyersupplier($date);
 		
 		if($instrument && !empty($instrument) && is_array($instrument) && sizeof($instrument) <> 0){
 			$data['instrument'] = $instrument;						
+		}
+		if($design && !empty($design) && is_array($design) && sizeof($design) <> 0){
+			$data['design'] = $design;						
 		}
 		if($buyersupplier && !empty($buyersupplier) && is_array($buyersupplier) && sizeof($buyersupplier) <> 0){
 			$data['buyersupplier'] = $buyersupplier;					
@@ -2145,6 +2239,14 @@ class Publicv extends CI_Controller {
 				$data['contractAddr'] = $k->tfi_contractAddr;
 			}
 		}
+		if($action == 'getfundaccess'){
+			$data['privatekey'] = getFinancier($privkey);
+			$key = $this->manage->get_secretkey_by_docRef_design($docRef);
+			foreach($key as $k){
+				$data['key'] = $k->tfi_secretKey;
+				$data['contractAddr'] = $k->tfi_contractAddr;
+			}
+		}
 
 		if($action == 'getaccessint'){
 			$key = $this->manage->get_secretkey_by_docRef($docRef);
@@ -2152,6 +2254,14 @@ class Publicv extends CI_Controller {
 				$data['key'] = $k->tfi_secretKey;
 				$data['contractAddr'] = $k->tfi_contractAddr;
 			}
+		}
+		if($action == 'getaccessdesign'){
+			$key = $this->manage->get_secretkey_by_docRef_design($docRef);
+			foreach($key as $k){
+				$data['key'] = $k->tffd_secretKey;
+				$data['contractAddr'] = $k->tffd_contractAddr;
+			}
+			
 		}
 		$data['docRef'] = $docRef;
 			

@@ -143,6 +143,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#tab8" role="tab" data-toggle="tab" aria-selected="false">Other</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#tab9" role="tab" data-toggle="tab" aria-selected="false">Fund Design</a>
+                                    </li>
                                 </ul>
                                 <div class="tf-ticker-nav-mobile">
                                     <select class="form-control" id="tab_selector">
@@ -154,6 +157,7 @@
                                         <option value="5">Warehousing Receipt</option>
                                         <option value="6">Payable</option>
                                         <option value="7">Other</option>
+                                        <option value="8">Fund Design</option>
                                     </select>
                                 </div>
                             </div>
@@ -646,6 +650,68 @@
                                         </div>
                                     </div>
                                     <!-- End OTHER Data -->
+                                    <!-- Start Fund Design Data -->
+                                    <div role="tabpanel" class="tab-pane fade" id="tab9">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="tf-financier-table tf-element">
+                        
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                            <th scope="col">Design Ref</th>
+                                                            <th scope="col">Designer Name</th>
+                                                            <!-- <th scope="col">Mobile Number</th> -->
+                                                            <th scope="col">COUNTRY OF ORIGINATION</th>
+                                                            <th scope="col">AMOUNT</th>
+                                                            <th scope="col">Manufacturing Method</th>
+                                                            <th scope="col">Material Type</th>
+                                                            <th scope="col">&nbsp;</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr>
+                                                                <?php
+                                                                    foreach ($design as $instru) {
+                                                                        ?>
+                                                                <td><?php echo $instru->tffd_docRef ?></td>
+                                                                <td><?php echo $instru->tffd_fundName ?></td>
+                                                                <td><?php echo $instru->tffd_country ?></td>
+                                                                <td><?php echo $instru->tffd_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',($instru->tffd_quantity * $instru->tffd_amount)),'0'),'.') ?></td>
+                                                                <td class="bold"><?php 
+                                                                    if($instru->tffd_manuMethod == "3DP")
+                                                                    {  echo '3D Printing'; 
+                                                                    }
+                                                                    else if($instru->tffd_manuMethod == "CNCM")
+                                                                    {  echo 'CNC Machining'; 
+                                                                    }
+                                                                    else if($instru->tffd_manuMethod == "VC")
+                                                                    {  echo 'Vacuum Casting'; 
+                                                                    }
+                                                                    else if($instru->tffd_manuMethod == "SMF")
+                                                                    {  echo 'Sheet Metal Fabrication'; 
+                                                                    }
+                                                                    else if($instru->tffd_manuMethod == "IM")
+                                                                    {  echo 'Injection Molding'; 
+                                                                    }
+                                                                    else if($instru->tffd_manuMethod == "OTH")
+                                                                    {  echo 'Other'; 
+                                                                    }
+                                                                    
+                                                                    ?></td>
+                                                                <td><?php echo $instru->tffd_materialType ?></td>
+                                                                <td><button class="btn btn-blue" onclick="passFundData('<?php echo $instru->tffd_docRef ?>')"><span>Get Access</span></button></td>
+                                                                </tr>
+                                                                <?php }?>             
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Fund Design Data -->
 
                                     
                                 </div>
@@ -883,6 +949,123 @@ function passData(docRef){
                 url: myurl,
                 dataType:"json",
                 data: {"action":"getaccess","docRef":docRef,"privkey":privkey}, // serializes the form's elements.
+                success: (resp =>{
+                    // console.log(resp);
+                })// show response from the php script.
+                }).done(resp => {
+                                console.log(resp);
+                    if(resp.privatekey == "true"){
+                        $.ajax({
+                        type:"POST",
+                        dataType:"json",
+                        url:"https://tfd.xinfin.net/api/getDocHash",
+                        data:{"contractAddr":resp.contractAddr,
+                                "passKey": resp.key,
+                                "contractType" : "brokerInstrument"
+                        },
+                        success: resp => {
+                            // console.log("response success: ",resp)
+                        },
+                        error: err =>{
+                            console.log("response error: ",err)
+                        }
+                        }).done(resp => {
+                        // .then(resp => {
+                            // console.log("response : ",resp);
+                            hideLoader1();
+                            // console.log('formDataObj>>>>>>>', resp);
+                            if(resp.status == true){
+                                const hashUrl = `https://ipfs-gateway.xinfin.network/${resp.ipfsHash}`;
+                                const tHtml = `
+                                                <p>
+                                                    <br><a href="${hashUrl}"target="_blank">${resp.ipfsHash}</a>
+                                                </p>
+                                                `
+                                // hideLoader();
+                                $("#hash").modal("show");
+                                $('#hash').css('opacity', '1');
+                                $('#hashData').html(tHtml);
+                                $('#okBtn').click(function() {
+                                    $("#hash").modal("hide");
+                                    location.reload();
+                                });
+                            }
+                                                    
+                                                    
+                        }).fail(error =>{
+                            // hideLoader();
+                            toastr.error('Something went wrong.', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+                            setTimeout(location.reload.bind(location), 6000);
+                        })
+                    }
+                    else{
+                        hideLoader1();
+                        $("#wrngprivkey").modal("show");
+                        $('#wrngprivkey').css('opacity', '1');
+                        $('#ok').click(function(e) {
+                            location.reload();
+                        })
+                    }
+                })
+            }
+        })
+    });
+
+}
+function passFundData(docRef){
+    var myurl = '<?php echo base_url()?>publicv/getAccess';
+    $("#privkey").modal("show");
+    $('#privkey').css('opacity', '1');
+    $('#checkprivkey').click(function(e) {
+        var privkey = document.getElementById("privateKey").value;
+        jQuery.validator.addMethod("privateKey", function(value, element) {
+		// allow any non-whitespace characters as the host part
+            return this.optional( element ) || /^[0-9a-f]{64}$/.test( value );
+        }, 'This field allows only number from 0-9 and alphabets from a-f');
+        $('#checkprivatekey_form').validate({
+            rules: {
+                privateKey: {
+                    required:true,
+                    privateKey : true,
+                    normalizer: function(value) {
+                        // Update the value of the element
+                        this.value = $.trim(value);
+                        check = this.value;
+                        if(check.startsWith("0x")){
+                            check = check.slice(2);
+                        }
+                        else{
+                            check = this.value;
+                        }
+                        // Use the trimmed value for validation
+                        return check;
+                    }
+                }
+            },
+            messages: {
+                privateKey:{
+                    required: "Please enter a private key",
+                    privateKey : "Enter valid private key of 64 characters"
+                }
+            },
+            success: function (elem) {
+
+
+            },
+            error: function (elem) {
+                
+                
+            },
+            submitHandler: function (form, e) {
+                // console.log(privkey,docRef);
+                e.preventDefault();
+                $("#privkey").modal("hide"); 
+                showLoader1();   
+                $.ajax({
+                type: "POST",
+                url: myurl,
+                dataType:"json",
+                data: {"action":"getfundaccess","docRef":docRef,"privkey":privkey}, // serializes the form's elements.
                 success: (resp =>{
                     // console.log(resp);
                 })// show response from the php script.
