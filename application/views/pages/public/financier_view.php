@@ -1070,7 +1070,7 @@ function passFundData(docRef){
                     // console.log(resp);
                 })// show response from the php script.
                 }).done(resp => {
-                                console.log(resp);
+                                // console.log(resp);
                     if(resp.privatekey == "true"){
                         $.ajax({
                         type:"POST",

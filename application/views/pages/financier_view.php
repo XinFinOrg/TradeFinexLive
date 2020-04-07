@@ -715,7 +715,7 @@
                                     <!-- End Fund Design Data -->
 
                                     <!-- Logout Modal -->
-                                    <div role="tabpanel" class="tab-pane fade in active" id="tab9">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="tab10">
                                         <div class="row">
                                             <div class="col-md-6 col-md-offset-4">          
                                                 <p>Are you sure you want to logout?</p>
