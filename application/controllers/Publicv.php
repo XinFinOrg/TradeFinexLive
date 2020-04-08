@@ -821,14 +821,14 @@ class Publicv extends CI_Controller {
 		}
 
 		$action = $this->input->post('action');
-		$data['instrument'] = $this->input->post('instrument');
 		$data['country'] = $this->input->post('pcountry');
 		if($this->input->post('name') != " " ){
 			$data['name'] = $this->input->post('name');
 		}
 		$data['currency_supported'] = $this->input->post('currency_supported');
 		$data['amount'] = $this->input->post('amount');
-		$data['maturity_date'] = $this->input->post('maturity_date');
+		$data['manuMethod'] = $this->input->post('manu_method');
+		$data['materialType'] = $this->input->post('material_type');
 		$data['docRef'] = $this->input->post('docRef');
 		$data['contractAddr'] = $this->input->post('contractAddr');
 		$data['deployerAddr'] = $this->input->post('deployerAddr');
