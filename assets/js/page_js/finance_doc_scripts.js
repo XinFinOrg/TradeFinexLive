@@ -1004,7 +1004,7 @@ $(function () {
 						}
 					})
 					formDataObj.docRef = (new Date()).getTime();
-					
+					console.log("response : ",formDataObj);
 					$.ajax({
 						type:"POST",
 						dataType:"json",
@@ -1018,7 +1018,7 @@ $(function () {
 						}
 					}).done(resp => {
 					
-						// console.log("response : ",resp);
+						console.log("response : ",resp);
 					
 						if(resp.status == true){
 							hash = resp.hash;
