@@ -1004,7 +1004,7 @@ $(function () {
 						}
 					})
 					formDataObj.docRef = (new Date()).getTime();
-					console.log("response : ",formDataObj);
+					
 					$.ajax({
 						type:"POST",
 						dataType:"json",
@@ -1018,7 +1018,7 @@ $(function () {
 						}
 					}).done(resp => {
 					
-						console.log("response : ",resp);
+						
 					
 						if(resp.status == true){
 							hash = resp.hash;
@@ -1057,8 +1057,8 @@ $(function () {
 										"contractType":"fundDesign",
 										"nonceAdder":0,
 										"passKey" :passkey,
-										"manuMethod":formObj.manuMethod,
-										"materialType":formObj.materialType,
+										"manuMethod":formObj.manu_method,
+										"materialType":formObj.material_type,
 										"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key
 										}).then(resp => {
 											// console.log("response : ",resp);
