@@ -1026,15 +1026,15 @@ $(function () {
 
 							$.post("https://tfd.xinfin.net/api/generateContract",{
 							"ipfsHash":hash,
-							"quantity":formDataObj.quantity,
-							"amount":formDataObj.amount,
+							"amount":formDataObj.quantity * formDataObj.amount,
 							"currencySupported":formDataObj.currency_supported,
-							"maturityDate":"07-04-2020",
 							"docRef":formDataObj.instrument+formDataObj.docRef,
 							"country":formDataObj.pcountry.replace(/[+]/g," "),
 							"name":formDataObj.name.replace(/[+]/g," "),
 							"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key,
-							"contractType":"brokerInstrument"
+							"contractType":"fundDesign",
+							"manuMethod":formObj.manuMethod,
+							"materialType":formObj.materialType
 							}).then(resp => {
 								// console.log("response : ",resp);
 								if(resp.status == true){
@@ -1049,16 +1049,16 @@ $(function () {
 										$('#deploy_contract').prop('disabled', true);
 										$.post("https://tfd.xinfin.net/api/deployContract",{
 										"ipfsHash":hash,
-										"quantity":formDataObj.quantity,
-										"amount":formDataObj.amount,
+										"amount":formDataObj.quantity * formDataObj.amount,
 										"currencySupported":formDataObj.currency_supported,
-										"maturityDate":"07-04-2020",
 										"docRef":formDataObj.instrument+formDataObj.docRef,
 										"country":formDataObj.pcountry.replace(/[+]/g," "),
 										"name":formDataObj.name.replace(/[+]/g," "),
-										"contractType":"brokerInstrument",
+										"contractType":"fundDesign",
 										"nonceAdder":0,
 										"passKey" :passkey,
+										"manuMethod":formObj.manuMethod,
+										"materialType":formObj.materialType,
 										"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key
 										}).then(resp => {
 											// console.log("response : ",resp);
