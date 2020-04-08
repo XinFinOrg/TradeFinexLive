@@ -1034,7 +1034,7 @@ $(function () {
 							"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key,
 							"contractType":"fundDesign",
 							"manuMethod":formDataObj.manu_method,
-							"materialType":formDatasObj.material_type
+							"materialType":formDataObj.material_type
 							}).then(resp => {
 								// console.log("response : ",resp);
 								if(resp.status == true){
