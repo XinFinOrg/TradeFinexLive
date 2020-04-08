@@ -1057,8 +1057,8 @@ $(function () {
 										"contractType":"fundDesign",
 										"nonceAdder":0,
 										"passKey" :passkey,
-										"manuMethod":formObj.manu_method,
-										"materialType":formObj.material_type,
+										"manuMethod":formDataObj.manu_method,
+										"materialType":formDataObj.material_type,
 										"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key
 										}).then(resp => {
 											// console.log("response : ",resp);
