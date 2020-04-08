@@ -1345,7 +1345,7 @@
 		public function add_funddesign($data_add){
 
 			$data = array();
-		
+	
 			$data['tffd_fundName'] = $data_add['name'];
 			$data['tffd_mobileNo'] = $data_add['mmob'];
 			$data['tffd_country'] = $data_add['country'];

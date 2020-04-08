@@ -1061,7 +1061,7 @@ $(function () {
 										"materialType":formDataObj.material_type,
 										"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key
 										}).then(resp => {
-											// console.log("response : ",resp);
+											console.log("response : ",resp);
 											
 											
 											if(resp.status == true){
@@ -1072,6 +1072,7 @@ $(function () {
 													"quantity" : formDataObj.quantity,
 													"manu_method": formDataObj.manu_method,
 													"material_type": formDataObj.material_type,
+													"mmob":formDataObj.mmob.replace(/[+]/g," "),
 													"pcountry":formDataObj.pcountry.replace(/[+]/g," "),
 													"name":formDataObj.name.replace(/[+]/g," "),
 													"docRef":formDataObj.docRef,

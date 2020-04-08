@@ -825,10 +825,12 @@ class Publicv extends CI_Controller {
 		if($this->input->post('name') != " " ){
 			$data['name'] = $this->input->post('name');
 		}
+		$data['mmob'] = $this->input->post('mmob');
 		$data['currency_supported'] = $this->input->post('currency_supported');
 		$data['amount'] = $this->input->post('amount');
-		$data['manuMethod'] = $this->input->post('manu_method');
-		$data['materialType'] = $this->input->post('material_type');
+		$data['quantity'] = $this->input->post('quantity');
+		$data['manu_method'] = $this->input->post('manu_method');
+		$data['material_type'] = $this->input->post('material_type');
 		$data['docRef'] = $this->input->post('docRef');
 		$data['contractAddr'] = $this->input->post('contractAddr');
 		$data['deployerAddr'] = $this->input->post('deployerAddr');
@@ -853,6 +855,7 @@ class Publicv extends CI_Controller {
 		
 
 		if($action == 'adddetail'){
+			
 			$result['contract'] = $this->manage->add_funddesign($data);
 			$addr = $this->input->post('addr');
 			$doc = $this->input->post('doc');
