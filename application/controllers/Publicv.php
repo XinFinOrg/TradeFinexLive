@@ -835,8 +835,7 @@ class Publicv extends CI_Controller {
 		$data['contractAddr'] = $this->input->post('contractAddr');
 		$data['deployerAddr'] = $this->input->post('deployerAddr');
 		$data['secretKey'] = $this->input->post('secretKey');
-
-		
+		$data['transactionHash'] = $this->input->post('transactionHash');
 
 		$data['csrf'] = array();
 		
@@ -855,7 +854,7 @@ class Publicv extends CI_Controller {
 		
 
 		if($action == 'adddetail'){
-			
+			log_message("info","@@@@".$data['contractAddr']);
 			$result['contract'] = $this->manage->add_funddesign($data);
 			$addr = $this->input->post('addr');
 			$doc = $this->input->post('doc');

@@ -289,14 +289,14 @@
 										<div class="col-md-6 mb-15">
 											<div class="column-one text-center">
 												<h3 class="mb-20">Send Funding Request Email to TradeFinex Network</h3>
-												<p><a class="btn btn-blue text-uppercase" href="https://xinfinorg.github.io/Finance/Index.html" target="_blank">Email Now <i class="fa fa-envelope"></i></a></p>
+												<p><a class="btn btn-blue text-uppercase" id="exlink" href="https://xinfinorg.github.io/Finance/Index.html" onclick="link()" target="_blank">Email Now <i class="fa fa-envelope"></i></a></p>
 											</div>
 										</div>
 										
 										<div class="col-md-6 mb-15">
 											<div class="column-two text-center">
 												<h3 class="mb-20">Send Funding Request Email to Your Funder Network</h3>
-												<p><a class="btn btn-blue text-uppercase" href="javascript:void(0)"onclick="javascript:genericSocialShare('mailto:?subject=Is your business affected by corona virus?&body=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')">Email Now <i class="fa fa-envelope"></i></a></p>
+												<p><a class="btn btn-blue text-uppercase" href="javascript:void(0)"onclick="javascript:genericSocialShare('mailto:?subject=Fund My Design of PPE to stop spread of Coronavirus&body=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:')">Email Now <i class="fa fa-envelope"></i></a></p>
 											</div>
 										</div>
 									</div>
@@ -308,43 +308,21 @@
 											<div class="widget widget-contact text-center">
                                                 <h1 class="text-green mb-20">Share Funding Request to Your Social Media Network</h1>
 												<!--<h4 class="widget-title mb-10">Start Requesting for the Fund</h4>-->
+                                                <?php $variab = rawurlencode("I need funding for personal protective equipment manufacture, in this fight against #coronavirus, check my funding request @TradeFinex: https://bit.ly/3c7sdP1
+and #fundmydesign.
+#coronavirus #TradeFinex #blockchain
+Check my design with:")?>
                                                 <ul class="tf-social-bs">
-                                                <?php
-                                                    $summary=rawurlencode('My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q
-
-                                                    Even your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2');
-                                                ?>
-                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.linkedin.com/shareArticle?mini=true&url=<?php echo $summary ?>')" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?href=<?php echo $summary ?>')" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('whatsapp://send?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/whatsapp/share" class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                                                
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.linkedin.com/shareArticle?mini=true&url=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:')" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare1('https://twitter.com/intent/tweet?text=<?php echo $variab?>')" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://www.facebook.com/sharer.php?href=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:')" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('whatsapp://send?text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:')" data-action="share/whatsapp/share" class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
                                                     <!--<li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('mailto:?subject=Is your business affected by corona virus?&body=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/gmail/share" class="gmail"><i class="fa fa-envelope"></i></a></li>-->
                                                 </ul>
                                             </div>
 											</div>
 											</div>
-									
-                                    
-                                    <!--<div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="widget widget-contact mt-4">
-                                                <h1 class="text-green">Start sharing with your Network!</h1>
-                                                <h4 class="widget-title mb-10">Start Requesting for the Fund</h4>
-                                                <ul class="tf-social-bs">
-                                                <?php
-                                                    $summary=rawurlencode('My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q
-
-                                                    Even your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2');
-                                                ?>
-                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.linkedin.com/shareArticle?mini=true&url=<?php echo $summary ?>')" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?href=<?php echo $summary ?>')" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('whatsapp://send?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/whatsapp/share" class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
-                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('mailto:?subject=Is your business affected by corona virus?&body=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/gmail/share" class="gmail"><i class="fa fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>-->
                                     
                                 </div>
                             </div>
@@ -423,9 +401,9 @@
                                 </div>
                         
 							<div class="form-group">
-								<button id="CopyBtn" type="submit" onclick="copy('deployedData')" class="btn btn-blue text-uppercase" data-keyboard="false">Copy</button>
-								<button id="DownloadBtn" type="submit" onclick="PrintDiv()"class="btn btn-blue text-uppercase" data-keyboard="false">Download</button>
-								<button id="EmailBtn" type="submit" onclick="showemail()"class="btn btn-blue text-uppercase" data-keyboard="false">Email</button>
+								<a id="CopyBtn" type="submit" onclick="copy('deployedData')"  data-keyboard="false">Copy</button>
+								<a id="DownloadBtn" type="submit" onclick="PrintDiv()" data-keyboard="false">Download</button>
+								<a id="EmailBtn" type="submit" onclick="showemail()" data-keyboard="false">Email</button>
 							</div>						
 						</div>
 				</div>
@@ -677,8 +655,20 @@ alert("Please share this article in mobile device");
 });
 });
 function genericSocialShare(url){
-    window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
+    let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
+    let transactionHash = localStorage.getItem("transactionHash");
+    window.open(url+contractAddress+"%0D%0ATransaction Hash:"+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
     return true;
+}
+function genericSocialShare1(url){
+    let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
+    window.open(url+contractAddress,'sharer','toolbar=0,status=0,width=648,height=395');
+    return true;
+}
+function link(){
+    var link = document.getElementById("exlink").href;
+    console.log(link);
+    document.getElementById("exlink").href = link+"?"+localStorage.getItem("contractAddress")+"?"+localStorage.getItem("transactionHash")
 }
 </script>
 <?php

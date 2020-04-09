@@ -680,27 +680,7 @@
                                                                 <td><?php echo $instru->tffd_fundName ?></td>
                                                                 <td><?php echo $instru->tffd_country ?></td>
                                                                 <td><?php echo $instru->tffd_currency.'&nbsp;'. rtrim(rtrim(sprintf('%.10f',($instru->tffd_quantity * $instru->tffd_amount)),'0'),'.') ?></td>
-                                                                <td class="bold"><?php 
-                                                                    if($instru->tffd_manuMethod == "3DP")
-                                                                    {  echo '3D Printing'; 
-                                                                    }
-                                                                    else if($instru->tffd_manuMethod == "CNCM")
-                                                                    {  echo 'CNC Machining'; 
-                                                                    }
-                                                                    else if($instru->tffd_manuMethod == "VC")
-                                                                    {  echo 'Vacuum Casting'; 
-                                                                    }
-                                                                    else if($instru->tffd_manuMethod == "SMF")
-                                                                    {  echo 'Sheet Metal Fabrication'; 
-                                                                    }
-                                                                    else if($instru->tffd_manuMethod == "IM")
-                                                                    {  echo 'Injection Molding'; 
-                                                                    }
-                                                                    else if($instru->tffd_manuMethod == "OTH")
-                                                                    {  echo 'Other'; 
-                                                                    }
-                                                                    
-                                                                    ?></td>
+                                                                <td class="bold"><?php echo $instru->tffd_manuMethod ?></td>
                                                                 <td><?php echo $instru->tffd_materialType ?></td>
                                                                 <td><button class="btn btn-blue" onclick="passfundData('<?php echo $instru->tffd_docRef ?>')"><span>Get Access</span></button></td>
                                                                 </tr>

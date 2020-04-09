@@ -1004,6 +1004,24 @@ $(function () {
 						}
 					})
 					formDataObj.docRef = (new Date()).getTime();
+					if(formDataObj.manu_method == "3DP")
+					{  formDataObj.manu_method = '3D Printing'; 
+					}
+					else if(formDataObj.manu_method == "CNCM")
+					{  formDataObj.manu_method = 'CNC Machining'; 
+					}
+					else if(formDataObj.manu_method == "VC")
+					{  formDataObj.manu_method = 'Vacuum Casting'; 
+					}
+					else if(formDataObj.manu_method == "SMF")
+					{  formDataObj.manu_method = 'Sheet Metal Fabrication'; 
+					}
+					else if(formDataObj.manu_method == "IM")
+					{  formDataObj.manu_method = 'Injection Molding'; 
+					}
+					else if(formDataObj.manu_method == "OTH")
+					{  formDataObj.manu_method = 'Other'; 
+					}
 					
 					$.ajax({
 						type:"POST",
@@ -1061,7 +1079,7 @@ $(function () {
 										"materialType":formDataObj.material_type,
 										"privKey":formDataObj.private_key.toString().startsWith("0x") ? formDataObj.private_key : "0x"+formDataObj.private_key
 										}).then(resp => {
-											console.log("response : ",resp);
+											// console.log("response : ",decodeURIComponent(formDataObj.mmob.replace(/[+]/g," ")));
 											
 											
 											if(resp.status == true){
@@ -1072,13 +1090,14 @@ $(function () {
 													"quantity" : formDataObj.quantity,
 													"manu_method": formDataObj.manu_method,
 													"material_type": formDataObj.material_type,
-													"mmob":formDataObj.mmob.replace(/[+]/g," "),
+													"mmob":decodeURIComponent(formDataObj.mmob.replace(/[+]/g," ")),
 													"pcountry":formDataObj.pcountry.replace(/[+]/g," "),
 													"name":formDataObj.name.replace(/[+]/g," "),
 													"docRef":formDataObj.docRef,
 													"contractAddr":resp.receipt.contractAddress.toLowerCase(),
 													"deployerAddr":resp.deployerAddr.toLowerCase(),
 													"secretKey" : passkey,
+													"transactionHash":resp.receipt.transactionHash,
 													"addr" :paypal_addr,
 													"doc":paypal_doc_redem,
 													"csrf_name": csrf_value
@@ -1087,7 +1106,7 @@ $(function () {
 												}).fail(err => {
 													console.log("response1 : ",err);
 												})
-
+												
 												const hashUrl = `https://explorer.xinfin.network/tx/${resp.receipt.transactionHash}`;
 												const tHtml = `
 																<p>
@@ -1098,6 +1117,9 @@ $(function () {
 												hideLoader();
 												document.getElementById("deploy").style.display = "none";
 												document.getElementById("thankyou").style.display = "block";
+												localStorage.setItem("contractAddress", resp.receipt.contractAddress);
+												localStorage.setItem("transactionHash", resp.receipt.transactionHash);
+										
 												$('#deployedData').html(tHtml);
 												$('#DeployBtn').click(function() {
 													$("#thankyou").modal("hide");
