@@ -87,11 +87,11 @@
                                 
                                 <div class="row">
                                 <div class="form-group col-md-6">
-                                        <label for="amount">Design Value</label>
+                                        <label for="amount">Price/Piece</label>
                                         <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount">
                                     </div>
                                 <div class="form-group col-md-6">
-                                    <label for="broker-name">For the Quantity</label>
+                                    <label for="broker-name"> Quantity</label>
                                     <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity">
                                 </div>
                                 </div>
