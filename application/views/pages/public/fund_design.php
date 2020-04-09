@@ -3,7 +3,7 @@
 
         <section class="tf-inner-banner">
             <div class="container">
-            <h3>Design</h3>
+            <h3>Fund My Design</h3>
                 <h4>Digitize Documentation and distribution to the funders on peer to peer blockchain network.</h4>
             </div>
         </section>
