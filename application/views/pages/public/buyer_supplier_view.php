@@ -289,9 +289,9 @@
                                     </div>-->
                                 
                                     <div class="form-group mt-15 mb-10">
-                                        <button id="CopyBtn" type="submit" onclick="copy('deployedData')" class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Copy</button>
-                                        <button id="DownloadBtn" type="submit" onclick="PrintDiv()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Download</button>
-                                        <button id="EmailBtn" type="submit" onclick="showemail()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false" >Email</button>
+                                        <a id="CopyBtn" type="submit" onclick="copy('deployedData')" class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Copy</a>
+                                        <a id="DownloadBtn" type="submit" onclick="PrintDiv()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Download</a>
+                                        <a id="EmailBtn" type="submit" onclick="showemail()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false" >Email</a>
                                     </div>
                                     <!--<div class="form-group mt-15 mb-10">
                                         <a class="btn border blue text-uppercase" href="https://xinfinorg.github.io/Finance/Index.html" target="_blank">Send Funding Request EMail to the Financiers available on Tradefinex network</a>
@@ -302,14 +302,14 @@
 										<div class="col-md-6 mb-15">
 											<div class="column-one text-center">
 												<h3 class="mb-20">Send Funding Request Email to TradeFinex Network</h3>
-												<p><a class="btn btn-blue text-uppercase" href="https://xinfinorg.github.io/Finance/Index.html" target="_blank">Email Now <i class="fa fa-envelope"></i></a></p>
+												<p><a class="btn btn-blue text-uppercase" href="https://xinfinorg.github.io/Finance/Index.html" onclick="link()" id ="exlink"target="_blank">Email Now <i class="fa fa-envelope"></i></a></p>
 											</div>
 										</div>
 										
 										<div class="col-md-6 mb-15">
 											<div class="column-two text-center">
 												<h3 class="mb-20">Send Funding Request Email to Your Funder Network</h3>
-												<p><a class="btn btn-blue text-uppercase" href="javascript:void(0)"onclick="javascript:genericSocialShare('mailto:?subject=Is your business affected by corona virus?&body=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')">Email Now <i class="fa fa-envelope"></i></a></p>
+												<p><a class="btn btn-blue text-uppercase" href="javascript:void(0)"onclick="javascript:genericSocialShare('mailto:?subject=Is your business affected by corona virus&body=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2%0D%0A%0D%0A%0D%0A%0D%0AContract Address:')">Email Now <i class="fa fa-envelope"></i></a></p>
 											</div>
 										</div>
 									</div>
@@ -323,14 +323,14 @@
 												<!--<h4 class="widget-title mb-10">Start Requesting for the Fund</h4>-->
                                                 <ul class="tf-social-bs">
                                                 <?php
-                                                    $summary=rawurlencode('My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q
-
-                                                    Even your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2');
+                                                    $summary=rawurlencode('My trade affected by #coronavirus & need urgent #finance support.
+                                                    Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2
+                                                    check my funding request @TradeFinex with address:');
                                                 ?>
-                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.linkedin.com/shareArticle?mini=true&url=<?php echo $summary ?>')" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?href=<?php echo $summary ?>')" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('whatsapp://send?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/whatsapp/share" class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.linkedin.com/shareArticle?mini=true&url=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2%0D%0A%0D%0A%0D%0A%0D%0AContract Address:')" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare1('http://twitter.com/intent/tweet?text=<?php echo $summary ?>')" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://www.facebook.com/sharer.php?href=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2%0D%0A%0D%0A%0D%0A%0D%0AContract Address:')" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('whatsapp://send?text=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2%0D%0A%0D%0A%0D%0A%0D%0AContract Address:')" data-action="share/whatsapp/share" class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
                                                     <!--<li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('mailto:?subject=Is your business affected by corona virus?&body=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/gmail/share" class="gmail"><i class="fa fa-envelope"></i></a></li>-->
                                                 </ul>
                                             </div>
@@ -605,9 +605,21 @@ alert("Please share this article in mobile device");
 });
 });
 function genericSocialShare(url){
-    window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
+    let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
+    let transactionHash = `https://explorer.xinfin.network/tx/${localStorage.getItem("transactionHash")}`;
+    window.open(url+contractAddress+"%0D%0ATransaction Hash:"+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
     return true;
 }
+function genericSocialShare1(url){
+    let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
+    window.open(url+contractAddress,'sharer','toolbar=0,status=0,width=648,height=395');
+    return true;
+}
+function link(){
+    var link = document.getElementById("exlink").href;
+    console.log(link);
+    document.getElementById("exlink").href = link+"?contractAddress="+localStorage.getItem("contractAddress")+"&transactionHash="+localStorage.getItem("transactionHash")
+}   
 </script>
 <?php
         $this->load->view('includes/footer_commonn', $data);

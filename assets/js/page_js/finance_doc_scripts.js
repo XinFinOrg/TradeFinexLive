@@ -367,6 +367,9 @@ $(function () {
 												hideLoader();
 												document.getElementById("deploy").style.display = "none";
 												document.getElementById("thankyou").style.display = "block";
+												localStorage.setItem("contractAddress", resp.receipt.contractAddress);
+												localStorage.setItem("transactionHash", resp.receipt.transactionHash);
+
 												$('#deployedData').html(tHtml);
 												$('#DeployBtn').click(function() {
 													$("#thankyou").modal("hide");
@@ -760,6 +763,9 @@ $(function () {
 												hideLoader();
 												document.getElementById("deploy").style.display = "none";
 												document.getElementById("thankyou").style.display = "block";
+												localStorage.setItem("contractAddress", resp.receipt.contractAddress);
+												localStorage.setItem("transactionHash", resp.receipt.transactionHash);
+												
 												$('#deployedData').html(tHtml);
 												$('#DeployBtn').click(function() {
 													$("#thankyou").modal("hide");
