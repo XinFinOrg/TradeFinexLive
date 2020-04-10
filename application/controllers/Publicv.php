@@ -1122,8 +1122,14 @@ class Publicv extends CI_Controller {
 			$key = $this->manage->get_secretkey($contractAddr);
 			// log_message("info",json_encode($key));
 		}
+		if($pass == 'getpasskeyfund'){
+			$key = $this->manage->get_secretkey_fund($contractAddr);
+			// log_message("info",json_encode($key));
+		}
 		foreach($key as $k){
 			$data['key'] = $k->tfi_secretKey;
+			$data['key'] = $k->tffd_secretKey;
+			
 		}
 		echo json_encode($data);
 	}
@@ -2245,8 +2251,8 @@ class Publicv extends CI_Controller {
 			$data['privatekey'] = getFinancier($privkey);
 			$key = $this->manage->get_secretkey_by_docRef_design($docRef);
 			foreach($key as $k){
-				$data['key'] = $k->tfi_secretKey;
-				$data['contractAddr'] = $k->tfi_contractAddr;
+				$data['key'] = $k->tffd_secretKey;
+				$data['contractAddr'] = $k->tffd_contractAddr;
 			}
 		}
 

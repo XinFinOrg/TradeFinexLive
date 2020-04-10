@@ -1848,6 +1848,120 @@ $(function () {
 					
 			
 	});
+
+	//View Fund Design Form
+	$('#contractfund_form').validate({
+		rules: {
+			contract_address: {
+				required: true,
+				contractAddress :true,
+				normalizer: function(value) {
+					// Update the value of the element
+					this.value = $.trim(value);
+					check = this.value;
+					if(check.startsWith("0x")){
+						check = check.slice(2);
+					}
+					else if(check.startsWith("xdc")){
+						check = check.slice(3);
+					}
+					else{
+						check = this.value;
+					}
+					// Use the trimmed value for validation
+					return check;
+				}
+			}
+		},
+		messages: {
+			contract_address:{
+				required : "Please enter valid contract address",
+				contractAddress : "Contract address is a combination of alphabets and numbers starting with xdc/0x"
+			}
+		},
+		success: function (elem) {
+
+
+		},
+		error: function (elem) {
+			
+			 
+		},
+		submitHandler: function (form, e) {
+			
+			showLoader();
+			var formData = $(form).serialize();
+			const formObj = formData.trim().split('&');
+			var formDataObj = {};
+			
+			// after getting value of datafile name make the ajax call
+					$.each(formObj, function (k, v) {
+						v = v.split('=');
+						if(v[0] === "fsdate" || v[0] === "maturitydate" || v[0] === "firstdate") {
+							var date = v[1].split('-');
+							date = date[2] + `/` + date[1] + '/' + date[0];
+							formDataObj[v[0]] = date;
+						} else {
+							formDataObj[v[0]] = v[1];
+						}
+					})
+					
+					$.ajax({
+						type: 'POST',
+						url: "getPasskey",
+						dataType:"json",
+						data: { 'pass': 'getpasskeyfund', 'contractAddr': formDataObj.contract_address,csrf_name:csrf_value},
+						success: function(result){
+							
+						//    console.log(result);
+						}
+					  }).done(resp => {
+						// console.log(resp);
+						$.ajax({
+						type:"POST",
+						dataType:"json",
+						url:"https://tfd.xinfin.net/api/getDocHash",
+						data:{"contractAddr":formDataObj.contract_address,
+							  "passKey": resp.key,
+							  "contractType" : "fundDesign"
+						},
+						success: resp => {
+							// console.log("response success: ",resp)
+						},
+						error: err =>{
+							console.log("response error: ",err)
+						}
+							}).done(resp => {
+							
+								
+								if(resp.status == true){
+									const hashUrl = `https://ipfs-gateway.xinfin.network/${resp.ipfsHash}`;
+									const tHtml = `
+													<p>
+														<br><a href="${hashUrl}"target="_blank">${resp.ipfsHash}</a>
+													</p>
+													`
+									hideLoader();
+									$("#hash").modal("show");
+									$('#hash').css('opacity', '1');
+									$('#hashData').html(tHtml);
+									$('#okBtn').click(function() {
+										$("#hash").modal("hide");
+										location.reload();
+									});
+								}
+										
+										
+							}).fail(error =>{
+								hideLoader();
+								toastr.error('Something went wrong.', {timeOut: 70000}).css({"word-break":"break-all","width":"auto"});
+								setTimeout(location.reload.bind(location), 6000);
+							})
+						})
+		}
+					
+			
+	});
 	
 	
 });

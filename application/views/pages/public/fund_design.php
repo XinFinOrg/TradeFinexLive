@@ -185,7 +185,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="tf-buyer-supplier_form-block">
-                            <form id="contractdocc_form" class="tf-suppliers-form" enctype="multipart/form-data" method="post">
+                            <form id="contractfund_form" class="tf-suppliers-form" enctype="multipart/form-data" method="post">
                             
                                 <div class="form-group">
                                     <label for="private-key">Enter Contract Address </label>
@@ -276,9 +276,9 @@
                                     </div>-->
                                 
                                     <div class="form-group mt-15 mb-10">
-                                        <button id="CopyBtn" type="submit" onclick="copy('deployedData')" class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Copy</button>
-                                        <button id="DownloadBtn" type="submit" onclick="PrintDiv()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false">Download</button>
-                                        <button id="EmailBtn" type="submit" onclick="showemail()"class="btn btn-blue text-uppercase mb-5" data-keyboard="false" >Email</button>
+                                        <a id="CopyBtn" type="submit" onclick="copy('deployedData')"  data-keyboard="false">Copy</a>
+                                        <a id="DownloadBtn" type="submit" onclick="PrintDiv()" data-keyboard="false">Download</a>
+                                        <a id="EmailBtn" type="submit" onclick="showemail()" data-keyboard="false" >Email</a>
                                     </div>
                                     <!--<div class="form-group mt-15 mb-10">
                                         <a class="btn border blue text-uppercase" href="https://xinfinorg.github.io/Finance/Index.html" target="_blank">Send Funding Request EMail to the Financiers available on Tradefinex network</a>
@@ -374,42 +374,7 @@ Check my design with:")?>
 				</div>
 			</div>
 	 	</div>
-</div>
-<div id="tf-loader-wrapper" style="display: none;"><div id="tf-loader"></div></div>
-<div class="modal fade" id="thankyou" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
-		<div class="modal-dialog" style="">
-		<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
-			<div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" onclick="location.reload()" data-dismiss="modal"> <span class="hidden-xs">&times;</span> <span class="hidden-md hidden-lg"> <img src="<?php echo base_url() ?>assets/images/icon/log_arrow.png"  alt="icon" /></span> </button>
-                </div>
-				<div class="modal-body text-center">
-                        <div class="deployedData_modal_block">
-							<h1>Contract Deployed Successfully.</h1>
-							<p>Please save the contract address for further use.</p>
-                            <!--<p id="deployedData" style="word-break: break-all;"></p>-->
-                            
-							<div id="deployedData" style="word-break: break-all;">
-								
-								
-                            </div>
-                            
-                                <div class="form-group"style="display:none" id="email_set">
-                                    <input class="form-control" id="email" name="email" type="text" autocomplete="" aria-required="true" placeholder="Email Id" >
-                                    <input type="hidden" name="action" value="send_mail" /><br><br><br>
-                                    <button id="DownloadBtn" onclick="mail()" type="submit"class="btn btn-blue text-uppercase" data-keyboard="false">OK</button>
-                                </div>
-                        
-							<div class="form-group">
-								<a id="CopyBtn" type="submit" onclick="copy('deployedData')"  data-keyboard="false">Copy</button>
-								<a id="DownloadBtn" type="submit" onclick="PrintDiv()" data-keyboard="false">Download</button>
-								<a id="EmailBtn" type="submit" onclick="showemail()" data-keyboard="false">Email</button>
-							</div>						
-						</div>
-				</div>
-			</div>
-	 	</div>
-</div>
+                                                    </div>
 <div id="tf-loader-wrapper" style="display: none;"><div id="tf-loader"></div></div>
 <div class="modal fade" id="hash" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
 		<div class="modal-dialog" style="">
@@ -656,7 +621,7 @@ alert("Please share this article in mobile device");
 });
 function genericSocialShare(url){
     let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
-    let transactionHash = localStorage.getItem("transactionHash");
+    let transactionHash = `https://explorer.xinfin.network/tx/${localStorage.getItem("transactionHash")}`;
     window.open(url+contractAddress+"%0D%0ATransaction Hash:"+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
     return true;
 }
@@ -668,7 +633,7 @@ function genericSocialShare1(url){
 function link(){
     var link = document.getElementById("exlink").href;
     console.log(link);
-    document.getElementById("exlink").href = link+"?"+localStorage.getItem("contractAddress")+"?"+localStorage.getItem("transactionHash")
+    document.getElementById("exlink").href = link+"?contractAddress="+localStorage.getItem("contractAddress")+"&transactionHash="+localStorage.getItem("transactionHash")
 }
 </script>
 <?php
