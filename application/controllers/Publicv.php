@@ -2172,7 +2172,89 @@ class Publicv extends CI_Controller {
 			
 			
 		}
-		$data['tot_sum'] = floatval($data['rec_sum'] + $data['wr_sum'] + $data['oth_sum'] + $data['loc_sum'] + $data['sblc_sum'] + $data['pay_sum'] + $data['bg_sum']);
+
+		$fund = $this->manage->get_fund_design_sum();
+		foreach($fund as $k){
+			if($k->tffd_currency == "USD"){
+				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + (floatval($k->tffd_amount) * floatval($k->tffd_quantity));
+			}
+			elseif($k->tffd_currency == "XDC"){
+				$show = cmcModule();
+				foreach($show as $sh) {
+				
+				log_message("info","XDC_USD".$sh->price_usd) ;
+				$data['price_fund'] = $sh->price_usd;
+				
+				}
+				$usd_amount = floatval($data['price_fund']) * (floatval($k->tffd_amount) * floatval($k->tffd_quantity));
+				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + floatval($usd_amount);
+				
+				
+			}
+			elseif($k->tffd_currency == "GBP"){
+				$show = getConversion($k->tffd_currency);
+				foreach($show as $sh) {
+				
+				log_message("info","GBP_USD".$sh) ;
+				$data['price_fund'] = $sh;
+				
+				}
+				$usd_amount = floatval($data['price_fund']) * (floatval($k->tffd_amount)* floatval($k->tffd_quantity));
+				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + floatval($usd_amount);
+			
+			}
+			elseif($k->tffd_currency == "EUR"){
+				$show = getConversion($k->tffd_currency);
+				foreach($show as $sh) {
+				
+				log_message("info","EUR_USD".$sh) ;
+				$data['price_fund'] = $sh;
+				
+				}
+				$usd_amount = floatval($data['price_fund']) * (floatval($k->tffd_amount)* floatval($k->tffd_quantity));
+				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + floatval($usd_amount);
+			
+			}
+			elseif($k->tffd_currency == "JPY"){
+				$show = getConversion($k->tffd_currency);
+				foreach($show as $sh) {
+				
+				log_message("info","JPY_USD".$sh) ;
+				$data['fund_design_sum'] = $sh;
+				
+				}
+				$usd_amount = floatval($data['price_fund']) * (floatval($k->tffd_amount)* floatval($k->tffd_quantity));
+				$data['wr_sum'] = floatval($data['fund_design_sum']) + floatval($usd_amount);
+				
+			}
+			elseif($k->tffd_currency == "SGD"){
+				$show = getConversion($k->tffd_currency);
+				foreach($show as $sh) {
+				
+				log_message("info","SGD_USD".$sh) ;
+				$data['price_fund'] = $sh;
+				
+				}
+				$usd_amount = floatval($data['price_fund']) * (floatval($k->tffd_amount) * floatval($k->tffd_quantity));
+				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + floatval($usd_amount);
+				
+			}
+			elseif($k->tffd_currency == "INR"){
+				$show = getConversion($k->tffd_currency);
+				foreach($show as $sh) {
+				
+				log_message("info","INR_USD".$sh) ;
+				$data['price_fund'] = $sh;
+				
+				}
+				$usd_amount = floatval($data['price_fund']) * (floatval($k->tffd_amount) * floatval($k->tffd_quantity));
+				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + floatval($usd_amount);
+				
+			}
+			
+			
+		}
+		$data['tot_sum'] = floatval($data['rec_sum'] + $data['wr_sum'] + $data['oth_sum'] + $data['loc_sum'] + $data['sblc_sum'] + $data['pay_sum'] + $data['bg_sum'] + $data['fund_design_sum']);
 		$allStats = getXinFinStats();
 		
 		$data['xdc_usd'] = $allStats->priceUsd;

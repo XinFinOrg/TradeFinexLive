@@ -71,11 +71,12 @@
                                     </select>
                                 </div>
 
-                                <div id="currency_supported" class="form-group">
+                                <div class="form-group">
                                         <label for="currency_supported">Currency</label>
-                                        <select class="form-control" id="currency_supported" name="currency_supported">
+                                        <select class="form-control" id="currency_supported" name="currency_supported" onchange="currency()">
                                             <option value="" disabled="" selected="">Select Currency</option>
                                             <option value="USD">USD</option>
+                                            <option value="INR">INR</option>
                                             <option value="GBP">GBP</option>
                                             <option value="JPY">JPY</option>
                                             <option value="EUR">EUR</option>
@@ -87,9 +88,10 @@
                                 
                                 <div class="row">
                                 <div class="form-group col-md-6">
-                                        <label for="amount">Price/Piece</label>
+                                        <label for="amount">Price/Piece(<text for="curr"id="curr">Currency</text>)</label>
                                         <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount">
                                     </div>
+                                
                                 <div class="form-group col-md-6">
                                     <label for="broker-name"> Quantity</label>
                                     <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity">
@@ -150,7 +152,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="private-key">Enter Private Key <span><a href="#" data-toggle='modal' data-target='#howto'data-backdrop="static" data-keyboard="false">Enter Private Key How to Create PrivateKey & Top up XDC?</a></span></label>
+                                    <label for="private-key">Enter Private Key <span><a href="#" data-toggle='modal' data-target='#howto'data-backdrop="static" data-keyboard="false">How to Create PrivateKey & Top up XDC?</a></span></label>
                                     <input type="text" class="form-control" id="private_key" name="private_key" autocomplete= "off"placeholder="Enter Private Key">
                                 </div>
                                 <!-- <div class="form-group">
@@ -634,6 +636,12 @@ function link(){
     var link = document.getElementById("exlink").href;
     console.log(link);
     document.getElementById("exlink").href = link+"?contractAddress="+localStorage.getItem("contractAddress")+"&transactionHash="+localStorage.getItem("transactionHash")
+}
+function currency(){
+    var index = document.getElementById("currency_supported").selectedIndex;
+    var e = document.getElementById("currency_supported");
+    var currency_supported = e.options[index].text;
+    document.getElementById("curr").innerHTML = currency_supported;
 }
 </script>
 <?php

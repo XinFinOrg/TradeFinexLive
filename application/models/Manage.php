@@ -1589,7 +1589,11 @@
 			$this->db->from('{PRE}funding');
 			$query1 = $this->db->get();
 
-			return $result = floatval($query->num_rows() + $query1->num_rows());
+			$this->db->select('*');
+			$this->db->from('{PRE}funddesign');
+			$query2 = $this->db->get();
+
+			return $result = floatval($query->num_rows() + $query1->num_rows() + $query2->num_rows());
 		}
 		public function get_instrument_active_count($date){
 			
@@ -1605,7 +1609,11 @@
 			$this->db->where($where);
 			$query1 = $this->db->get();
 
-			return $result = floatval($query->num_rows() + $query1->num_rows());
+			$this->db->select('*');
+			$this->db->from('{PRE}funddesign');
+			$query2 = $this->db->get();
+
+			return $result = floatval($query->num_rows() + $query1->num_rows() + $query2->num_rows());
 		}
 		public function get_receivable_instrument_sum(){
 
@@ -1731,6 +1739,17 @@
 			// log_message("info","<<2.".json_encode($query1->result()));
 			$result['instrument'] = $query->result();
 			$result['funding'] = $query1->result();
+			return $result;
+		}
+
+		public function get_fund_design_sum(){
+
+			$this->db->select('tffd_amount,tffd_quantity,tffd_currency');
+			$this->db->from('{PRE}funddesign');
+			$query = $this->db->get();
+
+			$result= $query->result();
+			
 			return $result;
 		}
 		public function add_funding_details($data_add){
