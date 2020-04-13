@@ -1158,3 +1158,8 @@ Footer
 .strategy-howTo-card-head h4 {font-size: 20px;line-height: 22px;padding: 5px 0px 5px 15px;color: #333333;font-weight: 600;-webkit-align-self: center!important;-ms-flex-item-align: center!important;-ms-grid-row-align: center!important;align-self: center!important;}
 .strategy-howTo-card p a {font-weight:600;text-decoration:underline;}
 /*-- Strategy Page --*/
+
+/*-- Fund My Design Page --*/
+.fmd-price {background-color: #fbfcfd;padding: 12px 5px;border-top: 1px solid #d6e9f8;border-bottom: 1px solid #d6e9f8;font-size: 16px;font-weight:700;}
+.fmd-price.odd {background-color: transparent;padding: 12px 5px;border-top: none;border-bottom: none;}
+/*-- Fund My Design Page --*/
