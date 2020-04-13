@@ -21,6 +21,21 @@
 				</div>
 			</div> 
     </section> -->
+        <section class="section" >
+        <div class="col-md-3 col-xs-12 col-sm-4 funding_video" >
+				
+                <div class="row">
+					<div class="col-md-8 col-xs-7"> 
+                    <p> 1 XDC = <?php echo rtrim(rtrim(sprintf('%.4f',$xdc_usd),'0'),'.') ?> USD </p>
+                    <p> 1 XDC = <?php echo rtrim(rtrim(sprintf('%.4f',$xdc_inr),'0'),'.') ?> INR </p>
+                    <p> 1 XDC = <?php echo rtrim(rtrim(sprintf('%.4f',$xdc_gbp),'0'),'.') ?> GBP </p>
+                    <p> 1 XDC = <?php echo rtrim(rtrim(sprintf('%.4f',$xdc_jpy),'0'),'.') ?> JPY </p>
+                    <p> 1 XDC = <?php echo rtrim(rtrim(sprintf('%.4f',$xdc_sgd),'0'),'.') ?> SGD </p>
+                    <p> 1 XDC = <?php echo rtrim(rtrim(sprintf('%.4f',$xdc_eur),'0'),'.') ?> EUR </p>
+					</div>	
+				</div>
+			</div> 
+    </section>
         <!-- Buyers / Suppliers Form -->
         <section id="xdc-protocol-features-benefits" class="section" >
             <div class="container"id="createinstrument"style="display:block;">
@@ -29,6 +44,7 @@
                         <div class="section-title text-center pb-30">
                             <h2 class="mb-0">Apply for Funding</h2><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                             ( <a class="video-popup" href="https://www.youtube.com/watch?v=4bK1CrfaFf4">How to apply for funding?</a> )
+                            
                         </div>
                     </div>
                 </div>
@@ -244,7 +260,7 @@
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="fbox-successIcon">
 									<div class="fbox-successIcon-left">
-										<h1>Contract Deployed Successfully!</h1>
+										<h1>Contract Deployed Successfully!<a href="<?php echo base_url()?>publicv/financier">Thank you for submitting your funding request and it has been submitted to all our masternode holders</a></h1>
 								    </div>
 									<div class="fbox-successIcon-right">
 										<div class="contract-successBox"><i class="fa"><img src="../assets/images/icon/check_white.png" width="" height="" /></i></div>	
@@ -325,6 +341,16 @@ Check my design with:")?>
                                             </div>
 											</div>
 											</div>
+
+                                            <div class="fundingDivider"><div class="fundingDividerLine"></div><span><i>AND</i></span></div>
+
+                                            <div class="row">
+									            <div class="col-md-12">
+                                                    <div class="widget widget-contact text-center">
+                                                        <p class="text-green mb-20">like Thank you for submitting your funding request and it has been submitted to all our masternode holders </p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                     
                                 </div>
                             </div>

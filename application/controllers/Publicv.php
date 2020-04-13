@@ -852,6 +852,44 @@ class Publicv extends CI_Controller {
 			$data['pcountries'] = $ccountries;			
 		}
 		
+		$allStats = getXinFinStats();
+		
+		$data['xdc_usd'] = $allStats->priceUsd;
+		$show = getConverted('INR');
+		foreach($show as $sh) {
+		
+		log_message("info","INR_USD".$sh) ;
+		$data['xdc_inr'] = $data['xdc_usd'] * $sh;
+		
+		}
+		$show = getConverted('GBP');
+		foreach($show as $sh) {
+		
+		log_message("info","GBP_USD".$sh) ;
+		$data['xdc_gbp'] = $data['xdc_usd'] * $sh;
+		
+		}
+		$show = getConverted('JPY');
+		foreach($show as $sh) {
+		
+		log_message("info","JPY_USD".$sh) ;
+		$data['xdc_jpy'] = $data['xdc_usd'] * $sh;
+		
+		}
+		$show = getConverted('SGD');
+		foreach($show as $sh) {
+		
+		log_message("info","SGD_USD".$sh) ;
+		$data['xdc_sgd'] = $data['xdc_usd'] * $sh;
+		
+		}
+		$show = getConverted('EUR');
+		foreach($show as $sh) {
+		
+		log_message("info","EUR_USD".$sh) ;
+		$data['xdc_eur'] = $data['xdc_usd'] * $sh;
+		
+		}
 
 		if($action == 'adddetail'){
 			log_message("info","@@@@".$data['contractAddr']);
