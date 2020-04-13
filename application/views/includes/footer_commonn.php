@@ -102,7 +102,7 @@
                                 <li> <a href="<?=base_url();?>publicv/buyersupplier">For Buyers / Suppliers</a></li>
                                 <li> <a href="<?=base_url();?>publicv/brokers">For Brokers</a></li>
 								<li> <a href="<?=base_url();?>publicv/financier">For Financiers</a></li>
-								<li> <a href="<?=base_url();?>publicv/funddesign">Fund Design</a></li>
+								<li> <a href="<?=base_url();?>publicv/funddesign">Fund My Design</a></li>
 								<li> <a href="<?=base_url();?>publicv/statistics">Statistics</a></li>
 								<li> <a href="<?=base_url();?>publicv/fees">Fees</a></li>
                             </ul>

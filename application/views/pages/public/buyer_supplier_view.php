@@ -402,7 +402,7 @@
                             <h3>Top up XDC to your wallet</h3>
 							<div class="tf-dls-benefits">
                                 <ul>
-                                    <li><a href="https://xinfin.io/" target="_blank">From XinFin</a></li>
+                                    <li><a href="https://xinfin.io/" target="_blank">Request XDC from XinFin Community</a></li>
                                     <li><a href="https://www.alphaex.net" target="_blank">From Alphaex Exchange</a></li>
                                     <li><a href="https://www.stex.com" target="_blank">From Stex Exchange</a></li>
 								</ul>
