@@ -5697,12 +5697,6 @@ class Publicv extends CI_Controller {
 
 	}
 
-	public function test(){
-		
-		$data = array();
-		
-		echo (">>>3".json_encode($_GET));
-	}
 
 	public function errorPage(){
 		
@@ -5795,6 +5789,22 @@ class Publicv extends CI_Controller {
         $this->load->view('pages_scripts/common_scripts', $data);
         $this->load->view('includes/footern');
 
+	}
+	public function certificate(){
+
+		$data = array();
+		$data['page'] = 'certificate';       
+        
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
+        $this->load->view('templates/mails/certificate');
+		
 	}
 
 }

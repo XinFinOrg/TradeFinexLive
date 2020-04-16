@@ -181,7 +181,6 @@
                                 <a id="getDoc" onclick="docShow()" class="btn btn-white btn-small">Access Document <i class="fa fa fa-angle-double-right"></i></a></span>
                             </div>
                         </div>
-                        
                     </form>
                 </div>
             </div>
@@ -336,7 +335,7 @@
                                 <div class="col-md-6 mb-15">
                                     <div class="column-two text-center">
                                         <h3 class="mb-20">Send Funding Request Email to Your Funder Network</h3>
-                                        <p><a class="btn btn-blue text-uppercase" href="javascript:void(0)"onclick="javascript:genericSocialShare('mailto:?subject=Fund My Design of PPE to stop spread of Coronavirus&body=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:')">Email Now <i class="fa fa-envelope"></i></a></p>
+                                        <p><a class="btn btn-blue text-uppercase" href="javascript:void(0)" onclick="SocialShare('email')">Email Now <i class="fa fa-envelope"></i></a></p>
                                     </div>
                                 </div>
                             </div>
@@ -348,31 +347,20 @@
                                     <div class="widget widget-contact text-center">
                                         <h1 class="text-green mb-20">Share Funding Request to Your Social Media Network</h1>
                                         <!--<h4 class="widget-title mb-10">Start Requesting for the Fund</h4>-->
-                                        <?php $variab = rawurlencode("I need funding for personal protective equipment manufacture, in this fight against #coronavirus, check my funding request @TradeFinex: https://bit.ly/3c7sdP1
-and #fundmydesign.
-#coronavirus #TradeFinex #blockchain
-Check my design with:")?>
-                                        <ul class="tf-social-bs">
                                         
-                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.linkedin.com/shareArticle?mini=true&url=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:')" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare1('https://twitter.com/intent/tweet?text=<?php echo $variab?>')" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://www.facebook.com/sharer.php?href=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:')" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('whatsapp://send?text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:')" data-action="share/whatsapp/share" class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
-                                            <!--<li><a href="javascript:void(0)" onclick="javascript:genericSocialShare('mailto:?subject=Is your business affected by corona virus?&body=My trade affected by #coronavirus & need urgent #finance support, check my funding request on @TradeFinex : https://bit.ly/2Wwh45Q %0D%0A%0D%0A%0D%0A%0D%0AEven your #business is affected by #CoronavirusOutbreak? Create your digital identity & Start sending #Funding requests: https://bit.ly/33zOlP2')" data-action="share/gmail/share" class="gmail"><i class="fa fa-envelope"></i></a></li>-->
+                                        <ul class="tf-social-bs" >
+                                        
+                                            <li><a href="javascript:void(0)"  onclick="SocialShare('linkedin')"  class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href="javascript:void(0)"  onclick="SocialShare('twitter')" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="javascript:void(0)" data-href="https://developers.facebook.com/docs/plugins/"  onclick="SocialShare('facebook')" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="javascript:void(0)" onclick="SocialShare('whatsapp')" data-action="share/whatsapp/share" class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                                            
                                         </ul>
                                     </div>
                                     </div>
                                     </div>
 
-                                    <div class="fundingDivider"><div class="fundingDividerLine"></div><span><i>AND</i></span></div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="widget widget-contact text-center">
-                                                <p class="text-green mb-20">like Thank you for submitting your funding request and it has been submitted to all our masternode holders </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                             
                         </div>
                     </div>
@@ -395,6 +383,33 @@ Check my design with:")?>
 $this->load->view('includes/login_modal');
 
 ?>	
+
+<div class="modal fade" id="textimage" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
+<div class="modal-dialog" style="">
+<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"> <span class="hidden-xs">&times;</span> <span class="hidden-md hidden-lg"> <img src="<?php echo base_url() ?>assets/images/icon/log_arrow.png"  alt="icon" /></span> </button>
+        </div>
+        <div class="modal-body text-center">
+                
+            <div class="row">
+                <div class="col-md-6 col-sm-4">
+                    <i class="fa fa-font fa-5x"style="color:#007bff;"></i>
+                        <p>Share Message</p><input type="checkbox" id="text"  />
+                </div>   
+                <div class="col-md-6 col-sm-4">
+                    <i class="fa fa fa-image fa-5x"style="color:#007bff;">  </i>
+                        <p>Share Image</p><input type="checkbox" id="image" />
+                </div>    					
+            </div> 
+            <div class="row">
+                <button id="subBtn" type="submit" class="btn btn-blue text-uppercase" data-keyboard="false">Submit</button>
+            </div>      
+        </div>
+    </div>
+ </div>
+</div>
 
 <div class="modal fade" id="howto" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
 <div class="modal-dialog" style="">
@@ -424,7 +439,7 @@ $this->load->view('includes/login_modal');
         </div>
     </div>
  </div>
-                                            </div>
+</div>
 <div id="tf-loader-wrapper" style="display: none;"><div id="tf-loader"></div></div>
 <div class="modal fade" id="hash" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
 <div class="modal-dialog" style="">
@@ -635,6 +650,8 @@ document.getElementById("bulkAmount").value = amountt*10;
 
 </script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<?=base_url('assets/js/sharer.min.js');?>"></script>
+<script src="<?=base_url('assets/js/html2canvas.js')?>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 var isMobile = {
@@ -670,15 +687,168 @@ alert("Please share this article in mobile device");
 });
 });
 function genericSocialShare(url){
-let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
-let transactionHash = `https://explorer.xinfin.network/tx/${localStorage.getItem("transactionHash")}`;
-window.open(url+contractAddress+"%0D%0ATransaction Hash:"+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+// let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
+// let transactionHash = `https://explorer.xinfin.network/tx/${localStorage.getItem("transactionHash")}`;
+window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
 return true;
 }
 function genericSocialShare1(url){
 let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
 window.open(url+contractAddress,'sharer','toolbar=0,status=0,width=648,height=395');
 return true;
+}
+
+function SocialShare(socialType){
+//     var container = document.body; // full page 
+//  html2canvas(container).then(function(canvas) {
+//                 var link = document.createElement("a");
+//                 document.body.appendChild(link);
+//                 link.download = "html_image.png";
+//                 link.href = canvas.toDataURL("image/png");
+//                 link.target = '_blank';
+//                 link.click();
+//                 console.log("$$$$",link);
+//             });
+            
+
+    $("#textimage").modal("show");
+    $('#textimage').css('opacity', '1');
+    $('#subBtn').click(function() {
+        var textCheck = document.getElementById("text").checked;
+        var imageCheck = document.getElementById("image").checked;
+        let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
+        let transactionHash = `https://explorer.xinfin.network/tx/${localStorage.getItem("transactionHash")}`;
+        if(textCheck== true && imageCheck==true){
+            console.log("inside true",socialType);
+            if(socialType=="linkedin"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("http://www.linkedin.com/shareArticle?mini=true&url=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType=="twitter"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("https://twitter.com/intent/tweet?url=https://tradefinex.org,&text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress,'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType=="facebook"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("https://www.facebook.com/sharer.php?u=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType=="whatsapp"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("whatsapp://send?text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType == "email"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open('mailto:?subject=Fund My Design of PPE to stop spread of Coronavirus&body=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at:https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode at: https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:'+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+        }
+        else if(textCheck==true && imageCheck==false){
+            if(socialType=="linkedin"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("http://www.linkedin.com/shareArticle?mini=true&url=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType=="twitter"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("https://twitter.com/intent/tweet?url=https://tradefinex.org,&text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress,'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType=="facebook"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("https://www.facebook.com/sharer.php?u=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType=="whatsapp"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("whatsapp://send?text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType == "email"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open('mailto:?subject=Fund My Design of PPE to stop spread of Coronavirus&body=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at:https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode at: https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:'+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+        }
+        else if(textCheck==false && imageCheck == true){
+            if(socialType=="linkedin"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("http://www.linkedin.com/shareArticle?mini=true&url=<?php echo base_url();?>publicv/certificate",'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType=="twitter"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("https://twitter.com/intent/tweet?url=<?php echo base_url();?>publicv/certificate",'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType=="facebook"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("https://www.facebook.com/sharer.php?u=<?php echo base_url();?>publicv/certificate",'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType=="whatsapp"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("whatsapp://send?url=<?php echo base_url();?>publicv/certificate",'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType == "email"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open('mailto:?subject=Fund My Design of PPE to stop spread of Coronavirus&url=<?php echo base_url();?>publicv/certificate','sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+        }
+        else{
+            if(socialType=="linkedin"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("http://www.linkedin.com/shareArticle?mini=true&url=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:",'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType=="twitter"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("https://twitter.com/intent/tweet?url=https://tradefinex.org,&text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:",'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType=="facebook"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("https://www.facebook.com/sharer.php?u=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:",'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType=="whatsapp"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open("whatsapp://send?text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:",'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+            if(socialType == "email"){
+                $("#textimage").modal("hide");
+                $('#textimage').css('opacity', '1');
+                window.open('mailto:?subject=Fund My Design of PPE to stop spread of Coronavirus&body=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at:https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode at: https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:'+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                return true;
+            }
+        }
+    })
+    
 }
 function link(){
 var link = document.getElementById("exlink").href;
