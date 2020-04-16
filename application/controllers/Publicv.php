@@ -1243,19 +1243,18 @@ class Publicv extends CI_Controller {
 		// $instrument = $this->manage->get_instrument($date);
 		$data['count'] = $this->manage->get_instrument_active_count($date);
 		$data['total_count'] = $this->manage->get_instrument_count();
-		$receivable = $this->manage->get_receivable_instrument_sum();
+		$receivable = $this->manage->get_receivable_instrument_sum($date);
 		foreach($receivable['instrument'] as $k){
 			if($k->tfi_currency == "USD"){
 				$data['rec_sum'] = floatval($data['rec_sum']) + floatval($k->tfi_amount);
 			}
 			elseif($k->tfi_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();		
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price'] = $allStats->priceUsd;
 				
-				}
+				
 				$usd_amount = floatval($data['price']) * floatval($k->tfi_amount);
 				$data['rec_sum'] = floatval($data['rec_sum']) + floatval($usd_amount);
 				
@@ -1317,13 +1316,12 @@ class Publicv extends CI_Controller {
 				$data['rec_sum'] = floatval($data['rec_sum']) + floatval($f->tfbs_amount);
 			}
 			elseif($f->tfbs_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();		
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_rec'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_rec'] = $allStats->priceUsd;
 				
-				}
+				
 				$usd_amount = floatval($data['price_rec']) * floatval($f->tfbs_amount);
 				$data['rec_sum'] = floatval($data['rec_sum']) + floatval($usd_amount);
 				
@@ -1381,19 +1379,18 @@ class Publicv extends CI_Controller {
 			
 			
 		}
-		$sblc = $this->manage->get_sblc_instrument_sum();
+		$sblc = $this->manage->get_sblc_instrument_sum($date);
 		foreach($sblc['instrument'] as $k){
 			if($k->tfi_currency == "USD"){
 				$data['sblc_sum'] = floatval($data['sblc_sum']) + floatval($k->tfi_amount);
 			}
 			elseif($k->tfi_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();	
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_sblc'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_sblc'] = $allStats->priceUsd;
 				
-				}
+				
 				$usd_amount = floatval($data['price_sblc']) * floatval($k->tfi_amount);
 				$data['sblc_sum'] = floatval($data['sblc_sum']) + floatval($usd_amount);
 				
@@ -1455,13 +1452,12 @@ class Publicv extends CI_Controller {
 				$data['sblc_sum'] = floatval($data['sblc_sum']) + floatval($f->tfbs_amount);
 			}
 			elseif($f->tfbs_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();	
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_sblc'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_sblc'] = $allStats->priceUsd;
 				
-				}
+				
 				$usd_amount = floatval($data['price_sblc']) * floatval($f->tfbs_amount);
 				$data['sblc_sum'] = floatval($data['sblc_sum']) + floatval($usd_amount);
 				
@@ -1519,19 +1515,18 @@ class Publicv extends CI_Controller {
 			
 			
 		}
-		$loc = $this->manage->get_loc_instrument_sum();
+		$loc = $this->manage->get_loc_instrument_sum($date);
 		foreach($loc['instrument'] as $k){
 			if($k->tfi_currency == "USD"){
 				$data['loc_sum'] = floatval($data['loc_sum']) + floatval($k->tfi_amount);
 			}
 			elseif($k->tfi_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();	
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_loc'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_loc'] = $allStats->priceUsd;
 				
-				}
+				
 				$usd_amount = floatval($data['price_loc']) * floatval($k->tfi_amount);
 				$data['loc_sum'] = floatval($data['loc_sum']) + floatval($usd_amount);
 				
@@ -1593,13 +1588,12 @@ class Publicv extends CI_Controller {
 				$data['loc_sum'] = floatval($data['loc_sum']) + floatval($f->tfbs_amount);
 			}
 			elseif($f->tfbs_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();	
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_loc'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_loc'] = $allStats->priceUsd;
 				
-				}
+				
 				$usd_amount = floatval($data['price_loc']) * floatval($f->tfbs_amount);
 				$data['loc_sum'] = floatval($data['loc_sum']) + floatval($usd_amount);
 				
@@ -1657,19 +1651,20 @@ class Publicv extends CI_Controller {
 			
 			
 		}
-		$bg = $this->manage->get_bg_instrument_sum();
+		$bg = $this->manage->get_bg_instrument_sum($date);
 		foreach($bg['instrument'] as $k){
 			if($k->tfi_currency == "USD"){
 				$data['bg_sum'] = floatval($data['bg_sum']) + floatval($k->tfi_amount);
 			}
 			elseif($k->tfi_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();		
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_bg'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
 				
-				}
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_bg'] = $allStats->priceUsd;
+				
+				
 				$usd_amount = floatval($data['price_bg']) * floatval($k->tfi_amount);
 				$data['bg_sum'] = floatval($data['bg_sum']) + floatval($usd_amount);
 				
@@ -1731,13 +1726,12 @@ class Publicv extends CI_Controller {
 				$data['bg_sum'] = floatval($data['bg_sum']) + floatval($f->tfbs_amount);
 			}
 			elseif($f->tfbs_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();		
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_bg'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_bg'] = $allStats->priceUsd;
 				
-				}
+				
 				$usd_amount = floatval($data['price_bg']) * floatval($f->tfbs_amount);
 				$data['bg_sum'] = floatval($data['bg_sum']) + floatval($usd_amount);
 				
@@ -1795,19 +1789,18 @@ class Publicv extends CI_Controller {
 			
 			
 		}
-		$pay = $this->manage->get_pay_instrument_sum();
+		$pay = $this->manage->get_pay_instrument_sum($date);
 		foreach($pay['instrument'] as $k){
 			if($k->tfi_currency == "USD"){
 				$data['pay_sum'] = floatval($data['pay_sum']) + floatval($k->tfi_amount);
 			}
 			elseif($k->tfi_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();		
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_pay'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_pay'] = $allStats->priceUsd;
 				
-				}
+				
 				$usd_amount = floatval($data['price_pay']) * floatval($k->tfi_amount);
 				$data['pay_sum'] = floatval($data['pay_sum']) + floatval($usd_amount);
 				
@@ -1869,13 +1862,12 @@ class Publicv extends CI_Controller {
 				$data['pay_sum'] = floatval($data['pay_sum']) + floatval($f->tfbs_amount);
 			}
 			elseif($f->tfbs_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();		
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_pay'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_pay'] = $allStats->priceUsd;
 				
-				}
+				
 				$usd_amount = floatval($data['price_pay']) * floatval($f->tfbs_amount);
 				$data['pay_sum'] = floatval($data['pay_sum']) + floatval($usd_amount);
 				
@@ -1933,19 +1925,18 @@ class Publicv extends CI_Controller {
 			
 			
 		}
-		$oth = $this->manage->get_oth_instrument_sum();
+		$oth = $this->manage->get_oth_instrument_sum($date);
 		foreach($oth['instrument'] as $k){
 			if($k->tfi_currency == "USD"){
 				$data['oth_sum'] = floatval($data['oth_sum']) + floatval($k->tfi_amount);
 			}
 			elseif($k->tfi_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();		
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_oth'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_oth'] = $allStats->priceUsd;
 				
-				}
+				
 				$usd_amount = floatval($data['price_oth']) * floatval($k->tfi_amount);
 				$data['oth_sum'] = floatval($data['oth_sum']) + floatval($usd_amount);
 				
@@ -2008,13 +1999,12 @@ class Publicv extends CI_Controller {
 				$data['oth_sum'] = floatval($data['oth_sum']) + floatval($f->tfbs_amount);
 			}
 			elseif($f->tfbs_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();		
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_oth'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_oth'] = $allStats->priceUsd;
 				
-				}
+				
 				$usd_amount = floatval($data['price_oth']) * floatval($f->tfbs_amount);
 				$data['oth_sum'] = floatval($data['oth_sum']) + floatval($usd_amount);
 				
@@ -2072,19 +2062,18 @@ class Publicv extends CI_Controller {
 			
 			
 		}
-		$wr = $this->manage->get_wr_instrument_sum();
+		$wr = $this->manage->get_wr_instrument_sum($date);
 		foreach($wr['instrument'] as $k){
 			if($k->tfi_currency == "USD"){
 				$data['wr_sum'] = floatval($data['wr_sum']) + floatval($k->tfi_amount);
 			}
 			elseif($k->tfi_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();		
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_wr'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_wr'] = $allStats->priceUsd;
 				
-				}
+			
 				$usd_amount = floatval($data['price_wr']) * floatval($k->tfi_amount);
 				$data['wr_sum'] = floatval($data['wr_sum']) + floatval($usd_amount);
 				
@@ -2146,13 +2135,12 @@ class Publicv extends CI_Controller {
 				$data['wr_sum'] = floatval($data['wr_sum']) + floatval($f->tfbs_amount);
 			}
 			elseif($f->tfbs_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_wr'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_wr'] = $allStats->priceUsd;
 				
-				}
+				
 				$usd_amount = floatval($data['price_wr']) * floatval($f->tfbs_amount);
 				$data['wr_sum'] = floatval($data['wr_sum']) + floatval($usd_amount);
 				
@@ -2217,18 +2205,17 @@ class Publicv extends CI_Controller {
 				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + (floatval($k->tffd_amount) * floatval($k->tffd_quantity));
 			}
 			elseif($k->tffd_currency == "XDC"){
-				$show = cmcModule();
-				foreach($show as $sh) {
+				$allStats = getXinFinStats();
 				
-				log_message("info","XDC_USD".$sh->price_usd) ;
-				$data['price_fund'] = $sh->price_usd;
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_fund'] = $allStats->priceUsd;
 				
-				}
+				
 				$usd_amount = floatval($data['price_fund']) * (floatval($k->tffd_amount) * floatval($k->tffd_quantity));
 				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + floatval($usd_amount);
 				
-				
-			}
+			}	
+			
 			elseif($k->tffd_currency == "GBP"){
 				$show = getConversion($k->tffd_currency);
 				foreach($show as $sh) {
@@ -2292,7 +2279,143 @@ class Publicv extends CI_Controller {
 			
 			
 		}
-		$data['tot_sum'] = floatval($data['rec_sum'] + $data['wr_sum'] + $data['oth_sum'] + $data['loc_sum'] + $data['sblc_sum'] + $data['pay_sum'] + $data['bg_sum'] + $data['fund_design_sum']);
+		$tot = $this->manage->get_instrument_sum($date);
+		foreach($tot['instrument'] as $k){
+			if($k->tfi_currency == "USD"){
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($k->tfi_amount);
+			}
+			elseif($k->tfi_currency == "XDC"){
+				$allStats = getXinFinStats();		
+				
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_tot'] = $allStats->priceUsd;
+				
+			
+				$usd_amount = floatval($data['price_tot']) * floatval($k->tfi_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
+				
+				
+			}
+			elseif($k->tfi_currency == "GBP"){
+				$show = getConversion($k->tfi_currency);
+				foreach($show as $sh) {
+				
+				log_message("info","GBP_USD".$sh) ;
+				$data['price_tot'] = $sh;
+				
+				}
+				$usd_amount = floatval($data['price_tot']) * floatval($k->tfi_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
+			
+			}
+			elseif($k->tfi_currency == "EUR"){
+				$show = getConversion($k->tfi_currency);
+				foreach($show as $sh) {
+				
+				log_message("info","EUR_USD".$sh) ;
+				$data['price_tot'] = $sh;
+				
+				}
+				$usd_amount = floatval($data['price_tot']) * floatval($k->tfi_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
+			
+			}
+			elseif($k->tfi_currency == "JPY"){
+				$show = getConversion($k->tfi_currency);
+				foreach($show as $sh) {
+				
+				log_message("info","JPY_USD".$sh) ;
+				$data['price_tot'] = $sh;
+				
+				}
+				$usd_amount = floatval($data['price_tot']) * floatval($k->tfi_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
+				
+			}
+			elseif($k->tfi_currency == "SGD"){
+				$show = getConversion($k->tfi_currency);
+				foreach($show as $sh) {
+				
+				log_message("info","SGD_USD".$sh) ;
+				$data['price_tot'] = $sh;
+				
+				}
+				$usd_amount = floatval($data['price_tot']) * floatval($k->tfi_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
+				
+			}
+			
+			
+		}
+		foreach($tot['funding'] as $f){
+			if($f->tfbs_currency == "USD"){
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($f->tfbs_amount);
+			}
+			elseif($f->tfbs_currency == "XDC"){
+				$allStats = getXinFinStats();
+				
+				log_message("info","XDC_USD".$allStats->priceUsd) ;
+				$data['price_tot'] = $allStats->priceUsd;
+				
+				
+				$usd_amount = floatval($data['price_tot']) * floatval($f->tfbs_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
+				
+				
+			}
+			elseif($f->tfbs_currency == "GBP"){
+				$show = getConversion($f->tfbs_currency);
+				foreach($show as $sh) {
+				
+				log_message("info","GBP_USD".$sh) ;
+				$data['price_tot'] = $sh;
+				
+				}
+				$usd_amount = floatval($data['price_tot']) * floatval($f->tfbs_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
+			
+			}
+			elseif($f->tfbs_currency == "EUR"){
+				$show = getConversion($f->tfbs_currency);
+				foreach($show as $sh) {
+				
+				log_message("info","EUR_USD".$sh) ;
+				$data['price_tot'] = $sh;
+				
+				}
+				$usd_amount = floatval($data['price_tot']) * floatval($f->tfbs_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
+			
+			}
+			elseif($f->tfbs_currency == "JPY"){
+				$show = getConversion($f->tfbs_currency);
+				foreach($show as $sh) {
+				
+				log_message("info","JPY_USD".$sh) ;
+				$data['price_tot'] = $sh;
+				
+				}
+				$usd_amount = floatval($data['price_tot']) * floatval($f->tfbs_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
+				
+			}
+			elseif($f->tfbs_currency == "SGD"){
+				$show = getConversion($f->tfbs_currency);
+				foreach($show as $sh) {
+				
+				log_message("info","SGD_USD".$sh) ;
+				$data['price_tot'] = $sh;
+				
+				}
+				$usd_amount = floatval($data['price_tot']) * floatval($f->tfbs_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
+				
+			}
+
+			
+			
+		}
+		$data['tot_act_sum'] = floatval($data['rec_sum'] + $data['wr_sum'] + $data['oth_sum'] + $data['loc_sum'] + $data['sblc_sum'] + $data['pay_sum'] + $data['bg_sum'] + $data['fund_design_sum']);
 		$allStats = getXinFinStats();
 		
 		$data['xdc_usd'] = $allStats->priceUsd;
@@ -5565,17 +5688,6 @@ class Publicv extends CI_Controller {
 		}
 	}
 
-	public function getPrice()
-	{
-		$show = cmcModule();
-		foreach($show as $sh) {
-			
-			// log_message("info",$sh->price_usd) ;
-			$data = $sh->price_usd;
-			
-		}
-		
-	}
 
 	public function gitPull() {
 		
