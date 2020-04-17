@@ -195,6 +195,7 @@
                                             <li><a href="javascript:void(0)" onclick="SocialShare('twitter')" class="twitter" data-sharer="twittter"><i class="fa fa-twitter"></i></a></li>
                                             <li><a href="javascript:void(0)" data-href="https://developers.facebook.com/docs/plugins/"  onclick="SocialShare('facebook')" class="facebook"data-sharer="facebook"><i class="fa fa-facebook"></i></a></li>
                                             <li><a href="javascript:void(0)" onclick="SocialShare('whatsapp')" data-action="share/whatsapp/share" data-sharer="whatsapp"class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                                            <li><a href="javascript:void(0)" onclick="SocialShare('email')" data-sharer="email"class="email"><i class="fa fa-whatsapp"></i></a></li>
                                             
                                             
                                         </ul>
