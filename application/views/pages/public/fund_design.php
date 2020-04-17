@@ -721,7 +721,7 @@ function SocialShare(socialType){
             if(socialType=="linkedin"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open("http://www.linkedin.com/shareArticle?mini=true&url=https://bit.ly/3eujSqv&text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                window.open("http://www.linkedin.com/shareArticle?mini=true&url=<?php echo base_url();?>assets/images/img/tradefinex-certificate.jpg&text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
             if(socialType=="twitter"){
@@ -785,21 +785,20 @@ function SocialShare(socialType){
             if(socialType=="linkedin"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                console.log("@@",' <?php echo base_url()?>assets/images/img');
-                window.open("http://www.linkedin.com/shareArticle?mini=true&url=https://bit.ly/3eujSqv",'sharer','toolbar=0,status=0,width=648,height=395');
+                window.open("http://www.linkedin.com/shareArticle?mini=true&url=<?php echo base_url();?>assets/images/img/tradefinex-certificate.jpg",'sharer','toolbar=0,status=0,width=648,height=395');
                 
                 return true;
             }
             if(socialType=="twitter"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open("https://twitter.com/intent/tweet?text=https://bit.ly/3eujSqv",'sharer','toolbar=0,status=0,width=648,height=395');
+                window.open("https://twitter.com/intent/tweet?url=https://bit.ly/3eujSqv",'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
             if(socialType=="facebook"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open("https://www.facebook.com/sharer.php?u=https://bit.ly/3eujSqv&quote=hi",'sharer','toolbar=0,status=0,width=648,height=395');
+                window.open("https://www.facebook.com/sharer.php?u=<?php echo base_url();?>assets/images/img/tradefinex-certificate.jpg&quote=hi",'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
             if(socialType=="whatsapp"){
