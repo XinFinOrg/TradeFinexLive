@@ -182,26 +182,7 @@
                             </div>
                         </div>
                         <div class="fundingDivider"><div class="fundingDividerLine"></div><span><i>AND</i></span></div>
-                            
-                            <div class="row">
-                            <div class="col-md-12">
-                                    <div class="widget widget-contact text-center">
-                                        <h1 class="text-green mb-20">Share Funding Request to Your Social Media Network</h1>
-                                        <!--<h4 class="widget-title mb-10">Start Requesting for the Fund</h4>-->
-                                        
-                                        <ul class="tf-social-bs" >
-                                        
-                                            <li><a href="javascript:void(0)" onclick="SocialShare('linkedin')"  class="linkedin" data-sharer="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="SocialShare('twitter')" class="twitter" data-sharer="twittter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="javascript:void(0)" data-href="https://developers.facebook.com/docs/plugins/"  onclick="SocialShare('facebook')" class="facebook"data-sharer="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="SocialShare('whatsapp')" data-action="share/whatsapp/share" data-sharer="whatsapp"class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="SocialShare('email')" data-sharer="email"class="email"><i class="fa fa-whatsapp"></i></a></li>
-                                            
-                                            
-                                        </ul>
-                                    </div>
-                                    </div>
-                                    </div>
+                        
                     </form>
                 </div>
             </div>
@@ -371,10 +352,11 @@
                                         
                                         <ul class="tf-social-bs" >
                                         
-                                            <li><a href="javascript:void(0)"  onclick="SocialShare('linkedin')"  class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="javascript:void(0)"  onclick="SocialShare('twitter')" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="javascript:void(0)" data-href="https://developers.facebook.com/docs/plugins/"  onclick="SocialShare('facebook')" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="javascript:void(0)" onclick="SocialShare('whatsapp')" data-action="share/whatsapp/share" class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                                            <li><a href="javascript:void(0)" onclick="SocialShare('linkedin')"  class="linkedin" data-sharer="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href="javascript:void(0)" onclick="SocialShare('twitter')" class="twitter" data-sharer="twittter"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="javascript:void(0)" data-href="https://developers.facebook.com/docs/plugins/"  onclick="SocialShare('facebook')" class="facebook"data-sharer="facebook"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="javascript:void(0)" onclick="SocialShare('whatsapp')" data-action="share/whatsapp/share" data-sharer="whatsapp"class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                                                                                   
                                             
                                         </ul>
                                     </div>
@@ -714,10 +696,9 @@ function SocialShare(socialType){
     $('#subBtn').click(function() {
         var textCheck = document.getElementById("text").checked;
         var imageCheck = document.getElementById("image").checked;
-        // let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
-        // let transactionHash = `https://explorer.xinfin.network/tx/${localStorage.getItem("transactionHash")}`;
+        let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
+        let transactionHash = `https://explorer.xinfin.network/tx/${localStorage.getItem("transactionHash")}`;
         if(textCheck== true && imageCheck==true){
-            console.log("inside true",socialType);
             if(socialType=="linkedin"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
@@ -798,7 +779,7 @@ function SocialShare(socialType){
             if(socialType=="facebook"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open("https://www.facebook.com/sharer.php?u=<?php echo base_url();?>assets/images/img/tradefinex-certificate.jpg&quote=hi",'sharer','toolbar=0,status=0,width=648,height=395');
+                window.open("https://www.facebook.com/sharer.php?u=<?php echo base_url();?>assets/images/img/tradefinex-certificate.jpg",'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
             if(socialType=="whatsapp"){
