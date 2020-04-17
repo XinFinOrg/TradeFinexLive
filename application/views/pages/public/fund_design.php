@@ -181,6 +181,26 @@
                                 <a id="getDoc" onclick="docShow()" class="btn btn-white btn-small">Access Document <i class="fa fa fa-angle-double-right"></i></a></span>
                             </div>
                         </div>
+                        <div class="fundingDivider"><div class="fundingDividerLine"></div><span><i>AND</i></span></div>
+                            
+                            <div class="row">
+                            <div class="col-md-12">
+                                    <div class="widget widget-contact text-center">
+                                        <h1 class="text-green mb-20">Share Funding Request to Your Social Media Network</h1>
+                                        <!--<h4 class="widget-title mb-10">Start Requesting for the Fund</h4>-->
+                                        
+                                        <ul class="tf-social-bs" >
+                                        
+                                            <li><a href="javascript:void(0)" onclick="SocialShare('linkedin')"  class="linkedin" data-sharer="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href="javascript:void(0)" onclick="SocialShare('twitter')" class="twitter" data-sharer="twittter"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="javascript:void(0)" data-href="https://developers.facebook.com/docs/plugins/"  onclick="SocialShare('facebook')" class="facebook"data-sharer="facebook"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="javascript:void(0)" onclick="SocialShare('whatsapp')" data-action="share/whatsapp/share" data-sharer="whatsapp"class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                                            
+                                            
+                                        </ul>
+                                    </div>
+                                    </div>
+                                    </div>
                     </form>
                 </div>
             </div>
@@ -650,104 +670,81 @@ document.getElementById("bulkAmount").value = amountt*10;
 
 </script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="<?=base_url('assets/js/sharer.min.js');?>"></script>
-<script src="<?=base_url('assets/js/html2canvas.js')?>"></script>
+<script src="<?=base_url('assets/js/sharer.min.js')?>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-var isMobile = {
-Android: function() {
-return navigator.userAgent.match(/Android/i);
-},
-BlackBerry: function() {
-return navigator.userAgent.match(/BlackBerry/i);
-},
-iOS: function() {
-return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-},
-Opera: function() {
-return navigator.userAgent.match(/Opera Mini/i);
-},
-Windows: function() {
-return navigator.userAgent.match(/IEMobile/i);
-},
-any: function() {
-return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-}
+    var isMobile = {
+    Android: function() {
+    return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+    return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+    return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+    return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
 };
 $(document).on("click", '.whatsapp', function() {
-if( isMobile.any() ) {
-var text = $(this).attr("data-text");
-var url = $(this).attr("data-link");
-var message = encodeURIComponent(text) + " - " + encodeURIComponent(url);
-var whatsapp_url = "whatsapp://send?text=" + message;
-window.location.href = whatsapp_url;
-} else {
-alert("Please share this article in mobile device");
-}
+    if( isMobile.any() ) {
+    var text = $(this).attr("data-text");
+    var url = $(this).attr("data-link");
+    var message = encodeURIComponent(text) + " - " + encodeURIComponent(url);
+    var whatsapp_url = "whatsapp://send?text=" + message;
+    window.location.href = whatsapp_url;
+    } else {
+    alert("Please share this article in mobile device");
+    }
+    });
 });
-});
-function genericSocialShare(url){
-// let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
-// let transactionHash = `https://explorer.xinfin.network/tx/${localStorage.getItem("transactionHash")}`;
-window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
-return true;
-}
-function genericSocialShare1(url){
-let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
-window.open(url+contractAddress,'sharer','toolbar=0,status=0,width=648,height=395');
-return true;
-}
+
 
 function SocialShare(socialType){
-//     var container = document.body; // full page 
-//  html2canvas(container).then(function(canvas) {
-//                 var link = document.createElement("a");
-//                 document.body.appendChild(link);
-//                 link.download = "html_image.png";
-//                 link.href = canvas.toDataURL("image/png");
-//                 link.target = '_blank';
-//                 link.click();
-//                 console.log("$$$$",link);
-//             });
-            
-
     $("#textimage").modal("show");
     $('#textimage').css('opacity', '1');
     $('#subBtn').click(function() {
         var textCheck = document.getElementById("text").checked;
         var imageCheck = document.getElementById("image").checked;
-        let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
-        let transactionHash = `https://explorer.xinfin.network/tx/${localStorage.getItem("transactionHash")}`;
+        // let contractAddress = localStorage.getItem("contractAddress").toLowerCase();
+        // let transactionHash = `https://explorer.xinfin.network/tx/${localStorage.getItem("transactionHash")}`;
         if(textCheck== true && imageCheck==true){
             console.log("inside true",socialType);
             if(socialType=="linkedin"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open("http://www.linkedin.com/shareArticle?mini=true&url=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                window.open("http://www.linkedin.com/shareArticle?mini=true&url=https://bit.ly/3eujSqv&text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
             if(socialType=="twitter"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open("https://twitter.com/intent/tweet?url=https://tradefinex.org,&text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress,'sharer','toolbar=0,status=0,width=648,height=395');
+                window.open("https://twitter.com/intent/tweet?url=https://bit.ly/3eujSqv,&text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress,'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
             if(socialType=="facebook"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open("https://www.facebook.com/sharer.php?u=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                window.open("https://www.facebook.com/sharer.php?u=https://bit.ly/3eujSqv&quote=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
             if(socialType=="whatsapp"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open("whatsapp://send?text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                window.open("whatsapp://send?url=https://bit.ly/3eujSqv&text=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at  :https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode @https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:"+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
             if(socialType == "email"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open('mailto:?subject=Fund My Design of PPE to stop spread of Coronavirus&body=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at:https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode at: https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:'+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash,'sharer','toolbar=0,status=0,width=648,height=395');
+                window.open('mailto:?subject=Fund My Design of PPE to stop spread of Coronavirus&body=I am looking for funding support for manufacturing Personal Protective Equipments that can help reduce the spread of coronavirus.%0D%0A%0D%0AI have securely uploaded my design on TradeFinex.org for your Review at:https://www.tradefinex.org/publicv/funddesign %0D%0A You can use contract address to view my design.%0D%0A%0D%0AYou can access other requirements of  the network if you are a network masternode at: https://www.tradefinex.org/publicv/financier.%0D%0A%0D%0ATradeFinex.org is a peer to peer blockchain network for Fund Distribution powered by XDC Coin%0D%0A%0D%0AContract Address:'+contractAddress+'%0D%0A%0D%0ATransaction Hash:'+transactionHash+"&attach=https://bit.ly/3eujSqv",'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
         }
@@ -787,31 +784,33 @@ function SocialShare(socialType){
             if(socialType=="linkedin"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open("http://www.linkedin.com/shareArticle?mini=true&url=<?php echo base_url();?>publicv/certificate",'sharer','toolbar=0,status=0,width=648,height=395');
+                console.log("@@",' <?php echo base_url()?>assets/images/img');
+                window.open("http://www.linkedin.com/shareArticle?mini=true&url=https://bit.ly/3eujSqv",'sharer','toolbar=0,status=0,width=648,height=395');
+                
                 return true;
             }
             if(socialType=="twitter"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open("https://twitter.com/intent/tweet?url=<?php echo base_url();?>publicv/certificate",'sharer','toolbar=0,status=0,width=648,height=395');
+                window.open("https://twitter.com/intent/tweet?text=https://bit.ly/3eujSqv",'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
             if(socialType=="facebook"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open("https://www.facebook.com/sharer.php?u=<?php echo base_url();?>publicv/certificate",'sharer','toolbar=0,status=0,width=648,height=395');
+                window.open("https://www.facebook.com/sharer.php?u=https://bit.ly/3eujSqv&quote=hi",'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
             if(socialType=="whatsapp"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open("whatsapp://send?url=<?php echo base_url();?>publicv/certificate",'sharer','toolbar=0,status=0,width=648,height=395');
+                window.open("whatsapp://send?url=https://bit.ly/3eujSqv",'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
             if(socialType == "email"){
                 $("#textimage").modal("hide");
                 $('#textimage').css('opacity', '1');
-                window.open('mailto:?subject=Fund My Design of PPE to stop spread of Coronavirus&url=<?php echo base_url();?>publicv/certificate','sharer','toolbar=0,status=0,width=648,height=395');
+                window.open('mailto:?subject=Fund My Design of PPE to stop spread of Coronavirus&body=https://bit.ly/3eujSqv','sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
         }
@@ -848,18 +847,19 @@ function SocialShare(socialType){
             }
         }
     })
+
     
 }
 function link(){
-var link = document.getElementById("exlink").href;
-console.log(link);
-document.getElementById("exlink").href = link+"?contractAddress="+localStorage.getItem("contractAddress")+"&transactionHash="+localStorage.getItem("transactionHash")
+    var link = document.getElementById("exlink").href;
+    console.log(link);
+    document.getElementById("exlink").href = link+"?contractAddress="+localStorage.getItem("contractAddress")+"&transactionHash="+localStorage.getItem("transactionHash")
 }
 function currency(){
-var index = document.getElementById("currency_supported").selectedIndex;
-var e = document.getElementById("currency_supported");
-var currency_supported = e.options[index].text;
-document.getElementById("curr").innerHTML = currency_supported;
+    var index = document.getElementById("currency_supported").selectedIndex;
+    var e = document.getElementById("currency_supported");
+    var currency_supported = e.options[index].text;
+    document.getElementById("curr").innerHTML = currency_supported;
 }
 </script>
 <?php
