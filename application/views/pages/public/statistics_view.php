@@ -255,7 +255,7 @@
 						<div class="counterFact bgOffWhiteShadow">
 							<div class="factTitle">$ <span class="counter"><?php echo rtrim(rtrim(sprintf('%.3f',$tot_act_sum),'0'),'.')?></span></div>
 							<div class="tf-divider"><hr /></div>
-							<p>Trade Instruments worth</p>
+							<p>Active Trade Instruments worth</p>
 						</div>
 						</div>
 					</div>
