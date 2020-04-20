@@ -2417,7 +2417,7 @@ class Publicv extends CI_Controller {
 		}
 		foreach($tot['funddesign'] as $k){
 			if($k->tffd_currency == "USD"){
-				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + (floatval($k->tffd_amount) * floatval($k->tffd_quantity));
+				$data['tot_sum'] = floatval($data['tot_sum']) + (floatval($k->tffd_amount) * floatval($k->tffd_quantity));
 			}
 			elseif($k->tffd_currency == "XDC"){
 				$allStats = getXinFinStats();
@@ -2427,7 +2427,7 @@ class Publicv extends CI_Controller {
 				
 				
 				$usd_amount = floatval($data['price_fund']) * (floatval($k->tffd_amount) * floatval($k->tffd_quantity));
-				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + floatval($usd_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
 				
 			}	
 			
@@ -2440,7 +2440,7 @@ class Publicv extends CI_Controller {
 				
 				}
 				$usd_amount = floatval($data['price_fund']) * (floatval($k->tffd_amount)* floatval($k->tffd_quantity));
-				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + floatval($usd_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
 			
 			}
 			elseif($k->tffd_currency == "EUR"){
@@ -2452,7 +2452,7 @@ class Publicv extends CI_Controller {
 				
 				}
 				$usd_amount = floatval($data['price_fund']) * (floatval($k->tffd_amount)* floatval($k->tffd_quantity));
-				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + floatval($usd_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
 			
 			}
 			elseif($k->tffd_currency == "JPY"){
@@ -2464,7 +2464,7 @@ class Publicv extends CI_Controller {
 				
 				}
 				$usd_amount = floatval($data['price_fund']) * (floatval($k->tffd_amount)* floatval($k->tffd_quantity));
-				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + floatval($usd_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
 				
 			}
 			elseif($k->tffd_currency == "SGD"){
@@ -2476,7 +2476,7 @@ class Publicv extends CI_Controller {
 				
 				}
 				$usd_amount = floatval($data['price_fund']) * (floatval($k->tffd_amount) * floatval($k->tffd_quantity));
-				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + floatval($usd_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
 				
 			}
 			elseif($k->tffd_currency == "INR"){
@@ -2488,7 +2488,7 @@ class Publicv extends CI_Controller {
 				
 				}
 				$usd_amount = floatval($data['price_fund']) * (floatval($k->tffd_amount) * floatval($k->tffd_quantity));
-				$data['fund_design_sum'] = floatval($data['fund_design_sum']) + floatval($usd_amount);
+				$data['tot_sum'] = floatval($data['tot_sum']) + floatval($usd_amount);
 				
 			}
 			
