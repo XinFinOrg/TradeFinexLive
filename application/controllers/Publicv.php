@@ -2418,6 +2418,7 @@ class Publicv extends CI_Controller {
 		foreach($tot['funddesign'] as $fd){
 			if($fd->tffd_currency == "USD"){
 				$data['tot_sum'] = floatval($data['tot_sum']) + (floatval($fd->tffd_amount) * floatval($fd->tffd_quantity));
+				log_message("info","#@@@@".$data['tot_sum']);
 			}
 			elseif($fd->tffd_currency == "XDC"){
 				$allStats = getXinFinStats();
