@@ -1751,7 +1751,7 @@
 			$this->db->from('{PRE}funding');
 			$query1 = $this->db->get();
 
-			$this->db->select('tffd_amount,tfbs_currency');
+			$this->db->select('tffd_amount,tffd_currency');
 			$this->db->from('{PRE}funddesign');
 			$query2 = $this->db->get();
 			// log_message("info","<<2.".json_encode($query1->result()));
