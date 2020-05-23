@@ -85,9 +85,7 @@
 							<ul class="submenu home_account">
 								<h4> Your Account</h4>
 								<p> Access account and manage tasks</p>
-								<p>To access the platform, use dummy <a href="<?=base_url();?>publicv/cred" >Credentials</a></p>
-								<a href="<?php echo base_url() ?>registration" class="pull-left acount_btn"> Sign Up</a> 
-								<a href="javascript:void(0)" class="pull-right acount_btn btn_logged" data-toggle="modal" data-target="#login"> Log In</a>
+								<a href="javascript:void(0)" class="center acount_btn btn_logged" data-toggle="modal" data-target="#login"> Log In</a>
 							</ul>
 						</li>
 						<li class="hidden-md hidden-lg"> <a href="javascript:void(0)" title="">Account</a>

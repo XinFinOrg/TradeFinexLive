@@ -48,4 +48,38 @@ class User extends CI_Model {
         return $userID?$userID:false;
     }
 
+    public function checkSocialUser($data){
+        $this->db->select('*');
+        $this->db->from('{PRE}social_user');
+        $where = "tfs_auth_provider = '".$data['oauth_provider']."' AND tfs_auth_id = '".$data['oauth_uid']."'";
+        $this->db->where($where);
+        $query = $this->db->get();
+        
+        $check = $query->num_rows();
+        
+        if($check > 0){
+            // Get prev user data
+            $result = $query->row_array();
+        
+            // Update user data
+            // $data['modified'] = date("Y-m-d H:i:s");
+            // $update = $this->db->update($this->tableName, $data, array('id'=>$result['id']));
+            // echo "User already exists";
+            return 1;
+            // die;
+            // user id
+            // $userID = $result['id'];
+        }else{
+            // Insert user data
+            $data['created'] = date("Y-m-d H:i:s");
+            $data['modified'] = date("Y-m-d H:i:s");
+            
+            $insert = $this->db->insert($this->tableName,$data);
+            // user id
+            $userID = $this->db->insert_id();
+        }
+        
+        // Return user id
+        return $userID?$userID:false;
+    }
 }

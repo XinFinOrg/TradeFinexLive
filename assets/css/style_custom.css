@@ -88,7 +88,8 @@
 }
 #signupForm .input-focus {
 	margin-bottom: 0px;
-	border-radius: 0px;
+	border-radius: 16px;
+	/* border: 1px solid ; */
 }
 #signupForm .input-focus {
 	border-bottom: 0px;

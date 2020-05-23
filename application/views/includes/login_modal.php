@@ -14,25 +14,14 @@
 					$attributes = array('id' => 'loginForm', 'class' => 'log_in_form', 'method' => 'post');
 					echo form_open_multipart(base_url().'login/', $attributes); 
 				?>
-					<div class="form-group focus-group">
-						<label class="form-label">
-							<input class="form-input input-focus" name="user_name" id="user_name" maxlength="50" required="" data-required-error="" type="text" tabindex="1" /><span class="form-name floating-label">EMAIL ID<sup>*</sup></span>
-						</label>
-					</div>
-					<div class="form-group focus-group">
-						<label class="form-label type_passwd">
-							<input class="form-input input-focus" name="user_password" id="user_password" maxlength="25" required="" data-required-error="" type="password" tabindex="2" /><span class="form-name floating-label">PASSWORD<sup>*</sup></span>
-							<span class="password_show show-hide"><a href="javascript:void(0)">Show</a></span>
-						</label>
-					</div>
+					<a href="<?php echo base_url("login/fblogin")?>" class="facebook"><i class="fa fa-facebook"></i></a>
 					<div class="row">
 						<?php echo $this->session->flashdata('error_logged_in'); ?>
 					</div>
 					<input type="hidden" name="action" value="login" />
 					<div class="btn-more"> <button type="submit">Sign In </button> </div>
 					<ul class="log_bottom_sec">
-						<li> <a class="rsp_btn" data-toggle="modal" data-target="#reset_password"> Forgot Password  &nbsp; &nbsp; |  &nbsp; &nbsp;</a> </li>
-						<li> <a href="<?php echo base_url() ?>registration"> Register Now</a> </li>
+						<li> <a href="<?php echo base_url() ?>registration">New User? Register Now</a> </li>
 					</ul>
 				</form>
 			</div>

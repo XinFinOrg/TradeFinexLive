@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700&display=swap');
 
 
-body {font-family: 'Muli', sans-serif;letter-spacing: 0.01rem;font-weight: normal;font-size: 14px;color: #687377;line-height: 1.5px;}
+body {font-family: 'Muli', sans-serif;letter-spacing: 0.01rem;font-weight: normal;font-size: 14px;color: #687377;line-height: 11.5px;}
 
 a:hover, a:active {background:transparent;}
 
@@ -1163,3 +1163,28 @@ Footer
 .fmd-price {background-color: #fbfcfd;padding: 12px 5px;border-top: 1px solid #d6e9f8;border-bottom: 1px solid #d6e9f8;font-size: 16px;font-weight:700;}
 .fmd-price.odd {background-color: transparent;padding: 12px 5px;border-top: none;border-bottom: none;}
 /*-- Fund My Design Page --*/
+
+/*-- Registraion Form --*/
+.create_form-block {border-radius: 4px;background-color: #f5f8fc;padding: 35px 30px 25px 30px;position: relative;height: 100%;}
+.create-form {padding:0px 20px 0px 20px;}
+.create-form .form-group label {width:100%;font-size: 15px;font-weight: 600;color: #687377;line-height: 18px;margin-bottom:6px;}
+.create-form .form-group label span {font-size: 12px;color: #007bff;float:right;}
+.create-form .form-group .error {font-size: 12px;color: #ea212d;padding-top:5px;margin-bottom:0px;}
+.create-form .form-group label span.text-green {font-size: 11px;color: #34b576;}
+.create-form .form-group p {font-size: 13px;padding-top:5px;margin-bottom:0px;}
+.create-form .form-group .form-control {font-family:inherit;display: block;width: 100%;height: 45px;padding: 6px 12px;font-size: 15px;line-height: 1.42857143;color: #687377;background-color: #ffffff;background-image: none;border: 1px solid #cccccc;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;-webkit-box-shadow: none;box-shadow: none;-webkit-transition: border-color ease-in-out .15s;-o-transition: border-color ease-in-out .15s;transition: border-color ease-in-out .15s;}
+.create-form select {border: 1px solid #cccccc;width: 100%;height: 50px;outline: none;padding-left: 20px;padding-right: 20px;-webkit-transition: all 0.3s ease 0s;-moz-transition: all 0.3s ease 0s;-o-transition: all 0.3s ease 0s;transition: all 0.3s ease 0s;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;    -webkit-appearance: none;-moz-appearance: none;appearance: none;background: url(../banner-assets/images/innerpage-images/arrow-down.png) #FFFFFF no-repeat calc(100% - 10px) !important;}
+.create-form select option:first-of-type {color: #a0afca;}
+.create-form select option {line-height:25px;}
+.create-form .input-group {position: relative;display: table;border-collapse: separate;}
+.create-form .input-group .form-control {padding: 6px 12px;line-height: 36px;}
+.create-form .input-group-btn {position: relative;font-size: 0;white-space: nowrap;}
+.create-form .input-group-btn .btn-primary {background:#969595;border-color:#969595;line-height:20px;height:45px;}
+.create-form .input-group-btn:first-child>.btn {margin-right: -1px;}
+.create-form .input-group .form-control:last-child {border-top-left-radius: 0;border-bottom-left-radius: 0;}
+.create-form  input[type=file] {display:none;}
+.create-form .tf-notice {overflow: hidden;background: #f9fffc;border: 1px solid #34b576;border-radius: 50px;margin-top: 5px;margin-bottom: 15px;}
+.create-form .tf-notice_content {-webkit-box-align: center;-ms-flex-align: center;align-items: center;text-align: center;padding: .7rem 1rem;}
+.create-form .tf-notice_content p {text-align:center;font-size:16px;font-weight: 600;margin-bottom:0px;}
+.create-form button {height:inherit;}
+input.error, textarea.error, select.error, label.error {border-color: #ea212d!important;}
