@@ -13,42 +13,25 @@
 		if($users && !empty($users) && sizeof($users) <> 0){
 			$data['full_name'] = $users['user_full_name'];
 			$user_ids = $users['user_id'];
-			$data['user_type'] = str_replace('-', ' ', $user['user_type']);
-			$user_type_refs = $users['user_type_ref'];
+			
 		}else{
 			// redirect(base_url().'log/out');
 		}
-		$uresults = $this->manage->get_user_info_by_id_and_type($user_ids, $user_type_refs);
+		// $uresults = $this->suser->get_social_user_company_info_by_id($user_ids);
 			
-			if(!empty($uresults) && is_array($uresults) && sizeof($uresults) <> 0){
+		// 	if(!empty($uresults) && is_array($uresults) && sizeof($uresults) <> 0){
 				
-				if($user_type_refs == 1){
-					
-					$uprofpics = $uresults[0]->tfsp_pic_file;
-					
-				}
-				
-				if($user_type_refs == 2){
-					
-					$uprofpics = $uresults[0]->tff_pic_file;
-					
-				}
-				
-				if($user_type_refs == 3){
-					
-					$uprofpics = $uresults[0]->tfb_pic_file;
-					
-				}
+		// 		log_message("info","inpic");
 				
 				
-			}	
+		// 	}	
 
 
 			?>
 
 
 			<!-- /.logo -->
-			<?php if($user_ids == 0 || $user_type_refs == 0){ ?>
+			<?php if($user_ids == 0){ ?>
 			<div class="nav-wrap">
 				<nav id="mainnav" class="mainnav">
 					<ul class="menu">
@@ -119,7 +102,7 @@
 				<!-- //mobile menu button --> 
 			</div>
 			
-			<?php }else if($user_ids <> 0 && $user_type_refs <> -1 && $user_type_refs <> 0){ 
+			<?php }else if($user_ids <> 0){ 
 				
 				$uprof_pic = '';
 				if(isset($uprofpics) && $uprofpics && $uprofpics <> ''){
@@ -145,7 +128,7 @@
 						<li class="hidden-xs hidden-sm"> | </li>
 						<li> <a href="<?=base_url();?>publicv/contact" title="">Contact us </a> </li>
 						<li class="hidden-xs hidden-sm"> | </li>
-						<li class="hidden-xs hidden-sm notify mnotify"> <a href="javascript:void(0)" title="Messages"> <i class="fa fa-envelope" aria-hidden="true"></i><span id="mnotify_c" class="badge up bg-danger notify_c">0</span></a>
+						<!-- <li class="hidden-xs hidden-sm notify mnotify"> <a href="javascript:void(0)" title="Messages"> <i class="fa fa-envelope" aria-hidden="true"></i><span id="mnotify_c" class="badge up bg-danger notify_c">0</span></a>
 							<ul id="mnotify_list" class="submenu user-list notify-list">
 								<li>
 									<h5>
@@ -160,10 +143,10 @@
 							<ul id="notify_list" class="submenu user-list notify-list">
 								<li><h5><span><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span> &nbsp; Your Notifications</h5></li>
 							</ul>
-						</li>
-						<li class="hidden-xs hidden-sm"> | </li>
-						<li class="hidden-xs hidden-sm"> <a href="javascript:void(0)" title="Setting" class="right-bar-toggle right-menu-item"><i class="fa fa-cog" aria-hidden="true"></i></a> </li>
-						<li class="hidden-xs hidden-sm"> | </li>
+						</li> -->
+						<!-- <li class="hidden-xs hidden-sm"> | </li> -->
+						<!-- <li class="hidden-xs hidden-sm"> <a href="javascript:void(0)" title="Setting" class="right-bar-toggle right-menu-item"><i class="fa fa-cog" aria-hidden="true"></i></a> </li>
+						<li class="hidden-xs hidden-sm"> | </li> -->
 						<li class="hidden-md hidden-lg"> <a href="javascript:void(0)" title="Message"> Message</a></li>
 						<li class="hidden-md hidden-lg"> <a href="javascript:void(0)" title="Notification"> Notification</a> </li>
 						<li class="hidden-md hidden-lg"> <a href="javascript:void(0)" title="Setting"> Setting</a> </li>

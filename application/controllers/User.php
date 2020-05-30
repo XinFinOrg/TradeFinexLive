@@ -7,7 +7,7 @@ class User extends CI_Controller {
 		parent::__construct();
         $this->load->helper(array('form', 'url', 'date', 'xdcapi', 'file', 'rating', 'notification'));
 		$this->load->library('session');
-		$this->load->model(array('manage', 'plisting'));
+		$this->load->model(array('manage','plisting','suser'));
 		// $this->is_logged_in();
 		$this->output->delete_cache();
 		
@@ -18,7 +18,7 @@ class User extends CI_Controller {
 	{
 		$user = $this->session->userdata('logged_in');
 	
-		if(!empty($user) && is_array($user) && $user['user_id'] && ($user['user_type'] == 'Service-Provider' || $user['user_type'] == 'Financier' || $user['user_type'] == 'Beneficiary')){
+		if(!empty($user) && is_array($user)){
 			if($user['user_id'] <> 0){
 				
 			}else{
@@ -119,8 +119,7 @@ class User extends CI_Controller {
 		if($user && !empty($user) && sizeof($user) <> 0){ 
 			$data['full_name'] = $user['user_full_name'];
 			$data['user_id'] = $user['user_id'];
-			$data['user_type'] = str_replace('-', ' ', $user['user_type']);
-			$data['user_type_ref'] = $user['user_type_ref'];
+			
 		}else{
 			redirect(base_url().'log/out');
 		}
@@ -159,22 +158,20 @@ class User extends CI_Controller {
 		if($action == 'edit_profile_base_bank' && $data['user_id'] <> 0){
 			
 			$data_add = array();
-			$data_add['tfu_bank_acc_number'] = $this->input->post('ubank_num');
-			$data_add['tfu_bank_acc_name'] = $this->input->post('ubank_name');
+			$data_add['tfs_bank_acc_number'] = $this->input->post('ubank_num');
+			$data_add['tfs_bank_acc_name'] = $this->input->post('ubank_name');
 			
-			$this->manage->update_user_base_info_all_by_id_and_type($data['user_id'], $data['user_type_ref'], $data_add);
+			$this->suser->update_user_base_info_all_by_id($data['user_id'], $data_add);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
 			$options = array();
 			$options['user_id'] = $data['user_id'];
-			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
 		}
 		
 
@@ -193,9 +190,9 @@ class User extends CI_Controller {
 			// $data_add['ubankname'] = $this->input->post('ubank_name');
 			$data_add['ulinkedin'] = $this->input->post('ulinkedin');
 			$data_add['udesignation'] = $this->input->post('udesignation');
-			$data_add['upass'] = openssl_encrypt($this->input->post('password'),"AES-128-ECB",$encryption_key);
+			
 										
-			$uresult = $this->manage->update_user_info_by_id_and_type($data['user_id'], $data['user_type_ref'], $data_add);
+			$uresult = $this->suser->update_user_info_by_id($data['user_id'], $data_add);
 			
 			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
 			
@@ -227,7 +224,7 @@ class User extends CI_Controller {
 							$data_add['tfb_pic_file'] = $uresult[0]->tfu_id.'_profimg.'.end($file_namea);
 						}
 						
-						$this->manage->update_profile_details_by_id_type($data['user_id'], $data['user_type_ref'], $data_add);
+						$this->suser->update_profile_details_by_id_type($data['user_id'], $data['user_type_ref'], $data_add);
 							
 						rename(FCPATH.'assets/user_profile_image/'.$file_name, FCPATH.'assets/user_profile_image/'.$uresult[0]->tfu_id.'_profimg.'.end($file_namea));
 						$success_data = $this->upload->data();
@@ -449,34 +446,7 @@ class User extends CI_Controller {
 			
 			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
 				
-				if($data['user_type_ref'] == 1){
-					$data['ufname'] = $uresult[0]->tfsp_fname;
-					$data['ulname'] = $uresult[0]->tfsp_lname;
-					$data['uemail'] = $uresult[0]->tfsp_email;
-					$data['ucontact'] = $uresult[0]->tfsp_contact;
-					$data['uaddress'] = $uresult[0]->tfsp_address;
-					$data['uprofpic'] = $uresult[0]->tfsp_pic_file;
-					$data['uvisibility'] = $uresult[0]->tfsp_public_visibility;
-				}
 				
-				if($data['user_type_ref'] == 2){
-					$data['ufname'] = $uresult[0]->tff_fname;
-					$data['ulname'] = $uresult[0]->tff_lname;
-					$data['uemail'] = $uresult[0]->tff_email;
-					$data['ucontact'] = $uresult[0]->tff_contact;
-					$data['uaddress'] = $uresult[0]->tff_address;
-					$data['uprofpic'] = $uresult[0]->tff_pic_file;
-					$data['uvisibility'] = $uresult[0]->tff_public_visibility;
-				}
-				
-				if($data['user_type_ref'] == 3){
-					$data['ufname'] = $uresult[0]->tfb_fname;
-					$data['ulname'] = $uresult[0]->tfb_lname;
-					$data['uemail'] = $uresult[0]->tfb_email;
-					$data['ucontact'] = $uresult[0]->tfb_contact;
-					$data['uaddress'] = $uresult[0]->tfb_address;
-					$data['uprofpic'] = $uresult[0]->tfb_pic_file;
-				}
 					
 				$data['uname'] = $uresult[0]->tfu_usern;
 				$data['upass'] = openssl_decrypt($uresult[0]->tfu_passwd,"AES-128-ECB",$encryption_key);
@@ -673,8 +643,8 @@ public function update_membership()
 		
 		$encryption_key = $this->config->item('encryption_key');
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -682,7 +652,7 @@ public function update_membership()
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 				
 		if($data['user_id'] <> 0){ 
@@ -733,58 +703,12 @@ public function update_membership()
 				$data['crow'] = $ucresult[0]->tfcom_id;
 			}	
 			
-			$uresult = $this->manage->get_user_info_by_id_and_type($data['user_id'], $data['user_type_ref']);
+			$uresult = $this->suser->get_social_user_company_info_by_id($data['user_id']);
 			
 			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
 				
-				if($data['user_type_ref'] == 1){
-					$data['ufname'] = $uresult[0]->tfsp_fname;
-					$data['ulname'] = $uresult[0]->tfsp_lname;
-					$data['utype'] = 'Supplier';
-					$data['uemail'] = $uresult[0]->tfsp_email;
-					$data['ucontact'] = $uresult[0]->tfsp_contact;
-					$data['uaddress'] = $uresult[0]->tfsp_address;
-					$data['uprofpic'] = $uresult[0]->tfsp_pic_file;
-					$data['uname'] = $uresult[0]->tfu_usern;
-					$data['upass'] = openssl_decrypt($uresult[0]->tfu_passwd,"AES-128-ECB",$encryption_key);
-					$data['ccountryn'] = $uresult[0]->tfc_name;
-					$data['cdeptn'] = $uresult[0]->cName;
-					$data['uvisibility'] = $uresult[0]->tfsp_public_visibility;
-					$ratinga = $this->plisting->get_user_rating_by_uid_type($uresult[0]->tfsp_user_ref, 1);
-						
-					if(!empty($ratinga) && is_array($ratinga) && sizeof($ratinga) <> 0 && trim($ratinga[0]->tfur_rating_value) <> ''){
-						$data['purating'] = $ratinga[0]->tfur_rating_value;
-					}else{	
-						$data['purating'] = 0;
-					}
-				}
-				
-				if($data['user_type_ref'] == 2){
-					$data['ufname'] = $uresult[0]->tff_fname;
-					$data['ulname'] = $uresult[0]->tff_lname;
-					$data['utype'] = 'Financier';
-					$data['uemail'] = $uresult[0]->tff_email;
-					$data['ucontact'] = $uresult[0]->tff_contact;
-					$data['uaddress'] = $uresult[0]->tff_address;
-					$data['uprofpic'] = $uresult[0]->tff_pic_file;
-					$data['uname'] = $uresult[0]->tfu_usern;
-					$data['upass'] = openssl_decrypt($uresult[0]->tfu_passwd,"AES-128-ECB",$encryption_key);
-					$data['ccountryn'] = $uresult[0]->tfc_name;
-					$data['cdeptn'] = $uresult[0]->cName;
-					$data['uvisibility'] = $uresult[0]->tff_public_visibility;
-					$ratinga = $this->plisting->get_user_rating_by_uid_type($uresult[0]->tff_user_ref, 2);
-						
-					if(!empty($ratinga) && is_array($ratinga) && sizeof($ratinga) <> 0 && trim($ratinga[0]->tfur_rating_value) <> ''){
-						$data['purating'] = $ratinga[0]->tfur_rating_value;
-					}else{	
-						$data['purating'] = 0;
-					}
-				}
-				
-				if($data['user_type_ref'] == 3){
-					$data['ufname'] = $uresult[0]->tfb_fname;
+					$data['ufname'] = $uresult[0]->tfs_fname;
 					$data['ulname'] = $uresult[0]->tfb_lname;
-					$data['utype'] = 'Beneficiary';
 					$data['uemail'] = $uresult[0]->tfb_email;
 					$data['ucontact'] = $uresult[0]->tfb_contact;
 					$data['uaddress'] = $uresult[0]->tfb_address;
@@ -800,7 +724,7 @@ public function update_membership()
 					}else{	
 						$data['purating'] = 0;
 					}
-				}
+				
 				
 				$data['uwalleta'] = $uresult[0]->tfu_xdc_walletID;
 				$data['uwalletbal'] = $uresult[0]->tfu_xdc_balance;

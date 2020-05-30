@@ -10,7 +10,7 @@
 				<li class="user_pinfo" id="ucompany"><a data-toggle="tab" href="#com_profile">Company Profile</a></li>
 				<?php if($user_type_ref == 1 || $user_type_ref == 2){ ?><li class="user_pinfo" id="uprodserv"><a data-toggle="tab" href="#prod_and_serv">Product & Services</a></li><?php } ?>
 				<li class="user_pinfo" id="ufinance"><a data-toggle="tab" href="#fin_info">Financial information</a></li>
-				<li class="user_pinfo" id="usubscription"><a data-toggle="tab" href="#sub_info">Subscription</a></li>
+				<!-- <li class="user_pinfo" id="usubscription"><a data-toggle="tab" href="#sub_info">Subscription</a></li> -->
 			</ul>
 			<div class="tab-content">
 				<div class="col-md-6 col-sm-6 col-xs-12" style="position: absolute;">
@@ -91,24 +91,16 @@
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<div class="form-group">
-										<label class="form-label type_passwd">
-											<input id="password" name="password" class="form-input <?=(trim($upass) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$upass;?>" type="password" />
-											<span class="form-name floating-label">Login Password<sup>*</sup></span>
-											<span class="append_icon_text show-hide"><a href="javascript:void(0)">Show</a></span>
+										<label class="form-label">
+											<input name="contactn" id="contactn" class="form-input <?=(trim($ucontact) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$ucontact;?>" type="text" />
+											<span class="form-name floating-label">Mobile Number</span>
 										</label>
 									</div>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<div class="form-group">
-										<label class="form-label">
-											<input name="contactn" id="contactn" class="form-input <?=(trim($ucontact) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$ucontact;?>" type="text" />
-											<span class="form-name floating-label">Mobile Number<sup>*</sup></span>
-										</label>
-									</div>
-								</div>
-								<div class="col-md-6 col-sm-6 col-xs-12">
+								
+								<div class="col-md-12 col-sm-12 col-xs-12">
 									<div class="form-group">
 										<label class="form-label type_passwd">
 											<input id="ulinkedin" name="ulinkedin" class="form-input <?=(trim($ulinkedin) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$ulinkedin;?>" type="text" />
@@ -129,7 +121,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12 accordian_additional_details">
+						<!-- <div class="col-md-12 col-sm-12 col-xs-12 accordian_additional_details">
 							<button type="button" id="accord_btn" class="accordion" onclick="trigger_slide()">Additional Contact details</button>
 							<div id="Slider" class="panel slide-up">
 								<div class="row">
@@ -155,7 +147,7 @@
 												<input class="form-input <?=(trim($c2desgination) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="c2_desgination" name="c2_desgination" type="text" value="<?=trim($c2desgination);?>" />
 												<span class="form-name floating-label">Contact Person Designation</span>
 											</label>  <!-- data-validation="custom" data-validation-regexp="^([a-zA-Z]+)$" -->
-										</div>
+										<!-- </div>
 									</div>
 								</div>
 								<div class="row">
@@ -186,7 +178,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<div class="col-md-3 col-sm-3 col-xs-12 btn-more">
 						<input type="hidden" name="c_row" value="<?=$crow;?>" />
@@ -644,98 +636,7 @@
 					</div>
 					<?php } ?>
 				</div>
-				<div id="sub_info" class="tab-pane fade">
-					<div class="row">
-						<div class="col-md-12 input_fields">
-							<form class="">
-								<div class="row">
-									<div class="col-md-12 col-sm-12 col-xs-12">
-										<div class="congratulations_text">
-
-											<?php
-												foreach($get_subscription_fees as $temp)
-												{
-													$user_ref = $temp->tfu_user_ref;
-
-													if($user_ref == 1){
-
-														$usertype = 'Supplier';
-													}
-													else if($user_ref == 2){
-
-														$usertype = 'Financier';
-													}
-													else if($user_ref == 3){
-
-														$usertype = 'Beneficiary';
-													}
-
-													$fees = $temp->amount;
-												}
-											?>
-
-											<?php if($ubase_info == 1 && $ucompany_info == 1 && $uprodserv_info == 1 && $ufinance_info == 1 && $membership_status == 1){ ?>
-
-												<h5><strong>Your Membership is Active.</strong> <br><br>The details are as below:</h5>
-											<br>
-											<p style="font-size: 14px">Membership Type: <?php echo $usertype; ?></p>
-											<br>
-											<p style="font-size: 14px">Fees Paid: US$ <?php echo $fees; ?></p>
-											<br>
-											<p style="font-size: 14px">Validity: 1 Year</p>
-											<br><br>
-
-
-											<?php
-												}
-												else{
-											?>
-
-											<h5><strong>You will have to Activate your membership by paying the membership fees.</strong> <br><br>The details for the fees are as below:</h5>
-											<br>
-											<p style="font-size: 14px">Membership Type: <?php echo $usertype; ?></p>
-											<br>
-											<p style="font-size: 14px">Membership Fees: US$ <?php echo $fees; ?></p>
-											<br>
-											<p style="font-size: 14px">Validity: 1 Year</p>
-											<br><br>
-											<?php
-
-												$paypalURL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'; //Test PayPal API URL
-												$paypalID = 'info@tradechainlabs.com'; //Business Email
-
-											?>
-											<form action="https://www.paypal.com/cgi-bin/webscr" method="post" >
-										        <!-- Identify your business so that you can collect the payments. -->
-										        <input type="hidden" name="business" value="<?php echo $paypalID; ?>">
-
-										        <!-- Specify a Buy Now button. -->
-										        <input type="hidden" name="cmd" value="_xclick">
-
-										        <!-- Specify details about the item that buyers will purchase. -->
-										        <input type="hidden" name="item_name" value="Subscription">
-										        <input type="hidden" name="item_number" value="1">
-										        <input type="hidden" name="amount" value="1">
-										        <input type="hidden" name="currency_code" value="USD">
-
-										        <!-- Specify URLs -->
-										        <input type='hidden' name='cancel_return' value='https://demo.tradefinex.org/user/retry_membership'>
-										        <input type='hidden' name='return' value='https://demo.tradefinex.org/user/update_membership'>
-
-											<div class="col-md-3 col-sm-3 col-xs-12">
-												<button type="submit" id="membership_payment" formaction="https://www.sandbox.paypal.com/webapps/hermes?token=02K62459AV119151W&useraction=commit&mfid=1542282359037_d55d4087cb678" class="submit_contact"> Pay Now</button>
-											</div>
-											<?php
-												}
-											?>
-											</form>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 		</div>
     </div>

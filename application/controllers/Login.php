@@ -7,8 +7,8 @@ class Login extends CI_Controller {
 		parent::__construct();
         $this->load->helper(array('form', 'url', 'date', 'xdcapi'));
 		$this->load->library(array('session', 'encrypt', 'email','facebook'));
-		$this->load->model('manage','user');
-		$this->output->delete_cache();
+		$this->load->model(array('manage','suser'));
+		// $this->output->delete_cache();
         $this->config->load('emailc');
 		$data = array();
 		$data_add = array();
@@ -546,91 +546,129 @@ class Login extends CI_Controller {
 		
 	}
 
-	public function fblogin(){
-		$userData = array();
+	public function fblogin()
+	{
+	  
 		
-		if(!isset($this->session)):
-			echo "<pre>";
-			print_r('$this->facebook->is_authenticated()');
-		endif;
-        // Check if user is logged in
-        if($this->facebook->is_authenticated()){
-            // Get user facebook profile details
-            $fbUser = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,link,gender,picture');
+		$fb = new \Facebook\Facebook([ 'app_id' => '2080555445396680', 'app_secret' => 'e169cd179a489dfc3901a69f9771d29e', 'default_graph_version' => 'v3.2', 'persistent_data_handler' => 'session' ]);
+		$helper = $fb->getRedirectLoginHelper(); if (isset($_GET['state'])) { $helper->getPersistentDataHandler()->set('state', $_GET['state']); }
+		$permissions = ['email']; 
+		// For more permissions like user location etc you need to send your application for review
+		
+		$loginUrl = $helper->getLoginUrl('http://localhost/TradeFinexLive/login/fbcallback', $permissions);
+		header("location: ".$loginUrl);
+	}	
 
-            // Preparing data for database insertion
-            $userData['oauth_provider'] = 'facebook';
-            $userData['oauth_uid']    = !empty($fbUser['id'])?$fbUser['id']:'';;
-            $userData['first_name']    = !empty($fbUser['first_name'])?$fbUser['first_name']:'';
-            $userData['last_name']    = !empty($fbUser['last_name'])?$fbUser['last_name']:'';
-            $userData['email']        = !empty($fbUser['email'])?$fbUser['email']:'';
-            $userData['gender']        = !empty($fbUser['gender'])?$fbUser['gender']:'';
-            $userData['picture']    = !empty($fbUser['picture']['data']['url'])?$fbUser['picture']['data']['url']:'';
-            $userData['link']        = !empty($fbUser['link'])?$fbUser['link']:'';
-            
-            // Insert or update user data
-            $userID = $this->user->checkUser($userData);
+	public function fbcallback(){
+		$fb = new \Facebook\Facebook([ 'app_id' => '2080555445396680', 'app_secret' => 'e169cd179a489dfc3901a69f9771d29e', 'default_graph_version' => 'v3.2', 'persistent_data_handler' => 'session' ]);
+		$helper = $fb->getRedirectLoginHelper(); if (isset($_GET['state'])) { $helper->getPersistentDataHandler()->set('state', $_GET['state']); }
+			
+			// $helper = $fb->getRedirectLoginHelper();  
+	  
+				if(isset($session)) {
+					$accessToken = $session->getToken();
+				} else {
+					$accessToken = $helper->getAccessToken('http://localhost/TradeFinexLive/login/fbcallback');
+				}	 
+				// echo $accessToken;
+				// die;
+				$_SESSION['token'] = $accessToken;
+				// echo ("token".$_SESSION['token']);
+				// die;
+			  $response = $fb->get('/me?fields=id,name,email,first_name,last_name,birthday,location,gender', $accessToken);
+			//   echo ("token".print_r($response));
+			//   die;
+			// User Information Retrival begins................................................
+			$me = $response->getGraphUser();
+			$userData['oauth_provider'] = 'facebook';
+			$userData['oauth_uid']      = $me->getProperty('id');
+			$userData['first_name']     = $me->getProperty('first_name');
+			$userData['last_name']      = $me->getProperty('last_name');
+			$userData['email']          = !empty($me->getProperty('email'))? $me->getProperty('email') : ' ';
+			// $userData['gender']         = !empty($me->getProperty('gender'))? $me->getProperty('gender') : ' ';
+			// $userData['locale']         = !empty($me->getProperty('locale'))? $me->getProperty('locale') : ' ';
+			// $userData['link']           = !empty($me->getProperty('link'))? $me->getProperty('link') : ' ';
+			// $userData['picture']        = !empty($me->getProperty('picture'))? $me->getProperty('picture') : ' ';
+			
+			if(isset($userData)){
+				$userID = $this->suser->checkSocialUser($userData);
+			}
+				
             
             // Check user data insert or update status
-            if(!empty($userID)){
-                $data['userData'] = $userData;
-				$this->session->set_userdata('userData', $userData);
-				redirect('user_authentication/facebook_profile/');
-            }else{
-               $data['userData'] = array();
-            }
-            
-            // Get logout URL
-            $data['logoutURL'] = $this->facebook->logout_url();
-        }else{
-			// Get login URL
-			// echo "<pre>";
-			// print_r($this->facebook->login_url());
-			// die;
-			$data['authURL'] =  $this->facebook->login_url();
-			// header($data);
+            if(!empty($userID) && is_array($userID) && sizeof($userID) <> 0){
+				if($userID['error'] == 1){
+					log_message("info","User Added successfully");
+					$user = $this->suser->add_social_user($userData);
+					print_r($user);
+					die;
+					$user_name = $userID['user_detail']->tfs_first_name.' '.$userID['user_detail']->tfs_last_name;
+					$session_data = array(
+						'user_id' => $userID['user_detail']->tfs_id,
+						'user_full_name' => $user_name,
+					);
+					
+					$this->session->set_userdata('logged_in', $session_data);
+					$data['msg'] = 'success';
+					log_message("info","Session Set".$data['msg']);
+					redirect(base_url().'dashboard');
+				}	
+				elseif($userID['error'] == 0){
+					log_message("info","User Exsist");
+				
+					$user_name = $userID['user_detail']->tfs_first_name.' '.$userID['user_detail']->tfs_last_name;
+					$session_data = array(
+						'user_id' => $userID['user_detail']->tfs_id,
+						'user_full_name' => $user_name,
+					);
+					
+					$this->session->set_userdata('logged_in', $session_data);
+					$data['msg'] = 'success';
+					log_message("info","Session Set".json_encode($userID));
+					redirect(base_url().'dashboard');
+				}
+				$user = $this->session->userdata('logged_in');
+
+				if($user && !empty($user) && sizeof($user) <> 0){
+					$data['full_name'] = $user['user_full_name'];
+					$data['user_id'] = $user['user_id'];
+					
+					log_message("info","User loggedIn");
+					$user_profile = $this->suser->get_social_user_info_by_id($data['user_id']);
+					$wallet_id = $user_profile[0]->tfs_xdc_wallet;
+					
+					// if(trim($wallet_id) <> ''){
+					
+					// 	$options = array('address' => $wallet_id);
+						
+					// 	$rcurlf = get_xdc_balance($options);
+					
+					// 	if($rcurlf){
+					// 		$rcurlfa = json_decode(stripslashes($rcurlf));
+					// 	}
+						
+					// 	$balance = ((isset($rcurlfa->balance)) ? $rcurlfa->balance : '');
+					// 	$status = ((isset($rcurlfa->status)) ? $rcurlfa->status : ''); 
+									
+					// 	$data_add = array();
+					// 	// $data_add['tfu_xdc_walletID'] = $wallet_id;
+					// 	$data_add['tfu_xdc_balance'] = $balance;
+						
+					// 	if(strtolower($status) == 'success' && trim($wallet_id) <> '' && trim($balance) <> ''){
+					// 		$result = $this->manage->update_user_base_info_all_by_id_and_type($data['user_id'], $data['user_type_ref'], $data_add);
+					// 	}
+					// }	
+					
+					redirect(base_url().'dashboard');
+				}else{
+					if($action <> 'login'){
+						redirect(base_url().'log/out');
+					}
+				}
+			}
 			
-        }
+
         
-		// Load login & profile view
-		$this->load->view('user_authentication/facebook',$data);
-		if($this->facebook->is_authenticated()){
-            // Get user facebook profile details
-            $fbUser = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,link,gender,picture');
-
-            // Preparing data for database insertion
-            $userData['oauth_provider'] = 'facebook';
-            $userData['oauth_uid']    = !empty($fbUser['id'])?$fbUser['id']:'';;
-            $userData['first_name']    = !empty($fbUser['first_name'])?$fbUser['first_name']:'';
-            $userData['last_name']    = !empty($fbUser['last_name'])?$fbUser['last_name']:'';
-            $userData['email']        = !empty($fbUser['email'])?$fbUser['email']:'';
-            $userData['gender']        = !empty($fbUser['gender'])?$fbUser['gender']:'';
-            $userData['picture']    = !empty($fbUser['picture']['data']['url'])?$fbUser['picture']['data']['url']:'';
-            $userData['link']        = !empty($fbUser['link'])?$fbUser['link']:'';
-            
-            // Insert or update user data
-            $userID = $this->user->checkUser($userData);
-            
-            // Check user data insert or update status
-            if(!empty($userID)){
-                $data['userData'] = $userData;
-				$this->session->set_userdata('userData', $userData);
-				redirect('user_authentication/facebook_profile/');
-            }else{
-               $data['userData'] = array();
-            }
-            
-            // Get logout URL
-            $data['logoutURL'] = $this->facebook->logout_url();
-        }else{
-			// Get login URL
-			// echo "<pre>";
-			// print_r($this->facebook->login_url());
-			// die;
-			$data['authURL'] =  $this->facebook->login_url();
-			// header($data);
-			
-        }
 		
     
     }
