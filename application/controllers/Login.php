@@ -5,6 +5,8 @@ class Login extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
+		require_once APPPATH.'third_party/src/Google_Client.php';
+		require_once APPPATH.'third_party/src/contrib/Google_Oauth2Service.php';
         $this->load->helper(array('form', 'url', 'date', 'xdcapi'));
 		$this->load->library(array('session', 'encrypt', 'email','facebook'));
 		$this->load->model(array('manage','suser'));
@@ -564,15 +566,38 @@ class Login extends CI_Controller {
 		$helper = $fb->getRedirectLoginHelper(); if (isset($_GET['state'])) { $helper->getPersistentDataHandler()->set('state', $_GET['state']); }
 			
 			// $helper = $fb->getRedirectLoginHelper();  
-	  
+			try{
 				if(isset($session)) {
 					$accessToken = $session->getToken();
 				} else {
 					$accessToken = $helper->getAccessToken('http://localhost/TradeFinexLive/login/fbcallback');
-				}	 
-				// echo $accessToken;
-				// die;
-				$_SESSION['token'] = $accessToken;
+				}	
+			}catch(FacebookResponseException $e){
+				log_message("info", 'Graph returned an error: ' . $e->getMessage());
+				echo 'Graph returned an error: ' . $e->getMessage();
+        		exit;
+			}catch (FacebookSDKException $e) {
+				// When validation fails or other local issues
+				log_message("info", 'Facebook SDK returned an error: ' . $e->getMessage());
+				echo 'Facebook SDK returned an error: ' . $e->getMessage();
+				exit;
+			}
+			if (!isset($accessToken)) {
+				if ($helper->getError()) {
+					header('HTTP/1.0 401 Unauthorized');
+					echo "Error: " . $helper->getError() . "\n";
+					echo "Error Code: " . $helper->getErrorCode() . "\n";
+					echo "Error Reason: " . $helper->getErrorReason() . "\n";
+					echo "Error Description: " . $helper->getErrorDescription() . "\n";
+				} else {
+					header('HTTP/1.0 400 Bad Request');
+					echo 'Bad request';
+				}
+				exit;
+			}
+				 
+				
+			  $_SESSION['token'] = $accessToken;
 				// echo ("token".$_SESSION['token']);
 				// die;
 			  $response = $fb->get('/me?fields=id,name,email,first_name,last_name,birthday,location,gender', $accessToken);
@@ -600,14 +625,137 @@ class Login extends CI_Controller {
 				if($userID['error'] == 1){
 					log_message("info","User Added successfully");
 					$user = $this->suser->add_social_user($userData);
-					print_r($user);
-					die;
+					foreach($user as $userr){
+						
+						$user_name = $userr->tfs_first_name.' '.$userr->tfs_last_name;
+						$session_data = array(
+							'user_id' => $userr->tfs_id,
+							'user_full_name' => $user_name,
+						);
+					}
+					$this->session->set_userdata('logged_in', $session_data);
+					$data['msg'] = 'success';
+					log_message("info","Session Set".$data['msg']);
+					redirect(base_url().'dashboard');
+				}	
+				elseif($userID['error'] == 0){
+					log_message("info","User Exsist");
+				
 					$user_name = $userID['user_detail']->tfs_first_name.' '.$userID['user_detail']->tfs_last_name;
 					$session_data = array(
 						'user_id' => $userID['user_detail']->tfs_id,
 						'user_full_name' => $user_name,
 					);
 					
+					$this->session->set_userdata('logged_in', $session_data);
+					$data['msg'] = 'success';
+					log_message("info","Session Set".json_encode($userID));
+					redirect(base_url().'dashboard');
+				}
+				$user = $this->session->userdata('logged_in');
+
+				if($user && !empty($user) && sizeof($user) <> 0){
+					$data['full_name'] = $user['user_full_name'];
+					$data['user_id'] = $user['user_id'];
+					
+					log_message("info","User loggedIn");
+					$user_profile = $this->suser->get_social_user_info_by_id($data['user_id']);
+					$wallet_id = $user_profile[0]->tfs_xdc_wallet;
+					
+					if(trim($wallet_id) <> ''){
+					
+						$options = array('address' => $wallet_id);
+						
+						// $rcurlf = get_xdc_balance($options);
+					
+						// if($rcurlf){
+						// 	$rcurlfa = json_decode(stripslashes($rcurlf));
+						// }
+						
+						// $balance = ((isset($rcurlfa->balance)) ? $rcurlfa->balance : '');
+						// $status = ((isset($rcurlfa->status)) ? $rcurlfa->status : ''); 
+									
+						// $data_add = array();
+						// // $data_add['tfu_xdc_walletID'] = $wallet_id;
+						// $data_add['tfu_xdc_balance'] = $balance;
+						
+						// if(strtolower($status) == 'success' && trim($wallet_id) <> '' && trim($balance) <> ''){
+						// 	$result = $this->manage->update_user_base_info_all_by_id_and_type($data['user_id'], $data['user_type_ref'], $data_add);
+						// }
+					}	
+					
+					redirect(base_url().'dashboard');
+				}else{
+					if($action <> 'login'){
+						redirect(base_url().'log/out');
+					}
+				}
+			}
+			
+
+        
+		
+    
+	}
+	
+	public function glogin()
+	{
+		
+		$clientId = '974340167294-4tm547181uu7v0gtqj4d1bv4gp1ffugq.apps.googleusercontent.com'; //Google client ID
+		$clientSecret = 's1gEY7eIayJBjcYHbsvnA8Ha'; //Google client secret
+		// $redirectURL = base_url().'login/glogin';
+		$redirectURL = "http://localhost/TradeFinexLive/login/glogin";
+		//Call Google API
+		$gClient = new Google_Client();
+		$gClient->setApplicationName('Glogin');
+		$gClient->setClientId($clientId);
+		$gClient->setClientSecret($clientSecret);
+		$gClient->setRedirectUri($redirectURL);
+		$google_oauthV2 = new Google_Oauth2Service($gClient);
+		
+		if(isset($_GET['code']))
+		{
+			$gClient->authenticate($_GET['code']);
+			$_SESSION['token'] = $gClient->getAccessToken();
+			header('Location: ' . filter_var($redirectURL, FILTER_SANITIZE_URL));
+		}
+
+		if (isset($_SESSION['token'])) 
+		{
+			$gClient->setAccessToken($_SESSION['token']);
+		}
+		
+		if ($gClient->getAccessToken()) {
+			$gpInfo = $google_oauthV2->userinfo->get();
+			
+			$userData['oauth_provider'] = 'google';
+			$userData['oauth_uid']      = $gpInfo['id'];
+			$userData['first_name']     = $gpInfo['given_name'];
+			$userData['last_name']      = $gpInfo['family_name'];
+			$userData['email']          = $gpInfo['email'];
+			$userData['gender']         = !empty($gpInfo['gender'])?$gpInfo['gender']:'';
+			$userData['locale']         = !empty($gpInfo['locale'])?$gpInfo['locale']:'';
+			$userData['link']           = !empty($gpInfo['link'])?$gpInfo['link']:'';
+			$userData['picture']        = !empty($gpInfo['picture'])?$gpInfo['picture']:'';
+		
+			if(isset($userData)){
+				$userID = $this->suser->checkSocialUser($userData);
+			}
+				
+            
+            // Check user data insert or update status
+            if(!empty($userID) && is_array($userID) && sizeof($userID) <> 0){
+				if($userID['error'] == 1){
+					log_message("info","User Added successfully");
+					$user = $this->suser->add_social_user($userData);
+					foreach($user as $userr){
+						
+						$user_name = $userr->tfs_first_name.' '.$userr->tfs_last_name;
+						$session_data = array(
+							'user_id' => $userr->tfs_id,
+							'user_full_name' => $user_name,
+						);
+					}
 					$this->session->set_userdata('logged_in', $session_data);
 					$data['msg'] = 'success';
 					log_message("info","Session Set".$data['msg']);
@@ -667,11 +815,16 @@ class Login extends CI_Controller {
 				}
 			}
 			
-
-        
+        } 
+		else 
+		{
+            $url = $gClient->createAuthUrl();
+		    header("Location: $url");
+            exit;
+		}
 		
-    
-    }
+		
+	}
 }
 
 ?>

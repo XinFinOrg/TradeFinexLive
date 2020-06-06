@@ -386,3 +386,23 @@ if (!function_exists('getXinFinStats'))
         
     }
 }
+
+if (!function_exists('generateAddress'))
+{
+    function generateAddress()
+    {
+        try{
+            $output = array();
+            $node = exec('cd node_scripts && node create_xdc_account.js',$output);
+            
+            // log_message('info','private key exist'.$node);
+            return json_decode($node);
+        
+        }
+        catch (Exception $e) {
+            log_message("error".$e->getMessage());
+            return '0';
+        }
+        
+    }
+}

@@ -1,6 +1,6 @@
 <div class="dash_wraper">
     <?php
-    if ((empty($check_company) && is_array($check_company) && sizeof($check_company) == 0) || $check_company[0]->tfscom_cat_ref == 0 || $check_company[0]->tfscom_country_ref == 0) {
+    if ((empty($check_company) && is_array($check_company) && sizeof($check_company) == 0) || $check_company[0]->tfscom_industry== 0 || $check_company[0]->tfscom_country_ref == 0) {
         log_message("info","No Profile");
         redirect(base_url() . 'user/edit');
 

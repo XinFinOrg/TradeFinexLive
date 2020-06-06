@@ -42,14 +42,14 @@
 							$uprof_pic = $uprofpica[0].'_thumb.'.$uprofpica[1];
 						}
 
-						if(!file_exists(FCPATH.'assets/user_profile_image/'.$uprof_pic)){
+						if(!file_exists(FCPATH.'assets/social_user_profile_image/'.$uprof_pic)){
 							$uprof_pic = $uprofpic;
 						}
 					?>
 					<div class="row">
 						<div class="col-md-3 col-sm-3 col-xs-12 pull-right profile_photo">
 							<div class="contact_person_photo_back">
-								<div class="contact_person_photo"> <img id="user_pic" src="<?=(($uprofpic && $uprofpic != '' && $uprofpic != 'NULL') ? base_url().'assets/user_profile_image/'.$uprof_pic : base_url().'assets/images/img/contact_profile_photo.png');?>" />
+								<div class="contact_person_photo"> <img id="user_pic" src="<?=(($uprofpic && $uprofpic != '' && $uprofpic != 'NULL') ? base_url().'assets/social_user_profile_image/'.$uprof_pic : base_url().'assets/images/img/contact_profile_photo.png');?>" />
 									<label for="file-upload" class="custom-file-upload">
 										<img src="<?=base_url();?>assets/images/icon/upload_plus.png" />
 									</label>
@@ -82,12 +82,12 @@
 							<div class="row">
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<div class="form-group">
-										<label class="form-label input-focust">
-											<input name="email" id="email" class="form-input <?=(trim($uemail) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$uemail;?>" type="text" />
-											<span class="form-name floating-label">Email ID / Username<sup>*</sup></span>
+										<label class="form-label">
+											<input name="email" id="email" class="form-input <?=(trim($uemail) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$uemail;?>" type="text" ="falreadonlyse" />
+											<span class="form-name floating-label">Email ID <sup>*</sup></span>
 										</label>
 									</div>
-									<input name="usern" id="usern" class="form-control" value="<?=$uname;?>" style="background: #fff;box-shadow:none;" type="hidden" readonly />
+									<!-- <input name="usern" id="usern" class="form-control" value="<?=$uname;?>" style="background: #fff;box-shadow:none;" type="hidden"  /> -->
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<div class="form-group">
@@ -202,7 +202,7 @@
 									<div class="col-md-3 col-sm-3 col-xs-12 pull-right company_logo_block">
 										<div class="contact_person_photo_back company_logo_area">
 											<div class="contact_person_photo">
-												<img id="company_pic" src="<?=(($clogo && $clogo != '' && $clogo != 'NULL') ? base_url().'assets/user_company_logo/'.$clogo : base_url().'assets/images/img/company_logo.png') ?>" class="avatar" alt="avatar" />
+												<img id="company_pic" src="<?=(($clogo && $clogo != '' && $clogo != 'NULL') ? base_url().'assets/social_user_company_logo/'.$clogo : base_url().'assets/images/img/company_logo.png') ?>" class="avatar" alt="avatar" />
 												<label for="file-upload-comp" class="custom-file-upload">
 													<img src="<?=base_url();?>assets/images/icon/upload_plus.png" />
 												</label>
@@ -540,7 +540,7 @@
 						<div class="col-md-12 input_fields">
 							<form class="">
 								<div class="row">
-									<div class="col-md-8 col-sm-8 col-xs-12">
+									<div class="col-md-12 col-sm-12 col-xs-12">
 										<div class="form-group">
 											<label class="form-label">
 												<input id="xwallet_id" name="xwallet_id" class="form-input input-focus input-readonly" value="<?=$uxwallet;?>" type="text" autocomplete="" data-required-error="" />
@@ -549,7 +549,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-md-4 col-sm-4 col-xs-12">
+									<!-- <div class="col-md-4 col-sm-4 col-xs-12">
 										<div class="form-group">
 											<label class="form-label">
 												<input id="xwallet_balance" name="xwallet_balance" class="form-input input-focus input-readonly" value="<?=$uxbalance.' XDC Tokens';?>" type="text" autocomplete="" data-required-error="" />
@@ -561,7 +561,7 @@
 											&nbsp; &nbsp;<a class="update_wallet_action_message"  data-toggle="modal" href="#select_exchange"  style="font-size:13px"> Top Up XDC  </a>
 
 										</div>
-									</div>
+									</div> -->
 								</div>
 
 							</form>
@@ -581,7 +581,7 @@
 										<div class="form-group">
 											<label class="form-label">
 												<input class="form-input <?=(trim($ubankname) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="ubank_name" name="ubank_name" value="<?=$ubankname;?>" type="text" data-validation="custom" data-validation-regexp="^([a-zA-Z\s]+)$" autocomplete="" />
-												<span class="form-name floating-label">Bank Name</span>
+												<span class="form-name floating-label">Bank Name<sup>*</sup></span>
 											</label>
 										</div>
 									</div>
@@ -589,30 +589,12 @@
 										<div class="form-group">
 											<label class="form-label">
 												<input class="form-input <?=(trim($ubankno) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="ubank_num" name="ubank_num" value="<?=$ubankno;?>" type="text" data-validation="number" autocomplete="" />
-												<span class="form-name floating-label">Bank Account Number</span>
+												<span class="form-name floating-label">Bank Account Number<sup>*</sup></span>
 											</label>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-12 col-sm-12 col-xs-12">
-
-										<label class="form-label">Exchanges	</label>
-											<div class="row"><div class="col-md-4 col-sm-4 col-xs-12">
-											<div class=" checkbox radio-danger">
-												<input  class=" financing_amount"  type="checkbox" value="AlphaEx"checked>
-												<label class="form-label" > AlphaEx</label>
-											</div></div>
-											<div class="col-md-4 col-sm-4 col-xs-12"><div class=" checkbox radio-danger">
-												<input  class=" financing_amount"  type="checkbox" value="Quoinex">
-												<label >Quoinex</label>
-											</div></div>
-											<div class="col-md-4 col-sm-4 col-xs-12"><div class=" checkbox radio-danger">
-												<input  class=" financing_amount"  type="checkbox" value="COSS">
-												<label >COSS.io</label>
-											</div></div>
-
-
-								</div>
+								
 							</div>
 								<div class="col-md-3 btn-more">
 									<!-- <button id="link_wallet" type="button" class="submit_contact" data-toggle="modal" data-target="#xinfin_usign_in" data-backdrop="static" data-keyboard="false"> <?=(trim($uxwallet) == '' ? 'Submit' : 'Submit');?></button> -->
@@ -641,125 +623,6 @@
 		</div>
     </div>
 </section>
-<!-- Trigger the modal with a button -->
-<div class="modal fade" id="xinfin_usign_in" role="dialog" tabindex="-1" >
-	<div class="modal-dialog">
-		<!-- Modal content-->
-
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span class="hidden-xs">&times;</span> <span class="hidden-md hidden-lg"> <img src="<?php echo base_url() ?>assets/images/icon/log_arrow.png"  alt="icon" /></span></button>
-			</div>
-			<div class="modal-body">
-				<div class="main_pannel_top">
-					<div class="logo_reg">
-						<img class="img-responsive xinfin_logo_sign_up" style="margin:0 auto;width:80px;" src="<?=base_url();?>assets/images/img/xinfin_logo_sign_up.png" alt="logo" />
-						<input type="hidden" name="ruser_wallet_id" id="ruser_wallet_id" value="0" />
-						<input type="hidden" name="ruser_wallet_balance" id="ruser_wallet_balance" value="0" />
-						<div class="failure_frown text-center" style="display:none"><img src="<?=base_url();?>assets/images/icon/cross.png" style="border:0px;" /></div>
-						<div class="success_smile text-center" style="display:none"><img src="<?=base_url();?>assets/images/icon/right.png" style="border:0px;" /></div>
-					</div>
-					<div class="main_pannel">
-						<div class="col-md-12 text-center">
-							<div class="add_wallet_action_loader loader_gif" style="display:none;"></div>
-							<div class="add_wallet_action_loader text-center loader_text" style="display:none;">Please wait ...</div>
-						</div>
-						<div class="panel">
-							<div class="panel-body">
-								<form id="xinfinForm" class="" method="post" role="form" enctype="multipart/form-data" accept-charset="utf-8">
-									<div class="form-group xinfin_login">
-										<label class="form-label">
-											<input id="xuser_name" class="form-input input-focus-notr" name="xuser_name" type="text" data-validation="required" autocomplete="" data-required-error="" />
-											<span class="form-name floating-label">Email<sup>*</sup></span>
-										</label>
-									</div>
-									<div class="form-group xinfin_login type_passwd">
-										<label class="form-label">
-											<input id="xuser_password" class="form-input input-focus-notr" name="xuser_password" maxlength="25" type="password" data-validation="required" autocomplete="" data-required-error="" />
-											<span class="form-name floating-label">Password<sup>*</sup></span>
-											<span class="show-hide append_icon_text" style="margin-right: 10px;"><a href="javascript:void(0)">Show</a></span>
-										</label>
-										<span class="forgot_passwd"><a href="https://ewallet.xinfin.org/forgot" target="_blank"><small>Forgot your password?</small></a></span>
-									</div>
-									<div class="form-group xinfin_otp" style="display:none">
-										<label class="form-label">
-											<input id="xotp_val" class="form-input input-focus-notr" name="xotp_val" maxlength="10" tabindex="3" type="text" data-validation="required" autocomplete="" data-required-error="" />
-											<label class="form-name floating-label" for="otp">OTP<sup>*</sup></label>
-										</label>
-									</div>
-									<div class="form-group btn-more">
-										<button id="signin_xinfin" type="button" class="submit_contact xinfin_login">Sign in</button>
-									</div>
-									<div class="col-xs-12 col-sm-6 col-md-12 no-padding-left xinfin_signin_error" style="display:none">
-										<label class="error" style="color:red;width:100%;">XDC Username/Password Not Valid ! Try again. <hr class="left" />	<small>New to XDC ? <a href="https://ewallet.xinfin.org/"
-										class="create_account_xinfin" target="_blank"> Create account</a> </small><hr class="right" /></label>
-										<!-- <hr class="left" /><br><small>Top Up XDC <a class="rsp_btn"  data-dismiss="modal" data-toggle="modal" href="#reset_password"> Here </a> </small><hr class="right" />--></label>
-								</div>
-
-									<div class="col-xs-12 col-sm-6 col-md-12 no-padding-left xinfin_error" style="display:none">
-										<label class="error" style="color:red;width:100%;">Error input or something else ! Try again.</label>
-									</div>
-
-									<div class="col-xs-12 col-sm-6 col-md-12 no-padding-left otp_error" style="display:none">
-										<label class="error" style="color:red;width:100%;">OTP Not Valid ! Try again.</label>
-									</div>
-
-									<div class="col-xs-12 col-sm-6 col-md-12 no-padding-left no-padding-right otp_success text-center" style="display:none;">
-										<h3 class="text-center">Wallet Added</h3>
-										<p class="text-center">XDC wallet has been added to Tradefinex Successfully.</p>
-									</div>
-									<div class="col-xs-12 col-sm-6 col-md-12 no-padding-left add_wallet_error" style="display:none">
-										<label class="error" style="color:red;width:100%;">XDC wallet already exist ! Add another. </label>
-									</div>
-									<div class="form-group divider xinfin_login">
-
-										<hr class="left" />	<small>New to XDC ? <a href="https://ewallet.xinfin.org/"
-										class="create_account_xinfin" target="_blank"> Create account</a> </small><hr class="right" />
-										</div>
-
-
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<div class="form-group btn-more">
-					<button type="button" id="signin_xinfin_add_wallet_otp" class="btn signin_xinfin_otp" style="display:none;"  data-dismiss="modal" >Add Wallet ID Now</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="modal fade" id="select_exchange" role="dialog" tabindex="-1" >
-	<div class="modal-dialog">
-		<!-- Modal content-->
-
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span class="hidden-xs">&times;</span> <span class="hidden-md hidden-lg"> <img src="<?php echo base_url() ?>assets/images/icon/log_arrow.png"  alt="icon" /></span></button>
-			</div>
-			<div class="modal-body">
-				<div class="main_pannel_top">
-					<div class="logo_reg">
-						<img class="img-responsive xinfin_logo_sign_up" style="margin:0 auto;width:80px;" src="<?=base_url();?>assets/images/img/xinfin_logo_sign_up.png" alt="logo" />
-
-					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12"><a href="https://alphaex.net" target="_blank">
-						<img class="img-responsive xinfin_logo_sign_up" width="100px"   src="<?=base_url();?>assets/images/img/alphaex_logo.jpg" alt="logo" />
-
-					</div>
-				</div>
-
-		</div>
-	</div>
- </div>
-</div>
 
 <script type="text/javascript">
 	// slideup/slidedown

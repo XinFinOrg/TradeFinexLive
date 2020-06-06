@@ -5,7 +5,7 @@ class User extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
-        $this->load->helper(array('form', 'url', 'date', 'xdcapi', 'file', 'rating', 'notification'));
+        $this->load->helper(array('form', 'url', 'date', 'xdcapi', 'file', 'blockchain', 'notification'));
 		$this->load->library('session');
 		$this->load->model(array('manage','plisting','suser'));
 		// $this->is_logged_in();
@@ -156,10 +156,11 @@ class User extends CI_Controller {
         // $config['max_height']           = 1024;
 	
 		if($action == 'edit_profile_base_bank' && $data['user_id'] <> 0){
-			
+			$addr = generateAddress();
 			$data_add = array();
+			$data_add['tfs_xdc_wallet'] = $addr->address;
 			$data_add['tfs_bank_acc_number'] = $this->input->post('ubank_num');
-			$data_add['tfs_bank_acc_name'] = $this->input->post('ubank_name');
+			$data_add['tfs_bank_name'] = $this->input->post('ubank_name');
 			
 			$this->suser->update_user_base_info_all_by_id($data['user_id'], $data_add);
 		}
@@ -178,14 +179,14 @@ class User extends CI_Controller {
 		if($action == 'edit_profile_base' && $data['user_id'] <> 0){ // || $action == 'edit_profile_finance'
 			
 			$data_add = array();
-			$config['upload_path']          = FCPATH.'assets/user_profile_image/';
+			$config['upload_path']          = FCPATH.'assets/social_user_profile_image/';
         
 			$data_add['ufname'] = $this->input->post('first_name');
 			$data_add['ulname'] = $this->input->post('last_name');
 			$data_add['uemail'] = $this->input->post('email');
 			$data_add['ucontact'] = $this->input->post('contactn');
-			$data_add['uaddress'] = $this->input->post('contacta');
-			$data_add['uname'] = $this->input->post('email');
+			// $data_add['uaddress'] = $this->input->post('contacta');
+			// $data_add['uname'] = $this->input->post('email');
 			// $data_add['ubanknum'] = $this->input->post('ubank_num');
 			// $data_add['ubankname'] = $this->input->post('ubank_name');
 			$data_add['ulinkedin'] = $this->input->post('ulinkedin');
@@ -193,7 +194,7 @@ class User extends CI_Controller {
 			
 										
 			$uresult = $this->suser->update_user_info_by_id($data['user_id'], $data_add);
-			
+			log_message("info","#####".$uresult);
 			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
 			
 				$file_name = time().str_replace(" ", "-", $_FILES["user_pic"]['name']);
@@ -211,27 +212,17 @@ class User extends CI_Controller {
 					else
 					{
 						$data_add = array();
+						$data_add['tfs_pic_file'] = $uresult[0]->tfs_id.'_profimg.'.end($file_namea);
 						
-						if($data['user_type_ref'] == 1){
-							$data_add['tfsp_pic_file'] = $uresult[0]->tfu_id.'_profimg.'.end($file_namea);
-						}
 						
-						if($data['user_type_ref'] == 2){
-							$data_add['tff_pic_file'] = $uresult[0]->tfu_id.'_profimg.'.end($file_namea);
-						}
-						
-						if($data['user_type_ref'] == 3){
-							$data_add['tfb_pic_file'] = $uresult[0]->tfu_id.'_profimg.'.end($file_namea);
-						}
-						
-						$this->suser->update_profile_details_by_id_type($data['user_id'], $data['user_type_ref'], $data_add);
+						$this->suser->update_profile_details_by_id_type($data['user_id'], $data_add);
 							
-						rename(FCPATH.'assets/user_profile_image/'.$file_name, FCPATH.'assets/user_profile_image/'.$uresult[0]->tfu_id.'_profimg.'.end($file_namea));
+						rename(FCPATH.'assets/social_user_profile_image/'.$file_name, FCPATH.'assets/social_user_profile_image/'.$uresult[0]->tfu_id.'_profimg.'.end($file_namea));
 						$success_data = $this->upload->data();
 						
-						if(file_exists(FCPATH.'assets/user_profile_image/'.$uresult[0]->tfu_id.'_profimg.'.end($file_namea))){
+						if(file_exists(FCPATH.'assets/social_user_profile_image/'.$uresult[0]->tfs_id.'_profimg.'.end($file_namea))){
 						
-							$this->thumb(FCPATH.'assets/user_profile_image/'.$uresult[0]->tfu_id.'_profimg.'.end($file_namea),100,true);  
+							$this->thumb(FCPATH.'assets/social_user_profile_image/'.$uresult[0]->tfs_id.'_profimg.'.end($file_namea),100,true);  
 						}
 						
 						$data['msg'] = 'success';
@@ -242,26 +233,65 @@ class User extends CI_Controller {
 				
 				$data_add = array();
 				
-				$data_add['tfcom_contact1_fname'] = $this->input->post('first_name');
-				$data_add['tfcom_contact1_lname'] = $this->input->post('last_name');
-				$data_add['tfcom_contact1_email'] = $this->input->post('email');
-				$data_add['tfcom_contact1_number'] = $this->input->post('contactn');
-				$data_add['tfcom_contact2_fname'] = $this->input->post('c2_fname');
-				$data_add['tfcom_contact2_lname'] = $this->input->post('c2_lname');
-				$data_add['tfcom_contact2_linkedin'] = $this->input->post('c2_linkedin');
-				$data_add['tfcom_contact2_designation'] = $this->input->post('c2_desgination');
-				$data_add['tfcom_contact2_email'] = $this->input->post('c2_email');
-				$data_add['tfcom_contact2_number'] = $this->input->post('c2_contactn');
-				$data_add['tfcom_user_ref'] = $data['user_id'];
+				$data_add['tfscom_contact_linkedin'] = $this->input->post('c2_linkedin');
+				$data_add['tfscom_user_ref'] = $data['user_id'];
 				$crow = $this->input->post('c_row');
 					
 				if($crow > 0){
-					$data_add['tfcom_updated'] = date('Y-m-d H:i:s');
-					$cresult = $this->manage->update_company_info($data['user_id'], $data_add);	
+					$data_add['tfscom_updated_at'] = date('Y-m-d H:i:s');
+					$cresult = $this->suser->update_company_info($data['user_id'], $data_add);	
 				}else{
-					$cresult = $this->manage->add_company_info($data_add);	
+					$cresult = $this->suser->add_company_info($data_add);	
 				}
 				
+			}
+			elseif(!empty($uresult) && sizeof($uresult) <> 0){
+				$file_name = time().str_replace(" ", "-", $_FILES["user_pic"]['name']);
+				$config['file_name'] = $file_name;
+				$file_namea = explode('.', $file_name);
+				$this->load->library('upload', $config);
+				
+				if(isset($_FILES["user_pic"]['name']) && trim($_FILES["user_pic"]['name']) <> ''){
+					
+					if(!$this->upload->do_upload('user_pic'))
+					{
+					   $data['msg'] = 'error';
+					   $data['msg_extra'] = 'Error occurred during profile picture update. <br/>'.$this->upload->display_errors();
+					}
+					else
+					{
+						$data_add = array();
+						$data_add['tfs_pic_file'] = $uresult.'_profimg.'.end($file_namea);
+						
+						
+						$this->suser->update_profile_details_by_id_type($data['user_id'], $data_add);
+							
+						rename(FCPATH.'assets/social_user_profile_image/'.$file_name, FCPATH.'assets/social_user_profile_image/'.$uresult.'_profimg.'.end($file_namea));
+						$success_data = $this->upload->data();
+						
+						if(file_exists(FCPATH.'assets/social_user_profile_image/'.$uresult.'_profimg.'.end($file_namea))){
+						
+							$this->thumb(FCPATH.'assets/social_user_profile_image/'.$uresult.'_profimg.'.end($file_namea),100,true);  
+						}
+						
+						$data['msg'] = 'success';
+					}
+				}else{
+					$data['msg'] = 'success';
+				}
+				
+				$data_add = array();
+				
+				$data_add['tfscom_contact_linkedin'] = $this->input->post('c2_linkedin');
+				$data_add['tfscom_user_ref'] = $data['user_id'];
+				$crow = $this->input->post('c_row');
+					
+				if($crow > 0){
+					$data_add['tfscom_updated_at'] = date('Y-m-d H:i:s');
+					$cresult = $this->suser->update_company_info($data['user_id'], $data_add);	
+				}else{
+					$cresult = $this->suser->add_company_info($data_add);	
+				}
 			}else{
 				$data['msg'] = 'success';
 			}
@@ -272,7 +302,7 @@ class User extends CI_Controller {
 			
 			$data_add = array();
 			
-			$config['upload_path'] = FCPATH.'assets/user_company_logo/';
+			$config['upload_path'] = FCPATH.'assets/social_user_company_logo/';
 						
 			$com_sectors = $this->input->post('com_sectors');
 			
@@ -291,16 +321,16 @@ class User extends CI_Controller {
 				}
 			}
         
-			$data_add['tfcom_name'] = $this->input->post('c_name');
+			$data_add['tfscom_name'] = $this->input->post('c_name');
 			// $data_add['tfcom_address'] = $this->input->post('c_bhn').'*'.$this->input->post('c_asa').'*'.$this->input->post('c_city').'*'.$this->input->post('c_pincode').'*'.$this->input->post('c_state');
-			$data_add['tfcom_address'] = str_replace(',', '*', $this->input->post('caddress'));
-			$data_add['tfcom_sectors'] = $sectors;
-			$data_add['tfcom_wikipedia_url'] = $this->input->post('com_wiki');
-			$data_add['tfcom_legal_form'] = $this->input->post('com_legal_form');
-			$data_add['tfcom_regno'] = $this->input->post('com_regno');
-			$data_add['tfcom_incorporation_year'] = $this->input->post('com_incop');
-			$data_add['tfcom_linkedin'] = $this->input->post('com_linkedin');
-			$data_add['tfcom_business_overview'] = $this->input->post('com_business_overv');
+			$data_add['tfscom_address'] = str_replace(',', '*', $this->input->post('caddress'));
+			$data_add['tfscom_sectors'] = $sectors;
+			// $data_add['tfscom_wikipedia_url'] = $this->input->post('com_wiki');
+			$data_add['tfscom_legal_form'] = $this->input->post('com_legal_form');
+			$data_add['tfscom_regno'] = $this->input->post('com_regno');
+			$data_add['tfscom_incorporation_year'] = $this->input->post('com_incop');
+			$data_add['tfscom_contact_linkedin'] = $this->input->post('com_linkedin');
+			$data_add['tfscom_business_overview'] = $this->input->post('com_business_overv');
 			
 			/*
 			$data_add['tfcom_contact1_fname'] = $this->input->post('c1_fname');
@@ -315,17 +345,17 @@ class User extends CI_Controller {
 			$data_add['tfcom_contact2_email'] = $this->input->post('c2_email');
 			$data_add['tfcom_contact2_number'] = $this->input->post('c2_contactn'); */
 			
-			$data_add['tfcom_cat_ref'] = $this->input->post('c_dept');
-			$data_add['tfcom_country_ref'] = $this->input->post('c_country');
-			$data_add['tfcom_web_url'] = $this->input->post('c_web');
-			$data_add['tfcom_user_ref'] = $data['user_id'];
+			$data_add['tfscom_industry'] = $this->input->post('c_dept');
+			$data_add['tfscom_country_ref'] = $this->input->post('c_country');
+			$data_add['tfscom_web_url'] = $this->input->post('c_web');
+			$data_add['tfscom_user_ref'] = $data['user_id'];
 			$crow = $this->input->post('c_row');
 					
 			if($crow > 0){
-				$data_add['tfcom_updated'] = date('Y-m-d H:i:s');
-				$cresult = $this->manage->update_company_info($data['user_id'], $data_add);	
+				$data_add['tfscom_updated_at'] = date('Y-m-d H:i:s');
+				$cresult = $this->suser->update_company_info($data['user_id'], $data_add);	
 			}else{
-				$cresult = $this->manage->add_company_info($data_add);	
+				$cresult = $this->suser->add_company_info($data_add);	
 			}
 						
 			if(!empty($cresult) && is_array($cresult) && sizeof($cresult) <> 0 && isset($_FILES) && isset($_FILES["comp_pic"]['name'])){
@@ -345,11 +375,11 @@ class User extends CI_Controller {
 					else
 					{
 						$data_add = array();
-						$data_add['tfcom_logo_file'] = $cresult[0]->tfcom_id.'_compimg.'.end($file_namea);
+						$data_add['tfscom_logo_file'] = $cresult[0]->tfscom_id.'_compimg.'.end($file_namea);
 						
-						$this->manage->update_company_info($data['user_id'], $data_add);
+						$this->suser->update_company_info($data['user_id'], $data_add);
 							
-						rename(FCPATH.'assets/user_company_logo/'.$file_name, FCPATH.'assets/user_company_logo/'.$cresult[0]->tfcom_id.'_compimg.'.end($file_namea));
+						rename(FCPATH.'assets/social_user_company_logo/'.$file_name, FCPATH.'assets/social_user_company_logo/'.$cresult[0]->tfscom_id.'_compimg.'.end($file_namea));
 						$success_data = $this->upload->data();
 						$data['msg'] = 'success';
 					}
@@ -363,38 +393,15 @@ class User extends CI_Controller {
 		}	
 				
 		if($data['user_id'] <> 0){
-			
-			$data['user_products'] = $this->manage->get_user_product_by_uid($data['user_id']);
-			$data['user_services'] = $this->manage->get_user_service_by_uid($data['user_id']);
-
-			$data['get_subscription_fees'] = $this->manage->get_membership_fee($data['user_type_ref']);
-			
-			if(!empty($data['user_products']) && !empty($data['user_services']) && $data['user_type_ref'] == 1){
-				$data['uprodserv_info'] = 1;
-			}else{
-				if($data['user_type_ref'] <> 1){
-					$data['uprodserv_info'] = 1;
-				}
-			}
 						
-			$data['check_company']  = $this->manage->get_company_info_by_uid($data['user_id']);
+			$data['check_company']  = $this->suser->get_company_info_by_uid($data['user_id']);
 			
-			$ucresult = $this->manage->get_company_info_by_uid($data['user_id']);
+			$ucresult = $this->suser->get_company_info_by_uid($data['user_id']);
 			
 			if(!empty($ucresult) && is_array($ucresult) && sizeof($ucresult) <> 0){
 				
-				$data['c1fname'] = $ucresult[0]->tfcom_contact1_fname;
-				$data['c1lname'] = $ucresult[0]->tfcom_contact1_lname;
-				$data['c1email'] = $ucresult[0]->tfcom_contact1_email;
-				$data['c1contact'] = $ucresult[0]->tfcom_contact1_number;
-				$data['c2fname'] = $ucresult[0]->tfcom_contact2_fname;
-				$data['c2lname'] = $ucresult[0]->tfcom_contact2_lname;
-				$data['c2email'] = $ucresult[0]->tfcom_contact2_email;
-				$data['c2contact'] = $ucresult[0]->tfcom_contact2_number;
-				$data['c2linkedin'] = $ucresult[0]->tfcom_contact2_linkedin;
-				$data['c2desgination'] = $ucresult[0]->tfcom_contact2_designation;
 				
-				$data['comname'] = $ucresult[0]->tfcom_name;
+				$data['comname'] = $ucresult[0]->tfscom_name;
 				
 				/* $adda = explode('*', $ucresult[0]->tfcom_address);
 				
@@ -406,14 +413,14 @@ class User extends CI_Controller {
 					$data['cstate'] = $adda[4];
 				} */
 				
-				$data['caddress'] = str_replace('*', ',', $ucresult[0]->tfcom_address);
-				$data['cregno'] = $ucresult[0]->tfcom_regno;
-				$data['com_legal_form'] = $ucresult[0]->tfcom_legal_form;
-				$data['com_business_overv'] = $ucresult[0]->tfcom_business_overview;
-				$data['com_linkedin'] = $ucresult[0]->tfcom_linkedin;
+				$data['caddress'] = str_replace('*', ',', $ucresult[0]->tfscom_address);
+				$data['cregno'] = $ucresult[0]->tfscom_regno;
+				$data['com_legal_form'] = $ucresult[0]->tfscom_legal_form;
+				$data['com_business_overv'] = $ucresult[0]->tfscom_business_overview;
+				$data['com_linkedin'] = $ucresult[0]->tfscom_linkedin;
 				$data['com_sectors'] = array();
 				
-				$com_sec = explode(',', $ucresult[0]->tfcom_sectors);
+				$com_sec = explode(',', $ucresult[0]->tfscom_sectors);
 				
 				if(sizeof($com_sec) <> 0){
 					for($tc=0; $tc < sizeof($com_sec); $tc++){
@@ -421,55 +428,59 @@ class User extends CI_Controller {
 					}
 				}
 				
-				$data['com_wiki'] = $ucresult[0]->tfcom_wikipedia_url;
-				$data['com_incop'] = $ucresult[0]->tfcom_incorporation_year;
-				$data['cweb'] = $ucresult[0]->tfcom_web_url;
-				$data['clogo'] = $ucresult[0]->tfcom_logo_file;
-				$data['ccountry'] = $ucresult[0]->tfcom_country_ref;
-				$data['cdept'] = $ucresult[0]->tfcom_cat_ref;
-				$data['crow'] = $ucresult[0]->tfcom_id;
+				// $data['com_wiki'] = $ucresult[0]->tfcom_wikipedia_url;
+				$data['com_incop'] = $ucresult[0]->tfscom_incorporation_year;
+				$data['cweb'] = $ucresult[0]->tfscom_web_url;
+				$data['clogo'] = $ucresult[0]->tfscom_logo_file;
+				$data['ccountry'] = $ucresult[0]->tfscom_country_ref;
+				$data['cdept'] = $ucresult[0]->tfscom_industry;
+				$data['crow'] = $ucresult[0]->tfscom_id;
 				
-				if($data['comname'] && $data['caddress'] && $data['com_legal_form'] && $data['ccountry'] && $data['com_business_overv'] && $data['cweb'] && $data['cdept'] && $data['com_linkedin'] && !empty($data['com_sectors']) && $data['com_incop'] && $data['cregno']){
+				if($data['comname'] && $data['caddress'] && $data['com_legal_form'] && $data['ccountry'] && $data['com_business_overv']  && $data['cdept'] && !empty($data['com_sectors']) && $data['com_incop'] && $data['cregno']){
 				
 					$data['ucompany_info'] = 1;
 				}
 				
-				if($ucresult[0]->tfcom_cat_ref == 0 || $ucresult[0]->tfcom_country_ref == 0){
-					$uresult = $this->manage->get_user_base_info_by_id_and_type($data['user_id'], $data['user_type_ref']);
+				if($ucresult[0]->tfscom_industry == 0 || $ucresult[0]->tfscom_country_ref == 0){
+					$uresult = $this->suser->get_user_base_info_by_id_and_type($data['user_id']);
 				}
 				else{
-					$uresult = $this->manage->get_user_info_by_id_and_type($data['user_id'], $data['user_type_ref']);
+					$uresult = $this->suser->get_social_user_company_info_by_id($data['user_id']);
 				}
 			}else{
-				$uresult = $this->manage->get_user_base_info_by_id_and_type($data['user_id'], $data['user_type_ref']);
+				$uresult = $this->suser->get_user_base_info_by_id_and_type($data['user_id']);
 			}			
 			
 			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
 				
+				$data['ufname'] = $uresult[0]->tfs_first_name;
+				$data['ulname'] = $uresult[0]->tfs_last_name;
+				$data['uemail'] = $uresult[0]->tfs_email;
+				$data['ucontact'] = $uresult[0]->tfs_contact_number;
+				// $data['uaddress'] = $uresult[0]->tfb_address;
+				$data['uprofpic'] = $uresult[0]->tfs_pic_file;
+
+				$data['uname'] = $uresult[0]->tfs_email;
+				$data['uxwallet'] = $uresult[0]->tfs_xdc_wallet;
+				$data['ubankno'] = $uresult[0]->tfs_bank_acc_number;
+				$data['ubankname'] = $uresult[0]->tfs_bank_name;
+				$data['ulinkedin'] = $uresult[0]->tfs_linkedin;
+				$data['udesignation'] = $uresult[0]->tfs_designation;
 				
-					
-				$data['uname'] = $uresult[0]->tfu_usern;
-				$data['upass'] = openssl_decrypt($uresult[0]->tfu_passwd,"AES-128-ECB",$encryption_key);
-				$data['uxwallet'] = $uresult[0]->tfu_xdc_walletID;
-				$data['uxbalance'] = $uresult[0]->tfu_xdc_balance;
-				$data['ubankno'] = $uresult[0]->tfu_bank_acc_number;
-				$data['ubankname'] = $uresult[0]->tfu_bank_acc_name;
-				$data['ulinkedin'] = $uresult[0]->tfu_linkedin;
-				$data['udesignation'] = $uresult[0]->tfu_designation;
-				$data['membership_status'] = $uresult[0]->tfu_membership_status;
 			}	
 			
-			if($data['ufname'] && $data['ulname'] && $data['ucontact'] && $data['ulinkedin'] && $data['udesignation'] && $data['upass']){
+			if($data['ufname'] && $data['ulname'] && $data['ucontact'] && $data['ulinkedin'] && $data['udesignation']){
 				
 				$data['ubase_info'] = 1;
 			}
 			
-			if($data['uxwallet'] && $data['uxbalance']){ // && $data['ubankname'] && $data['ubankno']
+			if($data['uxwallet']){ // && $data['ubankname'] && $data['ubankno']
 				
 				$data['ufinance_info'] = 1;
 			}
 		}
 		
+
 		$this->load->view('includes/headern', $data);
 		$this->load->view('includes/header_publicn', $data);
 		$this->load->view('pages/user_profile_edit', $data);
@@ -478,7 +489,7 @@ class User extends CI_Controller {
 		$this->load->view('includes/footern');
 	}
 	
-public function update_membership()
+	public function update_membership()
 	{
 		$data = array();
 
@@ -604,8 +615,7 @@ public function update_membership()
 		$data['check_company']  = '';
 		$data['upcategory'] = array();
 		$data['uscategory'] = array();
-		$data['user_products'] = array();
-		$data['user_services'] = array();
+		
 		
 		$data['csrf'] = array();
 		
@@ -621,8 +631,6 @@ public function update_membership()
 		if($user && !empty($user) && sizeof($user) <> 0){
 			$data['full_name'] = $user['user_full_name'];
 			$data['user_id'] = $user['user_id'];
-			$data['user_type'] = str_replace('-', ' ', $user['user_type']);
-			$data['user_type_ref'] = $user['user_type_ref'];
 		}else{
 			// redirect(base_url().'log/out');
 		}
@@ -650,36 +658,30 @@ public function update_membership()
 			
 			$options = array();
 			$options['user_id'] = $data['user_id'];
-			$options['user_type'] = $data['user_type_ref'];
+			
 			
 			// $data['notifications'] = get_notification_status($options);
 		}
 				
 		if($data['user_id'] <> 0){ 
 		
-			$data['user_products'] = $this->manage->get_user_product_approved_by_uid($data['user_id'], $data['user_type_ref']);
-			$data['user_services'] = $this->manage->get_user_service_approved_by_uid($data['user_id'], $data['user_type_ref']);
 						
-			$data['check_company']  = $this->manage->get_company_info_by_uid($data['user_id']);
+			$data['check_company']  = $this->suser->get_company_info_by_uid($data['user_id']);
 			
-			$ucresult = $this->manage->get_company_info_by_uid($data['user_id']);
+			$ucresult = $this->suser->get_company_info_by_uid($data['user_id']);
 			
 			if(!empty($ucresult) && is_array($ucresult) && sizeof($ucresult) <> 0){
 				
-				$data['c1fname'] = $ucresult[0]->tfcom_contact1_fname;
-				$data['c1lname'] = $ucresult[0]->tfcom_contact1_lname;
-				$data['c1email'] = $ucresult[0]->tfcom_contact1_email;
-				$data['c1contact'] = $ucresult[0]->tfcom_contact1_number;
-				$data['c2fname'] = $ucresult[0]->tfcom_contact2_fname;
-				$data['c2lname'] = $ucresult[0]->tfcom_contact2_lname;
-				$data['c2email'] = $ucresult[0]->tfcom_contact2_email;
-				$data['c2contact'] = $ucresult[0]->tfcom_contact2_number;
-				$data['c2linkedin'] = $ucresult[0]->tfcom_contact2_linkedin;
-				$data['c2desgination'] = $ucresult[0]->tfcom_contact2_designation;
-				$data['comname'] = $ucresult[0]->tfcom_name;
-				$data['cregno'] = $ucresult[0]->tfcom_regno;
+				$data['c1fname'] = $ucresult[0]->tfscom_contact1_fname;
+				$data['c1lname'] = $ucresult[0]->tfscom_contact1_lname;
+				$data['c1email'] = $ucresult[0]->tfscom_contact1_email;
+				$data['c1contact'] = $ucresult[0]->tfscom_contact1_number;
+				$data['c1linkedin'] = $ucresult[0]->tfscom_contact_linkedin;
+				$data['c1desgination'] = $ucresult[0]->tfscom_designation;
+				$data['comname'] = $ucresult[0]->tfscom_name;
+				$data['cregno'] = $ucresult[0]->tfscom_regno;
 				
-				$adda = explode('*', $ucresult[0]->tfcom_address);
+				$adda = explode('*', $ucresult[0]->tfscom_address);
 				
 				if(sizeof($adda) > 2){
 					$data['cbhn'] = $adda[0];
@@ -689,205 +691,43 @@ public function update_membership()
 					$data['cstate'] = $adda[4];
 				}
 				
-				$data['com_legal_form'] = $ucresult[0]->tfcom_legal_form;
-				$data['com_business_overv'] = $ucresult[0]->tfcom_business_overview;
-				$data['com_linkedin'] = $ucresult[0]->tfcom_linkedin;
-				$data['com_sectors'] = explode(',', $ucresult[0]->tfcom_sectors);
+				$data['com_legal_form'] = $ucresult[0]->tfscom_legal_form;
+				$data['com_business_overv'] = $ucresult[0]->tfscom_business_overview;
+				$data['com_linkedin'] = $ucresult[0]->tfscom_linkedin;
+				$data['com_sectors'] = explode(',', $ucresult[0]->tfscom_sectors);
 				
-				$data['com_wiki'] = $ucresult[0]->tfcom_wikipedia_url;
-				$data['com_incop'] = $ucresult[0]->tfcom_incorporation_year;
-				$data['cweb'] = $ucresult[0]->tfcom_web_url;
-				$data['clogo'] = $ucresult[0]->tfcom_logo_file;
-				$data['ccountry'] = $ucresult[0]->tfcom_country_ref;
-				$data['cdept'] = $ucresult[0]->tfcom_cat_ref;
-				$data['crow'] = $ucresult[0]->tfcom_id;
+				$data['com_incop'] = $ucresult[0]->tfscom_incorporation_year;
+				$data['cweb'] = $ucresult[0]->tfscom_web_url;
+				$data['clogo'] = $ucresult[0]->tfscom_logo_file;
+				$data['ccountry'] = $ucresult[0]->tfscom_country_ref;
+				$data['cdept'] = $ucresult[0]->tfscom_insdustry;
+				$data['crow'] = $ucresult[0]->tfscom_id;
 			}	
 			
 			$uresult = $this->suser->get_social_user_company_info_by_id($data['user_id']);
 			
 			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
 				
-					$data['ufname'] = $uresult[0]->tfs_fname;
-					$data['ulname'] = $uresult[0]->tfb_lname;
-					$data['uemail'] = $uresult[0]->tfb_email;
-					$data['ucontact'] = $uresult[0]->tfb_contact;
-					$data['uaddress'] = $uresult[0]->tfb_address;
-					$data['uprofpic'] = $uresult[0]->tfb_pic_file;
-					$data['uname'] = $uresult[0]->tfu_usern;
-					$data['upass'] = openssl_decrypt($uresult[0]->tfu_passwd,"AES-128-ECB",$encryption_key);
+					$data['ufname'] = $uresult[0]->tfs_first_name;
+					$data['ulname'] = $uresult[0]->tfs_last_name;
+					$data['uemail'] = $uresult[0]->tfs_email;
+					$data['ucontact'] = $uresult[0]->tfscom_contact1_number;
+					$data['uaddress'] = $uresult[0]->tfscom_address;
+					// $data['uprofpic'] = $uresult[0]->tfb_pic_file;
+					$data['uname'] = $data['ufname']." ".$data['ulname'];
 					$data['ccountryn'] = $uresult[0]->tfc_name;
-					$data['cdeptn'] = $uresult[0]->cName;
-					$ratinga = $this->plisting->get_user_rating_by_uid_type($uresult[0]->tfb_user_ref, 3);
-						
-					if(!empty($ratinga) && is_array($ratinga) && sizeof($ratinga) <> 0 && trim($ratinga[0]->tfur_rating_value) <> ''){
-						$data['purating'] = $ratinga[0]->tfur_rating_value;
-					}else{	
-						$data['purating'] = 0;
-					}
+					$data['cdeptn'] = $uresult[0]->cName;				
 				
-				
-				$data['uwalleta'] = $uresult[0]->tfu_xdc_walletID;
-				$data['uwalletbal'] = $uresult[0]->tfu_xdc_balance;
-				$data['ubankaccno'] = $uresult[0]->tfu_bank_acc_number;
-				$data['ubankaccname'] = $uresult[0]->tfu_bank_acc_name;
-				$data['ulinkedin'] = $uresult[0]->tfu_linkedin;
-				$data['udesignation'] = $uresult[0]->tfu_designation;
+					$data['uwalleta'] = $uresult[0]->tfs_xdc_wallet;
+					$data['ubankaccno'] = $uresult[0]->tfs_bank_acc_number;
+					$data['ubankaccname'] = $uresult[0]->tfs_bank_name;
+					// $data['ulinkedin'] = $uresult[0]->tfs_linkedin;
+					// $data['udesignation'] = $uresult[0]->tfs_designation;
 			}	
 		}
 		
 		$request_user_id = $this->input->post('ruser_id');
-		$request_user_type = $this->input->post('ruser_type');
 		
-		$data['request_user_type'] = 0;
-		$data['request_user_id'] = 0;
-		
-		if($request_user_id && $request_user_type && $request_user_id <> 0 && $request_user_type <> 0){ 
-			
-			$data['user_id'] = 0;
-			$data['user_type_ref'] = 0;
-			
-			$ucresult = $this->manage->get_company_info_by_uid($request_user_id);
-			
-			if(!empty($ucresult) && is_array($ucresult) && sizeof($ucresult) <> 0){
-				
-				$data['request_user_type'] = $request_user_type;
-				$data['request_user_id'] = $request_user_id;
-				
-				if($request_user_type == 1 && $request_user_id > 0){
-					
-					$data['user_products'] = $this->manage->get_user_product_approved_by_uid($request_user_id, $request_user_type);
-					$data['user_services'] = $this->manage->get_user_service_approved_by_uid($request_user_id, $request_user_type);
-				
-				}
-						
-				$data['c1fname'] = $ucresult[0]->tfcom_contact1_fname;
-				$data['c1lname'] = $ucresult[0]->tfcom_contact1_lname;
-				$data['c1email'] = $ucresult[0]->tfcom_contact1_email;
-				$data['c1contact'] = $ucresult[0]->tfcom_contact1_number;
-				$data['c2fname'] = $ucresult[0]->tfcom_contact2_fname;
-				$data['c2lname'] = $ucresult[0]->tfcom_contact2_lname;
-				$data['c2email'] = $ucresult[0]->tfcom_contact2_email;
-				$data['c2contact'] = $ucresult[0]->tfcom_contact2_number;
-				$data['comname'] = $ucresult[0]->tfcom_name;
-				$data['cregno'] = $ucresult[0]->tfcom_regno;
-				
-				/* $adda = explode('*', $ucresult[0]->tfcom_address);
-				
-				if(sizeof($adda) > 2){
-					$data['cbhn'] = $adda[0];
-					$data['caddress'] = $adda[1];
-					$data['ccity'] = $adda[2];
-					$data['cpinc'] = $adda[3];
-					$data['cstate'] = $adda[4];
-				} */
-				$data['caddress'] = str_replace('*', ',', $ucresult[0]->tfcom_address);
-				$data['com_legal_form'] = $ucresult[0]->tfcom_legal_form;
-				$data['com_business_overv'] = $ucresult[0]->tfcom_business_overview;
-				$data['com_linkedin'] = $ucresult[0]->tfcom_linkedin;
-				$data['com_sectors'] = array();
-				
-				$com_sec = explode('~', $ucresult[0]->tfcom_sectors);
-				
-				if(sizeof($com_sec) <> 0){
-					for($tc=0; $tc < sizeof($com_sec); $tc++){
-						array_push($data['com_sectors'], preg_replace("/[\s_]/", "-", strtolower($com_sec[$tc])));
-					}
-				}
-				
-				$data['com_wiki'] = $ucresult[0]->tfcom_wikipedia_url;
-				$data['com_incop'] = $ucresult[0]->tfcom_incorporation_year;
-				$data['cweb'] = $ucresult[0]->tfcom_web_url;
-				$data['clogo'] = $ucresult[0]->tfcom_logo_file;
-				$data['ccountry'] = $ucresult[0]->tfcom_country_ref;
-				$data['cdept'] = $ucresult[0]->tfcom_cat_ref;
-				$data['crow'] = $ucresult[0]->tfcom_id;
-			}	
-			
-			$uresult = $this->manage->get_user_info_by_id_and_type($request_user_id, $request_user_type);
-					
-			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
-				
-				if($request_user_type == 1){
-					$data['ufname'] = $uresult[0]->tfsp_fname;
-					$data['ulname'] = $uresult[0]->tfsp_lname;
-					$data['utype'] = 'Supplier';
-					$data['uemail'] = $uresult[0]->tfsp_email;
-					$data['ucontact'] = $uresult[0]->tfsp_contact;
-					$data['uaddress'] = $uresult[0]->tfsp_address;
-					$data['uprofpic'] = $uresult[0]->tfsp_pic_file;
-					// $data['uname'] = $uresult[0]->tfu_usern;
-					// $data['upass'] = openssl_decrypt($uresult[0]->tfu_passwd,"AES-128-ECB",$encryption_key);
-					$data['ccountryn'] = $uresult[0]->tfc_name;
-					$data['cdeptn'] = $uresult[0]->cName;
-					$data['uvisibility'] = $uresult[0]->tfsp_public_visibility;
-					$ratinga = $this->plisting->get_user_rating_by_uid_type($uresult[0]->tfsp_user_ref, 1);
-						
-					if(!empty($ratinga) && is_array($ratinga) && sizeof($ratinga) <> 0 && trim($ratinga[0]->tfur_rating_value) <> ''){
-						$data['purating'] = $ratinga[0]->tfur_rating_value;
-					}else{	
-						$data['purating'] = 0;
-					}
-				}
-				
-				if($request_user_type == 2){
-					$data['ufname'] = $uresult[0]->tff_fname;
-					$data['ulname'] = $uresult[0]->tff_lname;
-					$data['utype'] = 'Financier';
-					$data['uemail'] = $uresult[0]->tff_email;
-					$data['ucontact'] = $uresult[0]->tff_contact;
-					$data['uaddress'] = $uresult[0]->tff_address;
-					$data['uprofpic'] = $uresult[0]->tff_pic_file;
-					// $data['uname'] = $uresult[0]->tfu_usern;
-					// $data['upass'] = openssl_decrypt($uresult[0]->tfu_passwd,"AES-128-ECB",$encryption_key);
-					$data['ccountryn'] = $uresult[0]->tfc_name;
-					$data['cdeptn'] = $uresult[0]->cName;
-					$data['uvisibility'] = $uresult[0]->tff_public_visibility;
-					$ratinga = $this->plisting->get_user_rating_by_uid_type($uresult[0]->tff_user_ref, 2);
-						
-					if(!empty($ratinga) && is_array($ratinga) && sizeof($ratinga) <> 0 && trim($ratinga[0]->tfur_rating_value) <> ''){
-						$data['purating'] = $ratinga[0]->tfur_rating_value;
-					}else{	
-						$data['purating'] = 0;
-					}
-				}
-				
-				if($request_user_type == 3){
-					$data['ufname'] = $uresult[0]->tfb_fname;
-					$data['ulname'] = $uresult[0]->tfb_lname;
-					$data['utype'] = 'Beneficiary';
-					$data['uemail'] = $uresult[0]->tfb_email;
-					$data['ucontact'] = $uresult[0]->tfb_contact;
-					$data['uaddress'] = $uresult[0]->tfb_address;
-					$data['uprofpic'] = $uresult[0]->tfb_pic_file;
-					// $data['uname'] = $uresult[0]->tfu_usern;
-					// $data['upass'] = openssl_decrypt($uresult[0]->tfu_passwd,"AES-128-ECB",$encryption_key);
-					$data['ccountryn'] = $uresult[0]->tfc_name;
-					$data['cdeptn'] = $uresult[0]->cName;
-					$ratinga = $this->plisting->get_user_rating_by_uid_type($uresult[0]->tfb_user_ref, 3);
-						
-					if(!empty($ratinga) && is_array($ratinga) && sizeof($ratinga) <> 0 && trim($ratinga[0]->tfur_rating_value) <> ''){
-						$data['purating'] = $ratinga[0]->tfur_rating_value;
-					}else{	
-						$data['purating'] = 0;
-					}
-				}
-				
-				$data['uwalleta'] = $uresult[0]->tfu_xdc_walletID;
-				$data['uwalletbal'] = $uresult[0]->tfu_xdc_balance;
-				$data['ubankaccno'] = $uresult[0]->tfu_bank_acc_number;
-				$data['ubankaccname'] = $uresult[0]->tfu_bank_acc_name;
-				$data['ulinkedin'] = $uresult[0]->tfu_linkedin;
-				$data['udesignation'] = $uresult[0]->tfu_designation;
-			}	
-		}
-		
-		$datap = array();
-		$datas = array();
-		$result_product = array();
-		$result_service = array();
-		
-		$datap = $this->manage->get_user_product_public();
-		$datas = $this->manage->get_user_service_public();
 				
 		$this->load->view('includes/headern', $data);
 		$this->load->view('includes/header_publicn', $data);

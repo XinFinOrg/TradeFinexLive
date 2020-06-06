@@ -11,19 +11,15 @@
 							$uprof_pic = $uprofpica[0].'_thumb.'.$uprofpica[1];
 						}
 						
-						if(!file_exists(FCPATH.'assets/user_profile_image/'.$uprof_pic)){
+						if(!file_exists(FCPATH.'assets/social_user_profile_image/'.$uprof_pic)){
 							$uprof_pic = $uprofpic;
 						}
 					?>
 					<div class="profile_back"><img src="<?=base_url();?>assets/images/page/back_profile_img.png"/></div>
-					<div class="profile_img"><img src="<?=(($uprofpic && $uprofpic != '') ? base_url().'assets/user_profile_image/'.$uprof_pic : base_url().'assets/images/img/contact_profile_photo.png') ?>" alt="uimg" class="user-img avatar"> </div>
+					<div class="profile_img"><img src="<?=(($uprofpic && $uprofpic != '') ? base_url().'assets/social_user_profile_image/'.$uprof_pic : base_url().'assets/images/img/contact_profile_photo.png') ?>" alt="uimg" class="user-img avatar"> </div>
 					<div class="profile_name">
 						<h4><?=ucwords($ufname.' '.$ulname);?></h4>
-						<p><?=ucwords($utype);?></p>
-						<span class="star-ratings"> 
-							<?=set_rating_user($purating);?>
-						</span>
-						<h5><?=round($purating, 1)?>/5</h5>
+						
 					</div>
 				</div>
 				<div class="corporate_office" id="mobile_dis_none">
@@ -36,7 +32,7 @@
 				<div class="company_details">
 					<div class="row">
 						<div class="col-md-3 col-sm-3 col-xs-12">
-							<div class="company_logo"> <img src="<?=(($clogo && $clogo != '' && $clogo != 'NULL') ? base_url().'assets/user_company_logo/'.$clogo : base_url().'assets/images/img/company_logo.png') ?>" class="avatar" alt="avatar" /> </div>
+							<div class="company_logo"> <img src="<?=(($clogo && $clogo != '' && $clogo != 'NULL') ? base_url().'assets/social_user_company_logo/'.$clogo : base_url().'assets/images/img/company_logo.png') ?>" class="avatar" alt="avatar" /> </div>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<div class="company_name">
@@ -239,13 +235,13 @@
 										<p><?=$uwalleta;?></p>
 									</li>
 								</ul>
-								<ul>
+								<!-- <ul>
 									<li class="left_li">XDC Wallet Balance</li>
 									<li class="left_li_point">:</li>
 									<li class="left_li_text">
 										<p><?='&#36;'.$uwalletbal;?></p>
 									</li>
-								</ul>
+								</ul> -->
 								<ul>
 									<li class="left_li">Bank Account Number</li>
 									<li class="left_li_point">:</li>

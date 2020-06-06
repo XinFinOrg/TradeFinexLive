@@ -111,7 +111,7 @@
 			return false;
 		},  'This is not a valid Linkedin URL');
   		
-		$('#email').prop('readonly', true);
+		$('#email').prop('readonly', false);
 		
 		$("#form_user_profile").validate({
 			rules: {
@@ -235,7 +235,7 @@
 				if(element_id == 'email'){
 					
 					$('#usern').val($(element).val());
-					$('#email').prop('readonly', true);
+					$('#email').prop('readonly', false);
 				}
 			}
 		});

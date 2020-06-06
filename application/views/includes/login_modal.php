@@ -15,6 +15,7 @@
 					echo form_open_multipart(base_url().'login/', $attributes); 
 				?>
 					<a href="<?php echo base_url("login/fblogin")?>" class="facebook"><i class="fa fa-facebook"></i></a>
+					<!-- <a href="<?php echo base_url("login/glogin")?>" class="google"><i class="fa fa-google"></i></a> -->
 					<div class="row">
 						<?php echo $this->session->flashdata('error_logged_in'); ?>
 					</div>

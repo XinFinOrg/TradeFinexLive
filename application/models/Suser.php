@@ -72,17 +72,23 @@ class Suser extends CI_Model {
             $query = $this->db->get();
 
             $ucresult = $query->result();
-
+            
             if(!empty($ucresult) && is_array($ucresult) && sizeof($ucresult) <> 0){
 
-                if($ucresult[0]->tfcom_cat_ref == 0 || $ucresult[0]->tfcom_country_ref == 0){
+                if($ucresult[0]->tfscom_industry == 0 || $ucresult[0]->tfscom_country_ref == 0){
                     $udetail = $uresult[0]->tfs_id;
+                    $result['user_detail'] = $udetail[0];
                 }
                 else{
                     $udetail = $this->get_social_user_company_info_by_id($uresult[0]->tfs_id);
+                    foreach ($udetail as $value) {
+                        # code...
+                        $result['user_detail'] = $value;
+                    }
+                    
                 }
 
-                $result['user_detail'] = $udetail[0];
+                
             }
             else
             {
@@ -137,7 +143,16 @@ class Suser extends CI_Model {
                 $this->db->insert('{PRE}social_user',$data);
                 $userID = $this->db->insert_id();
                 $data['userID'] = $userID;
-                return $result = $this->get_social_user_company_info_by_id($id);
+
+                $this->db->select('*');
+                $this->db->from('{PRE}social_user');
+                $where = "tfs_auth_provider = '".$data_add['oauth_provider']."' AND tfs_auth_id = '".$data_add['oauth_uid']."'";
+                $this->db->where($where);
+                $query = $this->db->get();
+
+                return $query->result();
+
+                // return $result = $this->get_social_user_company_info_by_id($id);
             }
     }
 
@@ -159,16 +174,15 @@ class Suser extends CI_Model {
     
             $this->db->join('{PRE}social_user_company tfc', 'tfc.tfscom_user_ref = tfs.tfs_id');
             $this->db->join('{PRE}country tfcoun', 'tfcoun.tfc_id = tfc.tfscom_country_ref');
-            $this->db->join('{PRE}industry_categories tfcat', 'tfcat.ID = tfc.tfscom_cat_ref');
+            $this->db->join('{PRE}industry_categories tfcat', 'tfcat.ID = tfc.tfscom_industry');
 
             $where = "tfs.tfs_id = '$id'";
             $this->db->where($where);
             $query = $this->db->get();
-
+            
             return $result = $query->result();
 
         }else{
-
             return $id;
         }
     }
@@ -215,68 +229,76 @@ class Suser extends CI_Model {
 
     public function update_user_base_info_all_by_id($id, $data_add){
 
-        $where = "tfu_id = '$id' AND tfu_utype = '$type_id'";
+        $where = "tfs_id = '$id'";
         $this->db->where($where);
-        $this->db->update('{PRE}user', $data_add);
+        $this->db->update('{PRE}social_user', $data_add);
 
-        return $result = $this->get_user_info_by_id_and_type($id, $type_id);
+        return $result = $this->get_social_user_company_info_by_id($id);
     }
     
     public function update_user_info_by_id($id, $data_add){
 
         $datan = array();
-        $datan['tfu_usern'] = $data_add['uname'];
-        $datan['tfu_passwd'] = $data_add['upass'];
-        // $datan['tfu_bank_acc_number'] = $data_add['ubanknum'];
-        // $datan['tfu_bank_acc_name'] = $data_add['ubankname'];
-        $datan['tfu_linkedin'] = $data_add['ulinkedin'];
-        $datan['tfu_designation'] = $data_add['udesignation'];
+        $datan['tfs_first_name'] = $data_add['ufname'];
+        $datan['tfs_last_name'] = $data_add['ulname'];
+        $datan['tfs_designation'] = $data_add['udesignation'];
+        $datan['tfs_email'] = $data_add['uemail'];
+        $datan['tfs_contact_number'] = $data_add['ucontact'];
+        $datan['tfs_linkedin'] = $data_add['ulinkedin'];
 
-        $where = "tfu_id = '$id' AND tfu_utype = '$type_id'";
+        $where = "tfs_id = '$id'";
         $this->db->where($where);
-        $this->db->update('{PRE}user', $datan);
+        $this->db->update('{PRE}social_user', $datan);
+        
+        return $result = $this->get_social_user_company_info_by_id($id);
+    }
 
-        $data = array();
+    public function update_profile_details_by_id_type($id, $data_add){
 
-        if($type_id == 1){
+        $where = "tfs_id = '$id'";
+        $this->db->where($where);
+        $this->db->update('{PRE}social_user', $data_add);
+        
+        return $result = $this->get_social_user_company_info_by_id($id);
+    }
 
-            $data['tfsp_fname'] = $data_add['ufname'];
-            $data['tfsp_lname'] = $data_add['ulname'];
-            $data['tfsp_email'] = $data_add['uemail'];
-            $data['tfsp_address'] = $data_add['uaddress'];
-            $data['tfsp_contact'] = $data_add['ucontact'];
+    public function update_company_info($uid, $data_add){
 
-            $where = "tfsp_user_ref = '$id'";
-            $this->db->where($where);
-            $this->db->update('{PRE}service_provider', $data);
-        }
+        $where = "tfscom_user_ref = '$uid'";
+        $this->db->where($where);
+        $this->db->query('SET FOREIGN_KEY_CHECKS = 0');
+        $this->db->update('{PRE}social_user_company', $data_add);
 
-        if($type_id == 2){
+        return $result = $this->get_company_info_by_uid($uid);
+    }
+    public function add_company_info($data_add){
 
-            $data['tff_fname'] = $data_add['ufname'];
-            $data['tff_lname'] = $data_add['ulname'];
-            $data['tff_email'] = $data_add['uemail'];
-            $data['tff_address'] = $data_add['uaddress'];
-            $data['tff_contact'] = $data_add['ucontact'];
+        $this->db->query('SET FOREIGN_KEY_CHECKS = 0');
+        $this->db->insert('{PRE}social_user_company', $data_add);
+        $id = $this->db->insert_id();
 
-            $where = "tff_user_ref = '$id'";
-            $this->db->where($where);
-            $this->db->update('{PRE}financier', $data);
-        }
+        return $result = $this->get_company_info_by_id($id);
+    }
 
-        if($type_id == 3){
+    public function get_company_info_by_id($id){
 
-            $data['tfb_fname'] = $data_add['ufname'];
-            $data['tfb_lname'] = $data_add['ulname'];
-            $data['tfb_email'] = $data_add['uemail'];
-            $data['tfb_address'] = $data_add['uaddress'];
-            $data['tfb_contact'] = $data_add['ucontact'];
+        $this->db->select('*');
+        $this->db->from('{PRE}social_user_company');
+        $where = "tfscom_id = '$id'";
+        $this->db->where($where);
+        $query = $this->db->get();
 
-            $where = "tfb_user_ref = '$id'";
-            $this->db->where($where);
-            $this->db->update('{PRE}beneficiary', $data);
-        }
+        return $result = $query->result();
+    }
 
-        return $result = $this->get_user_info_by_id_and_type($id, $type_id);
+    public function get_user_base_info_by_id_and_type($id){
+
+        $this->db->select('*');
+        $this->db->from('{PRE}social_user tfs');
+        $where = "tfs.tfs_id = '$id'";
+        $this->db->where($where);
+        $query = $this->db->get();
+
+        return $result = $query->result();
     }
 }
