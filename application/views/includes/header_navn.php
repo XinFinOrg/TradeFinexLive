@@ -47,7 +47,7 @@
 					    <li class="hassubs"> <a href="javascript:void(0)" title="">Trade Instruments</a>
 							<ul class="submenu">								
 								<li> <a href="javascript:void(0)"  data-toggle="modal" data-target="#login">For Buyers / Suppliers</a></li>
-                                <li> <a href="<?=base_url();?>publicv/brokers">For Originators/Partners</a></li>
+                                <li> <a href="<?=base_url();?>publicv/brokers">For Originators / Partners</a></li>
 								<li> <a href="<?=base_url();?>publicv/financier">For Financiers</a></li>
 							</ul>
 						</li>
