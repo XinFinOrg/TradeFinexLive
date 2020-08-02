@@ -702,8 +702,8 @@ class Login extends CI_Controller {
 	public function glogin()
 	{
 		
-		$clientId = '974340167294-4tm547181uu7v0gtqj4d1bv4gp1ffugq.apps.googleusercontent.com'; //Google client ID
-		$clientSecret = 's1gEY7eIayJBjcYHbsvnA8Ha'; //Google client secret
+		$clientId = '977764941413-jd7k6opmfcc6ch1li9uve6v8p9nnuig3.apps.googleusercontent.com'; //Google client ID
+		$clientSecret = 'nfdqWQGTQcgdNxN6OO0Vsw-b'; //Google client secret
 		$redirectURL = base_url().'login/glogin';
 		// $redirectURL = "http://localhost/TradeFinexLive/login/glogin";
 		//Call Google API
