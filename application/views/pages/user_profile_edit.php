@@ -1,17 +1,20 @@
 
 <section class="profile">
-	<div class="container profile_tab_sec">
+	<div class="container">
+	<div class="col-lg-12">
+	<div class="profile_tab_sec">
 		<div class="tab_sec_header">
-			<h2>Welcome! Let's start</h2>
+			<h2><img src="<?php echo base_url();?>assets/images/icon/user-dashboard.png" width="40" height="40" /> Welcome! Let's start</h2>
 		</div>
-		<div class="tab_group">
-			<ul>
+		<div class="tab_group">		
+			
+			<ul class="nav-tabs-pills">
 				<li class="user_pinfo active" id="upersonal"><a data-toggle="tab" href="#personal">Personal</a></li>
 				<li class="user_pinfo" id="ucompany"><a data-toggle="tab" href="#com_profile">Company Profile</a></li>
-				<?php if($user_type_ref == 1 || $user_type_ref == 2){ ?><li class="user_pinfo" id="uprodserv"><a data-toggle="tab" href="#prod_and_serv">Product & Services</a></li><?php } ?>
-				<li class="user_pinfo" id="ufinance"><a data-toggle="tab" href="#fin_info">Financial information</a></li>
-				<!-- <li class="user_pinfo" id="usubscription"><a data-toggle="tab" href="#sub_info">Subscription</a></li> -->
-			</ul>
+				<li class="user_pinfo" id="ufinance"><a data-toggle="tab" href="#fin_info">Financial Information</a></li>
+				<!--<li class="user_pinfo" id="usubscription"><a data-toggle="tab" href="#sub_info">Subscription</a></li>-->
+			</ul>			
+			
 			<div class="tab-content">
 				<div class="col-md-6 col-sm-6 col-xs-12" style="position: absolute;">
 					<?php
@@ -47,7 +50,7 @@
 						}
 					?>
 					<div class="row">
-						<div class="col-md-3 col-sm-3 col-xs-12 pull-right profile_photo">
+						<div class="col-md-3 col-sm-4 col-xs-12 pull-right profile_photo">
 							<div class="contact_person_photo_back">
 								<div class="contact_person_photo"> <img id="user_pic" src="<?=(($uprofpic && $uprofpic != '' && $uprofpic != 'NULL') ? base_url().'assets/social_user_profile_image/'.$uprof_pic : base_url().'assets/images/img/contact_profile_photo.png');?>" />
 									<label for="file-upload" class="custom-file-upload">
@@ -56,139 +59,59 @@
 									<input id="file-upload" name="user_pic" type="file" />
 								</div>
 								<h5>Profile Photo<br/>(Max Size : 3MB)</h5>
-                                                                <span id="namefile" style="padding-left:0;"></span>
+                                <span id="namefile" style="padding-left:0;"></span>
 							</div>
 						</div>
-						<div class="col-md-8 col-sm-8 col-xs-12 input_fields">
-
+						<div class="col-md-8 col-sm-8 col-xs-12 input_fields">							
+							
 							<div class="row">
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<div class="form-group">
-										<label class="form-label">
-											<input name="first_name" id="first_name" class="form-input <?=(trim($ufname) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$ufname;?>" type="text" />
-											<span class="form-name floating-label">First Name<sup>*</sup></span>
-										</label>
-									</div>
+								<div class="form-group col-md-6">
+									<label for="first_name">First Name<sup>*</sup></label>
+									<input type="text" name="first_name" id="first_name" class="form-control <?=(trim($ufname) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$ufname;?>">
 								</div>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<div class="form-group">
-										<label class="form-label">
-											<input name="last_name" id="last_name" class="form-input <?=(trim($ulname) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$ulname;?>" type="text" />
-											<span class="form-name floating-label">Last Name<sup>*</sup></span>
-										</label>
-									</div>
+								<div class="form-group col-md-6">
+									<label for="last_name">Last Name<sup>*</sup></label>
+									<input type="text" name="last_name" id="last_name" class="form-control <?=(trim($ulname) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$ulname;?>">
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<div class="form-group">
-										<label class="form-label">
-											<input name="email" id="email" class="form-input <?=(trim($uemail) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$uemail;?>" type="text" ="falreadonlyse" />
-											<span class="form-name floating-label">Email ID <sup>*</sup></span>
-										</label>
-									</div>
-									<!-- <input name="usern" id="usern" class="form-control" value="<?=$uname;?>" style="background: #fff;box-shadow:none;" type="hidden"  /> -->
+								<div class="form-group col-md-6">
+									<label for="email">Email ID <sup>*</sup></label>
+									<input type="text" name="email" id="email" class="form-control <?=(trim($uemail) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$uemail;?>" type="text" ="falreadonlyse" />
 								</div>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<div class="form-group">
-										<label class="form-label">
-											<input name="contactn" id="contactn" class="form-input <?=(trim($ucontact) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$ucontact;?>" type="text" />
-											<span class="form-name floating-label">Mobile Number</span>
-										</label>
-									</div>
+								<div class="form-group col-md-6">
+									<label for="contactn">Mobile Number<sup>*</sup></label>
+									<input type="text" name="contactn" id="contactn" class="form-control <?=(trim($ucontact) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$ucontact;?>">
 								</div>
-							</div>
+							</div>							
 							<div class="row">
-								
-								<div class="col-md-12 col-sm-12 col-xs-12">
-									<div class="form-group">
-										<label class="form-label type_passwd">
-											<input id="ulinkedin" name="ulinkedin" class="form-input <?=(trim($ulinkedin) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$ulinkedin;?>" type="text" />
-											<span class="form-name floating-label">LinkedIn Profile<sup>*</sup></span>
-											<span class="append_icon_text"><a href="javascript:void(0)"><img src="<?=base_url();?>assets/images/icon/linkedin.png"/></a></span>
-										</label>
-									</div>
+								<div class="form-group col-md-12">
+									<label for="email">LinkedIn Profile<sup>*</sup></label>
+									<input type="text" id="ulinkedin" name="ulinkedin" class="form-control <?=(trim($ulinkedin) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$ulinkedin;?>" />
+									<span class="append_icon_text"><a href="javascript:void(0)"><img src="<?=base_url();?>assets/images/icon/linkedin.png"/></a></span>
 								</div>
-							</div>
+							</div>	
 							<div class="row">
-								<div class="col-md-12 col-sm-12 col-xs-12">
-									<div class="form-group">
-										<label class="form-label">
-											<input name="udesignation" id="udesignation" class="form-input <?=(trim($udesignation) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$udesignation;?>" type="text" />
-											<span class="form-name floating-label">Designation<sup>*</sup></span>
-										</label>
-									</div>
+								<div class="form-group col-md-12">
+									<label for="udesignation">Designation<sup>*</sup></label>
+									<input type="text" name="udesignation" id="udesignation" class="form-control <?=(trim($udesignation) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$udesignation;?>">
 								</div>
-							</div>
+							</div>							
 						</div>
-						<!-- <div class="col-md-12 col-sm-12 col-xs-12 accordian_additional_details">
-							<button type="button" id="accord_btn" class="accordion" onclick="trigger_slide()">Additional Contact details</button>
-							<div id="Slider" class="panel slide-up">
-								<div class="row">
-									<div class="col-md-4 col-sm-4 col-xs-12">
-										<div class="form-group">
-											<label class="form-label">
-												<input class="form-input <?=(trim($c2fname) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="c2_fname" name="c2_fname" value="<?=$c2fname;?>" type="text" />
-												<span class="form-name floating-label">Contact Person First Name</span>
-											</label>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-4 col-xs-12">
-										<div class="form-group">
-											<label class="form-label">
-												<input class="form-input <?=(trim($c2lname) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="c2_lname" name="c2_lname" value="<?=$c2lname;?>" type="text" />
-												<span class="form-name floating-label">Contact Person Last Name</span>
-											</label>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-4 col-xs-12">
-										<div class="form-group">
-											<label class="form-label">
-												<input class="form-input <?=(trim($c2desgination) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="c2_desgination" name="c2_desgination" type="text" value="<?=trim($c2desgination);?>" />
-												<span class="form-name floating-label">Contact Person Designation</span>
-											</label>  <!-- data-validation="custom" data-validation-regexp="^([a-zA-Z]+)$" -->
-										<!-- </div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-4 col-sm-4 col-xs-12">
-										<div class="form-group">
-											<label class="form-label">
-												<input class="form-input <?=(trim($c2linkedin) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="c2_linkedin" name="c2_linkedin" value="<?=trim($c2linkedin);?>" type="text" />
-												<span class="form-name floating-label">Contact Person LinkedIn profile<sup>*</sup></span>
-												<span class="append_icon_text"><a href="javascript:void(0)"><img src="<?=base_url();?>assets/images/icon/linkedin.png"/></a></span>
-											</label>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-4 col-xs-12">
-										<div class="form-group">
-											<label class="form-label">
-												<input class="form-input <?=(trim($c2contact) <> '' ? 'input-focus' : 'input-focus-notr')?>" name="c2_contactn" id="c2_contactn" value="<?=$c2contact;?>" type="text" />
-												<span class="form-name floating-label">Contact person Mobile Number<sup>*</sup></span>
-											</label>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-4 col-xs-12">
-										<div class="form-group">
-											<label class="form-label">
-												<input class="form-input <?=(trim($c2email) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="c2_email" name="c2_email" value="<?=$c2email;?>" type="text" />
-												<span class="form-name floating-label">Contact person Email ID</span>
-											</label>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div> -->
 					</div>
-					<div class="col-md-3 col-sm-3 col-xs-12 btn-more">
-						<input type="hidden" name="c_row" value="<?=$crow;?>" />
-						<input type="hidden" name="action" value="edit_profile_base" />
-						<input type="hidden" name="uaction" value="user_edit_profile" />
-						<input type="hidden" name="uaction_step" value="step1" />
-						<button type="submit" class="submit_contact"> Submit</button>
+					<div class="row">
+						<div class="col-md-3 col-sm-3 col-xs-12 btn-more">
+							<input type="hidden" name="c_row" value="<?=$crow;?>" />
+							<input type="hidden" name="action" value="edit_profile_base" />
+							<input type="hidden" name="uaction" value="user_edit_profile" />
+							<input type="hidden" name="uaction_step" value="step1" />
+							<button type="submit" class="submit_contact"> Submit</button>
+						</div>
 					</div>
 					</form>
 				</div>
+				
+				
 				<div id="com_profile" class="tab-pane fade">
 					<p class="mand">Mandatory <sup>*</sup></p>
 					<?php
@@ -199,7 +122,7 @@
 							<div class="col-md-12 input_fields">
 
 								<div class="row">
-									<div class="col-md-3 col-sm-3 col-xs-12 pull-right company_logo_block">
+									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 pull-right company_logo_block">
 										<div class="contact_person_photo_back company_logo_area">
 											<div class="contact_person_photo">
 												<img id="company_pic" src="<?=(($clogo && $clogo != '' && $clogo != 'NULL') ? base_url().'assets/social_user_company_logo/'.$clogo : base_url().'assets/images/img/company_logo.png') ?>" class="avatar" alt="avatar" />
@@ -209,31 +132,32 @@
 												<input id="file-upload-comp" type="file" name="comp_pic" />
 											</div>
 											<h5>Company Logo<br/>(Max Size : 3MB)</h5>
-                                                                                        <span id="namefile1" style="padding-left:0; font-size: 10px; line-height: 17px; width: 100%; height: auto;"></span>
+                                            <span id="namefile1" style="padding-left:0; font-size: 10px; line-height: 17px; width: 100%; height: auto;"></span>
 										</div>
 									</div>
-									<div class="col-md-9 col-sm-9 col-xs-12">
+									<div class="col=lg-9 col-md-9 col-sm-8 col-xs-12">
 										<div class="row">
 											<div class="col-md-12 col-sm-12 col-xs-12">
 												<div class="form-group">
-													<label class="form-label">
-														<input class="form-input <?=(trim($comname) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="c_name" name="c_name" value="<?=$comname;?>" type="text" data-validation="required custom" autocomplete="" data-required-error="" />
-														<span class="form-name floating-label">Company Name<sup>*</sup></span>
-													</label>
+													<label for="c_name">Company Name<sup>*</sup></label>
+													<input type="text" id="c_name" name="c_name" class="form-control <?=(trim($comname) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$comname;?>" data-validation="required custom" autocomplete="" data-required-error="">
 												</div>
 											</div>
 											<div class="col-md-12 col-sm-12 col-xs-12">
 												<div class="form-group">
-													<label class="form-label">
-														<textarea class="<?=(trim($caddress) <> '' ? 'input-focus' : 'input-focus-notr')?>" rows="1" name="caddress" id="caddress"><?=$caddress;?></textarea>
-														<span class="form-name floating-label">Communication Office address<sup>*</sup></span>
-													</label>
+													<label for="first_name">Communication Office Address<sup>*</sup></label>
+													<textarea class="form-control <?=(trim($caddress) <> '' ? 'input-focus' : 'input-focus-notr')?>" rows="2" name="caddress" id="caddress"><?=$caddress;?></textarea>
 												</div>
 											</div>
-											<div class="col-md-6 col-sm-6 col-xs-12">
-												<div class="form-group">
-													<div class="select_drop"><span class="ti-angle-down"></span>
-														<select class="form-control appearance_back" id="com_legal_form" name="com_legal_form">
+											
+											
+											
+											
+											
+											
+												<div class="form-group col-md-6">
+													<label for="com_legal_form">Legal form<sup>*</sup></label>
+													<select class="form-control" id="com_legal_form" name="com_legal_form">
 															<option value="Private-Limited" <?=(($com_legal_form == 'Private-Limited') ? 'selected' : '')?>>Private Limited</option>
 															<option value="Public-Limited" <?=(($com_legal_form == 'Public-Limited') ? 'selected' : '')?>>Public Limited</option>
 															<option value="Partnership" <?=(($com_legal_form == 'Partnership') ? 'selected' : '')?>>Partnership</option>
@@ -241,14 +165,10 @@
 															<option value="Proprietorship" <?=(($com_legal_form == 'Proprietorship') ? 'selected' : '')?>>Proprietorship</option>
 															<option value="Sole-Proprietorship" <?=(($com_legal_form == 'Sole-Proprietorship') ? 'selected' : '')?>>Sole Proprietorship</option>
 														</select>
-														<span class="form-name floating-label">Legal form<sup>*</sup></span>
-													</div>
 												</div>
-											</div>
-											<div class="col-md-6 col-sm-6 col-xs-12">
-												<div class="form-group">
-													<div class="select_drop"><span class="ti-angle-down"></span>
-														<select class="form-control appearance_back" id="c_country" name="c_country">
+												<div class="form-group col-md-6">
+													<label for="c_country">Country<sup>*</sup></label>
+													<select class="form-control" id="c_country" name="c_country">
 															<?php
 																if($pcountry && !empty($pcountry) && is_array($pcountry) && sizeof($pcountry) <> 0){
 
@@ -259,65 +179,45 @@
 																}
 															?>
 														</select>
-														<span class="form-name floating-label">Country<sup>*</sup></span>
-													</div>
 												</div>
-											</div>
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12 col-sm-12 col-xs-12">
 										<div class="form-group">
-											<label class="form-label">
-												<textarea class="form-input <?=(trim($com_business_overv) <> '' ? 'input-focus' : 'input-focus-notr')?> business_overview" id="com_business_overv" name="com_business_overv"><?=$com_business_overv;?></textarea>
-												<span class="form-name floating-label">Business Overview<sup>*</sup></span>
-											</label>
+											<label for="com_business_overv">Business Overview<sup>*</sup></label>
+											<textarea class="form-control <?=(trim($com_business_overv) <> '' ? 'input-focus' : 'input-focus-notr')?> business_overview" id="com_business_overv" name="com_business_overv"><?=$com_business_overv;?></textarea>
 										</div>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-8 col-sm-8 col-xs-12">
-										<div class="form-group">
-											<label class="form-label">
-												<input class="form-input <?=(trim($cweb) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="c_web" name="c_web" value="<?=$cweb;?>" type="text" autocomplete="" data-validation="required" data-required-error="" />
-												<span class="form-name floating-label">Company Website<sup>*</sup></span>
-											</label>
-										</div>
+									<div class="form-group col-lg-7 col-md-6 col-sm-6 col-xs-12">
+											<label for="c_web">Company Website<sup>*</sup></label>
+											<input type="text" id="c_web" name="c_web" class="form-control <?=(trim($cweb) <> '' ? 'input-focus' : 'input-focus-notr')?>" autocomplete="" data-validation="required" data-required-error="" />
 									</div>
-									<div class="col-md-4 col-sm-4 col-xs-12">
-										<div class="form-group">
-											<div class="select_drop"><span class="ti-angle-down"></span>
-												<select class="appearance_back" id="c_dept" name="c_dept" autocomplete="" data-validation="required" data-required-error="" aria-required="true">
+									<div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+											<label for="c_dept">Industry<sup>*</sup></label>
+												<select class="form-control" id="c_dept" name="c_dept" autocomplete="" data-validation="required" data-required-error="" aria-required="true">
 												<?php
 													if($pcategories && !empty($pcategories) && is_array($pcategories) && sizeof($pcategories) <> 0){
-
 														foreach($pcategories as $prow){
-
 															echo '<option value="'.$prow->ID.'" '.((isset($cdept) && $cdept == $prow->ID) ? 'selected' : '').'>'.$prow->cName.'</option>';
 														}
 													}
 												?>
 												</select>
-												<span class="form-name floating-label">Industry<sup>*</sup></span>
-											</div>
 										</div>
 									</div>
-								</div>
 								<div class="row">
-									<div class="col-md-8 col-sm-8 col-xs-12">
-										<div class="form-group">
-											<label class="form-label">
-												<input class="form-input <?=(trim($com_linkedin) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="com_linkedin" name="com_linkedin" type="text" value="<?=trim($com_linkedin);?>" />
-												<span class="form-name floating-label">LinkedIn Company profile</span>
-												<span class="append_icon_text"><a href="javascript:void(0)"><img src="<?=base_url();?>assets/images/icon/linkedin.png"/></a></span>
-											</label>
-										</div>
+									<div class="form-group col-lg-7 col-md-6 col-sm-6 col-xs-12">
+											<label for="com_linkedin">LinkedIn Company profile</label>
+												<input type="text" id="com_linkedin" name="com_linkedin" class="form-control <?=(trim($com_linkedin) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=trim($com_linkedin);?>" />
+												<span class="append_icon_text"><a href="javascript:void(0)"><img src="<?=base_url();?>assets/images/icon/linkedin.png"/></a></span>	
 									</div>
-									<div class="col-md-4 col-sm-4 col-xs-12"><!-- multiselect-drop_sec data-role="multiselect" multiple -->
-										<div class="form-group">
-											<div class="select_drop"> <span class="ti-angle-down"></span>
-												<select class="form-control appearance_back" id="com_sectors" name="com_sectors[]" autocomplete="" data-validation="required" data-required-error="" aria-required="true">
+									<div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+												<label for="com_sectors">Sectors<sup>*</sup></label>
+												<select class="form-control" id="com_sectors" name="com_sectors[]" autocomplete="" data-validation="required" data-required-error="" aria-required="true">
 													<?php
 														if($psectors && !empty($psectors) && is_array($psectors) && sizeof($psectors) <> 0){
 
@@ -328,43 +228,26 @@
 														}
 													?>
 												</select>
-												<span class="form-name floating-label">Sectors<sup>*</sup></span> <!-- floating-label-sector -->
-											</div>
 										</div>
 									</div>
-								</div>
 								<div class="row">
-									<div class="col-md-8 col-sm-8 col-xs-12">
-										<div class="form-group">
-											<label class="form-label">
-												<input class="form-input <?=(trim($cregno) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="com_regno" name="com_regno" value="<?=$cregno;?>" type="text" data-required-error="" />
-												<span class="form-name floating-label">Company Registration Number<sup>*</sup></span>
-											</label>
-										</div>
+									<div class="form-group col-lg-7 col-md-6 col-sm-6 col-xs-12">
+										<label for="com_regno">Company Registration Number<sup>*</sup></label>
+										<input type="text" id="com_regno" name="com_regno" class="form-control <?=(trim($cregno) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$cregno;?>" data-required-error="" />
 									</div>
-									<div class="col-md-4 col-sm-4 col-xs-12">
-										<!--
-										<div class="form-group select_drop"><span class="ti-angle-down"></span>
-											<label class="form-label">
-												<input class="form-input datepicker <?=(trim($com_incop) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="com_incop" name="com_incop" type="text" value="<?=$com_incop;?>" autocomplete="" data-validation="required" data-required-error="" aria-required="true" />
-												<span class="form-name floating-label">Year of Incorporation<sup>*</sup></span>
-											</label>
-										</div>   onfocus='this.size=10;' onblur='this.size=1;' onchange='this.size=1; this.blur();' -->
-										<div class="form-group">
-											<div class="select_drop"> <span class="ti-angle-down"></span>
-												<select class="form-control appearance_back" id="com_incop" name="com_incop">
-													<?php
-														for($y = 1800; $y <= intval(date('Y')); $y++){
-															echo '<option value="'.$y.'" '.((isset($com_incop) && $com_incop == $y) ? 'selected' : '').'>'.$y.'</option>';
-														}
-													?>
-												</select>
-
-												<span class="form-name floating-label">Year of Incorporation<sup>*</sup></span>
-											</div>
-										</div>
+									<div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+										<label for="com_incop">Year of Incorporation<sup>*</sup></label>
+											<select class="form-control" id="com_incop" name="com_incop">
+												<?php
+													for($y = 1800; $y <= intval(date('Y')); $y++){
+														echo '<option value="'.$y.'" '.((isset($com_incop) && $com_incop == $y) ? 'selected' : '').'>'.$y.'</option>';
+													}
+												?>
+											</select>
 									</div>
 								</div>
+								
+								
 								<div class="row hide">
 									<div class="col-md-8 col-sm-8 col-xs-12">
 										<div class="form-group">
@@ -378,12 +261,14 @@
 							</div>
 						</div>
 
-						<div class="col-md-3 btn-more">
-							<input type="hidden" name="action" value="edit_comapny" />
-							<input type="hidden" name="c_row" value="<?=$crow;?>" />
-							<input type="hidden" name="uaction" value="user_edit_profile" />
-							<input type="hidden" name="uaction_step" value="step2" />
-							<button type="submit" class="submit_contact"> Submit</button>
+						<div class="row">
+							<div class="col-md-3 btn-more">
+								<input type="hidden" name="action" value="edit_comapny" />
+								<input type="hidden" name="c_row" value="<?=$crow;?>" />
+								<input type="hidden" name="uaction" value="user_edit_profile" />
+								<input type="hidden" name="uaction_step" value="step2" />
+								<button type="submit" class="submit_contact"> Submit</button>
+							</div>
 						</div>
 					</form>
 				</div>
@@ -542,26 +427,14 @@
 								<div class="row">
 									<div class="col-md-12 col-sm-12 col-xs-12">
 										<div class="form-group">
-											<label class="form-label">
-												<input id="xwallet_id" name="xwallet_id" class="form-input input-focus input-readonly" value="<?=$uxwallet;?>" type="text" autocomplete="" data-required-error="" />
-												<span class="form-name floating-label">XDC Wallet Address</span>
-												<span id="link_wallet" data-dismiss="modal" data-toggle="modal" data-target="#xinfin_usign_in"  data-backdrop="static" data-keyboard="false" class="append_icon_image" data-dismiss="modal"><a href="javascript:void(0)"></a></span>
-											</label>
+											<label for="xwallet_id">XDC Wallet Address</label>
+												<input id="xwallet_id" name="xwallet_id" class="form-control input-focus input-readonly" value="<?=$uxwallet;?>" type="text" autocomplete="" placeholder="On submit address will be created automatically." disabled/>
+												
+												<!--<span class="form-name floating-label">XDC Wallet Address</span>
+												<span id="link_wallet" data-dismiss="modal" data-toggle="modal" data-target="#xinfin_usign_in"  data-backdrop="static" data-keyboard="false" class="append_icon_image" data-dismiss="modal"><a href="javascript:void(0)"></a></span>-->
 										</div>
 									</div>
-									<!-- <div class="col-md-4 col-sm-4 col-xs-12">
-										<div class="form-group">
-											<label class="form-label">
-												<input id="xwallet_balance" name="xwallet_balance" class="form-input input-focus input-readonly" value="<?=$uxbalance.' XDC Tokens';?>" type="text" autocomplete="" data-required-error="" />
-												<span class="form-name floating-label">XDC Wallet Balance</span>
-												<?=(trim($uxwallet) == '' ? '' : '<span id="update_wallet" class="append_icon_text"><a href="javascript:void(0)">REFRESH</a></span>');?>
-												<img class="update_wallet_action_loader" style="width:20px;border:0px;display:none;" src="<?=base_url();?>assets/images/icon/loading_icon.gif" alt="Loading..." />
-											</label>
-											<span class="update_wallet_action_message" style="display:none;font-size:12px;"><font color="green">Updated !</font></span>
-											&nbsp; &nbsp;<a class="update_wallet_action_message"  data-toggle="modal" href="#select_exchange"  style="font-size:13px"> Top Up XDC  </a>
-
-										</div>
-									</div> -->
+									
 								</div>
 
 							</form>
@@ -569,40 +442,30 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12 accordian_additional_details">
-							<button type="button" id="accord_btnb" class="accordion" onclick="trigger_slideb()">Bank & Exchange Information</button>
-							<div id="Sliderb" class="panel slide-up">
-								<?php
+							<?php
 									$attributes = array('id' => 'form_user_bank_profile', 'class' => '', 'method' => 'post', 'role' => 'form');
 									echo form_open_multipart(base_url().'user/edit/', $attributes);
 								?>
 								<div class="row">
-
-									<div class="col-md-8 col-sm-8 col-xs-12">
-										<div class="form-group">
-											<label class="form-label">
-												<input class="form-input <?=(trim($ubankname) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="ubank_name" name="ubank_name" value="<?=$ubankname;?>" type="text" data-validation="custom" data-validation-regexp="^([a-zA-Z\s]+)$" autocomplete="" />
-												<span class="form-name floating-label">Bank Name<sup>*</sup></span>
-											</label>
-										</div>
+									<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+											<label for="ubank_name">Bank Name<sup>*</sup></label>
+												<input type="text" id="ubank_name" name="ubank_name" class="form-control <?=(trim($ubankname) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$ubankname;?>" data-validation="custom" data-validation-regexp="^([a-zA-Z\s]+)$" autocomplete="" />
 									</div>
-									<div class="col-md-4 col-sm-4 col-xs-12">
-										<div class="form-group">
-											<label class="form-label">
-												<input class="form-input <?=(trim($ubankno) <> '' ? 'input-focus' : 'input-focus-notr')?>" id="ubank_num" name="ubank_num" value="<?=$ubankno;?>" type="text" data-validation="number" autocomplete="" />
-												<span class="form-name floating-label">Bank Account Number<sup>*</sup></span>
-											</label>
-										</div>
+									<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+										<label for="ubank_num">Bank Account Number<sup>*</sup></label>
+										<input type="text" id="ubank_num" name="ubank_num" class="form-control <?=(trim($ubankno) <> '' ? 'input-focus' : 'input-focus-notr')?>" value="<?=$ubankno;?>" data-validation="number" autocomplete="" />
 									</div>
 								</div>
 								
-							</div>
-								<div class="col-md-3 btn-more">
-									<!-- <button id="link_wallet" type="button" class="submit_contact" data-toggle="modal" data-target="#xinfin_usign_in" data-backdrop="static" data-keyboard="false"> <?=(trim($uxwallet) == '' ? 'Submit' : 'Submit');?></button> -->
-									<button type="submit" class="submit_contact"> Submit</button>
-									<input type="hidden" name="c_row" value="<?=$crow;?>" />
-									<input type="hidden" name="action" value="edit_profile_base_bank" />
-									<input type="hidden" name="uaction" value="user_edit_profile" />
-									<input type="hidden" name="uaction_step" value="step4" />
+								<div class="row">
+									<div class="col-md-3 btn-more">
+										<!-- <button id="link_wallet" type="button" class="submit_contact" data-toggle="modal" data-target="#xinfin_usign_in" data-backdrop="static" data-keyboard="false"> <?=(trim($uxwallet) == '' ? 'Submit' : 'Submit');?></button> -->
+										<button type="submit" class="submit_contact" onclick="this.disabled=true;this.form.submit(); "data-required-error=""> Submit</button>
+										<input type="hidden" name="c_row" value="<?=$crow;?>" />
+										<input type="hidden" name="action" value="edit_profile_base_bank" />
+										<input type="hidden" name="uaction" value="user_edit_profile" />
+										<input type="hidden" name="uaction_step" value="step4" />
+									</div>
 								</div>
 								</form>
 							</div>
@@ -621,7 +484,9 @@
 				
 			</div>
 		</div>
-    </div>
+    </div>	
+	</div>
+	</div>
 </section>
 
 <script type="text/javascript">

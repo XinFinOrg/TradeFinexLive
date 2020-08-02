@@ -392,7 +392,7 @@
 	z-index: 100002;
 }
 
-.append_icon_text {
+/*.append_icon_text {
 	float: right;
 	font-size: 12px;
 	color: #1da1f2 !important;
@@ -400,6 +400,14 @@
 	top: -42px;
 	text-transform: uppercase;
 	z-index: 9;
+}*/
+.append_icon_text {
+    right: 14px;
+    font-size: 12px;
+    color: #1da1f2 !important;
+    top: 38px;
+    text-transform: uppercase;
+    position: absolute;
 }
 
 .append_icon_image {

@@ -57,7 +57,7 @@ class Suser extends CI_Model {
 
         $this->db->select('*');
         $this->db->from('{PRE}social_user');
-        $where = "tfs_auth_provider = '".$data_add['oauth_provider']."' AND tfs_auth_id = '".$data_add['oauth_uid']."'";
+        $where = "tfs_auth_provider = '".$data_add['oauth_provider']."' AND tfs_auth_id = '".$data_add['oauth_uid']."'OR tfs_email = '".$data_add['email']."'";
         $this->db->where($where);
         $query = $this->db->get();
         
@@ -92,9 +92,10 @@ class Suser extends CI_Model {
             }
             else
             {
-                
+
                 $udetail = $uresult[0]->tfs_id;
                 $result['user_detail'] = $uresult[0];
+                
             }
 
             $datan = array();
@@ -120,7 +121,12 @@ class Suser extends CI_Model {
     public function add_social_user($data_add){
         $data = array();
         $data['tfs_auth_provider'] = $data_add['oauth_provider'];
-        $data['tfs_auth_id'] = $data_add['oauth_uid'];
+        if($data['tfs_auth_provider'] == 'twitter'){
+            $data['tfs_auth_id'] = number_format($data_add['oauth_uid'],0);
+            $data['tfs_auth_id'] = filter_var($data['tfs_auth_id'], FILTER_SANITIZE_NUMBER_INT);
+        }else{
+            $data['tfs_auth_id'] = $data_add['oauth_uid'];
+        }       
         $data['tfs_first_name'] = $data_add['first_name'];
         $data['tfs_last_name'] = $data_add['last_name'];
         $data['tfs_email'] = $data_add['email'];
@@ -129,7 +135,7 @@ class Suser extends CI_Model {
 
             $this->db->select('*');
 			$this->db->from('{PRE}social_user');
-			$where = "tfs_auth_provider = '".$data_add['oauth_provider']."' AND tfs_auth_id = '".$data_add['oauth_uid']."'";
+			$where = "tfs_auth_provider = '".$data['tfs_auth_provider']."' AND tfs_auth_id = '".$data['tfs_auth_id']."'";
 			$this->db->where($where);
 			$query = $this->db->get();
 
@@ -137,21 +143,23 @@ class Suser extends CI_Model {
         
             if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
 
-				return false;
+				return $uresult;
 
 			}else{
+                
+                
                 $this->db->insert('{PRE}social_user',$data);
                 $userID = $this->db->insert_id();
                 $data['userID'] = $userID;
-
+                
                 $this->db->select('*');
                 $this->db->from('{PRE}social_user');
-                $where = "tfs_auth_provider = '".$data_add['oauth_provider']."' AND tfs_auth_id = '".$data_add['oauth_uid']."'";
+                $where = "tfs_auth_provider = '".$data['tfs_auth_provider']."' AND tfs_auth_id = '".$data['tfs_auth_id']."'";
                 $this->db->where($where);
                 $query = $this->db->get();
 
-                return $query->result();
-
+			    $result = $query->result();
+                return $result;
                 // return $result = $this->get_social_user_company_info_by_id($id);
             }
     }
@@ -298,7 +306,7 @@ class Suser extends CI_Model {
         $where = "tfs.tfs_id = '$id'";
         $this->db->where($where);
         $query = $this->db->get();
-
+        
         return $result = $query->result();
     }
 }

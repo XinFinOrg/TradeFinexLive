@@ -6,7 +6,7 @@ class Sociallog extends CI_Controller {
 	function __construct(){
 		parent::__construct();
         $this->load->helper(array('form', 'url', 'date'));
-		$this->load->library(array('session', 'encrypt'));
+		$this->load->library(array('session', 'encrypt','facebook'));
 		$this->load->model(array('user'));
 		
 		$data = array();

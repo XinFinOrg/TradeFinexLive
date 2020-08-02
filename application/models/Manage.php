@@ -589,7 +589,7 @@
 			return $result = $this->get_user_info_by_id_and_type($id, $type_id);
 		}
 
-		public function update_user_info_by_id_and_type($id, $data_add){
+		public function update_user_info_by_id_and_type($id, $type_id, $data_add){
 
 			$datan = array();
 			$datan['tfu_usern'] = $data_add['uname'];

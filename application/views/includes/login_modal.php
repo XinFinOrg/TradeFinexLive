@@ -9,21 +9,36 @@
 			</div>
 			<div class="modal-body text-center">
 				<h3>Your Keys Await</h3>
-				<p>We connect global Beneficiaries, Suppliers and Financiers using TradeFinex platform </p>
+				<!--<p>We connect global Beneficiaries, Suppliers and Financiers using TradeFinex platform</p>-->
+				<p>Login with your Social media account.</p>
 				<?php 
 					$attributes = array('id' => 'loginForm', 'class' => 'log_in_form', 'method' => 'post');
 					echo form_open_multipart(base_url().'login/', $attributes); 
 				?>
-					<a href="<?php echo base_url("login/fblogin")?>" class="facebook"><i class="fa fa-facebook"></i></a>
-					<!-- <a href="<?php echo base_url("login/glogin")?>" class="google"><i class="fa fa-google"></i></a> -->
-					<div class="row">
+					<!--<a href="<?php echo base_url("login/fblogin")?>" class="facebook"><i class="fa fa-facebook"></i></a>
+					<a href="<?php echo base_url("login/glogin")?>" class="google"><i class="fa fa-google"></i></a>
+					<a href="<?php echo base_url("login/lLogin")?>" class="linkedin"><i class="fa fa-linkedin"></i></a>-->
+					
+					<div class="text-center social-btn">
+						<a class="button button-social-login facebook" href="<?php echo base_url("login/fblogin")?>"><i class="icon fa fa-facebook"></i>Login With Facebook</a>
+						<a class="button button-social-login twitter" href="<?php echo base_url("login/tlogin")?>"><i class="icon fa fa-twitter"></i>Login With Twitter</a>
+						<a class="button button-social-login linkedin " href="<?php echo base_url("login/lLogin")?>" ><i class="icon fa fa-linkedin"></i>Login With LinkedIn</a>
+						<a class="button button-social-login google" href="<?php echo base_url("login/glogin")?>"><i class="icon fa fa-google"></i>Login With Google</a>
+					</div>
+					
+					<div class="row mt-10 text-center">
 						<?php echo $this->session->flashdata('error_logged_in'); ?>
 					</div>
+					
+					<!-- <div class="or-seperator"><span>or</span></div> -->
+					
 					<input type="hidden" name="action" value="login" />
-					<div class="btn-more"> <button type="submit">Sign In </button> </div>
-					<ul class="log_bottom_sec">
+					<!--<div class="btn-more"> <button type="submit">Sign In </button> </div>-->
+					<!-- <div class="btn-more mt-0"> <button type="submit" class="mr-0"><i class="icon fa fa-key"></i> Login Using Private Key</button> </div> -->
+					<!--<ul class="log_bottom_sec mt-20">
 						<li> <a href="<?php echo base_url() ?>registration">New User? Register Now</a> </li>
-					</ul>
+					</ul>-->
+					
 				</form>
 			</div>
 		</div>

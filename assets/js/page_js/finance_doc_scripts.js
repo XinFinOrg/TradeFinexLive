@@ -261,7 +261,7 @@ $(function () {
 				reader.onload = function () {
 					dataFile = reader.result;
 					dataFile = dataFile.split("base64,");
-					console.log(">>>>",window.location.search)
+					
 					
 					// after getting value of datafile name make the ajax call
 					$.each(formObj, function (k, v) {
@@ -275,11 +275,12 @@ $(function () {
 						}
 					})
 					formDataObj.docRef = (new Date()).getTime();
-					
+					formDataObj.private_key = document.getElementById("private_key").value;
+					// console.log(">>>>",formDataObj.private_key);
 					$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"https://tfd.xinfin.net/api/uploadDoc",
+						url:"https://demoapi.tradefinex.org/api/uploadDoc",
 						data:{"data":dataFile[1]},
 						success: resp => {
 							// console.log("response success: ",resp)
@@ -298,7 +299,7 @@ $(function () {
 					
 						if(resp.status == true){
 							hash = resp.hash;
-							$.post("https://tfd.xinfin.net/api/generateContract",{
+							$.post("https://demoapi.tradefinex.org/api/generateContract",{
 							"ipfsHash":hash,
 							"instrumentType":formDataObj.instrument,
 							"amount":formDataObj.amount,
@@ -320,7 +321,7 @@ $(function () {
 									$("#deploy_contract").on('click', function (e) {
 										showLoader();
 										$('#deploy_contract').prop('disabled', true);
-										$.post("https://tfd.xinfin.net/api/deployContract",{
+										$.post("https://demoapi.tradefinex.org/api/deployContract",{
 										"ipfsHash":hash,
 										"instrumentType":formDataObj.instrument,
 										"amount":formDataObj.amount,
@@ -357,7 +358,7 @@ $(function () {
 													console.log("response1 : ",err);
 												})
 												
-												const hashUrl = `https://explorer.xinfin.network/tx/${resp.receipt.transactionHash}`;
+												const hashUrl = `https://explorer.apothem.network/tx/${resp.receipt.transactionHash}`;
 												const tHtml = `
 																<p>
 																	<span>Contract Address:</span><br>${resp.receipt.contractAddress.toLowerCase()}</p>
@@ -675,7 +676,7 @@ $(function () {
 					$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"https://tfd.xinfin.net/api/uploadDoc",
+						url:"https://demoapi.tradefinex.org/api/uploadDoc",
 						data:{"data":dataFile[1]},
 						success: resp => {
 							// console.log("response success: ",resp)
@@ -691,7 +692,7 @@ $(function () {
 							hash = resp.hash;
 							
 
-							$.post("https://tfd.xinfin.net/api/generateContract",{
+							$.post("https://demoapi.tradefinex.org/api/generateContract",{
 							"ipfsHash":hash,
 							"instrumentType":formDataObj.instrument,
 							"amount":formDataObj.amount,
@@ -714,7 +715,7 @@ $(function () {
 									$("#deploy_contract").on('click', function (e) {
 										showLoader();
 										$('#deploy_contract').prop('disabled', true);
-										$.post("https://tfd.xinfin.net/api/deployContract",{
+										$.post("https://demoapi.tradefinex.org/api/deployContract",{
 										"ipfsHash":hash,
 										"instrumentType":formDataObj.instrument,
 										"amount":formDataObj.amount,
@@ -1032,7 +1033,7 @@ $(function () {
 					$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"https://tfd.xinfin.net/api/uploadDoc",
+						url:"https://demoapi.tradefinex.org/api/uploadDoc",
 						data:{"data":dataFile[1]},
 						success: resp => {
 							// console.log("response success: ",resp)
@@ -1048,7 +1049,7 @@ $(function () {
 							hash = resp.hash;
 							
 
-							$.post("https://tfd.xinfin.net/api/generateContract",{
+							$.post("https://demoapi.tradefinex.org/api/generateContract",{
 							"ipfsHash":hash,
 							"amount":formDataObj.quantity * formDataObj.amount,
 							"currencySupported":formDataObj.currency_supported,
@@ -1071,7 +1072,7 @@ $(function () {
 									$("#deploy_contract").on('click', function (e) {
 										showLoader();
 										$('#deploy_contract').prop('disabled', true);
-										$.post("https://tfd.xinfin.net/api/deployContract",{
+										$.post("https://demoapi.tradefinex.org/api/deployContract",{
 										"ipfsHash":hash,
 										"amount":formDataObj.quantity * formDataObj.amount,
 										"currencySupported":formDataObj.currency_supported,
@@ -1271,7 +1272,7 @@ $(function () {
 						document.getElementById("customm").value = resp.privatekey;
 						var _custom = document.getElementById("customm");
 						// console.log(">>",$(_custom).val());
-						$.post("paypal",{
+						$.post("test2",{
 							'addr':resp.privatekey
 						}).then(resp => {
 							var jsona = $.parseJSON(resp);
@@ -1360,14 +1361,14 @@ $(function () {
 						let resp = $.ajax({
 							type:"POST",
 							dataType:"json",
-							url:"https://tfd.xinfin.net/api/uploadDoc",
+							url:"https://demoapi.tradefinex.org/api/uploadDoc",
 							data:{"data":dataFile[1]},
 							success: (resp =>{
 								console.log(resp);
 								if(resp.status == true){
 									hash = resp.hash;
 		
-									$.post("https://tfd.xinfin.net/api/generateContract",{
+									$.post("https://demoapi.tradefinex.org/api/generateContract",{
 									"ipfsHash":hash,
 									"instrumentType":formDataObj.instrument,
 									"amount":formDataObj.amount,
@@ -1382,7 +1383,7 @@ $(function () {
 										console.log("Generate Contract : ",respond.status,childd);
 										if(respond.status == true){
 											passkey = respond.passKey,
-											$.post("https://tfd.xinfin.net/api/deployContract",{
+											$.post("https://demoapi.tradefinex.org/api/deployContract",{
 											"ipfsHash":hash,
 											"instrumentType":formDataObj.instrument,
 											"amount":formDataObj.amount,
@@ -1422,7 +1423,7 @@ $(function () {
 															var ress =Object.entries(deploy);			
 															let rows = "";
 															for (var j = 0; j < ress.length; j++) { 
-																const hashUrl = `https://explorer.xinfin.network/tx/${deploy[j].txHash}`;
+																const hashUrl = `https://explorer.apothem.network/tx/${deploy[j].txHash}`;
 																rows += `<tr>
 																<td>${deploy[j].fileNo +1}</td>
 																<td>${deploy[j].contract_address}</td>
@@ -1696,7 +1697,7 @@ $(function () {
 						$.ajax({
 							type:"POST",
 							dataType:"json",
-							url:"https://tfd.xinfin.net/api/getDocHash",
+							url:"https://demoapi.tradefinex.org/api/getDocHash",
 							data:{"contractAddr":formDataObj.contract_address,
 								  "passKey": resp.key,
 								  "contractType" : "commonInstrument"
@@ -1812,7 +1813,7 @@ $(function () {
 						$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"https://tfd.xinfin.net/api/getDocHash",
+						url:"https://demoapi.tradefinex.org/api/getDocHash",
 						data:{"contractAddr":formDataObj.contract_address,
 							  "passKey": resp.key,
 							  "contractType" : "brokerInstrument"
@@ -1926,7 +1927,7 @@ $(function () {
 						$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"https://tfd.xinfin.net/api/getDocHash",
+						url:"https://demoapi.tradefinex.org/api/getDocHash",
 						data:{"contractAddr":formDataObj.contract_address,
 							  "passKey": resp.key,
 							  "contractType" : "fundDesign"

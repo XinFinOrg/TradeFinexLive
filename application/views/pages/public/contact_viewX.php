@@ -111,7 +111,7 @@
 				</div>
 				<div class="col-md-12 assocation">
 					<h3>TradeFinex Assocation</h3>
-					<p>Responsible for assisting in the development, acceptance and general improvement of XDC01 protocol and its resources, the association handles all kinds of commercial inquiries surrounding XDC token and real world applications. Stay appraised with the development in underlying XDC01 protocol that powers the TradeFinex platform and hence, global trade and financing.</p>
+					<p>Responsible for assisting in the development, acceptance and general improvement of XDC protocol and its resources, the association handles all kinds of commercial inquiries surrounding XDC token and real world applications. Stay appraised with the development in underlying XDC01 protocol that powers the TradeFinex platform and hence, global trade and financing.</p>
                     <ul class="tradeFinex_community">
 						 <li><a href="https://t.me/tradefinex"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
 						<li><a href="https://www.linkedin.com/in/tradefinex/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>

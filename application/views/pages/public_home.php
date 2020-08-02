@@ -40,7 +40,7 @@
                                             <p></p>
                                         </div>
                                         <div class="tf-bottom-col-2">
-                                            <div class="tabs-container"> <a class="btn border blue tf-block text-uppercase" href="<?=base_url();?>publicv/buyersupplier">Apply for Finance</a></div>
+                                            <div class="tabs-container"> <a class="btn border blue tf-block text-uppercase" href="javascript:void(0)"  data-toggle="modal" data-target="#login">Apply for Finance</a></div>
                                         </div>
                                     </div>
                                 </div>

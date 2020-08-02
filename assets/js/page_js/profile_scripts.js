@@ -809,7 +809,7 @@
 					required: true,
 					minlength: 6,
 					maxlength: 15,
-					numberOnly: true
+					alphanumericOnly: true
 				}
 			},	
 			messages: {

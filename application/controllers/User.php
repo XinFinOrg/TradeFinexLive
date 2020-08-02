@@ -6,7 +6,7 @@ class User extends CI_Controller {
 	function __construct(){
 		parent::__construct();
         $this->load->helper(array('form', 'url', 'date', 'xdcapi', 'file', 'blockchain', 'notification'));
-		$this->load->library('session');
+		$this->load->library(array('session', 'encrypt'));
 		$this->load->model(array('manage','plisting','suser'));
 		// $this->is_logged_in();
 		$this->output->delete_cache();
@@ -156,12 +156,25 @@ class User extends CI_Controller {
         // $config['max_height']           = 1024;
 	
 		if($action == 'edit_profile_base_bank' && $data['user_id'] <> 0){
-			$addr = generateAddress();
-			$data_add = array();
-			$data_add['tfs_xdc_wallet'] = $addr->address;
-			$data_add['tfs_bank_acc_number'] = $this->input->post('ubank_num');
-			$data_add['tfs_bank_name'] = $this->input->post('ubank_name');
-			
+
+			$getUser = $this->suser->get_user_base_info_by_id_and_type($data['user_id']);
+
+			if(!empty($getUser)&& is_array($getUser) && sizeof($getUser) <> 0){
+				$walletAddress = $getUser[0]->tfs_xdc_wallet;
+				if($walletAddress != "" || $walletAddress != NULL){
+					$data_add['tfs_bank_acc_number'] = $this->input->post('ubank_num');
+					$data_add['tfs_bank_name'] = $this->input->post('ubank_name');
+				}
+				else{
+					$addr = generateAddress();
+					$data_add = array();
+					
+					$data_add['tfs_xdc_wallet'] = $addr->address;					
+					$data_add['tfs_xdc_wallet_privateKey'] = openssl_encrypt($addr->privateKey,"AES-128-ECB",$encryption_key);
+					$data_add['tfs_bank_acc_number'] = $this->input->post('ubank_num');
+					$data_add['tfs_bank_name'] = $this->input->post('ubank_name');
+				}
+			}
 			$this->suser->update_user_base_info_all_by_id($data['user_id'], $data_add);
 		}
 		
@@ -231,18 +244,18 @@ class User extends CI_Controller {
 					$data['msg'] = 'success';
 				}
 				
-				$data_add = array();
+				// $data_add = array();
 				
-				$data_add['tfscom_contact_linkedin'] = $this->input->post('c2_linkedin');
-				$data_add['tfscom_user_ref'] = $data['user_id'];
-				$crow = $this->input->post('c_row');
+				// // $data_add['tfscom_contact_linkedin'] = $this->input->post('com_linkedin');
+				// $data_add['tfscom_user_ref'] = $data['user_id'];
+				// $crow = $this->input->post('c_row');
 					
-				if($crow > 0){
-					$data_add['tfscom_updated_at'] = date('Y-m-d H:i:s');
-					$cresult = $this->suser->update_company_info($data['user_id'], $data_add);	
-				}else{
-					$cresult = $this->suser->add_company_info($data_add);	
-				}
+				// if($crow > 0){
+				// 	$data_add['tfscom_updated_at'] = date('Y-m-d H:i:s');
+				// 	$cresult = $this->suser->update_company_info($data['user_id'], $data_add);	
+				// }else{
+				// 	$cresult = $this->suser->add_company_info($data_add);	
+				// }
 				
 			}
 			elseif(!empty($uresult) && sizeof($uresult) <> 0){
@@ -280,19 +293,20 @@ class User extends CI_Controller {
 					$data['msg'] = 'success';
 				}
 				
-				$data_add = array();
+				// $data_add = array();
 				
-				$data_add['tfscom_contact_linkedin'] = $this->input->post('c2_linkedin');
-				$data_add['tfscom_user_ref'] = $data['user_id'];
-				$crow = $this->input->post('c_row');
+				// // $data_add['tfscom_contact_linkedin'] = $this->input->post('com_linkedin');
+				// $data_add['tfscom_user_ref'] = $data['user_id'];
+				// $crow = $this->input->post('c_row');
 					
-				if($crow > 0){
-					$data_add['tfscom_updated_at'] = date('Y-m-d H:i:s');
-					$cresult = $this->suser->update_company_info($data['user_id'], $data_add);	
-				}else{
-					$cresult = $this->suser->add_company_info($data_add);	
-				}
-			}else{
+				// if($crow > 0){
+				// 	$data_add['tfscom_updated_at'] = date('Y-m-d H:i:s');
+				// 	$cresult = $this->suser->update_company_info($data['user_id'], $data_add);	
+				// }else{
+				// 	$cresult = $this->suser->add_company_info($data_add);	
+				// }
+			}
+			else{
 				$data['msg'] = 'success';
 			}
 		}
@@ -677,7 +691,7 @@ class User extends CI_Controller {
 				$data['c1email'] = $ucresult[0]->tfscom_contact1_email;
 				$data['c1contact'] = $ucresult[0]->tfscom_contact1_number;
 				$data['c1linkedin'] = $ucresult[0]->tfscom_contact_linkedin;
-				$data['c1desgination'] = $ucresult[0]->tfscom_designation;
+				// $data['c1desgination'] = $ucresult[0]->tfscom_designation;
 				$data['comname'] = $ucresult[0]->tfscom_name;
 				$data['cregno'] = $ucresult[0]->tfscom_regno;
 				
@@ -711,9 +725,10 @@ class User extends CI_Controller {
 					$data['ufname'] = $uresult[0]->tfs_first_name;
 					$data['ulname'] = $uresult[0]->tfs_last_name;
 					$data['uemail'] = $uresult[0]->tfs_email;
-					$data['ucontact'] = $uresult[0]->tfscom_contact1_number;
+					$data['ucontact'] = $uresult[0]->tfs_contact_number;
 					$data['uaddress'] = $uresult[0]->tfscom_address;
-					// $data['uprofpic'] = $uresult[0]->tfb_pic_file;
+					$data['uprofpic'] = $uresult[0]->tfs_pic_file;
+					
 					$data['uname'] = $data['ufname']." ".$data['ulname'];
 					$data['ccountryn'] = $uresult[0]->tfc_name;
 					$data['cdeptn'] = $uresult[0]->cName;				
@@ -721,8 +736,8 @@ class User extends CI_Controller {
 					$data['uwalleta'] = $uresult[0]->tfs_xdc_wallet;
 					$data['ubankaccno'] = $uresult[0]->tfs_bank_acc_number;
 					$data['ubankaccname'] = $uresult[0]->tfs_bank_name;
-					// $data['ulinkedin'] = $uresult[0]->tfs_linkedin;
-					// $data['udesignation'] = $uresult[0]->tfs_designation;
+					$data['ulinkedin'] = $uresult[0]->tfs_linkedin;
+					$data['udesignation'] = $uresult[0]->tfs_designation;
 			}	
 		}
 		

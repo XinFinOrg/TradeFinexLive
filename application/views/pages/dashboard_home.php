@@ -35,7 +35,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="section-title text-center pb-30">
-                            <h2 class="mb-0">Apply for Funding</h2><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            <h2 class="mb-0">Apply for Funding</h2>
                             ( <a class="video-popup" href="https://www.youtube.com/watch?v=4bK1CrfaFf4">How to apply for funding?</a> )
                         </div>
                     </div>
@@ -163,14 +163,14 @@
                                         <span class="form-control"></span>
                                     </div>
                                     <!-- <p>*Application & deal distribution fee is USD 10 worth of XDC per instrument (20% fees in XDC will burn automatically). This document will be encrypted & stored on XinFin Blockchain Network and will be viewable to financiers only.</p> -->
-                                    <p>*This document will be encrypted & stored on XinFin Blockchain Network and will be viewable to financiers only.</p>
+                                    <p>*This document will be encrypted & stored on XinFin Blockchain Network and will be viewable to financiers only.</p> 
                                     <label for="supporting-document" style="display:none" class="error" id="error">Please upload correct file format.</label>
                                     <label for="supporting-document" style="display:none" id="error1" class="error">Please file less than 5MB</label>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group hidden">
                                     <label for="private-key">Enter Private Key <span><a href="#" data-toggle='modal' data-target='#howto'data-backdrop="static" data-keyboard="false">How to Create PrivateKey?</a></span></label>
-                                    <input type="text" class="form-control" id="private_key" name="private_key" autocomplete= "off"placeholder="Enter Private Key">
-                                </div>
+                                    <input type="text" class="form-control" id="private_key" name="private_key" autocomplete= "off"placeholder="Enter Private Key" value="<?=$privateKey;?>"disabled>
+                                </div> 
                                 <!-- <div class="form-group">
                                 <span><a href="http://faucet.apothem.network/" target="_blank">Get Test XDC Tokens</a></span>
                                 </div> -->

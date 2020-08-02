@@ -5,9 +5,9 @@ class Thankyouc extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
-        $this->load->helper(array('form', 'url', 'date', 'notification'));
+        $this->load->helper(array('form', 'url', 'date'));
 		$this->load->library('session');
-		$this->load->model('manage');
+		$this->load->model(array('manage','suser'));
 		
 		$data = array();
 	}
@@ -22,7 +22,7 @@ class Thankyouc extends CI_Controller {
 		$data['full_name'] = '';
 		$data['user_typer'] = '';
 		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = get_initial_notification_status();
 			
 		$user = $this->session->userdata('logged_in');
 		
@@ -54,8 +54,8 @@ class Thankyouc extends CI_Controller {
 		$data['upass'] = '';
 		$data['uprofpic'] = '';
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -63,50 +63,33 @@ class Thankyouc extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
 					
-			$uresult = $this->manage->get_user_info_by_id_and_type($data['user_id'], $data['user_type_ref']);
+			$uresult = $this->suser->get_social_user_company_info_by_id($data['user_id']);
 						
 			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
 				
-				if($data['user_type_ref'] == 1){
-					$data['ufname'] = $uresult[0]->tfsp_fname;
-					$data['ulname'] = $uresult[0]->tfsp_lname;
-					$data['uemail'] = $uresult[0]->tfsp_email;
-					$data['ucontact'] = $uresult[0]->tfsp_contact;
-					$data['uaddress'] = $uresult[0]->tfsp_address;
-					$data['uprofpic'] = $uresult[0]->tfsp_pic_file;
-					$data['uname'] = $uresult[0]->tfu_usern;
-					$data['upass'] = $uresult[0]->tfu_passwd;
-					$data['uvisibility'] = $uresult[0]->tfsp_public_visibility;
-				}
+				$data['ufname'] = $uresult[0]->tfs_first_name;
+				$data['ulname'] = $uresult[0]->tfs_last_name;
+				$data['uemail'] = $uresult[0]->tfs_email;
+				$data['ucontact'] = $uresult[0]->tfs_contact_number;
+				$data['uprofpic'] = $uresult[0]->tfs_pic_file;
 				
-				if($data['user_type_ref'] == 2){
-					$data['ufname'] = $uresult[0]->tff_fname;
-					$data['ulname'] = $uresult[0]->tff_lname;
-					$data['uemail'] = $uresult[0]->tff_email;
-					$data['ucontact'] = $uresult[0]->tff_contact;
-					$data['uaddress'] = $uresult[0]->tff_address;
-					$data['uprofpic'] = $uresult[0]->tff_pic_file;
-					$data['uname'] = $uresult[0]->tfu_usern;
-					$data['upass'] = $uresult[0]->tfu_passwd;
-					$data['uvisibility'] = $uresult[0]->tff_public_visibility;
-				}
+			}elseif(!empty($uresult) && sizeof($uresult) <> 0){
 				
-				if($data['user_type_ref'] == 3){
-					$data['ufname'] = $uresult[0]->tfb_fname;
-					$data['ulname'] = $uresult[0]->tfb_lname;
-					$data['uemail'] = $uresult[0]->tfb_email;
-					$data['ucontact'] = $uresult[0]->tfb_contact;
-					$data['uaddress'] = $uresult[0]->tfb_address;
-					$data['uprofpic'] = $uresult[0]->tfb_pic_file;
-					$data['uname'] = $uresult[0]->tfu_usern;
-					$data['upass'] = $uresult[0]->tfu_passwd;
+				$uresulta = $this->suser->get_user_base_info_by_id_and_type($data['user_id']);
+				if(!empty($uresulta) && is_array($uresulta) && sizeof($uresulta) <> 0){
+					$data['ufname'] = $uresult[0]->tfs_first_name;
+					$data['ulname'] = $uresult[0]->tfs_last_name;
+					$data['uemail'] = $uresult[0]->tfs_email;
+					$data['ucontact'] = $uresult[0]->tfs_contact_number;
+					$data['uprofpic'] = $uresult[0]->tfs_pic_file;
 				}
-			}
+			
+		}
 		}	
 		
 		$this->load->view('includes/headern', $data);

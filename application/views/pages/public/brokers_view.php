@@ -3,7 +3,7 @@
 
         <section class="tf-inner-banner">
             <div class="container">
-            <h3>Brokers</h3>
+            <h3>Originators/Partners</h3>
                 <h4>Digitize and Automate Document Distribution with Financiers.</h4>
             </div>
         </section>

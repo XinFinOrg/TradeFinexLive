@@ -5,9 +5,9 @@ class Publicv extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
-        $this->load->helper(array('form', 'url', 'date','blockchain','notification'));
+        $this->load->helper(array('form', 'url', 'date','blockchain'));
 		$this->load->library(array('session', 'encrypt', 'email'));
-		$this->load->model(array('plisting', 'manage'));
+		$this->load->model(array('plisting', 'manage','suser'));
 		// $this->output->cache(0.5);
 		$this->config->load('emailc');
 		$data = array();
@@ -54,8 +54,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -63,7 +63,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// // $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -147,8 +147,8 @@ class Publicv extends CI_Controller {
 				
 		
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -156,7 +156,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// // $data['notifications'] = get_notification_status($options);
 		}
 		
 		if(empty($_POST['g-recaptcha-response']))
@@ -240,8 +240,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -249,7 +249,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// // $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -347,8 +347,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -356,7 +356,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// // $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -455,8 +455,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -464,7 +464,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -562,8 +562,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -571,7 +571,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -659,8 +659,8 @@ class Publicv extends CI_Controller {
 			// redirect(base_url().'log/out');
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -668,11 +668,11 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -680,7 +680,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		$this->load->view('includes/headern', $data);
@@ -1005,7 +1005,6 @@ class Publicv extends CI_Controller {
 		
 	}
 	
-	
 	public function fees(){
 		
 		$data = array();
@@ -1036,8 +1035,8 @@ class Publicv extends CI_Controller {
 			// redirect(base_url().'log/out');
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -1045,11 +1044,11 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -1057,7 +1056,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		$this->load->view('includes/headern', $data);
@@ -2683,6 +2682,57 @@ class Publicv extends CI_Controller {
 		$user = $this->session->userdata('logged_in');
 		
 		$action = $this->input->post('action');
+		
+		if($user && !empty($user) && sizeof($user) <> 0){
+			$data['full_name'] = $user['user_full_name'];
+			$data['user_id'] = $user['user_id'];
+			
+			// redirect(base_url().'dashboard');
+			
+		}else{
+			// redirect(base_url().'log/out');
+			$this->load->view('includes/headern', $data);
+			$this->load->view('includes/header_publicn', $data);
+		}
+
+		
+		if($data['user_id'] <> 0){
+			
+			$options = array();
+			$options['user_id'] = $data['user_id'];
+		}
+
+		if($data['user_id'] <> 0){
+		
+			$uresult = $this->suser->get_social_user_company_info_by_id($data['user_id']);
+	
+			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
+				
+				
+				$data['ufname'] = $uresult[0]->tfs_first_name;
+				$data['ulname'] = $uresult[0]->tfs_last_name;
+				$data['uemail'] = $uresult[0]->tfs_email;
+				$data['ucontact'] = $uresult[0]->tfs_contact_number;
+				$data['uprofpic'] = $uresult[0]->tfs_pic_file;
+				
+			}else if(!empty($uresult)  && sizeof($uresult) <> 0){
+				$uresulta = $this->suser->get_user_base_info_by_id_and_type($data['user_id']);
+				if(!empty($uresulta) && is_array($uresulta) && sizeof($uresulta) <> 0){
+					$data['ufname'] = $uresult[0]->tfs_first_name;
+					$data['ulname'] = $uresult[0]->tfs_last_name;
+					$data['uemail'] = $uresult[0]->tfs_email;
+					$data['ucontact'] = $uresult[0]->tfs_contact_number;
+					$data['uprofpic'] = $uresult[0]->tfs_pic_file;
+				}
+					
+			}	
+		
+			
+			$this->load->view('includes/headern', $data);
+			$this->load->view('includes/header_publicn', $data);
+			
+		}
+
 		if(empty($_POST['g-recaptcha-response']))
 		{
 			$captcha_error = 'Captcha is required';
@@ -2711,7 +2761,7 @@ class Publicv extends CI_Controller {
 			}
 				
 		}
-		
+	
 		if($action == 'send_mail'){
 			$config = array();
 			$config = $this->config->item('$econfig');
@@ -2756,8 +2806,8 @@ class Publicv extends CI_Controller {
 			redirect(base_url().'thankyouc');
 		}
 		
-		$this->load->view('includes/headern', $data);
-		$this->load->view('includes/header_publicn', $data);
+		// $this->load->view('includes/headern', $data);
+		// $this->load->view('includes/header_publicn', $data);
 		$this->load->view('pages/public/contact_view', $data);
 		$this->load->view('includes/footer_commonn', $data);
 		$this->load->view('pages_scripts/common_scripts', $data);
@@ -2789,7 +2839,7 @@ class Publicv extends CI_Controller {
 				$options['user_id'] = $data['user_id'];
 				$options['user_type'] = $data['user_type_ref'];
 				
-				$data['notifications'] = get_notification_status($options);
+				// $data['notifications'] = get_notification_status($options);
 			}
 			
 			$from_email = 'social@tradefinex.org'; // $config['smtp_user'];  
@@ -2871,8 +2921,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -2880,7 +2930,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -3025,8 +3075,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -3034,7 +3084,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -3173,8 +3223,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -3182,7 +3232,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 				
 		if($data['user_id'] <> 0){
@@ -3354,8 +3404,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -3363,7 +3413,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// // // $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -3459,8 +3509,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -3468,7 +3518,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// // $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -3563,8 +3613,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -3572,7 +3622,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// // $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -3666,8 +3716,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -3675,7 +3725,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// // $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -3773,8 +3823,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -3782,7 +3832,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -3866,8 +3916,8 @@ class Publicv extends CI_Controller {
 				
 		
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -3875,7 +3925,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 
 		if(empty($_POST['g-recaptcha-response']))
@@ -3956,8 +4006,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -3965,7 +4015,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -4063,8 +4113,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -4072,7 +4122,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -4166,8 +4216,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -4175,7 +4225,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -4270,8 +4320,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -4279,7 +4329,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -4334,6 +4384,7 @@ class Publicv extends CI_Controller {
 		$this->load->view('includes/footern');
 	}
 	
+
 	public function setupMasternode(){
         
         $data = array();
@@ -4376,8 +4427,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -4385,7 +4436,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -4485,8 +4536,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -4494,7 +4545,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -4594,8 +4645,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -4603,7 +4654,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -4703,8 +4754,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -4712,7 +4763,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -4812,8 +4863,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -4821,7 +4872,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -4921,8 +4972,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -4930,7 +4981,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -5030,8 +5081,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -5039,7 +5090,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -5189,13 +5240,13 @@ class Publicv extends CI_Controller {
 			}
 			else{
 				$burn = burnXDC($_GET['amt']);
-				$status = explode(': ',$burn[9]);
+				$status = explode(': ',$burn[10]);
 				$status = $status[1];
 				$status = str_replace(",","", $status);
 				if($status == true){
 					$_GET['burnStatus'] = $status;
 					// $transactionHash = explode(': ',$burn[13]);
-					$transactionHash = $burn[11];
+					$transactionHash = $burn[13];
 					$transactionHash = str_replace(array("'",","),"", $transactionHash);
 					$_GET['transactionHash'] = $transactionHash;
 					$result = $this->manage->add_paypal_details($_GET);
@@ -5289,8 +5340,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -5298,7 +5349,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -5398,8 +5449,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -5407,7 +5458,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){
@@ -5508,8 +5559,8 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/header_publicn', $data);
 		}
 		
-		$data['notifications'] = array();
-		$data['notifications'] = get_initial_notification_status();
+		// $data['notifications'] = array();
+		// $data['notifications'] = get_initial_notification_status();
 		
 		if($data['user_id'] <> 0){
 			
@@ -5517,7 +5568,7 @@ class Publicv extends CI_Controller {
 			$options['user_id'] = $data['user_id'];
 			$options['user_type'] = $data['user_type_ref'];
 			
-			$data['notifications'] = get_notification_status($options);
+			// $data['notifications'] = get_notification_status($options);
 		}
 		
 		if($data['user_id'] <> 0){

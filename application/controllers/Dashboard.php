@@ -70,17 +70,82 @@ class Dashboard extends CI_Controller {
 			
 			// $data['notifications'] = get_notification_status($options);
 		}
-				
+		$encryption_key = $this->config->item('encryption_key');
 		if(isset($data['user_id'])){
 			
 			if($data['user_id'] <> 0){
 							
 				$uresult = $this->suser->get_social_user_company_info_by_id($data['user_id']);
 				$data['check_company'] = $this->suser->get_company_info_by_uid($data['user_id']);
-							
+						
+
 				if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
 				
 					log_message("info","user is present");
+					$data['pcountry'] = 0;
+					$data['privateKey'] = openssl_decrypt($uresult[0]->tfs_xdc_wallet_privateKey,"AES-128-ECB",$encryption_key);
+					
+					if(!empty($_GET['item_number']) && !empty($_GET['tx']) && !empty($_GET['amt']) && !empty($_GET['cm']) && !empty($_GET['cc']) && !empty($_GET['st'])){ 
+						$dbdata = $this->manage->get_paypal_paymentby_tx($_GET['tx']);
+						$db = json_encode($dbdata);
+						if(sizeof($dbdata) > 0 ){
+							$this->session->set_flashdata('msg_type', 'error');
+							// redirect($this->uri->uri_string());
+							redirect(current_url());
+						}
+						else{
+							$burn = burnXDC($_GET['amt']);
+							$status = explode(': ',$burn[10]);
+							$status = $status[1];
+							$status = str_replace(",","", $status);
+							if($status == true){
+								$_GET['burnStatus'] = $status;
+								// $transactionHash = explode(': ',$burn[13]);
+								$transactionHash = $burn[13];
+								$transactionHash = str_replace(array("'",","),"", $transactionHash);
+								$_GET['transactionHash'] = $transactionHash;
+								$result = $this->manage->add_paypal_details($_GET);
+
+							}
+							else{
+								$_GET['burnStatus'] = false;
+								$_GET['transactionHash'] = '0x';
+								$result = $this->manage->add_paypal_details($_GET);
+							}
+						
+						}
+						
+					}
+
+					$action = $this->input->post('action');
+					$data['instrument'] = $this->input->post('instrument');
+					$data['country'] = $this->input->post('pcountry');
+					
+					$data['currency_supported'] = $this->input->post('currency_supported');
+					$data['amount'] = $this->input->post('amount');
+					$data['maturity_date'] = $this->input->post('maturity_date');
+					$data['docRef'] = $this->input->post('docRef');
+					$data['contractAddr'] = $this->input->post('contractAddr');
+					$data['deployerAddr'] = $this->input->post('deployerAddr');
+					$data['secretKey'] = $this->input->post('secretKey');
+
+					$ccountries = $this->plisting->get_country();
+					
+					if($ccountries && !empty($ccountries) && is_array($ccountries) && sizeof($ccountries) <> 0){
+						$data['pcountries'] = $ccountries;			
+					}
+					
+
+					if($action == 'adddetail'){
+						$result['contract'] = $this->manage->add_instrument($data);
+						$addr = $this->input->post('addr');
+						$doc = $this->input->post('doc');
+						// log_message("info","<<1.".$addr,"3.".$doc);
+						$result['txn'] = $this->manage->update_paypalpayment_by_txn($addr,$doc);
+					}
+					if($action == 'getpasskey'){
+						$key = $this->manage->get_secretkey($contractAddr);
+					}
 				}	
 			}
 		}		

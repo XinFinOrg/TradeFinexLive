@@ -177,7 +177,6 @@
 										<a id="getDoc" onclick="docShow()" class="btn btn-white btn-small">Access Document <i class="fa fa fa-angle-double-right"></i></a></span>
 									</div>
                                 </div>
-
                             </form>
                         </div>
                     </div>
@@ -246,7 +245,6 @@
                 </div>
             </div>
 
-			
 			
             <div id="tf-loader-wrapper" style="display: none;"><div id="tf-loader"></div></div>
 			<!--<div class="modal-dialog" style="width:1500px; ; margin-left  25%;max-height:60%;max-width: 30%">-->
@@ -358,7 +356,6 @@
                                             </div>
                                         </div>
                                     </div>-->
-                                    
                                 </div>
                             </div>
                         </div>

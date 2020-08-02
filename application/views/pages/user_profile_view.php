@@ -6,7 +6,7 @@
 					<?php
 						$uprof_pic = '';
 						if($uprofpic && $uprofpic <> ''){
-							
+						
 							$uprofpica = explode('.', $uprofpic);
 							$uprof_pic = $uprofpica[0].'_thumb.'.$uprofpica[1];
 						}
@@ -106,50 +106,7 @@
 									</li>
 								</ul>
 							</div>
-							<div class="accordian_additional_details">
-								<button id="accord_btn" class="accordion" onclick="trigger_slide()">ALTERNATE CONTACT DETAILS</button>
-								<div id="Slider" class="panel slide-up">
-									<div class="personal no-padding-top">
-										<ul>
-											<li class="left_li">Name</li>
-											<li class="left_li_point">:</li>
-											<li class="left_li_text">
-												<p><?=ucwords($c2fname.' '.$c2lname)?></p>
-											</li>
-										</ul>
-										<ul>
-											<li class="left_li">Designation</li>
-											<li class="left_li_point">:</li>
-											<li class="left_li_text">
-												<p><?=$c2desgination?></p>
-											</li>
-										</ul>
-										<ul>
-											<li class="left_li">Email ID</li>
-											<li class="left_li_point">:</li>
-											<li class="left_li_text"> 
-											<span class="flag"><img src="<?=base_url()?>assets/images/icon/mail.png" /></span>
-												<p><?=$c2email?></p>
-											</li>
-										</ul>
-										<ul>
-											<li class="left_li">Mobile Number</li>
-											<li class="left_li_point">:</li>
-											<li class="left_li_text">
-												<span class="flag"><img src="<?=base_url()?>assets/images/icon/call.png" /></span>
-												<p><?=$c2contact?></p>
-											</li>
-										</ul>
-										<ul>
-											<li class="left_li">LinkedIn profile</li>
-											<li class="left_li_point">:</li>
-											<li class="left_li_text"> <span class="flag"><img src="<?=base_url()?>assets/images/icon/linkedin.png" /></span>
-												<p><?=$c2linkedin?></p>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
+							
 						</div>
 						<div id="company_profile" class="tab-pane fade">
 							<div class="company_profile">
