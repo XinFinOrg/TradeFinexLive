@@ -1007,6 +1007,7 @@ class Login extends CI_Controller {
 				
 				// Preparing data for database insertion
 				$userData = array();
+				$userData['oauth_provider'] = 'linkedin';
 				$userData['oauth_uid']  = !empty($userInfo['account']->id)?$userInfo['account']->id:'';
 				$userData['first_name'] = !empty($userInfo['account']->firstName->localized->en_US)?$userInfo['account']->firstName->localized->en_US:'';
 				$userData['last_name']  = !empty($userInfo['account']->lastName->localized->en_US)?$userInfo['account']->lastName->localized->en_US:'';
@@ -1036,7 +1037,7 @@ class Login extends CI_Controller {
 							$session_data = array(
 								'user_id' => $userr->tfs_id,
 								'user_full_name' => $user_name,
-								'media'=>"twitter"
+								'media'=>"linkedin"
 							);
 						}
 						$this->session->set_userdata('logged_in', $session_data);
