@@ -280,7 +280,7 @@ $(function () {
 					$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"https://demoapi.tradefinex.org/api/uploadDoc",
+						url:"https://deployer.tradefinex.org/mainnet/api/uploadDoc",
 						data:{"data":dataFile[1]},
 						success: resp => {
 							// console.log("response success: ",resp)
@@ -299,7 +299,7 @@ $(function () {
 					
 						if(resp.status == true){
 							hash = resp.hash;
-							$.post("https://demoapi.tradefinex.org/api/generateContract",{
+							$.post("https://deployer.tradefinex.org/mainnet/api/generateContract",{
 							"ipfsHash":hash,
 							"instrumentType":formDataObj.instrument,
 							"amount":formDataObj.amount,
@@ -321,7 +321,7 @@ $(function () {
 									$("#deploy_contract").on('click', function (e) {
 										showLoader();
 										$('#deploy_contract').prop('disabled', true);
-										$.post("https://demoapi.tradefinex.org/api/deployContract",{
+										$.post("https://deployer.tradefinex.org/mainnet/api/deployContract",{
 										"ipfsHash":hash,
 										"instrumentType":formDataObj.instrument,
 										"amount":formDataObj.amount,
@@ -676,7 +676,7 @@ $(function () {
 					$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"https://demoapi.tradefinex.org/api/uploadDoc",
+						url:"https://deployer.tradefinex.org/mainnet/api/uploadDoc",
 						data:{"data":dataFile[1]},
 						success: resp => {
 							// console.log("response success: ",resp)
@@ -692,7 +692,7 @@ $(function () {
 							hash = resp.hash;
 							
 
-							$.post("https://demoapi.tradefinex.org/api/generateContract",{
+							$.post("https://deployer.tradefinex.org/mainnet/api/generateContract",{
 							"ipfsHash":hash,
 							"instrumentType":formDataObj.instrument,
 							"amount":formDataObj.amount,
@@ -715,7 +715,7 @@ $(function () {
 									$("#deploy_contract").on('click', function (e) {
 										showLoader();
 										$('#deploy_contract').prop('disabled', true);
-										$.post("https://demoapi.tradefinex.org/api/deployContract",{
+										$.post("https://deployer.tradefinex.org/mainnet/api/deployContract",{
 										"ipfsHash":hash,
 										"instrumentType":formDataObj.instrument,
 										"amount":formDataObj.amount,
@@ -1033,7 +1033,7 @@ $(function () {
 					$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"https://demoapi.tradefinex.org/api/uploadDoc",
+						url:"https://deployer.tradefinex.org/mainnet/api/uploadDoc",
 						data:{"data":dataFile[1]},
 						success: resp => {
 							// console.log("response success: ",resp)
@@ -1049,7 +1049,7 @@ $(function () {
 							hash = resp.hash;
 							
 
-							$.post("https://demoapi.tradefinex.org/api/generateContract",{
+							$.post("https://deployer.tradefinex.org/mainnet/api/generateContract",{
 							"ipfsHash":hash,
 							"amount":formDataObj.quantity * formDataObj.amount,
 							"currencySupported":formDataObj.currency_supported,
@@ -1072,7 +1072,7 @@ $(function () {
 									$("#deploy_contract").on('click', function (e) {
 										showLoader();
 										$('#deploy_contract').prop('disabled', true);
-										$.post("https://demoapi.tradefinex.org/api/deployContract",{
+										$.post("https://deployer.tradefinex.org/mainnet/api/deployContract",{
 										"ipfsHash":hash,
 										"amount":formDataObj.quantity * formDataObj.amount,
 										"currencySupported":formDataObj.currency_supported,
@@ -1361,14 +1361,14 @@ $(function () {
 						let resp = $.ajax({
 							type:"POST",
 							dataType:"json",
-							url:"https://demoapi.tradefinex.org/api/uploadDoc",
+							url:"https://deployer.tradefinex.org/mainnet/api/uploadDoc",
 							data:{"data":dataFile[1]},
 							success: (resp =>{
 								console.log(resp);
 								if(resp.status == true){
 									hash = resp.hash;
 		
-									$.post("https://demoapi.tradefinex.org/api/generateContract",{
+									$.post("https://deployer.tradefinex.org/mainnet/api/generateContract",{
 									"ipfsHash":hash,
 									"instrumentType":formDataObj.instrument,
 									"amount":formDataObj.amount,
@@ -1383,7 +1383,7 @@ $(function () {
 										console.log("Generate Contract : ",respond.status,childd);
 										if(respond.status == true){
 											passkey = respond.passKey,
-											$.post("https://demoapi.tradefinex.org/api/deployContract",{
+											$.post("https://deployer.tradefinex.org/mainnet/api/deployContract",{
 											"ipfsHash":hash,
 											"instrumentType":formDataObj.instrument,
 											"amount":formDataObj.amount,
@@ -1697,7 +1697,7 @@ $(function () {
 						$.ajax({
 							type:"POST",
 							dataType:"json",
-							url:"https://demoapi.tradefinex.org/api/getDocHash",
+							url:"https://deployer.tradefinex.org/mainnet/api/getDocHash",
 							data:{"contractAddr":formDataObj.contract_address,
 								  "passKey": resp.key,
 								  "contractType" : "commonInstrument"
@@ -1813,7 +1813,7 @@ $(function () {
 						$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"https://demoapi.tradefinex.org/api/getDocHash",
+						url:"https://deployer.tradefinex.org/mainnet/api/getDocHash",
 						data:{"contractAddr":formDataObj.contract_address,
 							  "passKey": resp.key,
 							  "contractType" : "brokerInstrument"
@@ -1927,7 +1927,7 @@ $(function () {
 						$.ajax({
 						type:"POST",
 						dataType:"json",
-						url:"https://demoapi.tradefinex.org/api/getDocHash",
+						url:"https://deployer.tradefinex.org/mainnet/api/getDocHash",
 						data:{"contractAddr":formDataObj.contract_address,
 							  "passKey": resp.key,
 							  "contractType" : "fundDesign"
