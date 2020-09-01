@@ -833,7 +833,7 @@ function passData(docRef){
                         $.ajax({
                         type:"POST",
                         dataType:"json",
-                        url:"https://tfd.xinfin.net/api/getDocHash",
+                        url:"https://deployer.tradefinex.org/testnet/api/getDocHash",
                         data:{"contractAddr":resp.contractAddr,
                                 "passKey": resp.key,
                                 "contractType" : "brokerInstrument"

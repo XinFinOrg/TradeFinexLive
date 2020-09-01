@@ -57,7 +57,7 @@
                     ?>
                         <div class="row">
                         <div id="designer-name" class="form-group col-md-6">
-                            <label for="broker-name">Designer Name</label>
+                            <label for="broker-name">Designer Name<sup>*</sup></label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Designer Name">
                         </div>
                         
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <div id="select-country" class="form-group">
-                            <label for="country-origination">Country of Origination</label>
+                            <label for="country-origination">Country of Origination<sup>*</sup></label>
                             <select class="form-control" id="pcountry" name="pcountry">
                                 <option value="" disabled="" selected="">Select Country</option>
                                     <?php
@@ -86,7 +86,7 @@
                         </div>
 
                         <div class="form-group">
-                                <label for="currency_supported">Currency</label>
+                                <label for="currency_supported">Currency<sup>*</sup></label>
                                 <select class="form-control" id="currency_supported" name="currency_supported" onchange="currency()">
                                     <option value="" disabled="" selected="">Select Currency</option>
                                     <option value="USD">USD</option>
@@ -102,18 +102,18 @@
                         
                         <div class="row">
                         <div class="form-group col-md-6">
-                                <label for="amount">Price/Piece(<text for="curr"id="curr">Currency</text>)</label>
+                                <label for="amount">Price/Piece(<text for="curr"id="curr">Currency</text>)<sup>*</sup></label>
                                 <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount">
                             </div>
                         
                         <div class="form-group col-md-6">
-                            <label for="broker-name"> Quantity</label>
+                            <label for="broker-name"> Quantity<sup>*</sup></label>
                             <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity">
                         </div>
                         </div>
                         <div class="row">
                         <div id="manu_method" class="form-group col-md-6">
-                                <label for="manu_method">Manufacturing Method</label>
+                                <label for="manu_method">Manufacturing Method<sup>*</sup></label>
                                 <select class="form-control" id="manu_method" name="manu_method">
                                     <option value="" disabled="" selected="">Select Manufacturing Method</option>
                                     <option value="CNCM">CNC Machining</option>
@@ -125,7 +125,7 @@
                                 </select>
                             </div>
                             <div id="material_type" class="form-group col-md-6">
-                                <label for="material_type">Material Type</label>
+                                <label for="material_type">Material Type<sup>*</sup></label>
                                 <select class="form-control" id="material_type" name="material_type">
                                     <option value="" disabled="" selected="">Select Material Type</option>
                                     <option value="Metal">Metal</option>
@@ -151,7 +151,7 @@
                         </div> -->
 
                         <div class="form-group">
-                            <label for="supporting-document">Upload Product Design File</label>
+                            <label for="supporting-document">Upload Product Design File<sup>*</sup></label>
                             <div class="input-group">
                                 <span class="input-group-btn">
                                 <span class="btn btn-primary" onClick="$(this).parent().find('input[type=file]').click();">Browse</span>
@@ -166,7 +166,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="private-key">Enter Private Key <span><a href="#" data-toggle='modal' data-target='#howto'data-backdrop="static" data-keyboard="false">How to Create PrivateKey & Top up XDC?</a></span></label>
+                            <label for="private-key">Enter Private Key <sup>*</sup><span><a href="#" data-toggle='modal' data-target='#howto'data-backdrop="static" data-keyboard="false">How to Create PrivateKey & Top up XDC?</a></span></label>
                             <input type="text" class="form-control" id="private_key" name="private_key" autocomplete= "off"placeholder="Enter Private Key">
                         </div>
                         <!-- <div class="form-group">
@@ -181,7 +181,7 @@
                                 <a id="getDoc" onclick="docShow()" class="btn btn-white btn-small">Access Document <i class="fa fa fa-angle-double-right"></i></a></span>
                             </div>
                         </div>
-                        <div class="fundingDivider"><div class="fundingDividerLine"></div><span><i>AND</i></span></div>
+                        <!-- <div class="fundingDivider"><div class="fundingDividerLine"></div><span><i>AND</i></span></div> -->
                         
                     </form>
                 </div>

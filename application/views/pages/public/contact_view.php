@@ -64,15 +64,16 @@
 									<label for="captcha">Enter Captcha <sup>*</sup></label>
 									<div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('recaptcha_site_key'); ?>" ></div>
 									<label style="display:none;color:#ea212d;font-size: 12px;" id="captcha_id" name="captcha_id">Please verify the captcha.</label>
+									<input type="hidden" name="action" value="send_mail" />
+									<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 									</div>
 								</div>
 								<div class="form-group">
-									<input type="hidden" name="action" value="send_mail" />
-									<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+									
 								</div>
 								
 								<div class="form-group">
-									<input type="submit" class="btn btn-blue text-uppercase" id="contact" name="contact" ></input>
+									<input type="submit" class="btn btn-blue text-uppercase"  ></input>
 								</div>
 								
                             </form>

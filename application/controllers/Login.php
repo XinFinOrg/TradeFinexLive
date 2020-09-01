@@ -483,7 +483,7 @@ class Login extends CI_Controller {
 				$result = $this->manage->fetch_user($data);
 			}
 			else{
-				$this->session->set_flashdata('error', "<div style='color:red;'>Not Correct User.");
+				$this->session->set_flashdata('error', "<div style='color:red;'>Not Correct Financer.");
 				redirect(base_url().'publicv/financier');
 			}
 			
@@ -560,7 +560,7 @@ class Login extends CI_Controller {
 		// For more permissions like user location etc you need to send your application for review
 		
 		// $loginUrl = $helper->getLoginUrl('http://localhost/TradeFinexLive/login/fbcallback', $permissions);
-		$loginUrl = $helper->getLoginUrl('https://tradefinex.org/login/fbcallback', $permissions);
+		$loginUrl = $helper->getLoginUrl('https://beta.tradefinex.org/login/fbcallback', $permissions);
 		header("location: ".$loginUrl);
 	}	
 
@@ -574,7 +574,7 @@ class Login extends CI_Controller {
 					$accessToken = $session->getToken();
 				} else {
 					// $accessToken = $helper->getAccessToken('http://localhost/TradeFinexLive/login/fbcallback');
-					$accessToken = $helper->getAccessToken('https://tradefinex.org/login/fbcallback');
+					$accessToken = $helper->getAccessToken('https://beta.tradefinex.org/login/fbcallback');
 				}	
 			}catch(FacebookResponseException $e){
 				log_message("info", 'Graph returned an error: ' . $e->getMessage());
@@ -702,8 +702,8 @@ class Login extends CI_Controller {
 	public function glogin()
 	{
 		
-		$clientId = '977764941413-jd7k6opmfcc6ch1li9uve6v8p9nnuig3.apps.googleusercontent.com'; //Google client ID
-		$clientSecret = 'nfdqWQGTQcgdNxN6OO0Vsw-b'; //Google client secret
+		$clientId = '977764941413-fppejvmkbotrqpf0oc43nl5409lfrumf.apps.googleusercontent.com'; //Google client ID
+		$clientSecret = 'gFvYYhuD9bZKFZf0mnSOYo16'; //Google client secret
 		$redirectURL = base_url().'login/glogin';
 		// $redirectURL = "http://localhost/TradeFinexLive/login/glogin";
 		//Call Google API
@@ -1111,7 +1111,7 @@ class Login extends CI_Controller {
 		
 		// Load login & profile view
 		// header('Location:http://localhost/TradeFinexLive'.$data['oauthURL']);
-		header('Location:https://tradefinex.org'.$data['oauthURL']);
+		header('Location:https://beta.tradefinex.org'.$data['oauthURL']);
 			
 	}
 

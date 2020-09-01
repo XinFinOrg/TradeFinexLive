@@ -24,7 +24,7 @@
 				<div class="tf-buyer-supplier_form-block">
 					<form id="suppliers-form" class="tf-suppliers-form">
 						<div class="form-group">
-							<label for="instrument-type">Type of Instrument</label>
+							<label for="instrument-type">Type of Instrument<sup>*</sup></label>
 
 							<div id="tab" class="tf-form-tabs" data-toggle="buttons">
 								<a href="#select-country" class="btn btn-default" data-toggle="tab">

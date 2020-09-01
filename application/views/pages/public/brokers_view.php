@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="section-title text-center pb-30">
-                            <h2 class="mb-0">Apply for Funding</h2><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            <h2 class="mb-0">Apply for Funding</h2>
                             ( <a class="video-popup" href="https://www.youtube.com/watch?v=4bK1CrfaFf4">How to apply for funding?</a> )
                         </div>
                     </div>
@@ -83,11 +83,11 @@
 								</div>
                                 
                                 <div id="broker-name" class="form-group">
-                                    <label for="broker-name">Broker Name</label>
+                                    <label for="broker-name">Broker Name<sup>*</sup></label>
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Broker Name">
                                 </div>
                                 <div id="select-country" class="form-group">
-                                    <label for="country-origination">Country of Origination</label>
+                                    <label for="country-origination">Country of Origination<sup>*</sup></label>
                                     <select class="form-control" id="pcountry" name="pcountry">
                                         <option value="" disabled="" selected="">Select Country</option>
                                             <?php
@@ -106,7 +106,7 @@
 
                                 <div class="row">
                                 <div id="currency_supported" class="form-group col-md-6">
-                                        <label for="currency_supported">Currency</label>
+                                        <label for="currency_supported">Currency<sup>*</sup></label>
                                         <select class="form-control" id="currency_supported" name="currency_supported">
                                             <option value="" disabled="" selected="">Select Currency</option>
                                             <option value="USD">USD</option>
@@ -118,14 +118,14 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="amount">Instrument Value</label>
+                                        <label for="amount">Instrument Value<sup>*</sup></label>
                                         <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <!--<label for="maturity-date">Instrument Maturity Date</label>
+                                    <!--<label for="maturity-date">Instrument Maturity Date<sup>*</sup></label>
                                     <input type="date" class="form-control" id="maturity_date" name="maturity_date" placeholder="dd/mm/yyyy">-->
-                                    <label for="maturity-date">Instrument Maturity Date</label>
+                                    <label for="maturity-date">Instrument Maturity Date<sup>*</sup></label>
                                     <div id="date" data-date-format="yyyy-mm-dd">
                                     <input  type="text" class="form-control" id="maturity_date" name="maturity_date" placeholder="yyyy-mm-dd"autocomplete="off">
                                     <div class="input-group-addon" style="display:none"><span class="fa fa-calendar"></span></div>
@@ -145,7 +145,7 @@
                                 </div> -->
 
                                 <div class="form-group">
-                                    <label for="supporting-document">Upload all supporting documents like Credit Report, KYC, and Business Profile as one PDF file. **Max file size 10 MB</label>
+                                    <label for="supporting-document">Upload all supporting documents like Credit Report, KYC, and Business Profile as one PDF file. **Max file size 10 MB<sup>*</sup></label>
                                     <div class="input-group">
                                         <span class="input-group-btn">
                                         <span class="btn btn-primary" onClick="$(this).parent().find('input[type=file]').click();">Browse</span>
@@ -160,7 +160,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="private-key">Enter Private Key <span><a href="#" data-toggle='modal' data-target='#howto'data-backdrop="static" data-keyboard="false">How to Create PrivateKey?</a></span></label>
+                                    <label for="private-key">Enter Private Key <sup>*</sup><span><a href="#" data-toggle='modal' data-target='#howto'data-backdrop="static" data-keyboard="false">How to Create PrivateKey?</a></span></label>
                                     <input type="text" class="form-control" id="private_key" name="private_key" autocomplete= "off"placeholder="Enter Private Key">
                                 </div>
                                 <!-- <div class="form-group">

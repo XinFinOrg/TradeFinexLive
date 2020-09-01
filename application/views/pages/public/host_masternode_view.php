@@ -349,7 +349,7 @@ $( document ).ready(function() {
 										$.ajax({
 										type:"POST",
 										dataType:"json",
-										url:"https://demoapi.tradefinex.org/api/uploadDoc",
+										url:"https://deployer.tradefinex.org/testnet/api/uploadDoc",
 										data:{"data":dataFile[1]},
 										success: resp => {
 											// console.log("response success: ",resp)
@@ -405,7 +405,7 @@ $( document ).ready(function() {
 										$.ajax({
 										type:"POST",
 										dataType:"json",
-										url:"https://demoapi.tradefinex.org/api/uploadDoc",
+										url:"https://deployer.tradefinex.org/testnet/api/uploadDoc",
 										data:{"data":dataFile[1]},
 										success: resp => {
 											// console.log("response success: ",resp)
