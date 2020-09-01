@@ -788,6 +788,26 @@ class Publicv extends CI_Controller {
 		$data['page'] = 'funddesign';
 		$data['pcountry'] = 0;
 
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
+		
+		$user = $this->session->userdata('logged_in');
+		
+		if($user && !empty($user) && sizeof($user) <> 0){
+			$data['full_name'] = $user['user_full_name'];
+			$data['user_id'] = $user['user_id'];
+			$data['user_type_ref'] = $user['user_type_ref'];
+			
+		}else{
+			// redirect(base_url().'log/out');
+		}
+
 		if(!empty($_GET['item_number']) && !empty($_GET['tx']) && !empty($_GET['amt']) && !empty($_GET['cm']) && !empty($_GET['cc']) && !empty($_GET['st'])){ 
 			$dbdata = $this->manage->get_paypal_paymentby_tx($_GET['tx']);
 			$db = json_encode($dbdata);
@@ -1083,7 +1103,19 @@ class Publicv extends CI_Controller {
 			'hash' => $this->security->get_csrf_hash()
 		);
 		
+		
 		$data['csrf'] = $csrf;
+		
+		$user = $this->session->userdata('logged_in');
+		
+		if($user && !empty($user) && sizeof($user) <> 0){
+			$data['full_name'] = $user['user_full_name'];
+			$data['user_id'] = $user['user_id'];
+			$data['user_type_ref'] = $user['user_type_ref'];
+			
+		}else{
+			// redirect(base_url().'log/out');
+		}
 		
 		$action = $this->input->post('action');
 		$number = $this->input->post('nummasternode');
@@ -1189,7 +1221,19 @@ class Publicv extends CI_Controller {
 			'hash' => $this->security->get_csrf_hash()
 		);
 		
+		
 		$data['csrf'] = $csrf;
+		
+		$user = $this->session->userdata('logged_in');
+		
+		if($user && !empty($user) && sizeof($user) <> 0){
+			$data['full_name'] = $user['user_full_name'];
+			$data['user_id'] = $user['user_id'];
+			$data['user_type_ref'] = $user['user_type_ref'];
+			
+		}else{
+			// redirect(base_url().'log/out');
+		}
 		
 		$date = date('Y-m-d');
 		$instrument = $this->manage->get_instrument($date);
@@ -1227,7 +1271,19 @@ class Publicv extends CI_Controller {
 			'hash' => $this->security->get_csrf_hash()
 		);
 		
+		
 		$data['csrf'] = $csrf;
+		
+		$user = $this->session->userdata('logged_in');
+		
+		if($user && !empty($user) && sizeof($user) <> 0){
+			$data['full_name'] = $user['user_full_name'];
+			$data['user_id'] = $user['user_id'];
+			$data['user_type_ref'] = $user['user_type_ref'];
+			
+		}else{
+			// redirect(base_url().'log/out');
+		}
 		$d;
 		$data['rec_sum']=0;
 		$data['loc_sum']=0;
@@ -2681,7 +2737,7 @@ class Publicv extends CI_Controller {
 		
 		$user = $this->session->userdata('logged_in');
 		
-		$action = $this->input->post('action');
+		
 		
 		if($user && !empty($user) && sizeof($user) <> 0){
 			$data['full_name'] = $user['user_full_name'];
@@ -2757,11 +2813,13 @@ class Publicv extends CI_Controller {
 			else{
 				$data['response'] = $response_data->success;
 				log_message("info","Captcha Verified".$response_data->success);
+
 				
 			}
-				
+			
 		}
-	
+		$action = $this->input->post('action');
+
 		if($action == 'send_mail'){
 			$config = array();
 			$config = $this->config->item('$econfig');
@@ -2804,7 +2862,9 @@ class Publicv extends CI_Controller {
 				$this->session->set_flashdata("popup_desc", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Error in sending Email. Please try again.</h3>");
 			}
 			redirect(base_url().'thankyouc');
+		
 		}
+		
 		
 		// $this->load->view('includes/headern', $data);
 		// $this->load->view('includes/header_publicn', $data);
@@ -4405,7 +4465,7 @@ class Publicv extends CI_Controller {
         
         $data['csrf'] = array();
         
-		$data['csrf'] = array();
+		
 		
 		$csrf = array(
 			'name' => $this->security->get_csrf_token_name(),
@@ -4514,7 +4574,7 @@ class Publicv extends CI_Controller {
         
         $data['csrf'] = array();
         
-		$data['csrf'] = array();
+		
 		
 		$csrf = array(
 			'name' => $this->security->get_csrf_token_name(),
@@ -5154,7 +5214,26 @@ class Publicv extends CI_Controller {
 		
 		$data['page'] = 'brokers';
 		$data['pcountry'] = 0;
-
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		
+		$data['csrf'] = $csrf;
+		
+		$user = $this->session->userdata('logged_in');
+		
+		if($user && !empty($user) && sizeof($user) <> 0){
+			$data['full_name'] = $user['user_full_name'];
+			$data['user_id'] = $user['user_id'];
+			$data['user_type_ref'] = $user['user_type_ref'];
+			
+		}else{
+			// redirect(base_url().'log/out');
+		}
 		if(!empty($_GET['item_number']) && !empty($_GET['tx']) && !empty($_GET['amt']) && !empty($_GET['cm']) && !empty($_GET['cc']) && !empty($_GET['st'])){ 
 			$dbdata = $this->manage->get_paypal_paymentby_tx($_GET['tx']);
 			$db = json_encode($dbdata);
@@ -5229,7 +5308,26 @@ class Publicv extends CI_Controller {
 		
 		$data['page'] = 'multi_brokers';
 		$data['pcountry'] = 0;
-
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		
+		$data['csrf'] = $csrf;
+		
+		$user = $this->session->userdata('logged_in');
+		
+		if($user && !empty($user) && sizeof($user) <> 0){
+			$data['full_name'] = $user['user_full_name'];
+			$data['user_id'] = $user['user_id'];
+			$data['user_type_ref'] = $user['user_type_ref'];
+			
+		}else{
+			// redirect(base_url().'log/out');
+		}
 		if(!empty($_GET['item_number']) && !empty($_GET['tx']) && !empty($_GET['amt']) && !empty($_GET['cm']) && !empty($_GET['cc']) && !empty($_GET['st'])){ 
 			$dbdata = $this->manage->get_paypal_paymentby_tx($_GET['tx']);
 			$db = json_encode($dbdata);
@@ -5905,6 +6003,7 @@ class Publicv extends CI_Controller {
 		$data = array();
 		$data['page'] = 'strategy';       
         
+		
 		$data['csrf'] = array();
 		
 		$csrf = array(
@@ -5912,7 +6011,19 @@ class Publicv extends CI_Controller {
 			'hash' => $this->security->get_csrf_hash()
 		);
 		
+		
 		$data['csrf'] = $csrf;
+		
+		$user = $this->session->userdata('logged_in');
+		
+		if($user && !empty($user) && sizeof($user) <> 0){
+			$data['full_name'] = $user['user_full_name'];
+			$data['user_id'] = $user['user_id'];
+			$data['user_type_ref'] = $user['user_type_ref'];
+			
+		}else{
+			// redirect(base_url().'log/out');
+		}
         $this->load->view('includes/headern', $data);
 		$this->load->view('includes/header_publicn', $data);
         $this->load->view('pages/public/viral_strategy', $data);

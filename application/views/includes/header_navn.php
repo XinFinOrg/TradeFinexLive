@@ -130,9 +130,9 @@
 					<ul class="menu">
 						<li> <a href="javascript:void(0)" title="" >Dashboard</a>
 							<ul class="submenu">
-							<li> <a href="<?=base_url();?>" title=""><i class="fa fa-product-hunt"></i> Wallet Address</a> </li>
-								<li> <a href="<?=base_url();?>" title=""><i class="fa fa-product-hunt"></i> Submit Funding Requests</a> </li>
-								<li> <a href="<?=base_url();?>publicv/financier" title=""><i class="fa fa-product-hunt"></i> Fund the Project</a> </li>
+							<li> <a href="<?=base_url();?>" title=""><i class="fa fa-money"></i> Wallet Address</a> </li>
+								<li> <a href="<?=base_url();?>" title=""><i class="fa fa-cloud-upload"></i> Submit Funding Requests</a> </li>
+								<li> <a href="<?=base_url();?>publicv/financier" title=""><i class="fa fa-bank"></i> Fund the Project</a> </li>
 								<!-- <li> <a href="<?=base_url();?>dashboard/smart_contract" title=""><i class="fa fa-dashcube"></i> Contract Dashboard</a> </li> -->
 							</ul>
 						</li>
@@ -192,7 +192,7 @@
 							</label>
 							<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 							<button class="search-submit-form" <?=($user_ids == 0 ? 'data-toggle="modal" data-target="#login" type="button"' : 'type="submit"');?> title="Search now"><i class="fa fa-search" aria-hidden="true"></i></button>
-							<span class="search-label"><i class="fa fa-search" aria-hidden="true"></i></span>
+							<!-- <span class="search-label"><i class="fa fa-search" aria-hidden="true"></i></span> -->
 						<?=($user_ids == 0 ? '' : '</form>');?> 
 					</div>
 				</div>
@@ -216,7 +216,7 @@
 							<input type="text" name="search_keyword" class="form-control" placeholder="Search ..." />
 							<span class="input-group-addon">
 								<button class="search_btn form-control-submit" <?=($user_ids == 0 ? 'data-toggle="modal" data-target="#login" type="button"' : 'type="submit"');?>> <i class="fa fa-search" aria-hidden="true"></i> </button>
-								<span class="search-label"><i class="fa fa-search" aria-hidden="true"></i></span>
+								<!-- <span class="search-label"><i class="fa fa-search" aria-hidden="true"></i></span> -->
 							</span> 
 							<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 						</div>

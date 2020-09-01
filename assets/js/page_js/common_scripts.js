@@ -280,6 +280,11 @@ $(function () {
 		return this.optional(element) || /^([a-zA-Z]+\s)*[a-zA-Z0-9]+$/.test(value);
 	}, 'The text must start with a letter and should not contain special characters.');
 
+	jQuery.validator.addMethod("LettersOnly", function (value, element) {
+		// allow any non-whitespace characters as the host part
+		return this.optional(element) || /^([a-zA-Z]+\s)*[a-zA-Z]+$/.test(value);
+	}, 'The text must start with a letter and should not contain special characters.');
+
 	jQuery.validator.addMethod("LettersWithDotHiphen", function (value, element) {
 		// allow any non-whitespace characters as the host part
 		return this.optional(element) || /^([a-zA-Z]?)([a-zA-Z-.\s])*$/.test(value);
@@ -646,7 +651,7 @@ $(function () {
 				required: true,
 				minlength: 2,
 				maxlength: 30,
-				LetterOnly: true
+				LettersOnly: true
 			},
 			memail: {
 				EmailGeneral: true,
@@ -679,7 +684,7 @@ $(function () {
 				required: "Please enter Your full name.",
 				minlength: "Characters length should be atleast 2.",
 				maxlength: "Characters length should not exceeded than 30.",
-				LetterOnly : "Check spaces between names."
+				LetterOnly : "Enter only characters."
 			},
 			memail: "Please enter a valid email.",
 			mcomp: {
