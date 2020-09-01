@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="section-title text-center pb-30">
-                            <h2 class="mb-0">Apply for Funding</h2><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            <h2 class="mb-0">Apply for Funding</h2>
                             ( <a class="video-popup" href="https://www.youtube.com/watch?v=4bK1CrfaFf4">How to apply for funding?</a> )
                         </div>
                     </div>
