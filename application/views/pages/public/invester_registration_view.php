@@ -83,7 +83,7 @@
 
 					<div class="checkbox">
 						<input type="checkbox" id="agree" data-keyboard="false" onchange="document.getElementById('signupSubmit').disabled = !this.checked;"/>
-						<label class="form-label"> We/I agree to qualify as investor and having $500k worth network.</label>
+						<label class="form-label"> I acknowledge that Eligibility to invest on the Validus platform requires Qualification under Accredited Investor status as per Singapore law.</label>
 					</div>
 					<input type="hidden" name="action" value="signup" />
 					<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
