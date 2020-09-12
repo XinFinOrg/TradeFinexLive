@@ -169,7 +169,7 @@ class User extends CI_Controller {
 					$addr = generateAddress();
 					$data_add = array();
 					
-					$data_add['tfs_xdc_wallet'] = $addr->address;					
+					$data_add['tfs_xdc_wallet'] = strtolower($addr->address);					
 					$data_add['tfs_xdc_wallet_privateKey'] = openssl_encrypt($addr->privateKey,"AES-128-ECB",$encryption_key);
 					$data_add['tfs_bank_acc_number'] = $this->input->post('ubank_num');
 					$data_add['tfs_bank_name'] = $this->input->post('ubank_name');
