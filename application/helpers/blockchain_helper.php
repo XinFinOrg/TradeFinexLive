@@ -399,8 +399,35 @@ if (!function_exists('generateAddress'))
             $node = exec('cd node_scripts & node create_xdc_account.js',$output,$err);
             // $node = exec('node -v',$output,$err);
             log_message('info','private key exist'.$node);
-log_message('info','error'.json_encode($err));
+            log_message('info','error'.json_encode($err));
             return json_decode($node);
+        
+        }
+        catch (Exception $e) {
+            log_message("error".$e->getMessage());
+            return '0';
+        }
+        
+    }
+}
+
+if (!function_exists('getUserBalance'))
+{
+    function getUserBalance($url,$options = array())
+    {
+        try{
+            $CI =& get_instance();
+            $CI->load->library('curl');
+            
+            $rcurlxdc = $CI->curl->simple_post($url,$options);
+            
+            if($rcurlxdc){
+                $rcurlxdca = json_decode($rcurlxdc);
+                log_message("info","User Balance".$rcurlxdc);
+            }
+		
+		return $rcurlxdca;
+    
         
         }
         catch (Exception $e) {
