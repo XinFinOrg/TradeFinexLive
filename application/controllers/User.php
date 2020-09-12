@@ -532,7 +532,8 @@ class User extends CI_Controller {
 				$data['xdc_wallet'] = strtolower($getUser[0]->tfs_xdc_wallet);
 				$url = 'https://explorer.apothem.network/web3relay';
 				$options = array('addr' => $data['xdc_wallet'], 'options' => ["balance"]);
-				$data['xdc_bal'] = getUserBalance($url,$options);
+				$balance = getUserBalance($url,$options);
+				$data['xdc_bal'] = $balance->balance;
 			}
 
        
