@@ -53,7 +53,11 @@
 						</li>
 						
 						<li class="hidden-xs hidden-sm"> | </li>
-						<li> <a href="http://exchange.tradefinex.org/" target="_blank" title="">Electronic Trading Platform</a> </li>
+						<!--<li> <a href="http://exchange.tradefinex.org/" target="_blank" title="">Electronic Trading Platform</a> </li>-->
+                        <li> <a href="http://exchange.tradefinex.org/" target="_blank" title="">Exchange</a> </li>
+                        
+                        <li class="hidden-xs hidden-sm"> | </li>
+						<li> <a href="<?=base_url();?>publicv/markets" title="">Markets</a></li>
 						
 						<li class="hidden-xs hidden-sm"> | </li>				
 						<li class="hassubs"> <a href="javascript:void(0)" title="">Origination Tools</a>
@@ -130,7 +134,7 @@
 					<ul class="menu">
 						<li> <a href="javascript:void(0)" title="" >Dashboard</a>
 							<ul class="submenu">
-							<li> <a href="<?=base_url();?>" title=""><i class="fa fa-money"></i> Wallet Address</a> </li>
+							<li> <a href="<?=base_url();?>user/balance" title=""><i class="fa fa-money"></i> Wallet Address</a> </li>
 								<li> <a href="<?=base_url();?>" title=""><i class="fa fa-cloud-upload"></i> Submit Funding Requests</a> </li>
 								<li> <a href="<?=base_url();?>publicv/financier" title=""><i class="fa fa-bank"></i> Fund the Project</a> </li>
 								<!-- <li> <a href="<?=base_url();?>dashboard/smart_contract" title=""><i class="fa fa-dashcube"></i> Contract Dashboard</a> </li> -->

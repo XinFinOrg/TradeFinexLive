@@ -1,5 +1,5 @@
 /* 28-12-17 */
- #semail-error {
+#semail-error {
 	color: #fff;
 	font-size: 14px;
 	position: relative;
@@ -86,9 +86,13 @@
 #signupForm .form-group {
 	margin-bottom: 0px;
 }
+.form-input {
+	margin-bottom: 0px;
+	border-radius: 6px!important;
+	border: 1px solid #e9e9e9!important;
+}
 #signupForm .input-focus {
 	margin-bottom: 0px;
-	border-radius: 16px;
 	/* border: 1px solid ; */
 }
 #signupForm .input-focus {
