@@ -503,6 +503,47 @@ class User extends CI_Controller {
 		$this->load->view('pages_scripts/profile_scripts', $data);
 		$this->load->view('includes/footern');
 	}
+
+	public function balance(){
+		$data = array();
+
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
+				
+		$user = $this->session->userdata('logged_in');
+		
+		if($user && !empty($user) && sizeof($user) <> 0){ 
+			$data['full_name'] = $user['user_full_name'];
+			$data['user_id'] = $user['user_id'];
+			
+		}else{
+			redirect(base_url().'log/out');
+		}
+
+		$getUser = $this->suser->get_user_base_info_by_id_and_type($data['user_id']);
+
+			if(!empty($getUser)&& is_array($getUser) && sizeof($getUser) <> 0){
+				$data['xdc_wallet'] = $getUser[0]->tfs_xdc_wallet;
+			}
+
+       
+
+        $this->load->view('includes/headern', $data);
+		$this->load->view('includes/header_publicn', $data);
+		// $this->load->view('pages/user_profile_edit', $data);
+		 $this->load->view('pages/user_balance', $data);
+		$this->load->view('includes/footer_commonn', $data);
+		// $this->load->view('pages_scripts/profile_scripts', $data);
+		$this->load->view('includes/footern');
+        
+		
+	}
 	
 	public function update_membership()
 	{
