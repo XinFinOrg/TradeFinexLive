@@ -160,7 +160,7 @@ class User extends CI_Controller {
 			$getUser = $this->suser->get_user_base_info_by_id_and_type($data['user_id']);
 
 			if(!empty($getUser)&& is_array($getUser) && sizeof($getUser) <> 0){
-				$walletAddress = $getUser[0]->tfs_xdc_wallet;
+				$walletAddress = strtolower($getUser[0]->tfs_xdc_wallet);
 				if($walletAddress != "" || $walletAddress != NULL){
 					$data_add['tfs_bank_acc_number'] = $this->input->post('ubank_num');
 					$data_add['tfs_bank_name'] = $this->input->post('ubank_name');
@@ -529,7 +529,7 @@ class User extends CI_Controller {
 		$getUser = $this->suser->get_user_base_info_by_id_and_type($data['user_id']);
 
 			if(!empty($getUser)&& is_array($getUser) && sizeof($getUser) <> 0){
-				$data['xdc_wallet'] = $getUser[0]->tfs_xdc_wallet;
+				$data['xdc_wallet'] = strtolower($getUser[0]->tfs_xdc_wallet);
 			}
 
        
@@ -775,7 +775,7 @@ class User extends CI_Controller {
 					$data['ccountryn'] = $uresult[0]->tfc_name;
 					$data['cdeptn'] = $uresult[0]->cName;				
 				
-					$data['uwalleta'] = $uresult[0]->tfs_xdc_wallet;
+					$data['uwalleta'] = strtolower($uresult[0]->tfs_xdc_wallet);
 					$data['ubankaccno'] = $uresult[0]->tfs_bank_acc_number;
 					$data['ubankaccname'] = $uresult[0]->tfs_bank_name;
 					$data['ulinkedin'] = $uresult[0]->tfs_linkedin;
