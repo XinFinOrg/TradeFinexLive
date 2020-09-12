@@ -1090,7 +1090,7 @@ $(function () {
 											
 											
 											if(resp.status == true){
-												$.post("funddesign",{
+												$.post("publicv/funddesign",{
 													'action':"adddetail",
 													'amount':formDataObj.amount,
 													"currency_supported":formDataObj.currency_supported,
