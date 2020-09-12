@@ -483,7 +483,7 @@ class Login extends CI_Controller {
 				$result = $this->manage->fetch_user($data);
 			}
 			else{
-				$this->session->set_flashdata('error', "<div style='color:red;'>Not Correct Financer.");
+				$this->session->set_flashdata('error', "<div style='color:red;'>Not Correct Financier.");
 				redirect(base_url().'publicv/financier');
 			}
 			

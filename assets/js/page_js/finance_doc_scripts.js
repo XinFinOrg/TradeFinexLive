@@ -338,7 +338,7 @@ $(function () {
 											
 											
 											if(resp.status == true){
-												$.post("buyersupplier",{
+												$.post("publicv/buyersupplier",{
 													'action':"adddetail",
 													'instrument': formDataObj.instrument,
 													'amount':formDataObj.amount,
@@ -733,7 +733,7 @@ $(function () {
 											
 											
 											if(resp.status == true){
-												$.post("buyersupplier",{
+												$.post("publicv/buyersupplier",{
 													'action':"adddetail",
 													'instrument': formDataObj.instrument,
 													'amount':formDataObj.amount,
@@ -1402,7 +1402,7 @@ $(function () {
 												deploy.push({fileNo:childd,contract_address:respondd.receipt.contractAddress.toLowerCase(),txHash:respondd.receipt.transactionHash});
 												// txHash.push(resp.receipt.transactionHash);
 												if(respondd.status == true){
-													$.post("buyersupplier",{
+													$.post("publicv/buyersupplier",{
 													'action':"adddetail",
 													'instrument': formDataObj.instrument,
 													'amount':formDataObj.amount,

@@ -395,9 +395,11 @@ if (!function_exists('generateAddress'))
     {
         try{
             $output = array();
-            $node = exec('cd node_scripts && node create_xdc_account.js',$output);
-            
-            // log_message('info','private key exist'.$node);
+
+            $node = exec('cd node_scripts & node create_xdc_account.js',$output,$err);
+            // $node = exec('node -v',$output,$err);
+            log_message('info','private key exist'.$node);
+log_message('info','error'.json_encode($err));
             return json_decode($node);
         
         }

@@ -764,6 +764,7 @@ class Publicv extends CI_Controller {
 		
 
 		if($action == 'adddetail'){
+
 			$result['contract'] = $this->manage->add_instrument($data);
 			$addr = $this->input->post('addr');
 			$doc = $this->input->post('doc');
@@ -1050,7 +1051,7 @@ class Publicv extends CI_Controller {
 			$data['full_name'] = $user['user_full_name'];
 			$data['user_id'] = $user['user_id'];
 			$data['user_type_ref'] = $user['user_type_ref'];
-			redirect(base_url().'dashboard');
+			// redirect(base_url().'dashboard');
 		}else{
 			// redirect(base_url().'log/out');
 		}
@@ -1241,7 +1242,8 @@ class Publicv extends CI_Controller {
 		$buyersupplier = $this->manage->get_buyersupplier($date);
 		
 		if($instrument && !empty($instrument) && is_array($instrument) && sizeof($instrument) <> 0){
-			$data['instrument'] = $instrument;						
+			$data['instrument'] = $instrument;	
+					
 		}
 		if($design && !empty($design) && is_array($design) && sizeof($design) <> 0){
 			$data['design'] = $design;						
