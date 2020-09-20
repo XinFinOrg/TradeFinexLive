@@ -1468,7 +1468,7 @@ class Publicv extends CI_Controller {
 			$this->email->set_newline("\r\n");
 			$this->email->subject('Account Activation by Tradefinex'); 
 			$this->email->subject('Account Activation by Tradefinex'); 
-			$mail_body = $this->load->view('templates/mails/welcome_account_mail_body', $mail_data, TRUE);
+			$mail_body = $this->load->view('templates/mails/welcome_account_validus_mail_body', $mail_data, TRUE);
 			$this->email->message($mail_body);
 			
 			// Send mail 
