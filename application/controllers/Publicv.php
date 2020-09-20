@@ -1429,6 +1429,9 @@ class Publicv extends CI_Controller {
                     $mail_data['uemail'] = $this->input->post('email');
                     $mail_data['ummob'] = $this->input->post('mmob');
             	
+                    $random_hash = substr(md5(uniqid(rand(), true)), 16, 16);
+                    $data['hash'] = $random_hash;
+                    
                     $data['user_type'] = $this->input->post('user_type');
                     $user_type = $this->input->post('user_type');
 		

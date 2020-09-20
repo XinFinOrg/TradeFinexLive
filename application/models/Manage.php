@@ -1808,6 +1808,7 @@
 			$data['tfv_name'] = $data_add['uname'];
 			$data['tfv_user_type'] = $type;
 			$data['tfv_email'] = $data_add['uemail'];
+                        $data['tfv_hash'] = $data_add['hash'];
 			$data['tfv_mobile_number'] = $data_add['ummob'];
 
 			// $data['tfu_active'] = 1;
