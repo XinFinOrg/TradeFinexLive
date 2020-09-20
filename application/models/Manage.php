@@ -58,7 +58,7 @@
 			$query = $this->db->get();
 
 			$result = $query->result();
-// echo("<br>LLL".json_encode($result));
+                // echo("<br>LLL".json_encode($result));
 				if(!empty($result) && is_array($result) && sizeof($result) <> 0){
 					foreach($result as $row){
 					$type_id = $row->tfu_utype;
@@ -1843,4 +1843,38 @@
 
                     return $result;
                 }
+                public function verify_validus_user($email, $hash, $data_add){
+
+			$this->db->select('*');
+			$this->db->from('{PRE}validus_user');
+			$where = "tfv_hash = '$hash'";
+			$this->db->where($where);
+			$query = $this->db->get();
+
+			$result = $query->result();
+                // echo("<br>LLL".json_encode($result));
+				if(!empty($result) && is_array($result) && sizeof($result) <> 0){
+					foreach($result as $row){
+					$type_id = $row->tfu_utype;
+					// echo ("MMM".$type_id);
+					$this->db->select('*');
+					$this->db->from('{PRE}validus_user');
+
+					$where = "tfv_email = '$email'";
+
+					$this->db->where($where);
+					$query = $this->db->get();
+					$result1 = $query->result();	
+		
+					return json_encode($result);
+					
+						
+				}
+				}else{
+
+					return false;
+				}
+			
+		}
+
 	}
