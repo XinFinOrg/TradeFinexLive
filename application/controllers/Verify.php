@@ -271,7 +271,7 @@ class Verify extends CI_Controller {
 			}else{
 				$datan = array();
 				$datan['tfv_active'] = 1;
-//				$this->manage->update_base_validus_user_info_by_id($result[0]->tfu_id, $datan['tfv_active']);
+				$this->manage->update_base_validus_user_info_by_id($result[0]->tfu_id, $datan['tfv_active']);
 				$data['msg'] = 'success';
 				$data['msg_extra'] = "<h3>Email Verified</h3> <p>Thank You ! Your account has been successfully activated. Click <a href='".base_url()."'>here</a> to go home.</p>";
 			}
