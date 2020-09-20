@@ -1801,4 +1801,46 @@
 
 			return $result = $query->num_rows();
 		}
+                
+                public function add_validus_user($data_add, $type){
+
+			$data = array();
+			$data['tfv_name'] = $data_add['uname'];
+			$data['tfv_user_type'] = $type;
+			$data['tfv_email'] = $data_add['uemail'];
+			$data['tfv_mobile_number'] = $data_add['ummob'];
+
+			// $data['tfu_active'] = 1;
+
+			$this->db->select('*');
+			$this->db->from('{PRE}validus_user');
+			$where = "tfv_email = '".$data_add['uemail']."'";
+			$this->db->where($where);
+			$query = $this->db->get();
+
+			$uresult = $query->result();
+
+			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
+
+				return false;
+
+			}else{
+				$this->db->insert('{PRE}validus_user', $data);
+				$id = $this->db->insert_id();
+                               
+
+				return $result = $this->get_validus_user_info_by_id_and_type($id, $type);
+			}
+		}
+                
+                public function get_validus_user_info_by_id_and_type($id, $type){
+                    
+                    $this->db->select('*');
+                    $this->db->from('{PRE}validus_user');
+                    $query = $this->db->get();
+
+                    $result= $query->result();
+
+                    return $result;
+                }
 	}

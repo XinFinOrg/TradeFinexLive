@@ -1,4 +1,3 @@
-
 <section class="profile">
 	<div class="container">
 	<div class="col-lg-12">
@@ -135,7 +134,7 @@
                                             <span id="namefile1" style="padding-left:0; font-size: 10px; line-height: 17px; width: 100%; height: auto;"></span>
 										</div>
 									</div>
-									<div class="col=lg-9 col-md-9 col-sm-8 col-xs-12">
+									<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
 										<div class="row">
 											<div class="col-md-12 col-sm-12 col-xs-12">
 												<div class="form-group">

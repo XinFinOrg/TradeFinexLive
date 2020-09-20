@@ -18,3 +18,5 @@ newpages/*
 assets/instrument_files/*
 application/config/config.php
 application/config/database.php
+/nbproject
+/nbproject/private/

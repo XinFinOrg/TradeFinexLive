@@ -1398,20 +1398,6 @@ class Publicv extends CI_Controller {
         
         $data = array();
         
-        $data['page'] = 'investerRegistration';
-        $data['msg'] = '';
-        $data['user_id'] = 0;
-        $data['user_type'] = '';
-        $data['full_name'] = '';
-        $data['ufname'] = '';
-        $data['ulname'] = '';
-        $data['uemail'] = '';
-        $data['ucontact'] = '';
-        $data['uaddress'] = '';
-        $data['uname'] = '';
-        $data['upass'] = '';
-        $data['uprofpic'] = '';
-        
         $data['csrf'] = array();
         
 		$data['csrf'] = array();
@@ -1422,85 +1408,103 @@ class Publicv extends CI_Controller {
 		);
 		
 		$data['csrf'] = $csrf;
-				
+		$mail_data = array();
+                
 		$user = $this->session->userdata('logged_in');
 		
 		if($user && !empty($user) && sizeof($user) <> 0){
-			$data['full_name'] = $user['user_full_name'];
-			$data['user_id'] = $user['user_id'];
-			$data['user_type_ref'] = $user['user_type_ref'];
+//			$data['full_name'] = $user['user_full_name'];
+//			$data['user_id'] = $user['user_id'];
 			// redirect(base_url().'dashboard');
+                    redirect(base_url().'log/out');
 		}else{
 			// redirect(base_url().'log/out');
+                    $action = $this->input->post('action');
+                    
+                    $data['uname'] = $this->input->post('first_name');
+                    $data['uemail'] = $this->input->post('email');
+                    $data['ummob'] = $this->input->post('mmob');
+                    
+                    $mail_data['uname'] = $this->input->post('first_name');
+                    $mail_data['uemail'] = $this->input->post('email');
+                    $mail_data['ummob'] = $this->input->post('mmob');
+            	
+                    $data['user_type'] = $this->input->post('user_type');
+                    $user_type = $this->input->post('user_type');
+		
+                    
+                    if($action == 'signup'){
+			$result = $this->manage->add_validus_user($data, $user_type);
+                    }   
+                    
+                    $data['page'] = 'investerRegistration';
+                    $data['user_id'] = 0;
+                    $data['full_name'] = '';
+                   
+                    if(!empty($result) && is_array($result) && sizeof($result) <> 0){
+			
+			// $this->manage->update_rotp($otpval, $result[0]->tfu_id);
+			$created = $result[0]->tfu_created;
+			$time_now = strtotime(date('Y-m-d H:i:s'));
+			// $expired = strtotime('+3 hours', strtotime($result[0]->tfu_created));
+			$expired = strtotime('+3 hours', strtotime(date('Y-m-d H:i:s')));
+			
+			$config = $this->config->item('$econfig');
+		
+			$this->email->initialize($config);
+			// $this->email->cc('another@another-example.com');
+			// $this->email->bcc('them@their-example.com');
+			
+			$from_email = $config['smtp_user']; 
+			$to_email = $this->input->post('email'); 
+			
+			
+			$request_string = 'email='.$to_email.'&hash='.$random_hash.'&expired='.$expired;
+			$encode_request_string = $this->encrypt->encode($request_string, $encryption_key);
+			$mail_data['encoded_uri'] = $encode_request_string;			
+			$this->email->from($from_email, 'Admin Tradefinex'); 
+			$this->email->to($to_email);
+			$this->email->set_mailtype('html');
+			$this->email->set_newline("\r\n");
+			$this->email->subject('Account Activation by Tradefinex'); 
+			$this->email->subject('Account Activation by Tradefinex'); 
+			$mail_body = $this->load->view('templates/mails/welcome_account_mail_body', $mail_data, TRUE);
+			$this->email->message($mail_body);
+			
+			// Send mail 
+			if($this->email->send()){ 
+				$data['msg'] = 'success';
+				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-family: 'open_sansregular';font-size:30px;color:#282c3f;font-weight:700;'>Confirmation Mail</h4>"); 
+				$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#c5c5c5;padding-left:8px;padding-right:8px;'> A verification mail already sent to <a href='mailto:$to_email' style='font-family: 'open_sansregular';color:#33c088;' target='_top'>$to_email</a>, to confirm the validity of your email address. After receiving the email follow the link provided to complete you registration. Click <a href='".base_url()."' style=''>here</a> to go to home.</h3>"); 
+			}		
+			else{ 
+				$data['msg'] = 'email_error';
+				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Registration Acknowledgement</h4>");
+				$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>We are unable to sent mail of your reactivation link. We will get back to you shortly. Please click <a href='".base_url()."publicv/contact' style=''>here</a> to contact us for your resolution.</h3>"); 
+			}
+					
 			$this->load->view('includes/headern', $data);
 			$this->load->view('includes/header_publicn', $data);
-		}
-		
-		// $data['notifications'] = array();
-		// $data['notifications'] = get_initial_notification_status();
-		
-		if($data['user_id'] <> 0){
+			$this->load->view('pages/thankyou_signup', $data);
+			$this->load->view('includes/footer_commonn', $data);
+			$this->load->view('pages_scripts/thankyou_scripts', $data); 
+			$this->load->view('includes/footern', $data);
 			
-			$options = array();
-			$options['user_id'] = $data['user_id'];
-			$options['user_type'] = $data['user_type_ref'];
+                    }else{
 			
-			// // $data['notifications'] = get_notification_status($options);
-		}
-		
-		if($data['user_id'] <> 0){
-					
-			$uresult = $this->manage->get_user_info_by_id_and_type($data['user_id'], $data['user_type_ref']);
-						
-			if(!empty($uresult) && is_array($uresult) && sizeof($uresult) <> 0){
-				
-				if($data['user_type_ref'] == 1){
-					$data['ufname'] = $uresult[0]->tfsp_fname;
-					$data['ulname'] = $uresult[0]->tfsp_lname;
-					$data['uemail'] = $uresult[0]->tfsp_email;
-					$data['ucontact'] = $uresult[0]->tfsp_contact;
-					$data['uaddress'] = $uresult[0]->tfsp_address;
-					$data['uprofpic'] = $uresult[0]->tfsp_pic_file;
-					$data['uname'] = $uresult[0]->tfu_usern;
-					$data['upass'] = $uresult[0]->tfu_passwd;
-					$data['uvisibility'] = $uresult[0]->tfsp_public_visibility;
-				}
-				
-				if($data['user_type_ref'] == 2){
-					$data['ufname'] = $uresult[0]->tff_fname;
-					$data['ulname'] = $uresult[0]->tff_lname;
-					$data['uemail'] = $uresult[0]->tff_email;
-					$data['ucontact'] = $uresult[0]->tff_contact;
-					$data['uaddress'] = $uresult[0]->tff_address;
-					$data['uprofpic'] = $uresult[0]->tff_pic_file;
-					$data['uname'] = $uresult[0]->tfu_usern;
-					$data['upass'] = $uresult[0]->tfu_passwd;
-					$data['uvisibility'] = $uresult[0]->tff_public_visibility;
-				}
-				
-				if($data['user_type_ref'] == 3){
-					$data['ufname'] = $uresult[0]->tfb_fname;
-					$data['ulname'] = $uresult[0]->tfb_lname;
-					$data['uemail'] = $uresult[0]->tfb_email;
-					$data['ucontact'] = $uresult[0]->tfb_contact;
-					$data['uaddress'] = $uresult[0]->tfb_address;
-					$data['uprofpic'] = $uresult[0]->tfb_pic_file;
-					$data['uname'] = $uresult[0]->tfu_usern;
-					$data['upass'] = $uresult[0]->tfu_passwd;
-				}
+			if($action == 'signup'){
+				$this->session->set_flashdata("error_signup", "<font color='red' class='alert-error' style='margin-left:20px'>Email-ID already registered. Try another.</font>");
 			}
 			
 			$this->load->view('includes/headern', $data);
 			$this->load->view('includes/header_publicn', $data);
+			$this->load->view('pages/public/invester_registration_view.php', $data);
+			$this->load->view('includes/footer_commonn', $data);
+			$this->load->view('pages_scripts/common_scripts', $data);
+			$this->load->view('includes/footern', $data);
+                    }
 		}
-        
-        
-        
-        
-        $this->load->view('pages/public/invester_registration_view.php', $data);
-        $this->load->view('includes/footer_commonn', $data);
-        $this->load->view('pages_scripts/common_scripts', $data);
-        $this->load->view('includes/footern');
+                
     }
 	
 	

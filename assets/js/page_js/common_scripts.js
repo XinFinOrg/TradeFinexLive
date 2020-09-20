@@ -431,6 +431,54 @@ $(function () {
 
 		}
 	});
+        $("#signupValidusForm").validate({
+		rules: {
+			first_name: {
+				required: true,
+				minlength: 2,
+				maxlength: 30,
+				LetterOnly: true
+			},
+			email: {
+				required: true,
+				EmailGeneral: true
+			},
+			mmob: {
+				required: true,
+				mobilenumberOnly: true
+			}
+		},
+		messages: {
+			first_name: {
+				required: "Please enter your Name",
+				minlength: "Your Name must be atleast 2 characters long",
+				maxlength: "Your Name must be atmost 30 characters long"
+			},
+			email: "Please enter a valid email address",
+			mmob: {
+				required: "Please enter a valid mobile number",
+				mobilenumberOnly : "Please enter Mobile Number only"
+			}
+		},
+		onkeyup: function (elem) {
+
+                    var element_id = $(elem).attr('id');
+
+//                    if (element_id == 'first_name') {
+//
+//                            var strv = $('#' + element_id).val();
+//
+//                            $('#' + element_id).val(strv.charAt(0).toUpperCase() + strv.slice(1));
+//
+//                    }
+
+                    if (element_id == 'mmob') {
+
+                            var tval = $('#' + element_id).val();
+                            tvala = tval.split(' ');
+                    }
+		}
+	});
 
 	
 
