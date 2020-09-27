@@ -3962,6 +3962,13 @@ to {
 	padding: 0px 40px 30px 40px;
 	margin-top: 204px!important;
 }
+
+.modal-dialog .modal-content_validus {
+	border-radius: 0px;
+	padding: 0px 40px 30px 40px;
+        background: white;
+}
+
 .modal-dialog .modal-content .modal-header {
 	padding: 0px;
 	border-bottom: none;

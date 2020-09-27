@@ -2448,7 +2448,7 @@ pre[class*="language-"] {
 		/*min-height: 695px;*/
 		min-height: 450px;
 	}
->>>>>>> 55524c126caf506a8d36798926b0aee355135325
+
 	.banner.slide2 .cnt-block {
 		padding-top: 60px;
 		padding-bottom: 40px;
@@ -4408,7 +4408,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3edc93', end
 
 /* iPhone 4 */
 @media (max-width: 320px) {
-
 	.banner .bannerHeader h1 {
 		font-size: 24px;
 	}
@@ -4421,4 +4420,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3edc93', end
 	.button-box a:first-child {
 		margin-bottom: 10px!important;
 	}
+}
 }
