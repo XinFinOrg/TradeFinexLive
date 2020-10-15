@@ -263,6 +263,7 @@
 					perPage: 6
 				});
 				
+				
 				$('#mmob').intlTelInput();
 				
 			<?php } ?>	
@@ -337,3 +338,27 @@
 		<script src="<?=base_url('assets/js/bootstrap-datepicker.js');?>"></script>
 		<script src="<?=base_url('assets/js/toastr.min.js');?>"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+		<script src="<?=base_url('assets/js/dropzone.min.js');?>"></script>
+		<script type="text/javascript">
+			
+			// var iti = window.intlTelInput('#mmob', {
+			// 	utilsScript: "https://intl-tel-input.com/node_modules/intl-tel-input/build/js/intlTelInput.js?1590403638580"
+			// });
+			Dropzone.options.fileupload = {
+				acceptedFiles: 'image/*,.docx,.doc,.pdf',
+				uploadMultiple : true,
+				parallelUploads : 10,
+				addRemoveLinks: true,
+				autoProcessQueue:false,
+				init: function() {
+					this.on("success", function(file, responseText) {
+						console.log('success');
+					});
+				}
+			}
+
+			$('#sendDoc').click(function(){
+				let file = $('#fileupload').get(0).dropzone.processQueue();
+				
+			});
+		</script>
