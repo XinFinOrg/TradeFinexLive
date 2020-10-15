@@ -1552,20 +1552,19 @@ class Publicv extends CI_Controller {
 
 
 		//Email
-			
-			// $config = $this->config->item('$econfig');
-		
-			// $this->email->initialize($config);
-			// $from_email = $config['smtp_user']; 
-			// $to_email = $from_email; 
+		$config = $this->config->item('$econfig');
+	
+		$this->email->initialize($config);
+		$from_email = $config['smtp_user']; 
+		$to_email = $from_email; 
 
-			// $this->email->from($from_email, 'Admin Tradefinex'); 
-			// $this->email->to($to_email);
-			// $this->email->set_mailtype('html');
-			// $this->email->set_newline("\r\n");
-			// $this->email->subject('Investor Documents'); 
-			// $mail_body = $this->load->view('templates/mails/investor_doc_mail', TRUE);
-			// $this->email->message($mail_body);
+		$this->email->from($from_email, 'Admin Tradefinex'); 
+		$this->email->to($to_email);
+		$this->email->set_mailtype('html');
+		$this->email->set_newline("\r\n");
+		$this->email->subject('Investor Documents'); 
+		$mail_body = $this->load->view('templates/mails/investor_doc_mail', TRUE);
+		$this->email->message($mail_body);
 
         foreach ($_FILES as $key => $image) {
 			for($i = 0 ; $i <= count($image['name']) ; $i++){
@@ -1583,7 +1582,7 @@ class Publicv extends CI_Controller {
 				$images[] = $fileName;
 
 				$url = $allUrl.$fileName;
-				$upload_data['full_path']  = $url;
+				// $upload_data['full_path']  = $url;
 				// array_push($allImageUrl,$url);
 				$config['file_name'] = $fileName;
 				$this->upload->initialize($config);
@@ -1593,7 +1592,7 @@ class Publicv extends CI_Controller {
 					$docs['image_name'] = $config['file_name'];
 					$saveData = $this->manage->addDocs($docs);
 					$upload_data = $this->upload->data();
-					$this->email->attach($upload_data['full_path']);
+					$this->email->attach($url);
 				} else {
 					return false;
 				}
