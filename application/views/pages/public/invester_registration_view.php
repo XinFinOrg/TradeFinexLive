@@ -10,17 +10,17 @@
 				?>
 					<div class="form-group mb-15">
 						<label for="name">Name</label>
-							<input class="form-control" name="first_name" id="first_name" type="text" tabindex="1" />
+							<input class="form-control" name="first_name" id="first_name"  data-required-error="" type="text" tabindex="1" />
 						</label>
 					</div>
 					<div class="form-group mb-15">
 						<label for="email">Email ID</label>
-							<input class="form-control" name="email" id="email" type="text" tabindex="2" />
+							<input class="form-control" name="email" id="email" type="text"  data-required-error="" tabindex="2" />
 						</label>
 					</div>                    
-                                        <div class="form-group mb-15">
+                    <div class="form-group mb-15">
 						<label for="mmob">Mobile No.</label>
-							<input class="form-control" id="mmob" name="mmob" type="text" tabindex="3" autocomplete="" />
+							<input class="form-control" id="mmob" name="mmob" type="tel" data-required-error=""  tabindex="3" autocomplete="" />
 						</label>
 					</div>
                     
@@ -84,7 +84,7 @@
 					</div>
 					<input type="hidden" name="action" value="signup" />
 					<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
-					<div class="btn-more" style="float:none;"><button id="signupSubmit" type="submit" class="btn btn-info" disabled="disabled"> Sign Up </button> </div>
+					<div class="btn-more" style="float:none;"><button id="signupSubmit" type="submit" class="btn btn-info" > Sign Up </button> </div>
 
 					
 				</form>

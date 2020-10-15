@@ -1878,7 +1878,7 @@
 			
 		}
 
-                public function update_base_validus_user_info_by_id($id, $data){
+        public function update_base_validus_user_info_by_id($id, $data){
 			
 			$data1 = [
 				'tfv_active' => $data,
@@ -1886,6 +1886,11 @@
 			$where = "tfv_id = '$id'";
 			$this->db->where($where);
 			$res = $this->db->update('{PRE}validus_user', $data1);
+			return $res;
+		}
+
+		public function addDocs($data){
+			$res = $this->db->insert('tf_invest_doc', $data);
 			return $res;
 		}
 	}
