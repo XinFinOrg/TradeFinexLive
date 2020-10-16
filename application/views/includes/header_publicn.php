@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/jquery-ui.1.12.1.min.css') ?>" />
 	
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/jquery-te-Style.css');?>" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/intlTelInput.css');?>" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/intl-tel-input/css/intlTelInput_v17.css');?>" />
 	
 	
 	<!-- ICONS STYLES -->
@@ -75,7 +75,13 @@
     	width: 120px;
 	}
 	input.error, textarea.error, select.error, label.error {
-    	color: #ea212d!important;
+    	color: #ea212d !important;
+	}
+	.iti__selected-flag {
+		height: 100% !important; 
+	}
+	.iti {
+		width: 100%;
 	}
 </style>
 <!--<marquee>The website is under Maintenence. Please report to us if you face any technical issues.</marquee>-->

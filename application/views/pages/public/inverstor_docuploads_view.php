@@ -8,7 +8,8 @@
 					    $attributes = array('id' => 'signupValidusForm', 'class' => 'dropzone','id' => 'fileupload', 'method' => 'post');
 					    echo form_open_multipart(base_url().'publicv/uploadDocs', $attributes);
                     ?>
-                        <input type="hidden" name="a" value="<?php echo rand(0,999); ?>" id="name">
+                        <input type="hidden" name="email" value="<?php  echo $email; ?>" >
+                        <input type="hidden" name="rndid" value="<?php  echo $unid; ?>" >
                     <!-- <button class="btn btn-primary" id="imgsubbutt">Submit</button> -->
                     </form>
                     <button class="btn btn-danger mt-20" id="sendDoc">Submit</button>
