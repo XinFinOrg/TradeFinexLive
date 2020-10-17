@@ -17,10 +17,12 @@
 						<label for="email">Email ID</label>
 							<input class="form-control" name="email" id="email" type="text"  data-required-error="" tabindex="2" />
 						</label>
-					</div>                    
+					</div>
+				                    
                     <div class="form-group mb-15">
 						<label for="mmob">Mobile No.</label>
-							<input class="form-control" id="mmob" name="mmob" type="tel" data-required-error=""  tabindex="3" autocomplete="" />
+							<input class="form-control" id="mmob" name="mobile" type="tel" data-required-error=""  tabindex="3" autocomplete="" placeholder="" />
+							<input type="hidden" name="mmob" id="fullnumb">
 						</label>
 					</div>
                     
@@ -60,12 +62,12 @@
 								}
 							?>
 							<div class="col-md-4 col-sm-4 col-xs-4 radio radio-danger">
-                                                            <input type="radio" name="user_type" id="user_type" class="radio " value="1" <?=(($i == 1) ? 'checked="checked"' : '');?>  />
-								<label for="checkbox4">Individual</label>
+                                <input type="radio" name="user_type" id="check1" class="radio user_type" value="1" <?=(($i == 1) ? 'checked="checked"' : '');?>  />
+								<label for="check1">Individual</label>
 							</div>
 							<div class="col-md-4 col-sm-4 col-xs-4 radio radio-danger">
-							    <input type="radio" name="user_type" id="user_type" class="radio " value="2" <?=(($c == 1) ? 'checked="checked"' : '');?> />
-								<label for="checkbox4">Corporate</label>
+							    <input type="radio" name="user_type" id="check2" class="radio user_type" value="2" <?=(($c == 1) ? 'checked="checked"' : '');?> />
+								<label for="check2">Corporate</label>
 							</div>
 							<!--<div class="col-md-4 col-sm-4 col-xs-4 radio radio-danger">
 								<input name="user_type" class="user_radio user_type" value="2" <?=(($f == 1) ? 'checked="checked"' : '');?> type="radio">
@@ -208,10 +210,13 @@
 <?php $this->load->view('includes/login_modal') ?>
 
 <script>
+
+
+
 function modalChange(){
     $('#NDA').modal('hide');
     $('#documents').modal('show');
-    var id = document.getElementById("user_type").value;
+    var id = document.getElementsByClassName("user_type").value;
     
     if(id == 1){
         var ids = document.getElementById("individual").style.display = "block";

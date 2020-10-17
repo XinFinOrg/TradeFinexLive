@@ -443,9 +443,11 @@ $(function () {
 				required: true,
 				EmailGeneral: true
 			},
-			mmob: {
+			mobile: {
 				required: true,
-				mobilenumberOnly: true
+				digits: true,
+				minlength: 8,
+				maxlength: 20
 			}
 		},
 		messages: {
@@ -455,9 +457,10 @@ $(function () {
 				maxlength: "Your Name must be atmost 30 characters long"
 			},
 			email: "Please enter a valid email address",
-			mmob: {
+			mobile: {
 				required: "Please enter a valid mobile number",
-				mobilenumberOnly : "Please enter Mobile Number only"
+				minlength: "Your Name must be atleast 8 characters long",
+				maxlength: "Your Name must be atmost 20 characters long"
 			}
 		},
 		onkeyup: function (elem) {

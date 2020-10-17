@@ -1461,9 +1461,12 @@ class Publicv extends CI_Controller {
 			$from_email = $config['smtp_user']; 
 			$to_email = $this->input->post('email'); 
 			
-			
+			$mail_data['generator']= $random_hash;
+			$url = base_url().'/publicv/investorDoc?investor='.$mail_data['generator'];
 			$request_string = 'email='.$to_email.'&hash='.$random_hash.'&expired='.$expired;
 			$encode_request_string = $this->encrypt->encode($request_string, $encryption_key);
+
+			
 			$mail_data['encoded_uri'] = $encode_request_string;			
 			$this->email->from($from_email, 'Admin Tradefinex'); 
 			$this->email->to($to_email);
@@ -1512,6 +1515,19 @@ class Publicv extends CI_Controller {
 	
 
 	public function investorDoc(){
+		$genertator = urlencode(htmlentities(htmlspecialchars(trim($_GET['investor']))));
+		
+		if(!ctype_alnum($genertator)){
+			redirect(base_url());
+		}
+		$checkUser = $this->manage->checkValidusUser($genertator);
+
+		if(empty($checkUser)){
+			redirect(base_url());
+		}
+
+	
+
 		$data = array();
         
 		$data['csrf'] = array();
@@ -1522,6 +1538,9 @@ class Publicv extends CI_Controller {
 		);
 		
 		$data['csrf'] = $csrf;
+		$data['email'] = $checkUser[0]->tfv_email;
+		$data['unid']= $checkUser[0]->tfv_id;
+
 		$mail_data = array();
 
 		
@@ -1550,24 +1569,22 @@ class Publicv extends CI_Controller {
 		// $allImageUrl = array();
 		$allUrl = base_url()."uploads/";
 
-
 		//Email
-		$config = $this->config->item('$econfig');
+		$Econfig = $this->config->item('$econfig');
 	
-		$this->email->initialize($config);
-		$from_email = $config['smtp_user']; 
-		$to_email = $from_email; 
+		$this->email->initialize($Econfig);
+		$from_email = $this->input->post('email'); 
+		$to_email = $Econfig['smtp_user']; 
 
-		$this->email->from($from_email, 'Admin Tradefinex'); 
-		$this->email->to($to_email);
+		$this->email->from($from_email); 
+		$this->email->to($to_email,$from_email);
 		$this->email->set_mailtype('html');
 		$this->email->set_newline("\r\n");
 		$this->email->subject('Investor Documents'); 
-		$mail_body = $this->load->view('templates/mails/investor_doc_mail', TRUE);
-		$this->email->message($mail_body);
+		$this->email->message('Your uploaded documents are attached below');
 
         foreach ($_FILES as $key => $image) {
-			for($i = 0 ; $i <= count($image['name']) ; $i++){
+			for($i = 0 ; $i < count($image['name']) ; $i++){
 
 				$title = rand(10,100);
 
@@ -1588,7 +1605,8 @@ class Publicv extends CI_Controller {
 				$this->upload->initialize($config);
 
 				if ($this->upload->do_upload('images[]')) {
-					$docs['name'] = $this->input->post('a');
+					$docs['name'] = $this->input->post('email');
+					$docs['uid'] = $this->input->post('rndid');
 					$docs['image_name'] = $config['file_name'];
 					$saveData = $this->manage->addDocs($docs);
 					$upload_data = $this->upload->data();
@@ -1596,10 +1614,9 @@ class Publicv extends CI_Controller {
 				} else {
 					return false;
 				}
-
+				
 			}	
 		}
-
 		// Send mail 
 		if($this->email->send()){ 
 			$data['msg'] = 'success';
@@ -1613,25 +1630,10 @@ class Publicv extends CI_Controller {
 			$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>We are unable to sent mail of your reactivation link. We will get back to you shortly. Please click <a href='".base_url()."publicv/contact' style=''>here</a> to contact us for your resolution.</h3>"); 
 
 		}
-
-		$this->load->view('includes/headern', $data);
-		$this->load->view('includes/header_publicn', $data);
-		$this->load->view('pages/thankyou_signup', $data);
-		$this->load->view('includes/footer_commonn', $data);
-		$this->load->view('pages_scripts/thankyou_scripts', $data); 
-		$this->load->view('includes/footern', $data);
-
+		
 	}
 
-	// public function sendDocs(){
-	// 	$data['name'] = $this->input->post('name');
-	// 	$result['data']=$this->manage->getDocs($data);
-	// 	var_dump($result);
-	// 	die();
 
-	// }
-	
-	
 	public function getPasskey(){
 		
 		$data = array();

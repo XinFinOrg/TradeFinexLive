@@ -1802,7 +1802,7 @@
 			return $result = $query->num_rows();
 		}
                 
-                public function add_validus_user($data_add, $type){
+        public function add_validus_user($data_add, $type){
 
 			$data = array();
 			$data['tfv_name'] = $data_add['uname'];
@@ -1892,6 +1892,17 @@
 		public function addDocs($data){
 			$res = $this->db->insert('tf_invest_doc', $data);
 			return $res;
+		}
+
+		public function checkValidusUser($checkUser){
+			// var_dump($checkUser);die;
+			$this->db->select('*');
+			$this->db->from('tf_validus_user');
+			$where = "tfv_hash = '$checkUser'";
+			$this->db->where($where);
+			$query = $this->db->get();
+			return $result1 = $query->result();
+		
 		}
 	}
         
