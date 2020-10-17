@@ -1895,7 +1895,6 @@
 		}
 
 		public function checkValidusUser($checkUser){
-			// var_dump($checkUser);die;
 			$this->db->select('*');
 			$this->db->from('tf_validus_user');
 			$where = "tfv_hash = '$checkUser'";
