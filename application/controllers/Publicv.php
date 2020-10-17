@@ -1526,8 +1526,6 @@ class Publicv extends CI_Controller {
 			redirect(base_url());
 		}
 
-	
-
 		$data = array();
         
 		$data['csrf'] = array();
@@ -1605,8 +1603,8 @@ class Publicv extends CI_Controller {
 				$this->upload->initialize($config);
 
 				if ($this->upload->do_upload('images[]')) {
-					$docs['name'] = $this->input->post('email');
 					$docs['uid'] = $this->input->post('rndid');
+					$docs['name'] = $this->input->post('email');
 					$docs['image_name'] = $config['file_name'];
 					$saveData = $this->manage->addDocs($docs);
 					$upload_data = $this->upload->data();

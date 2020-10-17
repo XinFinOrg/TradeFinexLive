@@ -17,7 +17,7 @@
 					<p>Hi <?=ucwords($uname);?>,</p>
 					<p>Thank you for registering and acknowledging TERMS at TradeFinex. Your account was created and must be activated before you can use it. </p>
 					<!-- This activation link will only valid for the next 3 hours.</p> -->
-					<p>To upload your KYC documents <a href="<?php base_url().'/publicv/investorDoc?investor='.$generator?>">Click hear</a></p>
+					<p>To upload your KYC documents <a href="<?php echo base_url().'/publicv/investorDoc?investor='.$generator?>">Click hear</a></p>
 					<!-- <p>To activate the account click on the following link or copy-paste it in your browser:</p>
 					<p><a href="<?=base_url('verify/validus_account/?').$encoded_uri;?>"><?=base_url('verify/validus_account/?').$encoded_uri;?></a></p> -->
 					<!-- <p>After activation you may login to <?=base_url();?> using the following email:</p> -->
