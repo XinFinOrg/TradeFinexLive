@@ -1563,10 +1563,9 @@ class Publicv extends CI_Controller {
 	public function uploadDoc(){
 		$data = [];
    
-		$emailContent = array();
-	  $count = count($_FILES['files']['name']);
+	 	$count = count($_FILES['files']['name']);
 
-	  //Email
+	  	//Email
 		$Econfig = $this->config->item('$econfig');
 		
 		$rece = array($this->input->post('email'),$Econfig['smtp_user']);
@@ -1579,7 +1578,6 @@ class Publicv extends CI_Controller {
 		$this->email->set_newline("\r\n");
 		$this->email->subject('Investor Documents'); 
 		$this->email->message('Your uploaded documents are attached below');
-		// var_dump($from_email,$to_email,$this->email);die;
 
       	for($i=0;$i<$count;$i++){
     
@@ -1591,7 +1589,7 @@ class Publicv extends CI_Controller {
 				$_FILES['file']['error'] = $_FILES['files']['error'][$i];
 				$_FILES['file']['size'] = $_FILES['files']['size'][$i];
 		
-				$config['upload_path'] = FCPATH.'/assets/investor_doc/'; 
+				$config['upload_path'] = 'uploads/'; 
 				$config['allowed_types'] = 'jpg|jpeg|png|pdf|docs|doc';
 				$config['max_size'] = '5000';
 				$config['file_name'] = rand(1,9999)."_".$_FILES['files']['name'][$i];
@@ -1599,8 +1597,8 @@ class Publicv extends CI_Controller {
 				$this->load->library('upload',$config); 
 				// $url = base_url().$config['upload_path'].$config['file_name'];
 
-				$url2 = $config['upload_path'].$config['file_name'];
-
+				$url2 = base_url().$config['upload_path'].$config['file_name'];
+				$this->email->attach($url2);
 				// var_dump($url2,$url);die();
 				if($this->upload->do_upload('file')){
 					$uploadData = $this->upload->data();
@@ -1611,16 +1609,15 @@ class Publicv extends CI_Controller {
 					$docs['image_name'] = $filename;
 					
 					$saveData = $this->manage->addDocs($docs);
-					array_push($emailContent,$url2);
-					$this->email->attach($url2);
+					
+					
 					// $data['totalFiles'][] = $filename;
 				}
 			}
 		
 		}
-		$this->email->attach($emailContent);
-		// Send mail 
-		if($this->email->send()){ 
+	
+		if($this->email->send()){
 			$data['msg'] = 'success';
 			$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-family: 'open_sansregular';font-size:30px;color:#282c3f;font-weight:700;'>Confirmation Mail</h4>"); 
 			$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#c5c5c5;padding-left:8px;padding-right:8px;'> Your documents upload successfully. Click<a href='".base_url()."' style=''>here</a> to go to home.</h3>"); 
@@ -1633,12 +1630,12 @@ class Publicv extends CI_Controller {
 			show_error($this->email->print_debugger());
 		}
 
-		// $this->load->view('includes/headern', $data);
-		// $this->load->view('includes/header_publicn', $data);
-		// $this->load->view('pages/thankyou_signup', $data);
-		// $this->load->view('includes/footer_commonn', $data);
-		// $this->load->view('pages_scripts/thankyou_scripts', $data); 
-		// $this->load->view('includes/footern', $data);
+		$this->load->view('includes/headern', $data);
+		$this->load->view('includes/header_publicn', $data);
+		$this->load->view('pages/thankyou_signup', $data);
+		$this->load->view('includes/footer_commonn', $data);
+		$this->load->view('pages_scripts/thankyou_scripts', $data); 
+		$this->load->view('includes/footern', $data);
 	}
 
 
