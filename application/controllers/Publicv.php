@@ -1621,13 +1621,11 @@ class Publicv extends CI_Controller {
 			$data['msg'] = 'success';
 			$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-family: 'open_sansregular';font-size:30px;color:#282c3f;font-weight:700;'>Confirmation Mail</h4>"); 
 			$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#c5c5c5;padding-left:8px;padding-right:8px;'> Your documents upload successfully. Click<a href='".base_url()."' style=''>here</a> to go to home.</h3>"); 
-			var_dump('done');die;
 		}
 		else{ 
 			$data['msg'] = 'email_error';
 			$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Document Upload Acknowledgement</h4>");
 			$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Something went wrong try again or Please click <a href='".base_url()."publicv/contact' style=''>here</a> to contact us for your resolution.</h3>"); 
-			show_error($this->email->print_debugger());
 		}
 
 		$this->load->view('includes/headern', $data);
