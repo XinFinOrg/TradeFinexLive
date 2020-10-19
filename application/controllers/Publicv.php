@@ -1482,7 +1482,7 @@ class Publicv extends CI_Controller {
 				$data['msg'] = 'success';
 				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-family: 'open_sansregular';font-size:30px;color:#282c3f;font-weight:700;'>Confirmation Mail</h4>"); 
 				$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#c5c5c5;padding-left:8px;padding-right:8px;'> A verification mail already sent to <a href='mailto:$to_email' style='font-family: 'open_sansregular';color:#33c088;' target='_top'>$to_email</a>, to confirm the validity of your email address. After receiving the email follow the link provided to complete you registration. Click <a href='".base_url()."' style=''>here</a> to go to home.</h3>"); 
-			}		
+			}
 			else{ 
 				$data['msg'] = 'email_error';
 				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Registration Acknowledgement</h4>");
@@ -1541,11 +1541,11 @@ class Publicv extends CI_Controller {
 		$data['email'] = $checkUser[0]->tfv_email;
 		$data['unid']= $checkUser[0]->tfv_id;
 
-		$checkUserDoc = $this->manage->checkUserDoc($data['unid']);
+		// $checkUserDoc = $this->manage->checkUserDoc($data['unid']);
 
-		if(!empty($checkUserDoc)){
-			redirect(base_url());
-		}
+		// if(!empty($checkUserDoc)){
+		// 	redirect(base_url());
+		// }
 
 		$mail_data = array();
 
@@ -1563,22 +1563,22 @@ class Publicv extends CI_Controller {
 	public function uploadDoc(){
 		$data = [];
    
-	  $count = count($_FILES['files']['name']);
+	 	$count = count($_FILES['files']['name']);
 
-	  //Email
+	  	//Email
 		$Econfig = $this->config->item('$econfig');
-	
+		
+		$rece = array($this->input->post('email'),$Econfig['smtp_user']);
 		$this->email->initialize($Econfig);
 		$from_email = $this->input->post('email'); 
 		$to_email = $Econfig['smtp_user'];
-
-		$this->email->from($from_email); 
-		$this->email->to($to_email,$from_email);
+		$this->email->from("",$this->input->post('email')); 
+		$this->email->to(implode(', ', $rece));
 		$this->email->set_mailtype('html');
 		$this->email->set_newline("\r\n");
 		$this->email->subject('Investor Documents'); 
 		$this->email->message('Your uploaded documents are attached below');
-    
+
       	for($i=0;$i<$count;$i++){
     
 			if(!empty($_FILES['files']['name'][$i])){
@@ -1595,7 +1595,11 @@ class Publicv extends CI_Controller {
 				$config['file_name'] = rand(1,9999)."_".$_FILES['files']['name'][$i];
 			
 				$this->load->library('upload',$config); 
-				$url = base_url().$config['upload_path'].$config['file_name'];
+				// $url = base_url().$config['upload_path'].$config['file_name'];
+
+				$url2 = base_url().$config['upload_path'].$config['file_name'];
+				$this->email->attach($url2);
+				// var_dump($url2,$url);die();
 				if($this->upload->do_upload('file')){
 					$uploadData = $this->upload->data();
 					$filename = $uploadData['file_name'];
@@ -1603,25 +1607,25 @@ class Publicv extends CI_Controller {
 					$docs['uid'] = $this->input->post('rndid');
 					$docs['name'] = $this->input->post('email');
 					$docs['image_name'] = $filename;
+					
 					$saveData = $this->manage->addDocs($docs);
-					$this->email->attach($url);
+					
+					
 					// $data['totalFiles'][] = $filename;
 				}
 			}
 		
 		}
-		// Send mail 
-		if($this->email->send()){ 
+	
+		if($this->email->send()){
 			$data['msg'] = 'success';
 			$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-family: 'open_sansregular';font-size:30px;color:#282c3f;font-weight:700;'>Confirmation Mail</h4>"); 
 			$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#c5c5c5;padding-left:8px;padding-right:8px;'> Your documents upload successfully. Click<a href='".base_url()."' style=''>here</a> to go to home.</h3>"); 
-
 		}
 		else{ 
 			$data['msg'] = 'email_error';
 			$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Document Upload Acknowledgement</h4>");
 			$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Something went wrong try again or Please click <a href='".base_url()."publicv/contact' style=''>here</a> to contact us for your resolution.</h3>"); 
-
 		}
 
 		$this->load->view('includes/headern', $data);
