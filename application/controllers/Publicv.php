@@ -1595,23 +1595,21 @@ class Publicv extends CI_Controller {
 				$config['file_name'] = rand(1,9999)."_".$_FILES['files']['name'][$i];
 			
 				$this->load->library('upload',$config); 
-				// $url = base_url().$config['upload_path'].$config['file_name'];
 
-				$url2 = base_url().$config['upload_path'].$config['file_name'];
-				$this->email->attach($url2);
-				// var_dump($url2,$url);die();
+				$ImgName = $config['file_name'];
+				// $url2 = base_url().'/uploads/'.$ImgName;
+				// var_dump($url2);die();
 				if($this->upload->do_upload('file')){
 					$uploadData = $this->upload->data();
 					$filename = $uploadData['file_name'];
-					
+					$ImgPath =$uploadData['full_path'];
 					$docs['uid'] = $this->input->post('rndid');
 					$docs['name'] = $this->input->post('email');
 					$docs['image_name'] = $filename;
 					
 					$saveData = $this->manage->addDocs($docs);
+					$this->email->attach($ImgPath);
 					
-					
-					// $data['totalFiles'][] = $filename;
 				}
 			}
 		
