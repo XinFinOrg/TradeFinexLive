@@ -1522,6 +1522,8 @@ class Publicv extends CI_Controller {
 		}
 		$checkUser = $this->manage->checkValidusUser($genertator);
 
+		
+
 		if(empty($checkUser)){
 			redirect(base_url());
 		}
@@ -1539,6 +1541,12 @@ class Publicv extends CI_Controller {
 		$data['email'] = $checkUser[0]->tfv_email;
 		$data['unid']= $checkUser[0]->tfv_id;
 
+		$checkUserDoc = $this->manage->checkUserDoc($data['unid']);
+
+		if(!empty($checkUserDoc)){
+			redirect(base_url());
+		}
+
 		$mail_data = array();
 
 		
@@ -1551,28 +1559,18 @@ class Publicv extends CI_Controller {
 		
 	}
 
-	public function uploadDocs(){
 
-		$config = array(
-            'upload_path'   => 'uploads/',
-            'allowed_types' => 'jpg|png|jpeg|docx|doc|pdf',
-			'overwrite'     => 1,    
-			'maxsize'		=> '10024',
-        );
+	public function uploadDoc(){
+		$data = [];
+   
+	  $count = count($_FILES['files']['name']);
 
-        $this->load->library('upload', $config);
-
-		$images = array();
-		
-		// $allImageUrl = array();
-		$allUrl = base_url()."uploads/";
-
-		//Email
+	  //Email
 		$Econfig = $this->config->item('$econfig');
 	
 		$this->email->initialize($Econfig);
 		$from_email = $this->input->post('email'); 
-		$to_email = $Econfig['smtp_user']; 
+		$to_email = $Econfig['smtp_user'];
 
 		$this->email->from($from_email); 
 		$this->email->to($to_email,$from_email);
@@ -1580,40 +1578,37 @@ class Publicv extends CI_Controller {
 		$this->email->set_newline("\r\n");
 		$this->email->subject('Investor Documents'); 
 		$this->email->message('Your uploaded documents are attached below');
-
-        foreach ($_FILES as $key => $image) {
-			for($i = 0 ; $i < count($image['name']) ; $i++){
-
-				$title = rand(10,100);
-
-				$_FILES['images[]']['name']= $image['name'][$i];
-				$_FILES['images[]']['type']= $image['type'][$i];
-				$_FILES['images[]']['tmp_name']= $image['tmp_name'][$i];
-				$_FILES['images[]']['error']= $image['error'][$i];
-				$_FILES['images[]']['size']= $image['size'][$i];
-
-				$fileName = $title .'_'. $image['name'][$i];
-
-				$images[] = $fileName;
-
-				$url = $allUrl.$fileName;
-				// $upload_data['full_path']  = $url;
-				// array_push($allImageUrl,$url);
-				$config['file_name'] = $fileName;
-				$this->upload->initialize($config);
-
-				if ($this->upload->do_upload('images[]')) {
+    
+      	for($i=0;$i<$count;$i++){
+    
+			if(!empty($_FILES['files']['name'][$i])){
+		
+				$_FILES['file']['name'] = $_FILES['files']['name'][$i];
+				$_FILES['file']['type'] = $_FILES['files']['type'][$i];
+				$_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+				$_FILES['file']['error'] = $_FILES['files']['error'][$i];
+				$_FILES['file']['size'] = $_FILES['files']['size'][$i];
+		
+				$config['upload_path'] = 'uploads/'; 
+				$config['allowed_types'] = 'jpg|jpeg|png|pdf|docs|doc';
+				$config['max_size'] = '5000';
+				$config['file_name'] = rand(1,9999)."_".$_FILES['files']['name'][$i];
+			
+				$this->load->library('upload',$config); 
+				$url = base_url().$config['upload_path'].$config['file_name'];
+				if($this->upload->do_upload('file')){
+					$uploadData = $this->upload->data();
+					$filename = $uploadData['file_name'];
+					
 					$docs['uid'] = $this->input->post('rndid');
 					$docs['name'] = $this->input->post('email');
-					$docs['image_name'] = $config['file_name'];
+					$docs['image_name'] = $filename;
 					$saveData = $this->manage->addDocs($docs);
-					$upload_data = $this->upload->data();
 					$this->email->attach($url);
-				} else {
-					return false;
+					// $data['totalFiles'][] = $filename;
 				}
-				
-			}	
+			}
+		
 		}
 		// Send mail 
 		if($this->email->send()){ 
@@ -1624,11 +1619,17 @@ class Publicv extends CI_Controller {
 		}
 		else{ 
 			$data['msg'] = 'email_error';
-			$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Registration Acknowledgement</h4>");
-			$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>We are unable to sent mail of your reactivation link. We will get back to you shortly. Please click <a href='".base_url()."publicv/contact' style=''>here</a> to contact us for your resolution.</h3>"); 
+			$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Document Upload Acknowledgement</h4>");
+			$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Something went wrong try again or Please click <a href='".base_url()."publicv/contact' style=''>here</a> to contact us for your resolution.</h3>"); 
 
 		}
-		
+
+		$this->load->view('includes/headern', $data);
+		$this->load->view('includes/header_publicn', $data);
+		$this->load->view('pages/thankyou_signup', $data);
+		$this->load->view('includes/footer_commonn', $data);
+		$this->load->view('pages_scripts/thankyou_scripts', $data); 
+		$this->load->view('includes/footern', $data);
 	}
 
 

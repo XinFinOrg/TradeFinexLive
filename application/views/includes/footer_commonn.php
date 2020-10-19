@@ -349,49 +349,12 @@
 		<script src="<?=base_url('assets/js/dropzone.min.js');?>"></script>
 		
 		<script type="text/javascript">
-			
-			Dropzone.options.fileupload = {
-				acceptedFiles: 'image/*,.docx,.doc,.pdf',
-				uploadMultiple : true,
-				parallelUploads : 10,
-				addRemoveLinks: true,
-				autoProcessQueue:false,
-				init: function() {
-					this.on("success", function(file, responseText) {
-						// console.log('success');
-					});
-				}
-			}
-
-			$('#sendDoc').click(function(){
-				let file = $('#fileupload').get(0).dropzone.processQueue();
-				toastr["success"]("Documents uploaded successfully", "Success");
-				toastr.options = {
-					"closeButton": false,
-					"debug": false,
-					"newestOnTop": false,
-					"progressBar": false,
-					"positionClass": "toast-top-right",
-					"preventDuplicates": false,
-					"onclick": null,
-					"showDuration": "300",
-					"hideDuration": "1000",
-					"timeOut": "5000",
-					"extendedTimeOut": "1000",
-					"showEasing": "swing",
-					"hideEasing": "linear",
-					"showMethod": "fadeIn",
-					"hideMethod": "fadeOut"
-				}
-				setTimeout(() => {
-					window.location.href = '<?php echo base_url();?>';
-				}, 7000);
-			});
-
 			$('#signupSubmit').click(function(){
 				$('#fullnumb').val('');
 				$('#fullnumb').val(window.Iti.getSelectedCountryData().dialCode+window.Iti.getNumber());
 			});
 		</script>
+
+		
 		<script src="<?=base_url('assets/js/toastr.min.js');?>"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
