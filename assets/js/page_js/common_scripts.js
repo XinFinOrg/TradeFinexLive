@@ -2132,6 +2132,38 @@ $(function () {
 			}
 		}
 	});
+
+	$.validator.addMethod('filesize', function(value, element, param) {
+		return this.optional(element) || (element.files[0].size <= param) 
+	});
+
+	$("#fileupload").validate({
+		rules: {
+			email: {
+				required: true,
+				EmailGeneral: true
+				
+			},
+			rndid: {
+				required:true,
+				digits: true
+
+			},
+			"files[]": {
+				required: true,
+				extension: "png|jpeg|gif|pdf|docs|doc",
+				filesize: 10048576 
+				
+			}
+		},
+		messages: {
+			"files[]": {
+				required: "Please upload atlest 1 file",
+				filesize:"File must be JPG, GIF or PNG, less than 1MB",
+				extension: "Allowed file types are png, jpg, jpeg, doc, docs, pdf"
+			}
+		}
+	});
 	
 
 	$('#createBondHeader').click(function() {

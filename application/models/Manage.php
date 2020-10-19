@@ -1903,6 +1903,15 @@
 			return $result1 = $query->result();
 		
 		}
+
+		public function checkUserDoc($userDoc){
+			$this->db->select('*');
+			$this->db->from('tf_invest_doc');
+			$where = "uid = '$userDoc'";
+			$this->db->where($where);
+			$query = $this->db->get();
+			return $result1 = $query->result();
+		}
 	}
         
         
