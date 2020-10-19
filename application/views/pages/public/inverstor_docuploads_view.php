@@ -8,8 +8,8 @@
 					    $attributes = array('id' => 'fileupload', 'method' => 'post','class'=>"create_form");
 					    echo form_open_multipart(base_url().'publicv/uploadDoc', $attributes);
                     ?>
-                        <input type="hidden" name="email" value="<?php  echo $email; ?>" >
-                        <input type="hidden" name="rndid" value="<?php  echo $unid; ?>" >
+                        <input type="hidden" name="email" value="<?php echo $email; ?>" >
+                        <input type="hidden" name="rndid" value="<?php echo $unid; ?>" >
                         <div class="form-group mb-15">
 						<label for="mmob">Upload Document:</label>
                             <input type='file' class="form-control" data-required-error="" required="" name='files[]' multiple > 
