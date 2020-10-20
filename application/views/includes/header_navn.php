@@ -49,6 +49,7 @@
 								<li> <a href="javascript:void(0)"  data-toggle="modal" data-target="#login">For Buyers / Suppliers</a></li>
                                 <li> <a href="<?=base_url();?>publicv/brokers">For Originators / Partners</a></li>
 								<li> <a href="<?=base_url();?>publicv/financier">For Financiers</a></li>
+								<li> <a href="<?=base_url();?>publicv/investerRegistration">For Validus</a></li>
 							</ul>
 						</li>
 						

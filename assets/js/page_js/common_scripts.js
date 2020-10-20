@@ -2133,10 +2133,24 @@ $(function () {
 		}
 	});
 
-	$.validator.addMethod('filesize', function(value, element, param) {
-		return this.optional(element) || (element.files[0].size <= param) 
-	});
-
+	jQuery.validator.addMethod("filesize_max", function(value, element, param) {
+		var isOptional = this.optional(element),
+			file;
+		
+		if(isOptional) {
+			return isOptional;
+		}
+		
+		if ($(element).attr("type") === "file") {
+			
+			if (element.files && element.files.length) {
+				
+				file = element.files[0];            
+				return ( file.size && file.size <= param ); 
+			}
+		}
+		return false;
+	}, "File size is greater than 5MB ");
 	$("#fileupload").validate({
 		rules: {
 			email: {
@@ -2151,18 +2165,17 @@ $(function () {
 			},
 			"files[]": {
 				required: true,
-				extension: "png|jpeg|gif|pdf|docs|doc",
-				filesize: 10048576 
+				extension:  "jpeg|jpg|png|pdf|docx|doc",
+				filesize_max: 5097152
 				
 			}
 		},
 		messages: {
 			"files[]": {
 				required: "Please upload atlest 1 file",
-				filesize:"File must be JPG, GIF or PNG, less than 1MB",
-				extension: "Allowed file types are png, jpg, jpeg, doc, docs, pdf"
+				extension: "Allowed file types are png, jpg, jpeg, doc, docx, pdf",
 			}
-		}
+		},
 	});
 	
 
