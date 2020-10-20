@@ -1589,12 +1589,12 @@ class Publicv extends CI_Controller {
 				$_FILES['file']['error'] = $_FILES['files']['error'][$i];
 				$_FILES['file']['size'] = $_FILES['files']['size'][$i];
 		
-				$config['upload_path'] = 'uploads/'; 
+				$config['upload_path'] = 'uploads/';
 				$config['allowed_types'] = 'jpg|jpeg|png|pdf|docx|doc';
 				$config['max_size'] = '5048';
 				$config['file_name'] = rand(1,9999)."_".$_FILES['files']['name'][$i];
-			
 				$this->load->library('upload',$config); 
+				$this->upload->initialize($config);
 
 				$ImgName = $config['file_name'];
 				// $url2 = base_url().'/uploads/'.$ImgName;
