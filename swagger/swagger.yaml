@@ -3,7 +3,7 @@ info:
   description: "This is a Bulk document upload API .  You can find out more about     TradeFinex at [https://tradefinex.org](https://tradefinex.org)."
   version: "1.0.0"
   title: "Bulk Upload using API"
-  termsOfService: "https://beta.tradefinex.org/publicv/termsCondition"
+  termsOfService: "https://tradefinex.org/publicv/termsCondition"
   contact:
     email: "contact@tradefinex.org"
 host: "deployer.tradefinex.org/testnet"

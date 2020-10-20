@@ -560,7 +560,7 @@ class Login extends CI_Controller {
 		// For more permissions like user location etc you need to send your application for review
 		
 		// $loginUrl = $helper->getLoginUrl('http://localhost/TradeFinexLive/login/fbcallback', $permissions);
-		$loginUrl = $helper->getLoginUrl('https://beta.tradefinex.org/login/fbcallback', $permissions);
+		$loginUrl = $helper->getLoginUrl('https://tradefinex.org/login/fbcallback', $permissions);
 		header("location: ".$loginUrl);
 	}	
 
@@ -574,7 +574,7 @@ class Login extends CI_Controller {
 					$accessToken = $session->getToken();
 				} else {
 					// $accessToken = $helper->getAccessToken('http://localhost/TradeFinexLive/login/fbcallback');
-					$accessToken = $helper->getAccessToken('https://beta.tradefinex.org/login/fbcallback');
+					$accessToken = $helper->getAccessToken('https://tradefinex.org/login/fbcallback');
 				}	
 			}catch(FacebookResponseException $e){
 				log_message("info", 'Graph returned an error: ' . $e->getMessage());
@@ -1111,7 +1111,7 @@ class Login extends CI_Controller {
 		
 		// Load login & profile view
 		// header('Location:http://localhost/TradeFinexLive'.$data['oauthURL']);
-		header('Location:https://beta.tradefinex.org'.$data['oauthURL']);
+		header('Location:https://tradefinex.org'.$data['oauthURL']);
 			
 	}
 
