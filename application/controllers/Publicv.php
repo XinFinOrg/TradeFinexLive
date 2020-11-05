@@ -1393,7 +1393,7 @@ class Publicv extends CI_Controller {
 	
 	
 	
-	
+	//TODO:Registration
 	public function investerRegistration(){
         
         $data = array();
@@ -1437,7 +1437,7 @@ class Publicv extends CI_Controller {
 		
                     
                     if($action == 'signup'){
-			$result = $this->manage->add_validus_user($data, $user_type);
+						$result = $this->manage->add_validus_user($data, $user_type);
                     }   
                     
                     $data['page'] = 'investerRegistration';
@@ -1461,9 +1461,12 @@ class Publicv extends CI_Controller {
 			$from_email = $config['smtp_user']; 
 			$to_email = $this->input->post('email'); 
 			
-			
+			$mail_data['generator']= $random_hash;
+			$url = base_url().'/publicv/investorDoc?investor='.$mail_data['generator'];
 			$request_string = 'email='.$to_email.'&hash='.$random_hash.'&expired='.$expired;
 			$encode_request_string = $this->encrypt->encode($request_string, $encryption_key);
+
+			
 			$mail_data['encoded_uri'] = $encode_request_string;			
 			$this->email->from($from_email, 'Admin Tradefinex'); 
 			$this->email->to($to_email);
@@ -1479,7 +1482,7 @@ class Publicv extends CI_Controller {
 				$data['msg'] = 'success';
 				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-family: 'open_sansregular';font-size:30px;color:#282c3f;font-weight:700;'>Confirmation Mail</h4>"); 
 				$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#c5c5c5;padding-left:8px;padding-right:8px;'> A verification mail already sent to <a href='mailto:$to_email' style='font-family: 'open_sansregular';color:#33c088;' target='_top'>$to_email</a>, to confirm the validity of your email address. After receiving the email follow the link provided to complete you registration. Click <a href='".base_url()."' style=''>here</a> to go to home.</h3>"); 
-			}		
+			}
 			else{ 
 				$data['msg'] = 'email_error';
 				$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Registration Acknowledgement</h4>");
@@ -1505,13 +1508,133 @@ class Publicv extends CI_Controller {
 			$this->load->view('includes/footer_commonn', $data);
 			$this->load->view('pages_scripts/common_scripts', $data);
 			$this->load->view('includes/footern', $data);
-                    }
+            }
 		}
                 
     }
 	
+
+	public function investorDoc(){
+		$genertator = urlencode(htmlentities(htmlspecialchars(trim($_GET['investor']))));
+		
+		if(!ctype_alnum($genertator)){
+			redirect(base_url());
+		}
+		$checkUser = $this->manage->checkValidusUser($genertator);
+
+		
+
+		if(empty($checkUser)){
+			redirect(base_url());
+		}
+
+		$data = array();
+        
+		$data['csrf'] = array();
+		
+		$csrf = array(
+			'name' => $this->security->get_csrf_token_name(),
+			'hash' => $this->security->get_csrf_hash()
+		);
+		
+		$data['csrf'] = $csrf;
+		$data['email'] = $checkUser[0]->tfv_email;
+		$data['unid']= $checkUser[0]->tfv_id;
+
+		// $checkUserDoc = $this->manage->checkUserDoc($data['unid']);
+
+		// if(!empty($checkUserDoc)){
+		// 	redirect(base_url());
+		// }
+
+		$mail_data = array();
+
+		
+		$this->load->view('includes/headern', $data);
+		$this->load->view('includes/header_publicn', $data);
+		$this->load->view('pages/public/inverstor_docuploads_view.php', $data);
+		$this->load->view('includes/footer_commonn', $data);
+		$this->load->view('pages_scripts/common_scripts', $data);
+		$this->load->view('includes/footern', $data);
+		
+	}
+
+
+	public function uploadDoc(){
+		$data = [];
+   
+	 	$count = count($_FILES['files']['name']);
+
+	  	//Email
+		$Econfig = $this->config->item('$econfig');
+		
+		$rece = array($this->input->post('email'),$Econfig['smtp_user']);
+		$this->email->initialize($Econfig);
+		$from_email = $this->input->post('email'); 
+		$to_email = $Econfig['smtp_user'];
+		$this->email->from("",$this->input->post('email')); 
+		$this->email->to(implode(', ', $rece));
+		$this->email->set_mailtype('html');
+		$this->email->set_newline("\r\n");
+		$this->email->subject('Investor Documents'); 
+		$this->email->message('Your uploaded documents are attached below');
+
+      	for($i=0;$i<$count;$i++){
+    
+			if(!empty($_FILES['files']['name'][$i])){
+		
+				$_FILES['file']['name'] = $_FILES['files']['name'][$i];
+				$_FILES['file']['type'] = $_FILES['files']['type'][$i];
+				$_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+				$_FILES['file']['error'] = $_FILES['files']['error'][$i];
+				$_FILES['file']['size'] = $_FILES['files']['size'][$i];
+		
+				$config['upload_path'] = 'uploads/';
+				$config['allowed_types'] = 'jpg|jpeg|png|pdf|docx|doc';
+				$config['max_size'] = '5048';
+				$config['file_name'] = rand(1,9999)."_".$_FILES['files']['name'][$i];
+				$this->load->library('upload',$config); 
+				$this->upload->initialize($config);
+
+				$ImgName = $config['file_name'];
+				// $url2 = base_url().'/uploads/'.$ImgName;
+				// var_dump($url2);die();
+				if($this->upload->do_upload('file')){
+					$uploadData = $this->upload->data();
+					$filename = $uploadData['file_name'];
+					$ImgPath =$uploadData['full_path'];
+					$docs['uid'] = $this->input->post('rndid');
+					$docs['name'] = $this->input->post('email');
+					$docs['image_name'] = $filename;
+					
+					$saveData = $this->manage->addDocs($docs);
+					$this->email->attach($ImgPath);
+					
+				}
+			}
+		
+		}
 	
-	
+		if($this->email->send()){
+			$data['msg'] = 'success';
+			$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-family: 'open_sansregular';font-size:30px;color:#282c3f;font-weight:700;'>Confirmation Mail</h4>"); 
+			$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#c5c5c5;padding-left:8px;padding-right:8px;'> Your documents upload successfully. Click<a href='".base_url()."' style=''>here</a> to go to home.</h3>"); 
+		}
+		else{ 
+			$data['msg'] = 'email_error';
+			$this->session->set_flashdata("email_sent_common", "<h4 class='text-center' style='font-size:20px;color:#000;font-weight:700;'>Document Upload Acknowledgement</h4>");
+			$this->session->set_flashdata("email_sent", "<h3 class='text-center' style='font-size:16px;line-height:20px;color:#000;padding-left:8px;padding-right:8px;'>Something went wrong try again or Please click <a href='".base_url()."publicv/contact' style=''>here</a> to contact us for your resolution.</h3>"); 
+		}
+
+		$this->load->view('includes/headern', $data);
+		$this->load->view('includes/header_publicn', $data);
+		$this->load->view('pages/thankyou_signup', $data);
+		$this->load->view('includes/footer_commonn', $data);
+		$this->load->view('pages_scripts/thankyou_scripts', $data); 
+		$this->load->view('includes/footern', $data);
+	}
+
+
 	public function getPasskey(){
 		
 		$data = array();
@@ -1602,6 +1725,7 @@ class Publicv extends CI_Controller {
 		$this->load->view('pages_scripts/common_scripts', $data);
 		$this->load->view('includes/footern');
 	}
+
 	public function statistics(){
 		
 		$data = array();

@@ -1802,7 +1802,7 @@
 			return $result = $query->num_rows();
 		}
                 
-                public function add_validus_user($data_add, $type){
+        public function add_validus_user($data_add, $type){
 
 			$data = array();
 			$data['tfv_name'] = $data_add['uname'];
@@ -1878,7 +1878,7 @@
 			
 		}
 
-                public function update_base_validus_user_info_by_id($id, $data){
+        public function update_base_validus_user_info_by_id($id, $data){
 			
 			$data1 = [
 				'tfv_active' => $data,
@@ -1887,6 +1887,30 @@
 			$this->db->where($where);
 			$res = $this->db->update('{PRE}validus_user', $data1);
 			return $res;
+		}
+
+		public function addDocs($data){
+			$res = $this->db->insert('tf_invest_doc', $data);
+			return $res;
+		}
+
+		public function checkValidusUser($checkUser){
+			$this->db->select('*');
+			$this->db->from('tf_validus_user');
+			$where = "tfv_hash = '$checkUser'";
+			$this->db->where($where);
+			$query = $this->db->get();
+			return $result1 = $query->result();
+		
+		}
+
+		public function checkUserDoc($userDoc){
+			$this->db->select('*');
+			$this->db->from('tf_invest_doc');
+			$where = "uid = '$userDoc'";
+			$this->db->where($where);
+			$query = $this->db->get();
+			return $result1 = $query->result();
 		}
 	}
         

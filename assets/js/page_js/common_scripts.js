@@ -443,9 +443,11 @@ $(function () {
 				required: true,
 				EmailGeneral: true
 			},
-			mmob: {
+			mobile: {
 				required: true,
-				mobilenumberOnly: true
+				digits: true,
+				minlength: 8,
+				maxlength: 20
 			}
 		},
 		messages: {
@@ -455,9 +457,10 @@ $(function () {
 				maxlength: "Your Name must be atmost 30 characters long"
 			},
 			email: "Please enter a valid email address",
-			mmob: {
+			mobile: {
 				required: "Please enter a valid mobile number",
-				mobilenumberOnly : "Please enter Mobile Number only"
+				minlength: "Your Name must be atleast 8 characters long",
+				maxlength: "Your Name must be atmost 20 characters long"
 			}
 		},
 		onkeyup: function (elem) {
@@ -2128,6 +2131,51 @@ $(function () {
 				EmailGeneral: "Please enter a valid email address"
 			}
 		}
+	});
+
+	jQuery.validator.addMethod("filesize_max", function(value, element, param) {
+		var isOptional = this.optional(element),
+			file;
+		
+		if(isOptional) {
+			return isOptional;
+		}
+		
+		if ($(element).attr("type") === "file") {
+			
+			if (element.files && element.files.length) {
+				
+				file = element.files[0];            
+				return ( file.size && file.size <= param ); 
+			}
+		}
+		return false;
+	}, "File size is greater than 5MB ");
+	$("#fileupload").validate({
+		rules: {
+			email: {
+				required: true,
+				EmailGeneral: true
+				
+			},
+			rndid: {
+				required:true,
+				digits: true
+
+			},
+			"files[]": {
+				required: true,
+				extension:  "jpeg|jpg|png|pdf|docx|doc",
+				filesize_max: 5097152
+				
+			}
+		},
+		messages: {
+			"files[]": {
+				required: "Please upload atlest 1 file",
+				extension: "Allowed file types are png, jpg, jpeg, doc, docx, pdf",
+			}
+		},
 	});
 	
 

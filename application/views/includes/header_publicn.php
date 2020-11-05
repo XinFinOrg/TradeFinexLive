@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/jquery-ui.1.12.1.min.css') ?>" />
 	
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/jquery-te-Style.css');?>" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/intlTelInput.css');?>" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/intl-tel-input/css/intlTelInput_v17.css');?>" />
 	
 	
 	<!-- ICONS STYLES -->
@@ -40,6 +40,8 @@
 	
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/datepicker.css');?>" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/toastr.min.css');?>" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/dropzone.min.css');?>" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/basic.min.css');?>" />
 	<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet" type="text/css" />
 	<link src="https:////cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" type="text/css" />-->
 	
@@ -59,6 +61,29 @@
 	gtag('config', 'UA-112396835-1');
 	</script>
 </head>
+<style>
+	.dropzone .dz-preview .dz-error-message {
+    	color: #FFFFFF;
+    	display: none;
+	}
+	.dropzone .dz-preview .dz-remove {
+		padding-top: 10px;
+	}
+	.dropzone .dz-preview .dz-error-message {
+		top: 84px;
+    	left: 0px;
+    	width: 120px;
+	}
+	input.error, textarea.error, select.error, label.error {
+    	color: #ea212d !important;
+	}
+	.iti__selected-flag {
+		height: 100% !important; 
+	}
+	.iti {
+		width: 100%;
+	}
+</style>
 <!--<marquee>The website is under Maintenence. Please report to us if you face any technical issues.</marquee>-->
 <body class="header_sticky">
 	<!-- Preloader -->

@@ -1186,7 +1186,7 @@ Footer
 .create-form .tf-notice_content {-webkit-box-align: center;-ms-flex-align: center;align-items: center;text-align: center;padding: .7rem 1rem;}
 .create-form .tf-notice_content p {text-align:center;font-size:16px;font-weight: 600;margin-bottom:0px;}
 .create-form button {height:inherit;}
-input.error, textarea.error, select.error, label.error {border-color: #ea212d!important;}
+input.error, textarea.error, select.error, label.error {border-color: #ea212d!important;color: #ea212d!important;}
 
 
 /*-----------------------------------------------------------------------------------------------

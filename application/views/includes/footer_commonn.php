@@ -207,11 +207,12 @@
 		
 		<!-- Form Validations -->
 		
-		<script src="<?=base_url('assets/js/intlTelInput.min.js');?>"></script> 
 		
 		<script src="<?=base_url('assets/js/bootstrap/bootstrap-confirmation.min.js');?>"></script>
 		<script src="<?=base_url('assets/js/bootstrap/bootstrap-multiselect.min.js');?>"></script>
 		<script src="<?=base_url('assets/js/rating/jquery.ratyn.min.js');?>"></script>
+		
+		<script src="<?=base_url('assets/js/inttelinput/intlTelInput.js');?>"></script>
 		
 		<?php } if($user_id > 0){ ?>
 				
@@ -263,7 +264,15 @@
 					perPage: 6
 				});
 				
-				$('#mmob').intlTelInput();
+				
+				var input = document.querySelector("#mmob");
+				var Iti = window.intlTelInput(input, {
+					utilsScript: "<?=base_url('assets/js/inttelinput/utils.js');?>",
+					autoPlaceholder:'off'
+				});
+				
+				// console.log(Iti);
+
 				
 			<?php } ?>	
 									
@@ -332,8 +341,17 @@
 		<!-- Script for Multiupload Input btn -->
 
 		<!-- Partnership and Alliances Logo Slider-->
-		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>-->
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script> -->
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> -->
 		<script src="<?=base_url('assets/js/bootstrap-datepicker.js');?>"></script>
 		<script src="<?=base_url('assets/js/toastr.min.js');?>"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+		<script type="text/javascript">
+			$('#signupSubmit').click(function(){
+				$('#fullnumb').val('');
+				$('#fullnumb').val(window.Iti.getSelectedCountryData().dialCode+window.Iti.getNumber());
+			});
+		</script>
+
