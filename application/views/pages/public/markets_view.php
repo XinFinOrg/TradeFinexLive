@@ -107,6 +107,19 @@
                                         <td><div class="no-value">-</div></td>
                                         <td><div class="no-value">-</div></td>
                                     </tr>
+					<tr>
+                                        <th>
+                                            <div class="provider-cell">
+                                                <span class="name">Funding Societies</span>
+                                            </div>
+                                        </th>
+                                        <td><div class="no-value">-</div></td>
+                                        <td><a href="<?=base_url('publicv/marketsValidus');?>" class="provider-content">6.00%</a></td>
+                                        <td><div class="no-value">-</div></td>
+                                        <td><div class="no-value">-</div></td>
+                                        <td><div class="no-value">-</div></td>
+                                        <td><div class="no-value">-</div></td>
+                                    </tr>
                                     <tr>
                                         <th>
                                         	<div class="provider-cell">
