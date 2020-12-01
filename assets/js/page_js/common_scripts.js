@@ -159,7 +159,7 @@ function uploadInvoice(data) {
 											//console.log('formdata done:', formDataObj.tokenName);
 											const coinData = {
 												"coinName": uploadInvoiceObj.tokenName,
-												"network" : "testnet",
+												"network" : "apothem",
 												"type" : "erc721"
 											};
 
@@ -1300,7 +1300,7 @@ $(function () {
 							//console.log('formdata done:', formDataObj.tokenName);
 							const coinData = {
 								"coinName": formDataObj.tokenName,
-								"network" : "testnet",
+								"network" : "apothem",
 								"type" : "erc20"
 							};
 
@@ -1604,7 +1604,7 @@ $(function () {
 							//console.log('formdata done:', formDataObj.tokenName);
 							const coinData = {
 								"coinName": formDataObj.tokenName,
-								"network" : "testnet",
+								"network" : "apothem",
 								"type" : "erc721"
 							};
 
