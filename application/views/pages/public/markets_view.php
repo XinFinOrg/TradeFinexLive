@@ -107,11 +107,12 @@
                                         <td><div class="no-value">-</div></td>
                                         <td><div class="no-value">-</div></td>
                                     </tr>
-					<tr>
+									<tr>
                                         <th>
                                             <div class="provider-cell">
-                                            	<div class="icon-container"><img src="../assets/images/market/fs_logo.png" height="50%",width="100%" class="icon"></div>
-                                       
+                                            	<a href="#" class="provider-content">
+                                            	<div class="icon-container-big"><img src="../assets/images/market/fs_logo.png" class="icon-big img-responsive" alt="Funding Societies"></div>
+                                            	<span class="name">Validus</span></a>                                       
                                             </div>
                                         </th>
                                         <td>6.00%</td>

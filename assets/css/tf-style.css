@@ -1240,7 +1240,9 @@ table thead .assets-currency-rates-raw th {background-color:#FFFFFF;}
 
 .provider-cell .provider-content {display: flex;flex-direction: row;align-items: center;}
 .provider-cell .provider-content .icon-container {width: 30px;height: auto;}
+.provider-cell .provider-content .icon-container-big {height: auto;}
 .provider-cell .provider-content .icon-container .icon {vertical-align: bottom;width: 25px;padding: 0px 5px 0px 0px;}
+.provider-cell .provider-content .icon-container .icon-big {vertical-align: bottom;max-width: 200px;padding: 0px 5px 0px 0px;}
 .provider-cell .provider-content .name {vertical-align: middle;}
 
 .no-value {color:rgba(35,40,51,.5);display: inline-block;}
