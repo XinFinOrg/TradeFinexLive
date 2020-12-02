@@ -112,7 +112,7 @@
                                             <div class="provider-cell">
                                             	<a href="#" class="provider-content">
                                             	<div class="icon-container-big"><img src="../assets/images/market/fs_logo.png" class="icon-big img-responsive" alt="Funding Societies"></div>
-                                            	<span class="name">Validus</span></a>                                       
+                                            	</a>                                       
                                             </div>
                                         </th>
                                         <td>6.00%</td>
