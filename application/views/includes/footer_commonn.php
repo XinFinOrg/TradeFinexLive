@@ -163,7 +163,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 col-sm-7">
-                        <div class="copyright">Copyright &copy; 2020 TRADEFINEX TECH LTD (ADGM RegLab Participant), All rights reserved.</div>
+                        <!--<div class="copyright">Copyright &copy; 2021 TRADEFINEX TECH LTD (ADGM RegLab Participant), All rights reserved.</div>-->
+                        <div class="copyright">Copyright © <script>document.write(new Date().getFullYear())</script> TRADEFINEX TECH LTD (An ADGM Entity), All rights reserved.</div>
                     </div>
                     <div class="col-md-5 col-sm-5">
                         <div class="copyright pull-right"><a href="<?=base_url();?>publicv/privacyPolicy">Privacy Policy</a> | <a href="<?=base_url();?>publicv/termsCondition">Terms & Conditions</a></div>
