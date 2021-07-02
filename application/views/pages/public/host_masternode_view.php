@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row">
                 <div class="section-title text-center">
-                    <h2 class="mb-0">Click below button to Setup Masternode</h2>
+                    <p class="mb-0" style="padding-bottom:20px;">Click below button to Setup Masternode</p>
                     <a href="https://xinfin.org/setup-masternode" target="_blank" class="btn btn-blue text-uppercase">Setup Masternode</a>
                 </div>
                 
